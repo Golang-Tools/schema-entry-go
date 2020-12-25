@@ -2,9 +2,8 @@ package schemaentry
 
 //EntryPointMeta 节点类
 type EntryPointMeta struct {
-	Name    string
-	Epilog  string
-	Usage   string
+	Name string
+
 	parent  EntryPointNode
 	subcmds map[string]EntryPointNode
 }
