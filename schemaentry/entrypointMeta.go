@@ -2,10 +2,13 @@ package schemaentry
 
 //EntryPointMeta 节点类
 type EntryPointMeta struct {
-	Name string
-
-	parent  EntryPointNode
-	subcmds map[string]EntryPointNode
+	Name                   string
+	Usage                  string
+	DefaultConfigFilePaths []string
+	ParseEnv               bool
+	EnvPrefix              string
+	parent                 EntryPointNode
+	subcmds                map[string]EntryPointNode
 }
 
 //Meta 获取节点的元数据
@@ -15,7 +18,7 @@ func (ep *EntryPointMeta) Meta() *EntryPointMeta {
 
 //SetChild 为节点设置子节点
 func (ep *EntryPointMeta) SetChild(child EntryPointNode) {
-	subcmdName := GetNodeName(child)
+	subcmdName := child.Meta().Name
 	if ep.subcmds == nil || len(ep.subcmds) == 0 {
 
 		ep.subcmds = map[string]EntryPointNode{
