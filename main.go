@@ -15,20 +15,21 @@ type C struct {
 	s     int
 }
 
-func (c C) Main() {
+func (c *C) Main() {
 	fmt.Println(c.Field)
+	fmt.Println(c.A)
 }
-func (c C) Schema() string {
+func (c *C) Schema() string {
 	return ""
 }
 
 func main() {
 	root, _ := s.New(&s.EntryPointMeta{Name: "foo", Usage: "foo cmd test"}, nil)
 	nodeb, _ := s.New(&s.EntryPointMeta{Name: "bar", Usage: "foo bar cmd test"}, nil)
-	nodec, _ := s.New(&s.EntryPointMeta{Name: "par", Usage: "foo bar par cmd test"}, C{})
+	nodec, _ := s.New(&s.EntryPointMeta{Name: "par", Usage: "foo bar par cmd test"}, &C{})
 	s.RegistSubNode(root, nodeb)
 	s.RegistSubNode(nodeb, nodec)
-	root.Parse([]string{"foo", "bar", "par", "--A", "12344"})
+	root.Parse([]string{"foo", "bar", "par"})
 }
 
 // 	root.Parse([]string{"foo", "bar", "par"})

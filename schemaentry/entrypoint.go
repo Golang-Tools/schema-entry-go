@@ -231,6 +231,9 @@ func (ep *EntryPoint) ConfigPtrFromArgparse(parser *argparse.Parser, argv []stri
 	flagConfptr := map[string]interface{}{}
 	argconfigfilepath := parser.String("c", "config_path", &argparse.Options{Required: false, Help: "指定配置文件位置"})
 	t := reflect.TypeOf(ep.Config)
+	if t.Kind() == reflect.Ptr {
+		t = t.Elem()
+	}
 	for i := 0; i < t.NumField(); i++ {
 		f := t.Field(i)
 		if unicode.IsLower([]rune(f.Name)[0]) || f.Tag.Get("json") == "-" {
@@ -346,8 +349,10 @@ func (ep *EntryPoint) ParseStruct(flagConfptr map[string]interface{}) error {
 	}
 	//设置参数
 	t := reflect.TypeOf(ep.Config)
-	v := reflect.ValueOf(ep.Config)
-	//v := reflect.ValueOf(&ep.Config).Elem()
+	if t.Kind() == reflect.Ptr {
+		t = t.Elem()
+	}
+	v := reflect.ValueOf(ep.Config).Elem()
 	for i := 0; i < t.NumField(); i++ {
 		f := t.Field(i)
 		if unicode.IsLower([]rune(f.Name)[0]) || f.Tag.Get("json") == "-" {
@@ -414,10 +419,7 @@ func (ep *EntryPoint) ParseStruct(flagConfptr map[string]interface{}) error {
 				if ok {
 					va := val.(*int)
 					if *va != 0 {
-						if vf.CanSet() {
-							fmt.Println("@@@@@@@@@@@@@@@@@can set")
-							vf.Set(reflect.ValueOf(*va))
-						}
+						vf.Set(reflect.ValueOf(*va))
 					}
 				}
 			}
@@ -483,21 +485,14 @@ func (ep *EntryPoint) ParseStruct(flagConfptr map[string]interface{}) error {
 								}
 								r = append(r, intv)
 							}
-							if vf.CanSet() {
-								fmt.Println("@@@@@@@@@@@@@@@@@can set")
-								vf.Set(reflect.ValueOf(r))
-							}
+							vf.Set(reflect.ValueOf(r))
 						}
 						//设置命令行配置
 						val, ok := flagConfptr[f.Name]
 						if ok {
 							va := val.(*[]int)
 							if len(*va) != 0 {
-								fmt.Println(*va)
-								if vf.CanSet() {
-									fmt.Println("@@@@@@@@@@@@@@@@@can set")
-									vf.Set(reflect.ValueOf(*va))
-								}
+								vf.Set(reflect.ValueOf(*va))
 							}
 						}
 					}
@@ -545,15 +540,18 @@ func (ep *EntryPoint) ParseStruct(flagConfptr map[string]interface{}) error {
 
 //PassArgs 解析根节点
 func (ep *EntryPoint) PassArgs(parser *argparse.Parser, argv []string) {
+	//默认配置文件
 	err := ep.GetConfigFromConfigFile()
 	if err != nil {
 		fmt.Println(err)
 	}
+
 	filepathptr, flagConfptr, err := ep.ConfigPtrFromArgparse(parser, argv)
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
 	}
+	//指定配置文件
 	filepath := *filepathptr
 	if filepath != "" {
 		_, err := ep.loadConfigFile(filepath)
@@ -561,6 +559,7 @@ func (ep *EntryPoint) PassArgs(parser *argparse.Parser, argv []string) {
 			fmt.Println(err)
 		}
 	}
+	// 环境变量->命令行
 	err = ep.ParseStruct(flagConfptr)
 	if err != nil {
 		fmt.Println(err)
