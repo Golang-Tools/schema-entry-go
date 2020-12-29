@@ -124,3 +124,7 @@ func main() {
 ## 缺陷
 
 + 目前不支持命令行位置参数.(依赖的`github.com/akamensky/argparse`目前不支持)
++ 目前只支持如下几种数据类型(依赖的`github.com/akamensky/argparse`目前不支持)
+
+    + `int`,`float64`,`bool`,`string`
+    + `[]int`,`[]float64`,`[]string`
