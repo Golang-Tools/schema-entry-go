@@ -10,8 +10,10 @@ import (
 	"strings"
 	"unicode"
 
+	log "github.com/Golang-Tools/loggerhelper"
 	"github.com/akamensky/argparse"
 	jsoniter "github.com/json-iterator/go"
+	"github.com/xeipuuv/gojsonschema"
 )
 
 var json = jsoniter.ConfigCompatibleWithStandardLibrary
@@ -27,7 +29,7 @@ type EntryPointNode interface {
 	// PassArgsTosub(*argparse.Parser, []string)
 }
 
-//EntryPointConfig 节点配置
+//EntryPointConfig 叶子节点配置接口
 type EntryPointConfig interface {
 	Schema() string
 	Main()
@@ -36,15 +38,13 @@ type EntryPointConfig interface {
 //EntryPoint 节点类
 type EntryPoint struct {
 	*EntryPointMeta
-	*EntryPointOption
-	Config EntryPointConfig
+	config EntryPointConfig
 }
 
 //New 创建一个节点对象
-//@param config interface{} 为一个定义好的struct的空对象,中间节点可以为nil
 //@param meta *EntryPointMeta 为节点的元信息
-//@param opt *EntryPointOption 为对解析行为的设置.可以不传表示使用默认设置
-func New(meta *EntryPointMeta, config EntryPointConfig, opt ...*EntryPointOption) (*EntryPoint, error) {
+//@param config ...EntryPointConfig 为一个定义好的struct的对象的指针,根节点和中间节点可以不设置,叶子节点如果不设置则无法执行,最多设置一个
+func New(meta *EntryPointMeta, config ...EntryPointConfig) (*EntryPoint, error) {
 	ep := new(EntryPoint)
 	m := EntryPointMeta{}
 	if meta != nil {
@@ -56,7 +56,7 @@ func New(meta *EntryPointMeta, config EntryPointConfig, opt ...*EntryPointOption
 				namel := strings.Split(v.Type().String(), ".")
 				m.Name = strings.ToLower(namel[len(namel)-1])
 			} else {
-				return nil, errors.New("请设置meta中的name字段")
+				return nil, errors.New("请设置meta中的Name字段")
 			}
 		}
 		m.DefaultConfigFilePaths = meta.DefaultConfigFilePaths
@@ -66,28 +66,42 @@ func New(meta *EntryPointMeta, config EntryPointConfig, opt ...*EntryPointOption
 	}
 	ep.EntryPointMeta = &m
 
-	var option *EntryPointOption
-	optlen := len(opt)
-	switch optlen {
+	lenconfig := len(config)
+	switch lenconfig {
 	case 0:
 		{
-			option = &EntryPointOption{}
+			return ep, nil
 		}
 	case 1:
 		{
-			option = opt[0]
+			ep.config = config[0]
+			return ep, nil
 		}
 	default:
 		{
-			return nil, errors.New("最多只能设置一种解析行为")
+			return nil, errors.New("最多设置1个config")
 		}
+
 	}
-	ep.EntryPointOption = option
-	ep.Config = config
-	return ep, nil
 }
 
-//PassArgsTosub 将解析传导给下级
+//RegistConfig 将对象注册进节点
+//如果创建时没有设置,那么可以用这个方法设置,
+func (ep *EntryPoint) RegistConfig(config EntryPointConfig) {
+	if ep.config == nil {
+		ep.config = config
+	} else {
+		log.Warn("节点的config已经被设置过了.")
+	}
+}
+
+//RegistSubNode 将一个节点注册为当前节点的子节点
+//@params child EntryPointNode 节点对象,注意必须传入的是指针
+func (ep *EntryPoint) RegistSubNode(child EntryPointNode) {
+	RegistSubNode(ep, child)
+}
+
+//PassArgsTosub 将解析传导给子节点
 func (ep EntryPoint) PassArgsTosub(parser *argparse.Parser, argv []string) {
 	if len(argv) <= 1 {
 		parser.HelpFunc = func(c *argparse.Command, msg interface{}) string {
@@ -106,7 +120,7 @@ func (ep EntryPoint) PassArgsTosub(parser *argparse.Parser, argv []string) {
 	}
 	scmds := []string{}
 	insubcmd := false
-	for subcmd, _ := range ep.EntryPointMeta.subcmds {
+	for subcmd := range ep.EntryPointMeta.subcmds {
 		if argv[1] == subcmd {
 			insubcmd = true
 			break
@@ -122,9 +136,12 @@ func (ep EntryPoint) PassArgsTosub(parser *argparse.Parser, argv []string) {
 		}
 		ep.EntryPointMeta.subcmds[argv[1]].Parse(args)
 	} else {
+
 		parser.HelpFunc = func(c *argparse.Command, msg interface{}) string {
 			var help string
-			help += fmt.Sprintf("未知的子命令`%s`\n", argv[1])
+			if !(argv[1] == "--help" || argv[1] == "-h") {
+				help += fmt.Sprintf("未知的子命令`%s`\n", argv[1])
+			}
 			help += fmt.Sprintf("命令: %s <subcmd>\n", c.GetName())
 			help += fmt.Sprintf("说明:\n")
 			help += fmt.Sprintf("%s\n", c.GetDescription())
@@ -144,7 +161,7 @@ func (ep EntryPoint) PassArgsTosub(parser *argparse.Parser, argv []string) {
 //@return bool 是否结束查找
 //@return error 错误信息
 func (ep *EntryPoint) loadConfigFile(filename string) (bool, error) {
-	if ep.Config == nil {
+	if ep.config == nil {
 		return true, errors.New("Config为nil")
 	}
 	info, err := os.Stat(filename)
@@ -168,18 +185,17 @@ func (ep *EntryPoint) loadConfigFile(filename string) (bool, error) {
 		return true, err
 	}
 
-	err = json.Unmarshal(fd, &ep.Config)
+	err = json.Unmarshal(fd, &ep.config)
 	if err != nil {
-		fmt.Println("###########")
 		return true, err
 	}
 	return true, nil
 
 }
 
-//GetConfigFromConfigFile 从配置文件中获取配置
+//GetConfigFromConfigFile 从设置的或者默认配置文件中获取配置
 func (ep *EntryPoint) GetConfigFromConfigFile() error {
-	if ep.Config == nil {
+	if ep.config == nil {
 		return errors.New("Config为nil")
 	}
 	var conffilepath []string
@@ -187,7 +203,7 @@ func (ep *EntryPoint) GetConfigFromConfigFile() error {
 		configFileName := strings.Join(GetNodeProgList(ep), "_")
 		homepath, err := os.UserHomeDir()
 		if err != nil {
-			fmt.Println("find home error")
+			log.Info("find home path error", log.Dict{"err": err})
 			conffilepath = []string{
 				fmt.Sprintf("./%s.json", configFileName),
 				fmt.Sprintf("/%s/config.json", configFileName),
@@ -211,7 +227,7 @@ func (ep *EntryPoint) GetConfigFromConfigFile() error {
 			break
 		} else {
 			if err != nil {
-				fmt.Println(err.Error())
+				log.Warn("loadConfigFile get wrong", log.Dict{"filename": filename, "err": err})
 			}
 		}
 	}
@@ -225,12 +241,12 @@ func (ep *EntryPoint) GetConfigFromConfigFile() error {
 //@return map[string]interface{} flag的ptr位置
 //@return error 错误信息
 func (ep *EntryPoint) ConfigPtrFromArgparse(parser *argparse.Parser, argv []string) (*string, map[string]interface{}, error) {
-	if ep.Config == nil {
+	if ep.config == nil {
 		return nil, nil, errors.New("Config为nil")
 	}
 	flagConfptr := map[string]interface{}{}
 	argconfigfilepath := parser.String("c", "config_path", &argparse.Options{Required: false, Help: "指定配置文件位置"})
-	t := reflect.TypeOf(ep.Config)
+	t := reflect.TypeOf(ep.config)
 	if t.Kind() == reflect.Ptr {
 		t = t.Elem()
 	}
@@ -335,10 +351,11 @@ func (ep *EntryPoint) ConfigPtrFromArgparse(parser *argparse.Parser, argv []stri
 	return argconfigfilepath, flagConfptr, nil
 }
 
-//ParseStruct 解析结构,构造命令行参数解析和环境变量解析
+//ParseStruct 解析结构体,构造命令行参数解析和环境变量解析,并设置到对象的Config值中
+//@params flagConfptr map[string]interface{} 命令行参数除了指定的配置文件位置外的参数->值的指针的映射
+//@return error 解析过程中的错误
 func (ep *EntryPoint) ParseStruct(flagConfptr map[string]interface{}) error {
-
-	if ep.Config == nil {
+	if ep.config == nil {
 		return errors.New("Config为nil")
 	}
 	var EnvPrefix string
@@ -347,12 +364,13 @@ func (ep *EntryPoint) ParseStruct(flagConfptr map[string]interface{}) error {
 	} else {
 		EnvPrefix = strings.ToUpper(strings.Join(GetNodeProgList(ep), "_"))
 	}
+	log.Debug("EnvPrefix", log.Dict{"EnvPrefix": EnvPrefix})
 	//设置参数
-	t := reflect.TypeOf(ep.Config)
+	t := reflect.TypeOf(ep.config)
 	if t.Kind() == reflect.Ptr {
 		t = t.Elem()
 	}
-	v := reflect.ValueOf(ep.Config).Elem()
+	v := reflect.ValueOf(ep.config).Elem()
 	for i := 0; i < t.NumField(); i++ {
 		f := t.Field(i)
 		if unicode.IsLower([]rune(f.Name)[0]) || f.Tag.Get("json") == "-" {
@@ -538,17 +556,23 @@ func (ep *EntryPoint) ParseStruct(flagConfptr map[string]interface{}) error {
 	return nil
 }
 
-//PassArgs 解析根节点
+//PassArgs 解析叶子节点
+//@params parser *argparse.Parser 命令行参数解析器对象
+//@params argv []string 待解析的命令行参数
 func (ep *EntryPoint) PassArgs(parser *argparse.Parser, argv []string) {
+	if ep.config == nil {
+		log.Error("叶子节点必须有Config设置")
+		os.Exit(1)
+	}
 	//默认配置文件
 	err := ep.GetConfigFromConfigFile()
 	if err != nil {
-		fmt.Println(err)
+		log.Warn("GetConfigFromConfigFile wrong", log.Dict{"err": err})
 	}
 
 	filepathptr, flagConfptr, err := ep.ConfigPtrFromArgparse(parser, argv)
 	if err != nil {
-		fmt.Println(err)
+		log.Error("ConfigPtrFromArgparse error", log.Dict{"err": err})
 		os.Exit(1)
 	}
 	//指定配置文件
@@ -556,20 +580,44 @@ func (ep *EntryPoint) PassArgs(parser *argparse.Parser, argv []string) {
 	if filepath != "" {
 		_, err := ep.loadConfigFile(filepath)
 		if err != nil {
-			fmt.Println(err)
+			log.Warn("loadConfigFile wrong", log.Dict{"err": err, "filename": filepath})
 		}
 	}
 	// 环境变量->命令行
 	err = ep.ParseStruct(flagConfptr)
 	if err != nil {
-		fmt.Println(err)
+		log.Error("ParseStruct error", log.Dict{"err": err})
 		os.Exit(1)
 	}
-	// if ep.Config.Schema() != "" {
+	if ep.VerifyConfig() {
+		ep.config.Main()
+	}
+}
 
-	// }
-	ep.Config.Main()
-
+//VerifyConfig 验证config是否符合要求
+func (ep *EntryPoint) VerifyConfig() bool {
+	Schema := ep.config.Schema()
+	if Schema == "" {
+		log.Warn("参数未校验")
+		return true
+	}
+	configLoader := gojsonschema.NewGoLoader(ep.config)
+	schemaLoader := gojsonschema.NewStringLoader(Schema)
+	result, err := gojsonschema.Validate(schemaLoader, configLoader)
+	if err != nil {
+		log.Error("模式校验执行错误", log.Dict{"err": err})
+		return false
+	}
+	if result.Valid() {
+		return true
+	}
+	errs := result.Errors()
+	errsS := log.Dict{}
+	for index, e := range errs {
+		errsS[fmt.Sprintf("conflict-%d", index)] = e.Details()
+	}
+	log.Error("模式校验错误", errsS)
+	return false
 }
 
 //Parse 解析节点
@@ -581,7 +629,4 @@ func (ep EntryPoint) Parse(argv []string) {
 	} else {
 		ep.PassArgsTosub(parser, argv)
 	}
-}
-func (ep EntryPoint) runMain() {
-	ep.Config.Main()
 }
