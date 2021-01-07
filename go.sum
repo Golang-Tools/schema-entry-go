@@ -1,5 +1,5 @@
-github.com/Golang-Tools/loggerhelper v0.0.2 h1:koV+76/ooLuHa+W00tj0FNdHPm39rpNug1E+CAw43mg=
-github.com/Golang-Tools/loggerhelper v0.0.2/go.mod h1:lhXvi3RXNRkRyX7/hnzqNyAEUimkEyWBMcFd5iSNbzI=
+github.com/Golang-Tools/loggerhelper v0.0.3 h1:X4qNDUZzisKDiuynHQO8WkL4N+zqaHGd04pqp/kuj+M=
+github.com/Golang-Tools/loggerhelper v0.0.3/go.mod h1:lhXvi3RXNRkRyX7/hnzqNyAEUimkEyWBMcFd5iSNbzI=
 github.com/akamensky/argparse v1.2.2 h1:P17T0ZjlUNJuWTPPJ2A5dM1wxarHgHqfYH+AZTo2xQA=
 github.com/akamensky/argparse v1.2.2/go.mod h1:S5kwC7IuDcEr5VeXtGPRVZ5o/FdhcMlQz4IZQuw64xA=
 github.com/alecthomas/jsonschema v0.0.0-20201129101101-7b852d451add h1:UWj2AVW7oygpatGgJRy6rvNBcl+J7u8vl6qTV+XNWzA=
