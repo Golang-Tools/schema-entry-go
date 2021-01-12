@@ -18,8 +18,9 @@ type C struct {
 }
 
 func (c *C) Main() {
-	fmt.Println(c.Field)
-	fmt.Println(c.A)
+	// fmt.Println(c.Field)
+	// fmt.Println(c.A)
+	fmt.Println(c)
 }
 func (c *C) Schema() string {
 	s := jsonschema.Reflect(c)
@@ -42,7 +43,7 @@ func main() {
 	// s.RegistSubNode(nodeb, nodec)
 	nodeb.RegistSubNode(nodec)
 	os.Setenv("FOO_BAR_PAR_A", "123")
-	root.Parse([]string{"foo", "bar", "par", "--help"})
+	root.Parse([]string{"foo", "bar", "par"})
 }
 
 // 	root.Parse([]string{"foo", "bar", "par"})
