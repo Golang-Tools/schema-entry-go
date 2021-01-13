@@ -9,6 +9,7 @@ type EntryPointMeta struct {
 	Name                   string
 	Usage                  string
 	DefaultConfigFilePaths []string
+	LoadAllConfigFile      bool
 	ParseEnv               bool
 	EnvPrefix              string
 	parent                 EntryPointNode

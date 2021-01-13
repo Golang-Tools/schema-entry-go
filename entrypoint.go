@@ -220,7 +220,7 @@ func (ep *EntryPoint) GetConfigFromConfigFile() error {
 	}
 	for _, filename := range conffilepath {
 		stop, err := ep.loadConfigFile(filename)
-		if stop {
+		if ep.LoadAllConfigFile != true && stop {
 			if err != nil {
 				return err
 			}
