@@ -10,8 +10,9 @@ type EntryPointMeta struct {
 	Usage                  string
 	DefaultConfigFilePaths []string
 	LoadAllConfigFile      bool
-	ParseEnv               bool
+	NotParseEnv            bool
 	EnvPrefix              string
+	NotVerifySchema        bool
 	parent                 EntryPointNode
 	subcmds                map[string]EntryPointNode
 }

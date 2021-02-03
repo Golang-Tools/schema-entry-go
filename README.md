@@ -8,6 +8,7 @@
 + 每级子命令会提示其下一级的子命令
 + 终点节点可以通过定义一个满足接口`EntryPointConfig`的结构体来指定参数的解析行为和入口函数的执行过程
 + 可以通过默认值,指定位置文件,环境变量,命令行参数来构造配置结构,其顺序是`命令行参数->环境变量->命令行指定的配置文件->配置指定的配置文件路径->默认值`
++ 可以通过[定义满足接口`EntryPointConfig`的结构体中的`jsonschema`tag](https://github.com/alecthomas/jsonschema)来定义配置的校验规则
 
 ## 概念和一些规则
 
@@ -37,7 +38,6 @@
     ```golang
     //EntryPointConfig 节点配置
     type EntryPointConfig interface {
-        Schema() string
         Main()
     }
     ```
@@ -52,7 +52,7 @@
                 |
                 v
 
-    使用环境变量替换默认值(如果设置`EntryPointMeta.ParseEnv: true`)
+    使用环境变量替换默认值(如果设置`EntryPointMeta.NotParseEnv: false`)
     可以设置前缀`EntryPointMeta.EnvPrefix`作为环境变量的命名空间,默认前缀为根节点到当前节点间所有节点名中间以`_`分隔.
     前缀和参数间使用`_`分隔
                 |
@@ -60,7 +60,7 @@
     使用命令行参数替换默认值(如果对应flag有设置)
                 |
                 v
-    解析jsonschema规则(`config.Schema`返回值为非空字符串)
+    解析jsonschema校验规则(如果设置`EntryPointMeta.NotVerifySchema:true`)
                 |
                 v
     执行`config.Main`
@@ -94,20 +94,11 @@ func (c *C) Main() {
     fmt.Println(c.Field)
     fmt.Println(c.A)
 }
-func (c *C) Schema() string {
-    s := jsonschema.Reflect(c)
-    schemabytes, err := s.MarshalJSON()
-    if err != nil {
-        fmt.Println(err)
-        return ""
-    }
-    return string(schemabytes)
-}
 
 func main() {
     root, _ := s.New(&s.EntryPointMeta{Name: "foo", Usage: "foo cmd test"})
     nodeb, _ := s.New(&s.EntryPointMeta{Name: "bar", Usage: "foo bar cmd test"})
-    nodec, _ := s.New(&s.EntryPointMeta{Name: "par", Usage: "foo bar par cmd test", ParseEnv: true}, &C{
+    nodec, _ := s.New(&s.EntryPointMeta{Name: "par", Usage: "foo bar par cmd test"}, &C{
         Field: []int{1, 2, 3},
     })
     s.RegistSubNode(root, nodeb)

@@ -12,6 +12,7 @@ import (
 
 	log "github.com/Golang-Tools/loggerhelper"
 	"github.com/akamensky/argparse"
+	"github.com/alecthomas/jsonschema"
 	jsoniter "github.com/json-iterator/go"
 	"github.com/xeipuuv/gojsonschema"
 )
@@ -31,7 +32,6 @@ type EntryPointNode interface {
 
 //EntryPointConfig 叶子节点配置接口
 type EntryPointConfig interface {
-	Schema() string
 	Main()
 }
 
@@ -39,6 +39,7 @@ type EntryPointConfig interface {
 type EntryPoint struct {
 	*EntryPointMeta
 	config EntryPointConfig
+	Schema []byte
 }
 
 //New 创建一个节点对象
@@ -60,7 +61,8 @@ func New(meta *EntryPointMeta, config ...EntryPointConfig) (*EntryPoint, error) 
 			}
 		}
 		m.DefaultConfigFilePaths = meta.DefaultConfigFilePaths
-		m.ParseEnv = meta.ParseEnv
+		m.NotParseEnv = meta.NotParseEnv
+		m.NotVerifySchema = meta.NotVerifySchema
 		m.EnvPrefix = meta.EnvPrefix
 		m.Usage = meta.Usage
 	}
@@ -75,13 +77,19 @@ func New(meta *EntryPointMeta, config ...EntryPointConfig) (*EntryPoint, error) 
 	case 1:
 		{
 			ep.config = config[0]
+			s := jsonschema.Reflect(ep.config)
+			schemabytes, err := s.MarshalJSON()
+			if err != nil {
+				log.Warn("Schema方法返回为空字符串,且config无法映射为jsonschema", log.Dict{"err": err.Error()})
+				return ep, nil
+			}
+			ep.Schema = schemabytes
 			return ep, nil
 		}
 	default:
 		{
 			return nil, errors.New("最多设置1个config")
 		}
-
 	}
 }
 
@@ -162,7 +170,7 @@ func (ep EntryPoint) PassArgsTosub(parser *argparse.Parser, argv []string) {
 //@return error 错误信息
 func (ep *EntryPoint) loadConfigFile(filename string) (bool, error) {
 	if ep.config == nil {
-		return true, errors.New("Config为nil")
+		return true, errors.New("Config为空")
 	}
 	info, err := os.Stat(filename)
 	if err != nil {
@@ -170,7 +178,6 @@ func (ep *EntryPoint) loadConfigFile(filename string) (bool, error) {
 			return false, fmt.Errorf("find file %s not exist", filename)
 		}
 		return false, fmt.Errorf("find file %s error: %s", filename, err)
-
 	}
 	if info.IsDir() {
 		return false, fmt.Errorf("find %s is a dir", filename)
@@ -245,7 +252,7 @@ func (ep *EntryPoint) ConfigPtrFromArgparse(parser *argparse.Parser, argv []stri
 		return nil, nil, errors.New("Config为nil")
 	}
 	flagConfptr := map[string]interface{}{}
-	argconfigfilepath := parser.String("c", "config_path", &argparse.Options{Required: false, Help: "指定配置文件位置"})
+	argconfigfilepath := parser.String("c", "config", &argparse.Options{Required: false, Help: "指定配置文件位置"})
 	t := reflect.TypeOf(ep.config)
 	if t.Kind() == reflect.Ptr {
 		t = t.Elem()
@@ -256,13 +263,16 @@ func (ep *EntryPoint) ConfigPtrFromArgparse(parser *argparse.Parser, argv []stri
 			continue
 		}
 		description := ""
+		title := ""
 		jsonschemaTag := f.Tag.Get("jsonschema")
 		if jsonschemaTag != "" {
 			jstags := strings.Split(jsonschemaTag, ",")
 			for _, tag := range jstags {
 				if strings.HasPrefix(tag, "description") {
 					description = strings.Split(tag, "=")[1]
-					break
+				}
+				if strings.HasPrefix(tag, "title") {
+					title = strings.Split(tag, "=")[1]
 				}
 			}
 		}
@@ -270,35 +280,35 @@ func (ep *EntryPoint) ConfigPtrFromArgparse(parser *argparse.Parser, argv []stri
 		case reflect.String:
 			{
 				if description != "" {
-					flagConfptr[f.Name] = parser.String("", f.Name, &argparse.Options{Required: false, Help: description})
+					flagConfptr[f.Name] = parser.String(title, f.Name, &argparse.Options{Required: false, Help: description})
 				} else {
-					flagConfptr[f.Name] = parser.String("", f.Name, &argparse.Options{Required: false})
+					flagConfptr[f.Name] = parser.String(title, f.Name, &argparse.Options{Required: false})
 				}
 			}
 		case reflect.Bool:
 			{
 				if description != "" {
-					flagConfptr[f.Name] = parser.Flag("", f.Name, &argparse.Options{Required: false, Help: description})
+					flagConfptr[f.Name] = parser.Flag(title, f.Name, &argparse.Options{Required: false, Help: description})
 
 				} else {
-					flagConfptr[f.Name] = parser.Flag("", f.Name, &argparse.Options{Required: false})
+					flagConfptr[f.Name] = parser.Flag(title, f.Name, &argparse.Options{Required: false})
 				}
 			}
 		case reflect.Int:
 			{
 				if description != "" {
-					flagConfptr[f.Name] = parser.Int("", f.Name, &argparse.Options{Required: false, Help: description})
+					flagConfptr[f.Name] = parser.Int(title, f.Name, &argparse.Options{Required: false, Help: description})
 
 				} else {
-					flagConfptr[f.Name] = parser.Int("", f.Name, &argparse.Options{Required: false})
+					flagConfptr[f.Name] = parser.Int(title, f.Name, &argparse.Options{Required: false})
 				}
 			}
 		case reflect.Float64:
 			{
 				if description != "" {
-					flagConfptr[f.Name] = parser.Float("", f.Name, &argparse.Options{Required: false, Help: description})
+					flagConfptr[f.Name] = parser.Float(title, f.Name, &argparse.Options{Required: false, Help: description})
 				} else {
-					flagConfptr[f.Name] = parser.Float("", f.Name, &argparse.Options{Required: false})
+					flagConfptr[f.Name] = parser.Float(title, f.Name, &argparse.Options{Required: false})
 				}
 			}
 		case reflect.Slice:
@@ -307,25 +317,25 @@ func (ep *EntryPoint) ConfigPtrFromArgparse(parser *argparse.Parser, argv []stri
 				case "[]string":
 					{
 						if description != "" {
-							flagConfptr[f.Name] = parser.StringList("", f.Name, &argparse.Options{Required: false, Help: description})
+							flagConfptr[f.Name] = parser.StringList(title, f.Name, &argparse.Options{Required: false, Help: description})
 						} else {
-							flagConfptr[f.Name] = parser.StringList("", f.Name, &argparse.Options{Required: false})
+							flagConfptr[f.Name] = parser.StringList(title, f.Name, &argparse.Options{Required: false})
 						}
 					}
 				case "[]int":
 					{
 						if description != "" {
-							flagConfptr[f.Name] = parser.IntList("", f.Name, &argparse.Options{Required: false, Help: description})
+							flagConfptr[f.Name] = parser.IntList(title, f.Name, &argparse.Options{Required: false, Help: description})
 						} else {
-							flagConfptr[f.Name] = parser.IntList("", f.Name, &argparse.Options{Required: false})
+							flagConfptr[f.Name] = parser.IntList(title, f.Name, &argparse.Options{Required: false})
 						}
 					}
 				case "[]float64":
 					{
 						if description != "" {
-							flagConfptr[f.Name] = parser.FloatList("", f.Name, &argparse.Options{Required: false, Help: description})
+							flagConfptr[f.Name] = parser.FloatList(title, f.Name, &argparse.Options{Required: false, Help: description})
 						} else {
-							flagConfptr[f.Name] = parser.FloatList("", f.Name, &argparse.Options{Required: false})
+							flagConfptr[f.Name] = parser.FloatList(title, f.Name, &argparse.Options{Required: false})
 						}
 					}
 				default:
@@ -382,7 +392,7 @@ func (ep *EntryPoint) ParseStruct(flagConfptr map[string]interface{}) error {
 			{
 				//设置环境变量配置
 				getenvstr := ""
-				if ep.Meta().ParseEnv {
+				if !ep.Meta().NotParseEnv {
 					getenvstr = os.Getenv(fmt.Sprintf("%s_%s", EnvPrefix, strings.ToUpper(f.Name)))
 				}
 				if getenvstr != "" {
@@ -401,7 +411,7 @@ func (ep *EntryPoint) ParseStruct(flagConfptr map[string]interface{}) error {
 			{
 				//设置环境变量配置
 				getenvstr := ""
-				if ep.Meta().ParseEnv {
+				if !ep.Meta().NotParseEnv {
 					getenvstr = os.Getenv(fmt.Sprintf("%s_%s", EnvPrefix, strings.ToUpper(f.Name)))
 				}
 				if getenvstr != "" {
@@ -422,7 +432,7 @@ func (ep *EntryPoint) ParseStruct(flagConfptr map[string]interface{}) error {
 			{
 				//设置环境变量配置
 				getenvstr := ""
-				if ep.Meta().ParseEnv {
+				if !ep.Meta().NotParseEnv {
 					getenvstr = os.Getenv(fmt.Sprintf("%s_%s", EnvPrefix, strings.ToUpper(f.Name)))
 				}
 				if getenvstr != "" {
@@ -445,7 +455,7 @@ func (ep *EntryPoint) ParseStruct(flagConfptr map[string]interface{}) error {
 			{
 				//设置环境变量配置
 				getenvstr := ""
-				if ep.Meta().ParseEnv {
+				if !ep.Meta().NotParseEnv {
 					getenvstr = os.Getenv(fmt.Sprintf("%s_%s", EnvPrefix, strings.ToUpper(f.Name)))
 				}
 				if getenvstr != "" {
@@ -471,7 +481,7 @@ func (ep *EntryPoint) ParseStruct(flagConfptr map[string]interface{}) error {
 					{
 						//设置环境变量配置
 						getenvstr := ""
-						if ep.Meta().ParseEnv {
+						if !ep.Meta().NotParseEnv {
 							getenvstr = os.Getenv(fmt.Sprintf("%s_%s", EnvPrefix, strings.ToUpper(f.Name)))
 						}
 						if getenvstr != "" {
@@ -491,7 +501,7 @@ func (ep *EntryPoint) ParseStruct(flagConfptr map[string]interface{}) error {
 					{
 						//设置环境变量配置
 						getenvstr := ""
-						if ep.Meta().ParseEnv {
+						if !ep.Meta().NotParseEnv {
 							getenvstr = os.Getenv(fmt.Sprintf("%s_%s", EnvPrefix, strings.ToUpper(f.Name)))
 						}
 						if getenvstr != "" {
@@ -518,7 +528,7 @@ func (ep *EntryPoint) ParseStruct(flagConfptr map[string]interface{}) error {
 					{
 						//设置环境变量配置
 						getenvstr := ""
-						if ep.Meta().ParseEnv {
+						if !ep.Meta().NotParseEnv {
 							getenvstr = os.Getenv(fmt.Sprintf("%s_%s", EnvPrefix, strings.ToUpper(f.Name)))
 						}
 						if getenvstr != "" {
@@ -564,6 +574,23 @@ func (ep *EntryPoint) PassArgs(parser *argparse.Parser, argv []string) {
 		log.Error("叶子节点必须有Config设置")
 		os.Exit(1)
 	}
+	t := reflect.TypeOf(ep.config)
+	if t.Kind() == reflect.Ptr {
+		t = t.Elem()
+	}
+	count := 0
+	for i := 0; i < t.NumField(); i++ {
+		f := t.Field(i)
+		if unicode.IsLower([]rune(f.Name)[0]) || f.Tag.Get("json") == "-" {
+			continue
+		} else {
+			count++
+		}
+	}
+	if count == 0 {
+		ep.config.Main()
+		return
+	}
 	//默认配置文件
 	err := ep.GetConfigFromConfigFile()
 	if err != nil {
@@ -596,13 +623,12 @@ func (ep *EntryPoint) PassArgs(parser *argparse.Parser, argv []string) {
 
 //VerifyConfig 验证config是否符合要求
 func (ep *EntryPoint) VerifyConfig() bool {
-	Schema := ep.config.Schema()
-	if Schema == "" {
+	if ep.Meta().NotVerifySchema == true {
 		log.Warn("参数未校验")
 		return true
 	}
 	configLoader := gojsonschema.NewGoLoader(ep.config)
-	schemaLoader := gojsonschema.NewStringLoader(Schema)
+	schemaLoader := gojsonschema.NewBytesLoader(ep.Schema)
 	result, err := gojsonschema.Validate(schemaLoader, configLoader)
 	if err != nil {
 		log.Error("模式校验执行错误", log.Dict{"err": err})
