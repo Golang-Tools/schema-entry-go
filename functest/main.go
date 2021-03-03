@@ -23,12 +23,13 @@ func (c *C) Main() {
 }
 
 func main() {
-	root, _ := s.New(&s.EntryPointMeta{Name: "foo", Usage: "foo cmd test"})
-	nodeb, _ := s.New(&s.EntryPointMeta{Name: "bar", Usage: "foo bar cmd test"})
+	root, _ := s.New(&s.EntryPointMeta{Name: "foo", Description: "测试用foo", Usage: "foo cmd test"})
+	nodeb, _ := s.New(&s.EntryPointMeta{Name: "bar", Description: "测试用foo bar", Usage: "foo bar cmd test"})
 	nodec, _ := s.New(&s.EntryPointMeta{
 		Name:                   "par",
 		NotVerifySchema:        true,
 		DefaultConfigFilePaths: []string{"config.json"},
+		Description:            "测试用foo bar par",
 		Usage:                  "foo bar par cmd test"},
 		&C{
 			Field: []int{1, 2, 3},

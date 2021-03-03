@@ -7,6 +7,7 @@ import (
 //EntryPointMeta 节点的元数据类
 type EntryPointMeta struct {
 	Name                   string
+	Description            string
 	Usage                  string
 	DefaultConfigFilePaths []string
 	LoadAllConfigFile      bool

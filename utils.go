@@ -34,6 +34,17 @@ func GetNodeProgList(node EntryPointNode) []string {
 	return p.result
 }
 
+//GetNodeEnvPrefix 获取实际的EnvPrefix
+func GetNodeEnvPrefix(node EntryPointNode) string {
+	var EnvPrefix string
+	if node.Meta().EnvPrefix != "" {
+		EnvPrefix = node.Meta().EnvPrefix
+	} else {
+		EnvPrefix = strings.ToUpper(strings.Join(GetNodeProgList(node), "_"))
+	}
+	return EnvPrefix
+}
+
 //GetNodeProg 获取节点的prog值
 func GetNodeProg(node EntryPointNode) string {
 	p := prog{
