@@ -12,6 +12,7 @@ var json = jsoniter.ConfigCompatibleWithStandardLibrary
 
 type C struct {
 	A     int   `json:"a" jsonschema:"required,title=a,description=测试int,maximum=10"`
+	OK    bool  `json:"ok" jsonschema:"title=o,description=测试bool"`
 	Field []int `json:"field" jsonschema:"required,title=f,description=测试列表"`
 	s     int
 }
@@ -33,6 +34,7 @@ func main() {
 		Usage:                  "foo bar par cmd test"},
 		&C{
 			Field: []int{1, 2, 3},
+			OK:    true,
 		})
 	// fmt.Println("获得schema  ", string(nodec.Schema))
 	// s.RegistSubNode(root, nodeb)

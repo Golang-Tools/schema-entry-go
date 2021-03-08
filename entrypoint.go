@@ -406,6 +406,18 @@ func (ep *EntryPoint) ParseStruct(flagConfptr map[string]interface{}) error {
 			continue
 		}
 		vf := v.Field(i)
+		required := false
+		jsonschemaTag := f.Tag.Get("jsonschema")
+		if jsonschemaTag != "" {
+			jstags := strings.Split(jsonschemaTag, ",")
+			for _, tag := range jstags {
+				if strings.Contains(tag, "required") {
+					required = true
+					break
+				}
+			}
+		}
+
 		switch f.Type.Kind() {
 		case reflect.String:
 			{
@@ -448,8 +460,17 @@ func (ep *EntryPoint) ParseStruct(flagConfptr map[string]interface{}) error {
 				val, ok := flagConfptr[f.Name]
 				if ok {
 					va := val.(*bool)
-					vf.Set(reflect.ValueOf(*va))
+					if *va {
+						log.Info("##########1")
+						vf.Set(reflect.ValueOf(*va))
+					} else {
+						if required {
+							log.Info("##########2")
+							vf.Set(reflect.ValueOf(*va))
+						}
+					}
 				}
+
 			}
 		case reflect.Int:
 			{
