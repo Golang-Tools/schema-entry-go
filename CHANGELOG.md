@@ -1,10 +1,19 @@
-# 0.0.4
+# v0.0.5
+
+## 依赖更新
+
++ `github.com/Golang-Tools/loggerhelper@v0.0.4`
++ `github.com/akamensky/argparse@v1.3.1`
++ `github.com/alecthomas/jsonschema@v0.0.0-20210911035550-29dd2c10c8e9`
++ `github.com/json-iterator/go@v1.1.12`
+
+# v0.0.4
 
 ## bug修正
 
 + 修复了bool型配置会被命令行强行覆盖的问题,现在只有schema中指定了`required`的布尔型配置会被命令行强行覆盖
 
-# 0.0.3
+# v0.0.3
 
 ## 提示优化
 
@@ -12,7 +21,7 @@
 + 命令行help中会显式从环境变量中读取参数的前缀
 + 从环境变量中读到的配置将被展示出来.
 
-# 0.0.2
+# v0.0.2
 
 ## 接口变更
 
@@ -20,12 +29,12 @@
 + `EntryPointMeta.ParseEnv`改为了`EntryPointMeta.NotParseEnv`
 + 改用`EntryPointMeta.NotVerifySchema`来设置是否校验json schema
 
-# 0.0.1
+# v0.0.1
 
 ## 更新依赖
 
 + `github.com/Golang-Tools/loggerhelper v0.0.2` -> `github.com/Golang-Tools/loggerhelper v0.0.3`
 
-# 0.0.0
+# v0.0.0
 
 创建了项目,实现了基本功能.
