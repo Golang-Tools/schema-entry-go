@@ -13,6 +13,7 @@ import (
 	log "github.com/Golang-Tools/loggerhelper"
 	"github.com/akamensky/argparse"
 	"github.com/alecthomas/jsonschema"
+	"github.com/ghodss/yaml"
 	jsoniter "github.com/json-iterator/go"
 	"github.com/xeipuuv/gojsonschema"
 )
@@ -60,14 +61,16 @@ func New(meta *EntryPointMeta, config ...EntryPointConfig) (*EntryPoint, error) 
 				return nil, errors.New("请设置meta中的Name字段")
 			}
 		}
-		m.DefaultConfigFilePaths = meta.DefaultConfigFilePaths
-		m.NotParseEnv = meta.NotParseEnv
-		m.NotVerifySchema = meta.NotVerifySchema
-		m.EnvPrefix = meta.EnvPrefix
+		m.Description = meta.Description
 		m.Usage = meta.Usage
+		m.DefaultConfigFilePaths = meta.DefaultConfigFilePaths
+		m.LoadAllConfigFile = meta.LoadAllConfigFile
+		m.NotParseEnv = meta.NotParseEnv
+		m.EnvPrefix = meta.EnvPrefix
+		m.NotVerifySchema = meta.NotVerifySchema
+		m.DebugMode = meta.DebugMode
 	}
 	ep.EntryPointMeta = &m
-
 	lenconfig := len(config)
 	switch lenconfig {
 	case 0:
@@ -80,7 +83,7 @@ func New(meta *EntryPointMeta, config ...EntryPointConfig) (*EntryPoint, error) 
 			s := jsonschema.Reflect(ep.config)
 			schemabytes, err := s.MarshalJSON()
 			if err != nil {
-				log.Warn("Schema方法返回为空字符串,且config无法映射为jsonschema", log.Dict{"err": err.Error()})
+				log.Warn("config结构无法映射为jsonschema", log.Dict{"err": err.Error()})
 				return ep, nil
 			}
 			ep.Schema = schemabytes
@@ -115,11 +118,11 @@ func (ep EntryPoint) PassArgsTosub(parser *argparse.Parser, argv []string) {
 		parser.HelpFunc = func(c *argparse.Command, msg interface{}) string {
 			var help string
 			help += fmt.Sprintf("命令: %s <subcmd>\n", c.GetName())
-			help += fmt.Sprintf("使用:\n")
+			help += "使用:\n"
 			help += fmt.Sprintf("  %s\n", ep.Usage)
-			help += fmt.Sprintf("说明:\n")
+			help += "说明:\n"
 			help += fmt.Sprintf("  %s\n", c.GetDescription())
-			help += fmt.Sprintf("支持的子命令:\n")
+			help += "支持的子命令:\n"
 			for subcmd, subnode := range ep.subcmds {
 				help += fmt.Sprintf("  子命令: %s\n", subcmd)
 				help += fmt.Sprintf("    说明: %s\n", subnode.Meta().Usage)
@@ -141,28 +144,24 @@ func (ep EntryPoint) PassArgsTosub(parser *argparse.Parser, argv []string) {
 			break
 		} else {
 			scmds = append(scmds, subcmd)
-
 		}
 	}
 	if insubcmd {
 		args := []string{argv[0] + " " + argv[1]}
-		for _, value := range argv[2:] {
-			args = append(args, value)
-		}
+		args = append(args, argv[2:]...)
 		ep.EntryPointMeta.subcmds[argv[1]].Parse(args)
 	} else {
-
 		parser.HelpFunc = func(c *argparse.Command, msg interface{}) string {
 			var help string
 			if !(argv[1] == "--help" || argv[1] == "-h") {
 				help += fmt.Sprintf("未知的子命令`%s`\n", argv[1])
 			}
 			help += fmt.Sprintf("命令: %s <subcmd>\n", c.GetName())
-			help += fmt.Sprintf("使用:\n")
+			help += "使用:\n"
 			help += fmt.Sprintf("  %s\n", ep.Usage)
-			help += fmt.Sprintf("说明:\n")
+			help += "说明:\n"
 			help += fmt.Sprintf("  %s\n", c.GetDescription())
-			help += fmt.Sprintf("支持的子命令:\n")
+			help += "支持的子命令:\n"
 			for subcmd, subnode := range ep.subcmds {
 				help += fmt.Sprintf("  子命令: %s\n", subcmd)
 				help += fmt.Sprintf("    说明: %s\n", subnode.Meta().Usage)
@@ -205,13 +204,20 @@ func (ep *EntryPoint) loadConfigFile(filename string) (bool, error) {
 	if err != nil {
 		return true, err
 	}
-
-	err = json.Unmarshal(fd, &ep.config)
-	if err != nil {
-		return true, err
+	if strings.HasSuffix(filename, "json") {
+		err := json.Unmarshal(fd, &ep.config)
+		if err != nil {
+			return true, err
+		}
+	} else if strings.HasSuffix(filename, "yml") || strings.HasSuffix(filename, "yaml") {
+		err := yaml.Unmarshal(fd, &ep.config)
+		if err != nil {
+			return true, err
+		}
+	} else {
+		return false, fmt.Errorf("%s has not supported suffix", filename)
 	}
 	return true, nil
-
 }
 
 //GetConfigFromConfigFile 从设置的或者默认配置文件中获取配置
@@ -224,16 +230,23 @@ func (ep *EntryPoint) GetConfigFromConfigFile() error {
 		configFileName := strings.Join(GetNodeProgList(ep), "_")
 		homepath, err := os.UserHomeDir()
 		if err != nil {
-			log.Info("find home path error", log.Dict{"err": err})
+			if ep.Meta().DebugMode {
+				log.Info("find home path error", log.Dict{"err": err})
+			}
 			conffilepath = []string{
 				fmt.Sprintf("./%s.json", configFileName),
 				fmt.Sprintf("/%s/config.json", configFileName),
+				fmt.Sprintf("./%s.yml", configFileName),
+				fmt.Sprintf("/%s/config.yml", configFileName),
 			}
 		} else {
 			conffilepath = []string{
 				fmt.Sprintf("./%s.json", configFileName),
 				fmt.Sprintf("%s/%s/config.json", homepath, configFileName),
 				fmt.Sprintf("/%s/config.json", configFileName),
+				fmt.Sprintf("./%s.yml", configFileName),
+				fmt.Sprintf("%s/%s/config.yml", homepath, configFileName),
+				fmt.Sprintf("/%s/config.yml", configFileName),
 			}
 		}
 	} else {
@@ -241,14 +254,16 @@ func (ep *EntryPoint) GetConfigFromConfigFile() error {
 	}
 	for _, filename := range conffilepath {
 		stop, err := ep.loadConfigFile(filename)
-		if ep.LoadAllConfigFile != true && stop {
+		if !ep.LoadAllConfigFile && stop {
 			if err != nil {
 				return err
 			}
 			break
 		} else {
 			if err != nil {
-				log.Warn("can not loadConfigFile", log.Dict{"filename": filename, "wrong_msg": err})
+				if ep.Meta().DebugMode {
+					log.Info("can not load ConfigFile", log.Dict{"filename": filename, "wrong_msg": err})
+				}
 			}
 		}
 	}
@@ -426,7 +441,9 @@ func (ep *EntryPoint) ParseStruct(flagConfptr map[string]interface{}) error {
 				if !ep.Meta().NotParseEnv {
 					loadenv := fmt.Sprintf("%s_%s", EnvPrefix, strings.ToUpper(f.Name))
 					getenvstr = os.Getenv(loadenv)
-					log.Info("load config from ENV", log.Dict{"env": loadenv, "value": getenvstr})
+					if ep.Meta().DebugMode {
+						log.Info("load config from ENV", log.Dict{"env": loadenv, "value": getenvstr})
+					}
 				}
 				if getenvstr != "" {
 					vf.Set(reflect.ValueOf(getenvstr))
@@ -447,7 +464,9 @@ func (ep *EntryPoint) ParseStruct(flagConfptr map[string]interface{}) error {
 				if !ep.Meta().NotParseEnv {
 					loadenv := fmt.Sprintf("%s_%s", EnvPrefix, strings.ToUpper(f.Name))
 					getenvstr = os.Getenv(loadenv)
-					log.Info("load config from ENV", log.Dict{"env": loadenv, "value": getenvstr})
+					if ep.Meta().DebugMode {
+						log.Info("load config from ENV", log.Dict{"env": loadenv, "value": getenvstr})
+					}
 				}
 				if getenvstr != "" {
 					if strings.ToUpper(getenvstr) == "TRUE" {
@@ -461,11 +480,9 @@ func (ep *EntryPoint) ParseStruct(flagConfptr map[string]interface{}) error {
 				if ok {
 					va := val.(*bool)
 					if *va {
-						log.Info("##########1")
 						vf.Set(reflect.ValueOf(*va))
 					} else {
 						if required {
-							log.Info("##########2")
 							vf.Set(reflect.ValueOf(*va))
 						}
 					}
@@ -479,7 +496,9 @@ func (ep *EntryPoint) ParseStruct(flagConfptr map[string]interface{}) error {
 				if !ep.Meta().NotParseEnv {
 					loadenv := fmt.Sprintf("%s_%s", EnvPrefix, strings.ToUpper(f.Name))
 					getenvstr = os.Getenv(loadenv)
-					log.Info("load config from ENV", log.Dict{"env": loadenv, "value": getenvstr})
+					if ep.Meta().DebugMode {
+						log.Info("load config from ENV", log.Dict{"env": loadenv, "value": getenvstr})
+					}
 				}
 				if getenvstr != "" {
 					intv, err := strconv.Atoi(getenvstr)
@@ -504,7 +523,9 @@ func (ep *EntryPoint) ParseStruct(flagConfptr map[string]interface{}) error {
 				if !ep.Meta().NotParseEnv {
 					loadenv := fmt.Sprintf("%s_%s", EnvPrefix, strings.ToUpper(f.Name))
 					getenvstr = os.Getenv(loadenv)
-					log.Info("load config from ENV", log.Dict{"env": loadenv, "value": getenvstr})
+					if ep.Meta().DebugMode {
+						log.Info("load config from ENV", log.Dict{"env": loadenv, "value": getenvstr})
+					}
 				}
 				if getenvstr != "" {
 					fv, err := strconv.ParseFloat(getenvstr, 64)
@@ -532,7 +553,9 @@ func (ep *EntryPoint) ParseStruct(flagConfptr map[string]interface{}) error {
 						if !ep.Meta().NotParseEnv {
 							loadenv := fmt.Sprintf("%s_%s", EnvPrefix, strings.ToUpper(f.Name))
 							getenvstr = os.Getenv(loadenv)
-							log.Info("load config from ENV", log.Dict{"env": loadenv, "value": getenvstr})
+							if ep.Meta().DebugMode {
+								log.Info("load config from ENV", log.Dict{"env": loadenv, "value": getenvstr})
+							}
 						}
 						if getenvstr != "" {
 							sl := strings.Split(getenvstr, ",")
@@ -554,7 +577,9 @@ func (ep *EntryPoint) ParseStruct(flagConfptr map[string]interface{}) error {
 						if !ep.Meta().NotParseEnv {
 							loadenv := fmt.Sprintf("%s_%s", EnvPrefix, strings.ToUpper(f.Name))
 							getenvstr = os.Getenv(loadenv)
-							log.Info("load config from ENV", log.Dict{"env": loadenv, "value": getenvstr})
+							if ep.Meta().DebugMode {
+								log.Info("load config from ENV", log.Dict{"env": loadenv, "value": getenvstr})
+							}
 						}
 						if getenvstr != "" {
 							r := []int{}
@@ -583,7 +608,9 @@ func (ep *EntryPoint) ParseStruct(flagConfptr map[string]interface{}) error {
 						if !ep.Meta().NotParseEnv {
 							loadenv := fmt.Sprintf("%s_%s", EnvPrefix, strings.ToUpper(f.Name))
 							getenvstr = os.Getenv(loadenv)
-							log.Info("load config from ENV", log.Dict{"env": loadenv, "value": getenvstr})
+							if ep.Meta().DebugMode {
+								log.Info("load config from ENV", log.Dict{"env": loadenv, "value": getenvstr})
+							}
 						}
 						if getenvstr != "" {
 							r := []float64{}
@@ -661,7 +688,8 @@ func (ep *EntryPoint) PassArgs(parser *argparse.Parser, argv []string) {
 	if filepath != "" {
 		_, err := ep.loadConfigFile(filepath)
 		if err != nil {
-			log.Warn("loadConfigFile wrong", log.Dict{"err": err, "filename": filepath})
+			log.Error("load ConfigFile wrong", log.Dict{"err": err, "filename": filepath})
+			os.Exit(1)
 		}
 	}
 	// 环境变量->命令行
@@ -677,7 +705,7 @@ func (ep *EntryPoint) PassArgs(parser *argparse.Parser, argv []string) {
 
 //VerifyConfig 验证config是否符合要求
 func (ep *EntryPoint) VerifyConfig() bool {
-	if ep.Meta().NotVerifySchema == true {
+	if ep.Meta().NotVerifySchema {
 		log.Warn("参数未校验")
 		return true
 	}
@@ -701,7 +729,7 @@ func (ep *EntryPoint) VerifyConfig() bool {
 }
 
 //Parse 解析节点
-func (ep EntryPoint) Parse(argv []string) {
+func (ep *EntryPoint) Parse(argv []string) {
 	prog := GetNodeProg(ep)
 	parser := argparse.NewParser(prog, ep.EntryPointMeta.Description)
 	if ep.IsEndpoint() {

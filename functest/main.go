@@ -18,8 +18,6 @@ type C struct {
 }
 
 func (c *C) Main() {
-	// fmt.Println(c.Field)
-	// fmt.Println(c.A)
 	fmt.Println(c)
 }
 
@@ -29,13 +27,15 @@ func main() {
 	nodec, _ := s.New(&s.EntryPointMeta{
 		Name:                   "par",
 		NotVerifySchema:        true,
-		DefaultConfigFilePaths: []string{"config.json"},
+		DefaultConfigFilePaths: []string{"conf.json", "config.json", "con.yml"},
 		Description:            "测试用foo bar par",
-		Usage:                  "foo bar par cmd test"},
-		&C{
-			Field: []int{1, 2, 3},
-			OK:    true,
-		})
+		Usage:                  "foo bar par cmd test",
+		LoadAllConfigFile:      true,
+		// DebugMode:              true,
+	}, &C{
+		Field: []int{1, 2, 3},
+		OK:    true,
+	})
 	// fmt.Println("获得schema  ", string(nodec.Schema))
 	// s.RegistSubNode(root, nodeb)
 	root.RegistSubNode(nodeb)

@@ -8,7 +8,8 @@
 + 每级子命令会提示其下一级的子命令
 + 终点节点可以通过定义一个满足接口`EntryPointConfig`的结构体来指定参数的解析行为和入口函数的执行过程
 + 可以通过默认值,指定位置文件,环境变量,命令行参数来构造配置结构,其顺序是`命令行参数->环境变量->命令行指定的配置文件->配置指定的配置文件路径->默认值`
-+ 可以通过[定义满足接口`EntryPointConfig`的结构体中的`jsonschema`tag](https://github.com/alecthomas/jsonschema)来定义配置的校验规则
++ 通过[定义满足接口`EntryPointConfig`的结构体中的`jsonschema`tag](https://github.com/alecthomas/jsonschema)来定义配置的校验规则
++ 支持`json`和`yaml`两种格式的配置文件
 
 ## 概念和一些规则
 
@@ -66,9 +67,16 @@
     执行`config.Main`
     ```
 
-## 使用例子
+## 使用方法
 
-下面是一个例子,例子中使用`github.com/alecthomas/jsonschema`在结构体构造时声明了jsonschema约束,我们也可以手工写一个jsonschema直接返回.
+整个使用流程可以拆分为如下步骤
+
+1. 定义一个配置结构体,并为其实现`Main()`接口,这个`Main()`接口就是业务的入口
+2. 使用`schema-entry-go.New(*EntryPointMeta, ...EntryPointConfig) (*EntryPoint, error)`来构造一个解析节点,如果这个节点不作为叶子节点那可以不填`...EntryPointConfig`部分参数
+3. 使用`schema-entry-go.RegistSubNode(parent *EntryPoint,child *EntryPoint)`或者`parent.RegistSubNode(child *EntryPoint)`来构造命令树结构.
+4. 调用根节点的`Parse(argv []string)`方法解析配置,一般是写成`root.Parse(os.Args)`
+
+下面是一个例子,例子中使用`github.com/alecthomas/jsonschema`在结构体构造时声明了jsonschema约束.
 
 ```golang
 package main

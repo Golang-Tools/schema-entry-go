@@ -6,14 +6,15 @@ import (
 
 //EntryPointMeta 节点的元数据类
 type EntryPointMeta struct {
-	Name                   string
-	Description            string
-	Usage                  string
-	DefaultConfigFilePaths []string
-	LoadAllConfigFile      bool
-	NotParseEnv            bool
-	EnvPrefix              string
-	NotVerifySchema        bool
+	Name                   string   //节点名
+	Description            string   //节点简介
+	Usage                  string   //节点用法介绍
+	DefaultConfigFilePaths []string //节点执行的默认配置文件路径列表
+	LoadAllConfigFile      bool     //是否加载全部配置文件,否则找到第一个后就停止搜索
+	NotParseEnv            bool     //是否不解析环境变量
+	EnvPrefix              string   //解析环境变量时的前缀
+	NotVerifySchema        bool     //是否不校验配置的schema
+	DebugMode              bool     //当设置为debugmode时才会打印中间过程的log
 	parent                 EntryPointNode
 	subcmds                map[string]EntryPointNode
 }
@@ -49,16 +50,11 @@ func (ep *EntryPointMeta) SetParent(parent EntryPointNode) {
 
 //IsRoot 判断节点的是否为根节点
 func (ep *EntryPointMeta) IsRoot() bool {
-	if ep.parent == nil {
-		return true
-	}
-	return false
+	return ep.parent == nil
+
 }
 
 //IsEndpoint 判断节点是否为叶子节点
 func (ep *EntryPointMeta) IsEndpoint() bool {
-	if len(ep.subcmds) == 0 {
-		return true
-	}
-	return false
+	return len(ep.subcmds) == 0
 }
