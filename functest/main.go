@@ -27,7 +27,7 @@ func main() {
 	nodec, _ := s.New(&s.EntryPointMeta{
 		Name:                   "par",
 		NotVerifySchema:        true,
-		DefaultConfigFilePaths: []string{"conf.json", "config.json", "con.yml"},
+		DefaultConfigFilePaths: []string{"conf.json", "config.json", "conf.yml"},
 		Description:            "测试用foo bar par",
 		Usage:                  "foo bar par cmd test",
 		LoadAllConfigFile:      true,
