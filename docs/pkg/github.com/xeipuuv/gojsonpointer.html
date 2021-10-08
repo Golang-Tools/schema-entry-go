@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: github.com/xeipuuv/gojsonpointer</title>
+<link href="../../../css/light-v0.3.6.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.3.6.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>gojsonpointer</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../index.html#pkg-github.com/xeipuuv/gojsonpointer">github.com/xeipuuv/gojsonpointer</a><i> (on <a href="https://pkg.go.dev/github.com/xeipuuv/gojsonpointer" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../../dep/github.com/xeipuuv/gojsonpointer.html">5 packages</a>, and imported by <a href="../../../dep/github.com/xeipuuv/gojsonpointer.html#imported-by">one package</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<span class="nodocs">      <a href="../../../src/github.com/xeipuuv/gojsonpointer/pointer.go.html">pointer.go</a></span></div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 2, in which 1 are exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-JsonPointer" data-popularity="550">	<input type='checkbox' class="fold" id="JsonPointer-fold-content"><label for="JsonPointer-fold-content"> type <a href="../../../src/github.com/xeipuuv/gojsonpointer/pointer.go.html#line-55">JsonPointer</a> <i>(struct)</i></label><span id='JsonPointer-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="JsonPointer-fold-fields"><label for="JsonPointer-fold-fields">Fields (<i>only one, which is unexported</i>)</label><span id='JsonPointer-fold-fields-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="JsonPointer-showhide-fields"><i><label for="JsonPointer-showhide-fields" class="show-inline">/* one unexported ... */</label><label for="JsonPointer-showhide-fields" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/xeipuuv/gojsonpointer/pointer.go.html#line-56">referenceTokens</a> <i>[]<a href="../../builtin.html#name-string">string</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="JsonPointer-fold-methods"><label for="JsonPointer-fold-methods">Methods (<i>total 5, in which 4 are exported</i>)</label><span id='JsonPointer-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="JsonPointer-fold-method-Delete"><label for="JsonPointer-fold-method-Delete">(*T) <a href="../../../src/github.com/xeipuuv/gojsonpointer/pointer.go.html#line-94">Delete</a>(document interface{}) (interface{}, <a href="../../builtin.html#name-error">error</a>)</label><span id='JsonPointer-fold-method-Delete-docs' class="fold-docs">
+				Uses the pointer to delete a value from a JSON document
+</span></span><span>
+			<input type='checkbox' class="fold" id="JsonPointer-fold-method-Get"><label for="JsonPointer-fold-method-Get">(*T) <a href="../../../src/github.com/xeipuuv/gojsonpointer/pointer.go.html#line-76">Get</a>(document interface{}) (interface{}, <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Kind">Kind</a>, <a href="../../builtin.html#name-error">error</a>)</label><span id='JsonPointer-fold-method-Get-docs' class="fold-docs">
+				Uses the pointer to retrieve a value from a JSON document
+</span></span><span>
+			<input type='checkbox' class="fold" id="JsonPointer-fold-method-Set"><label for="JsonPointer-fold-method-Set">(*T) <a href="../../../src/github.com/xeipuuv/gojsonpointer/pointer.go.html#line-85">Set</a>(document interface{}, value interface{}) (interface{}, <a href="../../builtin.html#name-error">error</a>)</label><span id='JsonPointer-fold-method-Set-docs' class="fold-docs">
+				Uses the pointer to update a value from a JSON document
+</span></span><span>
+			<input type='checkbox' class="fold" id="JsonPointer-fold-method-String"><label for="JsonPointer-fold-method-String">(*T) <a href="../../../src/github.com/xeipuuv/gojsonpointer/pointer.go.html#line-185">String</a>() <a href="../../builtin.html#name-string">string</a></label><span id='JsonPointer-fold-method-String-docs' class="fold-docs">
+				Pointer to string representation function
+</span></span>
+			<input type='checkbox' class="showhide" id="JsonPointer-showhide-methods"><i><label for="JsonPointer-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="JsonPointer-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="JsonPointer-fold-method-implementation"><label for="JsonPointer-fold-method-implementation">(*T) <a href="../../../src/github.com/xeipuuv/gojsonpointer/pointer.go.html#line-101">implementation</a>(i *<a href="#name-implStruct">implStruct</a>)</label><span id='JsonPointer-fold-method-implementation-docs' class="fold-docs">
+				Both Get and Set functions use the same implementation to avoid code duplication
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="JsonPointer-fold-impls"><label for="JsonPointer-fold-impls">Implements (<i>at least 3, in which 1 are exported</i>)</label><span id='JsonPointer-fold-impls-items' class="fold-items"><span>
+			*T : fmt.<a href="../../fmt.html#name-Stringer">Stringer</a></span>
+			<input type='checkbox' class="showhide" id="JsonPointer-showhide-impls"><i><label for="JsonPointer-showhide-impls" class="show-inline">/* 2+ unexporteds ... */</label><label for="JsonPointer-showhide-impls" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			*T : context.<a href="../../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			*T : runtime.<a href="../../runtime.html#name-stringer">stringer</a></i></span></span>
+		<input type='checkbox' class="fold" id="JsonPointer-fold-results"><label for="JsonPointer-fold-results">As Outputs Of (<i>at least 2, both are exported</i>)</label><span id='JsonPointer-fold-results-items' class="fold-items"><span>
+			func <a href="#name-NewJsonPointer">NewJsonPointer</a>(jsonPointerString <a href="../../builtin.html#name-string">string</a>) (p <b>JsonPointer</b>, err <a href="../../builtin.html#name-error">error</a>)</span><span>
+			func github.com/xeipuuv/gojsonreference.(*<a href="gojsonreference.html#name-JsonReference">JsonReference</a>).<a href="../../../src/github.com/xeipuuv/gojsonreference/reference.go.html#line-65">GetPointer</a>() *<b>JsonPointer</b></span></span>
+
+</span></div></div><div>	<input type='checkbox' class="showhide" id="unexported-typenames-showhide"><i><label for="unexported-typenames-showhide" class="show-inline">/* one unexported ... */</label><label for="unexported-typenames-showhide" class="hide-inline">/* one unexported: */</label></i><div class="anchor type-res hidden" id="name-implStruct" data-popularity="35">	<input type='checkbox' class="fold" id="implStruct-fold-content"><label for="implStruct-fold-content"> type <a href="../../../src/github.com/xeipuuv/gojsonpointer/pointer.go.html#line-43">implStruct</a> <i>(struct)</i></label><span id='implStruct-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="implStruct-fold-fields"><label for="implStruct-fold-fields">Fields (<i>total 6, none are exported</i>)</label><span id='implStruct-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="implStruct-showhide-fields"><i><label for="implStruct-showhide-fields" class="show-inline">/* 6 unexporteds ... */</label><label for="implStruct-showhide-fields" class="hide-inline">/* 6 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/xeipuuv/gojsonpointer/pointer.go.html#line-51">getOutKind</a> <i><a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Kind">Kind</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/xeipuuv/gojsonpointer/pointer.go.html#line-50">getOutNode</a> <i>interface{}</i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/xeipuuv/gojsonpointer/pointer.go.html#line-46">inDocument</a> <i>interface{}</i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="implStruct-fold-field-mode"><label for="implStruct-fold-field-mode"><a href="../../../src/github.com/xeipuuv/gojsonpointer/pointer.go.html#line-44">mode</a> <i><a href="../../builtin.html#name-string">string</a></i></label><span id='implStruct-fold-field-mode-docs' class="fold-docs">
+				// "SET" or "GET"
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/xeipuuv/gojsonpointer/pointer.go.html#line-52">outError</a> <i><a href="../../builtin.html#name-error">error</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/xeipuuv/gojsonpointer/pointer.go.html#line-48">setInValue</a> <i>interface{}</i></span></i></span></span>
+		<input type='checkbox' class="fold" id="implStruct-fold-params"><label for="implStruct-fold-params">As Inputs Of (<i>at least one unexported</i>)</label><span id='implStruct-fold-params-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="implStruct-showhide-outputofs"><i><label for="implStruct-showhide-outputofs" class="show-inline">/* at least one unexported ... */</label><label for="implStruct-showhide-outputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func (*<a href="#name-JsonPointer">JsonPointer</a>).<a href="../../../src/github.com/xeipuuv/gojsonpointer/pointer.go.html#line-101">implementation</a>(i *<b>implStruct</b>)</i></span></span>
+
+</span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 3, in which 1 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-NewJsonPointer">	<input type='checkbox' class="fold" id="NewJsonPointer-fold-content"><label for="NewJsonPointer-fold-content"> func <a href="../../../src/github.com/xeipuuv/gojsonpointer/pointer.go.html#line-60">NewJsonPointer</a>(jsonPointerString <a href="../../builtin.html#name-string">string</a>) (p <a href="#name-JsonPointer">JsonPointer</a>, err <a href="../../builtin.html#name-error">error</a>)</label><span id='NewJsonPointer-fold-content-docs' class="fold-docs">
+		NewJsonPointer parses the given string JSON pointer and returns an object
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* 2 unexporteds ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* 2 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-decodeReferenceToken"><i>	<span class="nodocs"> func <a href="../../../src/github.com/xeipuuv/gojsonpointer/pointer.go.html#line-201">decodeReferenceToken</a>(token <a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-string">string</a></span></i></div><div class="anchor value-res hidden" id="name-encodeReferenceToken"><i>	<span class="nodocs"> func <a href="../../../src/github.com/xeipuuv/gojsonpointer/pointer.go.html#line-207">encodeReferenceToken</a>(token <a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-string">string</a></span></i></div></div>
+<div id="exported-constants"><span class="title">Package-Level Constants<span class="title-stat"><i> (total 3, none are exported)</i></span></span>
+
+	<input type='checkbox' class="showhide" id="unexported-constants-showhide"><i><label for="unexported-constants-showhide" class="show-inline">/* 3 unexporteds ... */</label><label for="unexported-constants-showhide" class="hide-inline">/* 3 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-const_empty_pointer"><i>	<span class="nodocs">const <a href="../../../src/github.com/xeipuuv/gojsonpointer/pointer.go.html#line-37">const_empty_pointer</a> = ""</span></i></div><div class="anchor value-res hidden" id="name-const_invalid_start"><i>	<span class="nodocs">const <a href="../../../src/github.com/xeipuuv/gojsonpointer/pointer.go.html#line-40">const_invalid_start</a> = "JSON pointer must be empty or start with a \"/\""</span></i></div><div class="anchor value-res hidden" id="name-const_pointer_separator"><i>	<span class="nodocs">const <a href="../../../src/github.com/xeipuuv/gojsonpointer/pointer.go.html#line-38">const_pointer_separator</a> = "/"</span></i></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

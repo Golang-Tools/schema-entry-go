@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: sys.go in package vendor/golang.org/x/net/route</title>
+<link href="../../../../../../css/light-v0.3.6.css" rel="stylesheet">
+<script src="../../../../../../jvs/golds-v0.3.6.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	sys.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../../pkg/vendor/golang.org/x/net/route.html">vendor/golang.org/x/net/route</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="comment">// Copyright 2016 The Go Authors. All rights reserved.</span></code></span>
+<span class="codeline" id="line-2"><code><span class="comment">// Use of this source code is governed by a BSD-style</span></code></span>
+<span class="codeline" id="line-3"><code><span class="comment">// license that can be found in the LICENSE file.</span></code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<span class="codeline" id="line-5"><code><span class="comment">// +build darwin dragonfly freebsd netbsd openbsd</span></code></span>
+<span class="codeline" id="line-6"><code></code></span>
+<span class="codeline" id="line-7"><code><span class="keyword">package</span> route</code></span>
+<span class="codeline" id="line-8"><code></code></span>
+<span class="codeline" id="line-9"><code><span class="keyword">import</span> <label for="i0"><span class="lit-string i0">"unsafe"</span></label></code></span>
+<span class="codeline" id="line-10"><code></code></span>
+<span class="codeline" id="line-11"><code><span class="keyword">var</span> (</code></span>
+<span class="codeline" id="line-12"><code>	<a href="../../../../../../pkg/vendor/golang.org/x/net/route.html#name-nativeEndian" class="ident">nativeEndian</a> <a href="binary.go.html#line-20" class="ident">binaryByteOrder</a></code></span>
+<span class="codeline" id="line-13"><code>	<a href="../../../../../../pkg/vendor/golang.org/x/net/route.html#name-kernelAlign" class="ident">kernelAlign</a>  <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-14"><code>	<a href="../../../../../../pkg/vendor/golang.org/x/net/route.html#name-rtmVersion" class="ident">rtmVersion</a>   <a href="../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a></code></span>
+<span class="codeline" id="line-15"><code>	<a href="../../../../../../pkg/vendor/golang.org/x/net/route.html#name-wireFormats" class="ident">wireFormats</a>  <span class="keyword">map</span>[<a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>]*<a href="#line-38" class="ident">wireFormat</a></code></span>
+<span class="codeline" id="line-16"><code>)</code></span>
+<span class="codeline" id="line-17"><code></code></span>
+<span class="codeline" id="line-18"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../../../pkg/vendor/golang.org/x/net/route.html#name-init" class="ident">init</a></label>() {</code></span>
+<span class="codeline" id="line-19"><code>	<label for="r1" class="ident">i</label> := <a href="../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<span class="lit-number">1</span>)</code></span>
+<span class="codeline" id="line-20"><code>	<label for="r2" class="ident">b</label> := (*[<span class="lit-number">4</span>]<a href="../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>)(<a href="../../../../../../pkg/unsafe.html" class="ident i0">unsafe</a>.<a href="../../../../../../pkg/unsafe.html#name-Pointer" class="ident">Pointer</a>(&amp;<label for="r1" class="ident">i</label>))</code></span>
+<span class="codeline" id="line-21"><code>	<span class="keyword">if</span> <label for="r2" class="ident">b</label>[<span class="lit-number">0</span>] == <span class="lit-number">1</span> {</code></span>
+<span class="codeline" id="line-22"><code>		<a href="#line-12" class="ident">nativeEndian</a> = <a href="binary.go.html#line-16" class="ident">littleEndian</a></code></span>
+<span class="codeline" id="line-23"><code>	} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-24"><code>		<a href="#line-12" class="ident">nativeEndian</a> = <a href="binary.go.html#line-17" class="ident">bigEndian</a></code></span>
+<span class="codeline" id="line-25"><code>	}</code></span>
+<span class="codeline" id="line-26"><code>	<span class="comment">// might get overridden in probeRoutingStack</span></code></span>
+<span class="codeline" id="line-27"><code>	<a href="#line-14" class="ident">rtmVersion</a> = <a href="zsys_darwin.go.html#line-41" class="ident">sysRTM_VERSION</a></code></span>
+<span class="codeline" id="line-28"><code>	<a href="#line-13" class="ident">kernelAlign</a>, <a href="#line-15" class="ident">wireFormats</a> = <a href="sys_darwin.go.html#line-52" class="ident">probeRoutingStack</a>()</code></span>
+<span class="codeline" id="line-29"><code>}</code></span>
+<span class="codeline" id="line-30"><code></code></span>
+<span class="codeline" id="line-31"><code><span class="keyword">func</span> <label for="r3" class="ident"><a href="../../../../../../pkg/vendor/golang.org/x/net/route.html#name-roundup" class="ident">roundup</a></label>(<label for="r4" class="ident">l</label> <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>) <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a> {</code></span>
+<span class="codeline" id="line-32"><code>	<span class="keyword">if</span> <label for="r4" class="ident">l</label> == <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-33"><code>		<span class="keyword">return</span> <a href="#line-13" class="ident">kernelAlign</a></code></span>
+<span class="codeline" id="line-34"><code>	}</code></span>
+<span class="codeline" id="line-35"><code>	<span class="keyword">return</span> (<label for="r4" class="ident">l</label> + <a href="#line-13" class="ident">kernelAlign</a> - <span class="lit-number">1</span>) &amp;^ (<a href="#line-13" class="ident">kernelAlign</a> - <span class="lit-number">1</span>)</code></span>
+<span class="codeline" id="line-36"><code>}</code></span>
+<span class="codeline" id="line-37"><code></code></span>
+<span class="codeline" id="line-38"><code><span class="keyword">type</span> <a href="../../../../../../pkg/vendor/golang.org/x/net/route.html#name-wireFormat" class="ident">wireFormat</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-39"><code>	extOff  <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a> <span class="comment">// offset of header extension</span></code></span>
+<span class="codeline" id="line-40"><code>	bodyOff <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a> <span class="comment">// offset of message body</span></code></span>
+<span class="codeline" id="line-41"><code>	parse   <span class="keyword">func</span>(<a href="route.go.html#line-92" class="ident">RIBType</a>, []<a href="../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>) (<a href="message.go.html#line-10" class="ident">Message</a>, <a href="../../../../../../pkg/builtin.html#name-error" class="ident">error</a>)</code></span>
+<span class="codeline" id="line-42"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

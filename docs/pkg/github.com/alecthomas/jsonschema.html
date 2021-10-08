@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: github.com/alecthomas/jsonschema</title>
+<link href="../../../css/light-v0.3.6.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.3.6.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>jsonschema</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../index.html#pkg-github.com/alecthomas/jsonschema">github.com/alecthomas/jsonschema</a><i> (on <a href="https://pkg.go.dev/github.com/alecthomas/jsonschema" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../../dep/github.com/alecthomas/jsonschema.html">8 packages</a>, and imported by <a href="../../../dep/github.com/alecthomas/jsonschema.html#imported-by">one package</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<input type='checkbox' checked class="fold" id="file-0-fold-content"><label for="file-0-fold-content">   <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#doc">#d</a> <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html">reflect.go</a></label><span id='file-0-fold-content-items' class="fold-items">
+		Package jsonschema uses reflection to generate JSON Schemas from Go types [1].
+
+		If json tags are present on struct fields, they will be used to infer
+		property names and if a property is required (omitempty is present).
+
+		[1] http://json-schema.org/latest/json-schema-validation.html</span></div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 8, in which 4 are exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-Definitions" data-popularity="105">	<input type='checkbox' class="fold" id="Definitions-fold-content"><label for="Definitions-fold-content"> type <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-197">Definitions</a> <i>(map)</i></label><span id='Definitions-fold-content-docs' class="fold-docs">
+		Definitions hold schema definitions.
+		http://json-schema.org/latest/json-schema-validation.html#rfc.section.5.26
+		RFC draft-wright-json-schema-validation-00, section 5.26
+
+		<input type='checkbox' class="fold" id="Definitions-fold-params"><label for="Definitions-fold-params">As Inputs Of (<i>at least 3, none are exported</i>)</label><span id='Definitions-fold-params-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Definitions-showhide-outputofs"><i><label for="Definitions-showhide-outputofs" class="show-inline">/* 3+ unexporteds ... */</label><label for="Definitions-showhide-outputofs" class="hide-inline">/* 3+ unexporteds: */</label></i><span class="hidden"><i>
+			func (*<a href="#name-Reflector">Reflector</a>).<a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-327">reflectStruct</a>(definitions <b>Definitions</b>, t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>) *<a href="#name-Type">Type</a></i></span><span class="hidden"><i>
+			func (*<a href="#name-Reflector">Reflector</a>).<a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-377">reflectStructFields</a>(st *<a href="#name-Type">Type</a>, definitions <b>Definitions</b>, t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>)</i></span><span class="hidden"><i>
+			func (*<a href="#name-Reflector">Reflector</a>).<a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-220">reflectTypeToSchema</a>(definitions <b>Definitions</b>, t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>) *<a href="#name-Type">Type</a></i></span></span>
+
+</span></div><div class="anchor type-res" id="name-Reflector" data-popularity="350">	<input type='checkbox' class="fold" id="Reflector-fold-content"><label for="Reflector-fold-content"> type <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-109">Reflector</a> <i>(struct)</i></label><span id='Reflector-fold-content-docs' class="fold-docs">
+		A Reflector reflects values into a Schema.
+
+		<input type='checkbox' class="fold" id="Reflector-fold-fields"><label for="Reflector-fold-fields">Fields (<i>total 11, all are exported</i>)</label><span id='Reflector-fold-fields-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Reflector-fold-field-AdditionalFields"><label for="Reflector-fold-field-AdditionalFields"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-160">AdditionalFields</a> <i>func(<a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>) []<a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-StructField">StructField</a></i></label><span id='Reflector-fold-field-AdditionalFields-docs' class="fold-docs">
+				AdditionalFields allows adding structfields for a given type
+</span></span><span>
+			<input type='checkbox' class="fold" id="Reflector-fold-field-AllowAdditionalProperties"><label for="Reflector-fold-field-AllowAdditionalProperties"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-115">AllowAdditionalProperties</a> <i><a href="../../builtin.html#name-bool">bool</a></i></label><span id='Reflector-fold-field-AllowAdditionalProperties-docs' class="fold-docs">
+				AllowAdditionalProperties will cause the Reflector to generate a schema
+				with additionalProperties to 'true' for all struct types. This means
+				the presence of additional keys in JSON objects will not cause validation
+				to fail. Note said additional keys will simply be dropped when the
+				validated JSON is unmarshaled.
+</span></span><span>
+			<input type='checkbox' class="fold" id="Reflector-fold-field-DoNotReference"><label for="Reflector-fold-field-DoNotReference"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-140">DoNotReference</a> <i><a href="../../builtin.html#name-bool">bool</a></i></label><span id='Reflector-fold-field-DoNotReference-docs' class="fold-docs">
+				Do not reference definitions.
+				All types are still registered under the "definitions" top-level object,
+				but instead of $ref fields in containing types, the entire definition
+				of the contained type is inserted.
+				This will cause the entire structure of types to be output in one tree.
+</span></span><span>
+			<input type='checkbox' class="fold" id="Reflector-fold-field-ExpandedStruct"><label for="Reflector-fold-field-ExpandedStruct"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-133">ExpandedStruct</a> <i><a href="../../builtin.html#name-bool">bool</a></i></label><span id='Reflector-fold-field-ExpandedStruct-docs' class="fold-docs">
+				ExpandedStruct will cause the toplevel definitions of the schema not
+				be referenced itself to a definition.
+</span></span><span>
+			<input type='checkbox' class="fold" id="Reflector-fold-field-FullyQualifyTypeNames"><label for="Reflector-fold-field-FullyQualifyTypeNames"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-147">FullyQualifyTypeNames</a> <i><a href="../../builtin.html#name-bool">bool</a></i></label><span id='Reflector-fold-field-FullyQualifyTypeNames-docs' class="fold-docs">
+				Use package paths as well as type names, to avoid conflicts.
+				Without this setting, if two packages contain a type with the same name,
+				and both are present in a schema, they will conflict and overwrite in
+				the definition map and produce bad output.  This is particularly
+				noticeable when using DoNotReference.
+</span></span><span>
+			<input type='checkbox' class="fold" id="Reflector-fold-field-IgnoredTypes"><label for="Reflector-fold-field-IgnoredTypes"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-151">IgnoredTypes</a> <i>[]interface{}</i></label><span id='Reflector-fold-field-IgnoredTypes-docs' class="fold-docs">
+				IgnoredTypes defines a slice of types that should be ignored in the schema,
+				switching to just allowing additional properties instead.
+</span></span><span>
+			<input type='checkbox' class="fold" id="Reflector-fold-field-PreferYAMLSchema"><label for="Reflector-fold-field-PreferYAMLSchema"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-129">PreferYAMLSchema</a> <i><a href="../../builtin.html#name-bool">bool</a></i></label><span id='Reflector-fold-field-PreferYAMLSchema-docs' class="fold-docs">
+				Prefer yaml: tags over json: tags to generate the schema even if json: tags
+				are present
+</span></span><span>
+			<input type='checkbox' class="fold" id="Reflector-fold-field-RequiredFromJSONSchemaTags"><label for="Reflector-fold-field-RequiredFromJSONSchemaTags"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-120">RequiredFromJSONSchemaTags</a> <i><a href="../../builtin.html#name-bool">bool</a></i></label><span id='Reflector-fold-field-RequiredFromJSONSchemaTags-docs' class="fold-docs">
+				RequiredFromJSONSchemaTags will cause the Reflector to generate a schema
+				that requires any key tagged with `jsonschema:required`, overriding the
+				default of requiring any key *not* tagged with `json:,omitempty`.
+</span></span><span>
+			<input type='checkbox' class="fold" id="Reflector-fold-field-TypeMapper"><label for="Reflector-fold-field-TypeMapper"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-154">TypeMapper</a> <i>func(<a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>) *<a href="#name-Type">Type</a></i></label><span id='Reflector-fold-field-TypeMapper-docs' class="fold-docs">
+				TypeMapper is a function that can be used to map custom Go types to jsconschema types.
+</span></span><span>
+			<input type='checkbox' class="fold" id="Reflector-fold-field-TypeNamer"><label for="Reflector-fold-field-TypeNamer"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-157">TypeNamer</a> <i>func(<a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>) <a href="../../builtin.html#name-string">string</a></i></label><span id='Reflector-fold-field-TypeNamer-docs' class="fold-docs">
+				TypeNamer allows customizing of type names
+</span></span><span>
+			<input type='checkbox' class="fold" id="Reflector-fold-field-YAMLEmbeddedStructs"><label for="Reflector-fold-field-YAMLEmbeddedStructs"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-125">YAMLEmbeddedStructs</a> <i><a href="../../builtin.html#name-bool">bool</a></i></label><span id='Reflector-fold-field-YAMLEmbeddedStructs-docs' class="fold-docs">
+				YAMLEmbeddedStructs will cause the Reflector to generate a schema that does
+				not inline embedded structs. This should be enabled if the JSON schemas are
+				used with yaml.Marshal/Unmarshal.
+</span></span></span>
+		<input type='checkbox' class="fold" id="Reflector-fold-methods"><label for="Reflector-fold-methods">Methods (<i>total 7, in which 2 are exported</i>)</label><span id='Reflector-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Reflector-fold-method-Reflect"><label for="Reflector-fold-method-Reflect">(*T) <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-164">Reflect</a>(v interface{}) *<a href="#name-Schema">Schema</a></label><span id='Reflector-fold-method-Reflect-docs' class="fold-docs">
+				Reflect reflects to Schema from a value.
+</span></span><span>
+			<input type='checkbox' class="fold" id="Reflector-fold-method-ReflectFromType"><label for="Reflector-fold-method-ReflectFromType">(*T) <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-169">ReflectFromType</a>(t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>) *<a href="#name-Schema">Schema</a></label><span id='Reflector-fold-method-ReflectFromType-docs' class="fold-docs">
+				ReflectFromType generates root schema
+</span></span>
+			<input type='checkbox' class="showhide" id="Reflector-showhide-methods"><i><label for="Reflector-showhide-methods" class="show-inline">/* 5 unexporteds ... */</label><label for="Reflector-showhide-methods" class="hide-inline">/* 5 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*T) <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-715">reflectFieldName</a>(f <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-StructField">StructField</a>) (<a href="../../builtin.html#name-string">string</a>, <a href="../../builtin.html#name-bool">bool</a>, <a href="../../builtin.html#name-bool">bool</a>, <a href="../../builtin.html#name-bool">bool</a>)</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Reflector-fold-method-reflectStruct"><label for="Reflector-fold-method-reflectStruct">(*T) <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-327">reflectStruct</a>(definitions <a href="#name-Definitions">Definitions</a>, t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>) *<a href="#name-Type">Type</a></label><span id='Reflector-fold-method-reflectStruct-docs' class="fold-docs">
+				Refects a struct to a JSON Schema type.
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*T) <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-377">reflectStructFields</a>(st *<a href="#name-Type">Type</a>, definitions <a href="#name-Definitions">Definitions</a>, t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*T) <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-220">reflectTypeToSchema</a>(definitions <a href="#name-Definitions">Definitions</a>, t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>) *<a href="#name-Type">Type</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*T) <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-816">typeName</a>(t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>) <a href="../../builtin.html#name-string">string</a></span></i></span></span>
+
+</span></div><div class="anchor type-res" id="name-Schema" data-popularity="750">	<input type='checkbox' class="fold" id="Schema-fold-content"><label for="Schema-fold-content"> type <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-28">Schema</a> <i>(struct)</i></label><span id='Schema-fold-content-docs' class="fold-docs">
+		Schema is the root schema.
+		RFC draft-wright-json-schema-00, section 4.5
+
+		<input type='checkbox' class="fold" id="Schema-fold-fields"><label for="Schema-fold-fields">Fields (<i>total 37, all are exported</i>)</label><span id='Schema-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-30">Definitions</a> <i><a href="#name-Definitions">Definitions</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-29">Type</a> <i>*<a href="#name-Type">Type</a></i></span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-AdditionalItems"><label for="Schema-fold-field-AdditionalItems"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-29" class="path-duplicate">Type</a>.<a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-65">AdditionalItems</a> <i>*<a href="#name-Type">Type</a></i></label><span id='Schema-fold-field-AdditionalItems-docs' class="fold-docs">
+				// section 5.9
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-AdditionalProperties"><label for="Schema-fold-field-AdditionalProperties"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-29" class="path-duplicate">Type</a>.<a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-75">AdditionalProperties</a> <i><a href="../../encoding/json.html">json</a>.<a href="../../encoding/json.html#name-RawMessage">RawMessage</a></i></label><span id='Schema-fold-field-AdditionalProperties-docs' class="fold-docs">
+				// section 5.18
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-AllOf"><label for="Schema-fold-field-AllOf"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-29" class="path-duplicate">Type</a>.<a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-79">AllOf</a> <i>[]*<a href="#name-Type">Type</a></i></label><span id='Schema-fold-field-AllOf-docs' class="fold-docs">
+				// section 5.22
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-AnyOf"><label for="Schema-fold-field-AnyOf"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-29" class="path-duplicate">Type</a>.<a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-80">AnyOf</a> <i>[]*<a href="#name-Type">Type</a></i></label><span id='Schema-fold-field-AnyOf-docs' class="fold-docs">
+				// section 5.23
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-BinaryEncoding"><label for="Schema-fold-field-BinaryEncoding"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-29" class="path-duplicate">Type</a>.<a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-92">BinaryEncoding</a> <i><a href="../../builtin.html#name-string">string</a></i></label><span id='Schema-fold-field-BinaryEncoding-docs' class="fold-docs">
+				// section 4.3
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-Default"><label for="Schema-fold-field-Default"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-29" class="path-duplicate">Type</a>.<a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-87">Default</a> <i>interface{}</i></label><span id='Schema-fold-field-Default-docs' class="fold-docs">
+				// section 6.2
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-Dependencies"><label for="Schema-fold-field-Dependencies"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-29" class="path-duplicate">Type</a>.<a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-76">Dependencies</a> <i>map[<a href="../../builtin.html#name-string">string</a>]*<a href="#name-Type">Type</a></i></label><span id='Schema-fold-field-Dependencies-docs' class="fold-docs">
+				// section 5.19
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-Description"><label for="Schema-fold-field-Description"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-29" class="path-duplicate">Type</a>.<a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-86">Description</a> <i><a href="../../builtin.html#name-string">string</a></i></label><span id='Schema-fold-field-Description-docs' class="fold-docs">
+				// section 6.1
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-Enum"><label for="Schema-fold-field-Enum"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-29" class="path-duplicate">Type</a>.<a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-77">Enum</a> <i>[]interface{}</i></label><span id='Schema-fold-field-Enum-docs' class="fold-docs">
+				// section 5.20
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-Examples"><label for="Schema-fold-field-Examples"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-29" class="path-duplicate">Type</a>.<a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-89">Examples</a> <i>[]interface{}</i></label><span id='Schema-fold-field-Examples-docs' class="fold-docs">
+				// section 7.4
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-ExclusiveMaximum"><label for="Schema-fold-field-ExclusiveMaximum"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-29" class="path-duplicate">Type</a>.<a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-59">ExclusiveMaximum</a> <i><a href="../../builtin.html#name-bool">bool</a></i></label><span id='Schema-fold-field-ExclusiveMaximum-docs' class="fold-docs">
+				// section 5.3
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-ExclusiveMinimum"><label for="Schema-fold-field-ExclusiveMinimum"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-29" class="path-duplicate">Type</a>.<a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-61">ExclusiveMinimum</a> <i><a href="../../builtin.html#name-bool">bool</a></i></label><span id='Schema-fold-field-ExclusiveMinimum-docs' class="fold-docs">
+				// section 5.5
+</span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-29" class="path-duplicate">Type</a>.<a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-94">Extras</a> <i>map[<a href="../../builtin.html#name-string">string</a>]interface{}</i></span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-Format"><label for="Schema-fold-field-Format"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-29" class="path-duplicate">Type</a>.<a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-88">Format</a> <i><a href="../../builtin.html#name-string">string</a></i></label><span id='Schema-fold-field-Format-docs' class="fold-docs">
+				// section 7
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-Items"><label for="Schema-fold-field-Items"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-29" class="path-duplicate">Type</a>.<a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-66">Items</a> <i>*<a href="#name-Type">Type</a></i></label><span id='Schema-fold-field-Items-docs' class="fold-docs">
+				// section 5.9
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-MaxItems"><label for="Schema-fold-field-MaxItems"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-29" class="path-duplicate">Type</a>.<a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-67">MaxItems</a> <i><a href="../../builtin.html#name-int">int</a></i></label><span id='Schema-fold-field-MaxItems-docs' class="fold-docs">
+				// section 5.10
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-MaxLength"><label for="Schema-fold-field-MaxLength"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-29" class="path-duplicate">Type</a>.<a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-62">MaxLength</a> <i><a href="../../builtin.html#name-int">int</a></i></label><span id='Schema-fold-field-MaxLength-docs' class="fold-docs">
+				// section 5.6
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-MaxProperties"><label for="Schema-fold-field-MaxProperties"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-29" class="path-duplicate">Type</a>.<a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-70">MaxProperties</a> <i><a href="../../builtin.html#name-int">int</a></i></label><span id='Schema-fold-field-MaxProperties-docs' class="fold-docs">
+				// section 5.13
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-Maximum"><label for="Schema-fold-field-Maximum"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-29" class="path-duplicate">Type</a>.<a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-58">Maximum</a> <i><a href="../../builtin.html#name-int">int</a></i></label><span id='Schema-fold-field-Maximum-docs' class="fold-docs">
+				// section 5.2
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-Media"><label for="Schema-fold-field-Media"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-29" class="path-duplicate">Type</a>.<a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-91">Media</a> <i>*<a href="#name-Type">Type</a></i></label><span id='Schema-fold-field-Media-docs' class="fold-docs">
+				RFC draft-wright-json-schema-hyperschema-00, section 4
+				// section 4.3
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-MinItems"><label for="Schema-fold-field-MinItems"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-29" class="path-duplicate">Type</a>.<a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-68">MinItems</a> <i><a href="../../builtin.html#name-int">int</a></i></label><span id='Schema-fold-field-MinItems-docs' class="fold-docs">
+				// section 5.11
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-MinLength"><label for="Schema-fold-field-MinLength"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-29" class="path-duplicate">Type</a>.<a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-63">MinLength</a> <i><a href="../../builtin.html#name-int">int</a></i></label><span id='Schema-fold-field-MinLength-docs' class="fold-docs">
+				// section 5.7
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-MinProperties"><label for="Schema-fold-field-MinProperties"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-29" class="path-duplicate">Type</a>.<a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-71">MinProperties</a> <i><a href="../../builtin.html#name-int">int</a></i></label><span id='Schema-fold-field-MinProperties-docs' class="fold-docs">
+				// section 5.14
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-Minimum"><label for="Schema-fold-field-Minimum"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-29" class="path-duplicate">Type</a>.<a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-60">Minimum</a> <i><a href="../../builtin.html#name-int">int</a></i></label><span id='Schema-fold-field-Minimum-docs' class="fold-docs">
+				// section 5.4
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-MultipleOf"><label for="Schema-fold-field-MultipleOf"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-29" class="path-duplicate">Type</a>.<a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-57">MultipleOf</a> <i><a href="../../builtin.html#name-int">int</a></i></label><span id='Schema-fold-field-MultipleOf-docs' class="fold-docs">
+				RFC draft-wright-json-schema-validation-00, section 5
+				// section 5.1
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-Not"><label for="Schema-fold-field-Not"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-29" class="path-duplicate">Type</a>.<a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-82">Not</a> <i>*<a href="#name-Type">Type</a></i></label><span id='Schema-fold-field-Not-docs' class="fold-docs">
+				// section 5.25
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-OneOf"><label for="Schema-fold-field-OneOf"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-29" class="path-duplicate">Type</a>.<a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-81">OneOf</a> <i>[]*<a href="#name-Type">Type</a></i></label><span id='Schema-fold-field-OneOf-docs' class="fold-docs">
+				// section 5.24
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-Pattern"><label for="Schema-fold-field-Pattern"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-29" class="path-duplicate">Type</a>.<a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-64">Pattern</a> <i><a href="../../builtin.html#name-string">string</a></i></label><span id='Schema-fold-field-Pattern-docs' class="fold-docs">
+				// section 5.8
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-PatternProperties"><label for="Schema-fold-field-PatternProperties"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-29" class="path-duplicate">Type</a>.<a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-74">PatternProperties</a> <i>map[<a href="../../builtin.html#name-string">string</a>]*<a href="#name-Type">Type</a></i></label><span id='Schema-fold-field-PatternProperties-docs' class="fold-docs">
+				// section 5.17
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-Properties"><label for="Schema-fold-field-Properties"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-29" class="path-duplicate">Type</a>.<a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-73">Properties</a> <i>*<a href="../iancoleman/orderedmap.html">orderedmap</a>.<a href="../iancoleman/orderedmap.html#name-OrderedMap">OrderedMap</a></i></label><span id='Schema-fold-field-Properties-docs' class="fold-docs">
+				// section 5.16
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-Ref"><label for="Schema-fold-field-Ref"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-29" class="path-duplicate">Type</a>.<a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-55">Ref</a> <i><a href="../../builtin.html#name-string">string</a></i></label><span id='Schema-fold-field-Ref-docs' class="fold-docs">
+				// section 7
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-Required"><label for="Schema-fold-field-Required"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-29" class="path-duplicate">Type</a>.<a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-72">Required</a> <i>[]<a href="../../builtin.html#name-string">string</a></i></label><span id='Schema-fold-field-Required-docs' class="fold-docs">
+				// section 5.15
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-Title"><label for="Schema-fold-field-Title"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-29" class="path-duplicate">Type</a>.<a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-85">Title</a> <i><a href="../../builtin.html#name-string">string</a></i></label><span id='Schema-fold-field-Title-docs' class="fold-docs">
+				RFC draft-wright-json-schema-validation-00, section 6, 7
+				// section 6.1
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-UniqueItems"><label for="Schema-fold-field-UniqueItems"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-29" class="path-duplicate">Type</a>.<a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-69">UniqueItems</a> <i><a href="../../builtin.html#name-bool">bool</a></i></label><span id='Schema-fold-field-UniqueItems-docs' class="fold-docs">
+				// section 5.12
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-Version"><label for="Schema-fold-field-Version"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-29" class="path-duplicate">Type</a>.<a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-54">Version</a> <i><a href="../../builtin.html#name-string">string</a></i></label><span id='Schema-fold-field-Version-docs' class="fold-docs">
+				RFC draft-wright-json-schema-00
+				// section 6.1
+</span></span></span>
+		<input type='checkbox' class="fold" id="Schema-fold-methods"><label for="Schema-fold-methods">Methods (<i>total 8, in which 1 are exported</i>)</label><span id='Schema-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">(*T) <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-773">MarshalJSON</a>() ([]<a href="../../builtin.html#name-byte">byte</a>, <a href="../../builtin.html#name-error">error</a>)</span></span>
+			<input type='checkbox' class="showhide" id="Schema-showhide-methods"><i><label for="Schema-showhide-methods" class="show-inline">/* 7 unexporteds ... */</label><label for="Schema-showhide-methods" class="hide-inline">/* 7 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Schema-fold-method-arrayKeywords"><label for="Schema-fold-method-arrayKeywords">( T) <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-593">arrayKeywords</a>(tags []<a href="../../builtin.html#name-string">string</a>)</label><span id='Schema-fold-method-arrayKeywords-docs' class="fold-docs">
+				read struct tags for array type keyworks
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs">( T) <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-629">extraKeywords</a>(tags []<a href="../../builtin.html#name-string">string</a>)</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Schema-fold-method-genericKeywords"><label for="Schema-fold-method-genericKeywords">( T) <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-458">genericKeywords</a>(tags []<a href="../../builtin.html#name-string">string</a>, parentType *<a href="#name-Type">Type</a>, propertyName <a href="../../builtin.html#name-string">string</a>)</label><span id='Schema-fold-method-genericKeywords-docs' class="fold-docs">
+				read struct tags for generic keyworks
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Schema-fold-method-numbericKeywords"><label for="Schema-fold-method-numbericKeywords">( T) <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-543">numbericKeywords</a>(tags []<a href="../../builtin.html#name-string">string</a>)</label><span id='Schema-fold-method-numbericKeywords-docs' class="fold-docs">
+				read struct tags for numberic type keyworks
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs">( T) <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-638">setExtra</a>(key, val <a href="../../builtin.html#name-string">string</a>)</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Schema-fold-method-stringKeywords"><label for="Schema-fold-method-stringKeywords">( T) <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-513">stringKeywords</a>(tags []<a href="../../builtin.html#name-string">string</a>)</label><span id='Schema-fold-method-stringKeywords-docs' class="fold-docs">
+				read struct tags for string type keyworks
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs">( T) <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-439">structKeywordsFromTags</a>(f <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-StructField">StructField</a>, parentType *<a href="#name-Type">Type</a>, propertyName <a href="../../builtin.html#name-string">string</a>)</span></i></span></span>
+		<input type='checkbox' class="fold" id="Schema-fold-impls"><label for="Schema-fold-impls">Implements (<i>at least one exported</i>)</label><span id='Schema-fold-impls-items' class="fold-items"><span>
+			*T : encoding/json.<a href="../../encoding/json.html#name-Marshaler">Marshaler</a></span></span>
+		<input type='checkbox' class="fold" id="Schema-fold-results"><label for="Schema-fold-results">As Outputs Of (<i>at least 4, all are exported</i>)</label><span id='Schema-fold-results-items' class="fold-items"><span>
+			func <a href="#name-Reflect">Reflect</a>(v interface{}) *<b>Schema</b></span><span>
+			func <a href="#name-ReflectFromType">ReflectFromType</a>(t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>) *<b>Schema</b></span><span>
+			func (*<a href="#name-Reflector">Reflector</a>).<a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-164">Reflect</a>(v interface{}) *<b>Schema</b></span><span>
+			func (*<a href="#name-Reflector">Reflector</a>).<a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-169">ReflectFromType</a>(t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>) *<b>Schema</b></span></span>
+
+</span></div><div class="anchor type-res" id="name-Type" data-popularity="705">	<input type='checkbox' class="fold" id="Type-fold-content"><label for="Type-fold-content"> type <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-52">Type</a> <i>(struct)</i></label><span id='Type-fold-content-docs' class="fold-docs">
+		Type represents a JSON Schema object type.
+
+		<input type='checkbox' class="fold" id="Type-fold-fields"><label for="Type-fold-fields">Fields (<i>total 37, all are exported</i>)</label><span id='Type-fold-fields-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Type-fold-field-AdditionalItems"><label for="Type-fold-field-AdditionalItems"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-65">AdditionalItems</a> <i>*<b>Type</b></i></label><span id='Type-fold-field-AdditionalItems-docs' class="fold-docs">
+				// section 5.9
+</span></span><span>
+			<input type='checkbox' class="fold" id="Type-fold-field-AdditionalProperties"><label for="Type-fold-field-AdditionalProperties"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-75">AdditionalProperties</a> <i><a href="../../encoding/json.html">json</a>.<a href="../../encoding/json.html#name-RawMessage">RawMessage</a></i></label><span id='Type-fold-field-AdditionalProperties-docs' class="fold-docs">
+				// section 5.18
+</span></span><span>
+			<input type='checkbox' class="fold" id="Type-fold-field-AllOf"><label for="Type-fold-field-AllOf"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-79">AllOf</a> <i>[]*<b>Type</b></i></label><span id='Type-fold-field-AllOf-docs' class="fold-docs">
+				// section 5.22
+</span></span><span>
+			<input type='checkbox' class="fold" id="Type-fold-field-AnyOf"><label for="Type-fold-field-AnyOf"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-80">AnyOf</a> <i>[]*<b>Type</b></i></label><span id='Type-fold-field-AnyOf-docs' class="fold-docs">
+				// section 5.23
+</span></span><span>
+			<input type='checkbox' class="fold" id="Type-fold-field-BinaryEncoding"><label for="Type-fold-field-BinaryEncoding"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-92">BinaryEncoding</a> <i><a href="../../builtin.html#name-string">string</a></i></label><span id='Type-fold-field-BinaryEncoding-docs' class="fold-docs">
+				// section 4.3
+</span></span><span>
+			<input type='checkbox' class="fold" id="Type-fold-field-Default"><label for="Type-fold-field-Default"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-87">Default</a> <i>interface{}</i></label><span id='Type-fold-field-Default-docs' class="fold-docs">
+				// section 6.2
+</span></span><span>
+			<input type='checkbox' class="fold" id="Type-fold-field-Definitions"><label for="Type-fold-field-Definitions"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-83">Definitions</a> <i><a href="#name-Definitions">Definitions</a></i></label><span id='Type-fold-field-Definitions-docs' class="fold-docs">
+				// section 5.26
+</span></span><span>
+			<input type='checkbox' class="fold" id="Type-fold-field-Dependencies"><label for="Type-fold-field-Dependencies"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-76">Dependencies</a> <i>map[<a href="../../builtin.html#name-string">string</a>]*<b>Type</b></i></label><span id='Type-fold-field-Dependencies-docs' class="fold-docs">
+				// section 5.19
+</span></span><span>
+			<input type='checkbox' class="fold" id="Type-fold-field-Description"><label for="Type-fold-field-Description"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-86">Description</a> <i><a href="../../builtin.html#name-string">string</a></i></label><span id='Type-fold-field-Description-docs' class="fold-docs">
+				// section 6.1
+</span></span><span>
+			<input type='checkbox' class="fold" id="Type-fold-field-Enum"><label for="Type-fold-field-Enum"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-77">Enum</a> <i>[]interface{}</i></label><span id='Type-fold-field-Enum-docs' class="fold-docs">
+				// section 5.20
+</span></span><span>
+			<input type='checkbox' class="fold" id="Type-fold-field-Examples"><label for="Type-fold-field-Examples"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-89">Examples</a> <i>[]interface{}</i></label><span id='Type-fold-field-Examples-docs' class="fold-docs">
+				// section 7.4
+</span></span><span>
+			<input type='checkbox' class="fold" id="Type-fold-field-ExclusiveMaximum"><label for="Type-fold-field-ExclusiveMaximum"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-59">ExclusiveMaximum</a> <i><a href="../../builtin.html#name-bool">bool</a></i></label><span id='Type-fold-field-ExclusiveMaximum-docs' class="fold-docs">
+				// section 5.3
+</span></span><span>
+			<input type='checkbox' class="fold" id="Type-fold-field-ExclusiveMinimum"><label for="Type-fold-field-ExclusiveMinimum"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-61">ExclusiveMinimum</a> <i><a href="../../builtin.html#name-bool">bool</a></i></label><span id='Type-fold-field-ExclusiveMinimum-docs' class="fold-docs">
+				// section 5.5
+</span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-94">Extras</a> <i>map[<a href="../../builtin.html#name-string">string</a>]interface{}</i></span></span><span>
+			<input type='checkbox' class="fold" id="Type-fold-field-Format"><label for="Type-fold-field-Format"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-88">Format</a> <i><a href="../../builtin.html#name-string">string</a></i></label><span id='Type-fold-field-Format-docs' class="fold-docs">
+				// section 7
+</span></span><span>
+			<input type='checkbox' class="fold" id="Type-fold-field-Items"><label for="Type-fold-field-Items"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-66">Items</a> <i>*<b>Type</b></i></label><span id='Type-fold-field-Items-docs' class="fold-docs">
+				// section 5.9
+</span></span><span>
+			<input type='checkbox' class="fold" id="Type-fold-field-MaxItems"><label for="Type-fold-field-MaxItems"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-67">MaxItems</a> <i><a href="../../builtin.html#name-int">int</a></i></label><span id='Type-fold-field-MaxItems-docs' class="fold-docs">
+				// section 5.10
+</span></span><span>
+			<input type='checkbox' class="fold" id="Type-fold-field-MaxLength"><label for="Type-fold-field-MaxLength"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-62">MaxLength</a> <i><a href="../../builtin.html#name-int">int</a></i></label><span id='Type-fold-field-MaxLength-docs' class="fold-docs">
+				// section 5.6
+</span></span><span>
+			<input type='checkbox' class="fold" id="Type-fold-field-MaxProperties"><label for="Type-fold-field-MaxProperties"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-70">MaxProperties</a> <i><a href="../../builtin.html#name-int">int</a></i></label><span id='Type-fold-field-MaxProperties-docs' class="fold-docs">
+				// section 5.13
+</span></span><span>
+			<input type='checkbox' class="fold" id="Type-fold-field-Maximum"><label for="Type-fold-field-Maximum"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-58">Maximum</a> <i><a href="../../builtin.html#name-int">int</a></i></label><span id='Type-fold-field-Maximum-docs' class="fold-docs">
+				// section 5.2
+</span></span><span>
+			<input type='checkbox' class="fold" id="Type-fold-field-Media"><label for="Type-fold-field-Media"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-91">Media</a> <i>*<b>Type</b></i></label><span id='Type-fold-field-Media-docs' class="fold-docs">
+				RFC draft-wright-json-schema-hyperschema-00, section 4
+				// section 4.3
+</span></span><span>
+			<input type='checkbox' class="fold" id="Type-fold-field-MinItems"><label for="Type-fold-field-MinItems"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-68">MinItems</a> <i><a href="../../builtin.html#name-int">int</a></i></label><span id='Type-fold-field-MinItems-docs' class="fold-docs">
+				// section 5.11
+</span></span><span>
+			<input type='checkbox' class="fold" id="Type-fold-field-MinLength"><label for="Type-fold-field-MinLength"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-63">MinLength</a> <i><a href="../../builtin.html#name-int">int</a></i></label><span id='Type-fold-field-MinLength-docs' class="fold-docs">
+				// section 5.7
+</span></span><span>
+			<input type='checkbox' class="fold" id="Type-fold-field-MinProperties"><label for="Type-fold-field-MinProperties"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-71">MinProperties</a> <i><a href="../../builtin.html#name-int">int</a></i></label><span id='Type-fold-field-MinProperties-docs' class="fold-docs">
+				// section 5.14
+</span></span><span>
+			<input type='checkbox' class="fold" id="Type-fold-field-Minimum"><label for="Type-fold-field-Minimum"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-60">Minimum</a> <i><a href="../../builtin.html#name-int">int</a></i></label><span id='Type-fold-field-Minimum-docs' class="fold-docs">
+				// section 5.4
+</span></span><span>
+			<input type='checkbox' class="fold" id="Type-fold-field-MultipleOf"><label for="Type-fold-field-MultipleOf"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-57">MultipleOf</a> <i><a href="../../builtin.html#name-int">int</a></i></label><span id='Type-fold-field-MultipleOf-docs' class="fold-docs">
+				RFC draft-wright-json-schema-validation-00, section 5
+				// section 5.1
+</span></span><span>
+			<input type='checkbox' class="fold" id="Type-fold-field-Not"><label for="Type-fold-field-Not"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-82">Not</a> <i>*<b>Type</b></i></label><span id='Type-fold-field-Not-docs' class="fold-docs">
+				// section 5.25
+</span></span><span>
+			<input type='checkbox' class="fold" id="Type-fold-field-OneOf"><label for="Type-fold-field-OneOf"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-81">OneOf</a> <i>[]*<b>Type</b></i></label><span id='Type-fold-field-OneOf-docs' class="fold-docs">
+				// section 5.24
+</span></span><span>
+			<input type='checkbox' class="fold" id="Type-fold-field-Pattern"><label for="Type-fold-field-Pattern"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-64">Pattern</a> <i><a href="../../builtin.html#name-string">string</a></i></label><span id='Type-fold-field-Pattern-docs' class="fold-docs">
+				// section 5.8
+</span></span><span>
+			<input type='checkbox' class="fold" id="Type-fold-field-PatternProperties"><label for="Type-fold-field-PatternProperties"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-74">PatternProperties</a> <i>map[<a href="../../builtin.html#name-string">string</a>]*<b>Type</b></i></label><span id='Type-fold-field-PatternProperties-docs' class="fold-docs">
+				// section 5.17
+</span></span><span>
+			<input type='checkbox' class="fold" id="Type-fold-field-Properties"><label for="Type-fold-field-Properties"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-73">Properties</a> <i>*<a href="../iancoleman/orderedmap.html">orderedmap</a>.<a href="../iancoleman/orderedmap.html#name-OrderedMap">OrderedMap</a></i></label><span id='Type-fold-field-Properties-docs' class="fold-docs">
+				// section 5.16
+</span></span><span>
+			<input type='checkbox' class="fold" id="Type-fold-field-Ref"><label for="Type-fold-field-Ref"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-55">Ref</a> <i><a href="../../builtin.html#name-string">string</a></i></label><span id='Type-fold-field-Ref-docs' class="fold-docs">
+				// section 7
+</span></span><span>
+			<input type='checkbox' class="fold" id="Type-fold-field-Required"><label for="Type-fold-field-Required"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-72">Required</a> <i>[]<a href="../../builtin.html#name-string">string</a></i></label><span id='Type-fold-field-Required-docs' class="fold-docs">
+				// section 5.15
+</span></span><span>
+			<input type='checkbox' class="fold" id="Type-fold-field-Title"><label for="Type-fold-field-Title"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-85">Title</a> <i><a href="../../builtin.html#name-string">string</a></i></label><span id='Type-fold-field-Title-docs' class="fold-docs">
+				RFC draft-wright-json-schema-validation-00, section 6, 7
+				// section 6.1
+</span></span><span>
+			<input type='checkbox' class="fold" id="Type-fold-field-Type"><label for="Type-fold-field-Type"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-78">Type</a> <i><a href="../../builtin.html#name-string">string</a></i></label><span id='Type-fold-field-Type-docs' class="fold-docs">
+				// section 5.21
+</span></span><span>
+			<input type='checkbox' class="fold" id="Type-fold-field-UniqueItems"><label for="Type-fold-field-UniqueItems"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-69">UniqueItems</a> <i><a href="../../builtin.html#name-bool">bool</a></i></label><span id='Type-fold-field-UniqueItems-docs' class="fold-docs">
+				// section 5.12
+</span></span><span>
+			<input type='checkbox' class="fold" id="Type-fold-field-Version"><label for="Type-fold-field-Version"><a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-54">Version</a> <i><a href="../../builtin.html#name-string">string</a></i></label><span id='Type-fold-field-Version-docs' class="fold-docs">
+				RFC draft-wright-json-schema-00
+				// section 6.1
+</span></span></span>
+		<input type='checkbox' class="fold" id="Type-fold-methods"><label for="Type-fold-methods">Methods (<i>total 8, in which 1 are exported</i>)</label><span id='Type-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">(*T) <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-795">MarshalJSON</a>() ([]<a href="../../builtin.html#name-byte">byte</a>, <a href="../../builtin.html#name-error">error</a>)</span></span>
+			<input type='checkbox' class="showhide" id="Type-showhide-methods"><i><label for="Type-showhide-methods" class="show-inline">/* 7 unexporteds ... */</label><label for="Type-showhide-methods" class="hide-inline">/* 7 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Type-fold-method-arrayKeywords"><label for="Type-fold-method-arrayKeywords">(*T) <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-593">arrayKeywords</a>(tags []<a href="../../builtin.html#name-string">string</a>)</label><span id='Type-fold-method-arrayKeywords-docs' class="fold-docs">
+				read struct tags for array type keyworks
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*T) <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-629">extraKeywords</a>(tags []<a href="../../builtin.html#name-string">string</a>)</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Type-fold-method-genericKeywords"><label for="Type-fold-method-genericKeywords">(*T) <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-458">genericKeywords</a>(tags []<a href="../../builtin.html#name-string">string</a>, parentType *<b>Type</b>, propertyName <a href="../../builtin.html#name-string">string</a>)</label><span id='Type-fold-method-genericKeywords-docs' class="fold-docs">
+				read struct tags for generic keyworks
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Type-fold-method-numbericKeywords"><label for="Type-fold-method-numbericKeywords">(*T) <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-543">numbericKeywords</a>(tags []<a href="../../builtin.html#name-string">string</a>)</label><span id='Type-fold-method-numbericKeywords-docs' class="fold-docs">
+				read struct tags for numberic type keyworks
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*T) <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-638">setExtra</a>(key, val <a href="../../builtin.html#name-string">string</a>)</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Type-fold-method-stringKeywords"><label for="Type-fold-method-stringKeywords">(*T) <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-513">stringKeywords</a>(tags []<a href="../../builtin.html#name-string">string</a>)</label><span id='Type-fold-method-stringKeywords-docs' class="fold-docs">
+				read struct tags for string type keyworks
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*T) <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-439">structKeywordsFromTags</a>(f <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-StructField">StructField</a>, parentType *<b>Type</b>, propertyName <a href="../../builtin.html#name-string">string</a>)</span></i></span></span>
+		<input type='checkbox' class="fold" id="Type-fold-impls"><label for="Type-fold-impls">Implements (<i>at least one exported</i>)</label><span id='Type-fold-impls-items' class="fold-items"><span>
+			*T : encoding/json.<a href="../../encoding/json.html#name-Marshaler">Marshaler</a></span></span>
+		<input type='checkbox' class="fold" id="Type-fold-results"><label for="Type-fold-results">As Outputs Of (<i>at least 2, neither is exported</i>)</label><span id='Type-fold-results-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Type-showhide-inputofs"><i><label for="Type-showhide-inputofs" class="show-inline">/* 2+ unexporteds ... */</label><label for="Type-showhide-inputofs" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			func (*<a href="#name-Reflector">Reflector</a>).<a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-327">reflectStruct</a>(definitions <a href="#name-Definitions">Definitions</a>, t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>) *<b>Type</b></i></span><span class="hidden"><i>
+			func (*<a href="#name-Reflector">Reflector</a>).<a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-220">reflectTypeToSchema</a>(definitions <a href="#name-Definitions">Definitions</a>, t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>) *<b>Type</b></i></span></span>
+		<input type='checkbox' class="fold" id="Type-fold-params"><label for="Type-fold-params">As Inputs Of (<i>at least 3, none are exported</i>)</label><span id='Type-fold-params-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Type-showhide-outputofs"><i><label for="Type-showhide-outputofs" class="show-inline">/* 3+ unexporteds ... */</label><label for="Type-showhide-outputofs" class="hide-inline">/* 3+ unexporteds: */</label></i><span class="hidden"><i>
+			func (*<a href="#name-Reflector">Reflector</a>).<a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-377">reflectStructFields</a>(st *<b>Type</b>, definitions <a href="#name-Definitions">Definitions</a>, t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>)</i></span><span class="hidden"><i>
+			func (*Type).<a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-458">genericKeywords</a>(tags []<a href="../../builtin.html#name-string">string</a>, parentType *<b>Type</b>, propertyName <a href="../../builtin.html#name-string">string</a>)</i></span><span class="hidden"><i>
+			func (*Type).<a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-439">structKeywordsFromTags</a>(f <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-StructField">StructField</a>, parentType *<b>Type</b>, propertyName <a href="../../builtin.html#name-string">string</a>)</i></span></span>
+
+</span></div></div><div>	<input type='checkbox' class="showhide" id="unexported-typenames-showhide"><i><label for="unexported-typenames-showhide" class="show-inline">/* 4 unexporteds ... */</label><label for="unexported-typenames-showhide" class="hide-inline">/* 4 unexporteds: */</label></i><div class="anchor type-res hidden" id="name-customGetFieldDocString" data-popularity="0">	<span class="nodocs"> type <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-47">customGetFieldDocString</a> <i>(func)</i></span></div><div class="anchor type-res hidden" id="name-customSchemaGetFieldDocString" data-popularity="50">	<input type='checkbox' class="fold" id="customSchemaGetFieldDocString-fold-content"><label for="customSchemaGetFieldDocString-fold-content"> type <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-43">customSchemaGetFieldDocString</a> <b><i>(interface)</i></b></label><span id='customSchemaGetFieldDocString-fold-content-docs' class="fold-docs">
+		customSchemaGetFieldDocString
+
+		<input type='checkbox' class="fold" id="customSchemaGetFieldDocString-fold-methods"><label for="customSchemaGetFieldDocString-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='customSchemaGetFieldDocString-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( T) <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-44">GetFieldDocString</a>(fieldName <a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-string">string</a></span></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-customSchemaType" data-popularity="50">	<input type='checkbox' class="fold" id="customSchemaType-fold-content"><label for="customSchemaType-fold-content"> type <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-36">customSchemaType</a> <b><i>(interface)</i></b></label><span id='customSchemaType-fold-content-docs' class="fold-docs">
+		customSchemaType is used to detect if the structure provides it's own
+		custom Schema Type definition to use instead. Very useful for situations
+		where there are custom JSON Marshal and Unmarshal methods.
+
+		<input type='checkbox' class="fold" id="customSchemaType-fold-methods"><label for="customSchemaType-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='customSchemaType-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( T) <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-37">JSONSchemaType</a>() *<a href="#name-Type">Type</a></span></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-protoEnum" data-popularity="50">	<input type='checkbox' class="fold" id="protoEnum-fold-content"><label for="protoEnum-fold-content"> type <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-214">protoEnum</a> <b><i>(interface)</i></b></label><span id='protoEnum-fold-content-docs' class="fold-docs">
+		Go code generated from protobuf enum types should fulfil this interface.
+
+		<input type='checkbox' class="fold" id="protoEnum-fold-methods"><label for="protoEnum-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='protoEnum-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( T) <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-215">EnumDescriptor</a>() ([]<a href="../../builtin.html#name-byte">byte</a>, []<a href="../../builtin.html#name-int">int</a>)</span></span></span>
+
+</span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 8, in which 2 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-Reflect">	<input type='checkbox' class="fold" id="Reflect-fold-content"><label for="Reflect-fold-content"> func <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-98">Reflect</a>(v interface{}) *<a href="#name-Schema">Schema</a></label><span id='Reflect-fold-content-docs' class="fold-docs">
+		Reflect reflects to Schema from a value using the default Reflector
+
+</span></div><div class="anchor value-res" id="name-ReflectFromType">	<input type='checkbox' class="fold" id="ReflectFromType-fold-content"><label for="ReflectFromType-fold-content"> func <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-103">ReflectFromType</a>(t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>) *<a href="#name-Schema">Schema</a></label><span id='ReflectFromType-fold-content-docs' class="fold-docs">
+		ReflectFromType generates root schema using the default Reflector
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* 6 unexporteds ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* 6 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-ignoredByJSONSchemaTags"><i>	<span class="nodocs"> func <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-711">ignoredByJSONSchemaTags</a>(tags []<a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-bool">bool</a></span></i></div><div class="anchor value-res hidden" id="name-ignoredByJSONTags"><i>	<span class="nodocs"> func <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-707">ignoredByJSONTags</a>(tags []<a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-bool">bool</a></span></i></div><div class="anchor value-res hidden" id="name-inlineYAMLTags"><i>	<span class="nodocs"> func <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-698">inlineYAMLTags</a>(tags []<a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-bool">bool</a></span></i></div><div class="anchor value-res hidden" id="name-nullableFromJSONSchemaTags"><i>	<span class="nodocs"> func <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-686">nullableFromJSONSchemaTags</a>(tags []<a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-bool">bool</a></span></i></div><div class="anchor value-res hidden" id="name-requiredFromJSONSchemaTags"><i>	<span class="nodocs"> func <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-674">requiredFromJSONSchemaTags</a>(tags []<a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-bool">bool</a></span></i></div><div class="anchor value-res hidden" id="name-requiredFromJSONTags"><i>	<span class="nodocs"> func <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-661">requiredFromJSONTags</a>(tags []<a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-bool">bool</a></span></i></div></div>
+<div id="exported-variables"><span class="title">Package-Level Variables<span class="title-stat"><i> (total 9, in which 1 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-Version">	<input type='checkbox' class="fold" id="Version-fold-content"><label for="Version-fold-content">  var <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-24">Version</a> <a href="../../builtin.html#name-string">string</a></label><span id='Version-fold-content-docs' class="fold-docs">
+		Version is the JSON Schema version.
+		If extending JSON Schema with custom values use a custom URI.
+		RFC draft-wright-json-schema-00, section 6
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-variables-showhide"><i><label for="unexported-variables-showhide" class="show-inline">/* 8 unexporteds ... */</label><label for="unexported-variables-showhide" class="hide-inline">/* 8 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-byteSliceType"><i>	<input type='checkbox' class="fold" id="byteSliceType-fold-content"><label for="byteSliceType-fold-content">  var <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-208">byteSliceType</a> <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a></label><span id='byteSliceType-fold-content-docs' class="fold-docs">
+		Byte slices will be encoded as base64
+
+</span></i></div><div class="anchor value-res hidden" id="name-customStructGetFieldDocString"><i>	<span class="nodocs">  var <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-49">customStructGetFieldDocString</a> <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a></span></i></div><div class="anchor value-res hidden" id="name-customStructType"><i>	<span class="nodocs">  var <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-40">customStructType</a> <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a></span></i></div><div class="anchor value-res hidden" id="name-ipType"><i>	<input type='checkbox' class="fold" id="ipType-fold-content"><label for="ipType-fold-content">  var <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-203">ipType</a> <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a> // ipv4 and ipv6 RFC section 7.3.4, 7.3.5</label><span id='ipType-fold-content-docs' class="fold-docs">
+		Available Go defined types for JSON Schema Validation.
+		RFC draft-wright-json-schema-validation-00, section 7.3
+
+</span></i></div><div class="anchor value-res hidden" id="name-protoEnumType"><i>	<span class="nodocs">  var <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-218">protoEnumType</a> <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a></span></i></div><div class="anchor value-res hidden" id="name-rawMessageType"><i>	<input type='checkbox' class="fold" id="rawMessageType-fold-content"><label for="rawMessageType-fold-content">  var <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-211">rawMessageType</a> <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a></label><span id='rawMessageType-fold-content-docs' class="fold-docs">
+		Except for json.RawMessage
+
+</span></i></div><div class="anchor value-res hidden" id="name-timeType"><i>	<input type='checkbox' class="fold" id="timeType-fold-content"><label for="timeType-fold-content">  var <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-202">timeType</a> <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a> // date-time RFC section 7.3.1</label><span id='timeType-fold-content-docs' class="fold-docs">
+		Available Go defined types for JSON Schema Validation.
+		RFC draft-wright-json-schema-validation-00, section 7.3
+
+</span></i></div><div class="anchor value-res hidden" id="name-uriType"><i>	<input type='checkbox' class="fold" id="uriType-fold-content"><label for="uriType-fold-content">  var <a href="../../../src/github.com/alecthomas/jsonschema/reflect.go.html#line-204">uriType</a> <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a> // uri RFC section 7.3.6</label><span id='uriType-fold-content-docs' class="fold-docs">
+		Available Go defined types for JSON Schema Validation.
+		RFC draft-wright-json-schema-validation-00, section 7.3
+
+</span></i></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

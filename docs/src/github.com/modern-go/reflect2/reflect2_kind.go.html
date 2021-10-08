@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: reflect2_kind.go in package github.com/modern-go/reflect2</title>
+<link href="../../../../css/light-v0.3.6.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.3.6.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	reflect2_kind.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../pkg/github.com/modern-go/reflect2.html">github.com/modern-go/reflect2</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> reflect2</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-4"><code>	<label for="i0"><span class="lit-string i0">"reflect"</span></label></code></span>
+<span class="codeline" id="line-5"><code>	<label for="i1"><span class="lit-string i1">"unsafe"</span></label></code></span>
+<span class="codeline" id="line-6"><code>)</code></span>
+<span class="codeline" id="line-7"><code></code></span>
+<span class="codeline" id="line-8"><code><span class="comment">// DefaultTypeOfKind return the non aliased default type for the kind</span></code></span>
+<span class="codeline" id="line-9"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../pkg/github.com/modern-go/reflect2.html#name-DefaultTypeOfKind" class="ident">DefaultTypeOfKind</a></label>(<label for="r1" class="ident">kind</label> <a href="../../../../pkg/reflect.html" class="ident i0">reflect</a>.<a href="../../../reflect/type.go.html#line-232" class="ident">Kind</a>) <a href="reflect2.go.html#line-10" class="ident">Type</a> {</code></span>
+<span class="codeline" id="line-10"><code>	<span class="keyword">return</span> <a href="#line-13" class="ident">kindTypes</a>[<label for="r1" class="ident">kind</label>]</code></span>
+<span class="codeline" id="line-11"><code>}</code></span>
+<span class="codeline" id="line-12"><code></code></span>
+<span class="codeline" id="line-13"><code><span class="keyword">var</span> <a href="../../../../pkg/github.com/modern-go/reflect2.html#name-kindTypes" class="ident">kindTypes</a> = <span class="keyword">map</span>[<a href="../../../../pkg/reflect.html" class="ident i0">reflect</a>.<a href="../../../reflect/type.go.html#line-232" class="ident">Kind</a>]<a href="reflect2.go.html#line-10" class="ident">Type</a>{</code></span>
+<span class="codeline" id="line-14"><code>	<a href="../../../../pkg/reflect.html" class="ident i0">reflect</a>.<a href="../../../reflect/type.go.html#line-236" class="ident">Bool</a>:          <a href="reflect2.go.html#line-211" class="ident">TypeOf</a>(<a href="../../../../pkg/builtin.html#name-true" class="ident">true</a>),</code></span>
+<span class="codeline" id="line-15"><code>	<a href="../../../../pkg/reflect.html" class="ident i0">reflect</a>.<a href="../../../reflect/type.go.html#line-243" class="ident">Uint8</a>:         <a href="reflect2.go.html#line-211" class="ident">TypeOf</a>(<a href="../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>(<span class="lit-number">0</span>)),</code></span>
+<span class="codeline" id="line-16"><code>	<a href="../../../../pkg/reflect.html" class="ident i0">reflect</a>.<a href="../../../reflect/type.go.html#line-238" class="ident">Int8</a>:          <a href="reflect2.go.html#line-211" class="ident">TypeOf</a>(<a href="../../../../pkg/builtin.html#name-int8" class="ident">int8</a>(<span class="lit-number">0</span>)),</code></span>
+<span class="codeline" id="line-17"><code>	<a href="../../../../pkg/reflect.html" class="ident i0">reflect</a>.<a href="../../../reflect/type.go.html#line-244" class="ident">Uint16</a>:        <a href="reflect2.go.html#line-211" class="ident">TypeOf</a>(<a href="../../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>(<span class="lit-number">0</span>)),</code></span>
+<span class="codeline" id="line-18"><code>	<a href="../../../../pkg/reflect.html" class="ident i0">reflect</a>.<a href="../../../reflect/type.go.html#line-239" class="ident">Int16</a>:         <a href="reflect2.go.html#line-211" class="ident">TypeOf</a>(<a href="../../../../pkg/builtin.html#name-int16" class="ident">int16</a>(<span class="lit-number">0</span>)),</code></span>
+<span class="codeline" id="line-19"><code>	<a href="../../../../pkg/reflect.html" class="ident i0">reflect</a>.<a href="../../../reflect/type.go.html#line-245" class="ident">Uint32</a>:        <a href="reflect2.go.html#line-211" class="ident">TypeOf</a>(<a href="../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<span class="lit-number">0</span>)),</code></span>
+<span class="codeline" id="line-20"><code>	<a href="../../../../pkg/reflect.html" class="ident i0">reflect</a>.<a href="../../../reflect/type.go.html#line-240" class="ident">Int32</a>:         <a href="reflect2.go.html#line-211" class="ident">TypeOf</a>(<a href="../../../../pkg/builtin.html#name-int32" class="ident">int32</a>(<span class="lit-number">0</span>)),</code></span>
+<span class="codeline" id="line-21"><code>	<a href="../../../../pkg/reflect.html" class="ident i0">reflect</a>.<a href="../../../reflect/type.go.html#line-246" class="ident">Uint64</a>:        <a href="reflect2.go.html#line-211" class="ident">TypeOf</a>(<a href="../../../../pkg/builtin.html#name-uint64" class="ident">uint64</a>(<span class="lit-number">0</span>)),</code></span>
+<span class="codeline" id="line-22"><code>	<a href="../../../../pkg/reflect.html" class="ident i0">reflect</a>.<a href="../../../reflect/type.go.html#line-241" class="ident">Int64</a>:         <a href="reflect2.go.html#line-211" class="ident">TypeOf</a>(<a href="../../../../pkg/builtin.html#name-int64" class="ident">int64</a>(<span class="lit-number">0</span>)),</code></span>
+<span class="codeline" id="line-23"><code>	<a href="../../../../pkg/reflect.html" class="ident i0">reflect</a>.<a href="../../../reflect/type.go.html#line-242" class="ident">Uint</a>:          <a href="reflect2.go.html#line-211" class="ident">TypeOf</a>(<a href="../../../../pkg/builtin.html#name-uint" class="ident">uint</a>(<span class="lit-number">0</span>)),</code></span>
+<span class="codeline" id="line-24"><code>	<a href="../../../../pkg/reflect.html" class="ident i0">reflect</a>.<a href="../../../reflect/type.go.html#line-237" class="ident">Int</a>:           <a href="reflect2.go.html#line-211" class="ident">TypeOf</a>(<a href="../../../../pkg/builtin.html#name-int" class="ident">int</a>(<span class="lit-number">0</span>)),</code></span>
+<span class="codeline" id="line-25"><code>	<a href="../../../../pkg/reflect.html" class="ident i0">reflect</a>.<a href="../../../reflect/type.go.html#line-248" class="ident">Float32</a>:       <a href="reflect2.go.html#line-211" class="ident">TypeOf</a>(<a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a>(<span class="lit-number">0</span>)),</code></span>
+<span class="codeline" id="line-26"><code>	<a href="../../../../pkg/reflect.html" class="ident i0">reflect</a>.<a href="../../../reflect/type.go.html#line-249" class="ident">Float64</a>:       <a href="reflect2.go.html#line-211" class="ident">TypeOf</a>(<a href="../../../../pkg/builtin.html#name-float64" class="ident">float64</a>(<span class="lit-number">0</span>)),</code></span>
+<span class="codeline" id="line-27"><code>	<a href="../../../../pkg/reflect.html" class="ident i0">reflect</a>.<a href="../../../reflect/type.go.html#line-247" class="ident">Uintptr</a>:       <a href="reflect2.go.html#line-211" class="ident">TypeOf</a>(<a href="../../../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a>(<span class="lit-number">0</span>)),</code></span>
+<span class="codeline" id="line-28"><code>	<a href="../../../../pkg/reflect.html" class="ident i0">reflect</a>.<a href="../../../reflect/type.go.html#line-259" class="ident">String</a>:        <a href="reflect2.go.html#line-211" class="ident">TypeOf</a>(<span class="lit-string">""</span>),</code></span>
+<span class="codeline" id="line-29"><code>	<a href="../../../../pkg/reflect.html" class="ident i0">reflect</a>.<a href="../../../reflect/type.go.html#line-261" class="ident">UnsafePointer</a>: <a href="reflect2.go.html#line-211" class="ident">TypeOf</a>(<a href="../../../../pkg/unsafe.html" class="ident i1">unsafe</a>.<a href="../../../../pkg/unsafe.html#name-Pointer" class="ident">Pointer</a>(<a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)),</code></span>
+<span class="codeline" id="line-30"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: result.go in package github.com/xeipuuv/gojsonschema</title>
+<link href="../../../../css/light-v0.3.6.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.3.6.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	result.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html">github.com/xeipuuv/gojsonschema</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20],
+input[id=r21]:checked ~pre label[for=r21],
+input[id=r22]:checked ~pre label[for=r22],
+input[id=r23]:checked ~pre label[for=r23],
+input[id=r24]:checked ~pre label[for=r24],
+input[id=r25]:checked ~pre label[for=r25],
+input[id=r26]:checked ~pre label[for=r26],
+input[id=r27]:checked ~pre label[for=r27],
+input[id=r28]:checked ~pre label[for=r28],
+input[id=r29]:checked ~pre label[for=r29],
+input[id=r30]:checked ~pre label[for=r30],
+input[id=r31]:checked ~pre label[for=r31],
+input[id=r32]:checked ~pre label[for=r32],
+input[id=r33]:checked ~pre label[for=r33],
+input[id=r34]:checked ~pre label[for=r34],
+input[id=r35]:checked ~pre label[for=r35],
+input[id=r36]:checked ~pre label[for=r36],
+input[id=r37]:checked ~pre label[for=r37],
+input[id=r38]:checked ~pre label[for=r38],
+input[id=r39]:checked ~pre label[for=r39],
+input[id=r40]:checked ~pre label[for=r40],
+input[id=r41]:checked ~pre label[for=r41],
+input[id=r42]:checked ~pre label[for=r42],
+input[id=r43]:checked ~pre label[for=r43],
+input[id=r44]:checked ~pre label[for=r44],
+input[id=r45]:checked ~pre label[for=r45],
+input[id=r46]:checked ~pre label[for=r46],
+input[id=r47]:checked ~pre label[for=r47],
+input[id=r48]:checked ~pre label[for=r48],
+input[id=r49]:checked ~pre label[for=r49],
+input[id=r50]:checked ~pre label[for=r50],
+input[id=r51]:checked ~pre label[for=r51],
+input[id=r52]:checked ~pre label[for=r52],
+input[id=r53]:checked ~pre label[for=r53],
+input[id=r54]:checked ~pre label[for=r54],
+input[id=r55]:checked ~pre label[for=r55],
+input[id=r56]:checked ~pre label[for=r56],
+input[id=r57]:checked ~pre label[for=r57]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="r21" type="radio" name="g"/>
+<input id="r22" type="radio" name="g"/>
+<input id="r23" type="radio" name="g"/>
+<input id="r24" type="radio" name="g"/>
+<input id="r25" type="radio" name="g"/>
+<input id="r26" type="radio" name="g"/>
+<input id="r27" type="radio" name="g"/>
+<input id="r28" type="radio" name="g"/>
+<input id="r29" type="radio" name="g"/>
+<input id="r30" type="radio" name="g"/>
+<input id="r31" type="radio" name="g"/>
+<input id="r32" type="radio" name="g"/>
+<input id="r33" type="radio" name="g"/>
+<input id="r34" type="radio" name="g"/>
+<input id="r35" type="radio" name="g"/>
+<input id="r36" type="radio" name="g"/>
+<input id="r37" type="radio" name="g"/>
+<input id="r38" type="radio" name="g"/>
+<input id="r39" type="radio" name="g"/>
+<input id="r40" type="radio" name="g"/>
+<input id="r41" type="radio" name="g"/>
+<input id="r42" type="radio" name="g"/>
+<input id="r43" type="radio" name="g"/>
+<input id="r44" type="radio" name="g"/>
+<input id="r45" type="radio" name="g"/>
+<input id="r46" type="radio" name="g"/>
+<input id="r47" type="radio" name="g"/>
+<input id="r48" type="radio" name="g"/>
+<input id="r49" type="radio" name="g"/>
+<input id="r50" type="radio" name="g"/>
+<input id="r51" type="radio" name="g"/>
+<input id="r52" type="radio" name="g"/>
+<input id="r53" type="radio" name="g"/>
+<input id="r54" type="radio" name="g"/>
+<input id="r55" type="radio" name="g"/>
+<input id="r56" type="radio" name="g"/>
+<input id="r57" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="comment">// Copyright 2015 xeipuuv ( https://github.com/xeipuuv )</span></code></span>
+<span class="codeline" id="line-2"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-3"><code><span class="comment">// Licensed under the Apache License, Version 2.0 (the "License");</span></code></span>
+<span class="codeline" id="line-4"><code><span class="comment">// you may not use this file except in compliance with the License.</span></code></span>
+<span class="codeline" id="line-5"><code><span class="comment">// You may obtain a copy of the License at</span></code></span>
+<span class="codeline" id="line-6"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-7"><code><span class="comment">//   http://www.apache.org/licenses/LICENSE-2.0</span></code></span>
+<span class="codeline" id="line-8"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-9"><code><span class="comment">// Unless required by applicable law or agreed to in writing, software</span></code></span>
+<span class="codeline" id="line-10"><code><span class="comment">// distributed under the License is distributed on an "AS IS" BASIS,</span></code></span>
+<span class="codeline" id="line-11"><code><span class="comment">// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></code></span>
+<span class="codeline" id="line-12"><code><span class="comment">// See the License for the specific language governing permissions and</span></code></span>
+<span class="codeline" id="line-13"><code><span class="comment">// limitations under the License.</span></code></span>
+<span class="codeline" id="line-14"><code></code></span>
+<span class="codeline" id="line-15"><code><span class="comment">// author           xeipuuv</span></code></span>
+<span class="codeline" id="line-16"><code><span class="comment">// author-github    https://github.com/xeipuuv</span></code></span>
+<span class="codeline" id="line-17"><code><span class="comment">// author-mail      xeipuuv@gmail.com</span></code></span>
+<span class="codeline" id="line-18"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-19"><code><span class="comment">// repository-name  gojsonschema</span></code></span>
+<span class="codeline" id="line-20"><code><span class="comment">// repository-desc  An implementation of JSON Schema, based on IETF's draft v4 - Go language.</span></code></span>
+<span class="codeline" id="line-21"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-22"><code><span class="comment">// description      Result and ResultError implementations.</span></code></span>
+<span class="codeline" id="line-23"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-24"><code><span class="comment">// created          01-01-2015</span></code></span>
+<span class="codeline" id="line-25"><code></code></span>
+<span class="codeline" id="line-26"><code><span class="keyword">package</span> gojsonschema</code></span>
+<span class="codeline" id="line-27"><code></code></span>
+<span class="codeline" id="line-28"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-29"><code>	<label for="i0"><span class="lit-string i0">"fmt"</span></label></code></span>
+<span class="codeline" id="line-30"><code>	<label for="i1"><span class="lit-string i1">"strings"</span></label></code></span>
+<span class="codeline" id="line-31"><code>)</code></span>
+<span class="codeline" id="line-32"><code></code></span>
+<span class="codeline" id="line-33"><code><span class="keyword">type</span> (</code></span>
+<span class="codeline" id="line-34"><code>	<span class="comment">// ErrorDetails is a map of details specific to each error.</span></code></span>
+<span class="codeline" id="line-35"><code><span class="comment">	// While the values will vary, every error will contain a "field" value</span></code></span>
+<span class="codeline" id="line-36"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-ErrorDetails" class="ident">ErrorDetails</a> <span class="keyword">map</span>[<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>]<span class="keyword">interface</span>{}</code></span>
+<span class="codeline" id="line-37"><code></code></span>
+<span class="codeline" id="line-38"><code>	<span class="comment">// ResultError is the interface that library errors must implement</span></code></span>
+<span class="codeline" id="line-39"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-ResultError" class="ident">ResultError</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-40"><code>		<span class="comment">// Field returns the field name without the root context</span></code></span>
+<span class="codeline" id="line-41"><code><span class="comment">		// i.e. firstName or person.firstName instead of (root).firstName or (root).person.firstName</span></code></span>
+<span class="codeline" id="line-42"><code>		<a href="../../../../imp/github.com/xeipuuv/gojsonschema.ResultError.html#name-Field" class="ident">Field</a>() <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-43"><code>		<span class="comment">// SetType sets the error-type</span></code></span>
+<span class="codeline" id="line-44"><code>		<a href="../../../../imp/github.com/xeipuuv/gojsonschema.ResultError.html#name-SetType" class="ident">SetType</a>(<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>)</code></span>
+<span class="codeline" id="line-45"><code>		<span class="comment">// Type returns the error-type</span></code></span>
+<span class="codeline" id="line-46"><code>		<a href="../../../../imp/github.com/xeipuuv/gojsonschema.ResultError.html#name-Type" class="ident">Type</a>() <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-47"><code>		<span class="comment">// SetContext sets the JSON-context for the error</span></code></span>
+<span class="codeline" id="line-48"><code>		<a href="../../../../imp/github.com/xeipuuv/gojsonschema.ResultError.html#name-SetContext" class="ident">SetContext</a>(*<a href="jsonContext.go^c0dff.html#line-30" class="ident">JsonContext</a>)</code></span>
+<span class="codeline" id="line-49"><code>		<span class="comment">// Context returns the JSON-context of the error</span></code></span>
+<span class="codeline" id="line-50"><code>		<a href="../../../../imp/github.com/xeipuuv/gojsonschema.ResultError.html#name-Context" class="ident">Context</a>() *<a href="jsonContext.go^c0dff.html#line-30" class="ident">JsonContext</a></code></span>
+<span class="codeline" id="line-51"><code>		<span class="comment">// SetDescription sets a description for the error</span></code></span>
+<span class="codeline" id="line-52"><code>		<a href="../../../../imp/github.com/xeipuuv/gojsonschema.ResultError.html#name-SetDescription" class="ident">SetDescription</a>(<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>)</code></span>
+<span class="codeline" id="line-53"><code>		<span class="comment">// Description returns the description of the error</span></code></span>
+<span class="codeline" id="line-54"><code>		<a href="../../../../imp/github.com/xeipuuv/gojsonschema.ResultError.html#name-Description" class="ident">Description</a>() <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-55"><code>		<span class="comment">// SetDescriptionFormat sets the format for the description in the default text/template format</span></code></span>
+<span class="codeline" id="line-56"><code>		<a href="../../../../imp/github.com/xeipuuv/gojsonschema.ResultError.html#name-SetDescriptionFormat" class="ident">SetDescriptionFormat</a>(<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>)</code></span>
+<span class="codeline" id="line-57"><code>		<span class="comment">// DescriptionFormat returns the format for the description in the default text/template format</span></code></span>
+<span class="codeline" id="line-58"><code>		<a href="../../../../imp/github.com/xeipuuv/gojsonschema.ResultError.html#name-DescriptionFormat" class="ident">DescriptionFormat</a>() <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-59"><code>		<span class="comment">// SetValue sets the value related to the error</span></code></span>
+<span class="codeline" id="line-60"><code>		<a href="../../../../imp/github.com/xeipuuv/gojsonschema.ResultError.html#name-SetValue" class="ident">SetValue</a>(<span class="keyword">interface</span>{})</code></span>
+<span class="codeline" id="line-61"><code>		<span class="comment">// Value returns the value related to the error</span></code></span>
+<span class="codeline" id="line-62"><code>		<a href="../../../../imp/github.com/xeipuuv/gojsonschema.ResultError.html#name-Value" class="ident">Value</a>() <span class="keyword">interface</span>{}</code></span>
+<span class="codeline" id="line-63"><code>		<span class="comment">// SetDetails sets the details specific to the error</span></code></span>
+<span class="codeline" id="line-64"><code>		<a href="../../../../imp/github.com/xeipuuv/gojsonschema.ResultError.html#name-SetDetails" class="ident">SetDetails</a>(<a href="#line-36" class="ident">ErrorDetails</a>)</code></span>
+<span class="codeline" id="line-65"><code>		<span class="comment">// Details returns details about the error</span></code></span>
+<span class="codeline" id="line-66"><code>		<a href="../../../../imp/github.com/xeipuuv/gojsonschema.ResultError.html#name-Details" class="ident">Details</a>() <a href="#line-36" class="ident">ErrorDetails</a></code></span>
+<span class="codeline" id="line-67"><code>		<span class="comment">// String returns a string representation of the error</span></code></span>
+<span class="codeline" id="line-68"><code>		<a href="../../../../imp/github.com/xeipuuv/gojsonschema.ResultError.html#name-String" class="ident">String</a>() <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-69"><code>	}</code></span>
+<span class="codeline" id="line-70"><code></code></span>
+<span class="codeline" id="line-71"><code>	<span class="comment">// ResultErrorFields holds the fields for each ResultError implementation.</span></code></span>
+<span class="codeline" id="line-72"><code><span class="comment">	// ResultErrorFields implements the ResultError interface, so custom errors</span></code></span>
+<span class="codeline" id="line-73"><code><span class="comment">	// can be defined by just embedding this type</span></code></span>
+<span class="codeline" id="line-74"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-ResultErrorFields" class="ident">ResultErrorFields</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-75"><code>		errorType         <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>       <span class="comment">// A string with the type of error (i.e. invalid_type)</span></code></span>
+<span class="codeline" id="line-76"><code>		context           *<a href="jsonContext.go^c0dff.html#line-30" class="ident">JsonContext</a> <span class="comment">// Tree like notation of the part that failed the validation. ex (root).a.b ...</span></code></span>
+<span class="codeline" id="line-77"><code>		description       <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>       <span class="comment">// A human readable error message</span></code></span>
+<span class="codeline" id="line-78"><code>		descriptionFormat <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>       <span class="comment">// A format for human readable error message</span></code></span>
+<span class="codeline" id="line-79"><code>		value             <span class="keyword">interface</span>{}  <span class="comment">// Value given by the JSON file that is the source of the error</span></code></span>
+<span class="codeline" id="line-80"><code>		details           <a href="#line-36" class="ident">ErrorDetails</a></code></span>
+<span class="codeline" id="line-81"><code>	}</code></span>
+<span class="codeline" id="line-82"><code></code></span>
+<span class="codeline" id="line-83"><code>	<span class="comment">// Result holds the result of a validation</span></code></span>
+<span class="codeline" id="line-84"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-Result" class="ident">Result</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-85"><code>		errors []<a href="#line-39" class="ident">ResultError</a></code></span>
+<span class="codeline" id="line-86"><code>		<span class="comment">// Scores how well the validation matched. Useful in generating</span></code></span>
+<span class="codeline" id="line-87"><code><span class="comment">		// better error messages for anyOf and oneOf.</span></code></span>
+<span class="codeline" id="line-88"><code>		score <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-89"><code>	}</code></span>
+<span class="codeline" id="line-90"><code>)</code></span>
+<span class="codeline" id="line-91"><code></code></span>
+<span class="codeline" id="line-92"><code><span class="comment">// Field returns the field name without the root context</span></code></span>
+<span class="codeline" id="line-93"><code><span class="comment">// i.e. firstName or person.firstName instead of (root).firstName or (root).person.firstName</span></code></span>
+<span class="codeline" id="line-94"><code><span class="keyword">func</span> (<label for="r0" class="ident">v</label> *<a href="#line-74" class="ident">ResultErrorFields</a>) <label for="r1" class="ident"><a href="../../../../imp/github.com/xeipuuv/gojsonschema.ResultErrorFields.html#name-.Field" class="ident">Field</a></label>() <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a> {</code></span>
+<span class="codeline" id="line-95"><code>	<span class="keyword">return</span> <a href="../../../../pkg/strings.html" class="ident i1">strings</a>.<a href="../../../strings/strings.go.html#line-902" class="ident">TrimPrefix</a>(<label for="r0" class="ident">v</label>.<a href="#line-76" class="ident">context</a>.<a href="jsonContext.go^c0dff.html#line-43" class="ident">String</a>(), <a href="locales.go.html#line-471" class="ident">STRING_ROOT_SCHEMA_PROPERTY</a>+<span class="lit-string">"."</span>)</code></span>
+<span class="codeline" id="line-96"><code>}</code></span>
+<span class="codeline" id="line-97"><code></code></span>
+<span class="codeline" id="line-98"><code><span class="comment">// SetType sets the error-type</span></code></span>
+<span class="codeline" id="line-99"><code><span class="keyword">func</span> (<label for="r2" class="ident">v</label> *<a href="#line-74" class="ident">ResultErrorFields</a>) <label for="r3" class="ident"><a href="../../../../imp/github.com/xeipuuv/gojsonschema.ResultErrorFields.html#name-.SetType" class="ident">SetType</a></label>(<label for="r4" class="ident">errorType</label> <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>) {</code></span>
+<span class="codeline" id="line-100"><code>	<label for="r2" class="ident">v</label>.<a href="#line-75" class="ident">errorType</a> = <label for="r4" class="ident">errorType</label></code></span>
+<span class="codeline" id="line-101"><code>}</code></span>
+<span class="codeline" id="line-102"><code></code></span>
+<span class="codeline" id="line-103"><code><span class="comment">// Type returns the error-type</span></code></span>
+<span class="codeline" id="line-104"><code><span class="keyword">func</span> (<label for="r5" class="ident">v</label> *<a href="#line-74" class="ident">ResultErrorFields</a>) <label for="r6" class="ident"><a href="../../../../imp/github.com/xeipuuv/gojsonschema.ResultErrorFields.html#name-.Type" class="ident">Type</a></label>() <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a> {</code></span>
+<span class="codeline" id="line-105"><code>	<span class="keyword">return</span> <label for="r5" class="ident">v</label>.<a href="#line-75" class="ident">errorType</a></code></span>
+<span class="codeline" id="line-106"><code>}</code></span>
+<span class="codeline" id="line-107"><code></code></span>
+<span class="codeline" id="line-108"><code><span class="comment">// SetContext sets the JSON-context for the error</span></code></span>
+<span class="codeline" id="line-109"><code><span class="keyword">func</span> (<label for="r7" class="ident">v</label> *<a href="#line-74" class="ident">ResultErrorFields</a>) <label for="r8" class="ident"><a href="../../../../imp/github.com/xeipuuv/gojsonschema.ResultErrorFields.html#name-.SetContext" class="ident">SetContext</a></label>(<label for="r9" class="ident">context</label> *<a href="jsonContext.go^c0dff.html#line-30" class="ident">JsonContext</a>) {</code></span>
+<span class="codeline" id="line-110"><code>	<label for="r7" class="ident">v</label>.<a href="#line-76" class="ident">context</a> = <label for="r9" class="ident">context</label></code></span>
+<span class="codeline" id="line-111"><code>}</code></span>
+<span class="codeline" id="line-112"><code></code></span>
+<span class="codeline" id="line-113"><code><span class="comment">// Context returns the JSON-context of the error</span></code></span>
+<span class="codeline" id="line-114"><code><span class="keyword">func</span> (<label for="r10" class="ident">v</label> *<a href="#line-74" class="ident">ResultErrorFields</a>) <label for="r11" class="ident"><a href="../../../../imp/github.com/xeipuuv/gojsonschema.ResultErrorFields.html#name-.Context" class="ident">Context</a></label>() *<a href="jsonContext.go^c0dff.html#line-30" class="ident">JsonContext</a> {</code></span>
+<span class="codeline" id="line-115"><code>	<span class="keyword">return</span> <label for="r10" class="ident">v</label>.<a href="#line-76" class="ident">context</a></code></span>
+<span class="codeline" id="line-116"><code>}</code></span>
+<span class="codeline" id="line-117"><code></code></span>
+<span class="codeline" id="line-118"><code><span class="comment">// SetDescription sets a description for the error</span></code></span>
+<span class="codeline" id="line-119"><code><span class="keyword">func</span> (<label for="r12" class="ident">v</label> *<a href="#line-74" class="ident">ResultErrorFields</a>) <label for="r13" class="ident"><a href="../../../../imp/github.com/xeipuuv/gojsonschema.ResultErrorFields.html#name-.SetDescription" class="ident">SetDescription</a></label>(<label for="r14" class="ident">description</label> <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>) {</code></span>
+<span class="codeline" id="line-120"><code>	<label for="r12" class="ident">v</label>.<a href="#line-77" class="ident">description</a> = <label for="r14" class="ident">description</label></code></span>
+<span class="codeline" id="line-121"><code>}</code></span>
+<span class="codeline" id="line-122"><code></code></span>
+<span class="codeline" id="line-123"><code><span class="comment">// Description returns the description of the error</span></code></span>
+<span class="codeline" id="line-124"><code><span class="keyword">func</span> (<label for="r15" class="ident">v</label> *<a href="#line-74" class="ident">ResultErrorFields</a>) <label for="r16" class="ident"><a href="../../../../imp/github.com/xeipuuv/gojsonschema.ResultErrorFields.html#name-.Description" class="ident">Description</a></label>() <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a> {</code></span>
+<span class="codeline" id="line-125"><code>	<span class="keyword">return</span> <label for="r15" class="ident">v</label>.<a href="#line-77" class="ident">description</a></code></span>
+<span class="codeline" id="line-126"><code>}</code></span>
+<span class="codeline" id="line-127"><code></code></span>
+<span class="codeline" id="line-128"><code><span class="comment">// SetDescriptionFormat sets the format for the description in the default text/template format</span></code></span>
+<span class="codeline" id="line-129"><code><span class="keyword">func</span> (<label for="r17" class="ident">v</label> *<a href="#line-74" class="ident">ResultErrorFields</a>) <label for="r18" class="ident"><a href="../../../../imp/github.com/xeipuuv/gojsonschema.ResultErrorFields.html#name-.SetDescriptionFormat" class="ident">SetDescriptionFormat</a></label>(<label for="r19" class="ident">descriptionFormat</label> <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>) {</code></span>
+<span class="codeline" id="line-130"><code>	<label for="r17" class="ident">v</label>.<a href="#line-78" class="ident">descriptionFormat</a> = <label for="r19" class="ident">descriptionFormat</label></code></span>
+<span class="codeline" id="line-131"><code>}</code></span>
+<span class="codeline" id="line-132"><code></code></span>
+<span class="codeline" id="line-133"><code><span class="comment">// DescriptionFormat returns the format for the description in the default text/template format</span></code></span>
+<span class="codeline" id="line-134"><code><span class="keyword">func</span> (<label for="r20" class="ident">v</label> *<a href="#line-74" class="ident">ResultErrorFields</a>) <label for="r21" class="ident"><a href="../../../../imp/github.com/xeipuuv/gojsonschema.ResultErrorFields.html#name-.DescriptionFormat" class="ident">DescriptionFormat</a></label>() <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a> {</code></span>
+<span class="codeline" id="line-135"><code>	<span class="keyword">return</span> <label for="r20" class="ident">v</label>.<a href="#line-78" class="ident">descriptionFormat</a></code></span>
+<span class="codeline" id="line-136"><code>}</code></span>
+<span class="codeline" id="line-137"><code></code></span>
+<span class="codeline" id="line-138"><code><span class="comment">// SetValue sets the value related to the error</span></code></span>
+<span class="codeline" id="line-139"><code><span class="keyword">func</span> (<label for="r22" class="ident">v</label> *<a href="#line-74" class="ident">ResultErrorFields</a>) <label for="r23" class="ident"><a href="../../../../imp/github.com/xeipuuv/gojsonschema.ResultErrorFields.html#name-.SetValue" class="ident">SetValue</a></label>(<label for="r24" class="ident">value</label> <span class="keyword">interface</span>{}) {</code></span>
+<span class="codeline" id="line-140"><code>	<label for="r22" class="ident">v</label>.<a href="#line-79" class="ident">value</a> = <label for="r24" class="ident">value</label></code></span>
+<span class="codeline" id="line-141"><code>}</code></span>
+<span class="codeline" id="line-142"><code></code></span>
+<span class="codeline" id="line-143"><code><span class="comment">// Value returns the value related to the error</span></code></span>
+<span class="codeline" id="line-144"><code><span class="keyword">func</span> (<label for="r25" class="ident">v</label> *<a href="#line-74" class="ident">ResultErrorFields</a>) <label for="r26" class="ident"><a href="../../../../imp/github.com/xeipuuv/gojsonschema.ResultErrorFields.html#name-.Value" class="ident">Value</a></label>() <span class="keyword">interface</span>{} {</code></span>
+<span class="codeline" id="line-145"><code>	<span class="keyword">return</span> <label for="r25" class="ident">v</label>.<a href="#line-79" class="ident">value</a></code></span>
+<span class="codeline" id="line-146"><code>}</code></span>
+<span class="codeline" id="line-147"><code></code></span>
+<span class="codeline" id="line-148"><code><span class="comment">// SetDetails sets the details specific to the error</span></code></span>
+<span class="codeline" id="line-149"><code><span class="keyword">func</span> (<label for="r27" class="ident">v</label> *<a href="#line-74" class="ident">ResultErrorFields</a>) <label for="r28" class="ident"><a href="../../../../imp/github.com/xeipuuv/gojsonschema.ResultErrorFields.html#name-.SetDetails" class="ident">SetDetails</a></label>(<label for="r29" class="ident">details</label> <a href="#line-36" class="ident">ErrorDetails</a>) {</code></span>
+<span class="codeline" id="line-150"><code>	<label for="r27" class="ident">v</label>.<a href="#line-80" class="ident">details</a> = <label for="r29" class="ident">details</label></code></span>
+<span class="codeline" id="line-151"><code>}</code></span>
+<span class="codeline" id="line-152"><code></code></span>
+<span class="codeline" id="line-153"><code><span class="comment">// Details returns details about the error</span></code></span>
+<span class="codeline" id="line-154"><code><span class="keyword">func</span> (<label for="r30" class="ident">v</label> *<a href="#line-74" class="ident">ResultErrorFields</a>) <label for="r31" class="ident"><a href="../../../../imp/github.com/xeipuuv/gojsonschema.ResultErrorFields.html#name-.Details" class="ident">Details</a></label>() <a href="#line-36" class="ident">ErrorDetails</a> {</code></span>
+<span class="codeline" id="line-155"><code>	<span class="keyword">return</span> <label for="r30" class="ident">v</label>.<a href="#line-80" class="ident">details</a></code></span>
+<span class="codeline" id="line-156"><code>}</code></span>
+<span class="codeline" id="line-157"><code></code></span>
+<span class="codeline" id="line-158"><code><span class="comment">// String returns a string representation of the error</span></code></span>
+<span class="codeline" id="line-159"><code><span class="keyword">func</span> (<label for="r32" class="ident">v</label> <a href="#line-74" class="ident">ResultErrorFields</a>) <label for="r33" class="ident"><a href="../../../../imp/github.com/xeipuuv/gojsonschema.ResultErrorFields.html#name-.String" class="ident">String</a></label>() <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a> {</code></span>
+<span class="codeline" id="line-160"><code>	<span class="comment">// as a fallback, the value is displayed go style</span></code></span>
+<span class="codeline" id="line-161"><code>	<label for="r34" class="ident">valueString</label> := <a href="../../../../pkg/fmt.html" class="ident i0">fmt</a>.<a href="../../../fmt/print.go.html#line-217" class="ident">Sprintf</a>(<span class="lit-string">"%v"</span>, <label for="r32" class="ident">v</label>.<a href="#line-79" class="ident">value</a>)</code></span>
+<span class="codeline" id="line-162"><code></code></span>
+<span class="codeline" id="line-163"><code>	<span class="comment">// marshal the go value value to json</span></code></span>
+<span class="codeline" id="line-164"><code>	<span class="keyword">if</span> <label for="r32" class="ident">v</label>.<a href="#line-79" class="ident">value</a> == <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-165"><code>		<label for="r34" class="ident">valueString</label> = <a href="types.go.html#line-34" class="ident">TYPE_NULL</a></code></span>
+<span class="codeline" id="line-166"><code>	} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-167"><code>		<span class="keyword">if</span> <label for="r35" class="ident">vs</label>, <label for="r36" class="ident">err</label> := <a href="utils.go.html#line-73" class="ident">marshalToJSONString</a>(<label for="r32" class="ident">v</label>.<a href="#line-79" class="ident">value</a>); <label for="r36" class="ident">err</label> == <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-168"><code>			<span class="keyword">if</span> <label for="r35" class="ident">vs</label> == <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-169"><code>				<label for="r34" class="ident">valueString</label> = <a href="types.go.html#line-34" class="ident">TYPE_NULL</a></code></span>
+<span class="codeline" id="line-170"><code>			} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-171"><code>				<label for="r34" class="ident">valueString</label> = *<label for="r35" class="ident">vs</label></code></span>
+<span class="codeline" id="line-172"><code>			}</code></span>
+<span class="codeline" id="line-173"><code>		}</code></span>
+<span class="codeline" id="line-174"><code>	}</code></span>
+<span class="codeline" id="line-175"><code></code></span>
+<span class="codeline" id="line-176"><code>	<span class="keyword">return</span> <a href="errors.go.html#line-332" class="ident">formatErrorDescription</a>(<a href="schema.go.html#line-42" class="ident">Locale</a>.<a href="locales.go.html#line-188" class="ident">ErrorFormat</a>(), <a href="#line-36" class="ident">ErrorDetails</a>{</code></span>
+<span class="codeline" id="line-177"><code>		<span class="lit-string">"context"</span>:     <label for="r32" class="ident">v</label>.<a href="#line-76" class="ident">context</a>.<a href="jsonContext.go^c0dff.html#line-43" class="ident">String</a>(),</code></span>
+<span class="codeline" id="line-178"><code>		<span class="lit-string">"description"</span>: <label for="r32" class="ident">v</label>.<a href="#line-77" class="ident">description</a>,</code></span>
+<span class="codeline" id="line-179"><code>		<span class="lit-string">"value"</span>:       <label for="r34" class="ident">valueString</label>,</code></span>
+<span class="codeline" id="line-180"><code>		<span class="lit-string">"field"</span>:       <label for="r32" class="ident">v</label>.<a href="#line-94" class="ident">Field</a>(),</code></span>
+<span class="codeline" id="line-181"><code>	})</code></span>
+<span class="codeline" id="line-182"><code>}</code></span>
+<span class="codeline" id="line-183"><code></code></span>
+<span class="codeline" id="line-184"><code><span class="comment">// Valid indicates if no errors were found</span></code></span>
+<span class="codeline" id="line-185"><code><span class="keyword">func</span> (<label for="r37" class="ident">v</label> *<a href="#line-84" class="ident">Result</a>) <label for="r38" class="ident">Valid</label>() <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-186"><code>	<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r37" class="ident">v</label>.<a href="#line-85" class="ident">errors</a>) == <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-187"><code>}</code></span>
+<span class="codeline" id="line-188"><code></code></span>
+<span class="codeline" id="line-189"><code><span class="comment">// Errors returns the errors that were found</span></code></span>
+<span class="codeline" id="line-190"><code><span class="keyword">func</span> (<label for="r39" class="ident">v</label> *<a href="#line-84" class="ident">Result</a>) <label for="r40" class="ident">Errors</label>() []<a href="#line-39" class="ident">ResultError</a> {</code></span>
+<span class="codeline" id="line-191"><code>	<span class="keyword">return</span> <label for="r39" class="ident">v</label>.<a href="#line-85" class="ident">errors</a></code></span>
+<span class="codeline" id="line-192"><code>}</code></span>
+<span class="codeline" id="line-193"><code></code></span>
+<span class="codeline" id="line-194"><code><span class="comment">// AddError appends a fully filled error to the error set</span></code></span>
+<span class="codeline" id="line-195"><code><span class="comment">// SetDescription() will be called with the result of the parsed err.DescriptionFormat()</span></code></span>
+<span class="codeline" id="line-196"><code><span class="keyword">func</span> (<label for="r41" class="ident">v</label> *<a href="#line-84" class="ident">Result</a>) <label for="r42" class="ident">AddError</label>(<label for="r43" class="ident">err</label> <a href="#line-39" class="ident">ResultError</a>, <label for="r44" class="ident">details</label> <a href="#line-36" class="ident">ErrorDetails</a>) {</code></span>
+<span class="codeline" id="line-197"><code>	<span class="keyword">if</span> <label for="r45" class="ident">_</label>, <label for="r46" class="ident">exists</label> := <label for="r44" class="ident">details</label>[<span class="lit-string">"context"</span>]; !<label for="r46" class="ident">exists</label> &amp;&amp; <label for="r43" class="ident">err</label>.<a href="#line-50" class="ident">Context</a>() != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-198"><code>		<label for="r44" class="ident">details</label>[<span class="lit-string">"context"</span>] = <label for="r43" class="ident">err</label>.<a href="#line-50" class="ident">Context</a>().<a href="jsonContext.go^c0dff.html#line-43" class="ident">String</a>()</code></span>
+<span class="codeline" id="line-199"><code>	}</code></span>
+<span class="codeline" id="line-200"><code></code></span>
+<span class="codeline" id="line-201"><code>	<label for="r43" class="ident">err</label>.<a href="#line-52" class="ident">SetDescription</a>(<a href="errors.go.html#line-332" class="ident">formatErrorDescription</a>(<label for="r43" class="ident">err</label>.<a href="#line-58" class="ident">DescriptionFormat</a>(), <label for="r44" class="ident">details</label>))</code></span>
+<span class="codeline" id="line-202"><code></code></span>
+<span class="codeline" id="line-203"><code>	<label for="r41" class="ident">v</label>.<a href="#line-85" class="ident">errors</a> = <a href="../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r41" class="ident">v</label>.<a href="#line-85" class="ident">errors</a>, <label for="r43" class="ident">err</label>)</code></span>
+<span class="codeline" id="line-204"><code>}</code></span>
+<span class="codeline" id="line-205"><code></code></span>
+<span class="codeline" id="line-206"><code><span class="keyword">func</span> (<label for="r47" class="ident">v</label> *<a href="#line-84" class="ident">Result</a>) <label for="r48" class="ident">addInternalError</label>(<label for="r49" class="ident">err</label> <a href="#line-39" class="ident">ResultError</a>, <label for="r50" class="ident">context</label> *<a href="jsonContext.go^c0dff.html#line-30" class="ident">JsonContext</a>, <label for="r51" class="ident">value</label> <span class="keyword">interface</span>{}, <label for="r52" class="ident">details</label> <a href="#line-36" class="ident">ErrorDetails</a>) {</code></span>
+<span class="codeline" id="line-207"><code>	<a href="errors.go.html#line-213" class="ident">newError</a>(<label for="r49" class="ident">err</label>, <label for="r50" class="ident">context</label>, <label for="r51" class="ident">value</label>, <a href="schema.go.html#line-42" class="ident">Locale</a>, <label for="r52" class="ident">details</label>)</code></span>
+<span class="codeline" id="line-208"><code>	<label for="r47" class="ident">v</label>.<a href="#line-85" class="ident">errors</a> = <a href="../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r47" class="ident">v</label>.<a href="#line-85" class="ident">errors</a>, <label for="r49" class="ident">err</label>)</code></span>
+<span class="codeline" id="line-209"><code>	<label for="r47" class="ident">v</label>.<a href="#line-88" class="ident">score</a> -= <span class="lit-number">2</span> <span class="comment">// results in a net -1 when added to the +1 we get at the end of the validation function</span></code></span>
+<span class="codeline" id="line-210"><code>}</code></span>
+<span class="codeline" id="line-211"><code></code></span>
+<span class="codeline" id="line-212"><code><span class="comment">// Used to copy errors from a sub-schema to the main one</span></code></span>
+<span class="codeline" id="line-213"><code><span class="keyword">func</span> (<label for="r53" class="ident">v</label> *<a href="#line-84" class="ident">Result</a>) <label for="r54" class="ident">mergeErrors</label>(<label for="r55" class="ident">otherResult</label> *<a href="#line-84" class="ident">Result</a>) {</code></span>
+<span class="codeline" id="line-214"><code>	<label for="r53" class="ident">v</label>.<a href="#line-85" class="ident">errors</a> = <a href="../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r53" class="ident">v</label>.<a href="#line-85" class="ident">errors</a>, <label for="r55" class="ident">otherResult</label>.<a href="#line-190" class="ident">Errors</a>()...)</code></span>
+<span class="codeline" id="line-215"><code>	<label for="r53" class="ident">v</label>.<a href="#line-88" class="ident">score</a> += <label for="r55" class="ident">otherResult</label>.<a href="#line-88" class="ident">score</a></code></span>
+<span class="codeline" id="line-216"><code>}</code></span>
+<span class="codeline" id="line-217"><code></code></span>
+<span class="codeline" id="line-218"><code><span class="keyword">func</span> (<label for="r56" class="ident">v</label> *<a href="#line-84" class="ident">Result</a>) <label for="r57" class="ident">incrementScore</label>() {</code></span>
+<span class="codeline" id="line-219"><code>	<label for="r56" class="ident">v</label>.<a href="#line-88" class="ident">score</a>++</code></span>
+<span class="codeline" id="line-220"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Method Implmentations: github.com/json-iterator/go.Any</title>
+<link href="../../../css/light-v0.3.6.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.3.6.js"></script>
+<body onload="onPageLoad()"><div>
+<pre><code><span style="font-size:x-large;">type <a href="../../../pkg/github.com/json-iterator/go.html">github.com/json-iterator/go</a>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-15">Any</a></b></span><span style="font-size:large;"> <b><i>(interface)</i></b></span>
+
+<code><span class="title">Method Implmentations<span class="title-stat"><i></i></span></span>
+
+<div class="anchor" id="name-Get">	<a href="../../../src/github.com/json-iterator/go/any.go.html#line-30">Get</a>(path ...interface{}) <a href="../../../pkg/github.com/json-iterator/go.html#name-Any">Any</a>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-arrayAny">arrayAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_array.go.html#line-241">Get</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-arrayLazyAny">arrayLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_array.go.html#line-99">Get</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-falseAny">falseAny</a>).<i><a href="../../../src/github.com/json-iterator/go/any_bool.go.html#line-4">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-39">Get</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-floatAny">floatAny</a>).<i><a href="../../../src/github.com/json-iterator/go/any_float.go.html#line-8">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-39">Get</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-int32Any">int32Any</a>).<i><a href="../../../src/github.com/json-iterator/go/any_int32.go.html#line-8">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-39">Get</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-int64Any">int64Any</a>).<i><a href="../../../src/github.com/json-iterator/go/any_int64.go.html#line-8">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-39">Get</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-invalidAny">invalidAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_invalid.go.html#line-69">Get</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-mapAny">mapAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-328">Get</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-nilAny">nilAny</a>).<i><a href="../../../src/github.com/json-iterator/go/any_bool.go.html#line-4">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-39">Get</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-numberLazyAny">numberLazyAny</a>).<i><a href="../../../src/github.com/json-iterator/go/any_array.go.html#line-9">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-39">Get</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-objectAny">objectAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-209">Get</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-objectLazyAny">objectLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-73">Get</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-stringAny">stringAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_str.go.html#line-13">Get</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-trueAny">trueAny</a>).<i><a href="../../../src/github.com/json-iterator/go/any_bool.go.html#line-4">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-39">Get</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-uint32Any">uint32Any</a>).<i><a href="../../../src/github.com/json-iterator/go/any_uint32.go.html#line-8">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-39">Get</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-uint64Any">uint64Any</a>).<i><a href="../../../src/github.com/json-iterator/go/any_uint64.go.html#line-8">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-39">Get</a></b></div>
+<div class="anchor" id="name-GetInterface">	<a href="../../../src/github.com/json-iterator/go/any.go.html#line-33">GetInterface</a>() interface{}
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-arrayAny">arrayAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_array.go.html#line-276">GetInterface</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-arrayLazyAny">arrayLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_array.go.html#line-149">GetInterface</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-falseAny">falseAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_bool.go.html#line-127">GetInterface</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-floatAny">floatAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_float.go.html#line-81">GetInterface</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-int32Any">int32Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_int32.go.html#line-72">GetInterface</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-int64Any">int64Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_int64.go.html#line-72">GetInterface</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-invalidAny">invalidAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_invalid.go.html#line-80">GetInterface</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-mapAny">mapAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-372">GetInterface</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-nilAny">nilAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_nil.go.html#line-67">GetInterface</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-numberLazyAny">numberLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_number.go.html#line-119">GetInterface</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-objectAny">objectAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-256">GetInterface</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-objectLazyAny">objectLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-135">GetInterface</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-stringAny">stringAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_str.go.html#line-164">GetInterface</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-trueAny">trueAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_bool.go.html#line-59">GetInterface</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-uint32Any">uint32Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_uint32.go.html#line-72">GetInterface</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-uint64Any">uint64Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_uint64.go.html#line-72">GetInterface</a></b></div>
+<div class="anchor" id="name-Keys">	<a href="../../../src/github.com/json-iterator/go/any.go.html#line-32">Keys</a>() []<a href="../../../pkg/builtin.html#name-string">string</a>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-arrayAny">arrayAny</a>).<i><a href="../../../src/github.com/json-iterator/go/any_array.go.html#line-156">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-47">Keys</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-arrayLazyAny">arrayLazyAny</a>).<i><a href="../../../src/github.com/json-iterator/go/any_array.go.html#line-9">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-47">Keys</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-falseAny">falseAny</a>).<i><a href="../../../src/github.com/json-iterator/go/any_bool.go.html#line-4">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-47">Keys</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-floatAny">floatAny</a>).<i><a href="../../../src/github.com/json-iterator/go/any_float.go.html#line-8">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-47">Keys</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-int32Any">int32Any</a>).<i><a href="../../../src/github.com/json-iterator/go/any_int32.go.html#line-8">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-47">Keys</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-int64Any">int64Any</a>).<i><a href="../../../src/github.com/json-iterator/go/any_int64.go.html#line-8">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-47">Keys</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-invalidAny">invalidAny</a>).<i><a href="../../../src/github.com/json-iterator/go/any_invalid.go.html#line-6">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-47">Keys</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-mapAny">mapAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-356">Keys</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-nilAny">nilAny</a>).<i><a href="../../../src/github.com/json-iterator/go/any_bool.go.html#line-4">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-47">Keys</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-numberLazyAny">numberLazyAny</a>).<i><a href="../../../src/github.com/json-iterator/go/any_array.go.html#line-9">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-47">Keys</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-objectAny">objectAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-240">Keys</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-objectLazyAny">objectLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-107">Keys</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-stringAny">stringAny</a>).<i><a href="../../../src/github.com/json-iterator/go/any_str.go.html#line-9">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-47">Keys</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-trueAny">trueAny</a>).<i><a href="../../../src/github.com/json-iterator/go/any_bool.go.html#line-4">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-47">Keys</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-uint32Any">uint32Any</a>).<i><a href="../../../src/github.com/json-iterator/go/any_uint32.go.html#line-8">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-47">Keys</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-uint64Any">uint64Any</a>).<i><a href="../../../src/github.com/json-iterator/go/any_uint64.go.html#line-8">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-47">Keys</a></b></div>
+<div class="anchor" id="name-LastError">	<a href="../../../src/github.com/json-iterator/go/any.go.html#line-16">LastError</a>() <a href="../../../pkg/builtin.html#name-error">error</a>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-arrayAny">arrayAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_array.go.html#line-172">LastError</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-arrayLazyAny">arrayLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_array.go.html#line-23">LastError</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-falseAny">falseAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_bool.go.html#line-75">LastError</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-floatAny">floatAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_float.go.html#line-24">LastError</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-int32Any">int32Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_int32.go.html#line-12">LastError</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-int64Any">int64Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_int64.go.html#line-12">LastError</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-invalidAny">invalidAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_invalid.go.html#line-14">LastError</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-mapAny">mapAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-282">LastError</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-nilAny">nilAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_nil.go.html#line-7">LastError</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-numberLazyAny">numberLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_number.go.html#line-23">LastError</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-objectAny">objectAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-163">LastError</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-objectLazyAny">objectLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-23">LastError</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-stringAny">stringAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_str.go.html#line-32">LastError</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-trueAny">trueAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_bool.go.html#line-7">LastError</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-uint32Any">uint32Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_uint32.go.html#line-12">LastError</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-uint64Any">uint64Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_uint64.go.html#line-12">LastError</a></b></div>
+<div class="anchor" id="name-MustBeValid">	<a href="../../../src/github.com/json-iterator/go/any.go.html#line-18">MustBeValid</a>() <a href="../../../pkg/github.com/json-iterator/go.html#name-Any">Any</a>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-arrayAny">arrayAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_array.go.html#line-168">MustBeValid</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-arrayLazyAny">arrayLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_array.go.html#line-19">MustBeValid</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-falseAny">falseAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_bool.go.html#line-135">MustBeValid</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-floatAny">floatAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_float.go.html#line-20">MustBeValid</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-int32Any">int32Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_int32.go.html#line-20">MustBeValid</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-int64Any">int64Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_int64.go.html#line-20">MustBeValid</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-invalidAny">invalidAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_invalid.go.html#line-22">MustBeValid</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-mapAny">mapAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-274">MustBeValid</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-nilAny">nilAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_nil.go.html#line-15">MustBeValid</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-numberLazyAny">numberLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_number.go.html#line-19">MustBeValid</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-objectAny">objectAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-155">MustBeValid</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-objectLazyAny">objectLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-19">MustBeValid</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-stringAny">stringAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_str.go.html#line-28">MustBeValid</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-trueAny">trueAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_bool.go.html#line-67">MustBeValid</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-uint32Any">uint32Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_uint32.go.html#line-20">MustBeValid</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-uint64Any">uint64Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_uint64.go.html#line-20">MustBeValid</a></b></div>
+<div class="anchor" id="name-Size">	<a href="../../../src/github.com/json-iterator/go/any.go.html#line-31">Size</a>() <a href="../../../pkg/builtin.html#name-int">int</a>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-arrayAny">arrayAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_array.go.html#line-268">Size</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-arrayLazyAny">arrayLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_array.go.html#line-133">Size</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-falseAny">falseAny</a>).<i><a href="../../../src/github.com/json-iterator/go/any_bool.go.html#line-4">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-43">Size</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-floatAny">floatAny</a>).<i><a href="../../../src/github.com/json-iterator/go/any_float.go.html#line-8">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-43">Size</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-int32Any">int32Any</a>).<i><a href="../../../src/github.com/json-iterator/go/any_int32.go.html#line-8">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-43">Size</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-int64Any">int64Any</a>).<i><a href="../../../src/github.com/json-iterator/go/any_int64.go.html#line-8">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-43">Size</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-invalidAny">invalidAny</a>).<i><a href="../../../src/github.com/json-iterator/go/any_invalid.go.html#line-6">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-43">Size</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-mapAny">mapAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-364">Size</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-nilAny">nilAny</a>).<i><a href="../../../src/github.com/json-iterator/go/any_bool.go.html#line-4">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-43">Size</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-numberLazyAny">numberLazyAny</a>).<i><a href="../../../src/github.com/json-iterator/go/any_array.go.html#line-9">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-43">Size</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-objectAny">objectAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-248">Size</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-objectLazyAny">objectLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-119">Size</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-stringAny">stringAny</a>).<i><a href="../../../src/github.com/json-iterator/go/any_str.go.html#line-9">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-43">Size</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-trueAny">trueAny</a>).<i><a href="../../../src/github.com/json-iterator/go/any_bool.go.html#line-4">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-43">Size</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-uint32Any">uint32Any</a>).<i><a href="../../../src/github.com/json-iterator/go/any_uint32.go.html#line-8">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-43">Size</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-uint64Any">uint64Any</a>).<i><a href="../../../src/github.com/json-iterator/go/any_uint64.go.html#line-8">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-43">Size</a></b></div>
+<div class="anchor" id="name-ToBool">	<a href="../../../src/github.com/json-iterator/go/any.go.html#line-19">ToBool</a>() <a href="../../../pkg/builtin.html#name-bool">bool</a>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-arrayAny">arrayAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_array.go.html#line-176">ToBool</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-arrayLazyAny">arrayLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_array.go.html#line-27">ToBool</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-falseAny">falseAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_bool.go.html#line-79">ToBool</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-floatAny">floatAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_float.go.html#line-28">ToBool</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-int32Any">int32Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_int32.go.html#line-24">ToBool</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-int64Any">int64Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_int64.go.html#line-24">ToBool</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-invalidAny">invalidAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_invalid.go.html#line-26">ToBool</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-mapAny">mapAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-286">ToBool</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-nilAny">nilAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_nil.go.html#line-19">ToBool</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-numberLazyAny">numberLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_number.go.html#line-27">ToBool</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-objectAny">objectAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-167">ToBool</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-objectLazyAny">objectLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-27">ToBool</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-stringAny">stringAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_str.go.html#line-36">ToBool</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-trueAny">trueAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_bool.go.html#line-11">ToBool</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-uint32Any">uint32Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_uint32.go.html#line-24">ToBool</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-uint64Any">uint64Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_uint64.go.html#line-24">ToBool</a></b></div>
+<div class="anchor" id="name-ToFloat32">	<a href="../../../src/github.com/json-iterator/go/any.go.html#line-26">ToFloat32</a>() <a href="../../../pkg/builtin.html#name-float32">float32</a>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-arrayAny">arrayAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_array.go.html#line-222">ToFloat32</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-arrayLazyAny">arrayLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_array.go.html#line-75">ToFloat32</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-falseAny">falseAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_bool.go.html#line-107">ToFloat32</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-floatAny">floatAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_float.go.html#line-65">ToFloat32</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-int32Any">int32Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_int32.go.html#line-52">ToFloat32</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-int64Any">int64Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_int64.go.html#line-52">ToFloat32</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-invalidAny">invalidAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_invalid.go.html#line-54">ToFloat32</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-mapAny">mapAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-314">ToFloat32</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-nilAny">nilAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_nil.go.html#line-47">ToFloat32</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-numberLazyAny">numberLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_number.go.html#line-91">ToFloat32</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-objectAny">objectAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-195">ToFloat32</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-objectLazyAny">objectLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-55">ToFloat32</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-stringAny">stringAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_str.go.html#line-121">ToFloat32</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-trueAny">trueAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_bool.go.html#line-39">ToFloat32</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-uint32Any">uint32Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_uint32.go.html#line-52">ToFloat32</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-uint64Any">uint64Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_uint64.go.html#line-52">ToFloat32</a></b></div>
+<div class="anchor" id="name-ToFloat64">	<a href="../../../src/github.com/json-iterator/go/any.go.html#line-27">ToFloat64</a>() <a href="../../../pkg/builtin.html#name-float64">float64</a>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-arrayAny">arrayAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_array.go.html#line-229">ToFloat64</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-arrayLazyAny">arrayLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_array.go.html#line-82">ToFloat64</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-falseAny">falseAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_bool.go.html#line-111">ToFloat64</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-floatAny">floatAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_float.go.html#line-69">ToFloat64</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-int32Any">int32Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_int32.go.html#line-56">ToFloat64</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-int64Any">int64Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_int64.go.html#line-56">ToFloat64</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-invalidAny">invalidAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_invalid.go.html#line-58">ToFloat64</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-mapAny">mapAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-318">ToFloat64</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-nilAny">nilAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_nil.go.html#line-51">ToFloat64</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-numberLazyAny">numberLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_number.go.html#line-101">ToFloat64</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-objectAny">objectAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-199">ToFloat64</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-objectLazyAny">objectLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-59">ToFloat64</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-stringAny">stringAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_str.go.html#line-125">ToFloat64</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-trueAny">trueAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_bool.go.html#line-43">ToFloat64</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-uint32Any">uint32Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_uint32.go.html#line-56">ToFloat64</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-uint64Any">uint64Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_uint64.go.html#line-56">ToFloat64</a></b></div>
+<div class="anchor" id="name-ToInt">	<a href="../../../src/github.com/json-iterator/go/any.go.html#line-20">ToInt</a>() <a href="../../../pkg/builtin.html#name-int">int</a>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-arrayAny">arrayAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_array.go.html#line-180">ToInt</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-arrayLazyAny">arrayLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_array.go.html#line-33">ToInt</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-falseAny">falseAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_bool.go.html#line-83">ToInt</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-floatAny">floatAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_float.go.html#line-32">ToInt</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-int32Any">int32Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_int32.go.html#line-28">ToInt</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-int64Any">int64Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_int64.go.html#line-28">ToInt</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-invalidAny">invalidAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_invalid.go.html#line-30">ToInt</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-mapAny">mapAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-290">ToInt</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-nilAny">nilAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_nil.go.html#line-23">ToInt</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-numberLazyAny">numberLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_number.go.html#line-31">ToInt</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-objectAny">objectAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-171">ToInt</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-objectLazyAny">objectLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-31">ToInt</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-stringAny">stringAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_str.go.html#line-51">ToInt</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-trueAny">trueAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_bool.go.html#line-15">ToInt</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-uint32Any">uint32Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_uint32.go.html#line-28">ToInt</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-uint64Any">uint64Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_uint64.go.html#line-28">ToInt</a></b></div>
+<div class="anchor" id="name-ToInt32">	<a href="../../../src/github.com/json-iterator/go/any.go.html#line-21">ToInt32</a>() <a href="../../../pkg/builtin.html#name-int32">int32</a>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-arrayAny">arrayAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_array.go.html#line-187">ToInt32</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-arrayLazyAny">arrayLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_array.go.html#line-40">ToInt32</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-falseAny">falseAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_bool.go.html#line-87">ToInt32</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-floatAny">floatAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_float.go.html#line-36">ToInt32</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-int32Any">int32Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_int32.go.html#line-32">ToInt32</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-int64Any">int64Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_int64.go.html#line-32">ToInt32</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-invalidAny">invalidAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_invalid.go.html#line-34">ToInt32</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-mapAny">mapAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-294">ToInt32</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-nilAny">nilAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_nil.go.html#line-27">ToInt32</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-numberLazyAny">numberLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_number.go.html#line-41">ToInt32</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-objectAny">objectAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-175">ToInt32</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-objectLazyAny">objectLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-35">ToInt32</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-stringAny">stringAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_str.go.html#line-56">ToInt32</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-trueAny">trueAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_bool.go.html#line-19">ToInt32</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-uint32Any">uint32Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_uint32.go.html#line-32">ToInt32</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-uint64Any">uint64Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_uint64.go.html#line-32">ToInt32</a></b></div>
+<div class="anchor" id="name-ToInt64">	<a href="../../../src/github.com/json-iterator/go/any.go.html#line-22">ToInt64</a>() <a href="../../../pkg/builtin.html#name-int64">int64</a>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-arrayAny">arrayAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_array.go.html#line-194">ToInt64</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-arrayLazyAny">arrayLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_array.go.html#line-47">ToInt64</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-falseAny">falseAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_bool.go.html#line-91">ToInt64</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-floatAny">floatAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_float.go.html#line-40">ToInt64</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-int32Any">int32Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_int32.go.html#line-36">ToInt64</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-int64Any">int64Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_int64.go.html#line-36">ToInt64</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-invalidAny">invalidAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_invalid.go.html#line-38">ToInt64</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-mapAny">mapAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-298">ToInt64</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-nilAny">nilAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_nil.go.html#line-31">ToInt64</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-numberLazyAny">numberLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_number.go.html#line-51">ToInt64</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-objectAny">objectAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-179">ToInt64</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-objectLazyAny">objectLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-39">ToInt64</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-stringAny">stringAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_str.go.html#line-60">ToInt64</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-trueAny">trueAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_bool.go.html#line-23">ToInt64</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-uint32Any">uint32Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_uint32.go.html#line-36">ToInt64</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-uint64Any">uint64Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_uint64.go.html#line-36">ToInt64</a></b></div>
+<div class="anchor" id="name-ToString">	<a href="../../../src/github.com/json-iterator/go/any.go.html#line-28">ToString</a>() <a href="../../../pkg/builtin.html#name-string">string</a>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-arrayAny">arrayAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_array.go.html#line-236">ToString</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-arrayLazyAny">arrayLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_array.go.html#line-89">ToString</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-falseAny">falseAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_bool.go.html#line-115">ToString</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-floatAny">floatAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_float.go.html#line-73">ToString</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-int32Any">int32Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_int32.go.html#line-60">ToString</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-int64Any">int64Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_int64.go.html#line-60">ToString</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-invalidAny">invalidAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_invalid.go.html#line-62">ToString</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-mapAny">mapAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-322">ToString</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-nilAny">nilAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_nil.go.html#line-55">ToString</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-numberLazyAny">numberLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_number.go.html#line-111">ToString</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-objectAny">objectAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-203">ToString</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-objectLazyAny">objectLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-63">ToString</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-stringAny">stringAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_str.go.html#line-156">ToString</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-trueAny">trueAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_bool.go.html#line-47">ToString</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-uint32Any">uint32Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_uint32.go.html#line-60">ToString</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-uint64Any">uint64Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_uint64.go.html#line-60">ToString</a></b></div>
+<div class="anchor" id="name-ToUint">	<a href="../../../src/github.com/json-iterator/go/any.go.html#line-23">ToUint</a>() <a href="../../../pkg/builtin.html#name-uint">uint</a>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-arrayAny">arrayAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_array.go.html#line-201">ToUint</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-arrayLazyAny">arrayLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_array.go.html#line-54">ToUint</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-falseAny">falseAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_bool.go.html#line-95">ToUint</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-floatAny">floatAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_float.go.html#line-44">ToUint</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-int32Any">int32Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_int32.go.html#line-40">ToUint</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-int64Any">int64Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_int64.go.html#line-40">ToUint</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-invalidAny">invalidAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_invalid.go.html#line-42">ToUint</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-mapAny">mapAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-302">ToUint</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-nilAny">nilAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_nil.go.html#line-35">ToUint</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-numberLazyAny">numberLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_number.go.html#line-61">ToUint</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-objectAny">objectAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-183">ToUint</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-objectLazyAny">objectLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-43">ToUint</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-stringAny">stringAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_str.go.html#line-87">ToUint</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-trueAny">trueAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_bool.go.html#line-27">ToUint</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-uint32Any">uint32Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_uint32.go.html#line-40">ToUint</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-uint64Any">uint64Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_uint64.go.html#line-40">ToUint</a></b></div>
+<div class="anchor" id="name-ToUint32">	<a href="../../../src/github.com/json-iterator/go/any.go.html#line-24">ToUint32</a>() <a href="../../../pkg/builtin.html#name-uint32">uint32</a>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-arrayAny">arrayAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_array.go.html#line-208">ToUint32</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-arrayLazyAny">arrayLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_array.go.html#line-61">ToUint32</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-falseAny">falseAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_bool.go.html#line-99">ToUint32</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-floatAny">floatAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_float.go.html#line-51">ToUint32</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-int32Any">int32Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_int32.go.html#line-44">ToUint32</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-int64Any">int64Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_int64.go.html#line-44">ToUint32</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-invalidAny">invalidAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_invalid.go.html#line-46">ToUint32</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-mapAny">mapAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-306">ToUint32</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-nilAny">nilAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_nil.go.html#line-39">ToUint32</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-numberLazyAny">numberLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_number.go.html#line-71">ToUint32</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-objectAny">objectAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-187">ToUint32</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-objectLazyAny">objectLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-47">ToUint32</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-stringAny">stringAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_str.go.html#line-91">ToUint32</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-trueAny">trueAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_bool.go.html#line-31">ToUint32</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-uint32Any">uint32Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_uint32.go.html#line-44">ToUint32</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-uint64Any">uint64Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_uint64.go.html#line-44">ToUint32</a></b></div>
+<div class="anchor" id="name-ToUint64">	<a href="../../../src/github.com/json-iterator/go/any.go.html#line-25">ToUint64</a>() <a href="../../../pkg/builtin.html#name-uint64">uint64</a>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-arrayAny">arrayAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_array.go.html#line-215">ToUint64</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-arrayLazyAny">arrayLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_array.go.html#line-68">ToUint64</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-falseAny">falseAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_bool.go.html#line-103">ToUint64</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-floatAny">floatAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_float.go.html#line-58">ToUint64</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-int32Any">int32Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_int32.go.html#line-48">ToUint64</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-int64Any">int64Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_int64.go.html#line-48">ToUint64</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-invalidAny">invalidAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_invalid.go.html#line-50">ToUint64</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-mapAny">mapAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-310">ToUint64</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-nilAny">nilAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_nil.go.html#line-43">ToUint64</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-numberLazyAny">numberLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_number.go.html#line-81">ToUint64</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-objectAny">objectAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-191">ToUint64</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-objectLazyAny">objectLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-51">ToUint64</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-stringAny">stringAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_str.go.html#line-95">ToUint64</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-trueAny">trueAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_bool.go.html#line-35">ToUint64</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-uint32Any">uint32Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_uint32.go.html#line-48">ToUint64</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-uint64Any">uint64Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_uint64.go.html#line-48">ToUint64</a></b></div>
+<div class="anchor" id="name-ToVal">	<a href="../../../src/github.com/json-iterator/go/any.go.html#line-29">ToVal</a>(val interface{})
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-arrayAny">arrayAny</a>).<i><a href="../../../src/github.com/json-iterator/go/any_array.go.html#line-156">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-51">ToVal</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-arrayLazyAny">arrayLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_array.go.html#line-93">ToVal</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-falseAny">falseAny</a>).<i><a href="../../../src/github.com/json-iterator/go/any_bool.go.html#line-4">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-51">ToVal</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-floatAny">floatAny</a>).<i><a href="../../../src/github.com/json-iterator/go/any_float.go.html#line-8">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-51">ToVal</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-int32Any">int32Any</a>).<i><a href="../../../src/github.com/json-iterator/go/any_int32.go.html#line-8">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-51">ToVal</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-int64Any">int64Any</a>).<i><a href="../../../src/github.com/json-iterator/go/any_int64.go.html#line-8">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-51">ToVal</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-invalidAny">invalidAny</a>).<i><a href="../../../src/github.com/json-iterator/go/any_invalid.go.html#line-6">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-51">ToVal</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-mapAny">mapAny</a>).<i><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-142">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-51">ToVal</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-nilAny">nilAny</a>).<i><a href="../../../src/github.com/json-iterator/go/any_bool.go.html#line-4">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-51">ToVal</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-numberLazyAny">numberLazyAny</a>).<i><a href="../../../src/github.com/json-iterator/go/any_array.go.html#line-9">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-51">ToVal</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-objectAny">objectAny</a>).<i><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-142">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-51">ToVal</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-objectLazyAny">objectLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-67">ToVal</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-stringAny">stringAny</a>).<i><a href="../../../src/github.com/json-iterator/go/any_str.go.html#line-9">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-51">ToVal</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-trueAny">trueAny</a>).<i><a href="../../../src/github.com/json-iterator/go/any_bool.go.html#line-4">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-51">ToVal</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-uint32Any">uint32Any</a>).<i><a href="../../../src/github.com/json-iterator/go/any_uint32.go.html#line-8">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-51">ToVal</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-uint64Any">uint64Any</a>).<i><a href="../../../src/github.com/json-iterator/go/any_uint64.go.html#line-8">baseAny</a></i>.<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-51">ToVal</a></b></div>
+<div class="anchor" id="name-ValueType">	<a href="../../../src/github.com/json-iterator/go/any.go.html#line-17">ValueType</a>() <a href="../../../pkg/github.com/json-iterator/go.html#name-ValueType">ValueType</a>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-arrayAny">arrayAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_array.go.html#line-164">ValueType</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-arrayLazyAny">arrayLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_array.go.html#line-15">ValueType</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-falseAny">falseAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_bool.go.html#line-131">ValueType</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-floatAny">floatAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_float.go.html#line-16">ValueType</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-int32Any">int32Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_int32.go.html#line-16">ValueType</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-int64Any">int64Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_int64.go.html#line-16">ValueType</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-invalidAny">invalidAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_invalid.go.html#line-18">ValueType</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-mapAny">mapAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-270">ValueType</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-nilAny">nilAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_nil.go.html#line-11">ValueType</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-numberLazyAny">numberLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_number.go.html#line-15">ValueType</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-objectAny">objectAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-151">ValueType</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-objectLazyAny">objectLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-15">ValueType</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-stringAny">stringAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_str.go.html#line-24">ValueType</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-trueAny">trueAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_bool.go.html#line-63">ValueType</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-uint32Any">uint32Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_uint32.go.html#line-16">ValueType</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-uint64Any">uint64Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_uint64.go.html#line-16">ValueType</a></b></div>
+<div class="anchor" id="name-WriteTo">	<a href="../../../src/github.com/json-iterator/go/any.go.html#line-34">WriteTo</a>(stream *<a href="../../../pkg/github.com/json-iterator/go.html#name-Stream">Stream</a>)
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-arrayAny">arrayAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_array.go.html#line-272">WriteTo</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-arrayLazyAny">arrayLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_array.go.html#line-145">WriteTo</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-falseAny">falseAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_bool.go.html#line-119">WriteTo</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-floatAny">floatAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_float.go.html#line-77">WriteTo</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-int32Any">int32Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_int32.go.html#line-64">WriteTo</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-int64Any">int64Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_int64.go.html#line-64">WriteTo</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-invalidAny">invalidAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_invalid.go.html#line-66">WriteTo</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-mapAny">mapAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-368">WriteTo</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-nilAny">nilAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_nil.go.html#line-59">WriteTo</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-numberLazyAny">numberLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_number.go.html#line-115">WriteTo</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-objectAny">objectAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-252">WriteTo</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-objectLazyAny">objectLazyAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_object.go.html#line-131">WriteTo</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-stringAny">stringAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_str.go.html#line-160">WriteTo</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-trueAny">trueAny</a>).<b><a href="../../../src/github.com/json-iterator/go/any_bool.go.html#line-51">WriteTo</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-uint32Any">uint32Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_uint32.go.html#line-64">WriteTo</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-uint64Any">uint64Any</a>).<b><a href="../../../src/github.com/json-iterator/go/any_uint64.go.html#line-64">WriteTo</a></b></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

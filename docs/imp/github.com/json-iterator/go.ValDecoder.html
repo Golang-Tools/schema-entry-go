@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Method Implmentations: github.com/json-iterator/go.ValDecoder</title>
+<link href="../../../css/light-v0.3.6.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.3.6.js"></script>
+<body onload="onPageLoad()"><div>
+<pre><code><span style="font-size:x-large;">type <a href="../../../pkg/github.com/json-iterator/go.html">github.com/json-iterator/go</a>.<b><a href="../../../src/github.com/json-iterator/go/reflect.go.html#line-21">ValDecoder</a></b></span><span style="font-size:large;"> <b><i>(interface)</i></b></span>
+
+<code><span class="title">Method Implmentations<span class="title-stat"><i></i></span></span>
+
+<div class="anchor" id="name-Decode">	<a href="../../../src/github.com/json-iterator/go/reflect.go.html#line-22">Decode</a>(ptr <a href="../../../pkg/unsafe.html">unsafe</a>.<a href="../../../pkg/unsafe.html#name-Pointer">Pointer</a>, iter *<a href="../../../pkg/github.com/json-iterator/go.html#name-Iterator">Iterator</a>)
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-OptionalDecoder">OptionalDecoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_optional.go.html#line-28">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-anyCodec">anyCodec</a>).<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-290">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-arrayDecoder">arrayDecoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_array.go.html#line-64">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-base64Codec">base64Codec</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_native.go.html#line-413">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-boolCodec">boolCodec</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_native.go.html#line-394">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-dereferenceDecoder">dereferenceDecoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_optional.go.html#line-50">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-directAnyCodec">directAnyCodec</a>).<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-309">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-efaceDecoder">efaceDecoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_dynamic.go.html#line-25">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-eightFieldsStructDecoder">eightFieldsStructDecoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_struct_decoder.go.html#line-881">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-fiveFieldsStructDecoder">fiveFieldsStructDecoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_struct_decoder.go.html#line-725">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-float32Codec">float32Codec</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_native.go.html#line-360">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-float64Codec">float64Codec</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_native.go.html#line-377">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-fourFieldsStructDecoder">fourFieldsStructDecoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_struct_decoder.go.html#line-681">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-funcDecoder">funcDecoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_extension.go.html#line-172">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-generalStructDecoder">generalStructDecoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_struct_decoder.go.html#line-499">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-ifaceDecoder">ifaceDecoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_dynamic.go.html#line-59">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-int16Codec">int16Codec</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_native.go.html#line-241">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-int32Codec">int32Codec</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_native.go.html#line-258">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-int64Codec">int64Codec</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_native.go.html#line-275">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-int8Codec">int8Codec</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_native.go.html#line-224">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-jsoniterNumberCodec">jsoniterNumberCodec</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_json_number.go.html#line-89">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-jsoniterRawMessageCodec">jsoniterRawMessageCodec</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_json_raw_message.go.html#line-58">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-jsonNumberCodec">jsonNumberCodec</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_json_number.go.html#line-61">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-jsonRawMessageCodec">jsonRawMessageCodec</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_json_raw_message.go.html#line-35">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-lazyErrorDecoder">lazyErrorDecoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect.go.html#line-293">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-mapDecoder">mapDecoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_map.go.html#line-150">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-nineFieldsStructDecoder">nineFieldsStructDecoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_struct_decoder.go.html#line-941">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-numericMapKeyDecoder">numericMapKeyDecoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_map.go.html#line-202">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-oneFieldStructDecoder">oneFieldStructDecoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_struct_decoder.go.html#line-574">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-placeholderDecoder">placeholderDecoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect.go.html#line-323">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-referenceDecoder">referenceDecoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_optional.go.html#line-127">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-sevenFieldsStructDecoder">sevenFieldsStructDecoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_struct_decoder.go.html#line-825">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-sixFieldsStructDecoder">sixFieldsStructDecoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_struct_decoder.go.html#line-773">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-skipObjectDecoder">skipObjectDecoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_struct_decoder.go.html#line-559">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-sliceDecoder">sliceDecoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_slice.go.html#line-59">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-stringCodec">stringCodec</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_native.go.html#line-208">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-stringModeNumberDecoder">stringModeNumberDecoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_struct_decoder.go.html#line-1077">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-stringModeStringDecoder">stringModeStringDecoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_struct_decoder.go.html#line-1065">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-structFieldDecoder">structFieldDecoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_struct_decoder.go.html#line-1052">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-tenFieldsStructDecoder">tenFieldsStructDecoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_struct_decoder.go.html#line-1005">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-textUnmarshalerDecoder">textUnmarshalerDecoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_marshaler.go.html#line-209">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-threeFieldsStructDecoder">threeFieldsStructDecoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_struct_decoder.go.html#line-641">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-twoFieldsStructDecoder">twoFieldsStructDecoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_struct_decoder.go.html#line-605">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-uint16Codec">uint16Codec</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_native.go.html#line-309">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-uint32Codec">uint32Codec</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_native.go.html#line-326">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-uint64Codec">uint64Codec</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_native.go.html#line-343">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-uint8Codec">uint8Codec</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_native.go.html#line-292">Decode</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-unmarshalerDecoder">unmarshalerDecoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_marshaler.go.html#line-192">Decode</a></b></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

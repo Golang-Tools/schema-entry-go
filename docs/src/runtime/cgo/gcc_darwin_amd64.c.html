@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: gcc_darwin_amd64.c in package runtime/cgo</title>
+<link href="../../../css/light-v0.3.6.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.3.6.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	gcc_darwin_amd64.c
+
+<span class="title">Belonging Package</span>
+	<a href="../../../pkg/runtime/cgo.html">runtime/cgo</a>
+</code></pre>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code>// Copyright 2009 The Go Authors. All rights reserved.</code></span>
+<span class="codeline" id="line-2"><code>// Use of this source code is governed by a BSD-style</code></span>
+<span class="codeline" id="line-3"><code>// license that can be found in the LICENSE file.</code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<span class="codeline" id="line-5"><code>#include &lt;string.h&gt; /* for strerror */</code></span>
+<span class="codeline" id="line-6"><code>#include &lt;pthread.h&gt;</code></span>
+<span class="codeline" id="line-7"><code>#include &lt;signal.h&gt;</code></span>
+<span class="codeline" id="line-8"><code>#include "libcgo.h"</code></span>
+<span class="codeline" id="line-9"><code>#include "libcgo_unix.h"</code></span>
+<span class="codeline" id="line-10"><code></code></span>
+<span class="codeline" id="line-11"><code>static void* threadentry(void*);</code></span>
+<span class="codeline" id="line-12"><code></code></span>
+<span class="codeline" id="line-13"><code>void</code></span>
+<span class="codeline" id="line-14"><code>x_cgo_init(G *g)</code></span>
+<span class="codeline" id="line-15"><code>{</code></span>
+<span class="codeline" id="line-16"><code>	pthread_attr_t attr;</code></span>
+<span class="codeline" id="line-17"><code>	size_t size;</code></span>
+<span class="codeline" id="line-18"><code></code></span>
+<span class="codeline" id="line-19"><code>	pthread_attr_init(&amp;attr);</code></span>
+<span class="codeline" id="line-20"><code>	pthread_attr_getstacksize(&amp;attr, &amp;size);</code></span>
+<span class="codeline" id="line-21"><code>	g-&gt;stacklo = (uintptr)&amp;attr - size + 4096;</code></span>
+<span class="codeline" id="line-22"><code>	pthread_attr_destroy(&amp;attr);</code></span>
+<span class="codeline" id="line-23"><code>}</code></span>
+<span class="codeline" id="line-24"><code></code></span>
+<span class="codeline" id="line-25"><code></code></span>
+<span class="codeline" id="line-26"><code>void</code></span>
+<span class="codeline" id="line-27"><code>_cgo_sys_thread_start(ThreadStart *ts)</code></span>
+<span class="codeline" id="line-28"><code>{</code></span>
+<span class="codeline" id="line-29"><code>	pthread_attr_t attr;</code></span>
+<span class="codeline" id="line-30"><code>	sigset_t ign, oset;</code></span>
+<span class="codeline" id="line-31"><code>	pthread_t p;</code></span>
+<span class="codeline" id="line-32"><code>	size_t size;</code></span>
+<span class="codeline" id="line-33"><code>	int err;</code></span>
+<span class="codeline" id="line-34"><code></code></span>
+<span class="codeline" id="line-35"><code>	sigfillset(&amp;ign);</code></span>
+<span class="codeline" id="line-36"><code>	pthread_sigmask(SIG_SETMASK, &amp;ign, &amp;oset);</code></span>
+<span class="codeline" id="line-37"><code></code></span>
+<span class="codeline" id="line-38"><code>	pthread_attr_init(&amp;attr);</code></span>
+<span class="codeline" id="line-39"><code>	pthread_attr_getstacksize(&amp;attr, &amp;size);</code></span>
+<span class="codeline" id="line-40"><code>	// Leave stacklo=0 and set stackhi=size; mstart will do the rest.</code></span>
+<span class="codeline" id="line-41"><code>	ts-&gt;g-&gt;stackhi = size;</code></span>
+<span class="codeline" id="line-42"><code>	err = _cgo_try_pthread_create(&amp;p, &amp;attr, threadentry, ts);</code></span>
+<span class="codeline" id="line-43"><code></code></span>
+<span class="codeline" id="line-44"><code>	pthread_sigmask(SIG_SETMASK, &amp;oset, nil);</code></span>
+<span class="codeline" id="line-45"><code></code></span>
+<span class="codeline" id="line-46"><code>	if (err != 0) {</code></span>
+<span class="codeline" id="line-47"><code>		fprintf(stderr, "runtime/cgo: pthread_create failed: %s\n", strerror(err));</code></span>
+<span class="codeline" id="line-48"><code>		abort();</code></span>
+<span class="codeline" id="line-49"><code>	}</code></span>
+<span class="codeline" id="line-50"><code>}</code></span>
+<span class="codeline" id="line-51"><code></code></span>
+<span class="codeline" id="line-52"><code>static void*</code></span>
+<span class="codeline" id="line-53"><code>threadentry(void *v)</code></span>
+<span class="codeline" id="line-54"><code>{</code></span>
+<span class="codeline" id="line-55"><code>	ThreadStart ts;</code></span>
+<span class="codeline" id="line-56"><code></code></span>
+<span class="codeline" id="line-57"><code>	ts = *(ThreadStart*)v;</code></span>
+<span class="codeline" id="line-58"><code>	free(v);</code></span>
+<span class="codeline" id="line-59"><code></code></span>
+<span class="codeline" id="line-60"><code>	// Move the g pointer into the slot reserved in thread local storage.</code></span>
+<span class="codeline" id="line-61"><code>	// Constant must match the one in cmd/link/internal/ld/sym.go.</code></span>
+<span class="codeline" id="line-62"><code>	asm volatile("movq %0, %%gs:0x30" :: "r"(ts.g));</code></span>
+<span class="codeline" id="line-63"><code></code></span>
+<span class="codeline" id="line-64"><code>	crosscall_amd64(ts.fn);</code></span>
+<span class="codeline" id="line-65"><code>	return nil;</code></span>
+<span class="codeline" id="line-66"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

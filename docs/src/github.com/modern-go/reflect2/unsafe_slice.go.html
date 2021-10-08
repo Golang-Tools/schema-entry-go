@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: unsafe_slice.go in package github.com/modern-go/reflect2</title>
+<link href="../../../../css/light-v0.3.6.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.3.6.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	unsafe_slice.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../pkg/github.com/modern-go/reflect2.html">github.com/modern-go/reflect2</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20],
+input[id=r21]:checked ~pre label[for=r21],
+input[id=r22]:checked ~pre label[for=r22],
+input[id=r23]:checked ~pre label[for=r23],
+input[id=r24]:checked ~pre label[for=r24],
+input[id=r25]:checked ~pre label[for=r25],
+input[id=r26]:checked ~pre label[for=r26],
+input[id=r27]:checked ~pre label[for=r27],
+input[id=r28]:checked ~pre label[for=r28],
+input[id=r29]:checked ~pre label[for=r29],
+input[id=r30]:checked ~pre label[for=r30],
+input[id=r31]:checked ~pre label[for=r31],
+input[id=r32]:checked ~pre label[for=r32],
+input[id=r33]:checked ~pre label[for=r33],
+input[id=r34]:checked ~pre label[for=r34],
+input[id=r35]:checked ~pre label[for=r35],
+input[id=r36]:checked ~pre label[for=r36],
+input[id=r37]:checked ~pre label[for=r37],
+input[id=r38]:checked ~pre label[for=r38],
+input[id=r39]:checked ~pre label[for=r39],
+input[id=r40]:checked ~pre label[for=r40],
+input[id=r41]:checked ~pre label[for=r41],
+input[id=r42]:checked ~pre label[for=r42],
+input[id=r43]:checked ~pre label[for=r43],
+input[id=r44]:checked ~pre label[for=r44],
+input[id=r45]:checked ~pre label[for=r45],
+input[id=r46]:checked ~pre label[for=r46],
+input[id=r47]:checked ~pre label[for=r47],
+input[id=r48]:checked ~pre label[for=r48],
+input[id=r49]:checked ~pre label[for=r49],
+input[id=r50]:checked ~pre label[for=r50],
+input[id=r51]:checked ~pre label[for=r51],
+input[id=r52]:checked ~pre label[for=r52],
+input[id=r53]:checked ~pre label[for=r53],
+input[id=r54]:checked ~pre label[for=r54],
+input[id=r55]:checked ~pre label[for=r55],
+input[id=r56]:checked ~pre label[for=r56],
+input[id=r57]:checked ~pre label[for=r57],
+input[id=r58]:checked ~pre label[for=r58],
+input[id=r59]:checked ~pre label[for=r59],
+input[id=r60]:checked ~pre label[for=r60],
+input[id=r61]:checked ~pre label[for=r61],
+input[id=r62]:checked ~pre label[for=r62],
+input[id=r63]:checked ~pre label[for=r63],
+input[id=r64]:checked ~pre label[for=r64],
+input[id=r65]:checked ~pre label[for=r65],
+input[id=r66]:checked ~pre label[for=r66],
+input[id=r67]:checked ~pre label[for=r67],
+input[id=r68]:checked ~pre label[for=r68],
+input[id=r69]:checked ~pre label[for=r69],
+input[id=r70]:checked ~pre label[for=r70],
+input[id=r71]:checked ~pre label[for=r71],
+input[id=r72]:checked ~pre label[for=r72],
+input[id=r73]:checked ~pre label[for=r73],
+input[id=r74]:checked ~pre label[for=r74],
+input[id=r75]:checked ~pre label[for=r75],
+input[id=r76]:checked ~pre label[for=r76],
+input[id=r77]:checked ~pre label[for=r77],
+input[id=r78]:checked ~pre label[for=r78],
+input[id=r79]:checked ~pre label[for=r79],
+input[id=r80]:checked ~pre label[for=r80],
+input[id=r81]:checked ~pre label[for=r81],
+input[id=r82]:checked ~pre label[for=r82],
+input[id=r83]:checked ~pre label[for=r83],
+input[id=r84]:checked ~pre label[for=r84],
+input[id=r85]:checked ~pre label[for=r85],
+input[id=r86]:checked ~pre label[for=r86],
+input[id=r87]:checked ~pre label[for=r87],
+input[id=r88]:checked ~pre label[for=r88],
+input[id=r89]:checked ~pre label[for=r89],
+input[id=r90]:checked ~pre label[for=r90],
+input[id=r91]:checked ~pre label[for=r91],
+input[id=r92]:checked ~pre label[for=r92],
+input[id=r93]:checked ~pre label[for=r93],
+input[id=r94]:checked ~pre label[for=r94],
+input[id=r95]:checked ~pre label[for=r95],
+input[id=r96]:checked ~pre label[for=r96],
+input[id=r97]:checked ~pre label[for=r97],
+input[id=r98]:checked ~pre label[for=r98],
+input[id=r99]:checked ~pre label[for=r99],
+input[id=r100]:checked ~pre label[for=r100],
+input[id=r101]:checked ~pre label[for=r101],
+input[id=r102]:checked ~pre label[for=r102],
+input[id=r103]:checked ~pre label[for=r103],
+input[id=r104]:checked ~pre label[for=r104]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="r21" type="radio" name="g"/>
+<input id="r22" type="radio" name="g"/>
+<input id="r23" type="radio" name="g"/>
+<input id="r24" type="radio" name="g"/>
+<input id="r25" type="radio" name="g"/>
+<input id="r26" type="radio" name="g"/>
+<input id="r27" type="radio" name="g"/>
+<input id="r28" type="radio" name="g"/>
+<input id="r29" type="radio" name="g"/>
+<input id="r30" type="radio" name="g"/>
+<input id="r31" type="radio" name="g"/>
+<input id="r32" type="radio" name="g"/>
+<input id="r33" type="radio" name="g"/>
+<input id="r34" type="radio" name="g"/>
+<input id="r35" type="radio" name="g"/>
+<input id="r36" type="radio" name="g"/>
+<input id="r37" type="radio" name="g"/>
+<input id="r38" type="radio" name="g"/>
+<input id="r39" type="radio" name="g"/>
+<input id="r40" type="radio" name="g"/>
+<input id="r41" type="radio" name="g"/>
+<input id="r42" type="radio" name="g"/>
+<input id="r43" type="radio" name="g"/>
+<input id="r44" type="radio" name="g"/>
+<input id="r45" type="radio" name="g"/>
+<input id="r46" type="radio" name="g"/>
+<input id="r47" type="radio" name="g"/>
+<input id="r48" type="radio" name="g"/>
+<input id="r49" type="radio" name="g"/>
+<input id="r50" type="radio" name="g"/>
+<input id="r51" type="radio" name="g"/>
+<input id="r52" type="radio" name="g"/>
+<input id="r53" type="radio" name="g"/>
+<input id="r54" type="radio" name="g"/>
+<input id="r55" type="radio" name="g"/>
+<input id="r56" type="radio" name="g"/>
+<input id="r57" type="radio" name="g"/>
+<input id="r58" type="radio" name="g"/>
+<input id="r59" type="radio" name="g"/>
+<input id="r60" type="radio" name="g"/>
+<input id="r61" type="radio" name="g"/>
+<input id="r62" type="radio" name="g"/>
+<input id="r63" type="radio" name="g"/>
+<input id="r64" type="radio" name="g"/>
+<input id="r65" type="radio" name="g"/>
+<input id="r66" type="radio" name="g"/>
+<input id="r67" type="radio" name="g"/>
+<input id="r68" type="radio" name="g"/>
+<input id="r69" type="radio" name="g"/>
+<input id="r70" type="radio" name="g"/>
+<input id="r71" type="radio" name="g"/>
+<input id="r72" type="radio" name="g"/>
+<input id="r73" type="radio" name="g"/>
+<input id="r74" type="radio" name="g"/>
+<input id="r75" type="radio" name="g"/>
+<input id="r76" type="radio" name="g"/>
+<input id="r77" type="radio" name="g"/>
+<input id="r78" type="radio" name="g"/>
+<input id="r79" type="radio" name="g"/>
+<input id="r80" type="radio" name="g"/>
+<input id="r81" type="radio" name="g"/>
+<input id="r82" type="radio" name="g"/>
+<input id="r83" type="radio" name="g"/>
+<input id="r84" type="radio" name="g"/>
+<input id="r85" type="radio" name="g"/>
+<input id="r86" type="radio" name="g"/>
+<input id="r87" type="radio" name="g"/>
+<input id="r88" type="radio" name="g"/>
+<input id="r89" type="radio" name="g"/>
+<input id="r90" type="radio" name="g"/>
+<input id="r91" type="radio" name="g"/>
+<input id="r92" type="radio" name="g"/>
+<input id="r93" type="radio" name="g"/>
+<input id="r94" type="radio" name="g"/>
+<input id="r95" type="radio" name="g"/>
+<input id="r96" type="radio" name="g"/>
+<input id="r97" type="radio" name="g"/>
+<input id="r98" type="radio" name="g"/>
+<input id="r99" type="radio" name="g"/>
+<input id="r100" type="radio" name="g"/>
+<input id="r101" type="radio" name="g"/>
+<input id="r102" type="radio" name="g"/>
+<input id="r103" type="radio" name="g"/>
+<input id="r104" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> reflect2</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-4"><code>	<label for="i0"><span class="lit-string i0">"reflect"</span></label></code></span>
+<span class="codeline" id="line-5"><code>	<label for="i1"><span class="lit-string i1">"unsafe"</span></label></code></span>
+<span class="codeline" id="line-6"><code>)</code></span>
+<span class="codeline" id="line-7"><code></code></span>
+<span class="codeline" id="line-8"><code><span class="comment">// sliceHeader is a safe version of SliceHeader used within this package.</span></code></span>
+<span class="codeline" id="line-9"><code><span class="keyword">type</span> <a href="../../../../pkg/github.com/modern-go/reflect2.html#name-sliceHeader" class="ident">sliceHeader</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-10"><code>	Data <a href="../../../../pkg/unsafe.html" class="ident i1">unsafe</a>.<a href="../../../../pkg/unsafe.html#name-Pointer" class="ident">Pointer</a></code></span>
+<span class="codeline" id="line-11"><code>	Len  <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-12"><code>	Cap  <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-13"><code>}</code></span>
+<span class="codeline" id="line-14"><code></code></span>
+<span class="codeline" id="line-15"><code><span class="keyword">type</span> <a href="../../../../pkg/github.com/modern-go/reflect2.html#name-UnsafeSliceType" class="ident">UnsafeSliceType</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-16"><code>	<a href="unsafe_type.go.html#line-8" class="ident">unsafeType</a></code></span>
+<span class="codeline" id="line-17"><code>	elemRType  <a href="../../../../pkg/unsafe.html" class="ident i1">unsafe</a>.<a href="../../../../pkg/unsafe.html#name-Pointer" class="ident">Pointer</a></code></span>
+<span class="codeline" id="line-18"><code>	pElemRType <a href="../../../../pkg/unsafe.html" class="ident i1">unsafe</a>.<a href="../../../../pkg/unsafe.html#name-Pointer" class="ident">Pointer</a></code></span>
+<span class="codeline" id="line-19"><code>	elemSize   <a href="../../../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a></code></span>
+<span class="codeline" id="line-20"><code>}</code></span>
+<span class="codeline" id="line-21"><code></code></span>
+<span class="codeline" id="line-22"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../pkg/github.com/modern-go/reflect2.html#name-newUnsafeSliceType" class="ident">newUnsafeSliceType</a></label>(<label for="r1" class="ident">cfg</label> *<a href="reflect2.go.html#line-132" class="ident">frozenConfig</a>, <label for="r2" class="ident">type1</label> <a href="../../../../pkg/reflect.html" class="ident i0">reflect</a>.<a href="../../../reflect/type.go.html#line-38" class="ident">Type</a>) <a href="reflect2.go.html#line-51" class="ident">SliceType</a> {</code></span>
+<span class="codeline" id="line-23"><code>	<label for="r3" class="ident">elemType</label> := <label for="r2" class="ident">type1</label>.<a href="../../../reflect/type.go.html#line-151" class="ident">Elem</a>()</code></span>
+<span class="codeline" id="line-24"><code>	<span class="keyword">return</span> &amp;<a href="#line-15" class="ident">UnsafeSliceType</a>{</code></span>
+<span class="codeline" id="line-25"><code>		<a href="#line-16" class="ident">unsafeType</a>: *<a href="unsafe_type.go.html#line-14" class="ident">newUnsafeType</a>(<label for="r1" class="ident">cfg</label>, <label for="r2" class="ident">type1</label>),</code></span>
+<span class="codeline" id="line-26"><code>		<a href="#line-18" class="ident">pElemRType</a>: <a href="unsafe_eface.go.html#line-13" class="ident">unpackEFace</a>(<a href="../../../../pkg/reflect.html" class="ident i0">reflect</a>.<a href="../../../reflect/type.go.html#line-1378" class="ident">PtrTo</a>(<label for="r3" class="ident">elemType</label>)).<a href="unsafe_eface.go.html#line-10" class="ident">data</a>,</code></span>
+<span class="codeline" id="line-27"><code>		<a href="#line-17" class="ident">elemRType</a>:  <a href="unsafe_eface.go.html#line-13" class="ident">unpackEFace</a>(<label for="r3" class="ident">elemType</label>).<a href="unsafe_eface.go.html#line-10" class="ident">data</a>,</code></span>
+<span class="codeline" id="line-28"><code>		<a href="#line-19" class="ident">elemSize</a>:   <label for="r3" class="ident">elemType</label>.<a href="../../../reflect/type.go.html#line-90" class="ident">Size</a>(),</code></span>
+<span class="codeline" id="line-29"><code>	}</code></span>
+<span class="codeline" id="line-30"><code>}</code></span>
+<span class="codeline" id="line-31"><code></code></span>
+<span class="codeline" id="line-32"><code><span class="keyword">func</span> (<label for="r4" class="ident">type2</label> *<a href="#line-15" class="ident">UnsafeSliceType</a>) <label for="r5" class="ident"><a href="../../../../imp/github.com/modern-go/reflect2.UnsafeSliceType.html#name-.Set" class="ident">Set</a></label>(<label for="r6" class="ident">obj</label> <span class="keyword">interface</span>{}, <label for="r7" class="ident">val</label> <span class="keyword">interface</span>{}) {</code></span>
+<span class="codeline" id="line-33"><code>	<label for="r8" class="ident">objEFace</label> := <a href="unsafe_eface.go.html#line-13" class="ident">unpackEFace</a>(<label for="r6" class="ident">obj</label>)</code></span>
+<span class="codeline" id="line-34"><code>	<a href="unsafe_type.go.html#line-77" class="ident">assertType</a>(<span class="lit-string">"Type.Set argument 1"</span>, <label for="r4" class="ident">type2</label>.<a href="unsafe_type.go.html#line-11" class="ident">ptrRType</a>, <label for="r8" class="ident">objEFace</label>.<a href="unsafe_eface.go.html#line-9" class="ident">rtype</a>)</code></span>
+<span class="codeline" id="line-35"><code>	<label for="r9" class="ident">valEFace</label> := <a href="unsafe_eface.go.html#line-13" class="ident">unpackEFace</a>(<label for="r7" class="ident">val</label>)</code></span>
+<span class="codeline" id="line-36"><code>	<a href="unsafe_type.go.html#line-77" class="ident">assertType</a>(<span class="lit-string">"Type.Set argument 2"</span>, <label for="r4" class="ident">type2</label>.<a href="unsafe_type.go.html#line-11" class="ident">ptrRType</a>, <label for="r9" class="ident">valEFace</label>.<a href="unsafe_eface.go.html#line-9" class="ident">rtype</a>)</code></span>
+<span class="codeline" id="line-37"><code>	<label for="r4" class="ident">type2</label>.<a href="#line-40" class="ident">UnsafeSet</a>(<label for="r8" class="ident">objEFace</label>.<a href="unsafe_eface.go.html#line-10" class="ident">data</a>, <label for="r9" class="ident">valEFace</label>.<a href="unsafe_eface.go.html#line-10" class="ident">data</a>)</code></span>
+<span class="codeline" id="line-38"><code>}</code></span>
+<span class="codeline" id="line-39"><code></code></span>
+<span class="codeline" id="line-40"><code><span class="keyword">func</span> (<label for="r10" class="ident">type2</label> *<a href="#line-15" class="ident">UnsafeSliceType</a>) <label for="r11" class="ident"><a href="../../../../imp/github.com/modern-go/reflect2.UnsafeSliceType.html#name-.UnsafeSet" class="ident">UnsafeSet</a></label>(<label for="r12" class="ident">ptr</label> <a href="../../../../pkg/unsafe.html" class="ident i1">unsafe</a>.<a href="../../../../pkg/unsafe.html#name-Pointer" class="ident">Pointer</a>, <label for="r13" class="ident">val</label> <a href="../../../../pkg/unsafe.html" class="ident i1">unsafe</a>.<a href="../../../../pkg/unsafe.html#name-Pointer" class="ident">Pointer</a>) {</code></span>
+<span class="codeline" id="line-41"><code>	*(*<a href="#line-9" class="ident">sliceHeader</a>)(<label for="r12" class="ident">ptr</label>) = *(*<a href="#line-9" class="ident">sliceHeader</a>)(<label for="r13" class="ident">val</label>)</code></span>
+<span class="codeline" id="line-42"><code>}</code></span>
+<span class="codeline" id="line-43"><code></code></span>
+<span class="codeline" id="line-44"><code><span class="keyword">func</span> (<label for="r14" class="ident">type2</label> *<a href="#line-15" class="ident">UnsafeSliceType</a>) <label for="r15" class="ident"><a href="../../../../imp/github.com/modern-go/reflect2.UnsafeSliceType.html#name-.IsNil" class="ident">IsNil</a></label>(<label for="r16" class="ident">obj</label> <span class="keyword">interface</span>{}) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-45"><code>	<span class="keyword">if</span> <label for="r16" class="ident">obj</label> == <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-46"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-47"><code>	}</code></span>
+<span class="codeline" id="line-48"><code>	<label for="r17" class="ident">objEFace</label> := <a href="unsafe_eface.go.html#line-13" class="ident">unpackEFace</a>(<label for="r16" class="ident">obj</label>)</code></span>
+<span class="codeline" id="line-49"><code>	<a href="unsafe_type.go.html#line-77" class="ident">assertType</a>(<span class="lit-string">"Type.IsNil argument 1"</span>, <label for="r14" class="ident">type2</label>.<a href="unsafe_type.go.html#line-11" class="ident">ptrRType</a>, <label for="r17" class="ident">objEFace</label>.<a href="unsafe_eface.go.html#line-9" class="ident">rtype</a>)</code></span>
+<span class="codeline" id="line-50"><code>	<span class="keyword">return</span> <label for="r14" class="ident">type2</label>.<a href="#line-53" class="ident">UnsafeIsNil</a>(<label for="r17" class="ident">objEFace</label>.<a href="unsafe_eface.go.html#line-10" class="ident">data</a>)</code></span>
+<span class="codeline" id="line-51"><code>}</code></span>
+<span class="codeline" id="line-52"><code></code></span>
+<span class="codeline" id="line-53"><code><span class="keyword">func</span> (<label for="r18" class="ident">type2</label> *<a href="#line-15" class="ident">UnsafeSliceType</a>) <label for="r19" class="ident"><a href="../../../../imp/github.com/modern-go/reflect2.UnsafeSliceType.html#name-.UnsafeIsNil" class="ident">UnsafeIsNil</a></label>(<label for="r20" class="ident">ptr</label> <a href="../../../../pkg/unsafe.html" class="ident i1">unsafe</a>.<a href="../../../../pkg/unsafe.html#name-Pointer" class="ident">Pointer</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-54"><code>	<span class="keyword">if</span> <label for="r20" class="ident">ptr</label> == <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-55"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-56"><code>	}</code></span>
+<span class="codeline" id="line-57"><code>	<span class="keyword">return</span> (*<a href="#line-9" class="ident">sliceHeader</a>)(<label for="r20" class="ident">ptr</label>).<a href="#line-10" class="ident">Data</a> == <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-58"><code>}</code></span>
+<span class="codeline" id="line-59"><code></code></span>
+<span class="codeline" id="line-60"><code><span class="keyword">func</span> (<label for="r21" class="ident">type2</label> *<a href="#line-15" class="ident">UnsafeSliceType</a>) <label for="r22" class="ident"><a href="../../../../imp/github.com/modern-go/reflect2.UnsafeSliceType.html#name-.SetNil" class="ident">SetNil</a></label>(<label for="r23" class="ident">obj</label> <span class="keyword">interface</span>{}) {</code></span>
+<span class="codeline" id="line-61"><code>	<label for="r24" class="ident">objEFace</label> := <a href="unsafe_eface.go.html#line-13" class="ident">unpackEFace</a>(<label for="r23" class="ident">obj</label>)</code></span>
+<span class="codeline" id="line-62"><code>	<a href="unsafe_type.go.html#line-77" class="ident">assertType</a>(<span class="lit-string">"SliceType.SetNil argument 1"</span>, <label for="r21" class="ident">type2</label>.<a href="unsafe_type.go.html#line-11" class="ident">ptrRType</a>, <label for="r24" class="ident">objEFace</label>.<a href="unsafe_eface.go.html#line-9" class="ident">rtype</a>)</code></span>
+<span class="codeline" id="line-63"><code>	<label for="r21" class="ident">type2</label>.<a href="#line-66" class="ident">UnsafeSetNil</a>(<label for="r24" class="ident">objEFace</label>.<a href="unsafe_eface.go.html#line-10" class="ident">data</a>)</code></span>
+<span class="codeline" id="line-64"><code>}</code></span>
+<span class="codeline" id="line-65"><code></code></span>
+<span class="codeline" id="line-66"><code><span class="keyword">func</span> (<label for="r25" class="ident">type2</label> *<a href="#line-15" class="ident">UnsafeSliceType</a>) <label for="r26" class="ident"><a href="../../../../imp/github.com/modern-go/reflect2.UnsafeSliceType.html#name-.UnsafeSetNil" class="ident">UnsafeSetNil</a></label>(<label for="r27" class="ident">ptr</label> <a href="../../../../pkg/unsafe.html" class="ident i1">unsafe</a>.<a href="../../../../pkg/unsafe.html#name-Pointer" class="ident">Pointer</a>) {</code></span>
+<span class="codeline" id="line-67"><code>	<label for="r28" class="ident">header</label> := (*<a href="#line-9" class="ident">sliceHeader</a>)(<label for="r27" class="ident">ptr</label>)</code></span>
+<span class="codeline" id="line-68"><code>	<label for="r28" class="ident">header</label>.<a href="#line-11" class="ident">Len</a> = <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-69"><code>	<label for="r28" class="ident">header</label>.<a href="#line-12" class="ident">Cap</a> = <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-70"><code>	<label for="r28" class="ident">header</label>.<a href="#line-10" class="ident">Data</a> = <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-71"><code>}</code></span>
+<span class="codeline" id="line-72"><code></code></span>
+<span class="codeline" id="line-73"><code><span class="keyword">func</span> (<label for="r29" class="ident">type2</label> *<a href="#line-15" class="ident">UnsafeSliceType</a>) <label for="r30" class="ident"><a href="../../../../imp/github.com/modern-go/reflect2.UnsafeSliceType.html#name-.MakeSlice" class="ident">MakeSlice</a></label>(<label for="r31" class="ident">length</label> <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a>, <label for="r32" class="ident">cap</label> <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a>) <span class="keyword">interface</span>{} {</code></span>
+<span class="codeline" id="line-74"><code>	<span class="keyword">return</span> <a href="unsafe_eface.go.html#line-17" class="ident">packEFace</a>(<label for="r29" class="ident">type2</label>.<a href="unsafe_type.go.html#line-11" class="ident">ptrRType</a>, <label for="r29" class="ident">type2</label>.<a href="#line-77" class="ident">UnsafeMakeSlice</a>(<label for="r31" class="ident">length</label>, <label for="r32" class="ident">cap</label>))</code></span>
+<span class="codeline" id="line-75"><code>}</code></span>
+<span class="codeline" id="line-76"><code></code></span>
+<span class="codeline" id="line-77"><code><span class="keyword">func</span> (<label for="r33" class="ident">type2</label> *<a href="#line-15" class="ident">UnsafeSliceType</a>) <label for="r34" class="ident"><a href="../../../../imp/github.com/modern-go/reflect2.UnsafeSliceType.html#name-.UnsafeMakeSlice" class="ident">UnsafeMakeSlice</a></label>(<label for="r35" class="ident">length</label> <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a>, <label for="r36" class="ident">cap</label> <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a>) <a href="../../../../pkg/unsafe.html" class="ident i1">unsafe</a>.<a href="../../../../pkg/unsafe.html#name-Pointer" class="ident">Pointer</a> {</code></span>
+<span class="codeline" id="line-78"><code>	<label for="r37" class="ident">header</label> := &amp;<a href="#line-9" class="ident">sliceHeader</a>{<a href="unsafe_link.go.html#line-12" class="ident">unsafe_NewArray</a>(<label for="r33" class="ident">type2</label>.<a href="#line-17" class="ident">elemRType</a>, <label for="r36" class="ident">cap</label>), <label for="r35" class="ident">length</label>, <label for="r36" class="ident">cap</label>}</code></span>
+<span class="codeline" id="line-79"><code>	<span class="keyword">return</span> <a href="../../../../pkg/unsafe.html" class="ident i1">unsafe</a>.<a href="../../../../pkg/unsafe.html#name-Pointer" class="ident">Pointer</a>(<label for="r37" class="ident">header</label>)</code></span>
+<span class="codeline" id="line-80"><code>}</code></span>
+<span class="codeline" id="line-81"><code></code></span>
+<span class="codeline" id="line-82"><code><span class="keyword">func</span> (<label for="r38" class="ident">type2</label> *<a href="#line-15" class="ident">UnsafeSliceType</a>) <label for="r39" class="ident"><a href="../../../../imp/github.com/modern-go/reflect2.UnsafeSliceType.html#name-.LengthOf" class="ident">LengthOf</a></label>(<label for="r40" class="ident">obj</label> <span class="keyword">interface</span>{}) <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a> {</code></span>
+<span class="codeline" id="line-83"><code>	<label for="r41" class="ident">objEFace</label> := <a href="unsafe_eface.go.html#line-13" class="ident">unpackEFace</a>(<label for="r40" class="ident">obj</label>)</code></span>
+<span class="codeline" id="line-84"><code>	<a href="unsafe_type.go.html#line-77" class="ident">assertType</a>(<span class="lit-string">"SliceType.Len argument 1"</span>, <label for="r38" class="ident">type2</label>.<a href="unsafe_type.go.html#line-11" class="ident">ptrRType</a>, <label for="r41" class="ident">objEFace</label>.<a href="unsafe_eface.go.html#line-9" class="ident">rtype</a>)</code></span>
+<span class="codeline" id="line-85"><code>	<span class="keyword">return</span> <label for="r38" class="ident">type2</label>.<a href="#line-88" class="ident">UnsafeLengthOf</a>(<label for="r41" class="ident">objEFace</label>.<a href="unsafe_eface.go.html#line-10" class="ident">data</a>)</code></span>
+<span class="codeline" id="line-86"><code>}</code></span>
+<span class="codeline" id="line-87"><code></code></span>
+<span class="codeline" id="line-88"><code><span class="keyword">func</span> (<label for="r42" class="ident">type2</label> *<a href="#line-15" class="ident">UnsafeSliceType</a>) <label for="r43" class="ident"><a href="../../../../imp/github.com/modern-go/reflect2.UnsafeSliceType.html#name-.UnsafeLengthOf" class="ident">UnsafeLengthOf</a></label>(<label for="r44" class="ident">obj</label> <a href="../../../../pkg/unsafe.html" class="ident i1">unsafe</a>.<a href="../../../../pkg/unsafe.html#name-Pointer" class="ident">Pointer</a>) <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a> {</code></span>
+<span class="codeline" id="line-89"><code>	<label for="r45" class="ident">header</label> := (*<a href="#line-9" class="ident">sliceHeader</a>)(<label for="r44" class="ident">obj</label>)</code></span>
+<span class="codeline" id="line-90"><code>	<span class="keyword">return</span> <label for="r45" class="ident">header</label>.<a href="#line-11" class="ident">Len</a></code></span>
+<span class="codeline" id="line-91"><code>}</code></span>
+<span class="codeline" id="line-92"><code></code></span>
+<span class="codeline" id="line-93"><code><span class="keyword">func</span> (<label for="r46" class="ident">type2</label> *<a href="#line-15" class="ident">UnsafeSliceType</a>) <label for="r47" class="ident"><a href="../../../../imp/github.com/modern-go/reflect2.UnsafeSliceType.html#name-.SetIndex" class="ident">SetIndex</a></label>(<label for="r48" class="ident">obj</label> <span class="keyword">interface</span>{}, <label for="r49" class="ident">index</label> <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a>, <label for="r50" class="ident">elem</label> <span class="keyword">interface</span>{}) {</code></span>
+<span class="codeline" id="line-94"><code>	<label for="r51" class="ident">objEFace</label> := <a href="unsafe_eface.go.html#line-13" class="ident">unpackEFace</a>(<label for="r48" class="ident">obj</label>)</code></span>
+<span class="codeline" id="line-95"><code>	<a href="unsafe_type.go.html#line-77" class="ident">assertType</a>(<span class="lit-string">"SliceType.SetIndex argument 1"</span>, <label for="r46" class="ident">type2</label>.<a href="unsafe_type.go.html#line-11" class="ident">ptrRType</a>, <label for="r51" class="ident">objEFace</label>.<a href="unsafe_eface.go.html#line-9" class="ident">rtype</a>)</code></span>
+<span class="codeline" id="line-96"><code>	<label for="r52" class="ident">elemEFace</label> := <a href="unsafe_eface.go.html#line-13" class="ident">unpackEFace</a>(<label for="r50" class="ident">elem</label>)</code></span>
+<span class="codeline" id="line-97"><code>	<a href="unsafe_type.go.html#line-77" class="ident">assertType</a>(<span class="lit-string">"SliceType.SetIndex argument 3"</span>, <label for="r46" class="ident">type2</label>.<a href="#line-18" class="ident">pElemRType</a>, <label for="r52" class="ident">elemEFace</label>.<a href="unsafe_eface.go.html#line-9" class="ident">rtype</a>)</code></span>
+<span class="codeline" id="line-98"><code>	<label for="r46" class="ident">type2</label>.<a href="#line-101" class="ident">UnsafeSetIndex</a>(<label for="r51" class="ident">objEFace</label>.<a href="unsafe_eface.go.html#line-10" class="ident">data</a>, <label for="r49" class="ident">index</label>, <label for="r52" class="ident">elemEFace</label>.<a href="unsafe_eface.go.html#line-10" class="ident">data</a>)</code></span>
+<span class="codeline" id="line-99"><code>}</code></span>
+<span class="codeline" id="line-100"><code></code></span>
+<span class="codeline" id="line-101"><code><span class="keyword">func</span> (<label for="r53" class="ident">type2</label> *<a href="#line-15" class="ident">UnsafeSliceType</a>) <label for="r54" class="ident"><a href="../../../../imp/github.com/modern-go/reflect2.UnsafeSliceType.html#name-.UnsafeSetIndex" class="ident">UnsafeSetIndex</a></label>(<label for="r55" class="ident">obj</label> <a href="../../../../pkg/unsafe.html" class="ident i1">unsafe</a>.<a href="../../../../pkg/unsafe.html#name-Pointer" class="ident">Pointer</a>, <label for="r56" class="ident">index</label> <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a>, <label for="r57" class="ident">elem</label> <a href="../../../../pkg/unsafe.html" class="ident i1">unsafe</a>.<a href="../../../../pkg/unsafe.html#name-Pointer" class="ident">Pointer</a>) {</code></span>
+<span class="codeline" id="line-102"><code>	<label for="r58" class="ident">header</label> := (*<a href="#line-9" class="ident">sliceHeader</a>)(<label for="r55" class="ident">obj</label>)</code></span>
+<span class="codeline" id="line-103"><code>	<label for="r59" class="ident">elemPtr</label> := <a href="unsafe_link.go.html#line-74" class="ident">arrayAt</a>(<label for="r58" class="ident">header</label>.<a href="#line-10" class="ident">Data</a>, <label for="r56" class="ident">index</label>, <label for="r53" class="ident">type2</label>.<a href="#line-19" class="ident">elemSize</a>, <span class="lit-string">"i &lt; s.Len"</span>)</code></span>
+<span class="codeline" id="line-104"><code>	<a href="unsafe_link.go.html#line-9" class="ident">typedmemmove</a>(<label for="r53" class="ident">type2</label>.<a href="#line-17" class="ident">elemRType</a>, <label for="r59" class="ident">elemPtr</label>, <label for="r57" class="ident">elem</label>)</code></span>
+<span class="codeline" id="line-105"><code>}</code></span>
+<span class="codeline" id="line-106"><code></code></span>
+<span class="codeline" id="line-107"><code><span class="keyword">func</span> (<label for="r60" class="ident">type2</label> *<a href="#line-15" class="ident">UnsafeSliceType</a>) <label for="r61" class="ident"><a href="../../../../imp/github.com/modern-go/reflect2.UnsafeSliceType.html#name-.GetIndex" class="ident">GetIndex</a></label>(<label for="r62" class="ident">obj</label> <span class="keyword">interface</span>{}, <label for="r63" class="ident">index</label> <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a>) <span class="keyword">interface</span>{} {</code></span>
+<span class="codeline" id="line-108"><code>	<label for="r64" class="ident">objEFace</label> := <a href="unsafe_eface.go.html#line-13" class="ident">unpackEFace</a>(<label for="r62" class="ident">obj</label>)</code></span>
+<span class="codeline" id="line-109"><code>	<a href="unsafe_type.go.html#line-77" class="ident">assertType</a>(<span class="lit-string">"SliceType.GetIndex argument 1"</span>, <label for="r60" class="ident">type2</label>.<a href="unsafe_type.go.html#line-11" class="ident">ptrRType</a>, <label for="r64" class="ident">objEFace</label>.<a href="unsafe_eface.go.html#line-9" class="ident">rtype</a>)</code></span>
+<span class="codeline" id="line-110"><code>	<label for="r65" class="ident">elemPtr</label> := <label for="r60" class="ident">type2</label>.<a href="#line-114" class="ident">UnsafeGetIndex</a>(<label for="r64" class="ident">objEFace</label>.<a href="unsafe_eface.go.html#line-10" class="ident">data</a>, <label for="r63" class="ident">index</label>)</code></span>
+<span class="codeline" id="line-111"><code>	<span class="keyword">return</span> <a href="unsafe_eface.go.html#line-17" class="ident">packEFace</a>(<label for="r60" class="ident">type2</label>.<a href="#line-18" class="ident">pElemRType</a>, <label for="r65" class="ident">elemPtr</label>)</code></span>
+<span class="codeline" id="line-112"><code>}</code></span>
+<span class="codeline" id="line-113"><code></code></span>
+<span class="codeline" id="line-114"><code><span class="keyword">func</span> (<label for="r66" class="ident">type2</label> *<a href="#line-15" class="ident">UnsafeSliceType</a>) <label for="r67" class="ident"><a href="../../../../imp/github.com/modern-go/reflect2.UnsafeSliceType.html#name-.UnsafeGetIndex" class="ident">UnsafeGetIndex</a></label>(<label for="r68" class="ident">obj</label> <a href="../../../../pkg/unsafe.html" class="ident i1">unsafe</a>.<a href="../../../../pkg/unsafe.html#name-Pointer" class="ident">Pointer</a>, <label for="r69" class="ident">index</label> <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a>) <a href="../../../../pkg/unsafe.html" class="ident i1">unsafe</a>.<a href="../../../../pkg/unsafe.html#name-Pointer" class="ident">Pointer</a> {</code></span>
+<span class="codeline" id="line-115"><code>	<label for="r70" class="ident">header</label> := (*<a href="#line-9" class="ident">sliceHeader</a>)(<label for="r68" class="ident">obj</label>)</code></span>
+<span class="codeline" id="line-116"><code>	<span class="keyword">return</span> <a href="unsafe_link.go.html#line-74" class="ident">arrayAt</a>(<label for="r70" class="ident">header</label>.<a href="#line-10" class="ident">Data</a>, <label for="r69" class="ident">index</label>, <label for="r66" class="ident">type2</label>.<a href="#line-19" class="ident">elemSize</a>, <span class="lit-string">"i &lt; s.Len"</span>)</code></span>
+<span class="codeline" id="line-117"><code>}</code></span>
+<span class="codeline" id="line-118"><code></code></span>
+<span class="codeline" id="line-119"><code><span class="keyword">func</span> (<label for="r71" class="ident">type2</label> *<a href="#line-15" class="ident">UnsafeSliceType</a>) <label for="r72" class="ident"><a href="../../../../imp/github.com/modern-go/reflect2.UnsafeSliceType.html#name-.Append" class="ident">Append</a></label>(<label for="r73" class="ident">obj</label> <span class="keyword">interface</span>{}, <label for="r74" class="ident">elem</label> <span class="keyword">interface</span>{}) {</code></span>
+<span class="codeline" id="line-120"><code>	<label for="r75" class="ident">objEFace</label> := <a href="unsafe_eface.go.html#line-13" class="ident">unpackEFace</a>(<label for="r73" class="ident">obj</label>)</code></span>
+<span class="codeline" id="line-121"><code>	<a href="unsafe_type.go.html#line-77" class="ident">assertType</a>(<span class="lit-string">"SliceType.Append argument 1"</span>, <label for="r71" class="ident">type2</label>.<a href="unsafe_type.go.html#line-11" class="ident">ptrRType</a>, <label for="r75" class="ident">objEFace</label>.<a href="unsafe_eface.go.html#line-9" class="ident">rtype</a>)</code></span>
+<span class="codeline" id="line-122"><code>	<label for="r76" class="ident">elemEFace</label> := <a href="unsafe_eface.go.html#line-13" class="ident">unpackEFace</a>(<label for="r74" class="ident">elem</label>)</code></span>
+<span class="codeline" id="line-123"><code>	<a href="unsafe_type.go.html#line-77" class="ident">assertType</a>(<span class="lit-string">"SliceType.Append argument 2"</span>, <label for="r71" class="ident">type2</label>.<a href="#line-18" class="ident">pElemRType</a>, <label for="r76" class="ident">elemEFace</label>.<a href="unsafe_eface.go.html#line-9" class="ident">rtype</a>)</code></span>
+<span class="codeline" id="line-124"><code>	<label for="r71" class="ident">type2</label>.<a href="#line-127" class="ident">UnsafeAppend</a>(<label for="r75" class="ident">objEFace</label>.<a href="unsafe_eface.go.html#line-10" class="ident">data</a>, <label for="r76" class="ident">elemEFace</label>.<a href="unsafe_eface.go.html#line-10" class="ident">data</a>)</code></span>
+<span class="codeline" id="line-125"><code>}</code></span>
+<span class="codeline" id="line-126"><code></code></span>
+<span class="codeline" id="line-127"><code><span class="keyword">func</span> (<label for="r77" class="ident">type2</label> *<a href="#line-15" class="ident">UnsafeSliceType</a>) <label for="r78" class="ident"><a href="../../../../imp/github.com/modern-go/reflect2.UnsafeSliceType.html#name-.UnsafeAppend" class="ident">UnsafeAppend</a></label>(<label for="r79" class="ident">obj</label> <a href="../../../../pkg/unsafe.html" class="ident i1">unsafe</a>.<a href="../../../../pkg/unsafe.html#name-Pointer" class="ident">Pointer</a>, <label for="r80" class="ident">elem</label> <a href="../../../../pkg/unsafe.html" class="ident i1">unsafe</a>.<a href="../../../../pkg/unsafe.html#name-Pointer" class="ident">Pointer</a>) {</code></span>
+<span class="codeline" id="line-128"><code>	<label for="r81" class="ident">header</label> := (*<a href="#line-9" class="ident">sliceHeader</a>)(<label for="r79" class="ident">obj</label>)</code></span>
+<span class="codeline" id="line-129"><code>	<label for="r82" class="ident">oldLen</label> := <label for="r81" class="ident">header</label>.<a href="#line-11" class="ident">Len</a></code></span>
+<span class="codeline" id="line-130"><code>	<label for="r77" class="ident">type2</label>.<a href="#line-150" class="ident">UnsafeGrow</a>(<label for="r79" class="ident">obj</label>, <label for="r82" class="ident">oldLen</label>+<span class="lit-number">1</span>)</code></span>
+<span class="codeline" id="line-131"><code>	<label for="r77" class="ident">type2</label>.<a href="#line-101" class="ident">UnsafeSetIndex</a>(<label for="r79" class="ident">obj</label>, <label for="r82" class="ident">oldLen</label>, <label for="r80" class="ident">elem</label>)</code></span>
+<span class="codeline" id="line-132"><code>}</code></span>
+<span class="codeline" id="line-133"><code></code></span>
+<span class="codeline" id="line-134"><code><span class="keyword">func</span> (<label for="r83" class="ident">type2</label> *<a href="#line-15" class="ident">UnsafeSliceType</a>) <label for="r84" class="ident"><a href="../../../../imp/github.com/modern-go/reflect2.UnsafeSliceType.html#name-.Cap" class="ident">Cap</a></label>(<label for="r85" class="ident">obj</label> <span class="keyword">interface</span>{}) <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a> {</code></span>
+<span class="codeline" id="line-135"><code>	<label for="r86" class="ident">objEFace</label> := <a href="unsafe_eface.go.html#line-13" class="ident">unpackEFace</a>(<label for="r85" class="ident">obj</label>)</code></span>
+<span class="codeline" id="line-136"><code>	<a href="unsafe_type.go.html#line-77" class="ident">assertType</a>(<span class="lit-string">"SliceType.Cap argument 1"</span>, <label for="r83" class="ident">type2</label>.<a href="unsafe_type.go.html#line-11" class="ident">ptrRType</a>, <label for="r86" class="ident">objEFace</label>.<a href="unsafe_eface.go.html#line-9" class="ident">rtype</a>)</code></span>
+<span class="codeline" id="line-137"><code>	<span class="keyword">return</span> <label for="r83" class="ident">type2</label>.<a href="#line-140" class="ident">UnsafeCap</a>(<label for="r86" class="ident">objEFace</label>.<a href="unsafe_eface.go.html#line-10" class="ident">data</a>)</code></span>
+<span class="codeline" id="line-138"><code>}</code></span>
+<span class="codeline" id="line-139"><code></code></span>
+<span class="codeline" id="line-140"><code><span class="keyword">func</span> (<label for="r87" class="ident">type2</label> *<a href="#line-15" class="ident">UnsafeSliceType</a>) <label for="r88" class="ident"><a href="../../../../imp/github.com/modern-go/reflect2.UnsafeSliceType.html#name-.UnsafeCap" class="ident">UnsafeCap</a></label>(<label for="r89" class="ident">ptr</label> <a href="../../../../pkg/unsafe.html" class="ident i1">unsafe</a>.<a href="../../../../pkg/unsafe.html#name-Pointer" class="ident">Pointer</a>) <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a> {</code></span>
+<span class="codeline" id="line-141"><code>	<span class="keyword">return</span> (*<a href="#line-9" class="ident">sliceHeader</a>)(<label for="r89" class="ident">ptr</label>).<a href="#line-12" class="ident">Cap</a></code></span>
+<span class="codeline" id="line-142"><code>}</code></span>
+<span class="codeline" id="line-143"><code></code></span>
+<span class="codeline" id="line-144"><code><span class="keyword">func</span> (<label for="r90" class="ident">type2</label> *<a href="#line-15" class="ident">UnsafeSliceType</a>) <label for="r91" class="ident"><a href="../../../../imp/github.com/modern-go/reflect2.UnsafeSliceType.html#name-.Grow" class="ident">Grow</a></label>(<label for="r92" class="ident">obj</label> <span class="keyword">interface</span>{}, <label for="r93" class="ident">newLength</label> <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a>) {</code></span>
+<span class="codeline" id="line-145"><code>	<label for="r94" class="ident">objEFace</label> := <a href="unsafe_eface.go.html#line-13" class="ident">unpackEFace</a>(<label for="r92" class="ident">obj</label>)</code></span>
+<span class="codeline" id="line-146"><code>	<a href="unsafe_type.go.html#line-77" class="ident">assertType</a>(<span class="lit-string">"SliceType.Grow argument 1"</span>, <label for="r90" class="ident">type2</label>.<a href="unsafe_type.go.html#line-11" class="ident">ptrRType</a>, <label for="r94" class="ident">objEFace</label>.<a href="unsafe_eface.go.html#line-9" class="ident">rtype</a>)</code></span>
+<span class="codeline" id="line-147"><code>	<label for="r90" class="ident">type2</label>.<a href="#line-150" class="ident">UnsafeGrow</a>(<label for="r94" class="ident">objEFace</label>.<a href="unsafe_eface.go.html#line-10" class="ident">data</a>, <label for="r93" class="ident">newLength</label>)</code></span>
+<span class="codeline" id="line-148"><code>}</code></span>
+<span class="codeline" id="line-149"><code></code></span>
+<span class="codeline" id="line-150"><code><span class="keyword">func</span> (<label for="r95" class="ident">type2</label> *<a href="#line-15" class="ident">UnsafeSliceType</a>) <label for="r96" class="ident"><a href="../../../../imp/github.com/modern-go/reflect2.UnsafeSliceType.html#name-.UnsafeGrow" class="ident">UnsafeGrow</a></label>(<label for="r97" class="ident">obj</label> <a href="../../../../pkg/unsafe.html" class="ident i1">unsafe</a>.<a href="../../../../pkg/unsafe.html#name-Pointer" class="ident">Pointer</a>, <label for="r98" class="ident">newLength</label> <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a>) {</code></span>
+<span class="codeline" id="line-151"><code>	<label for="r99" class="ident">header</label> := (*<a href="#line-9" class="ident">sliceHeader</a>)(<label for="r97" class="ident">obj</label>)</code></span>
+<span class="codeline" id="line-152"><code>	<span class="keyword">if</span> <label for="r98" class="ident">newLength</label> &lt;= <label for="r99" class="ident">header</label>.<a href="#line-12" class="ident">Cap</a> {</code></span>
+<span class="codeline" id="line-153"><code>		<label for="r99" class="ident">header</label>.<a href="#line-11" class="ident">Len</a> = <label for="r98" class="ident">newLength</label></code></span>
+<span class="codeline" id="line-154"><code>		<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-155"><code>	}</code></span>
+<span class="codeline" id="line-156"><code>	<label for="r100" class="ident">newCap</label> := <a href="#line-164" class="ident">calcNewCap</a>(<label for="r99" class="ident">header</label>.<a href="#line-12" class="ident">Cap</a>, <label for="r98" class="ident">newLength</label>)</code></span>
+<span class="codeline" id="line-157"><code>	<label for="r101" class="ident">newHeader</label> := (*<a href="#line-9" class="ident">sliceHeader</a>)(<label for="r95" class="ident">type2</label>.<a href="#line-77" class="ident">UnsafeMakeSlice</a>(<label for="r99" class="ident">header</label>.<a href="#line-11" class="ident">Len</a>, <label for="r100" class="ident">newCap</label>))</code></span>
+<span class="codeline" id="line-158"><code>	<a href="unsafe_link.go.html#line-18" class="ident">typedslicecopy</a>(<label for="r95" class="ident">type2</label>.<a href="#line-17" class="ident">elemRType</a>, *<label for="r101" class="ident">newHeader</label>, *<label for="r99" class="ident">header</label>)</code></span>
+<span class="codeline" id="line-159"><code>	<label for="r99" class="ident">header</label>.<a href="#line-10" class="ident">Data</a> = <label for="r101" class="ident">newHeader</label>.<a href="#line-10" class="ident">Data</a></code></span>
+<span class="codeline" id="line-160"><code>	<label for="r99" class="ident">header</label>.<a href="#line-12" class="ident">Cap</a> = <label for="r101" class="ident">newHeader</label>.<a href="#line-12" class="ident">Cap</a></code></span>
+<span class="codeline" id="line-161"><code>	<label for="r99" class="ident">header</label>.<a href="#line-11" class="ident">Len</a> = <label for="r98" class="ident">newLength</label></code></span>
+<span class="codeline" id="line-162"><code>}</code></span>
+<span class="codeline" id="line-163"><code></code></span>
+<span class="codeline" id="line-164"><code><span class="keyword">func</span> <label for="r102" class="ident"><a href="../../../../pkg/github.com/modern-go/reflect2.html#name-calcNewCap" class="ident">calcNewCap</a></label>(<label for="r103" class="ident">cap</label> <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a>, <label for="r104" class="ident">expectedCap</label> <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a>) <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a> {</code></span>
+<span class="codeline" id="line-165"><code>	<span class="keyword">if</span> <label for="r103" class="ident">cap</label> == <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-166"><code>		<label for="r103" class="ident">cap</label> = <label for="r104" class="ident">expectedCap</label></code></span>
+<span class="codeline" id="line-167"><code>	} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-168"><code>		<span class="keyword">for</span> <label for="r103" class="ident">cap</label> &lt; <label for="r104" class="ident">expectedCap</label> {</code></span>
+<span class="codeline" id="line-169"><code>			<span class="keyword">if</span> <label for="r103" class="ident">cap</label> &lt; <span class="lit-number">1024</span> {</code></span>
+<span class="codeline" id="line-170"><code>				<label for="r103" class="ident">cap</label> += <label for="r103" class="ident">cap</label></code></span>
+<span class="codeline" id="line-171"><code>			} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-172"><code>				<label for="r103" class="ident">cap</label> += <label for="r103" class="ident">cap</label> / <span class="lit-number">4</span></code></span>
+<span class="codeline" id="line-173"><code>			}</code></span>
+<span class="codeline" id="line-174"><code>		}</code></span>
+<span class="codeline" id="line-175"><code>	}</code></span>
+<span class="codeline" id="line-176"><code>	<span class="keyword">return</span> <label for="r103" class="ident">cap</label></code></span>
+<span class="codeline" id="line-177"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

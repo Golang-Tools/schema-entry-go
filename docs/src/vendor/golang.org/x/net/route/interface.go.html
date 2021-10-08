@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: interface.go in package vendor/golang.org/x/net/route</title>
+<link href="../../../../../../css/light-v0.3.6.css" rel="stylesheet">
+<script src="../../../../../../jvs/golds-v0.3.6.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	interface.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../../pkg/vendor/golang.org/x/net/route.html">vendor/golang.org/x/net/route</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5]
+{background: #226; color: #ff8;}
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="comment">// Copyright 2016 The Go Authors. All rights reserved.</span></code></span>
+<span class="codeline" id="line-2"><code><span class="comment">// Use of this source code is governed by a BSD-style</span></code></span>
+<span class="codeline" id="line-3"><code><span class="comment">// license that can be found in the LICENSE file.</span></code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<span class="codeline" id="line-5"><code><span class="comment">// +build darwin dragonfly freebsd netbsd openbsd</span></code></span>
+<span class="codeline" id="line-6"><code></code></span>
+<span class="codeline" id="line-7"><code><span class="keyword">package</span> route</code></span>
+<span class="codeline" id="line-8"><code></code></span>
+<span class="codeline" id="line-9"><code><span class="comment">// An InterfaceMessage represents an interface message.</span></code></span>
+<span class="codeline" id="line-10"><code><span class="keyword">type</span> <a href="../../../../../../pkg/vendor/golang.org/x/net/route.html#name-InterfaceMessage" class="ident">InterfaceMessage</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-11"><code>	Version <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>    <span class="comment">// message version</span></code></span>
+<span class="codeline" id="line-12"><code>	Type    <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>    <span class="comment">// message type</span></code></span>
+<span class="codeline" id="line-13"><code>	Flags   <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>    <span class="comment">// interface flags</span></code></span>
+<span class="codeline" id="line-14"><code>	Index   <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>    <span class="comment">// interface index</span></code></span>
+<span class="codeline" id="line-15"><code>	Name    <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a> <span class="comment">// interface name</span></code></span>
+<span class="codeline" id="line-16"><code>	Addrs   []<a href="address.go.html#line-12" class="ident">Addr</a> <span class="comment">// addresses</span></code></span>
+<span class="codeline" id="line-17"><code></code></span>
+<span class="codeline" id="line-18"><code>	extOff <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>    <span class="comment">// offset of header extension</span></code></span>
+<span class="codeline" id="line-19"><code>	raw    []<a href="../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a> <span class="comment">// raw message</span></code></span>
+<span class="codeline" id="line-20"><code>}</code></span>
+<span class="codeline" id="line-21"><code></code></span>
+<span class="codeline" id="line-22"><code><span class="comment">// An InterfaceAddrMessage represents an interface address message.</span></code></span>
+<span class="codeline" id="line-23"><code><span class="keyword">type</span> <a href="../../../../../../pkg/vendor/golang.org/x/net/route.html#name-InterfaceAddrMessage" class="ident">InterfaceAddrMessage</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-24"><code>	Version <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>    <span class="comment">// message version</span></code></span>
+<span class="codeline" id="line-25"><code>	Type    <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>    <span class="comment">// message type</span></code></span>
+<span class="codeline" id="line-26"><code>	Flags   <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>    <span class="comment">// interface flags</span></code></span>
+<span class="codeline" id="line-27"><code>	Index   <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>    <span class="comment">// interface index</span></code></span>
+<span class="codeline" id="line-28"><code>	Addrs   []<a href="address.go.html#line-12" class="ident">Addr</a> <span class="comment">// addresses</span></code></span>
+<span class="codeline" id="line-29"><code></code></span>
+<span class="codeline" id="line-30"><code>	raw []<a href="../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a> <span class="comment">// raw message</span></code></span>
+<span class="codeline" id="line-31"><code>}</code></span>
+<span class="codeline" id="line-32"><code></code></span>
+<span class="codeline" id="line-33"><code><span class="comment">// Sys implements the Sys method of Message interface.</span></code></span>
+<span class="codeline" id="line-34"><code><span class="keyword">func</span> (<label for="r0" class="ident">m</label> *<a href="#line-23" class="ident">InterfaceAddrMessage</a>) <label for="r1" class="ident"><a href="../../../../../../imp/vendor/golang.org/x/net/route.InterfaceAddrMessage.html#name-.Sys" class="ident">Sys</a></label>() []<a href="message.go.html#line-16" class="ident">Sys</a> { <span class="keyword">return</span> <a href="../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> }</code></span>
+<span class="codeline" id="line-35"><code></code></span>
+<span class="codeline" id="line-36"><code><span class="comment">// An InterfaceMulticastAddrMessage represents an interface multicast</span></code></span>
+<span class="codeline" id="line-37"><code><span class="comment">// address message.</span></code></span>
+<span class="codeline" id="line-38"><code><span class="keyword">type</span> <a href="../../../../../../pkg/vendor/golang.org/x/net/route.html#name-InterfaceMulticastAddrMessage" class="ident">InterfaceMulticastAddrMessage</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-39"><code>	Version <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>    <span class="comment">// message version</span></code></span>
+<span class="codeline" id="line-40"><code>	Type    <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>    <span class="comment">// message type</span></code></span>
+<span class="codeline" id="line-41"><code>	Flags   <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>    <span class="comment">// interface flags</span></code></span>
+<span class="codeline" id="line-42"><code>	Index   <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>    <span class="comment">// interface index</span></code></span>
+<span class="codeline" id="line-43"><code>	Addrs   []<a href="address.go.html#line-12" class="ident">Addr</a> <span class="comment">// addresses</span></code></span>
+<span class="codeline" id="line-44"><code></code></span>
+<span class="codeline" id="line-45"><code>	raw []<a href="../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a> <span class="comment">// raw message</span></code></span>
+<span class="codeline" id="line-46"><code>}</code></span>
+<span class="codeline" id="line-47"><code></code></span>
+<span class="codeline" id="line-48"><code><span class="comment">// Sys implements the Sys method of Message interface.</span></code></span>
+<span class="codeline" id="line-49"><code><span class="keyword">func</span> (<label for="r2" class="ident">m</label> *<a href="#line-38" class="ident">InterfaceMulticastAddrMessage</a>) <label for="r3" class="ident"><a href="../../../../../../imp/vendor/golang.org/x/net/route.InterfaceMulticastAddrMessage.html#name-.Sys" class="ident">Sys</a></label>() []<a href="message.go.html#line-16" class="ident">Sys</a> { <span class="keyword">return</span> <a href="../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> }</code></span>
+<span class="codeline" id="line-50"><code></code></span>
+<span class="codeline" id="line-51"><code><span class="comment">// An InterfaceAnnounceMessage represents an interface announcement</span></code></span>
+<span class="codeline" id="line-52"><code><span class="comment">// message.</span></code></span>
+<span class="codeline" id="line-53"><code><span class="keyword">type</span> <a href="../../../../../../pkg/vendor/golang.org/x/net/route.html#name-InterfaceAnnounceMessage" class="ident">InterfaceAnnounceMessage</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-54"><code>	Version <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>    <span class="comment">// message version</span></code></span>
+<span class="codeline" id="line-55"><code>	Type    <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>    <span class="comment">// message type</span></code></span>
+<span class="codeline" id="line-56"><code>	Index   <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>    <span class="comment">// interface index</span></code></span>
+<span class="codeline" id="line-57"><code>	Name    <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a> <span class="comment">// interface name</span></code></span>
+<span class="codeline" id="line-58"><code>	What    <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>    <span class="comment">// what type of announcement</span></code></span>
+<span class="codeline" id="line-59"><code></code></span>
+<span class="codeline" id="line-60"><code>	raw []<a href="../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a> <span class="comment">// raw message</span></code></span>
+<span class="codeline" id="line-61"><code>}</code></span>
+<span class="codeline" id="line-62"><code></code></span>
+<span class="codeline" id="line-63"><code><span class="comment">// Sys implements the Sys method of Message interface.</span></code></span>
+<span class="codeline" id="line-64"><code><span class="keyword">func</span> (<label for="r4" class="ident">m</label> *<a href="#line-53" class="ident">InterfaceAnnounceMessage</a>) <label for="r5" class="ident"><a href="../../../../../../imp/vendor/golang.org/x/net/route.InterfaceAnnounceMessage.html#name-.Sys" class="ident">Sys</a></label>() []<a href="message.go.html#line-16" class="ident">Sys</a> { <span class="keyword">return</span> <a href="../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> }</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

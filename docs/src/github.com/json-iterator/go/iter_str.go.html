@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: iter_str.go in package github.com/json-iterator/go</title>
+<link href="../../../../css/light-v0.3.6.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.3.6.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	iter_str.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../pkg/github.com/json-iterator/go.html">github.com/json-iterator/go</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20],
+input[id=r21]:checked ~pre label[for=r21],
+input[id=r22]:checked ~pre label[for=r22],
+input[id=r23]:checked ~pre label[for=r23],
+input[id=r24]:checked ~pre label[for=r24],
+input[id=r25]:checked ~pre label[for=r25],
+input[id=r26]:checked ~pre label[for=r26],
+input[id=r27]:checked ~pre label[for=r27],
+input[id=r28]:checked ~pre label[for=r28],
+input[id=r29]:checked ~pre label[for=r29],
+input[id=r30]:checked ~pre label[for=r30],
+input[id=r31]:checked ~pre label[for=r31],
+input[id=r32]:checked ~pre label[for=r32],
+input[id=r33]:checked ~pre label[for=r33],
+input[id=r34]:checked ~pre label[for=r34]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="r21" type="radio" name="g"/>
+<input id="r22" type="radio" name="g"/>
+<input id="r23" type="radio" name="g"/>
+<input id="r24" type="radio" name="g"/>
+<input id="r25" type="radio" name="g"/>
+<input id="r26" type="radio" name="g"/>
+<input id="r27" type="radio" name="g"/>
+<input id="r28" type="radio" name="g"/>
+<input id="r29" type="radio" name="g"/>
+<input id="r30" type="radio" name="g"/>
+<input id="r31" type="radio" name="g"/>
+<input id="r32" type="radio" name="g"/>
+<input id="r33" type="radio" name="g"/>
+<input id="r34" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> jsoniter</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-4"><code>	<label for="i0"><span class="lit-string i0">"fmt"</span></label></code></span>
+<span class="codeline" id="line-5"><code>	<label for="i1"><span class="lit-string i1">"unicode/utf16"</span></label></code></span>
+<span class="codeline" id="line-6"><code>)</code></span>
+<span class="codeline" id="line-7"><code></code></span>
+<span class="codeline" id="line-8"><code><span class="comment">// ReadString read string from iterator</span></code></span>
+<span class="codeline" id="line-9"><code><span class="keyword">func</span> (<label for="r0" class="ident">iter</label> *<a href="iter.go.html#line-71" class="ident">Iterator</a>) <label for="r1" class="ident">ReadString</label>() (<label for="r2" class="ident">ret</label> <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>) {</code></span>
+<span class="codeline" id="line-10"><code>	<label for="r3" class="ident">c</label> := <label for="r0" class="ident">iter</label>.<a href="iter.go.html#line-181" class="ident">nextToken</a>()</code></span>
+<span class="codeline" id="line-11"><code>	<span class="keyword">if</span> <label for="r3" class="ident">c</label> == <span class="lit-number">'"'</span> {</code></span>
+<span class="codeline" id="line-12"><code>		<span class="keyword">for</span> <label for="r4" class="ident">i</label> := <label for="r0" class="ident">iter</label>.<a href="iter.go.html#line-75" class="ident">head</a>; <label for="r4" class="ident">i</label> &lt; <label for="r0" class="ident">iter</label>.<a href="iter.go.html#line-76" class="ident">tail</a>; <label for="r4" class="ident">i</label>++ {</code></span>
+<span class="codeline" id="line-13"><code>			<label for="r5" class="ident">c</label> := <label for="r0" class="ident">iter</label>.<a href="iter.go.html#line-74" class="ident">buf</a>[<label for="r4" class="ident">i</label>]</code></span>
+<span class="codeline" id="line-14"><code>			<span class="keyword">if</span> <label for="r5" class="ident">c</label> == <span class="lit-number">'"'</span> {</code></span>
+<span class="codeline" id="line-15"><code>				<label for="r2" class="ident">ret</label> = <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>(<label for="r0" class="ident">iter</label>.<a href="iter.go.html#line-74" class="ident">buf</a>[<label for="r0" class="ident">iter</label>.<a href="iter.go.html#line-75" class="ident">head</a>:<label for="r4" class="ident">i</label>])</code></span>
+<span class="codeline" id="line-16"><code>				<label for="r0" class="ident">iter</label>.<a href="iter.go.html#line-75" class="ident">head</a> = <label for="r4" class="ident">i</label> + <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-17"><code>				<span class="keyword">return</span> <label for="r2" class="ident">ret</label></code></span>
+<span class="codeline" id="line-18"><code>			} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r5" class="ident">c</label> == <span class="lit-number">'\\'</span> {</code></span>
+<span class="codeline" id="line-19"><code>				<span class="keyword">break</span></code></span>
+<span class="codeline" id="line-20"><code>			} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r5" class="ident">c</label> &lt; <span class="lit-number">' '</span> {</code></span>
+<span class="codeline" id="line-21"><code>				<label for="r0" class="ident">iter</label>.<a href="iter.go.html#line-200" class="ident">ReportError</a>(<span class="lit-string">"ReadString"</span>,</code></span>
+<span class="codeline" id="line-22"><code>					<a href="../../../../pkg/fmt.html" class="ident i0">fmt</a>.<a href="../../../fmt/print.go.html#line-217" class="ident">Sprintf</a>(<span class="lit-string">`invalid control character found: %d`</span>, <label for="r5" class="ident">c</label>))</code></span>
+<span class="codeline" id="line-23"><code>				<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-24"><code>			}</code></span>
+<span class="codeline" id="line-25"><code>		}</code></span>
+<span class="codeline" id="line-26"><code>		<span class="keyword">return</span> <label for="r0" class="ident">iter</label>.<a href="#line-35" class="ident">readStringSlowPath</a>()</code></span>
+<span class="codeline" id="line-27"><code>	} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r3" class="ident">c</label> == <span class="lit-number">'n'</span> {</code></span>
+<span class="codeline" id="line-28"><code>		<label for="r0" class="ident">iter</label>.<a href="iter_skip.go.html#line-117" class="ident">skipThreeBytes</a>(<span class="lit-number">'u'</span>, <span class="lit-number">'l'</span>, <span class="lit-number">'l'</span>)</code></span>
+<span class="codeline" id="line-29"><code>		<span class="keyword">return</span> <span class="lit-string">""</span></code></span>
+<span class="codeline" id="line-30"><code>	}</code></span>
+<span class="codeline" id="line-31"><code>	<label for="r0" class="ident">iter</label>.<a href="iter.go.html#line-200" class="ident">ReportError</a>(<span class="lit-string">"ReadString"</span>, <span class="lit-string">`expects " or n, but found `</span>+<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>([]<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>{<label for="r3" class="ident">c</label>}))</code></span>
+<span class="codeline" id="line-32"><code>	<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-33"><code>}</code></span>
+<span class="codeline" id="line-34"><code></code></span>
+<span class="codeline" id="line-35"><code><span class="keyword">func</span> (<label for="r6" class="ident">iter</label> *<a href="iter.go.html#line-71" class="ident">Iterator</a>) <label for="r7" class="ident">readStringSlowPath</label>() (<label for="r8" class="ident">ret</label> <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>) {</code></span>
+<span class="codeline" id="line-36"><code>	<span class="keyword">var</span> <label for="r9" class="ident">str</label> []<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a></code></span>
+<span class="codeline" id="line-37"><code>	<span class="keyword">var</span> <label for="r10" class="ident">c</label> <a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a></code></span>
+<span class="codeline" id="line-38"><code>	<span class="keyword">for</span> <label for="r6" class="ident">iter</label>.<a href="iter.go.html#line-80" class="ident">Error</a> == <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-39"><code>		<label for="r10" class="ident">c</label> = <label for="r6" class="ident">iter</label>.<a href="iter.go.html#line-238" class="ident">readByte</a>()</code></span>
+<span class="codeline" id="line-40"><code>		<span class="keyword">if</span> <label for="r10" class="ident">c</label> == <span class="lit-number">'"'</span> {</code></span>
+<span class="codeline" id="line-41"><code>			<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>(<label for="r9" class="ident">str</label>)</code></span>
+<span class="codeline" id="line-42"><code>		}</code></span>
+<span class="codeline" id="line-43"><code>		<span class="keyword">if</span> <label for="r10" class="ident">c</label> == <span class="lit-number">'\\'</span> {</code></span>
+<span class="codeline" id="line-44"><code>			<label for="r10" class="ident">c</label> = <label for="r6" class="ident">iter</label>.<a href="iter.go.html#line-238" class="ident">readByte</a>()</code></span>
+<span class="codeline" id="line-45"><code>			<label for="r9" class="ident">str</label> = <label for="r6" class="ident">iter</label>.<a href="#line-54" class="ident">readEscapedChar</a>(<label for="r10" class="ident">c</label>, <label for="r9" class="ident">str</label>)</code></span>
+<span class="codeline" id="line-46"><code>		} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-47"><code>			<label for="r9" class="ident">str</label> = <a href="../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r9" class="ident">str</label>, <label for="r10" class="ident">c</label>)</code></span>
+<span class="codeline" id="line-48"><code>		}</code></span>
+<span class="codeline" id="line-49"><code>	}</code></span>
+<span class="codeline" id="line-50"><code>	<label for="r6" class="ident">iter</label>.<a href="iter.go.html#line-200" class="ident">ReportError</a>(<span class="lit-string">"readStringSlowPath"</span>, <span class="lit-string">"unexpected end of input"</span>)</code></span>
+<span class="codeline" id="line-51"><code>	<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-52"><code>}</code></span>
+<span class="codeline" id="line-53"><code></code></span>
+<span class="codeline" id="line-54"><code><span class="keyword">func</span> (<label for="r11" class="ident">iter</label> *<a href="iter.go.html#line-71" class="ident">Iterator</a>) <label for="r12" class="ident">readEscapedChar</label>(<label for="r13" class="ident">c</label> <a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <label for="r14" class="ident">str</label> []<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>) []<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a> {</code></span>
+<span class="codeline" id="line-55"><code>	<span class="keyword">switch</span> <label for="r13" class="ident">c</label> {</code></span>
+<span class="codeline" id="line-56"><code>	<span class="keyword">case</span> <span class="lit-number">'u'</span>:</code></span>
+<span class="codeline" id="line-57"><code>		<label for="r15" class="ident">r</label> := <label for="r11" class="ident">iter</label>.<a href="#line-146" class="ident">readU4</a>()</code></span>
+<span class="codeline" id="line-58"><code>		<span class="keyword">if</span> <a href="../../../../pkg/unicode/utf16.html" class="ident i1">utf16</a>.<a href="../../../unicode/utf16/utf16.go.html#line-30" class="ident">IsSurrogate</a>(<label for="r15" class="ident">r</label>) {</code></span>
+<span class="codeline" id="line-59"><code>			<label for="r13" class="ident">c</label> = <label for="r11" class="ident">iter</label>.<a href="iter.go.html#line-238" class="ident">readByte</a>()</code></span>
+<span class="codeline" id="line-60"><code>			<span class="keyword">if</span> <label for="r11" class="ident">iter</label>.<a href="iter.go.html#line-80" class="ident">Error</a> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-61"><code>				<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-62"><code>			}</code></span>
+<span class="codeline" id="line-63"><code>			<span class="keyword">if</span> <label for="r13" class="ident">c</label> != <span class="lit-number">'\\'</span> {</code></span>
+<span class="codeline" id="line-64"><code>				<label for="r11" class="ident">iter</label>.<a href="iter.go.html#line-282" class="ident">unreadByte</a>()</code></span>
+<span class="codeline" id="line-65"><code>				<label for="r14" class="ident">str</label> = <a href="#line-190" class="ident">appendRune</a>(<label for="r14" class="ident">str</label>, <label for="r15" class="ident">r</label>)</code></span>
+<span class="codeline" id="line-66"><code>				<span class="keyword">return</span> <label for="r14" class="ident">str</label></code></span>
+<span class="codeline" id="line-67"><code>			}</code></span>
+<span class="codeline" id="line-68"><code>			<label for="r13" class="ident">c</label> = <label for="r11" class="ident">iter</label>.<a href="iter.go.html#line-238" class="ident">readByte</a>()</code></span>
+<span class="codeline" id="line-69"><code>			<span class="keyword">if</span> <label for="r11" class="ident">iter</label>.<a href="iter.go.html#line-80" class="ident">Error</a> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-70"><code>				<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-71"><code>			}</code></span>
+<span class="codeline" id="line-72"><code>			<span class="keyword">if</span> <label for="r13" class="ident">c</label> != <span class="lit-number">'u'</span> {</code></span>
+<span class="codeline" id="line-73"><code>				<label for="r14" class="ident">str</label> = <a href="#line-190" class="ident">appendRune</a>(<label for="r14" class="ident">str</label>, <label for="r15" class="ident">r</label>)</code></span>
+<span class="codeline" id="line-74"><code>				<span class="keyword">return</span> <label for="r11" class="ident">iter</label>.<label for="r12" class="ident">readEscapedChar</label>(<label for="r13" class="ident">c</label>, <label for="r14" class="ident">str</label>)</code></span>
+<span class="codeline" id="line-75"><code>			}</code></span>
+<span class="codeline" id="line-76"><code>			<label for="r16" class="ident">r2</label> := <label for="r11" class="ident">iter</label>.<a href="#line-146" class="ident">readU4</a>()</code></span>
+<span class="codeline" id="line-77"><code>			<span class="keyword">if</span> <label for="r11" class="ident">iter</label>.<a href="iter.go.html#line-80" class="ident">Error</a> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-78"><code>				<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-79"><code>			}</code></span>
+<span class="codeline" id="line-80"><code>			<label for="r17" class="ident">combined</label> := <a href="../../../../pkg/unicode/utf16.html" class="ident i1">utf16</a>.<a href="../../../unicode/utf16/utf16.go.html#line-37" class="ident">DecodeRune</a>(<label for="r15" class="ident">r</label>, <label for="r16" class="ident">r2</label>)</code></span>
+<span class="codeline" id="line-81"><code>			<span class="keyword">if</span> <label for="r17" class="ident">combined</label> == <span class="lit-number">'\uFFFD'</span> {</code></span>
+<span class="codeline" id="line-82"><code>				<label for="r14" class="ident">str</label> = <a href="#line-190" class="ident">appendRune</a>(<label for="r14" class="ident">str</label>, <label for="r15" class="ident">r</label>)</code></span>
+<span class="codeline" id="line-83"><code>				<label for="r14" class="ident">str</label> = <a href="#line-190" class="ident">appendRune</a>(<label for="r14" class="ident">str</label>, <label for="r16" class="ident">r2</label>)</code></span>
+<span class="codeline" id="line-84"><code>			} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-85"><code>				<label for="r14" class="ident">str</label> = <a href="#line-190" class="ident">appendRune</a>(<label for="r14" class="ident">str</label>, <label for="r17" class="ident">combined</label>)</code></span>
+<span class="codeline" id="line-86"><code>			}</code></span>
+<span class="codeline" id="line-87"><code>		} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-88"><code>			<label for="r14" class="ident">str</label> = <a href="#line-190" class="ident">appendRune</a>(<label for="r14" class="ident">str</label>, <label for="r15" class="ident">r</label>)</code></span>
+<span class="codeline" id="line-89"><code>		}</code></span>
+<span class="codeline" id="line-90"><code>	<span class="keyword">case</span> <span class="lit-number">'"'</span>:</code></span>
+<span class="codeline" id="line-91"><code>		<label for="r14" class="ident">str</label> = <a href="../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r14" class="ident">str</label>, <span class="lit-number">'"'</span>)</code></span>
+<span class="codeline" id="line-92"><code>	<span class="keyword">case</span> <span class="lit-number">'\\'</span>:</code></span>
+<span class="codeline" id="line-93"><code>		<label for="r14" class="ident">str</label> = <a href="../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r14" class="ident">str</label>, <span class="lit-number">'\\'</span>)</code></span>
+<span class="codeline" id="line-94"><code>	<span class="keyword">case</span> <span class="lit-number">'/'</span>:</code></span>
+<span class="codeline" id="line-95"><code>		<label for="r14" class="ident">str</label> = <a href="../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r14" class="ident">str</label>, <span class="lit-number">'/'</span>)</code></span>
+<span class="codeline" id="line-96"><code>	<span class="keyword">case</span> <span class="lit-number">'b'</span>:</code></span>
+<span class="codeline" id="line-97"><code>		<label for="r14" class="ident">str</label> = <a href="../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r14" class="ident">str</label>, <span class="lit-number">'\b'</span>)</code></span>
+<span class="codeline" id="line-98"><code>	<span class="keyword">case</span> <span class="lit-number">'f'</span>:</code></span>
+<span class="codeline" id="line-99"><code>		<label for="r14" class="ident">str</label> = <a href="../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r14" class="ident">str</label>, <span class="lit-number">'\f'</span>)</code></span>
+<span class="codeline" id="line-100"><code>	<span class="keyword">case</span> <span class="lit-number">'n'</span>:</code></span>
+<span class="codeline" id="line-101"><code>		<label for="r14" class="ident">str</label> = <a href="../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r14" class="ident">str</label>, <span class="lit-number">'\n'</span>)</code></span>
+<span class="codeline" id="line-102"><code>	<span class="keyword">case</span> <span class="lit-number">'r'</span>:</code></span>
+<span class="codeline" id="line-103"><code>		<label for="r14" class="ident">str</label> = <a href="../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r14" class="ident">str</label>, <span class="lit-number">'\r'</span>)</code></span>
+<span class="codeline" id="line-104"><code>	<span class="keyword">case</span> <span class="lit-number">'t'</span>:</code></span>
+<span class="codeline" id="line-105"><code>		<label for="r14" class="ident">str</label> = <a href="../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r14" class="ident">str</label>, <span class="lit-number">'\t'</span>)</code></span>
+<span class="codeline" id="line-106"><code>	<span class="keyword">default</span>:</code></span>
+<span class="codeline" id="line-107"><code>		<label for="r11" class="ident">iter</label>.<a href="iter.go.html#line-200" class="ident">ReportError</a>(<span class="lit-string">"readEscapedChar"</span>,</code></span>
+<span class="codeline" id="line-108"><code>			<span class="lit-string">`invalid escape char after \`</span>)</code></span>
+<span class="codeline" id="line-109"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-110"><code>	}</code></span>
+<span class="codeline" id="line-111"><code>	<span class="keyword">return</span> <label for="r14" class="ident">str</label></code></span>
+<span class="codeline" id="line-112"><code>}</code></span>
+<span class="codeline" id="line-113"><code></code></span>
+<span class="codeline" id="line-114"><code><span class="comment">// ReadStringAsSlice read string from iterator without copying into string form.</span></code></span>
+<span class="codeline" id="line-115"><code><span class="comment">// The []byte can not be kept, as it will change after next iterator call.</span></code></span>
+<span class="codeline" id="line-116"><code><span class="keyword">func</span> (<label for="r18" class="ident">iter</label> *<a href="iter.go.html#line-71" class="ident">Iterator</a>) <label for="r19" class="ident">ReadStringAsSlice</label>() (<label for="r20" class="ident">ret</label> []<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>) {</code></span>
+<span class="codeline" id="line-117"><code>	<label for="r21" class="ident">c</label> := <label for="r18" class="ident">iter</label>.<a href="iter.go.html#line-181" class="ident">nextToken</a>()</code></span>
+<span class="codeline" id="line-118"><code>	<span class="keyword">if</span> <label for="r21" class="ident">c</label> == <span class="lit-number">'"'</span> {</code></span>
+<span class="codeline" id="line-119"><code>		<span class="keyword">for</span> <label for="r22" class="ident">i</label> := <label for="r18" class="ident">iter</label>.<a href="iter.go.html#line-75" class="ident">head</a>; <label for="r22" class="ident">i</label> &lt; <label for="r18" class="ident">iter</label>.<a href="iter.go.html#line-76" class="ident">tail</a>; <label for="r22" class="ident">i</label>++ {</code></span>
+<span class="codeline" id="line-120"><code>			<span class="comment">// require ascii string and no escape</span></code></span>
+<span class="codeline" id="line-121"><code><span class="comment">			// for: field name, base64, number</span></code></span>
+<span class="codeline" id="line-122"><code>			<span class="keyword">if</span> <label for="r18" class="ident">iter</label>.<a href="iter.go.html#line-74" class="ident">buf</a>[<label for="r22" class="ident">i</label>] == <span class="lit-number">'"'</span> {</code></span>
+<span class="codeline" id="line-123"><code>				<span class="comment">// fast path: reuse the underlying buffer</span></code></span>
+<span class="codeline" id="line-124"><code>				<label for="r20" class="ident">ret</label> = <label for="r18" class="ident">iter</label>.<a href="iter.go.html#line-74" class="ident">buf</a>[<label for="r18" class="ident">iter</label>.<a href="iter.go.html#line-75" class="ident">head</a>:<label for="r22" class="ident">i</label>]</code></span>
+<span class="codeline" id="line-125"><code>				<label for="r18" class="ident">iter</label>.<a href="iter.go.html#line-75" class="ident">head</a> = <label for="r22" class="ident">i</label> + <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-126"><code>				<span class="keyword">return</span> <label for="r20" class="ident">ret</label></code></span>
+<span class="codeline" id="line-127"><code>			}</code></span>
+<span class="codeline" id="line-128"><code>		}</code></span>
+<span class="codeline" id="line-129"><code>		<label for="r23" class="ident">readLen</label> := <label for="r18" class="ident">iter</label>.<a href="iter.go.html#line-76" class="ident">tail</a> - <label for="r18" class="ident">iter</label>.<a href="iter.go.html#line-75" class="ident">head</a></code></span>
+<span class="codeline" id="line-130"><code>		<label for="r24" class="ident">copied</label> := <a href="../../../../pkg/builtin.html#name-make" class="ident">make</a>([]<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <label for="r23" class="ident">readLen</label>, <label for="r23" class="ident">readLen</label>*<span class="lit-number">2</span>)</code></span>
+<span class="codeline" id="line-131"><code>		<a href="../../../../pkg/builtin.html#name-copy" class="ident">copy</a>(<label for="r24" class="ident">copied</label>, <label for="r18" class="ident">iter</label>.<a href="iter.go.html#line-74" class="ident">buf</a>[<label for="r18" class="ident">iter</label>.<a href="iter.go.html#line-75" class="ident">head</a>:<label for="r18" class="ident">iter</label>.<a href="iter.go.html#line-76" class="ident">tail</a>])</code></span>
+<span class="codeline" id="line-132"><code>		<label for="r18" class="ident">iter</label>.<a href="iter.go.html#line-75" class="ident">head</a> = <label for="r18" class="ident">iter</label>.<a href="iter.go.html#line-76" class="ident">tail</a></code></span>
+<span class="codeline" id="line-133"><code>		<span class="keyword">for</span> <label for="r18" class="ident">iter</label>.<a href="iter.go.html#line-80" class="ident">Error</a> == <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-134"><code>			<label for="r25" class="ident">c</label> := <label for="r18" class="ident">iter</label>.<a href="iter.go.html#line-238" class="ident">readByte</a>()</code></span>
+<span class="codeline" id="line-135"><code>			<span class="keyword">if</span> <label for="r25" class="ident">c</label> == <span class="lit-number">'"'</span> {</code></span>
+<span class="codeline" id="line-136"><code>				<span class="keyword">return</span> <label for="r24" class="ident">copied</label></code></span>
+<span class="codeline" id="line-137"><code>			}</code></span>
+<span class="codeline" id="line-138"><code>			<label for="r24" class="ident">copied</label> = <a href="../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r24" class="ident">copied</label>, <label for="r25" class="ident">c</label>)</code></span>
+<span class="codeline" id="line-139"><code>		}</code></span>
+<span class="codeline" id="line-140"><code>		<span class="keyword">return</span> <label for="r24" class="ident">copied</label></code></span>
+<span class="codeline" id="line-141"><code>	}</code></span>
+<span class="codeline" id="line-142"><code>	<label for="r18" class="ident">iter</label>.<a href="iter.go.html#line-200" class="ident">ReportError</a>(<span class="lit-string">"ReadStringAsSlice"</span>, <span class="lit-string">`expects " or n, but found `</span>+<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>([]<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>{<label for="r21" class="ident">c</label>}))</code></span>
+<span class="codeline" id="line-143"><code>	<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-144"><code>}</code></span>
+<span class="codeline" id="line-145"><code></code></span>
+<span class="codeline" id="line-146"><code><span class="keyword">func</span> (<label for="r26" class="ident">iter</label> *<a href="iter.go.html#line-71" class="ident">Iterator</a>) <label for="r27" class="ident">readU4</label>() (<label for="r28" class="ident">ret</label> <a href="../../../../pkg/builtin.html#name-rune" class="ident">rune</a>) {</code></span>
+<span class="codeline" id="line-147"><code>	<span class="keyword">for</span> <label for="r29" class="ident">i</label> := <span class="lit-number">0</span>; <label for="r29" class="ident">i</label> &lt; <span class="lit-number">4</span>; <label for="r29" class="ident">i</label>++ {</code></span>
+<span class="codeline" id="line-148"><code>		<label for="r30" class="ident">c</label> := <label for="r26" class="ident">iter</label>.<a href="iter.go.html#line-238" class="ident">readByte</a>()</code></span>
+<span class="codeline" id="line-149"><code>		<span class="keyword">if</span> <label for="r26" class="ident">iter</label>.<a href="iter.go.html#line-80" class="ident">Error</a> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-150"><code>			<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-151"><code>		}</code></span>
+<span class="codeline" id="line-152"><code>		<span class="keyword">if</span> <label for="r30" class="ident">c</label> &gt;= <span class="lit-number">'0'</span> &amp;&amp; <label for="r30" class="ident">c</label> &lt;= <span class="lit-number">'9'</span> {</code></span>
+<span class="codeline" id="line-153"><code>			<label for="r28" class="ident">ret</label> = <label for="r28" class="ident">ret</label>*<span class="lit-number">16</span> + <a href="../../../../pkg/builtin.html#name-rune" class="ident">rune</a>(<label for="r30" class="ident">c</label>-<span class="lit-number">'0'</span>)</code></span>
+<span class="codeline" id="line-154"><code>		} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r30" class="ident">c</label> &gt;= <span class="lit-number">'a'</span> &amp;&amp; <label for="r30" class="ident">c</label> &lt;= <span class="lit-number">'f'</span> {</code></span>
+<span class="codeline" id="line-155"><code>			<label for="r28" class="ident">ret</label> = <label for="r28" class="ident">ret</label>*<span class="lit-number">16</span> + <a href="../../../../pkg/builtin.html#name-rune" class="ident">rune</a>(<label for="r30" class="ident">c</label>-<span class="lit-number">'a'</span>+<span class="lit-number">10</span>)</code></span>
+<span class="codeline" id="line-156"><code>		} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r30" class="ident">c</label> &gt;= <span class="lit-number">'A'</span> &amp;&amp; <label for="r30" class="ident">c</label> &lt;= <span class="lit-number">'F'</span> {</code></span>
+<span class="codeline" id="line-157"><code>			<label for="r28" class="ident">ret</label> = <label for="r28" class="ident">ret</label>*<span class="lit-number">16</span> + <a href="../../../../pkg/builtin.html#name-rune" class="ident">rune</a>(<label for="r30" class="ident">c</label>-<span class="lit-number">'A'</span>+<span class="lit-number">10</span>)</code></span>
+<span class="codeline" id="line-158"><code>		} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-159"><code>			<label for="r26" class="ident">iter</label>.<a href="iter.go.html#line-200" class="ident">ReportError</a>(<span class="lit-string">"readU4"</span>, <span class="lit-string">"expects 0~9 or a~f, but found "</span>+<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>([]<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>{<label for="r30" class="ident">c</label>}))</code></span>
+<span class="codeline" id="line-160"><code>			<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-161"><code>		}</code></span>
+<span class="codeline" id="line-162"><code>	}</code></span>
+<span class="codeline" id="line-163"><code>	<span class="keyword">return</span> <label for="r28" class="ident">ret</label></code></span>
+<span class="codeline" id="line-164"><code>}</code></span>
+<span class="codeline" id="line-165"><code></code></span>
+<span class="codeline" id="line-166"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-167"><code>	<a href="../../../../pkg/github.com/json-iterator/go.html#name-t1" class="ident">t1</a> = <span class="lit-number">0x00</span> <span class="comment">// 0000 0000</span></code></span>
+<span class="codeline" id="line-168"><code>	<a href="../../../../pkg/github.com/json-iterator/go.html#name-tx" class="ident">tx</a> = <span class="lit-number">0x80</span> <span class="comment">// 1000 0000</span></code></span>
+<span class="codeline" id="line-169"><code>	<a href="../../../../pkg/github.com/json-iterator/go.html#name-t2" class="ident">t2</a> = <span class="lit-number">0xC0</span> <span class="comment">// 1100 0000</span></code></span>
+<span class="codeline" id="line-170"><code>	<a href="../../../../pkg/github.com/json-iterator/go.html#name-t3" class="ident">t3</a> = <span class="lit-number">0xE0</span> <span class="comment">// 1110 0000</span></code></span>
+<span class="codeline" id="line-171"><code>	<a href="../../../../pkg/github.com/json-iterator/go.html#name-t4" class="ident">t4</a> = <span class="lit-number">0xF0</span> <span class="comment">// 1111 0000</span></code></span>
+<span class="codeline" id="line-172"><code>	<a href="../../../../pkg/github.com/json-iterator/go.html#name-t5" class="ident">t5</a> = <span class="lit-number">0xF8</span> <span class="comment">// 1111 1000</span></code></span>
+<span class="codeline" id="line-173"><code></code></span>
+<span class="codeline" id="line-174"><code>	<a href="../../../../pkg/github.com/json-iterator/go.html#name-maskx" class="ident">maskx</a> = <span class="lit-number">0x3F</span> <span class="comment">// 0011 1111</span></code></span>
+<span class="codeline" id="line-175"><code>	<a href="../../../../pkg/github.com/json-iterator/go.html#name-mask2" class="ident">mask2</a> = <span class="lit-number">0x1F</span> <span class="comment">// 0001 1111</span></code></span>
+<span class="codeline" id="line-176"><code>	<a href="../../../../pkg/github.com/json-iterator/go.html#name-mask3" class="ident">mask3</a> = <span class="lit-number">0x0F</span> <span class="comment">// 0000 1111</span></code></span>
+<span class="codeline" id="line-177"><code>	<a href="../../../../pkg/github.com/json-iterator/go.html#name-mask4" class="ident">mask4</a> = <span class="lit-number">0x07</span> <span class="comment">// 0000 0111</span></code></span>
+<span class="codeline" id="line-178"><code></code></span>
+<span class="codeline" id="line-179"><code>	<a href="../../../../pkg/github.com/json-iterator/go.html#name-rune1Max" class="ident">rune1Max</a> = <span class="lit-number">1</span>&lt;&lt;<span class="lit-number">7</span> - <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-180"><code>	<a href="../../../../pkg/github.com/json-iterator/go.html#name-rune2Max" class="ident">rune2Max</a> = <span class="lit-number">1</span>&lt;&lt;<span class="lit-number">11</span> - <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-181"><code>	<a href="../../../../pkg/github.com/json-iterator/go.html#name-rune3Max" class="ident">rune3Max</a> = <span class="lit-number">1</span>&lt;&lt;<span class="lit-number">16</span> - <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-182"><code></code></span>
+<span class="codeline" id="line-183"><code>	<a href="../../../../pkg/github.com/json-iterator/go.html#name-surrogateMin" class="ident">surrogateMin</a> = <span class="lit-number">0xD800</span></code></span>
+<span class="codeline" id="line-184"><code>	<a href="../../../../pkg/github.com/json-iterator/go.html#name-surrogateMax" class="ident">surrogateMax</a> = <span class="lit-number">0xDFFF</span></code></span>
+<span class="codeline" id="line-185"><code></code></span>
+<span class="codeline" id="line-186"><code>	<a href="../../../../pkg/github.com/json-iterator/go.html#name-maxRune" class="ident">maxRune</a>   = <span class="lit-number">'\U0010FFFF'</span> <span class="comment">// Maximum valid Unicode code point.</span></code></span>
+<span class="codeline" id="line-187"><code>	<a href="../../../../pkg/github.com/json-iterator/go.html#name-runeError" class="ident">runeError</a> = <span class="lit-number">'\uFFFD'</span>     <span class="comment">// the "error" Rune or "Unicode replacement character"</span></code></span>
+<span class="codeline" id="line-188"><code>)</code></span>
+<span class="codeline" id="line-189"><code></code></span>
+<span class="codeline" id="line-190"><code><span class="keyword">func</span> <label for="r31" class="ident"><a href="../../../../pkg/github.com/json-iterator/go.html#name-appendRune" class="ident">appendRune</a></label>(<label for="r32" class="ident">p</label> []<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <label for="r33" class="ident">r</label> <a href="../../../../pkg/builtin.html#name-rune" class="ident">rune</a>) []<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a> {</code></span>
+<span class="codeline" id="line-191"><code>	<span class="comment">// Negative values are erroneous. Making it unsigned addresses the problem.</span></code></span>
+<span class="codeline" id="line-192"><code>	<span class="keyword">switch</span> <label for="r34" class="ident">i</label> := <a href="../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r33" class="ident">r</label>); {</code></span>
+<span class="codeline" id="line-193"><code>	<span class="keyword">case</span> <label for="r34" class="ident">i</label> &lt;= <a href="#line-179" class="ident">rune1Max</a>:</code></span>
+<span class="codeline" id="line-194"><code>		<label for="r32" class="ident">p</label> = <a href="../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r32" class="ident">p</label>, <a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<label for="r33" class="ident">r</label>))</code></span>
+<span class="codeline" id="line-195"><code>		<span class="keyword">return</span> <label for="r32" class="ident">p</label></code></span>
+<span class="codeline" id="line-196"><code>	<span class="keyword">case</span> <label for="r34" class="ident">i</label> &lt;= <a href="#line-180" class="ident">rune2Max</a>:</code></span>
+<span class="codeline" id="line-197"><code>		<label for="r32" class="ident">p</label> = <a href="../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r32" class="ident">p</label>, <a href="#line-169" class="ident">t2</a>|<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<label for="r33" class="ident">r</label>&gt;&gt;<span class="lit-number">6</span>))</code></span>
+<span class="codeline" id="line-198"><code>		<label for="r32" class="ident">p</label> = <a href="../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r32" class="ident">p</label>, <a href="#line-168" class="ident">tx</a>|<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<label for="r33" class="ident">r</label>)&amp;<a href="#line-174" class="ident">maskx</a>)</code></span>
+<span class="codeline" id="line-199"><code>		<span class="keyword">return</span> <label for="r32" class="ident">p</label></code></span>
+<span class="codeline" id="line-200"><code>	<span class="keyword">case</span> <label for="r34" class="ident">i</label> &gt; <a href="#line-186" class="ident">maxRune</a>, <a href="#line-183" class="ident">surrogateMin</a> &lt;= <label for="r34" class="ident">i</label> &amp;&amp; <label for="r34" class="ident">i</label> &lt;= <a href="#line-184" class="ident">surrogateMax</a>:</code></span>
+<span class="codeline" id="line-201"><code>		<label for="r33" class="ident">r</label> = <a href="#line-187" class="ident">runeError</a></code></span>
+<span class="codeline" id="line-202"><code>		<span class="keyword">fallthrough</span></code></span>
+<span class="codeline" id="line-203"><code>	<span class="keyword">case</span> <label for="r34" class="ident">i</label> &lt;= <a href="#line-181" class="ident">rune3Max</a>:</code></span>
+<span class="codeline" id="line-204"><code>		<label for="r32" class="ident">p</label> = <a href="../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r32" class="ident">p</label>, <a href="#line-170" class="ident">t3</a>|<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<label for="r33" class="ident">r</label>&gt;&gt;<span class="lit-number">12</span>))</code></span>
+<span class="codeline" id="line-205"><code>		<label for="r32" class="ident">p</label> = <a href="../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r32" class="ident">p</label>, <a href="#line-168" class="ident">tx</a>|<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<label for="r33" class="ident">r</label>&gt;&gt;<span class="lit-number">6</span>)&amp;<a href="#line-174" class="ident">maskx</a>)</code></span>
+<span class="codeline" id="line-206"><code>		<label for="r32" class="ident">p</label> = <a href="../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r32" class="ident">p</label>, <a href="#line-168" class="ident">tx</a>|<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<label for="r33" class="ident">r</label>)&amp;<a href="#line-174" class="ident">maskx</a>)</code></span>
+<span class="codeline" id="line-207"><code>		<span class="keyword">return</span> <label for="r32" class="ident">p</label></code></span>
+<span class="codeline" id="line-208"><code>	<span class="keyword">default</span>:</code></span>
+<span class="codeline" id="line-209"><code>		<label for="r32" class="ident">p</label> = <a href="../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r32" class="ident">p</label>, <a href="#line-171" class="ident">t4</a>|<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<label for="r33" class="ident">r</label>&gt;&gt;<span class="lit-number">18</span>))</code></span>
+<span class="codeline" id="line-210"><code>		<label for="r32" class="ident">p</label> = <a href="../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r32" class="ident">p</label>, <a href="#line-168" class="ident">tx</a>|<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<label for="r33" class="ident">r</label>&gt;&gt;<span class="lit-number">12</span>)&amp;<a href="#line-174" class="ident">maskx</a>)</code></span>
+<span class="codeline" id="line-211"><code>		<label for="r32" class="ident">p</label> = <a href="../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r32" class="ident">p</label>, <a href="#line-168" class="ident">tx</a>|<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<label for="r33" class="ident">r</label>&gt;&gt;<span class="lit-number">6</span>)&amp;<a href="#line-174" class="ident">maskx</a>)</code></span>
+<span class="codeline" id="line-212"><code>		<label for="r32" class="ident">p</label> = <a href="../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r32" class="ident">p</label>, <a href="#line-168" class="ident">tx</a>|<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<label for="r33" class="ident">r</label>)&amp;<a href="#line-174" class="ident">maskx</a>)</code></span>
+<span class="codeline" id="line-213"><code>		<span class="keyword">return</span> <label for="r32" class="ident">p</label></code></span>
+<span class="codeline" id="line-214"><code>	}</code></span>
+<span class="codeline" id="line-215"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

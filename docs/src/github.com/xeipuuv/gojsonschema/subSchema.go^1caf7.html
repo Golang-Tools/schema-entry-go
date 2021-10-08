@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: subSchema.go in package github.com/xeipuuv/gojsonschema</title>
+<link href="../../../../css/light-v0.3.6.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.3.6.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	subSchema.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html">github.com/xeipuuv/gojsonschema</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1,
+input[id=i2]:checked ~pre .i2
+{background: brown; color: #eed;}
+</style><input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+<input id="i2" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="comment">// Copyright 2015 xeipuuv ( https://github.com/xeipuuv )</span></code></span>
+<span class="codeline" id="line-2"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-3"><code><span class="comment">// Licensed under the Apache License, Version 2.0 (the "License");</span></code></span>
+<span class="codeline" id="line-4"><code><span class="comment">// you may not use this file except in compliance with the License.</span></code></span>
+<span class="codeline" id="line-5"><code><span class="comment">// You may obtain a copy of the License at</span></code></span>
+<span class="codeline" id="line-6"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-7"><code><span class="comment">//   http://www.apache.org/licenses/LICENSE-2.0</span></code></span>
+<span class="codeline" id="line-8"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-9"><code><span class="comment">// Unless required by applicable law or agreed to in writing, software</span></code></span>
+<span class="codeline" id="line-10"><code><span class="comment">// distributed under the License is distributed on an "AS IS" BASIS,</span></code></span>
+<span class="codeline" id="line-11"><code><span class="comment">// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></code></span>
+<span class="codeline" id="line-12"><code><span class="comment">// See the License for the specific language governing permissions and</span></code></span>
+<span class="codeline" id="line-13"><code><span class="comment">// limitations under the License.</span></code></span>
+<span class="codeline" id="line-14"><code></code></span>
+<span class="codeline" id="line-15"><code><span class="comment">// author           xeipuuv</span></code></span>
+<span class="codeline" id="line-16"><code><span class="comment">// author-github    https://github.com/xeipuuv</span></code></span>
+<span class="codeline" id="line-17"><code><span class="comment">// author-mail      xeipuuv@gmail.com</span></code></span>
+<span class="codeline" id="line-18"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-19"><code><span class="comment">// repository-name  gojsonschema</span></code></span>
+<span class="codeline" id="line-20"><code><span class="comment">// repository-desc  An implementation of JSON Schema, based on IETF's draft v4 - Go language.</span></code></span>
+<span class="codeline" id="line-21"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-22"><code><span class="comment">// description      Defines the structure of a sub-subSchema.</span></code></span>
+<span class="codeline" id="line-23"><code><span class="comment">//                  A sub-subSchema can contain other sub-schemas.</span></code></span>
+<span class="codeline" id="line-24"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-25"><code><span class="comment">// created          27-02-2013</span></code></span>
+<span class="codeline" id="line-26"><code></code></span>
+<span class="codeline" id="line-27"><code><span class="keyword">package</span> gojsonschema</code></span>
+<span class="codeline" id="line-28"><code></code></span>
+<span class="codeline" id="line-29"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-30"><code>	<label for="i0"><span class="lit-string i0">"github.com/xeipuuv/gojsonreference"</span></label></code></span>
+<span class="codeline" id="line-31"><code>	<label for="i1"><span class="lit-string i1">"math/big"</span></label></code></span>
+<span class="codeline" id="line-32"><code>	<label for="i2"><span class="lit-string i2">"regexp"</span></label></code></span>
+<span class="codeline" id="line-33"><code>)</code></span>
+<span class="codeline" id="line-34"><code></code></span>
+<span class="codeline" id="line-35"><code><span class="comment">// Constants</span></code></span>
+<span class="codeline" id="line-36"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-37"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-KEY_SCHEMA" class="ident">KEY_SCHEMA</a>                = <span class="lit-string">"$schema"</span></code></span>
+<span class="codeline" id="line-38"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-KEY_ID" class="ident">KEY_ID</a>                    = <span class="lit-string">"id"</span></code></span>
+<span class="codeline" id="line-39"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-KEY_ID_NEW" class="ident">KEY_ID_NEW</a>                = <span class="lit-string">"$id"</span></code></span>
+<span class="codeline" id="line-40"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-KEY_REF" class="ident">KEY_REF</a>                   = <span class="lit-string">"$ref"</span></code></span>
+<span class="codeline" id="line-41"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-KEY_TITLE" class="ident">KEY_TITLE</a>                 = <span class="lit-string">"title"</span></code></span>
+<span class="codeline" id="line-42"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-KEY_DESCRIPTION" class="ident">KEY_DESCRIPTION</a>           = <span class="lit-string">"description"</span></code></span>
+<span class="codeline" id="line-43"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-KEY_TYPE" class="ident">KEY_TYPE</a>                  = <span class="lit-string">"type"</span></code></span>
+<span class="codeline" id="line-44"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-KEY_ITEMS" class="ident">KEY_ITEMS</a>                 = <span class="lit-string">"items"</span></code></span>
+<span class="codeline" id="line-45"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-KEY_ADDITIONAL_ITEMS" class="ident">KEY_ADDITIONAL_ITEMS</a>      = <span class="lit-string">"additionalItems"</span></code></span>
+<span class="codeline" id="line-46"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-KEY_PROPERTIES" class="ident">KEY_PROPERTIES</a>            = <span class="lit-string">"properties"</span></code></span>
+<span class="codeline" id="line-47"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-KEY_PATTERN_PROPERTIES" class="ident">KEY_PATTERN_PROPERTIES</a>    = <span class="lit-string">"patternProperties"</span></code></span>
+<span class="codeline" id="line-48"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-KEY_ADDITIONAL_PROPERTIES" class="ident">KEY_ADDITIONAL_PROPERTIES</a> = <span class="lit-string">"additionalProperties"</span></code></span>
+<span class="codeline" id="line-49"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-KEY_PROPERTY_NAMES" class="ident">KEY_PROPERTY_NAMES</a>        = <span class="lit-string">"propertyNames"</span></code></span>
+<span class="codeline" id="line-50"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-KEY_DEFINITIONS" class="ident">KEY_DEFINITIONS</a>           = <span class="lit-string">"definitions"</span></code></span>
+<span class="codeline" id="line-51"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-KEY_MULTIPLE_OF" class="ident">KEY_MULTIPLE_OF</a>           = <span class="lit-string">"multipleOf"</span></code></span>
+<span class="codeline" id="line-52"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-KEY_MINIMUM" class="ident">KEY_MINIMUM</a>               = <span class="lit-string">"minimum"</span></code></span>
+<span class="codeline" id="line-53"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-KEY_MAXIMUM" class="ident">KEY_MAXIMUM</a>               = <span class="lit-string">"maximum"</span></code></span>
+<span class="codeline" id="line-54"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-KEY_EXCLUSIVE_MINIMUM" class="ident">KEY_EXCLUSIVE_MINIMUM</a>     = <span class="lit-string">"exclusiveMinimum"</span></code></span>
+<span class="codeline" id="line-55"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-KEY_EXCLUSIVE_MAXIMUM" class="ident">KEY_EXCLUSIVE_MAXIMUM</a>     = <span class="lit-string">"exclusiveMaximum"</span></code></span>
+<span class="codeline" id="line-56"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-KEY_MIN_LENGTH" class="ident">KEY_MIN_LENGTH</a>            = <span class="lit-string">"minLength"</span></code></span>
+<span class="codeline" id="line-57"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-KEY_MAX_LENGTH" class="ident">KEY_MAX_LENGTH</a>            = <span class="lit-string">"maxLength"</span></code></span>
+<span class="codeline" id="line-58"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-KEY_PATTERN" class="ident">KEY_PATTERN</a>               = <span class="lit-string">"pattern"</span></code></span>
+<span class="codeline" id="line-59"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-KEY_FORMAT" class="ident">KEY_FORMAT</a>                = <span class="lit-string">"format"</span></code></span>
+<span class="codeline" id="line-60"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-KEY_MIN_PROPERTIES" class="ident">KEY_MIN_PROPERTIES</a>        = <span class="lit-string">"minProperties"</span></code></span>
+<span class="codeline" id="line-61"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-KEY_MAX_PROPERTIES" class="ident">KEY_MAX_PROPERTIES</a>        = <span class="lit-string">"maxProperties"</span></code></span>
+<span class="codeline" id="line-62"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-KEY_DEPENDENCIES" class="ident">KEY_DEPENDENCIES</a>          = <span class="lit-string">"dependencies"</span></code></span>
+<span class="codeline" id="line-63"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-KEY_REQUIRED" class="ident">KEY_REQUIRED</a>              = <span class="lit-string">"required"</span></code></span>
+<span class="codeline" id="line-64"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-KEY_MIN_ITEMS" class="ident">KEY_MIN_ITEMS</a>             = <span class="lit-string">"minItems"</span></code></span>
+<span class="codeline" id="line-65"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-KEY_MAX_ITEMS" class="ident">KEY_MAX_ITEMS</a>             = <span class="lit-string">"maxItems"</span></code></span>
+<span class="codeline" id="line-66"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-KEY_UNIQUE_ITEMS" class="ident">KEY_UNIQUE_ITEMS</a>          = <span class="lit-string">"uniqueItems"</span></code></span>
+<span class="codeline" id="line-67"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-KEY_CONTAINS" class="ident">KEY_CONTAINS</a>              = <span class="lit-string">"contains"</span></code></span>
+<span class="codeline" id="line-68"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-KEY_CONST" class="ident">KEY_CONST</a>                 = <span class="lit-string">"const"</span></code></span>
+<span class="codeline" id="line-69"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-KEY_ENUM" class="ident">KEY_ENUM</a>                  = <span class="lit-string">"enum"</span></code></span>
+<span class="codeline" id="line-70"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-KEY_ONE_OF" class="ident">KEY_ONE_OF</a>                = <span class="lit-string">"oneOf"</span></code></span>
+<span class="codeline" id="line-71"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-KEY_ANY_OF" class="ident">KEY_ANY_OF</a>                = <span class="lit-string">"anyOf"</span></code></span>
+<span class="codeline" id="line-72"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-KEY_ALL_OF" class="ident">KEY_ALL_OF</a>                = <span class="lit-string">"allOf"</span></code></span>
+<span class="codeline" id="line-73"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-KEY_NOT" class="ident">KEY_NOT</a>                   = <span class="lit-string">"not"</span></code></span>
+<span class="codeline" id="line-74"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-KEY_IF" class="ident">KEY_IF</a>                    = <span class="lit-string">"if"</span></code></span>
+<span class="codeline" id="line-75"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-KEY_THEN" class="ident">KEY_THEN</a>                  = <span class="lit-string">"then"</span></code></span>
+<span class="codeline" id="line-76"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-KEY_ELSE" class="ident">KEY_ELSE</a>                  = <span class="lit-string">"else"</span></code></span>
+<span class="codeline" id="line-77"><code>)</code></span>
+<span class="codeline" id="line-78"><code></code></span>
+<span class="codeline" id="line-79"><code><span class="keyword">type</span> <a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-subSchema" class="ident">subSchema</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-80"><code>	draft *<a href="draft.go.html#line-26" class="ident">Draft</a></code></span>
+<span class="codeline" id="line-81"><code></code></span>
+<span class="codeline" id="line-82"><code>	<span class="comment">// basic subSchema meta properties</span></code></span>
+<span class="codeline" id="line-83"><code>	id          *<a href="../../../../pkg/github.com/xeipuuv/gojsonreference.html" class="ident i0">gojsonreference</a>.<a href="../gojsonreference/reference.go.html#line-50" class="ident">JsonReference</a></code></span>
+<span class="codeline" id="line-84"><code>	title       *<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-85"><code>	description *<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-86"><code></code></span>
+<span class="codeline" id="line-87"><code>	property <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-88"><code></code></span>
+<span class="codeline" id="line-89"><code>	<span class="comment">// Quick pass/fail for boolean schemas</span></code></span>
+<span class="codeline" id="line-90"><code>	pass *<a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-91"><code></code></span>
+<span class="codeline" id="line-92"><code>	<span class="comment">// Types associated with the subSchema</span></code></span>
+<span class="codeline" id="line-93"><code>	types <a href="schemaType.go^21a59.html#line-34" class="ident">jsonSchemaType</a></code></span>
+<span class="codeline" id="line-94"><code></code></span>
+<span class="codeline" id="line-95"><code>	<span class="comment">// Reference url</span></code></span>
+<span class="codeline" id="line-96"><code>	ref *<a href="../../../../pkg/github.com/xeipuuv/gojsonreference.html" class="ident i0">gojsonreference</a>.<a href="../gojsonreference/reference.go.html#line-50" class="ident">JsonReference</a></code></span>
+<span class="codeline" id="line-97"><code>	<span class="comment">// Schema referenced</span></code></span>
+<span class="codeline" id="line-98"><code>	refSchema *<a href="#line-79" class="ident">subSchema</a></code></span>
+<span class="codeline" id="line-99"><code></code></span>
+<span class="codeline" id="line-100"><code>	<span class="comment">// hierarchy</span></code></span>
+<span class="codeline" id="line-101"><code>	parent                      *<a href="#line-79" class="ident">subSchema</a></code></span>
+<span class="codeline" id="line-102"><code>	itemsChildren               []*<a href="#line-79" class="ident">subSchema</a></code></span>
+<span class="codeline" id="line-103"><code>	itemsChildrenIsSingleSchema <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-104"><code>	propertiesChildren          []*<a href="#line-79" class="ident">subSchema</a></code></span>
+<span class="codeline" id="line-105"><code></code></span>
+<span class="codeline" id="line-106"><code>	<span class="comment">// validation : number / integer</span></code></span>
+<span class="codeline" id="line-107"><code>	multipleOf       *<a href="../../../../pkg/math/big.html" class="ident i1">big</a>.<a href="../../../math/big/rat.go.html#line-23" class="ident">Rat</a></code></span>
+<span class="codeline" id="line-108"><code>	maximum          *<a href="../../../../pkg/math/big.html" class="ident i1">big</a>.<a href="../../../math/big/rat.go.html#line-23" class="ident">Rat</a></code></span>
+<span class="codeline" id="line-109"><code>	exclusiveMaximum *<a href="../../../../pkg/math/big.html" class="ident i1">big</a>.<a href="../../../math/big/rat.go.html#line-23" class="ident">Rat</a></code></span>
+<span class="codeline" id="line-110"><code>	minimum          *<a href="../../../../pkg/math/big.html" class="ident i1">big</a>.<a href="../../../math/big/rat.go.html#line-23" class="ident">Rat</a></code></span>
+<span class="codeline" id="line-111"><code>	exclusiveMinimum *<a href="../../../../pkg/math/big.html" class="ident i1">big</a>.<a href="../../../math/big/rat.go.html#line-23" class="ident">Rat</a></code></span>
+<span class="codeline" id="line-112"><code></code></span>
+<span class="codeline" id="line-113"><code>	<span class="comment">// validation : string</span></code></span>
+<span class="codeline" id="line-114"><code>	minLength *<a href="../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-115"><code>	maxLength *<a href="../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-116"><code>	pattern   *<a href="../../../../pkg/regexp.html" class="ident i2">regexp</a>.<a href="../../../regexp/regexp.go.html#line-82" class="ident">Regexp</a></code></span>
+<span class="codeline" id="line-117"><code>	format    <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-118"><code></code></span>
+<span class="codeline" id="line-119"><code>	<span class="comment">// validation : object</span></code></span>
+<span class="codeline" id="line-120"><code>	minProperties *<a href="../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-121"><code>	maxProperties *<a href="../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-122"><code>	required      []<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-123"><code></code></span>
+<span class="codeline" id="line-124"><code>	dependencies         <span class="keyword">map</span>[<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>]<span class="keyword">interface</span>{}</code></span>
+<span class="codeline" id="line-125"><code>	additionalProperties <span class="keyword">interface</span>{}</code></span>
+<span class="codeline" id="line-126"><code>	patternProperties    <span class="keyword">map</span>[<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>]*<a href="#line-79" class="ident">subSchema</a></code></span>
+<span class="codeline" id="line-127"><code>	propertyNames        *<a href="#line-79" class="ident">subSchema</a></code></span>
+<span class="codeline" id="line-128"><code></code></span>
+<span class="codeline" id="line-129"><code>	<span class="comment">// validation : array</span></code></span>
+<span class="codeline" id="line-130"><code>	minItems    *<a href="../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-131"><code>	maxItems    *<a href="../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-132"><code>	uniqueItems <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-133"><code>	contains    *<a href="#line-79" class="ident">subSchema</a></code></span>
+<span class="codeline" id="line-134"><code></code></span>
+<span class="codeline" id="line-135"><code>	additionalItems <span class="keyword">interface</span>{}</code></span>
+<span class="codeline" id="line-136"><code></code></span>
+<span class="codeline" id="line-137"><code>	<span class="comment">// validation : all</span></code></span>
+<span class="codeline" id="line-138"><code>	_const *<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a> <span class="comment">//const is a golang keyword</span></code></span>
+<span class="codeline" id="line-139"><code>	enum   []<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-140"><code></code></span>
+<span class="codeline" id="line-141"><code>	<span class="comment">// validation : subSchema</span></code></span>
+<span class="codeline" id="line-142"><code>	oneOf []*<a href="#line-79" class="ident">subSchema</a></code></span>
+<span class="codeline" id="line-143"><code>	anyOf []*<a href="#line-79" class="ident">subSchema</a></code></span>
+<span class="codeline" id="line-144"><code>	allOf []*<a href="#line-79" class="ident">subSchema</a></code></span>
+<span class="codeline" id="line-145"><code>	not   *<a href="#line-79" class="ident">subSchema</a></code></span>
+<span class="codeline" id="line-146"><code>	_if   *<a href="#line-79" class="ident">subSchema</a> <span class="comment">// if/else are golang keywords</span></code></span>
+<span class="codeline" id="line-147"><code>	_then *<a href="#line-79" class="ident">subSchema</a></code></span>
+<span class="codeline" id="line-148"><code>	_else *<a href="#line-79" class="ident">subSchema</a></code></span>
+<span class="codeline" id="line-149"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

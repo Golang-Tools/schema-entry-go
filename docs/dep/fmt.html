@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dependency Relation: fmt</title>
+<link href="../css/light-v0.3.6.css" rel="stylesheet">
+<script src="../jvs/golds-v0.3.6.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre><code><span style="font-size:xx-large;">package <b>fmt</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../pkg/fmt.html">fmt</a>
+
+<span class="title">Imports</span><div id="packages">
+<code>      <span class="order">1</span>. <a href="../pkg/errors.html">errors</a></code>
+<code>      <span class="order">2</span>. <a href="../pkg/internal/fmtsort.html">internal/fmtsort</a></code>
+<code>      <span class="order">3</span>. <a href="../pkg/io.html">io</a></code>
+<code>      <span class="order">4</span>. <a href="../pkg/math.html">math</a></code>
+<code>      <span class="order">5</span>. <a href="../pkg/os.html">os</a></code>
+<code>      <span class="order">6</span>. <a href="../pkg/reflect.html">reflect</a></code>
+<code>      <span class="order">7</span>. <a href="../pkg/strconv.html">strconv</a></code>
+<code>      <span class="order">8</span>. <a href="../pkg/sync.html">sync</a></code>
+<code>      <span class="order">9</span>. <a href="../pkg/unicode/utf8.html">unicode/utf8</a></code></div>
+<span class="title" id="imported-by">Imported By</span><div id="packages">
+<code>      <span class="order"> 1</span>. <a href="../pkg/compress/flate.html">compress/flate</a></code>
+<code>      <span class="order"> 2</span>. <a href="../pkg/compress/gzip.html" class="path-duplicate">compress/</a><a href="../pkg/compress/gzip.html">gzip</a></code>
+<code>      <span class="order"> 3</span>. <a href="../pkg/crypto/tls.html">crypto/tls</a></code>
+<code>      <span class="order"> 4</span>. <a href="../pkg/crypto/x509.html" class="path-duplicate">crypto/</a><a href="../pkg/crypto/x509.html">x509</a></code>
+<code>      <span class="order"> 5</span>. <a href="../pkg/crypto/x509/pkix.html" class="path-duplicate">crypto/x509/</a><a href="../pkg/crypto/x509/pkix.html">pkix</a></code>
+<code>      <span class="order"> 6</span>. <a href="../pkg/encoding/asn1.html">encoding/asn1</a></code>
+<code>      <span class="order"> 7</span>. <a href="../pkg/encoding/hex.html" class="path-duplicate">encoding/</a><a href="../pkg/encoding/hex.html">hex</a></code>
+<code>      <span class="order"> 8</span>. <a href="../pkg/encoding/json.html" class="path-duplicate">encoding/</a><a href="../pkg/encoding/json.html">json</a></code>
+<code>      <span class="order"> 9</span>. <a href="../pkg/github.com/Golang-Tools^b0a0c/loggerhelper.html">github.com/Golang-Tools/loggerhelper</a></code>
+<code>      <span class="order">10</span>. <a href="../pkg/github.com/Golang-Tools^b0a0c/schema-entry-go.html" class="path-duplicate">github.com/Golang-Tools/</a><a href="../pkg/github.com/Golang-Tools^b0a0c/schema-entry-go.html">schema-entry-go</a></code>
+<code>   <a href="../src/github.com/Golang-Tools^b0a0c/schema-entry-go/functest/main.go.html#line-24">#m</a> <span class="order">11</span>. <a href="../pkg/github.com/Golang-Tools^b0a0c/schema-entry-go/functest.html" class="path-duplicate">github.com/Golang-Tools/schema-entry-go/</a><a href="../pkg/github.com/Golang-Tools^b0a0c/schema-entry-go/functest.html">functest</a></code>
+<code>      <span class="order">12</span>. <a href="../pkg/github.com/akamensky/argparse.html" class="path-duplicate">github.com/</a><a href="../pkg/github.com/akamensky/argparse.html">akamensky/argparse</a></code>
+<code>      <span class="order">13</span>. <a href="../pkg/github.com/ghodss/yaml.html" class="path-duplicate">github.com/</a><a href="../pkg/github.com/ghodss/yaml.html">ghodss/yaml</a></code>
+<code>      <span class="order">14</span>. <a href="../pkg/github.com/json-iterator/go.html" class="path-duplicate">github.com/</a><a href="../pkg/github.com/json-iterator/go.html">json-iterator/go</a></code>
+<code>      <span class="order">15</span>. <a href="../pkg/github.com/modern-go/concurrent.html" class="path-duplicate">github.com/</a><a href="../pkg/github.com/modern-go/concurrent.html">modern-go/concurrent</a></code>
+<code>      <span class="order">16</span>. <a href="../pkg/github.com/sirupsen/logrus.html" class="path-duplicate">github.com/</a><a href="../pkg/github.com/sirupsen/logrus.html">sirupsen/logrus</a></code>
+<code>      <span class="order">17</span>. <a href="../pkg/github.com/xeipuuv/gojsonpointer.html" class="path-duplicate">github.com/</a><a href="../pkg/github.com/xeipuuv/gojsonpointer.html">xeipuuv/gojsonpointer</a></code>
+<code>      <span class="order">18</span>. <a href="../pkg/github.com/xeipuuv/gojsonschema.html" class="path-duplicate">github.com/xeipuuv/</a><a href="../pkg/github.com/xeipuuv/gojsonschema.html">gojsonschema</a></code>
+<code>      <span class="order">19</span>. <a href="../pkg/gopkg.in/yaml.v2.html">gopkg.in/yaml.v2</a></code>
+<code>      <span class="order">20</span>. <a href="../pkg/log.html">log</a></code>
+<code>      <span class="order">21</span>. <a href="../pkg/math/big.html">math/big</a></code>
+<code>      <span class="order">22</span>. <a href="../pkg/mime.html">mime</a></code>
+<code>      <span class="order">23</span>. <a href="../pkg/mime/multipart.html" class="path-duplicate">mime/</a><a href="../pkg/mime/multipart.html">multipart</a></code>
+<code>      <span class="order">24</span>. <a href="../pkg/mime/quotedprintable.html" class="path-duplicate">mime/</a><a href="../pkg/mime/quotedprintable.html">quotedprintable</a></code>
+<code>      <span class="order">25</span>. <a href="../pkg/net/http.html">net/http</a></code>
+<code>      <span class="order">26</span>. <a href="../pkg/net/http/internal.html" class="path-duplicate">net/http/</a><a href="../pkg/net/http/internal.html">internal</a></code>
+<code>      <span class="order">27</span>. <a href="../pkg/net/mail.html" class="path-duplicate">net/</a><a href="../pkg/net/mail.html">mail</a></code>
+<code>      <span class="order">28</span>. <a href="../pkg/net/textproto.html" class="path-duplicate">net/</a><a href="../pkg/net/textproto.html">textproto</a></code>
+<code>      <span class="order">29</span>. <a href="../pkg/net/url.html" class="path-duplicate">net/</a><a href="../pkg/net/url.html">url</a></code>
+<code>      <span class="order">30</span>. <a href="../pkg/text/template.html">text/template</a></code>
+<code>      <span class="order">31</span>. <a href="../pkg/text/template/parse.html" class="path-duplicate">text/template/</a><a href="../pkg/text/template/parse.html">parse</a></code>
+<code>      <span class="order">32</span>. <a href="../pkg/vendor/golang.org/x/crypto/cryptobyte.html">vendor/golang.org/x/crypto/cryptobyte</a></code>
+<code>      <span class="order">33</span>. <a href="../pkg/vendor/golang.org/x/crypto/curve25519.html" class="path-duplicate">vendor/golang.org/x/crypto/</a><a href="../pkg/vendor/golang.org/x/crypto/curve25519.html">curve25519</a></code>
+<code>      <span class="order">34</span>. <a href="../pkg/vendor/golang.org/x/net/http/httpproxy.html" class="path-duplicate">vendor/golang.org/x/</a><a href="../pkg/vendor/golang.org/x/net/http/httpproxy.html">net/http/httpproxy</a></code>
+<code>      <span class="order">35</span>. <a href="../pkg/vendor/golang.org/x/net/http2/hpack.html" class="path-duplicate">vendor/golang.org/x/net/</a><a href="../pkg/vendor/golang.org/x/net/http2/hpack.html">http2/hpack</a></code>
+<code>      <span class="order">36</span>. <a href="../pkg/vendor/golang.org/x/net/idna.html" class="path-duplicate">vendor/golang.org/x/net/</a><a href="../pkg/vendor/golang.org/x/net/idna.html">idna</a></code>
+<code>      <span class="order">37</span>. <a href="../pkg/vendor/golang.org/x/text/unicode/bidi.html" class="path-duplicate">vendor/golang.org/x/</a><a href="../pkg/vendor/golang.org/x/text/unicode/bidi.html">text/unicode/bidi</a></code>
+<code>      <span class="order">38</span>. <a href="../pkg/vendor/golang.org/x/text/unicode/norm.html" class="path-duplicate">vendor/golang.org/x/text/unicode/</a><a href="../pkg/vendor/golang.org/x/text/unicode/norm.html">norm</a></code></div><pre id="footer">
+<table><tr><td><img src="../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

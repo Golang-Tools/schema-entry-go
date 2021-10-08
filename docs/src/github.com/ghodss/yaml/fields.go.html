@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: fields.go in package github.com/ghodss/yaml</title>
+<link href="../../../../css/light-v0.3.6.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.3.6.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	fields.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../pkg/github.com/ghodss/yaml.html">github.com/ghodss/yaml</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20],
+input[id=r21]:checked ~pre label[for=r21],
+input[id=r22]:checked ~pre label[for=r22],
+input[id=r23]:checked ~pre label[for=r23],
+input[id=r24]:checked ~pre label[for=r24],
+input[id=r25]:checked ~pre label[for=r25],
+input[id=r26]:checked ~pre label[for=r26],
+input[id=r27]:checked ~pre label[for=r27],
+input[id=r28]:checked ~pre label[for=r28],
+input[id=r29]:checked ~pre label[for=r29],
+input[id=r30]:checked ~pre label[for=r30],
+input[id=r31]:checked ~pre label[for=r31],
+input[id=r32]:checked ~pre label[for=r32],
+input[id=r33]:checked ~pre label[for=r33],
+input[id=r34]:checked ~pre label[for=r34],
+input[id=r35]:checked ~pre label[for=r35],
+input[id=r36]:checked ~pre label[for=r36],
+input[id=r37]:checked ~pre label[for=r37],
+input[id=r38]:checked ~pre label[for=r38],
+input[id=r39]:checked ~pre label[for=r39],
+input[id=r40]:checked ~pre label[for=r40],
+input[id=r41]:checked ~pre label[for=r41],
+input[id=r42]:checked ~pre label[for=r42],
+input[id=r43]:checked ~pre label[for=r43],
+input[id=r44]:checked ~pre label[for=r44],
+input[id=r45]:checked ~pre label[for=r45],
+input[id=r46]:checked ~pre label[for=r46],
+input[id=r47]:checked ~pre label[for=r47],
+input[id=r48]:checked ~pre label[for=r48],
+input[id=r49]:checked ~pre label[for=r49],
+input[id=r50]:checked ~pre label[for=r50],
+input[id=r51]:checked ~pre label[for=r51],
+input[id=r52]:checked ~pre label[for=r52],
+input[id=r53]:checked ~pre label[for=r53],
+input[id=r54]:checked ~pre label[for=r54],
+input[id=r55]:checked ~pre label[for=r55],
+input[id=r56]:checked ~pre label[for=r56],
+input[id=r57]:checked ~pre label[for=r57],
+input[id=r58]:checked ~pre label[for=r58],
+input[id=r59]:checked ~pre label[for=r59],
+input[id=r60]:checked ~pre label[for=r60],
+input[id=r61]:checked ~pre label[for=r61],
+input[id=r62]:checked ~pre label[for=r62],
+input[id=r63]:checked ~pre label[for=r63],
+input[id=r64]:checked ~pre label[for=r64],
+input[id=r65]:checked ~pre label[for=r65],
+input[id=r66]:checked ~pre label[for=r66],
+input[id=r67]:checked ~pre label[for=r67],
+input[id=r68]:checked ~pre label[for=r68],
+input[id=r69]:checked ~pre label[for=r69],
+input[id=r70]:checked ~pre label[for=r70],
+input[id=r71]:checked ~pre label[for=r71],
+input[id=r72]:checked ~pre label[for=r72],
+input[id=r73]:checked ~pre label[for=r73],
+input[id=r74]:checked ~pre label[for=r74],
+input[id=r75]:checked ~pre label[for=r75],
+input[id=r76]:checked ~pre label[for=r76],
+input[id=r77]:checked ~pre label[for=r77],
+input[id=r78]:checked ~pre label[for=r78],
+input[id=r79]:checked ~pre label[for=r79],
+input[id=r80]:checked ~pre label[for=r80],
+input[id=r81]:checked ~pre label[for=r81],
+input[id=r82]:checked ~pre label[for=r82],
+input[id=r83]:checked ~pre label[for=r83],
+input[id=r84]:checked ~pre label[for=r84],
+input[id=r85]:checked ~pre label[for=r85],
+input[id=r86]:checked ~pre label[for=r86],
+input[id=r87]:checked ~pre label[for=r87],
+input[id=r88]:checked ~pre label[for=r88],
+input[id=r89]:checked ~pre label[for=r89],
+input[id=r90]:checked ~pre label[for=r90],
+input[id=r91]:checked ~pre label[for=r91],
+input[id=r92]:checked ~pre label[for=r92],
+input[id=r93]:checked ~pre label[for=r93],
+input[id=r94]:checked ~pre label[for=r94],
+input[id=r95]:checked ~pre label[for=r95],
+input[id=r96]:checked ~pre label[for=r96],
+input[id=r97]:checked ~pre label[for=r97],
+input[id=r98]:checked ~pre label[for=r98],
+input[id=r99]:checked ~pre label[for=r99],
+input[id=r100]:checked ~pre label[for=r100],
+input[id=r101]:checked ~pre label[for=r101],
+input[id=r102]:checked ~pre label[for=r102],
+input[id=r103]:checked ~pre label[for=r103],
+input[id=r104]:checked ~pre label[for=r104],
+input[id=r105]:checked ~pre label[for=r105],
+input[id=r106]:checked ~pre label[for=r106],
+input[id=r107]:checked ~pre label[for=r107],
+input[id=r108]:checked ~pre label[for=r108]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1,
+input[id=i2]:checked ~pre .i2,
+input[id=i3]:checked ~pre .i3,
+input[id=i4]:checked ~pre .i4,
+input[id=i5]:checked ~pre .i5,
+input[id=i6]:checked ~pre .i6,
+input[id=i7]:checked ~pre .i7,
+input[id=i8]:checked ~pre .i8
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="r21" type="radio" name="g"/>
+<input id="r22" type="radio" name="g"/>
+<input id="r23" type="radio" name="g"/>
+<input id="r24" type="radio" name="g"/>
+<input id="r25" type="radio" name="g"/>
+<input id="r26" type="radio" name="g"/>
+<input id="r27" type="radio" name="g"/>
+<input id="r28" type="radio" name="g"/>
+<input id="r29" type="radio" name="g"/>
+<input id="r30" type="radio" name="g"/>
+<input id="r31" type="radio" name="g"/>
+<input id="r32" type="radio" name="g"/>
+<input id="r33" type="radio" name="g"/>
+<input id="r34" type="radio" name="g"/>
+<input id="r35" type="radio" name="g"/>
+<input id="r36" type="radio" name="g"/>
+<input id="r37" type="radio" name="g"/>
+<input id="r38" type="radio" name="g"/>
+<input id="r39" type="radio" name="g"/>
+<input id="r40" type="radio" name="g"/>
+<input id="r41" type="radio" name="g"/>
+<input id="r42" type="radio" name="g"/>
+<input id="r43" type="radio" name="g"/>
+<input id="r44" type="radio" name="g"/>
+<input id="r45" type="radio" name="g"/>
+<input id="r46" type="radio" name="g"/>
+<input id="r47" type="radio" name="g"/>
+<input id="r48" type="radio" name="g"/>
+<input id="r49" type="radio" name="g"/>
+<input id="r50" type="radio" name="g"/>
+<input id="r51" type="radio" name="g"/>
+<input id="r52" type="radio" name="g"/>
+<input id="r53" type="radio" name="g"/>
+<input id="r54" type="radio" name="g"/>
+<input id="r55" type="radio" name="g"/>
+<input id="r56" type="radio" name="g"/>
+<input id="r57" type="radio" name="g"/>
+<input id="r58" type="radio" name="g"/>
+<input id="r59" type="radio" name="g"/>
+<input id="r60" type="radio" name="g"/>
+<input id="r61" type="radio" name="g"/>
+<input id="r62" type="radio" name="g"/>
+<input id="r63" type="radio" name="g"/>
+<input id="r64" type="radio" name="g"/>
+<input id="r65" type="radio" name="g"/>
+<input id="r66" type="radio" name="g"/>
+<input id="r67" type="radio" name="g"/>
+<input id="r68" type="radio" name="g"/>
+<input id="r69" type="radio" name="g"/>
+<input id="r70" type="radio" name="g"/>
+<input id="r71" type="radio" name="g"/>
+<input id="r72" type="radio" name="g"/>
+<input id="r73" type="radio" name="g"/>
+<input id="r74" type="radio" name="g"/>
+<input id="r75" type="radio" name="g"/>
+<input id="r76" type="radio" name="g"/>
+<input id="r77" type="radio" name="g"/>
+<input id="r78" type="radio" name="g"/>
+<input id="r79" type="radio" name="g"/>
+<input id="r80" type="radio" name="g"/>
+<input id="r81" type="radio" name="g"/>
+<input id="r82" type="radio" name="g"/>
+<input id="r83" type="radio" name="g"/>
+<input id="r84" type="radio" name="g"/>
+<input id="r85" type="radio" name="g"/>
+<input id="r86" type="radio" name="g"/>
+<input id="r87" type="radio" name="g"/>
+<input id="r88" type="radio" name="g"/>
+<input id="r89" type="radio" name="g"/>
+<input id="r90" type="radio" name="g"/>
+<input id="r91" type="radio" name="g"/>
+<input id="r92" type="radio" name="g"/>
+<input id="r93" type="radio" name="g"/>
+<input id="r94" type="radio" name="g"/>
+<input id="r95" type="radio" name="g"/>
+<input id="r96" type="radio" name="g"/>
+<input id="r97" type="radio" name="g"/>
+<input id="r98" type="radio" name="g"/>
+<input id="r99" type="radio" name="g"/>
+<input id="r100" type="radio" name="g"/>
+<input id="r101" type="radio" name="g"/>
+<input id="r102" type="radio" name="g"/>
+<input id="r103" type="radio" name="g"/>
+<input id="r104" type="radio" name="g"/>
+<input id="r105" type="radio" name="g"/>
+<input id="r106" type="radio" name="g"/>
+<input id="r107" type="radio" name="g"/>
+<input id="r108" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+<input id="i2" type="radio" name="i"/>
+<input id="i3" type="radio" name="i"/>
+<input id="i4" type="radio" name="i"/>
+<input id="i5" type="radio" name="i"/>
+<input id="i6" type="radio" name="i"/>
+<input id="i7" type="radio" name="i"/>
+<input id="i8" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<div class="anchor" id="doc"><span class="codeline" id="line-1"><code><span class="comment">// Copyright 2013 The Go Authors. All rights reserved.</span></code></span>
+<span class="codeline" id="line-2"><code><span class="comment">// Use of this source code is governed by a BSD-style</span></code></span>
+<span class="codeline" id="line-3"><code><span class="comment">// license that can be found in the LICENSE file.</span></code></span></div><span class="codeline" id="line-4"><code><span class="keyword">package</span> yaml</code></span>
+<span class="codeline" id="line-5"><code></code></span>
+<span class="codeline" id="line-6"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-7"><code>	<label for="i0"><span class="lit-string i0">"bytes"</span></label></code></span>
+<span class="codeline" id="line-8"><code>	<label for="i1"><span class="lit-string i1">"encoding"</span></label></code></span>
+<span class="codeline" id="line-9"><code>	<label for="i2"><span class="lit-string i2">"encoding/json"</span></label></code></span>
+<span class="codeline" id="line-10"><code>	<label for="i3"><span class="lit-string i3">"reflect"</span></label></code></span>
+<span class="codeline" id="line-11"><code>	<label for="i4"><span class="lit-string i4">"sort"</span></label></code></span>
+<span class="codeline" id="line-12"><code>	<label for="i5"><span class="lit-string i5">"strings"</span></label></code></span>
+<span class="codeline" id="line-13"><code>	<label for="i6"><span class="lit-string i6">"sync"</span></label></code></span>
+<span class="codeline" id="line-14"><code>	<label for="i7"><span class="lit-string i7">"unicode"</span></label></code></span>
+<span class="codeline" id="line-15"><code>	<label for="i8"><span class="lit-string i8">"unicode/utf8"</span></label></code></span>
+<span class="codeline" id="line-16"><code>)</code></span>
+<span class="codeline" id="line-17"><code></code></span>
+<span class="codeline" id="line-18"><code><span class="comment">// indirect walks down v allocating pointers as needed,</span></code></span>
+<span class="codeline" id="line-19"><code><span class="comment">// until it gets to a non-pointer.</span></code></span>
+<span class="codeline" id="line-20"><code><span class="comment">// if it encounters an Unmarshaler, indirect stops and returns that.</span></code></span>
+<span class="codeline" id="line-21"><code><span class="comment">// if decodingNull is true, indirect stops at the last pointer so it can be set to nil.</span></code></span>
+<span class="codeline" id="line-22"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../pkg/github.com/ghodss/yaml.html#name-indirect" class="ident">indirect</a></label>(<label for="r1" class="ident">v</label> <a href="../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../reflect/value.go.html#line-37" class="ident">Value</a>, <label for="r2" class="ident">decodingNull</label> <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a>) (<a href="../../../../pkg/encoding/json.html" class="ident i2">json</a>.<a href="../../../encoding/json/decode.go.html#line-118" class="ident">Unmarshaler</a>, <a href="../../../../pkg/encoding.html" class="ident i1">encoding</a>.<a href="../../../encoding/encoding.go.html#line-46" class="ident">TextUnmarshaler</a>, <a href="../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../reflect/value.go.html#line-37" class="ident">Value</a>) {</code></span>
+<span class="codeline" id="line-23"><code>	<span class="comment">// If v is a named type and is addressable,</span></code></span>
+<span class="codeline" id="line-24"><code><span class="comment">	// start with its address, so that if the type has pointer methods,</span></code></span>
+<span class="codeline" id="line-25"><code><span class="comment">	// we find them.</span></code></span>
+<span class="codeline" id="line-26"><code>	<span class="keyword">if</span> <label for="r1" class="ident">v</label>.<a href="../../../reflect/value.go.html#line-1140" class="ident">Kind</a>() != <a href="../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../reflect/type.go.html#line-257" class="ident">Ptr</a> &amp;&amp; <label for="r1" class="ident">v</label>.<a href="../../../reflect/value.go.html#line-1905" class="ident">Type</a>().<a href="../../../reflect/type.go.html#line-79" class="ident">Name</a>() != <span class="lit-string">""</span> &amp;&amp; <label for="r1" class="ident">v</label>.<a href="../../../reflect/value.go.html#line-313" class="ident">CanAddr</a>() {</code></span>
+<span class="codeline" id="line-27"><code>		<label for="r1" class="ident">v</label> = <label for="r1" class="ident">v</label>.<a href="../../../reflect/value.go.html#line-269" class="ident">Addr</a>()</code></span>
+<span class="codeline" id="line-28"><code>	}</code></span>
+<span class="codeline" id="line-29"><code>	<span class="keyword">for</span> {</code></span>
+<span class="codeline" id="line-30"><code>		<span class="comment">// Load value from interface, but only if the result will be</span></code></span>
+<span class="codeline" id="line-31"><code><span class="comment">		// usefully addressable.</span></code></span>
+<span class="codeline" id="line-32"><code>		<span class="keyword">if</span> <label for="r1" class="ident">v</label>.<a href="../../../reflect/value.go.html#line-1140" class="ident">Kind</a>() == <a href="../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../reflect/type.go.html#line-255" class="ident">Interface</a> &amp;&amp; !<label for="r1" class="ident">v</label>.<a href="../../../reflect/value.go.html#line-1069" class="ident">IsNil</a>() {</code></span>
+<span class="codeline" id="line-33"><code>			<label for="r3" class="ident">e</label> := <label for="r1" class="ident">v</label>.<a href="../../../reflect/value.go.html#line-811" class="ident">Elem</a>()</code></span>
+<span class="codeline" id="line-34"><code>			<span class="keyword">if</span> <label for="r3" class="ident">e</label>.<a href="../../../reflect/value.go.html#line-1140" class="ident">Kind</a>() == <a href="../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../reflect/type.go.html#line-257" class="ident">Ptr</a> &amp;&amp; !<label for="r3" class="ident">e</label>.<a href="../../../reflect/value.go.html#line-1069" class="ident">IsNil</a>() &amp;&amp; (!<label for="r2" class="ident">decodingNull</label> || <label for="r3" class="ident">e</label>.<a href="../../../reflect/value.go.html#line-811" class="ident">Elem</a>().<a href="../../../reflect/value.go.html#line-1140" class="ident">Kind</a>() == <a href="../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../reflect/type.go.html#line-257" class="ident">Ptr</a>) {</code></span>
+<span class="codeline" id="line-35"><code>				<label for="r1" class="ident">v</label> = <label for="r3" class="ident">e</label></code></span>
+<span class="codeline" id="line-36"><code>				<span class="keyword">continue</span></code></span>
+<span class="codeline" id="line-37"><code>			}</code></span>
+<span class="codeline" id="line-38"><code>		}</code></span>
+<span class="codeline" id="line-39"><code></code></span>
+<span class="codeline" id="line-40"><code>		<span class="keyword">if</span> <label for="r1" class="ident">v</label>.<a href="../../../reflect/value.go.html#line-1140" class="ident">Kind</a>() != <a href="../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../reflect/type.go.html#line-257" class="ident">Ptr</a> {</code></span>
+<span class="codeline" id="line-41"><code>			<span class="keyword">break</span></code></span>
+<span class="codeline" id="line-42"><code>		}</code></span>
+<span class="codeline" id="line-43"><code></code></span>
+<span class="codeline" id="line-44"><code>		<span class="keyword">if</span> <label for="r1" class="ident">v</label>.<a href="../../../reflect/value.go.html#line-811" class="ident">Elem</a>().<a href="../../../reflect/value.go.html#line-1140" class="ident">Kind</a>() != <a href="../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../reflect/type.go.html#line-257" class="ident">Ptr</a> &amp;&amp; <label for="r2" class="ident">decodingNull</label> &amp;&amp; <label for="r1" class="ident">v</label>.<a href="../../../reflect/value.go.html#line-322" class="ident">CanSet</a>() {</code></span>
+<span class="codeline" id="line-45"><code>			<span class="keyword">break</span></code></span>
+<span class="codeline" id="line-46"><code>		}</code></span>
+<span class="codeline" id="line-47"><code>		<span class="keyword">if</span> <label for="r1" class="ident">v</label>.<a href="../../../reflect/value.go.html#line-1069" class="ident">IsNil</a>() {</code></span>
+<span class="codeline" id="line-48"><code>			<span class="keyword">if</span> <label for="r1" class="ident">v</label>.<a href="../../../reflect/value.go.html#line-322" class="ident">CanSet</a>() {</code></span>
+<span class="codeline" id="line-49"><code>				<label for="r1" class="ident">v</label>.<a href="../../../reflect/value.go.html#line-1557" class="ident">Set</a>(<a href="../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../reflect/value.go.html#line-2396" class="ident">New</a>(<label for="r1" class="ident">v</label>.<a href="../../../reflect/value.go.html#line-1905" class="ident">Type</a>().<a href="../../../reflect/type.go.html#line-151" class="ident">Elem</a>()))</code></span>
+<span class="codeline" id="line-50"><code>			} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-51"><code>				<label for="r1" class="ident">v</label> = <a href="../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../reflect/value.go.html#line-2396" class="ident">New</a>(<label for="r1" class="ident">v</label>.<a href="../../../reflect/value.go.html#line-1905" class="ident">Type</a>().<a href="../../../reflect/type.go.html#line-151" class="ident">Elem</a>())</code></span>
+<span class="codeline" id="line-52"><code>			}</code></span>
+<span class="codeline" id="line-53"><code>		}</code></span>
+<span class="codeline" id="line-54"><code>		<span class="keyword">if</span> <label for="r1" class="ident">v</label>.<a href="../../../reflect/value.go.html#line-1905" class="ident">Type</a>().<a href="../../../reflect/type.go.html#line-75" class="ident">NumMethod</a>() &gt; <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-55"><code>			<span class="keyword">if</span> <label for="r4" class="ident">u</label>, <label for="r5" class="ident">ok</label> := <label for="r1" class="ident">v</label>.<a href="../../../reflect/value.go.html#line-1015" class="ident">Interface</a>().(<a href="../../../../pkg/encoding/json.html" class="ident i2">json</a>.<a href="../../../encoding/json/decode.go.html#line-118" class="ident">Unmarshaler</a>); <label for="r5" class="ident">ok</label> {</code></span>
+<span class="codeline" id="line-56"><code>				<span class="keyword">return</span> <label for="r4" class="ident">u</label>, <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../reflect/value.go.html#line-37" class="ident">Value</a>{}</code></span>
+<span class="codeline" id="line-57"><code>			}</code></span>
+<span class="codeline" id="line-58"><code>			<span class="keyword">if</span> <label for="r6" class="ident">u</label>, <label for="r7" class="ident">ok</label> := <label for="r1" class="ident">v</label>.<a href="../../../reflect/value.go.html#line-1015" class="ident">Interface</a>().(<a href="../../../../pkg/encoding.html" class="ident i1">encoding</a>.<a href="../../../encoding/encoding.go.html#line-46" class="ident">TextUnmarshaler</a>); <label for="r7" class="ident">ok</label> {</code></span>
+<span class="codeline" id="line-59"><code>				<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <label for="r6" class="ident">u</label>, <a href="../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../reflect/value.go.html#line-37" class="ident">Value</a>{}</code></span>
+<span class="codeline" id="line-60"><code>			}</code></span>
+<span class="codeline" id="line-61"><code>		}</code></span>
+<span class="codeline" id="line-62"><code>		<label for="r1" class="ident">v</label> = <label for="r1" class="ident">v</label>.<a href="../../../reflect/value.go.html#line-811" class="ident">Elem</a>()</code></span>
+<span class="codeline" id="line-63"><code>	}</code></span>
+<span class="codeline" id="line-64"><code>	<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <label for="r1" class="ident">v</label></code></span>
+<span class="codeline" id="line-65"><code>}</code></span>
+<span class="codeline" id="line-66"><code></code></span>
+<span class="codeline" id="line-67"><code><span class="comment">// A field represents a single field found in a struct.</span></code></span>
+<span class="codeline" id="line-68"><code><span class="keyword">type</span> <a href="../../../../pkg/github.com/ghodss/yaml.html#name-field" class="ident">field</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-69"><code>	name      <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-70"><code>	nameBytes []<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>                 <span class="comment">// []byte(name)</span></code></span>
+<span class="codeline" id="line-71"><code>	equalFold <span class="keyword">func</span>(s, t []<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> <span class="comment">// bytes.EqualFold or equivalent</span></code></span>
+<span class="codeline" id="line-72"><code></code></span>
+<span class="codeline" id="line-73"><code>	tag       <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-74"><code>	index     []<a href="../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-75"><code>	typ       <a href="../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../reflect/type.go.html#line-38" class="ident">Type</a></code></span>
+<span class="codeline" id="line-76"><code>	omitEmpty <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-77"><code>	quoted    <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-78"><code>}</code></span>
+<span class="codeline" id="line-79"><code></code></span>
+<span class="codeline" id="line-80"><code><span class="keyword">func</span> <label for="r8" class="ident"><a href="../../../../pkg/github.com/ghodss/yaml.html#name-fillField" class="ident">fillField</a></label>(<label for="r9" class="ident">f</label> <a href="#line-68" class="ident">field</a>) <a href="#line-68" class="ident">field</a> {</code></span>
+<span class="codeline" id="line-81"><code>	<label for="r9" class="ident">f</label>.<a href="#line-70" class="ident">nameBytes</a> = []<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<label for="r9" class="ident">f</label>.<a href="#line-69" class="ident">name</a>)</code></span>
+<span class="codeline" id="line-82"><code>	<label for="r9" class="ident">f</label>.<a href="#line-71" class="ident">equalFold</a> = <a href="#line-356" class="ident">foldFunc</a>(<label for="r9" class="ident">f</label>.<a href="#line-70" class="ident">nameBytes</a>)</code></span>
+<span class="codeline" id="line-83"><code>	<span class="keyword">return</span> <label for="r9" class="ident">f</label></code></span>
+<span class="codeline" id="line-84"><code>}</code></span>
+<span class="codeline" id="line-85"><code></code></span>
+<span class="codeline" id="line-86"><code><span class="comment">// byName sorts field by name, breaking ties with depth,</span></code></span>
+<span class="codeline" id="line-87"><code><span class="comment">// then breaking ties with "name came from json tag", then</span></code></span>
+<span class="codeline" id="line-88"><code><span class="comment">// breaking ties with index sequence.</span></code></span>
+<span class="codeline" id="line-89"><code><span class="keyword">type</span> <a href="../../../../pkg/github.com/ghodss/yaml.html#name-byName" class="ident">byName</a> []<a href="#line-68" class="ident">field</a></code></span>
+<span class="codeline" id="line-90"><code></code></span>
+<span class="codeline" id="line-91"><code><span class="keyword">func</span> (<label for="r10" class="ident">x</label> <a href="#line-89" class="ident">byName</a>) <label for="r11" class="ident"><a href="../../../../imp/github.com/ghodss/yaml.byName^67fa0.html#name-.Len" class="ident">Len</a></label>() <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a> { <span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r10" class="ident">x</label>) }</code></span>
+<span class="codeline" id="line-92"><code></code></span>
+<span class="codeline" id="line-93"><code><span class="keyword">func</span> (<label for="r12" class="ident">x</label> <a href="#line-89" class="ident">byName</a>) <label for="r13" class="ident"><a href="../../../../imp/github.com/ghodss/yaml.byName^67fa0.html#name-.Swap" class="ident">Swap</a></label>(<label for="r14" class="ident">i</label>, <label for="r15" class="ident">j</label> <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a>) { <label for="r12" class="ident">x</label>[<label for="r14" class="ident">i</label>], <label for="r12" class="ident">x</label>[<label for="r15" class="ident">j</label>] = <label for="r12" class="ident">x</label>[<label for="r15" class="ident">j</label>], <label for="r12" class="ident">x</label>[<label for="r14" class="ident">i</label>] }</code></span>
+<span class="codeline" id="line-94"><code></code></span>
+<span class="codeline" id="line-95"><code><span class="keyword">func</span> (<label for="r16" class="ident">x</label> <a href="#line-89" class="ident">byName</a>) <label for="r17" class="ident"><a href="../../../../imp/github.com/ghodss/yaml.byName^67fa0.html#name-.Less" class="ident">Less</a></label>(<label for="r18" class="ident">i</label>, <label for="r19" class="ident">j</label> <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-96"><code>	<span class="keyword">if</span> <label for="r16" class="ident">x</label>[<label for="r18" class="ident">i</label>].<a href="#line-69" class="ident">name</a> != <label for="r16" class="ident">x</label>[<label for="r19" class="ident">j</label>].<a href="#line-69" class="ident">name</a> {</code></span>
+<span class="codeline" id="line-97"><code>		<span class="keyword">return</span> <label for="r16" class="ident">x</label>[<label for="r18" class="ident">i</label>].<a href="#line-69" class="ident">name</a> &lt; <label for="r16" class="ident">x</label>[<label for="r19" class="ident">j</label>].<a href="#line-69" class="ident">name</a></code></span>
+<span class="codeline" id="line-98"><code>	}</code></span>
+<span class="codeline" id="line-99"><code>	<span class="keyword">if</span> <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r16" class="ident">x</label>[<label for="r18" class="ident">i</label>].<a href="#line-74" class="ident">index</a>) != <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r16" class="ident">x</label>[<label for="r19" class="ident">j</label>].<a href="#line-74" class="ident">index</a>) {</code></span>
+<span class="codeline" id="line-100"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r16" class="ident">x</label>[<label for="r18" class="ident">i</label>].<a href="#line-74" class="ident">index</a>) &lt; <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r16" class="ident">x</label>[<label for="r19" class="ident">j</label>].<a href="#line-74" class="ident">index</a>)</code></span>
+<span class="codeline" id="line-101"><code>	}</code></span>
+<span class="codeline" id="line-102"><code>	<span class="keyword">if</span> <label for="r16" class="ident">x</label>[<label for="r18" class="ident">i</label>].<a href="#line-73" class="ident">tag</a> != <label for="r16" class="ident">x</label>[<label for="r19" class="ident">j</label>].<a href="#line-73" class="ident">tag</a> {</code></span>
+<span class="codeline" id="line-103"><code>		<span class="keyword">return</span> <label for="r16" class="ident">x</label>[<label for="r18" class="ident">i</label>].<a href="#line-73" class="ident">tag</a></code></span>
+<span class="codeline" id="line-104"><code>	}</code></span>
+<span class="codeline" id="line-105"><code>	<span class="keyword">return</span> <a href="#line-109" class="ident">byIndex</a>(<label for="r16" class="ident">x</label>).<a href="#line-115" class="ident">Less</a>(<label for="r18" class="ident">i</label>, <label for="r19" class="ident">j</label>)</code></span>
+<span class="codeline" id="line-106"><code>}</code></span>
+<span class="codeline" id="line-107"><code></code></span>
+<span class="codeline" id="line-108"><code><span class="comment">// byIndex sorts field by index sequence.</span></code></span>
+<span class="codeline" id="line-109"><code><span class="keyword">type</span> <a href="../../../../pkg/github.com/ghodss/yaml.html#name-byIndex" class="ident">byIndex</a> []<a href="#line-68" class="ident">field</a></code></span>
+<span class="codeline" id="line-110"><code></code></span>
+<span class="codeline" id="line-111"><code><span class="keyword">func</span> (<label for="r20" class="ident">x</label> <a href="#line-109" class="ident">byIndex</a>) <label for="r21" class="ident"><a href="../../../../imp/github.com/ghodss/yaml.byIndex^e2bbb.html#name-.Len" class="ident">Len</a></label>() <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a> { <span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r20" class="ident">x</label>) }</code></span>
+<span class="codeline" id="line-112"><code></code></span>
+<span class="codeline" id="line-113"><code><span class="keyword">func</span> (<label for="r22" class="ident">x</label> <a href="#line-109" class="ident">byIndex</a>) <label for="r23" class="ident"><a href="../../../../imp/github.com/ghodss/yaml.byIndex^e2bbb.html#name-.Swap" class="ident">Swap</a></label>(<label for="r24" class="ident">i</label>, <label for="r25" class="ident">j</label> <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a>) { <label for="r22" class="ident">x</label>[<label for="r24" class="ident">i</label>], <label for="r22" class="ident">x</label>[<label for="r25" class="ident">j</label>] = <label for="r22" class="ident">x</label>[<label for="r25" class="ident">j</label>], <label for="r22" class="ident">x</label>[<label for="r24" class="ident">i</label>] }</code></span>
+<span class="codeline" id="line-114"><code></code></span>
+<span class="codeline" id="line-115"><code><span class="keyword">func</span> (<label for="r26" class="ident">x</label> <a href="#line-109" class="ident">byIndex</a>) <label for="r27" class="ident"><a href="../../../../imp/github.com/ghodss/yaml.byIndex^e2bbb.html#name-.Less" class="ident">Less</a></label>(<label for="r28" class="ident">i</label>, <label for="r29" class="ident">j</label> <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-116"><code>	<span class="keyword">for</span> <label for="r30" class="ident">k</label>, <label for="r31" class="ident">xik</label> := <span class="keyword">range</span> <label for="r26" class="ident">x</label>[<label for="r28" class="ident">i</label>].<a href="#line-74" class="ident">index</a> {</code></span>
+<span class="codeline" id="line-117"><code>		<span class="keyword">if</span> <label for="r30" class="ident">k</label> &gt;= <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r26" class="ident">x</label>[<label for="r29" class="ident">j</label>].<a href="#line-74" class="ident">index</a>) {</code></span>
+<span class="codeline" id="line-118"><code>			<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-119"><code>		}</code></span>
+<span class="codeline" id="line-120"><code>		<span class="keyword">if</span> <label for="r31" class="ident">xik</label> != <label for="r26" class="ident">x</label>[<label for="r29" class="ident">j</label>].<a href="#line-74" class="ident">index</a>[<label for="r30" class="ident">k</label>] {</code></span>
+<span class="codeline" id="line-121"><code>			<span class="keyword">return</span> <label for="r31" class="ident">xik</label> &lt; <label for="r26" class="ident">x</label>[<label for="r29" class="ident">j</label>].<a href="#line-74" class="ident">index</a>[<label for="r30" class="ident">k</label>]</code></span>
+<span class="codeline" id="line-122"><code>		}</code></span>
+<span class="codeline" id="line-123"><code>	}</code></span>
+<span class="codeline" id="line-124"><code>	<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r26" class="ident">x</label>[<label for="r28" class="ident">i</label>].<a href="#line-74" class="ident">index</a>) &lt; <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r26" class="ident">x</label>[<label for="r29" class="ident">j</label>].<a href="#line-74" class="ident">index</a>)</code></span>
+<span class="codeline" id="line-125"><code>}</code></span>
+<span class="codeline" id="line-126"><code></code></span>
+<span class="codeline" id="line-127"><code><span class="comment">// typeFields returns a list of fields that JSON should recognize for the given type.</span></code></span>
+<span class="codeline" id="line-128"><code><span class="comment">// The algorithm is breadth-first search over the set of structs to include - the top struct</span></code></span>
+<span class="codeline" id="line-129"><code><span class="comment">// and then any reachable anonymous structs.</span></code></span>
+<span class="codeline" id="line-130"><code><span class="keyword">func</span> <label for="r32" class="ident"><a href="../../../../pkg/github.com/ghodss/yaml.html#name-typeFields" class="ident">typeFields</a></label>(<label for="r33" class="ident">t</label> <a href="../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../reflect/type.go.html#line-38" class="ident">Type</a>) []<a href="#line-68" class="ident">field</a> {</code></span>
+<span class="codeline" id="line-131"><code>	<span class="comment">// Anonymous fields to explore at the current level and the next.</span></code></span>
+<span class="codeline" id="line-132"><code>	<label for="r34" class="ident">current</label> := []<a href="#line-68" class="ident">field</a>{}</code></span>
+<span class="codeline" id="line-133"><code>	<label for="r35" class="ident">next</label> := []<a href="#line-68" class="ident">field</a>{{<a href="#line-75" class="ident">typ</a>: <label for="r33" class="ident">t</label>}}</code></span>
+<span class="codeline" id="line-134"><code></code></span>
+<span class="codeline" id="line-135"><code>	<span class="comment">// Count of queued names for current level and the next.</span></code></span>
+<span class="codeline" id="line-136"><code>	<label for="r36" class="ident">count</label> := <span class="keyword">map</span>[<a href="../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../reflect/type.go.html#line-38" class="ident">Type</a>]<a href="../../../../pkg/builtin.html#name-int" class="ident">int</a>{}</code></span>
+<span class="codeline" id="line-137"><code>	<label for="r37" class="ident">nextCount</label> := <span class="keyword">map</span>[<a href="../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../reflect/type.go.html#line-38" class="ident">Type</a>]<a href="../../../../pkg/builtin.html#name-int" class="ident">int</a>{}</code></span>
+<span class="codeline" id="line-138"><code></code></span>
+<span class="codeline" id="line-139"><code>	<span class="comment">// Types already visited at an earlier level.</span></code></span>
+<span class="codeline" id="line-140"><code>	<label for="r38" class="ident">visited</label> := <span class="keyword">map</span>[<a href="../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../reflect/type.go.html#line-38" class="ident">Type</a>]<a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a>{}</code></span>
+<span class="codeline" id="line-141"><code></code></span>
+<span class="codeline" id="line-142"><code>	<span class="comment">// Fields found.</span></code></span>
+<span class="codeline" id="line-143"><code>	<span class="keyword">var</span> <label for="r39" class="ident">fields</label> []<a href="#line-68" class="ident">field</a></code></span>
+<span class="codeline" id="line-144"><code></code></span>
+<span class="codeline" id="line-145"><code>	<span class="keyword">for</span> <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r35" class="ident">next</label>) &gt; <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-146"><code>		<label for="r34" class="ident">current</label>, <label for="r35" class="ident">next</label> = <label for="r35" class="ident">next</label>, <label for="r34" class="ident">current</label>[:<span class="lit-number">0</span>]</code></span>
+<span class="codeline" id="line-147"><code>		<label for="r36" class="ident">count</label>, <label for="r37" class="ident">nextCount</label> = <label for="r37" class="ident">nextCount</label>, <span class="keyword">map</span>[<a href="../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../reflect/type.go.html#line-38" class="ident">Type</a>]<a href="../../../../pkg/builtin.html#name-int" class="ident">int</a>{}</code></span>
+<span class="codeline" id="line-148"><code></code></span>
+<span class="codeline" id="line-149"><code>		<span class="keyword">for</span> <label for="r40" class="ident">_</label>, <label for="r41" class="ident">f</label> := <span class="keyword">range</span> <label for="r34" class="ident">current</label> {</code></span>
+<span class="codeline" id="line-150"><code>			<span class="keyword">if</span> <label for="r38" class="ident">visited</label>[<label for="r41" class="ident">f</label>.<a href="#line-75" class="ident">typ</a>] {</code></span>
+<span class="codeline" id="line-151"><code>				<span class="keyword">continue</span></code></span>
+<span class="codeline" id="line-152"><code>			}</code></span>
+<span class="codeline" id="line-153"><code>			<label for="r38" class="ident">visited</label>[<label for="r41" class="ident">f</label>.<a href="#line-75" class="ident">typ</a>] = <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-154"><code></code></span>
+<span class="codeline" id="line-155"><code>			<span class="comment">// Scan f.typ for fields to include.</span></code></span>
+<span class="codeline" id="line-156"><code>			<span class="keyword">for</span> <label for="r42" class="ident">i</label> := <span class="lit-number">0</span>; <label for="r42" class="ident">i</label> &lt; <label for="r41" class="ident">f</label>.<a href="#line-75" class="ident">typ</a>.<a href="../../../reflect/type.go.html#line-197" class="ident">NumField</a>(); <label for="r42" class="ident">i</label>++ {</code></span>
+<span class="codeline" id="line-157"><code>				<label for="r43" class="ident">sf</label> := <label for="r41" class="ident">f</label>.<a href="#line-75" class="ident">typ</a>.<a href="../../../reflect/type.go.html#line-156" class="ident">Field</a>(<label for="r42" class="ident">i</label>)</code></span>
+<span class="codeline" id="line-158"><code>				<span class="keyword">if</span> <label for="r43" class="ident">sf</label>.<a href="../../../reflect/type.go.html#line-1096" class="ident">PkgPath</a> != <span class="lit-string">""</span> { <span class="comment">// unexported</span></code></span>
+<span class="codeline" id="line-159"><code>					<span class="keyword">continue</span></code></span>
+<span class="codeline" id="line-160"><code>				}</code></span>
+<span class="codeline" id="line-161"><code>				<label for="r44" class="ident">tag</label> := <label for="r43" class="ident">sf</label>.<a href="../../../reflect/type.go.html#line-1099" class="ident">Tag</a>.<a href="../../../reflect/type.go.html#line-1120" class="ident">Get</a>(<span class="lit-string">"json"</span>)</code></span>
+<span class="codeline" id="line-162"><code>				<span class="keyword">if</span> <label for="r44" class="ident">tag</label> == <span class="lit-string">"-"</span> {</code></span>
+<span class="codeline" id="line-163"><code>					<span class="keyword">continue</span></code></span>
+<span class="codeline" id="line-164"><code>				}</code></span>
+<span class="codeline" id="line-165"><code>				<label for="r45" class="ident">name</label>, <label for="r46" class="ident">opts</label> := <a href="#line-474" class="ident">parseTag</a>(<label for="r44" class="ident">tag</label>)</code></span>
+<span class="codeline" id="line-166"><code>				<span class="keyword">if</span> !<a href="#line-316" class="ident">isValidTag</a>(<label for="r45" class="ident">name</label>) {</code></span>
+<span class="codeline" id="line-167"><code>					<label for="r45" class="ident">name</label> = <span class="lit-string">""</span></code></span>
+<span class="codeline" id="line-168"><code>				}</code></span>
+<span class="codeline" id="line-169"><code>				<label for="r47" class="ident">index</label> := <a href="../../../../pkg/builtin.html#name-make" class="ident">make</a>([]<a href="../../../../pkg/builtin.html#name-int" class="ident">int</a>, <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r41" class="ident">f</label>.<a href="#line-74" class="ident">index</a>)+<span class="lit-number">1</span>)</code></span>
+<span class="codeline" id="line-170"><code>				<a href="../../../../pkg/builtin.html#name-copy" class="ident">copy</a>(<label for="r47" class="ident">index</label>, <label for="r41" class="ident">f</label>.<a href="#line-74" class="ident">index</a>)</code></span>
+<span class="codeline" id="line-171"><code>				<label for="r47" class="ident">index</label>[<a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r41" class="ident">f</label>.<a href="#line-74" class="ident">index</a>)] = <label for="r42" class="ident">i</label></code></span>
+<span class="codeline" id="line-172"><code></code></span>
+<span class="codeline" id="line-173"><code>				<label for="r48" class="ident">ft</label> := <label for="r43" class="ident">sf</label>.<a href="../../../reflect/type.go.html#line-1098" class="ident">Type</a></code></span>
+<span class="codeline" id="line-174"><code>				<span class="keyword">if</span> <label for="r48" class="ident">ft</label>.<a href="../../../reflect/type.go.html#line-79" class="ident">Name</a>() == <span class="lit-string">""</span> &amp;&amp; <label for="r48" class="ident">ft</label>.<a href="../../../reflect/type.go.html#line-100" class="ident">Kind</a>() == <a href="../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../reflect/type.go.html#line-257" class="ident">Ptr</a> {</code></span>
+<span class="codeline" id="line-175"><code>					<span class="comment">// Follow pointer.</span></code></span>
+<span class="codeline" id="line-176"><code>					<label for="r48" class="ident">ft</label> = <label for="r48" class="ident">ft</label>.<a href="../../../reflect/type.go.html#line-151" class="ident">Elem</a>()</code></span>
+<span class="codeline" id="line-177"><code>				}</code></span>
+<span class="codeline" id="line-178"><code></code></span>
+<span class="codeline" id="line-179"><code>				<span class="comment">// Record found field and index sequence.</span></code></span>
+<span class="codeline" id="line-180"><code>				<span class="keyword">if</span> <label for="r45" class="ident">name</label> != <span class="lit-string">""</span> || !<label for="r43" class="ident">sf</label>.<a href="../../../reflect/type.go.html#line-1102" class="ident">Anonymous</a> || <label for="r48" class="ident">ft</label>.<a href="../../../reflect/type.go.html#line-100" class="ident">Kind</a>() != <a href="../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../reflect/type.go.html#line-260" class="ident">Struct</a> {</code></span>
+<span class="codeline" id="line-181"><code>					<label for="r49" class="ident">tagged</label> := <label for="r45" class="ident">name</label> != <span class="lit-string">""</span></code></span>
+<span class="codeline" id="line-182"><code>					<span class="keyword">if</span> <label for="r45" class="ident">name</label> == <span class="lit-string">""</span> {</code></span>
+<span class="codeline" id="line-183"><code>						<label for="r45" class="ident">name</label> = <label for="r43" class="ident">sf</label>.<a href="../../../reflect/type.go.html#line-1092" class="ident">Name</a></code></span>
+<span class="codeline" id="line-184"><code>					}</code></span>
+<span class="codeline" id="line-185"><code>					<label for="r39" class="ident">fields</label> = <a href="../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r39" class="ident">fields</label>, <a href="#line-80" class="ident">fillField</a>(<a href="#line-68" class="ident">field</a>{</code></span>
+<span class="codeline" id="line-186"><code>						<a href="#line-69" class="ident">name</a>:      <label for="r45" class="ident">name</label>,</code></span>
+<span class="codeline" id="line-187"><code>						<a href="#line-73" class="ident">tag</a>:       <label for="r49" class="ident">tagged</label>,</code></span>
+<span class="codeline" id="line-188"><code>						<a href="#line-74" class="ident">index</a>:     <label for="r47" class="ident">index</label>,</code></span>
+<span class="codeline" id="line-189"><code>						<a href="#line-75" class="ident">typ</a>:       <label for="r48" class="ident">ft</label>,</code></span>
+<span class="codeline" id="line-190"><code>						<a href="#line-76" class="ident">omitEmpty</a>: <label for="r46" class="ident">opts</label>.<a href="#line-484" class="ident">Contains</a>(<span class="lit-string">"omitempty"</span>),</code></span>
+<span class="codeline" id="line-191"><code>						<a href="#line-77" class="ident">quoted</a>:    <label for="r46" class="ident">opts</label>.<a href="#line-484" class="ident">Contains</a>(<span class="lit-string">"string"</span>),</code></span>
+<span class="codeline" id="line-192"><code>					}))</code></span>
+<span class="codeline" id="line-193"><code>					<span class="keyword">if</span> <label for="r36" class="ident">count</label>[<label for="r41" class="ident">f</label>.<a href="#line-75" class="ident">typ</a>] &gt; <span class="lit-number">1</span> {</code></span>
+<span class="codeline" id="line-194"><code>						<span class="comment">// If there were multiple instances, add a second,</span></code></span>
+<span class="codeline" id="line-195"><code><span class="comment">						// so that the annihilation code will see a duplicate.</span></code></span>
+<span class="codeline" id="line-196"><code><span class="comment">						// It only cares about the distinction between 1 or 2,</span></code></span>
+<span class="codeline" id="line-197"><code><span class="comment">						// so don't bother generating any more copies.</span></code></span>
+<span class="codeline" id="line-198"><code>						<label for="r39" class="ident">fields</label> = <a href="../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r39" class="ident">fields</label>, <label for="r39" class="ident">fields</label>[<a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r39" class="ident">fields</label>)-<span class="lit-number">1</span>])</code></span>
+<span class="codeline" id="line-199"><code>					}</code></span>
+<span class="codeline" id="line-200"><code>					<span class="keyword">continue</span></code></span>
+<span class="codeline" id="line-201"><code>				}</code></span>
+<span class="codeline" id="line-202"><code></code></span>
+<span class="codeline" id="line-203"><code>				<span class="comment">// Record new anonymous struct to explore in next round.</span></code></span>
+<span class="codeline" id="line-204"><code>				<label for="r37" class="ident">nextCount</label>[<label for="r48" class="ident">ft</label>]++</code></span>
+<span class="codeline" id="line-205"><code>				<span class="keyword">if</span> <label for="r37" class="ident">nextCount</label>[<label for="r48" class="ident">ft</label>] == <span class="lit-number">1</span> {</code></span>
+<span class="codeline" id="line-206"><code>					<label for="r35" class="ident">next</label> = <a href="../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r35" class="ident">next</label>, <a href="#line-80" class="ident">fillField</a>(<a href="#line-68" class="ident">field</a>{<a href="#line-69" class="ident">name</a>: <label for="r48" class="ident">ft</label>.<a href="../../../reflect/type.go.html#line-79" class="ident">Name</a>(), <a href="#line-74" class="ident">index</a>: <label for="r47" class="ident">index</label>, <a href="#line-75" class="ident">typ</a>: <label for="r48" class="ident">ft</label>}))</code></span>
+<span class="codeline" id="line-207"><code>				}</code></span>
+<span class="codeline" id="line-208"><code>			}</code></span>
+<span class="codeline" id="line-209"><code>		}</code></span>
+<span class="codeline" id="line-210"><code>	}</code></span>
+<span class="codeline" id="line-211"><code></code></span>
+<span class="codeline" id="line-212"><code>	<a href="../../../../pkg/sort.html" class="ident i4">sort</a>.<a href="../../../sort/sort.go.html#line-229" class="ident">Sort</a>(<a href="#line-89" class="ident">byName</a>(<label for="r39" class="ident">fields</label>))</code></span>
+<span class="codeline" id="line-213"><code></code></span>
+<span class="codeline" id="line-214"><code>	<span class="comment">// Delete all fields that are hidden by the Go rules for embedded fields,</span></code></span>
+<span class="codeline" id="line-215"><code><span class="comment">	// except that fields with JSON tags are promoted.</span></code></span>
+<span class="codeline" id="line-216"><code></code></span>
+<span class="codeline" id="line-217"><code>	<span class="comment">// The fields are sorted in primary order of name, secondary order</span></code></span>
+<span class="codeline" id="line-218"><code><span class="comment">	// of field index length. Loop over names; for each name, delete</span></code></span>
+<span class="codeline" id="line-219"><code><span class="comment">	// hidden fields by choosing the one dominant field that survives.</span></code></span>
+<span class="codeline" id="line-220"><code>	<label for="r50" class="ident">out</label> := <label for="r39" class="ident">fields</label>[:<span class="lit-number">0</span>]</code></span>
+<span class="codeline" id="line-221"><code>	<span class="keyword">for</span> <label for="r51" class="ident">advance</label>, <label for="r52" class="ident">i</label> := <span class="lit-number">0</span>, <span class="lit-number">0</span>; <label for="r52" class="ident">i</label> &lt; <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r39" class="ident">fields</label>); <label for="r52" class="ident">i</label> += <label for="r51" class="ident">advance</label> {</code></span>
+<span class="codeline" id="line-222"><code>		<span class="comment">// One iteration per name.</span></code></span>
+<span class="codeline" id="line-223"><code><span class="comment">		// Find the sequence of fields with the name of this first field.</span></code></span>
+<span class="codeline" id="line-224"><code>		<label for="r53" class="ident">fi</label> := <label for="r39" class="ident">fields</label>[<label for="r52" class="ident">i</label>]</code></span>
+<span class="codeline" id="line-225"><code>		<label for="r54" class="ident">name</label> := <label for="r53" class="ident">fi</label>.<a href="#line-69" class="ident">name</a></code></span>
+<span class="codeline" id="line-226"><code>		<span class="keyword">for</span> <label for="r51" class="ident">advance</label> = <span class="lit-number">1</span>; <label for="r52" class="ident">i</label>+<label for="r51" class="ident">advance</label> &lt; <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r39" class="ident">fields</label>); <label for="r51" class="ident">advance</label>++ {</code></span>
+<span class="codeline" id="line-227"><code>			<label for="r55" class="ident">fj</label> := <label for="r39" class="ident">fields</label>[<label for="r52" class="ident">i</label>+<label for="r51" class="ident">advance</label>]</code></span>
+<span class="codeline" id="line-228"><code>			<span class="keyword">if</span> <label for="r55" class="ident">fj</label>.<a href="#line-69" class="ident">name</a> != <label for="r54" class="ident">name</label> {</code></span>
+<span class="codeline" id="line-229"><code>				<span class="keyword">break</span></code></span>
+<span class="codeline" id="line-230"><code>			}</code></span>
+<span class="codeline" id="line-231"><code>		}</code></span>
+<span class="codeline" id="line-232"><code>		<span class="keyword">if</span> <label for="r51" class="ident">advance</label> == <span class="lit-number">1</span> { <span class="comment">// Only one field with this name</span></code></span>
+<span class="codeline" id="line-233"><code>			<label for="r50" class="ident">out</label> = <a href="../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r50" class="ident">out</label>, <label for="r53" class="ident">fi</label>)</code></span>
+<span class="codeline" id="line-234"><code>			<span class="keyword">continue</span></code></span>
+<span class="codeline" id="line-235"><code>		}</code></span>
+<span class="codeline" id="line-236"><code>		<label for="r56" class="ident">dominant</label>, <label for="r57" class="ident">ok</label> := <a href="#line-254" class="ident">dominantField</a>(<label for="r39" class="ident">fields</label>[<label for="r52" class="ident">i</label> : <label for="r52" class="ident">i</label>+<label for="r51" class="ident">advance</label>])</code></span>
+<span class="codeline" id="line-237"><code>		<span class="keyword">if</span> <label for="r57" class="ident">ok</label> {</code></span>
+<span class="codeline" id="line-238"><code>			<label for="r50" class="ident">out</label> = <a href="../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r50" class="ident">out</label>, <label for="r56" class="ident">dominant</label>)</code></span>
+<span class="codeline" id="line-239"><code>		}</code></span>
+<span class="codeline" id="line-240"><code>	}</code></span>
+<span class="codeline" id="line-241"><code></code></span>
+<span class="codeline" id="line-242"><code>	<label for="r39" class="ident">fields</label> = <label for="r50" class="ident">out</label></code></span>
+<span class="codeline" id="line-243"><code>	<a href="../../../../pkg/sort.html" class="ident i4">sort</a>.<a href="../../../sort/sort.go.html#line-229" class="ident">Sort</a>(<a href="#line-109" class="ident">byIndex</a>(<label for="r39" class="ident">fields</label>))</code></span>
+<span class="codeline" id="line-244"><code></code></span>
+<span class="codeline" id="line-245"><code>	<span class="keyword">return</span> <label for="r39" class="ident">fields</label></code></span>
+<span class="codeline" id="line-246"><code>}</code></span>
+<span class="codeline" id="line-247"><code></code></span>
+<span class="codeline" id="line-248"><code><span class="comment">// dominantField looks through the fields, all of which are known to</span></code></span>
+<span class="codeline" id="line-249"><code><span class="comment">// have the same name, to find the single field that dominates the</span></code></span>
+<span class="codeline" id="line-250"><code><span class="comment">// others using Go's embedding rules, modified by the presence of</span></code></span>
+<span class="codeline" id="line-251"><code><span class="comment">// JSON tags. If there are multiple top-level fields, the boolean</span></code></span>
+<span class="codeline" id="line-252"><code><span class="comment">// will be false: This condition is an error in Go and we skip all</span></code></span>
+<span class="codeline" id="line-253"><code><span class="comment">// the fields.</span></code></span>
+<span class="codeline" id="line-254"><code><span class="keyword">func</span> <label for="r58" class="ident"><a href="../../../../pkg/github.com/ghodss/yaml.html#name-dominantField" class="ident">dominantField</a></label>(<label for="r59" class="ident">fields</label> []<a href="#line-68" class="ident">field</a>) (<a href="#line-68" class="ident">field</a>, <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a>) {</code></span>
+<span class="codeline" id="line-255"><code>	<span class="comment">// The fields are sorted in increasing index-length order. The winner</span></code></span>
+<span class="codeline" id="line-256"><code><span class="comment">	// must therefore be one with the shortest index length. Drop all</span></code></span>
+<span class="codeline" id="line-257"><code><span class="comment">	// longer entries, which is easy: just truncate the slice.</span></code></span>
+<span class="codeline" id="line-258"><code>	<label for="r60" class="ident">length</label> := <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r59" class="ident">fields</label>[<span class="lit-number">0</span>].<a href="#line-74" class="ident">index</a>)</code></span>
+<span class="codeline" id="line-259"><code>	<label for="r61" class="ident">tagged</label> := -<span class="lit-number">1</span> <span class="comment">// Index of first tagged field.</span></code></span>
+<span class="codeline" id="line-260"><code>	<span class="keyword">for</span> <label for="r62" class="ident">i</label>, <label for="r63" class="ident">f</label> := <span class="keyword">range</span> <label for="r59" class="ident">fields</label> {</code></span>
+<span class="codeline" id="line-261"><code>		<span class="keyword">if</span> <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r63" class="ident">f</label>.<a href="#line-74" class="ident">index</a>) &gt; <label for="r60" class="ident">length</label> {</code></span>
+<span class="codeline" id="line-262"><code>			<label for="r59" class="ident">fields</label> = <label for="r59" class="ident">fields</label>[:<label for="r62" class="ident">i</label>]</code></span>
+<span class="codeline" id="line-263"><code>			<span class="keyword">break</span></code></span>
+<span class="codeline" id="line-264"><code>		}</code></span>
+<span class="codeline" id="line-265"><code>		<span class="keyword">if</span> <label for="r63" class="ident">f</label>.<a href="#line-73" class="ident">tag</a> {</code></span>
+<span class="codeline" id="line-266"><code>			<span class="keyword">if</span> <label for="r61" class="ident">tagged</label> &gt;= <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-267"><code>				<span class="comment">// Multiple tagged fields at the same level: conflict.</span></code></span>
+<span class="codeline" id="line-268"><code><span class="comment">				// Return no field.</span></code></span>
+<span class="codeline" id="line-269"><code>				<span class="keyword">return</span> <a href="#line-68" class="ident">field</a>{}, <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-270"><code>			}</code></span>
+<span class="codeline" id="line-271"><code>			<label for="r61" class="ident">tagged</label> = <label for="r62" class="ident">i</label></code></span>
+<span class="codeline" id="line-272"><code>		}</code></span>
+<span class="codeline" id="line-273"><code>	}</code></span>
+<span class="codeline" id="line-274"><code>	<span class="keyword">if</span> <label for="r61" class="ident">tagged</label> &gt;= <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-275"><code>		<span class="keyword">return</span> <label for="r59" class="ident">fields</label>[<label for="r61" class="ident">tagged</label>], <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-276"><code>	}</code></span>
+<span class="codeline" id="line-277"><code>	<span class="comment">// All remaining fields have the same length. If there's more than one,</span></code></span>
+<span class="codeline" id="line-278"><code><span class="comment">	// we have a conflict (two fields named "X" at the same level) and we</span></code></span>
+<span class="codeline" id="line-279"><code><span class="comment">	// return no field.</span></code></span>
+<span class="codeline" id="line-280"><code>	<span class="keyword">if</span> <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r59" class="ident">fields</label>) &gt; <span class="lit-number">1</span> {</code></span>
+<span class="codeline" id="line-281"><code>		<span class="keyword">return</span> <a href="#line-68" class="ident">field</a>{}, <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-282"><code>	}</code></span>
+<span class="codeline" id="line-283"><code>	<span class="keyword">return</span> <label for="r59" class="ident">fields</label>[<span class="lit-number">0</span>], <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-284"><code>}</code></span>
+<span class="codeline" id="line-285"><code></code></span>
+<span class="codeline" id="line-286"><code><span class="keyword">var</span> <a href="../../../../pkg/github.com/ghodss/yaml.html#name-fieldCache" class="ident">fieldCache</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-287"><code>	<a href="../../../../pkg/sync.html" class="ident i6">sync</a>.<a href="../../../sync/rwmutex.go.html#line-28" class="ident">RWMutex</a></code></span>
+<span class="codeline" id="line-288"><code>	m <span class="keyword">map</span>[<a href="../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../reflect/type.go.html#line-38" class="ident">Type</a>][]<a href="#line-68" class="ident">field</a></code></span>
+<span class="codeline" id="line-289"><code>}</code></span>
+<span class="codeline" id="line-290"><code></code></span>
+<span class="codeline" id="line-291"><code><span class="comment">// cachedTypeFields is like typeFields but uses a cache to avoid repeated work.</span></code></span>
+<span class="codeline" id="line-292"><code><span class="keyword">func</span> <label for="r64" class="ident"><a href="../../../../pkg/github.com/ghodss/yaml.html#name-cachedTypeFields" class="ident">cachedTypeFields</a></label>(<label for="r65" class="ident">t</label> <a href="../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../reflect/type.go.html#line-38" class="ident">Type</a>) []<a href="#line-68" class="ident">field</a> {</code></span>
+<span class="codeline" id="line-293"><code>	<a href="#line-286" class="ident">fieldCache</a>.<a href="../../../sync/rwmutex.go.html#line-56" class="ident">RLock</a>()</code></span>
+<span class="codeline" id="line-294"><code>	<label for="r66" class="ident">f</label> := <a href="#line-286" class="ident">fieldCache</a>.<a href="#line-288" class="ident">m</a>[<label for="r65" class="ident">t</label>]</code></span>
+<span class="codeline" id="line-295"><code>	<a href="#line-286" class="ident">fieldCache</a>.<a href="../../../sync/rwmutex.go.html#line-75" class="ident">RUnlock</a>()</code></span>
+<span class="codeline" id="line-296"><code>	<span class="keyword">if</span> <label for="r66" class="ident">f</label> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-297"><code>		<span class="keyword">return</span> <label for="r66" class="ident">f</label></code></span>
+<span class="codeline" id="line-298"><code>	}</code></span>
+<span class="codeline" id="line-299"><code></code></span>
+<span class="codeline" id="line-300"><code>	<span class="comment">// Compute fields without lock.</span></code></span>
+<span class="codeline" id="line-301"><code><span class="comment">	// Might duplicate effort but won't hold other computations back.</span></code></span>
+<span class="codeline" id="line-302"><code>	<label for="r66" class="ident">f</label> = <a href="#line-130" class="ident">typeFields</a>(<label for="r65" class="ident">t</label>)</code></span>
+<span class="codeline" id="line-303"><code>	<span class="keyword">if</span> <label for="r66" class="ident">f</label> == <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-304"><code>		<label for="r66" class="ident">f</label> = []<a href="#line-68" class="ident">field</a>{}</code></span>
+<span class="codeline" id="line-305"><code>	}</code></span>
+<span class="codeline" id="line-306"><code></code></span>
+<span class="codeline" id="line-307"><code>	<a href="#line-286" class="ident">fieldCache</a>.<a href="../../../sync/rwmutex.go.html#line-105" class="ident">Lock</a>()</code></span>
+<span class="codeline" id="line-308"><code>	<span class="keyword">if</span> <a href="#line-286" class="ident">fieldCache</a>.<a href="#line-288" class="ident">m</a> == <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-309"><code>		<a href="#line-286" class="ident">fieldCache</a>.<a href="#line-288" class="ident">m</a> = <span class="keyword">map</span>[<a href="../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../reflect/type.go.html#line-38" class="ident">Type</a>][]<a href="#line-68" class="ident">field</a>{}</code></span>
+<span class="codeline" id="line-310"><code>	}</code></span>
+<span class="codeline" id="line-311"><code>	<a href="#line-286" class="ident">fieldCache</a>.<a href="#line-288" class="ident">m</a>[<label for="r65" class="ident">t</label>] = <label for="r66" class="ident">f</label></code></span>
+<span class="codeline" id="line-312"><code>	<a href="#line-286" class="ident">fieldCache</a>.<a href="../../../sync/rwmutex.go.html#line-131" class="ident">Unlock</a>()</code></span>
+<span class="codeline" id="line-313"><code>	<span class="keyword">return</span> <label for="r66" class="ident">f</label></code></span>
+<span class="codeline" id="line-314"><code>}</code></span>
+<span class="codeline" id="line-315"><code></code></span>
+<span class="codeline" id="line-316"><code><span class="keyword">func</span> <label for="r67" class="ident"><a href="../../../../pkg/github.com/ghodss/yaml.html#name-isValidTag" class="ident">isValidTag</a></label>(<label for="r68" class="ident">s</label> <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-317"><code>	<span class="keyword">if</span> <label for="r68" class="ident">s</label> == <span class="lit-string">""</span> {</code></span>
+<span class="codeline" id="line-318"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-319"><code>	}</code></span>
+<span class="codeline" id="line-320"><code>	<span class="keyword">for</span> <label for="r69" class="ident">_</label>, <label for="r70" class="ident">c</label> := <span class="keyword">range</span> <label for="r68" class="ident">s</label> {</code></span>
+<span class="codeline" id="line-321"><code>		<span class="keyword">switch</span> {</code></span>
+<span class="codeline" id="line-322"><code>		<span class="keyword">case</span> <a href="../../../../pkg/strings.html" class="ident i5">strings</a>.<a href="../../../strings/strings.go.html#line-71" class="ident">ContainsRune</a>(<span class="lit-string">"!#$%&amp;()*+-./:&lt;=&gt;?@[]^_{|}~ "</span>, <label for="r70" class="ident">c</label>):</code></span>
+<span class="codeline" id="line-323"><code>			<span class="comment">// Backslash and quote chars are reserved, but</span></code></span>
+<span class="codeline" id="line-324"><code><span class="comment">			// otherwise any punctuation chars are allowed</span></code></span>
+<span class="codeline" id="line-325"><code><span class="comment">			// in a tag name.</span></code></span>
+<span class="codeline" id="line-326"><code>		<span class="keyword">default</span>:</code></span>
+<span class="codeline" id="line-327"><code>			<span class="keyword">if</span> !<a href="../../../../pkg/unicode.html" class="ident i7">unicode</a>.<a href="../../../unicode/graphic.go.html#line-90" class="ident">IsLetter</a>(<label for="r70" class="ident">c</label>) &amp;&amp; !<a href="../../../../pkg/unicode.html" class="ident i7">unicode</a>.<a href="../../../unicode/digit.go.html#line-8" class="ident">IsDigit</a>(<label for="r70" class="ident">c</label>) {</code></span>
+<span class="codeline" id="line-328"><code>				<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-329"><code>			}</code></span>
+<span class="codeline" id="line-330"><code>		}</code></span>
+<span class="codeline" id="line-331"><code>	}</code></span>
+<span class="codeline" id="line-332"><code>	<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-333"><code>}</code></span>
+<span class="codeline" id="line-334"><code></code></span>
+<span class="codeline" id="line-335"><code><span class="keyword">const</span> (</code></span>
+<span class="codeline" id="line-336"><code>	<a href="../../../../pkg/github.com/ghodss/yaml.html#name-caseMask" class="ident">caseMask</a>     = ^<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<span class="lit-number">0x20</span>) <span class="comment">// Mask to ignore case in ASCII.</span></code></span>
+<span class="codeline" id="line-337"><code>	<a href="../../../../pkg/github.com/ghodss/yaml.html#name-kelvin" class="ident">kelvin</a>       = <span class="lit-number">'\u212a'</span></code></span>
+<span class="codeline" id="line-338"><code>	<a href="../../../../pkg/github.com/ghodss/yaml.html#name-smallLongEss" class="ident">smallLongEss</a> = <span class="lit-number">'\u017f'</span></code></span>
+<span class="codeline" id="line-339"><code>)</code></span>
+<span class="codeline" id="line-340"><code></code></span>
+<span class="codeline" id="line-341"><code><span class="comment">// foldFunc returns one of four different case folding equivalence</span></code></span>
+<span class="codeline" id="line-342"><code><span class="comment">// functions, from most general (and slow) to fastest:</span></code></span>
+<span class="codeline" id="line-343"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-344"><code><span class="comment">// 1) bytes.EqualFold, if the key s contains any non-ASCII UTF-8</span></code></span>
+<span class="codeline" id="line-345"><code><span class="comment">// 2) equalFoldRight, if s contains special folding ASCII ('k', 'K', 's', 'S')</span></code></span>
+<span class="codeline" id="line-346"><code><span class="comment">// 3) asciiEqualFold, no special, but includes non-letters (including _)</span></code></span>
+<span class="codeline" id="line-347"><code><span class="comment">// 4) simpleLetterEqualFold, no specials, no non-letters.</span></code></span>
+<span class="codeline" id="line-348"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-349"><code><span class="comment">// The letters S and K are special because they map to 3 runes, not just 2:</span></code></span>
+<span class="codeline" id="line-350"><code><span class="comment">//  * S maps to s and to U+017F 'ſ' Latin small letter long s</span></code></span>
+<span class="codeline" id="line-351"><code><span class="comment">//  * k maps to K and to U+212A 'K' Kelvin sign</span></code></span>
+<span class="codeline" id="line-352"><code><span class="comment">// See http://play.golang.org/p/tTxjOc0OGo</span></code></span>
+<span class="codeline" id="line-353"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-354"><code><span class="comment">// The returned function is specialized for matching against s and</span></code></span>
+<span class="codeline" id="line-355"><code><span class="comment">// should only be given s. It's not curried for performance reasons.</span></code></span>
+<span class="codeline" id="line-356"><code><span class="keyword">func</span> <label for="r71" class="ident"><a href="../../../../pkg/github.com/ghodss/yaml.html#name-foldFunc" class="ident">foldFunc</a></label>(<label for="r72" class="ident">s</label> []<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>) <span class="keyword">func</span>(<label for="r73" class="ident">s</label>, <label for="r74" class="ident">t</label> []<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-357"><code>	<label for="r75" class="ident">nonLetter</label> := <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-358"><code>	<label for="r76" class="ident">special</label> := <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a> <span class="comment">// special letter</span></code></span>
+<span class="codeline" id="line-359"><code>	<span class="keyword">for</span> <label for="r77" class="ident">_</label>, <label for="r78" class="ident">b</label> := <span class="keyword">range</span> <label for="r72" class="ident">s</label> {</code></span>
+<span class="codeline" id="line-360"><code>		<span class="keyword">if</span> <label for="r78" class="ident">b</label> &gt;= <a href="../../../../pkg/unicode/utf8.html" class="ident i8">utf8</a>.<a href="../../../unicode/utf8/utf8.go.html#line-17" class="ident">RuneSelf</a> {</code></span>
+<span class="codeline" id="line-361"><code>			<span class="keyword">return</span> <a href="../../../../pkg/bytes.html" class="ident i0">bytes</a>.<a href="../../../bytes/bytes.go.html#line-1037" class="ident">EqualFold</a></code></span>
+<span class="codeline" id="line-362"><code>		}</code></span>
+<span class="codeline" id="line-363"><code>		<label for="r79" class="ident">upper</label> := <label for="r78" class="ident">b</label> &amp; <a href="#line-336" class="ident">caseMask</a></code></span>
+<span class="codeline" id="line-364"><code>		<span class="keyword">if</span> <label for="r79" class="ident">upper</label> &lt; <span class="lit-number">'A'</span> || <label for="r79" class="ident">upper</label> &gt; <span class="lit-number">'Z'</span> {</code></span>
+<span class="codeline" id="line-365"><code>			<label for="r75" class="ident">nonLetter</label> = <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-366"><code>		} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r79" class="ident">upper</label> == <span class="lit-number">'K'</span> || <label for="r79" class="ident">upper</label> == <span class="lit-number">'S'</span> {</code></span>
+<span class="codeline" id="line-367"><code>			<span class="comment">// See above for why these letters are special.</span></code></span>
+<span class="codeline" id="line-368"><code>			<label for="r76" class="ident">special</label> = <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-369"><code>		}</code></span>
+<span class="codeline" id="line-370"><code>	}</code></span>
+<span class="codeline" id="line-371"><code>	<span class="keyword">if</span> <label for="r76" class="ident">special</label> {</code></span>
+<span class="codeline" id="line-372"><code>		<span class="keyword">return</span> <a href="#line-384" class="ident">equalFoldRight</a></code></span>
+<span class="codeline" id="line-373"><code>	}</code></span>
+<span class="codeline" id="line-374"><code>	<span class="keyword">if</span> <label for="r75" class="ident">nonLetter</label> {</code></span>
+<span class="codeline" id="line-375"><code>		<span class="keyword">return</span> <a href="#line-432" class="ident">asciiEqualFold</a></code></span>
+<span class="codeline" id="line-376"><code>	}</code></span>
+<span class="codeline" id="line-377"><code>	<span class="keyword">return</span> <a href="#line-456" class="ident">simpleLetterEqualFold</a></code></span>
+<span class="codeline" id="line-378"><code>}</code></span>
+<span class="codeline" id="line-379"><code></code></span>
+<span class="codeline" id="line-380"><code><span class="comment">// equalFoldRight is a specialization of bytes.EqualFold when s is</span></code></span>
+<span class="codeline" id="line-381"><code><span class="comment">// known to be all ASCII (including punctuation), but contains an 's',</span></code></span>
+<span class="codeline" id="line-382"><code><span class="comment">// 'S', 'k', or 'K', requiring a Unicode fold on the bytes in t.</span></code></span>
+<span class="codeline" id="line-383"><code><span class="comment">// See comments on foldFunc.</span></code></span>
+<span class="codeline" id="line-384"><code><span class="keyword">func</span> <label for="r80" class="ident"><a href="../../../../pkg/github.com/ghodss/yaml.html#name-equalFoldRight" class="ident">equalFoldRight</a></label>(<label for="r81" class="ident">s</label>, <label for="r82" class="ident">t</label> []<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-385"><code>	<span class="keyword">for</span> <label for="r83" class="ident">_</label>, <label for="r84" class="ident">sb</label> := <span class="keyword">range</span> <label for="r81" class="ident">s</label> {</code></span>
+<span class="codeline" id="line-386"><code>		<span class="keyword">if</span> <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r82" class="ident">t</label>) == <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-387"><code>			<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-388"><code>		}</code></span>
+<span class="codeline" id="line-389"><code>		<label for="r85" class="ident">tb</label> := <label for="r82" class="ident">t</label>[<span class="lit-number">0</span>]</code></span>
+<span class="codeline" id="line-390"><code>		<span class="keyword">if</span> <label for="r85" class="ident">tb</label> &lt; <a href="../../../../pkg/unicode/utf8.html" class="ident i8">utf8</a>.<a href="../../../unicode/utf8/utf8.go.html#line-17" class="ident">RuneSelf</a> {</code></span>
+<span class="codeline" id="line-391"><code>			<span class="keyword">if</span> <label for="r84" class="ident">sb</label> != <label for="r85" class="ident">tb</label> {</code></span>
+<span class="codeline" id="line-392"><code>				<label for="r86" class="ident">sbUpper</label> := <label for="r84" class="ident">sb</label> &amp; <a href="#line-336" class="ident">caseMask</a></code></span>
+<span class="codeline" id="line-393"><code>				<span class="keyword">if</span> <span class="lit-number">'A'</span> &lt;= <label for="r86" class="ident">sbUpper</label> &amp;&amp; <label for="r86" class="ident">sbUpper</label> &lt;= <span class="lit-number">'Z'</span> {</code></span>
+<span class="codeline" id="line-394"><code>					<span class="keyword">if</span> <label for="r86" class="ident">sbUpper</label> != <label for="r85" class="ident">tb</label>&amp;<a href="#line-336" class="ident">caseMask</a> {</code></span>
+<span class="codeline" id="line-395"><code>						<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-396"><code>					}</code></span>
+<span class="codeline" id="line-397"><code>				} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-398"><code>					<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-399"><code>				}</code></span>
+<span class="codeline" id="line-400"><code>			}</code></span>
+<span class="codeline" id="line-401"><code>			<label for="r82" class="ident">t</label> = <label for="r82" class="ident">t</label>[<span class="lit-number">1</span>:]</code></span>
+<span class="codeline" id="line-402"><code>			<span class="keyword">continue</span></code></span>
+<span class="codeline" id="line-403"><code>		}</code></span>
+<span class="codeline" id="line-404"><code>		<span class="comment">// sb is ASCII and t is not. t must be either kelvin</span></code></span>
+<span class="codeline" id="line-405"><code><span class="comment">		// sign or long s; sb must be s, S, k, or K.</span></code></span>
+<span class="codeline" id="line-406"><code>		<label for="r87" class="ident">tr</label>, <label for="r88" class="ident">size</label> := <a href="../../../../pkg/unicode/utf8.html" class="ident i8">utf8</a>.<a href="../../../unicode/utf8/utf8.go.html#line-151" class="ident">DecodeRune</a>(<label for="r82" class="ident">t</label>)</code></span>
+<span class="codeline" id="line-407"><code>		<span class="keyword">switch</span> <label for="r84" class="ident">sb</label> {</code></span>
+<span class="codeline" id="line-408"><code>		<span class="keyword">case</span> <span class="lit-number">'s'</span>, <span class="lit-number">'S'</span>:</code></span>
+<span class="codeline" id="line-409"><code>			<span class="keyword">if</span> <label for="r87" class="ident">tr</label> != <a href="#line-338" class="ident">smallLongEss</a> {</code></span>
+<span class="codeline" id="line-410"><code>				<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-411"><code>			}</code></span>
+<span class="codeline" id="line-412"><code>		<span class="keyword">case</span> <span class="lit-number">'k'</span>, <span class="lit-number">'K'</span>:</code></span>
+<span class="codeline" id="line-413"><code>			<span class="keyword">if</span> <label for="r87" class="ident">tr</label> != <a href="#line-337" class="ident">kelvin</a> {</code></span>
+<span class="codeline" id="line-414"><code>				<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-415"><code>			}</code></span>
+<span class="codeline" id="line-416"><code>		<span class="keyword">default</span>:</code></span>
+<span class="codeline" id="line-417"><code>			<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-418"><code>		}</code></span>
+<span class="codeline" id="line-419"><code>		<label for="r82" class="ident">t</label> = <label for="r82" class="ident">t</label>[<label for="r88" class="ident">size</label>:]</code></span>
+<span class="codeline" id="line-420"><code></code></span>
+<span class="codeline" id="line-421"><code>	}</code></span>
+<span class="codeline" id="line-422"><code>	<span class="keyword">if</span> <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r82" class="ident">t</label>) &gt; <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-423"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-424"><code>	}</code></span>
+<span class="codeline" id="line-425"><code>	<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-426"><code>}</code></span>
+<span class="codeline" id="line-427"><code></code></span>
+<span class="codeline" id="line-428"><code><span class="comment">// asciiEqualFold is a specialization of bytes.EqualFold for use when</span></code></span>
+<span class="codeline" id="line-429"><code><span class="comment">// s is all ASCII (but may contain non-letters) and contains no</span></code></span>
+<span class="codeline" id="line-430"><code><span class="comment">// special-folding letters.</span></code></span>
+<span class="codeline" id="line-431"><code><span class="comment">// See comments on foldFunc.</span></code></span>
+<span class="codeline" id="line-432"><code><span class="keyword">func</span> <label for="r89" class="ident"><a href="../../../../pkg/github.com/ghodss/yaml.html#name-asciiEqualFold" class="ident">asciiEqualFold</a></label>(<label for="r90" class="ident">s</label>, <label for="r91" class="ident">t</label> []<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-433"><code>	<span class="keyword">if</span> <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r90" class="ident">s</label>) != <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r91" class="ident">t</label>) {</code></span>
+<span class="codeline" id="line-434"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-435"><code>	}</code></span>
+<span class="codeline" id="line-436"><code>	<span class="keyword">for</span> <label for="r92" class="ident">i</label>, <label for="r93" class="ident">sb</label> := <span class="keyword">range</span> <label for="r90" class="ident">s</label> {</code></span>
+<span class="codeline" id="line-437"><code>		<label for="r94" class="ident">tb</label> := <label for="r91" class="ident">t</label>[<label for="r92" class="ident">i</label>]</code></span>
+<span class="codeline" id="line-438"><code>		<span class="keyword">if</span> <label for="r93" class="ident">sb</label> == <label for="r94" class="ident">tb</label> {</code></span>
+<span class="codeline" id="line-439"><code>			<span class="keyword">continue</span></code></span>
+<span class="codeline" id="line-440"><code>		}</code></span>
+<span class="codeline" id="line-441"><code>		<span class="keyword">if</span> (<span class="lit-number">'a'</span> &lt;= <label for="r93" class="ident">sb</label> &amp;&amp; <label for="r93" class="ident">sb</label> &lt;= <span class="lit-number">'z'</span>) || (<span class="lit-number">'A'</span> &lt;= <label for="r93" class="ident">sb</label> &amp;&amp; <label for="r93" class="ident">sb</label> &lt;= <span class="lit-number">'Z'</span>) {</code></span>
+<span class="codeline" id="line-442"><code>			<span class="keyword">if</span> <label for="r93" class="ident">sb</label>&amp;<a href="#line-336" class="ident">caseMask</a> != <label for="r94" class="ident">tb</label>&amp;<a href="#line-336" class="ident">caseMask</a> {</code></span>
+<span class="codeline" id="line-443"><code>				<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-444"><code>			}</code></span>
+<span class="codeline" id="line-445"><code>		} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-446"><code>			<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-447"><code>		}</code></span>
+<span class="codeline" id="line-448"><code>	}</code></span>
+<span class="codeline" id="line-449"><code>	<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-450"><code>}</code></span>
+<span class="codeline" id="line-451"><code></code></span>
+<span class="codeline" id="line-452"><code><span class="comment">// simpleLetterEqualFold is a specialization of bytes.EqualFold for</span></code></span>
+<span class="codeline" id="line-453"><code><span class="comment">// use when s is all ASCII letters (no underscores, etc) and also</span></code></span>
+<span class="codeline" id="line-454"><code><span class="comment">// doesn't contain 'k', 'K', 's', or 'S'.</span></code></span>
+<span class="codeline" id="line-455"><code><span class="comment">// See comments on foldFunc.</span></code></span>
+<span class="codeline" id="line-456"><code><span class="keyword">func</span> <label for="r95" class="ident"><a href="../../../../pkg/github.com/ghodss/yaml.html#name-simpleLetterEqualFold" class="ident">simpleLetterEqualFold</a></label>(<label for="r96" class="ident">s</label>, <label for="r97" class="ident">t</label> []<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-457"><code>	<span class="keyword">if</span> <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r96" class="ident">s</label>) != <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r97" class="ident">t</label>) {</code></span>
+<span class="codeline" id="line-458"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-459"><code>	}</code></span>
+<span class="codeline" id="line-460"><code>	<span class="keyword">for</span> <label for="r98" class="ident">i</label>, <label for="r99" class="ident">b</label> := <span class="keyword">range</span> <label for="r96" class="ident">s</label> {</code></span>
+<span class="codeline" id="line-461"><code>		<span class="keyword">if</span> <label for="r99" class="ident">b</label>&amp;<a href="#line-336" class="ident">caseMask</a> != <label for="r97" class="ident">t</label>[<label for="r98" class="ident">i</label>]&amp;<a href="#line-336" class="ident">caseMask</a> {</code></span>
+<span class="codeline" id="line-462"><code>			<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-463"><code>		}</code></span>
+<span class="codeline" id="line-464"><code>	}</code></span>
+<span class="codeline" id="line-465"><code>	<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-466"><code>}</code></span>
+<span class="codeline" id="line-467"><code></code></span>
+<span class="codeline" id="line-468"><code><span class="comment">// tagOptions is the string following a comma in a struct field's "json"</span></code></span>
+<span class="codeline" id="line-469"><code><span class="comment">// tag, or the empty string. It does not include the leading comma.</span></code></span>
+<span class="codeline" id="line-470"><code><span class="keyword">type</span> <a href="../../../../pkg/github.com/ghodss/yaml.html#name-tagOptions" class="ident">tagOptions</a> <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-471"><code></code></span>
+<span class="codeline" id="line-472"><code><span class="comment">// parseTag splits a struct field's json tag into its name and</span></code></span>
+<span class="codeline" id="line-473"><code><span class="comment">// comma-separated options.</span></code></span>
+<span class="codeline" id="line-474"><code><span class="keyword">func</span> <label for="r100" class="ident"><a href="../../../../pkg/github.com/ghodss/yaml.html#name-parseTag" class="ident">parseTag</a></label>(<label for="r101" class="ident">tag</label> <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>) (<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>, <a href="#line-470" class="ident">tagOptions</a>) {</code></span>
+<span class="codeline" id="line-475"><code>	<span class="keyword">if</span> <label for="r102" class="ident">idx</label> := <a href="../../../../pkg/strings.html" class="ident i5">strings</a>.<a href="../../../strings/strings.go.html#line-1024" class="ident">Index</a>(<label for="r101" class="ident">tag</label>, <span class="lit-string">","</span>); <label for="r102" class="ident">idx</label> != -<span class="lit-number">1</span> {</code></span>
+<span class="codeline" id="line-476"><code>		<span class="keyword">return</span> <label for="r101" class="ident">tag</label>[:<label for="r102" class="ident">idx</label>], <a href="#line-470" class="ident">tagOptions</a>(<label for="r101" class="ident">tag</label>[<label for="r102" class="ident">idx</label>+<span class="lit-number">1</span>:])</code></span>
+<span class="codeline" id="line-477"><code>	}</code></span>
+<span class="codeline" id="line-478"><code>	<span class="keyword">return</span> <label for="r101" class="ident">tag</label>, <a href="#line-470" class="ident">tagOptions</a>(<span class="lit-string">""</span>)</code></span>
+<span class="codeline" id="line-479"><code>}</code></span>
+<span class="codeline" id="line-480"><code></code></span>
+<span class="codeline" id="line-481"><code><span class="comment">// Contains reports whether a comma-separated list of options</span></code></span>
+<span class="codeline" id="line-482"><code><span class="comment">// contains a particular substr flag. substr must be surrounded by a</span></code></span>
+<span class="codeline" id="line-483"><code><span class="comment">// string boundary or commas.</span></code></span>
+<span class="codeline" id="line-484"><code><span class="keyword">func</span> (<label for="r103" class="ident">o</label> <a href="#line-470" class="ident">tagOptions</a>) <label for="r104" class="ident">Contains</label>(<label for="r105" class="ident">optionName</label> <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-485"><code>	<span class="keyword">if</span> <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r103" class="ident">o</label>) == <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-486"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-487"><code>	}</code></span>
+<span class="codeline" id="line-488"><code>	<label for="r106" class="ident">s</label> := <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>(<label for="r103" class="ident">o</label>)</code></span>
+<span class="codeline" id="line-489"><code>	<span class="keyword">for</span> <label for="r106" class="ident">s</label> != <span class="lit-string">""</span> {</code></span>
+<span class="codeline" id="line-490"><code>		<span class="keyword">var</span> <label for="r107" class="ident">next</label> <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-491"><code>		<label for="r108" class="ident">i</label> := <a href="../../../../pkg/strings.html" class="ident i5">strings</a>.<a href="../../../strings/strings.go.html#line-1024" class="ident">Index</a>(<label for="r106" class="ident">s</label>, <span class="lit-string">","</span>)</code></span>
+<span class="codeline" id="line-492"><code>		<span class="keyword">if</span> <label for="r108" class="ident">i</label> &gt;= <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-493"><code>			<label for="r106" class="ident">s</label>, <label for="r107" class="ident">next</label> = <label for="r106" class="ident">s</label>[:<label for="r108" class="ident">i</label>], <label for="r106" class="ident">s</label>[<label for="r108" class="ident">i</label>+<span class="lit-number">1</span>:]</code></span>
+<span class="codeline" id="line-494"><code>		}</code></span>
+<span class="codeline" id="line-495"><code>		<span class="keyword">if</span> <label for="r106" class="ident">s</label> == <label for="r105" class="ident">optionName</label> {</code></span>
+<span class="codeline" id="line-496"><code>			<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-497"><code>		}</code></span>
+<span class="codeline" id="line-498"><code>		<label for="r106" class="ident">s</label> = <label for="r107" class="ident">next</label></code></span>
+<span class="codeline" id="line-499"><code>	}</code></span>
+<span class="codeline" id="line-500"><code>	<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-501"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

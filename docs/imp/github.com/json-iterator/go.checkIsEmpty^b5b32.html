@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Method Implmentations: github.com/json-iterator/go.checkIsEmpty</title>
+<link href="../../../css/light-v0.3.6.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.3.6.js"></script>
+<body onload="onPageLoad()"><div>
+<pre><code><span style="font-size:x-large;">type <a href="../../../pkg/github.com/json-iterator/go.html">github.com/json-iterator/go</a>.<b><a href="../../../src/github.com/json-iterator/go/reflect.go.html#line-33">checkIsEmpty</a></b></span><span style="font-size:large;"> <b><i>(interface)</i></b></span>
+
+<code><span class="title">Method Implmentations<span class="title-stat"><i></i></span></span>
+
+<div class="anchor" id="name-IsEmpty">	<a href="../../../src/github.com/json-iterator/go/reflect.go.html#line-34">IsEmpty</a>(ptr <a href="../../../pkg/unsafe.html">unsafe</a>.<a href="../../../pkg/unsafe.html#name-Pointer">Pointer</a>) <a href="../../../pkg/builtin.html#name-bool">bool</a>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-OptionalEncoder">OptionalEncoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_optional.go.html#line-74">IsEmpty</a></b>
+		<a href="../../../pkg/github.com/json-iterator/go.html#name-ValEncoder">ValEncoder</a>.<b><a href="../../../src/github.com/json-iterator/go/reflect.go.html#line-29">IsEmpty</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-anyCodec">anyCodec</a>).<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-300">IsEmpty</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-arrayEncoder">arrayEncoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_array.go.html#line-55">IsEmpty</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-base64Codec">base64Codec</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_native.go.html#line-451">IsEmpty</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-boolCodec">boolCodec</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_native.go.html#line-404">IsEmpty</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-dereferenceEncoder">dereferenceEncoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_optional.go.html#line-90">IsEmpty</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-directAnyCodec">directAnyCodec</a>).<b><a href="../../../src/github.com/json-iterator/go/any.go.html#line-322">IsEmpty</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-directMarshalerEncoder">directMarshalerEncoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_marshaler.go.html#line-134">IsEmpty</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-directTextMarshalerEncoder">directTextMarshalerEncoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_marshaler.go.html#line-184">IsEmpty</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-dynamicEncoder">dynamicEncoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_dynamic.go.html#line-18">IsEmpty</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-dynamicMapKeyEncoder">dynamicMapKeyEncoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_map.go.html#line-240">IsEmpty</a></b>
+		<a href="../../../pkg/github.com/json-iterator/go.html#name-emptyArrayEncoder">emptyArrayEncoder</a>.<b><a href="../../../src/github.com/json-iterator/go/reflect_array.go.html#line-31">IsEmpty</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-emptyStructEncoder">emptyStructEncoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_struct_encoder.go.html#line-178">IsEmpty</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-float32Codec">float32Codec</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_native.go.html#line-370">IsEmpty</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-float64Codec">float64Codec</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_native.go.html#line-387">IsEmpty</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-funcEncoder">funcEncoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_extension.go.html#line-185">IsEmpty</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-htmlEscapedStringEncoder">htmlEscapedStringEncoder</a>).<b><a href="../../../src/github.com/json-iterator/go/config.go.html#line-266">IsEmpty</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-int16Codec">int16Codec</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_native.go.html#line-251">IsEmpty</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-int32Codec">int32Codec</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_native.go.html#line-268">IsEmpty</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-int64Codec">int64Codec</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_native.go.html#line-285">IsEmpty</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-int8Codec">int8Codec</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_native.go.html#line-234">IsEmpty</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-jsoniterNumberCodec">jsoniterNumberCodec</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_json_number.go.html#line-110">IsEmpty</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-jsoniterRawMessageCodec">jsoniterRawMessageCodec</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_json_raw_message.go.html#line-74">IsEmpty</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-jsonNumberCodec">jsonNumberCodec</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_json_number.go.html#line-82">IsEmpty</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-jsonRawMessageCodec">jsonRawMessageCodec</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_json_raw_message.go.html#line-51">IsEmpty</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-lazyErrorEncoder">lazyErrorEncoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect.go.html#line-315">IsEmpty</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-lossyFloat32Encoder">lossyFloat32Encoder</a>).<b><a href="../../../src/github.com/json-iterator/go/config.go.html#line-235">IsEmpty</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-lossyFloat64Encoder">lossyFloat64Encoder</a>).<b><a href="../../../src/github.com/json-iterator/go/config.go.html#line-246">IsEmpty</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-mapEncoder">mapEncoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_map.go.html#line-274">IsEmpty</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-marshalerEncoder">marshalerEncoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_marshaler.go.html#line-112">IsEmpty</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-numericMapKeyEncoder">numericMapKeyEncoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_map.go.html#line-226">IsEmpty</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-onePtrEncoder">onePtrEncoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect.go.html#line-214">IsEmpty</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-placeholderEncoder">placeholderEncoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect.go.html#line-335">IsEmpty</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-referenceEncoder">referenceEncoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_optional.go.html#line-119">IsEmpty</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-sliceEncoder">sliceEncoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_slice.go.html#line-50">IsEmpty</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-sortKeysMapEncoder">sortKeysMapEncoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_map.go.html#line-332">IsEmpty</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-stringCodec">stringCodec</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_native.go.html#line-217">IsEmpty</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-stringModeNumberEncoder">stringModeNumberEncoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_struct_encoder.go.html#line-192">IsEmpty</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-stringModeStringEncoder">stringModeStringEncoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_struct_encoder.go.html#line-209">IsEmpty</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-structEncoder">structEncoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_struct_encoder.go.html#line-167">IsEmpty</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-structFieldEncoder">structFieldEncoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_struct_encoder.go.html#line-116">IsEmpty</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-textMarshalerEncoder">textMarshalerEncoder</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_marshaler.go.html#line-160">IsEmpty</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-uint16Codec">uint16Codec</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_native.go.html#line-319">IsEmpty</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-uint32Codec">uint32Codec</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_native.go.html#line-336">IsEmpty</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-uint64Codec">uint64Codec</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_native.go.html#line-353">IsEmpty</a></b>
+		(*<a href="../../../pkg/github.com/json-iterator/go.html#name-uint8Codec">uint8Codec</a>).<b><a href="../../../src/github.com/json-iterator/go/reflect_native.go.html#line-302">IsEmpty</a></b></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

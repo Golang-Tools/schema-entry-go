@@ -25,7 +25,7 @@ func (ep *EntryPointMeta) Meta() *EntryPointMeta {
 }
 
 //SetChild 为节点设置子节点
-//@params child EntryPointNode 要作为子节点的节点
+//@Params child EntryPointNode 要作为子节点的节点
 func (ep *EntryPointMeta) SetChild(child EntryPointNode) {
 	subcmdName := child.Meta().Name
 	if ep.subcmds == nil || len(ep.subcmds) == 0 {
@@ -39,7 +39,7 @@ func (ep *EntryPointMeta) SetChild(child EntryPointNode) {
 }
 
 //SetParent 为节点设置父节点
-//@params parent EntryPointNode 要作为父节点的节点
+//@Params parent EntryPointNode 要作为父节点的节点
 func (ep *EntryPointMeta) SetParent(parent EntryPointNode) {
 	if ep.parent == nil {
 		ep.parent = parent

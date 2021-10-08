@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: entrypointMeta.go in package github.com/Golang-Tools/schema-entry-go</title>
+<link href="../../../../css/light-v0.3.6.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.3.6.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	entrypointMeta.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../pkg/github.com/Golang-Tools^b0a0c/schema-entry-go.html">github.com/Golang-Tools/schema-entry-go</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> schemaentry</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-4"><code>	<a href="../../../../pkg/github.com/Golang-Tools^b0a0c/loggerhelper.html" class="ident i0">log</a> <label for="i0"><span class="lit-string i0">"github.com/Golang-Tools/loggerhelper"</span></label></code></span>
+<span class="codeline" id="line-5"><code>)</code></span>
+<span class="codeline" id="line-6"><code></code></span>
+<span class="codeline" id="line-7"><code><span class="comment">//EntryPointMeta 节点的元数据类</span></code></span>
+<span class="codeline" id="line-8"><code><span class="keyword">type</span> <a href="../../../../pkg/github.com/Golang-Tools^b0a0c/schema-entry-go.html#name-EntryPointMeta" class="ident">EntryPointMeta</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-9"><code>	Name                   <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>   <span class="comment">//节点名</span></code></span>
+<span class="codeline" id="line-10"><code>	Description            <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>   <span class="comment">//节点简介</span></code></span>
+<span class="codeline" id="line-11"><code>	Usage                  <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>   <span class="comment">//节点用法介绍</span></code></span>
+<span class="codeline" id="line-12"><code>	DefaultConfigFilePaths []<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a> <span class="comment">//节点执行的默认配置文件路径列表</span></code></span>
+<span class="codeline" id="line-13"><code>	LoadAllConfigFile      <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a>     <span class="comment">//是否加载全部配置文件,否则找到第一个后就停止搜索</span></code></span>
+<span class="codeline" id="line-14"><code>	NotParseEnv            <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a>     <span class="comment">//是否不解析环境变量</span></code></span>
+<span class="codeline" id="line-15"><code>	EnvPrefix              <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>   <span class="comment">//解析环境变量时的前缀</span></code></span>
+<span class="codeline" id="line-16"><code>	NotVerifySchema        <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a>     <span class="comment">//是否不校验配置的schema</span></code></span>
+<span class="codeline" id="line-17"><code>	DebugMode              <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a>     <span class="comment">//当设置为debugmode时才会打印中间过程的log</span></code></span>
+<span class="codeline" id="line-18"><code>	parent                 <a href="entrypoint.go.html#line-24" class="ident">EntryPointNode</a></code></span>
+<span class="codeline" id="line-19"><code>	subcmds                <span class="keyword">map</span>[<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>]<a href="entrypoint.go.html#line-24" class="ident">EntryPointNode</a></code></span>
+<span class="codeline" id="line-20"><code>}</code></span>
+<span class="codeline" id="line-21"><code></code></span>
+<span class="codeline" id="line-22"><code><span class="comment">//Meta 获取节点的元数据</span></code></span>
+<span class="codeline" id="line-23"><code><span class="keyword">func</span> (<label for="r0" class="ident">ep</label> *<a href="#line-8" class="ident">EntryPointMeta</a>) <label for="r1" class="ident">Meta</label>() *<a href="#line-8" class="ident">EntryPointMeta</a> {</code></span>
+<span class="codeline" id="line-24"><code>	<span class="keyword">return</span> <label for="r0" class="ident">ep</label></code></span>
+<span class="codeline" id="line-25"><code>}</code></span>
+<span class="codeline" id="line-26"><code></code></span>
+<span class="codeline" id="line-27"><code><span class="comment">//SetChild 为节点设置子节点</span></code></span>
+<span class="codeline" id="line-28"><code><span class="comment">//@Params child EntryPointNode 要作为子节点的节点</span></code></span>
+<span class="codeline" id="line-29"><code><span class="keyword">func</span> (<label for="r2" class="ident">ep</label> *<a href="#line-8" class="ident">EntryPointMeta</a>) <label for="r3" class="ident">SetChild</label>(<label for="r4" class="ident">child</label> <a href="entrypoint.go.html#line-24" class="ident">EntryPointNode</a>) {</code></span>
+<span class="codeline" id="line-30"><code>	<label for="r5" class="ident">subcmdName</label> := <label for="r4" class="ident">child</label>.<a href="entrypoint.go.html#line-25" class="ident">Meta</a>().<a href="#line-9" class="ident">Name</a></code></span>
+<span class="codeline" id="line-31"><code>	<span class="keyword">if</span> <label for="r2" class="ident">ep</label>.<a href="#line-19" class="ident">subcmds</a> == <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> || <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r2" class="ident">ep</label>.<a href="#line-19" class="ident">subcmds</a>) == <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-32"><code></code></span>
+<span class="codeline" id="line-33"><code>		<label for="r2" class="ident">ep</label>.<a href="#line-19" class="ident">subcmds</a> = <span class="keyword">map</span>[<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>]<a href="entrypoint.go.html#line-24" class="ident">EntryPointNode</a>{</code></span>
+<span class="codeline" id="line-34"><code>			<label for="r5" class="ident">subcmdName</label>: <label for="r4" class="ident">child</label>,</code></span>
+<span class="codeline" id="line-35"><code>		}</code></span>
+<span class="codeline" id="line-36"><code>	} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-37"><code>		<label for="r2" class="ident">ep</label>.<a href="#line-19" class="ident">subcmds</a>[<label for="r5" class="ident">subcmdName</label>] = <label for="r4" class="ident">child</label></code></span>
+<span class="codeline" id="line-38"><code>	}</code></span>
+<span class="codeline" id="line-39"><code>}</code></span>
+<span class="codeline" id="line-40"><code></code></span>
+<span class="codeline" id="line-41"><code><span class="comment">//SetParent 为节点设置父节点</span></code></span>
+<span class="codeline" id="line-42"><code><span class="comment">//@Params parent EntryPointNode 要作为父节点的节点</span></code></span>
+<span class="codeline" id="line-43"><code><span class="keyword">func</span> (<label for="r6" class="ident">ep</label> *<a href="#line-8" class="ident">EntryPointMeta</a>) <label for="r7" class="ident">SetParent</label>(<label for="r8" class="ident">parent</label> <a href="entrypoint.go.html#line-24" class="ident">EntryPointNode</a>) {</code></span>
+<span class="codeline" id="line-44"><code>	<span class="keyword">if</span> <label for="r6" class="ident">ep</label>.<a href="#line-18" class="ident">parent</a> == <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-45"><code>		<label for="r6" class="ident">ep</label>.<a href="#line-18" class="ident">parent</a> = <label for="r8" class="ident">parent</label></code></span>
+<span class="codeline" id="line-46"><code>	} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-47"><code>		<a href="../../../../pkg/github.com/Golang-Tools^b0a0c/loggerhelper.html" class="ident i0">log</a>.<a href="../loggerhelper/loggerhelper.go.html#line-199" class="ident">Warn</a>(<span class="lit-string">"节点已经设置过父节点"</span>, <a href="../../../../pkg/github.com/Golang-Tools^b0a0c/loggerhelper.html" class="ident i0">log</a>.<a href="../loggerhelper/loggerhelper.go.html#line-8" class="ident">Dict</a>{<span class="lit-string">"parent"</span>: <label for="r6" class="ident">ep</label>.<a href="#line-18" class="ident">parent</a>.<a href="entrypoint.go.html#line-25" class="ident">Meta</a>().<a href="#line-9" class="ident">Name</a>})</code></span>
+<span class="codeline" id="line-48"><code>	}</code></span>
+<span class="codeline" id="line-49"><code>}</code></span>
+<span class="codeline" id="line-50"><code></code></span>
+<span class="codeline" id="line-51"><code><span class="comment">//IsRoot 判断节点的是否为根节点</span></code></span>
+<span class="codeline" id="line-52"><code><span class="keyword">func</span> (<label for="r9" class="ident">ep</label> *<a href="#line-8" class="ident">EntryPointMeta</a>) <label for="r10" class="ident">IsRoot</label>() <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-53"><code>	<span class="keyword">return</span> <label for="r9" class="ident">ep</label>.<a href="#line-18" class="ident">parent</a> == <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-54"><code></code></span>
+<span class="codeline" id="line-55"><code>}</code></span>
+<span class="codeline" id="line-56"><code></code></span>
+<span class="codeline" id="line-57"><code><span class="comment">//IsEndpoint 判断节点是否为叶子节点</span></code></span>
+<span class="codeline" id="line-58"><code><span class="keyword">func</span> (<label for="r11" class="ident">ep</label> *<a href="#line-8" class="ident">EntryPointMeta</a>) <label for="r12" class="ident">IsEndpoint</label>() <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-59"><code>	<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r11" class="ident">ep</label>.<a href="#line-19" class="ident">subcmds</a>) == <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-60"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

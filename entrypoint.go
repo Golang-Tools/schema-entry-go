@@ -44,8 +44,8 @@ type EntryPoint struct {
 }
 
 //New 创建一个节点对象
-//@param meta *EntryPointMeta 为节点的元信息
-//@param config ...EntryPointConfig 为一个定义好的struct的对象的指针,根节点和中间节点可以不设置,叶子节点如果不设置则无法执行,最多设置一个
+//@Params meta *EntryPointMeta 为节点的元信息
+//@params config ...EntryPointConfig 为一个定义好的struct的对象的指针,根节点和中间节点可以不设置,叶子节点如果不设置则无法执行,最多设置一个
 func New(meta *EntryPointMeta, config ...EntryPointConfig) (*EntryPoint, error) {
 	ep := new(EntryPoint)
 	m := EntryPointMeta{}
@@ -107,7 +107,7 @@ func (ep *EntryPoint) RegistConfig(config EntryPointConfig) {
 }
 
 //RegistSubNode 将一个节点注册为当前节点的子节点
-//@params child EntryPointNode 节点对象,注意必须传入的是指针
+//@Params child EntryPointNode 节点对象,注意必须传入的是指针
 func (ep *EntryPoint) RegistSubNode(child EntryPointNode) {
 	RegistSubNode(ep, child)
 }
@@ -178,9 +178,9 @@ func (ep EntryPoint) PassArgsTosub(parser *argparse.Parser, argv []string) {
 }
 
 //loadConfigFile 加载文件到配置
-//@params filename 文件路径
-//@return bool 是否结束查找
-//@return error 错误信息
+//@Params filename 文件路径
+//@returns bool 是否结束查找
+//@returns error 错误信息
 func (ep *EntryPoint) loadConfigFile(filename string) (bool, error) {
 	if ep.config == nil {
 		return true, errors.New("Config为空")
@@ -271,11 +271,11 @@ func (ep *EntryPoint) GetConfigFromConfigFile() error {
 }
 
 //ConfigPtrFromArgparse 构造命令行参数解析,并获取flag的ptr
-//@params parser *argparse.Parser flag解析器
-//@params argv []string 待解析的命令行参数
-//@return *string 指定configfile位置字符串
-//@return map[string]interface{} flag的ptr位置
-//@return error 错误信息
+//@Params parser *argparse.Parser flag解析器
+//@Params argv []string 待解析的命令行参数
+//@Returns *string 指定configfile位置字符串
+//@Returns map[string]interface{} flag的ptr位置
+//@Returns error 错误信息
 func (ep *EntryPoint) ConfigPtrFromArgparse(parser *argparse.Parser, argv []string) (*string, map[string]interface{}, error) {
 	if ep.config == nil {
 		return nil, nil, errors.New("Config为nil")
@@ -402,8 +402,8 @@ func (ep *EntryPoint) GetEnvPrefix() string {
 }
 
 //ParseStruct 解析结构体,构造命令行参数解析和环境变量解析,并设置到对象的Config值中
-//@params flagConfptr map[string]interface{} 命令行参数除了指定的配置文件位置外的参数->值的指针的映射
-//@return error 解析过程中的错误
+//@Params flagConfptr map[string]interface{} 命令行参数除了指定的配置文件位置外的参数->值的指针的映射
+//@Returns error 解析过程中的错误
 func (ep *EntryPoint) ParseStruct(flagConfptr map[string]interface{}) error {
 	if ep.config == nil {
 		return errors.New("Config为nil")
@@ -648,8 +648,8 @@ func (ep *EntryPoint) ParseStruct(flagConfptr map[string]interface{}) error {
 }
 
 //PassArgs 解析叶子节点
-//@params parser *argparse.Parser 命令行参数解析器对象
-//@params argv []string 待解析的命令行参数
+//@Params parser *argparse.Parser 命令行参数解析器对象
+//@Params argv []string 待解析的命令行参数
 func (ep *EntryPoint) PassArgs(parser *argparse.Parser, argv []string) {
 	if ep.config == nil {
 		log.Error("叶子节点必须有Config设置")

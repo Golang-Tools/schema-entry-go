@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: command.go in package github.com/akamensky/argparse</title>
+<link href="../../../../css/light-v0.3.6.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.3.6.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	command.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../pkg/github.com/akamensky/argparse.html">github.com/akamensky/argparse</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20],
+input[id=r21]:checked ~pre label[for=r21],
+input[id=r22]:checked ~pre label[for=r22],
+input[id=r23]:checked ~pre label[for=r23],
+input[id=r24]:checked ~pre label[for=r24],
+input[id=r25]:checked ~pre label[for=r25],
+input[id=r26]:checked ~pre label[for=r26],
+input[id=r27]:checked ~pre label[for=r27],
+input[id=r28]:checked ~pre label[for=r28],
+input[id=r29]:checked ~pre label[for=r29],
+input[id=r30]:checked ~pre label[for=r30],
+input[id=r31]:checked ~pre label[for=r31],
+input[id=r32]:checked ~pre label[for=r32],
+input[id=r33]:checked ~pre label[for=r33],
+input[id=r34]:checked ~pre label[for=r34],
+input[id=r35]:checked ~pre label[for=r35],
+input[id=r36]:checked ~pre label[for=r36],
+input[id=r37]:checked ~pre label[for=r37],
+input[id=r38]:checked ~pre label[for=r38],
+input[id=r39]:checked ~pre label[for=r39]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="r21" type="radio" name="g"/>
+<input id="r22" type="radio" name="g"/>
+<input id="r23" type="radio" name="g"/>
+<input id="r24" type="radio" name="g"/>
+<input id="r25" type="radio" name="g"/>
+<input id="r26" type="radio" name="g"/>
+<input id="r27" type="radio" name="g"/>
+<input id="r28" type="radio" name="g"/>
+<input id="r29" type="radio" name="g"/>
+<input id="r30" type="radio" name="g"/>
+<input id="r31" type="radio" name="g"/>
+<input id="r32" type="radio" name="g"/>
+<input id="r33" type="radio" name="g"/>
+<input id="r34" type="radio" name="g"/>
+<input id="r35" type="radio" name="g"/>
+<input id="r36" type="radio" name="g"/>
+<input id="r37" type="radio" name="g"/>
+<input id="r38" type="radio" name="g"/>
+<input id="r39" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> argparse</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-4"><code>	<label for="i0"><span class="lit-string i0">"fmt"</span></label></code></span>
+<span class="codeline" id="line-5"><code>	<label for="i1"><span class="lit-string i1">"strings"</span></label></code></span>
+<span class="codeline" id="line-6"><code>)</code></span>
+<span class="codeline" id="line-7"><code></code></span>
+<span class="codeline" id="line-8"><code><span class="keyword">func</span> (<label for="r0" class="ident">o</label> *<a href="argparse.go.html#line-20" class="ident">Command</a>) <label for="r1" class="ident">help</label>(<label for="r2" class="ident">sname</label>, <label for="r3" class="ident">lname</label> <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>) {</code></span>
+<span class="codeline" id="line-9"><code>	<label for="r4" class="ident">result</label> := &amp;<a href="argument.go.html#line-52" class="ident">help</a>{}</code></span>
+<span class="codeline" id="line-10"><code></code></span>
+<span class="codeline" id="line-11"><code>	<span class="keyword">if</span> <label for="r3" class="ident">lname</label> == <span class="lit-string">""</span> {</code></span>
+<span class="codeline" id="line-12"><code>		<label for="r2" class="ident">sname</label>, <label for="r3" class="ident">lname</label> = <span class="lit-string">"h"</span>, <span class="lit-string">"help"</span></code></span>
+<span class="codeline" id="line-13"><code>	}</code></span>
+<span class="codeline" id="line-14"><code></code></span>
+<span class="codeline" id="line-15"><code>	<label for="r5" class="ident">a</label> := &amp;<a href="argument.go.html#line-11" class="ident">arg</a>{</code></span>
+<span class="codeline" id="line-16"><code>		<a href="argument.go.html#line-12" class="ident">result</a>: <label for="r4" class="ident">result</label>,</code></span>
+<span class="codeline" id="line-17"><code>		<a href="argument.go.html#line-14" class="ident">sname</a>:  <label for="r2" class="ident">sname</label>,</code></span>
+<span class="codeline" id="line-18"><code>		<a href="argument.go.html#line-15" class="ident">lname</a>:  <label for="r3" class="ident">lname</label>,</code></span>
+<span class="codeline" id="line-19"><code>		<a href="argument.go.html#line-16" class="ident">size</a>:   <span class="lit-number">1</span>,</code></span>
+<span class="codeline" id="line-20"><code>		<a href="argument.go.html#line-13" class="ident">opts</a>:   &amp;<a href="argparse.go.html#line-97" class="ident">Options</a>{<a href="argparse.go.html#line-100" class="ident">Help</a>: <span class="lit-string">"Print help information"</span>},</code></span>
+<span class="codeline" id="line-21"><code>		<a href="argument.go.html#line-17" class="ident">unique</a>: <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a>,</code></span>
+<span class="codeline" id="line-22"><code>	}</code></span>
+<span class="codeline" id="line-23"><code></code></span>
+<span class="codeline" id="line-24"><code>	<label for="r0" class="ident">o</label>.<a href="#line-27" class="ident">addArg</a>(<label for="r5" class="ident">a</label>)</code></span>
+<span class="codeline" id="line-25"><code>}</code></span>
+<span class="codeline" id="line-26"><code></code></span>
+<span class="codeline" id="line-27"><code><span class="keyword">func</span> (<label for="r6" class="ident">o</label> *<a href="argparse.go.html#line-20" class="ident">Command</a>) <label for="r7" class="ident">addArg</label>(<label for="r8" class="ident">a</label> *<a href="argument.go.html#line-11" class="ident">arg</a>) <a href="../../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
+<span class="codeline" id="line-28"><code>	<span class="comment">// long name should be provided</span></code></span>
+<span class="codeline" id="line-29"><code>	<span class="keyword">if</span> <label for="r8" class="ident">a</label>.<a href="argument.go.html#line-15" class="ident">lname</a> == <span class="lit-string">""</span> {</code></span>
+<span class="codeline" id="line-30"><code>		<span class="keyword">return</span> <a href="../../../../pkg/fmt.html" class="ident i0">fmt</a>.<a href="../../../fmt/errors.go.html#line-17" class="ident">Errorf</a>(<span class="lit-string">"long name should be provided"</span>)</code></span>
+<span class="codeline" id="line-31"><code>	}</code></span>
+<span class="codeline" id="line-32"><code>	<span class="comment">// short name could be provided and must not exceed 1 character</span></code></span>
+<span class="codeline" id="line-33"><code>	<span class="keyword">if</span> <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r8" class="ident">a</label>.<a href="argument.go.html#line-14" class="ident">sname</a>) &gt; <span class="lit-number">1</span> {</code></span>
+<span class="codeline" id="line-34"><code>		<span class="keyword">return</span> <a href="../../../../pkg/fmt.html" class="ident i0">fmt</a>.<a href="../../../fmt/errors.go.html#line-17" class="ident">Errorf</a>(<span class="lit-string">"short name must not exceed 1 character"</span>)</code></span>
+<span class="codeline" id="line-35"><code>	}</code></span>
+<span class="codeline" id="line-36"><code>	<span class="comment">// Search parents for overlapping commands and fail if any</span></code></span>
+<span class="codeline" id="line-37"><code>	<label for="r9" class="ident">current</label> := <label for="r6" class="ident">o</label></code></span>
+<span class="codeline" id="line-38"><code>	<span class="keyword">for</span> <label for="r9" class="ident">current</label> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-39"><code>		<span class="keyword">if</span> <label for="r9" class="ident">current</label>.<a href="argparse.go.html#line-23" class="ident">args</a> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-40"><code>			<span class="keyword">for</span> <label for="r10" class="ident">_</label>, <label for="r11" class="ident">v</label> := <span class="keyword">range</span> <label for="r9" class="ident">current</label>.<a href="argparse.go.html#line-23" class="ident">args</a> {</code></span>
+<span class="codeline" id="line-41"><code>				<span class="keyword">if</span> <label for="r8" class="ident">a</label>.<a href="argument.go.html#line-15" class="ident">lname</a> != <span class="lit-string">"help"</span> || <label for="r8" class="ident">a</label>.<a href="argument.go.html#line-14" class="ident">sname</a> != <span class="lit-string">"h"</span> {</code></span>
+<span class="codeline" id="line-42"><code>					<span class="keyword">if</span> <label for="r8" class="ident">a</label>.<a href="argument.go.html#line-14" class="ident">sname</a> != <span class="lit-string">""</span> &amp;&amp; <label for="r8" class="ident">a</label>.<a href="argument.go.html#line-14" class="ident">sname</a> == <label for="r11" class="ident">v</label>.<a href="argument.go.html#line-14" class="ident">sname</a> {</code></span>
+<span class="codeline" id="line-43"><code>						<span class="keyword">return</span> <a href="../../../../pkg/fmt.html" class="ident i0">fmt</a>.<a href="../../../fmt/errors.go.html#line-17" class="ident">Errorf</a>(<span class="lit-string">"short name %s occurs more than once"</span>, <label for="r8" class="ident">a</label>.<a href="argument.go.html#line-14" class="ident">sname</a>)</code></span>
+<span class="codeline" id="line-44"><code>					}</code></span>
+<span class="codeline" id="line-45"><code>					<span class="keyword">if</span> <label for="r8" class="ident">a</label>.<a href="argument.go.html#line-15" class="ident">lname</a> == <label for="r11" class="ident">v</label>.<a href="argument.go.html#line-15" class="ident">lname</a> {</code></span>
+<span class="codeline" id="line-46"><code>						<span class="keyword">return</span> <a href="../../../../pkg/fmt.html" class="ident i0">fmt</a>.<a href="../../../fmt/errors.go.html#line-17" class="ident">Errorf</a>(<span class="lit-string">"long name %s occurs more than once"</span>, <label for="r8" class="ident">a</label>.<a href="argument.go.html#line-15" class="ident">lname</a>)</code></span>
+<span class="codeline" id="line-47"><code>					}</code></span>
+<span class="codeline" id="line-48"><code>				}</code></span>
+<span class="codeline" id="line-49"><code>			}</code></span>
+<span class="codeline" id="line-50"><code>		}</code></span>
+<span class="codeline" id="line-51"><code>		<label for="r9" class="ident">current</label> = <label for="r9" class="ident">current</label>.<a href="argparse.go.html#line-27" class="ident">parent</a></code></span>
+<span class="codeline" id="line-52"><code>	}</code></span>
+<span class="codeline" id="line-53"><code>	<label for="r8" class="ident">a</label>.<a href="argument.go.html#line-22" class="ident">parent</a> = <label for="r6" class="ident">o</label></code></span>
+<span class="codeline" id="line-54"><code>	<label for="r6" class="ident">o</label>.<a href="argparse.go.html#line-23" class="ident">args</a> = <a href="../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r6" class="ident">o</label>.<a href="argparse.go.html#line-23" class="ident">args</a>, <label for="r8" class="ident">a</label>)</code></span>
+<span class="codeline" id="line-55"><code>	<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-56"><code>}</code></span>
+<span class="codeline" id="line-57"><code></code></span>
+<span class="codeline" id="line-58"><code><span class="comment">//parseSubCommands - Parses subcommands if any</span></code></span>
+<span class="codeline" id="line-59"><code><span class="keyword">func</span> (<label for="r12" class="ident">o</label> *<a href="argparse.go.html#line-20" class="ident">Command</a>) <label for="r13" class="ident">parseSubCommands</label>(<label for="r14" class="ident">args</label> *[]<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="../../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
+<span class="codeline" id="line-60"><code>	<span class="keyword">if</span> <label for="r12" class="ident">o</label>.<a href="argparse.go.html#line-24" class="ident">commands</a> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> &amp;&amp; <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r12" class="ident">o</label>.<a href="argparse.go.html#line-24" class="ident">commands</a>) &gt; <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-61"><code>		<span class="comment">// If we have subcommands and 0 args left</span></code></span>
+<span class="codeline" id="line-62"><code><span class="comment">		// that is an error of SubCommandError type</span></code></span>
+<span class="codeline" id="line-63"><code>		<span class="keyword">if</span> <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(*<label for="r14" class="ident">args</label>) &lt; <span class="lit-number">1</span> {</code></span>
+<span class="codeline" id="line-64"><code>			<span class="keyword">return</span> <a href="errors.go.html#line-12" class="ident">newSubCommandError</a>(<label for="r12" class="ident">o</label>)</code></span>
+<span class="codeline" id="line-65"><code>		}</code></span>
+<span class="codeline" id="line-66"><code>		<span class="keyword">for</span> <label for="r15" class="ident">_</label>, <label for="r16" class="ident">v</label> := <span class="keyword">range</span> <label for="r12" class="ident">o</label>.<a href="argparse.go.html#line-24" class="ident">commands</a> {</code></span>
+<span class="codeline" id="line-67"><code>			<label for="r17" class="ident">err</label> := <label for="r16" class="ident">v</label>.<a href="#line-139" class="ident">parse</a>(<label for="r14" class="ident">args</label>)</code></span>
+<span class="codeline" id="line-68"><code>			<span class="keyword">if</span> <label for="r17" class="ident">err</label> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-69"><code>				<span class="keyword">return</span> <label for="r17" class="ident">err</label></code></span>
+<span class="codeline" id="line-70"><code>			}</code></span>
+<span class="codeline" id="line-71"><code>		}</code></span>
+<span class="codeline" id="line-72"><code>	}</code></span>
+<span class="codeline" id="line-73"><code>	<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-74"><code>}</code></span>
+<span class="codeline" id="line-75"><code></code></span>
+<span class="codeline" id="line-76"><code><span class="comment">//parseArguments - Parses arguments</span></code></span>
+<span class="codeline" id="line-77"><code><span class="keyword">func</span> (<label for="r18" class="ident">o</label> *<a href="argparse.go.html#line-20" class="ident">Command</a>) <label for="r19" class="ident">parseArguments</label>(<label for="r20" class="ident">args</label> *[]<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="../../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
+<span class="codeline" id="line-78"><code>	<span class="comment">// Iterate over the args</span></code></span>
+<span class="codeline" id="line-79"><code>	<span class="keyword">for</span> <label for="r21" class="ident">i</label> := <span class="lit-number">0</span>; <label for="r21" class="ident">i</label> &lt; <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r18" class="ident">o</label>.<a href="argparse.go.html#line-23" class="ident">args</a>); <label for="r21" class="ident">i</label>++ {</code></span>
+<span class="codeline" id="line-80"><code>		<label for="r22" class="ident">oarg</label> := <label for="r18" class="ident">o</label>.<a href="argparse.go.html#line-23" class="ident">args</a>[<label for="r21" class="ident">i</label>]</code></span>
+<span class="codeline" id="line-81"><code>		<span class="keyword">for</span> <label for="r23" class="ident">j</label> := <span class="lit-number">0</span>; <label for="r23" class="ident">j</label> &lt; <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(*<label for="r20" class="ident">args</label>); <label for="r23" class="ident">j</label>++ {</code></span>
+<span class="codeline" id="line-82"><code>			<label for="r24" class="ident">arg</label> := (*<label for="r20" class="ident">args</label>)[<label for="r23" class="ident">j</label>]</code></span>
+<span class="codeline" id="line-83"><code>			<span class="keyword">if</span> <label for="r24" class="ident">arg</label> == <span class="lit-string">""</span> {</code></span>
+<span class="codeline" id="line-84"><code>				<span class="keyword">continue</span></code></span>
+<span class="codeline" id="line-85"><code>			}</code></span>
+<span class="codeline" id="line-86"><code>			<span class="keyword">if</span> <a href="../../../../pkg/strings.html" class="ident i1">strings</a>.<a href="../../../strings/strings.go.html#line-61" class="ident">Contains</a>(<label for="r24" class="ident">arg</label>, <span class="lit-string">"="</span>) {</code></span>
+<span class="codeline" id="line-87"><code>				<label for="r25" class="ident">splitInd</label> := <a href="../../../../pkg/strings.html" class="ident i1">strings</a>.<a href="../../../strings/strings.go.html#line-76" class="ident">LastIndex</a>(<label for="r24" class="ident">arg</label>, <span class="lit-string">"="</span>)</code></span>
+<span class="codeline" id="line-88"><code>				<label for="r26" class="ident">equalArg</label> := []<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>{<label for="r24" class="ident">arg</label>[:<label for="r25" class="ident">splitInd</label>], <label for="r24" class="ident">arg</label>[<label for="r25" class="ident">splitInd</label>+<span class="lit-number">1</span>:]}</code></span>
+<span class="codeline" id="line-89"><code>				<span class="keyword">if</span> <label for="r27" class="ident">cnt</label>, <label for="r28" class="ident">err</label> := <label for="r22" class="ident">oarg</label>.<a href="argument.go.html#line-109" class="ident">check</a>(<label for="r26" class="ident">equalArg</label>[<span class="lit-number">0</span>]); <label for="r28" class="ident">err</label> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-90"><code>					<span class="keyword">return</span> <label for="r28" class="ident">err</label></code></span>
+<span class="codeline" id="line-91"><code>				} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r27" class="ident">cnt</label> &gt; <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-92"><code>					<span class="keyword">if</span> <label for="r26" class="ident">equalArg</label>[<span class="lit-number">1</span>] == <span class="lit-string">""</span> {</code></span>
+<span class="codeline" id="line-93"><code>						<span class="keyword">return</span> <a href="../../../../pkg/fmt.html" class="ident i0">fmt</a>.<a href="../../../fmt/errors.go.html#line-17" class="ident">Errorf</a>(<span class="lit-string">"not enough arguments for %s"</span>, <label for="r22" class="ident">oarg</label>.<a href="argument.go.html#line-401" class="ident">name</a>())</code></span>
+<span class="codeline" id="line-94"><code>					}</code></span>
+<span class="codeline" id="line-95"><code>					<label for="r22" class="ident">oarg</label>.<a href="argument.go.html#line-23" class="ident">eqChar</a> = <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-96"><code>					<label for="r22" class="ident">oarg</label>.<a href="argument.go.html#line-16" class="ident">size</a> = <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-97"><code>					<label for="r29" class="ident">currArg</label> := []<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>{<label for="r26" class="ident">equalArg</label>[<span class="lit-number">1</span>]}</code></span>
+<span class="codeline" id="line-98"><code>					<label for="r30" class="ident">err</label> := <label for="r22" class="ident">oarg</label>.<a href="argument.go.html#line-385" class="ident">parse</a>(<label for="r29" class="ident">currArg</label>, <label for="r27" class="ident">cnt</label>)</code></span>
+<span class="codeline" id="line-99"><code>					<span class="keyword">if</span> <label for="r30" class="ident">err</label> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-100"><code>						<span class="keyword">return</span> <label for="r30" class="ident">err</label></code></span>
+<span class="codeline" id="line-101"><code>					}</code></span>
+<span class="codeline" id="line-102"><code>					<label for="r22" class="ident">oarg</label>.<a href="argument.go.html#line-168" class="ident">reduce</a>(<label for="r23" class="ident">j</label>, <label for="r20" class="ident">args</label>)</code></span>
+<span class="codeline" id="line-103"><code>					<span class="keyword">continue</span></code></span>
+<span class="codeline" id="line-104"><code>				}</code></span>
+<span class="codeline" id="line-105"><code>			}</code></span>
+<span class="codeline" id="line-106"><code>			<span class="keyword">if</span> <label for="r31" class="ident">cnt</label>, <label for="r32" class="ident">err</label> := <label for="r22" class="ident">oarg</label>.<a href="argument.go.html#line-109" class="ident">check</a>(<label for="r24" class="ident">arg</label>); <label for="r32" class="ident">err</label> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-107"><code>				<span class="keyword">return</span> <label for="r32" class="ident">err</label></code></span>
+<span class="codeline" id="line-108"><code>			} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r31" class="ident">cnt</label> &gt; <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-109"><code>				<span class="keyword">if</span> <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(*<label for="r20" class="ident">args</label>) &lt; <label for="r23" class="ident">j</label>+<label for="r22" class="ident">oarg</label>.<a href="argument.go.html#line-16" class="ident">size</a> {</code></span>
+<span class="codeline" id="line-110"><code>					<span class="keyword">return</span> <a href="../../../../pkg/fmt.html" class="ident i0">fmt</a>.<a href="../../../fmt/errors.go.html#line-17" class="ident">Errorf</a>(<span class="lit-string">"not enough arguments for %s"</span>, <label for="r22" class="ident">oarg</label>.<a href="argument.go.html#line-401" class="ident">name</a>())</code></span>
+<span class="codeline" id="line-111"><code>				}</code></span>
+<span class="codeline" id="line-112"><code>				<label for="r33" class="ident">err</label> := <label for="r22" class="ident">oarg</label>.<a href="argument.go.html#line-385" class="ident">parse</a>((*<label for="r20" class="ident">args</label>)[<label for="r23" class="ident">j</label>+<span class="lit-number">1</span>:<label for="r23" class="ident">j</label>+<label for="r22" class="ident">oarg</label>.<a href="argument.go.html#line-16" class="ident">size</a>], <label for="r31" class="ident">cnt</label>)</code></span>
+<span class="codeline" id="line-113"><code>				<span class="keyword">if</span> <label for="r33" class="ident">err</label> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-114"><code>					<span class="keyword">return</span> <label for="r33" class="ident">err</label></code></span>
+<span class="codeline" id="line-115"><code>				}</code></span>
+<span class="codeline" id="line-116"><code>				<label for="r22" class="ident">oarg</label>.<a href="argument.go.html#line-168" class="ident">reduce</a>(<label for="r23" class="ident">j</label>, <label for="r20" class="ident">args</label>)</code></span>
+<span class="codeline" id="line-117"><code>				<span class="keyword">continue</span></code></span>
+<span class="codeline" id="line-118"><code>			}</code></span>
+<span class="codeline" id="line-119"><code>		}</code></span>
+<span class="codeline" id="line-120"><code></code></span>
+<span class="codeline" id="line-121"><code>		<span class="comment">// Check if arg is required and not provided</span></code></span>
+<span class="codeline" id="line-122"><code>		<span class="keyword">if</span> <label for="r22" class="ident">oarg</label>.<a href="argument.go.html#line-13" class="ident">opts</a> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> &amp;&amp; <label for="r22" class="ident">oarg</label>.<a href="argument.go.html#line-13" class="ident">opts</a>.<a href="argparse.go.html#line-98" class="ident">Required</a> &amp;&amp; !<label for="r22" class="ident">oarg</label>.<a href="argument.go.html#line-18" class="ident">parsed</a> {</code></span>
+<span class="codeline" id="line-123"><code>			<span class="keyword">return</span> <a href="../../../../pkg/fmt.html" class="ident i0">fmt</a>.<a href="../../../fmt/errors.go.html#line-17" class="ident">Errorf</a>(<span class="lit-string">"[%s] is required"</span>, <label for="r22" class="ident">oarg</label>.<a href="argument.go.html#line-401" class="ident">name</a>())</code></span>
+<span class="codeline" id="line-124"><code>		}</code></span>
+<span class="codeline" id="line-125"><code></code></span>
+<span class="codeline" id="line-126"><code>		<span class="comment">// Check for argument default value and if provided try to type cast and assign</span></code></span>
+<span class="codeline" id="line-127"><code>		<span class="keyword">if</span> <label for="r22" class="ident">oarg</label>.<a href="argument.go.html#line-13" class="ident">opts</a> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> &amp;&amp; <label for="r22" class="ident">oarg</label>.<a href="argument.go.html#line-13" class="ident">opts</a>.<a href="argparse.go.html#line-101" class="ident">Default</a> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> &amp;&amp; !<label for="r22" class="ident">oarg</label>.<a href="argument.go.html#line-18" class="ident">parsed</a> {</code></span>
+<span class="codeline" id="line-128"><code>			<label for="r34" class="ident">err</label> := <label for="r22" class="ident">oarg</label>.<a href="argument.go.html#line-501" class="ident">setDefault</a>()</code></span>
+<span class="codeline" id="line-129"><code>			<span class="keyword">if</span> <label for="r34" class="ident">err</label> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-130"><code>				<span class="keyword">return</span> <label for="r34" class="ident">err</label></code></span>
+<span class="codeline" id="line-131"><code>			}</code></span>
+<span class="codeline" id="line-132"><code>		}</code></span>
+<span class="codeline" id="line-133"><code>	}</code></span>
+<span class="codeline" id="line-134"><code>	<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-135"><code>}</code></span>
+<span class="codeline" id="line-136"><code></code></span>
+<span class="codeline" id="line-137"><code><span class="comment">// Will parse provided list of arguments</span></code></span>
+<span class="codeline" id="line-138"><code><span class="comment">// common usage would be to pass directly os.Args</span></code></span>
+<span class="codeline" id="line-139"><code><span class="keyword">func</span> (<label for="r35" class="ident">o</label> *<a href="argparse.go.html#line-20" class="ident">Command</a>) <label for="r36" class="ident">parse</label>(<label for="r37" class="ident">args</label> *[]<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="../../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
+<span class="codeline" id="line-140"><code>	<span class="comment">// If we already been parsed do nothing</span></code></span>
+<span class="codeline" id="line-141"><code>	<span class="keyword">if</span> <label for="r35" class="ident">o</label>.<a href="argparse.go.html#line-25" class="ident">parsed</a> {</code></span>
+<span class="codeline" id="line-142"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-143"><code>	}</code></span>
+<span class="codeline" id="line-144"><code></code></span>
+<span class="codeline" id="line-145"><code>	<span class="comment">// If no arguments left to parse do nothing</span></code></span>
+<span class="codeline" id="line-146"><code>	<span class="keyword">if</span> <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(*<label for="r37" class="ident">args</label>) &lt; <span class="lit-number">1</span> {</code></span>
+<span class="codeline" id="line-147"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-148"><code>	}</code></span>
+<span class="codeline" id="line-149"><code></code></span>
+<span class="codeline" id="line-150"><code>	<span class="comment">// Parse only matching commands</span></code></span>
+<span class="codeline" id="line-151"><code><span class="comment">	// But we always have to parse top level</span></code></span>
+<span class="codeline" id="line-152"><code>	<span class="keyword">if</span> <label for="r35" class="ident">o</label>.<a href="argparse.go.html#line-21" class="ident">name</a> == <span class="lit-string">""</span> {</code></span>
+<span class="codeline" id="line-153"><code>		<label for="r35" class="ident">o</label>.<a href="argparse.go.html#line-21" class="ident">name</a> = (*<label for="r37" class="ident">args</label>)[<span class="lit-number">0</span>]</code></span>
+<span class="codeline" id="line-154"><code>	} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-155"><code>		<span class="keyword">if</span> <label for="r35" class="ident">o</label>.<a href="argparse.go.html#line-21" class="ident">name</a> != (*<label for="r37" class="ident">args</label>)[<span class="lit-number">0</span>] &amp;&amp; <label for="r35" class="ident">o</label>.<a href="argparse.go.html#line-27" class="ident">parent</a> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-156"><code>			<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-157"><code>		}</code></span>
+<span class="codeline" id="line-158"><code>	}</code></span>
+<span class="codeline" id="line-159"><code></code></span>
+<span class="codeline" id="line-160"><code>	<span class="comment">// Set happened status to true when command happend</span></code></span>
+<span class="codeline" id="line-161"><code>	<label for="r35" class="ident">o</label>.<a href="argparse.go.html#line-26" class="ident">happened</a> = <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-162"><code></code></span>
+<span class="codeline" id="line-163"><code>	<span class="comment">// Reduce arguments by removing Command name</span></code></span>
+<span class="codeline" id="line-164"><code>	*<label for="r37" class="ident">args</label> = (*<label for="r37" class="ident">args</label>)[<span class="lit-number">1</span>:]</code></span>
+<span class="codeline" id="line-165"><code></code></span>
+<span class="codeline" id="line-166"><code>	<span class="comment">// Parse subcommands if any</span></code></span>
+<span class="codeline" id="line-167"><code>	<span class="keyword">if</span> <label for="r38" class="ident">err</label> := <label for="r35" class="ident">o</label>.<a href="#line-59" class="ident">parseSubCommands</a>(<label for="r37" class="ident">args</label>); <label for="r38" class="ident">err</label> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-168"><code>		<span class="keyword">return</span> <label for="r38" class="ident">err</label></code></span>
+<span class="codeline" id="line-169"><code>	}</code></span>
+<span class="codeline" id="line-170"><code></code></span>
+<span class="codeline" id="line-171"><code>	<span class="comment">// Parse arguments if any</span></code></span>
+<span class="codeline" id="line-172"><code>	<span class="keyword">if</span> <label for="r39" class="ident">err</label> := <label for="r35" class="ident">o</label>.<a href="#line-77" class="ident">parseArguments</a>(<label for="r37" class="ident">args</label>); <label for="r39" class="ident">err</label> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-173"><code>		<span class="keyword">return</span> <label for="r39" class="ident">err</label></code></span>
+<span class="codeline" id="line-174"><code>	}</code></span>
+<span class="codeline" id="line-175"><code></code></span>
+<span class="codeline" id="line-176"><code>	<span class="comment">// Set parsed status to true and return quietly</span></code></span>
+<span class="codeline" id="line-177"><code>	<label for="r35" class="ident">o</label>.<a href="argparse.go.html#line-25" class="ident">parsed</a> = <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-178"><code>	<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-179"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

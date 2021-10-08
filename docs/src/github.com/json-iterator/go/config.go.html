@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: config.go in package github.com/json-iterator/go</title>
+<link href="../../../../css/light-v0.3.6.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.3.6.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	config.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../pkg/github.com/json-iterator/go.html">github.com/json-iterator/go</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20],
+input[id=r21]:checked ~pre label[for=r21],
+input[id=r22]:checked ~pre label[for=r22],
+input[id=r23]:checked ~pre label[for=r23],
+input[id=r24]:checked ~pre label[for=r24],
+input[id=r25]:checked ~pre label[for=r25],
+input[id=r26]:checked ~pre label[for=r26],
+input[id=r27]:checked ~pre label[for=r27],
+input[id=r28]:checked ~pre label[for=r28],
+input[id=r29]:checked ~pre label[for=r29],
+input[id=r30]:checked ~pre label[for=r30],
+input[id=r31]:checked ~pre label[for=r31],
+input[id=r32]:checked ~pre label[for=r32],
+input[id=r33]:checked ~pre label[for=r33],
+input[id=r34]:checked ~pre label[for=r34],
+input[id=r35]:checked ~pre label[for=r35],
+input[id=r36]:checked ~pre label[for=r36],
+input[id=r37]:checked ~pre label[for=r37],
+input[id=r38]:checked ~pre label[for=r38],
+input[id=r39]:checked ~pre label[for=r39],
+input[id=r40]:checked ~pre label[for=r40],
+input[id=r41]:checked ~pre label[for=r41],
+input[id=r42]:checked ~pre label[for=r42],
+input[id=r43]:checked ~pre label[for=r43],
+input[id=r44]:checked ~pre label[for=r44],
+input[id=r45]:checked ~pre label[for=r45],
+input[id=r46]:checked ~pre label[for=r46],
+input[id=r47]:checked ~pre label[for=r47],
+input[id=r48]:checked ~pre label[for=r48],
+input[id=r49]:checked ~pre label[for=r49],
+input[id=r50]:checked ~pre label[for=r50],
+input[id=r51]:checked ~pre label[for=r51],
+input[id=r52]:checked ~pre label[for=r52],
+input[id=r53]:checked ~pre label[for=r53],
+input[id=r54]:checked ~pre label[for=r54],
+input[id=r55]:checked ~pre label[for=r55],
+input[id=r56]:checked ~pre label[for=r56],
+input[id=r57]:checked ~pre label[for=r57],
+input[id=r58]:checked ~pre label[for=r58],
+input[id=r59]:checked ~pre label[for=r59],
+input[id=r60]:checked ~pre label[for=r60],
+input[id=r61]:checked ~pre label[for=r61],
+input[id=r62]:checked ~pre label[for=r62],
+input[id=r63]:checked ~pre label[for=r63],
+input[id=r64]:checked ~pre label[for=r64],
+input[id=r65]:checked ~pre label[for=r65],
+input[id=r66]:checked ~pre label[for=r66],
+input[id=r67]:checked ~pre label[for=r67],
+input[id=r68]:checked ~pre label[for=r68],
+input[id=r69]:checked ~pre label[for=r69],
+input[id=r70]:checked ~pre label[for=r70],
+input[id=r71]:checked ~pre label[for=r71],
+input[id=r72]:checked ~pre label[for=r72],
+input[id=r73]:checked ~pre label[for=r73],
+input[id=r74]:checked ~pre label[for=r74],
+input[id=r75]:checked ~pre label[for=r75],
+input[id=r76]:checked ~pre label[for=r76],
+input[id=r77]:checked ~pre label[for=r77],
+input[id=r78]:checked ~pre label[for=r78],
+input[id=r79]:checked ~pre label[for=r79],
+input[id=r80]:checked ~pre label[for=r80],
+input[id=r81]:checked ~pre label[for=r81],
+input[id=r82]:checked ~pre label[for=r82],
+input[id=r83]:checked ~pre label[for=r83],
+input[id=r84]:checked ~pre label[for=r84],
+input[id=r85]:checked ~pre label[for=r85],
+input[id=r86]:checked ~pre label[for=r86],
+input[id=r87]:checked ~pre label[for=r87],
+input[id=r88]:checked ~pre label[for=r88],
+input[id=r89]:checked ~pre label[for=r89],
+input[id=r90]:checked ~pre label[for=r90],
+input[id=r91]:checked ~pre label[for=r91],
+input[id=r92]:checked ~pre label[for=r92],
+input[id=r93]:checked ~pre label[for=r93],
+input[id=r94]:checked ~pre label[for=r94],
+input[id=r95]:checked ~pre label[for=r95],
+input[id=r96]:checked ~pre label[for=r96],
+input[id=r97]:checked ~pre label[for=r97],
+input[id=r98]:checked ~pre label[for=r98],
+input[id=r99]:checked ~pre label[for=r99],
+input[id=r100]:checked ~pre label[for=r100],
+input[id=r101]:checked ~pre label[for=r101],
+input[id=r102]:checked ~pre label[for=r102],
+input[id=r103]:checked ~pre label[for=r103],
+input[id=r104]:checked ~pre label[for=r104],
+input[id=r105]:checked ~pre label[for=r105],
+input[id=r106]:checked ~pre label[for=r106],
+input[id=r107]:checked ~pre label[for=r107],
+input[id=r108]:checked ~pre label[for=r108],
+input[id=r109]:checked ~pre label[for=r109],
+input[id=r110]:checked ~pre label[for=r110],
+input[id=r111]:checked ~pre label[for=r111],
+input[id=r112]:checked ~pre label[for=r112],
+input[id=r113]:checked ~pre label[for=r113],
+input[id=r114]:checked ~pre label[for=r114],
+input[id=r115]:checked ~pre label[for=r115],
+input[id=r116]:checked ~pre label[for=r116],
+input[id=r117]:checked ~pre label[for=r117],
+input[id=r118]:checked ~pre label[for=r118],
+input[id=r119]:checked ~pre label[for=r119],
+input[id=r120]:checked ~pre label[for=r120],
+input[id=r121]:checked ~pre label[for=r121],
+input[id=r122]:checked ~pre label[for=r122],
+input[id=r123]:checked ~pre label[for=r123],
+input[id=r124]:checked ~pre label[for=r124],
+input[id=r125]:checked ~pre label[for=r125],
+input[id=r126]:checked ~pre label[for=r126],
+input[id=r127]:checked ~pre label[for=r127],
+input[id=r128]:checked ~pre label[for=r128],
+input[id=r129]:checked ~pre label[for=r129],
+input[id=r130]:checked ~pre label[for=r130],
+input[id=r131]:checked ~pre label[for=r131],
+input[id=r132]:checked ~pre label[for=r132],
+input[id=r133]:checked ~pre label[for=r133],
+input[id=r134]:checked ~pre label[for=r134],
+input[id=r135]:checked ~pre label[for=r135],
+input[id=r136]:checked ~pre label[for=r136],
+input[id=r137]:checked ~pre label[for=r137],
+input[id=r138]:checked ~pre label[for=r138],
+input[id=r139]:checked ~pre label[for=r139]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1,
+input[id=i2]:checked ~pre .i2,
+input[id=i3]:checked ~pre .i3,
+input[id=i4]:checked ~pre .i4,
+input[id=i5]:checked ~pre .i5,
+input[id=i6]:checked ~pre .i6
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="r21" type="radio" name="g"/>
+<input id="r22" type="radio" name="g"/>
+<input id="r23" type="radio" name="g"/>
+<input id="r24" type="radio" name="g"/>
+<input id="r25" type="radio" name="g"/>
+<input id="r26" type="radio" name="g"/>
+<input id="r27" type="radio" name="g"/>
+<input id="r28" type="radio" name="g"/>
+<input id="r29" type="radio" name="g"/>
+<input id="r30" type="radio" name="g"/>
+<input id="r31" type="radio" name="g"/>
+<input id="r32" type="radio" name="g"/>
+<input id="r33" type="radio" name="g"/>
+<input id="r34" type="radio" name="g"/>
+<input id="r35" type="radio" name="g"/>
+<input id="r36" type="radio" name="g"/>
+<input id="r37" type="radio" name="g"/>
+<input id="r38" type="radio" name="g"/>
+<input id="r39" type="radio" name="g"/>
+<input id="r40" type="radio" name="g"/>
+<input id="r41" type="radio" name="g"/>
+<input id="r42" type="radio" name="g"/>
+<input id="r43" type="radio" name="g"/>
+<input id="r44" type="radio" name="g"/>
+<input id="r45" type="radio" name="g"/>
+<input id="r46" type="radio" name="g"/>
+<input id="r47" type="radio" name="g"/>
+<input id="r48" type="radio" name="g"/>
+<input id="r49" type="radio" name="g"/>
+<input id="r50" type="radio" name="g"/>
+<input id="r51" type="radio" name="g"/>
+<input id="r52" type="radio" name="g"/>
+<input id="r53" type="radio" name="g"/>
+<input id="r54" type="radio" name="g"/>
+<input id="r55" type="radio" name="g"/>
+<input id="r56" type="radio" name="g"/>
+<input id="r57" type="radio" name="g"/>
+<input id="r58" type="radio" name="g"/>
+<input id="r59" type="radio" name="g"/>
+<input id="r60" type="radio" name="g"/>
+<input id="r61" type="radio" name="g"/>
+<input id="r62" type="radio" name="g"/>
+<input id="r63" type="radio" name="g"/>
+<input id="r64" type="radio" name="g"/>
+<input id="r65" type="radio" name="g"/>
+<input id="r66" type="radio" name="g"/>
+<input id="r67" type="radio" name="g"/>
+<input id="r68" type="radio" name="g"/>
+<input id="r69" type="radio" name="g"/>
+<input id="r70" type="radio" name="g"/>
+<input id="r71" type="radio" name="g"/>
+<input id="r72" type="radio" name="g"/>
+<input id="r73" type="radio" name="g"/>
+<input id="r74" type="radio" name="g"/>
+<input id="r75" type="radio" name="g"/>
+<input id="r76" type="radio" name="g"/>
+<input id="r77" type="radio" name="g"/>
+<input id="r78" type="radio" name="g"/>
+<input id="r79" type="radio" name="g"/>
+<input id="r80" type="radio" name="g"/>
+<input id="r81" type="radio" name="g"/>
+<input id="r82" type="radio" name="g"/>
+<input id="r83" type="radio" name="g"/>
+<input id="r84" type="radio" name="g"/>
+<input id="r85" type="radio" name="g"/>
+<input id="r86" type="radio" name="g"/>
+<input id="r87" type="radio" name="g"/>
+<input id="r88" type="radio" name="g"/>
+<input id="r89" type="radio" name="g"/>
+<input id="r90" type="radio" name="g"/>
+<input id="r91" type="radio" name="g"/>
+<input id="r92" type="radio" name="g"/>
+<input id="r93" type="radio" name="g"/>
+<input id="r94" type="radio" name="g"/>
+<input id="r95" type="radio" name="g"/>
+<input id="r96" type="radio" name="g"/>
+<input id="r97" type="radio" name="g"/>
+<input id="r98" type="radio" name="g"/>
+<input id="r99" type="radio" name="g"/>
+<input id="r100" type="radio" name="g"/>
+<input id="r101" type="radio" name="g"/>
+<input id="r102" type="radio" name="g"/>
+<input id="r103" type="radio" name="g"/>
+<input id="r104" type="radio" name="g"/>
+<input id="r105" type="radio" name="g"/>
+<input id="r106" type="radio" name="g"/>
+<input id="r107" type="radio" name="g"/>
+<input id="r108" type="radio" name="g"/>
+<input id="r109" type="radio" name="g"/>
+<input id="r110" type="radio" name="g"/>
+<input id="r111" type="radio" name="g"/>
+<input id="r112" type="radio" name="g"/>
+<input id="r113" type="radio" name="g"/>
+<input id="r114" type="radio" name="g"/>
+<input id="r115" type="radio" name="g"/>
+<input id="r116" type="radio" name="g"/>
+<input id="r117" type="radio" name="g"/>
+<input id="r118" type="radio" name="g"/>
+<input id="r119" type="radio" name="g"/>
+<input id="r120" type="radio" name="g"/>
+<input id="r121" type="radio" name="g"/>
+<input id="r122" type="radio" name="g"/>
+<input id="r123" type="radio" name="g"/>
+<input id="r124" type="radio" name="g"/>
+<input id="r125" type="radio" name="g"/>
+<input id="r126" type="radio" name="g"/>
+<input id="r127" type="radio" name="g"/>
+<input id="r128" type="radio" name="g"/>
+<input id="r129" type="radio" name="g"/>
+<input id="r130" type="radio" name="g"/>
+<input id="r131" type="radio" name="g"/>
+<input id="r132" type="radio" name="g"/>
+<input id="r133" type="radio" name="g"/>
+<input id="r134" type="radio" name="g"/>
+<input id="r135" type="radio" name="g"/>
+<input id="r136" type="radio" name="g"/>
+<input id="r137" type="radio" name="g"/>
+<input id="r138" type="radio" name="g"/>
+<input id="r139" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+<input id="i2" type="radio" name="i"/>
+<input id="i3" type="radio" name="i"/>
+<input id="i4" type="radio" name="i"/>
+<input id="i5" type="radio" name="i"/>
+<input id="i6" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> jsoniter</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-4"><code>	<label for="i0"><span class="lit-string i0">"encoding/json"</span></label></code></span>
+<span class="codeline" id="line-5"><code>	<label for="i1"><span class="lit-string i1">"io"</span></label></code></span>
+<span class="codeline" id="line-6"><code>	<label for="i2"><span class="lit-string i2">"reflect"</span></label></code></span>
+<span class="codeline" id="line-7"><code>	<label for="i3"><span class="lit-string i3">"sync"</span></label></code></span>
+<span class="codeline" id="line-8"><code>	<label for="i4"><span class="lit-string i4">"unsafe"</span></label></code></span>
+<span class="codeline" id="line-9"><code></code></span>
+<span class="codeline" id="line-10"><code>	<label for="i5"><span class="lit-string i5">"github.com/modern-go/concurrent"</span></label></code></span>
+<span class="codeline" id="line-11"><code>	<label for="i6"><span class="lit-string i6">"github.com/modern-go/reflect2"</span></label></code></span>
+<span class="codeline" id="line-12"><code>)</code></span>
+<span class="codeline" id="line-13"><code></code></span>
+<span class="codeline" id="line-14"><code><span class="comment">// Config customize how the API should behave.</span></code></span>
+<span class="codeline" id="line-15"><code><span class="comment">// The API is created from Config by Froze.</span></code></span>
+<span class="codeline" id="line-16"><code><span class="keyword">type</span> <a href="../../../../pkg/github.com/json-iterator/go.html#name-Config" class="ident">Config</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-17"><code>	IndentionStep                 <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-18"><code>	MarshalFloatWith6Digits       <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-19"><code>	EscapeHTML                    <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-20"><code>	SortMapKeys                   <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-21"><code>	UseNumber                     <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-22"><code>	DisallowUnknownFields         <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-23"><code>	TagKey                        <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
+<span class="codeline" id="line-24"><code>	OnlyTaggedField               <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-25"><code>	ValidateJsonRawMessage        <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-26"><code>	ObjectFieldMustBeSimpleString <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-27"><code>	CaseSensitive                 <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-28"><code>}</code></span>
+<span class="codeline" id="line-29"><code></code></span>
+<span class="codeline" id="line-30"><code><span class="comment">// API the public interface of this package.</span></code></span>
+<span class="codeline" id="line-31"><code><span class="comment">// Primary Marshal and Unmarshal.</span></code></span>
+<span class="codeline" id="line-32"><code><span class="keyword">type</span> <a href="../../../../pkg/github.com/json-iterator/go.html#name-API" class="ident">API</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-33"><code>	<a href="pool.go.html#line-8" class="ident">IteratorPool</a></code></span>
+<span class="codeline" id="line-34"><code>	<a href="pool.go.html#line-14" class="ident">StreamPool</a></code></span>
+<span class="codeline" id="line-35"><code>	<a href="../../../../imp/github.com/json-iterator/go.API.html#name-MarshalToString" class="ident">MarshalToString</a>(v <span class="keyword">interface</span>{}) (<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>, <a href="../../../../pkg/builtin.html#name-error" class="ident">error</a>)</code></span>
+<span class="codeline" id="line-36"><code>	<a href="../../../../imp/github.com/json-iterator/go.API.html#name-Marshal" class="ident">Marshal</a>(v <span class="keyword">interface</span>{}) ([]<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <a href="../../../../pkg/builtin.html#name-error" class="ident">error</a>)</code></span>
+<span class="codeline" id="line-37"><code>	<a href="../../../../imp/github.com/json-iterator/go.API.html#name-MarshalIndent" class="ident">MarshalIndent</a>(v <span class="keyword">interface</span>{}, prefix, indent <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>) ([]<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <a href="../../../../pkg/builtin.html#name-error" class="ident">error</a>)</code></span>
+<span class="codeline" id="line-38"><code>	<a href="../../../../imp/github.com/json-iterator/go.API.html#name-UnmarshalFromString" class="ident">UnmarshalFromString</a>(str <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>, v <span class="keyword">interface</span>{}) <a href="../../../../pkg/builtin.html#name-error" class="ident">error</a></code></span>
+<span class="codeline" id="line-39"><code>	<a href="../../../../imp/github.com/json-iterator/go.API.html#name-Unmarshal" class="ident">Unmarshal</a>(data []<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>, v <span class="keyword">interface</span>{}) <a href="../../../../pkg/builtin.html#name-error" class="ident">error</a></code></span>
+<span class="codeline" id="line-40"><code>	<a href="../../../../imp/github.com/json-iterator/go.API.html#name-Get" class="ident">Get</a>(data []<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>, path ...<span class="keyword">interface</span>{}) <a href="any.go.html#line-15" class="ident">Any</a></code></span>
+<span class="codeline" id="line-41"><code>	<a href="../../../../imp/github.com/json-iterator/go.API.html#name-NewEncoder" class="ident">NewEncoder</a>(writer <a href="../../../../pkg/io.html" class="ident i1">io</a>.<a href="../../../io/io.go.html#line-96" class="ident">Writer</a>) *<a href="adapter.go.html#line-121" class="ident">Encoder</a></code></span>
+<span class="codeline" id="line-42"><code>	<a href="../../../../imp/github.com/json-iterator/go.API.html#name-NewDecoder" class="ident">NewDecoder</a>(reader <a href="../../../../pkg/io.html" class="ident i1">io</a>.<a href="../../../io/io.go.html#line-83" class="ident">Reader</a>) *<a href="adapter.go.html#line-59" class="ident">Decoder</a></code></span>
+<span class="codeline" id="line-43"><code>	<a href="../../../../imp/github.com/json-iterator/go.API.html#name-Valid" class="ident">Valid</a>(data []<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-44"><code>	<a href="../../../../imp/github.com/json-iterator/go.API.html#name-RegisterExtension" class="ident">RegisterExtension</a>(extension <a href="reflect_extension.go.html#line-48" class="ident">Extension</a>)</code></span>
+<span class="codeline" id="line-45"><code>	<a href="../../../../imp/github.com/json-iterator/go.API.html#name-DecoderOf" class="ident">DecoderOf</a>(typ <a href="../../../../pkg/github.com/modern-go/reflect2.html" class="ident i6">reflect2</a>.<a href="../../modern-go/reflect2/reflect2.go.html#line-10" class="ident">Type</a>) <a href="reflect.go.html#line-21" class="ident">ValDecoder</a></code></span>
+<span class="codeline" id="line-46"><code>	<a href="../../../../imp/github.com/json-iterator/go.API.html#name-EncoderOf" class="ident">EncoderOf</a>(typ <a href="../../../../pkg/github.com/modern-go/reflect2.html" class="ident i6">reflect2</a>.<a href="../../modern-go/reflect2/reflect2.go.html#line-10" class="ident">Type</a>) <a href="reflect.go.html#line-28" class="ident">ValEncoder</a></code></span>
+<span class="codeline" id="line-47"><code>}</code></span>
+<span class="codeline" id="line-48"><code></code></span>
+<span class="codeline" id="line-49"><code><span class="comment">// ConfigDefault the default API</span></code></span>
+<span class="codeline" id="line-50"><code><span class="keyword">var</span> <a href="../../../../pkg/github.com/json-iterator/go.html#name-ConfigDefault" class="ident">ConfigDefault</a> = <a href="#line-16" class="ident">Config</a>{</code></span>
+<span class="codeline" id="line-51"><code>	<a href="#line-19" class="ident">EscapeHTML</a>: <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a>,</code></span>
+<span class="codeline" id="line-52"><code>}.<a href="#line-129" class="ident">Froze</a>()</code></span>
+<span class="codeline" id="line-53"><code></code></span>
+<span class="codeline" id="line-54"><code><span class="comment">// ConfigCompatibleWithStandardLibrary tries to be 100% compatible with standard library behavior</span></code></span>
+<span class="codeline" id="line-55"><code><span class="keyword">var</span> <a href="../../../../pkg/github.com/json-iterator/go.html#name-ConfigCompatibleWithStandardLibrary" class="ident">ConfigCompatibleWithStandardLibrary</a> = <a href="#line-16" class="ident">Config</a>{</code></span>
+<span class="codeline" id="line-56"><code>	<a href="#line-19" class="ident">EscapeHTML</a>:             <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a>,</code></span>
+<span class="codeline" id="line-57"><code>	<a href="#line-20" class="ident">SortMapKeys</a>:            <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a>,</code></span>
+<span class="codeline" id="line-58"><code>	<a href="#line-25" class="ident">ValidateJsonRawMessage</a>: <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a>,</code></span>
+<span class="codeline" id="line-59"><code>}.<a href="#line-129" class="ident">Froze</a>()</code></span>
+<span class="codeline" id="line-60"><code></code></span>
+<span class="codeline" id="line-61"><code><span class="comment">// ConfigFastest marshals float with only 6 digits precision</span></code></span>
+<span class="codeline" id="line-62"><code><span class="keyword">var</span> <a href="../../../../pkg/github.com/json-iterator/go.html#name-ConfigFastest" class="ident">ConfigFastest</a> = <a href="#line-16" class="ident">Config</a>{</code></span>
+<span class="codeline" id="line-63"><code>	<a href="#line-19" class="ident">EscapeHTML</a>:                    <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a>,</code></span>
+<span class="codeline" id="line-64"><code>	<a href="#line-18" class="ident">MarshalFloatWith6Digits</a>:       <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a>, <span class="comment">// will lose precession</span></code></span>
+<span class="codeline" id="line-65"><code>	<a href="#line-26" class="ident">ObjectFieldMustBeSimpleString</a>: <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a>, <span class="comment">// do not unescape object field</span></code></span>
+<span class="codeline" id="line-66"><code>}.<a href="#line-129" class="ident">Froze</a>()</code></span>
+<span class="codeline" id="line-67"><code></code></span>
+<span class="codeline" id="line-68"><code><span class="keyword">type</span> <a href="../../../../pkg/github.com/json-iterator/go.html#name-frozenConfig" class="ident">frozenConfig</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-69"><code>	configBeforeFrozen            <a href="#line-16" class="ident">Config</a></code></span>
+<span class="codeline" id="line-70"><code>	sortMapKeys                   <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-71"><code>	indentionStep                 <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-72"><code>	objectFieldMustBeSimpleString <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-73"><code>	onlyTaggedField               <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-74"><code>	disallowUnknownFields         <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-75"><code>	decoderCache                  *<a href="../../../../pkg/github.com/modern-go/concurrent.html" class="ident i5">concurrent</a>.<a href="../../modern-go/concurrent/go_above_19.go.html#line-7" class="ident">Map</a></code></span>
+<span class="codeline" id="line-76"><code>	encoderCache                  *<a href="../../../../pkg/github.com/modern-go/concurrent.html" class="ident i5">concurrent</a>.<a href="../../modern-go/concurrent/go_above_19.go.html#line-7" class="ident">Map</a></code></span>
+<span class="codeline" id="line-77"><code>	encoderExtension              <a href="reflect_extension.go.html#line-48" class="ident">Extension</a></code></span>
+<span class="codeline" id="line-78"><code>	decoderExtension              <a href="reflect_extension.go.html#line-48" class="ident">Extension</a></code></span>
+<span class="codeline" id="line-79"><code>	extraExtensions               []<a href="reflect_extension.go.html#line-48" class="ident">Extension</a></code></span>
+<span class="codeline" id="line-80"><code>	streamPool                    *<a href="../../../../pkg/sync.html" class="ident i3">sync</a>.<a href="../../../sync/pool.go.html#line-44" class="ident">Pool</a></code></span>
+<span class="codeline" id="line-81"><code>	iteratorPool                  *<a href="../../../../pkg/sync.html" class="ident i3">sync</a>.<a href="../../../sync/pool.go.html#line-44" class="ident">Pool</a></code></span>
+<span class="codeline" id="line-82"><code>	caseSensitive                 <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-83"><code>}</code></span>
+<span class="codeline" id="line-84"><code></code></span>
+<span class="codeline" id="line-85"><code><span class="keyword">func</span> (<label for="r0" class="ident">cfg</label> *<a href="#line-68" class="ident">frozenConfig</a>) <label for="r1" class="ident">initCache</label>() {</code></span>
+<span class="codeline" id="line-86"><code>	<label for="r0" class="ident">cfg</label>.<a href="#line-75" class="ident">decoderCache</a> = <a href="../../../../pkg/github.com/modern-go/concurrent.html" class="ident i5">concurrent</a>.<a href="../../modern-go/concurrent/go_above_19.go.html#line-11" class="ident">NewMap</a>()</code></span>
+<span class="codeline" id="line-87"><code>	<label for="r0" class="ident">cfg</label>.<a href="#line-76" class="ident">encoderCache</a> = <a href="../../../../pkg/github.com/modern-go/concurrent.html" class="ident i5">concurrent</a>.<a href="../../modern-go/concurrent/go_above_19.go.html#line-11" class="ident">NewMap</a>()</code></span>
+<span class="codeline" id="line-88"><code>}</code></span>
+<span class="codeline" id="line-89"><code></code></span>
+<span class="codeline" id="line-90"><code><span class="keyword">func</span> (<label for="r2" class="ident">cfg</label> *<a href="#line-68" class="ident">frozenConfig</a>) <label for="r3" class="ident">addDecoderToCache</label>(<label for="r4" class="ident">cacheKey</label> <a href="../../../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a>, <label for="r5" class="ident">decoder</label> <a href="reflect.go.html#line-21" class="ident">ValDecoder</a>) {</code></span>
+<span class="codeline" id="line-91"><code>	<label for="r2" class="ident">cfg</label>.<a href="#line-75" class="ident">decoderCache</a>.<a href="../../../sync/map.go.html#line-136" class="ident">Store</a>(<label for="r4" class="ident">cacheKey</label>, <label for="r5" class="ident">decoder</label>)</code></span>
+<span class="codeline" id="line-92"><code>}</code></span>
+<span class="codeline" id="line-93"><code></code></span>
+<span class="codeline" id="line-94"><code><span class="keyword">func</span> (<label for="r6" class="ident">cfg</label> *<a href="#line-68" class="ident">frozenConfig</a>) <label for="r7" class="ident">addEncoderToCache</label>(<label for="r8" class="ident">cacheKey</label> <a href="../../../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a>, <label for="r9" class="ident">encoder</label> <a href="reflect.go.html#line-28" class="ident">ValEncoder</a>) {</code></span>
+<span class="codeline" id="line-95"><code>	<label for="r6" class="ident">cfg</label>.<a href="#line-76" class="ident">encoderCache</a>.<a href="../../../sync/map.go.html#line-136" class="ident">Store</a>(<label for="r8" class="ident">cacheKey</label>, <label for="r9" class="ident">encoder</label>)</code></span>
+<span class="codeline" id="line-96"><code>}</code></span>
+<span class="codeline" id="line-97"><code></code></span>
+<span class="codeline" id="line-98"><code><span class="keyword">func</span> (<label for="r10" class="ident">cfg</label> *<a href="#line-68" class="ident">frozenConfig</a>) <label for="r11" class="ident">getDecoderFromCache</label>(<label for="r12" class="ident">cacheKey</label> <a href="../../../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a>) <a href="reflect.go.html#line-21" class="ident">ValDecoder</a> {</code></span>
+<span class="codeline" id="line-99"><code>	<label for="r13" class="ident">decoder</label>, <label for="r14" class="ident">found</label> := <label for="r10" class="ident">cfg</label>.<a href="#line-75" class="ident">decoderCache</a>.<a href="../../../sync/map.go.html#line-102" class="ident">Load</a>(<label for="r12" class="ident">cacheKey</label>)</code></span>
+<span class="codeline" id="line-100"><code>	<span class="keyword">if</span> <label for="r14" class="ident">found</label> {</code></span>
+<span class="codeline" id="line-101"><code>		<span class="keyword">return</span> <label for="r13" class="ident">decoder</label>.(<a href="reflect.go.html#line-21" class="ident">ValDecoder</a>)</code></span>
+<span class="codeline" id="line-102"><code>	}</code></span>
+<span class="codeline" id="line-103"><code>	<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-104"><code>}</code></span>
+<span class="codeline" id="line-105"><code></code></span>
+<span class="codeline" id="line-106"><code><span class="keyword">func</span> (<label for="r15" class="ident">cfg</label> *<a href="#line-68" class="ident">frozenConfig</a>) <label for="r16" class="ident">getEncoderFromCache</label>(<label for="r17" class="ident">cacheKey</label> <a href="../../../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a>) <a href="reflect.go.html#line-28" class="ident">ValEncoder</a> {</code></span>
+<span class="codeline" id="line-107"><code>	<label for="r18" class="ident">encoder</label>, <label for="r19" class="ident">found</label> := <label for="r15" class="ident">cfg</label>.<a href="#line-76" class="ident">encoderCache</a>.<a href="../../../sync/map.go.html#line-102" class="ident">Load</a>(<label for="r17" class="ident">cacheKey</label>)</code></span>
+<span class="codeline" id="line-108"><code>	<span class="keyword">if</span> <label for="r19" class="ident">found</label> {</code></span>
+<span class="codeline" id="line-109"><code>		<span class="keyword">return</span> <label for="r18" class="ident">encoder</label>.(<a href="reflect.go.html#line-28" class="ident">ValEncoder</a>)</code></span>
+<span class="codeline" id="line-110"><code>	}</code></span>
+<span class="codeline" id="line-111"><code>	<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-112"><code>}</code></span>
+<span class="codeline" id="line-113"><code></code></span>
+<span class="codeline" id="line-114"><code><span class="keyword">var</span> <a href="../../../../pkg/github.com/json-iterator/go.html#name-cfgCache" class="ident">cfgCache</a> = <a href="../../../../pkg/github.com/modern-go/concurrent.html" class="ident i5">concurrent</a>.<a href="../../modern-go/concurrent/go_above_19.go.html#line-11" class="ident">NewMap</a>()</code></span>
+<span class="codeline" id="line-115"><code></code></span>
+<span class="codeline" id="line-116"><code><span class="keyword">func</span> <label for="r20" class="ident"><a href="../../../../pkg/github.com/json-iterator/go.html#name-getFrozenConfigFromCache" class="ident">getFrozenConfigFromCache</a></label>(<label for="r21" class="ident">cfg</label> <a href="#line-16" class="ident">Config</a>) *<a href="#line-68" class="ident">frozenConfig</a> {</code></span>
+<span class="codeline" id="line-117"><code>	<label for="r22" class="ident">obj</label>, <label for="r23" class="ident">found</label> := <a href="#line-114" class="ident">cfgCache</a>.<a href="../../../sync/map.go.html#line-102" class="ident">Load</a>(<label for="r21" class="ident">cfg</label>)</code></span>
+<span class="codeline" id="line-118"><code>	<span class="keyword">if</span> <label for="r23" class="ident">found</label> {</code></span>
+<span class="codeline" id="line-119"><code>		<span class="keyword">return</span> <label for="r22" class="ident">obj</label>.(*<a href="#line-68" class="ident">frozenConfig</a>)</code></span>
+<span class="codeline" id="line-120"><code>	}</code></span>
+<span class="codeline" id="line-121"><code>	<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-122"><code>}</code></span>
+<span class="codeline" id="line-123"><code></code></span>
+<span class="codeline" id="line-124"><code><span class="keyword">func</span> <label for="r24" class="ident"><a href="../../../../pkg/github.com/json-iterator/go.html#name-addFrozenConfigToCache" class="ident">addFrozenConfigToCache</a></label>(<label for="r25" class="ident">cfg</label> <a href="#line-16" class="ident">Config</a>, <label for="r26" class="ident">frozenConfig</label> *<a href="#line-68" class="ident">frozenConfig</a>) {</code></span>
+<span class="codeline" id="line-125"><code>	<a href="#line-114" class="ident">cfgCache</a>.<a href="../../../sync/map.go.html#line-136" class="ident">Store</a>(<label for="r25" class="ident">cfg</label>, <label for="r26" class="ident">frozenConfig</label>)</code></span>
+<span class="codeline" id="line-126"><code>}</code></span>
+<span class="codeline" id="line-127"><code></code></span>
+<span class="codeline" id="line-128"><code><span class="comment">// Froze forge API from config</span></code></span>
+<span class="codeline" id="line-129"><code><span class="keyword">func</span> (<label for="r27" class="ident">cfg</label> <a href="#line-16" class="ident">Config</a>) <label for="r28" class="ident">Froze</label>() <a href="#line-32" class="ident">API</a> {</code></span>
+<span class="codeline" id="line-130"><code>	<label for="r29" class="ident">api</label> := &amp;<a href="#line-68" class="ident">frozenConfig</a>{</code></span>
+<span class="codeline" id="line-131"><code>		<a href="#line-70" class="ident">sortMapKeys</a>:                   <label for="r27" class="ident">cfg</label>.<a href="#line-20" class="ident">SortMapKeys</a>,</code></span>
+<span class="codeline" id="line-132"><code>		<a href="#line-71" class="ident">indentionStep</a>:                 <label for="r27" class="ident">cfg</label>.<a href="#line-17" class="ident">IndentionStep</a>,</code></span>
+<span class="codeline" id="line-133"><code>		<a href="#line-72" class="ident">objectFieldMustBeSimpleString</a>: <label for="r27" class="ident">cfg</label>.<a href="#line-26" class="ident">ObjectFieldMustBeSimpleString</a>,</code></span>
+<span class="codeline" id="line-134"><code>		<a href="#line-73" class="ident">onlyTaggedField</a>:               <label for="r27" class="ident">cfg</label>.<a href="#line-24" class="ident">OnlyTaggedField</a>,</code></span>
+<span class="codeline" id="line-135"><code>		<a href="#line-74" class="ident">disallowUnknownFields</a>:         <label for="r27" class="ident">cfg</label>.<a href="#line-22" class="ident">DisallowUnknownFields</a>,</code></span>
+<span class="codeline" id="line-136"><code>		<a href="#line-82" class="ident">caseSensitive</a>:                 <label for="r27" class="ident">cfg</label>.<a href="#line-27" class="ident">CaseSensitive</a>,</code></span>
+<span class="codeline" id="line-137"><code>	}</code></span>
+<span class="codeline" id="line-138"><code>	<label for="r29" class="ident">api</label>.<a href="#line-80" class="ident">streamPool</a> = &amp;<a href="../../../../pkg/sync.html" class="ident i3">sync</a>.<a href="../../../sync/pool.go.html#line-44" class="ident">Pool</a>{</code></span>
+<span class="codeline" id="line-139"><code>		<a href="../../../sync/pool.go.html#line-56" class="ident">New</a>: <span class="keyword">func</span>() <span class="keyword">interface</span>{} {</code></span>
+<span class="codeline" id="line-140"><code>			<span class="keyword">return</span> <a href="stream.go.html#line-22" class="ident">NewStream</a>(<label for="r29" class="ident">api</label>, <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <span class="lit-number">512</span>)</code></span>
+<span class="codeline" id="line-141"><code>		},</code></span>
+<span class="codeline" id="line-142"><code>	}</code></span>
+<span class="codeline" id="line-143"><code>	<label for="r29" class="ident">api</label>.<a href="#line-81" class="ident">iteratorPool</a> = &amp;<a href="../../../../pkg/sync.html" class="ident i3">sync</a>.<a href="../../../sync/pool.go.html#line-44" class="ident">Pool</a>{</code></span>
+<span class="codeline" id="line-144"><code>		<a href="../../../sync/pool.go.html#line-56" class="ident">New</a>: <span class="keyword">func</span>() <span class="keyword">interface</span>{} {</code></span>
+<span class="codeline" id="line-145"><code>			<span class="keyword">return</span> <a href="iter.go.html#line-85" class="ident">NewIterator</a>(<label for="r29" class="ident">api</label>)</code></span>
+<span class="codeline" id="line-146"><code>		},</code></span>
+<span class="codeline" id="line-147"><code>	}</code></span>
+<span class="codeline" id="line-148"><code>	<label for="r29" class="ident">api</label>.<a href="#line-85" class="ident">initCache</a>()</code></span>
+<span class="codeline" id="line-149"><code>	<label for="r30" class="ident">encoderExtension</label> := <a href="reflect_extension.go.html#line-96" class="ident">EncoderExtension</a>{}</code></span>
+<span class="codeline" id="line-150"><code>	<label for="r31" class="ident">decoderExtension</label> := <a href="reflect_extension.go.html#line-132" class="ident">DecoderExtension</a>{}</code></span>
+<span class="codeline" id="line-151"><code>	<span class="keyword">if</span> <label for="r27" class="ident">cfg</label>.<a href="#line-18" class="ident">MarshalFloatWith6Digits</a> {</code></span>
+<span class="codeline" id="line-152"><code>		<label for="r29" class="ident">api</label>.<a href="#line-252" class="ident">marshalFloatWith6Digits</a>(<label for="r30" class="ident">encoderExtension</label>)</code></span>
+<span class="codeline" id="line-153"><code>	}</code></span>
+<span class="codeline" id="line-154"><code>	<span class="keyword">if</span> <label for="r27" class="ident">cfg</label>.<a href="#line-19" class="ident">EscapeHTML</a> {</code></span>
+<span class="codeline" id="line-155"><code>		<label for="r29" class="ident">api</label>.<a href="#line-270" class="ident">escapeHTML</a>(<label for="r30" class="ident">encoderExtension</label>)</code></span>
+<span class="codeline" id="line-156"><code>	}</code></span>
+<span class="codeline" id="line-157"><code>	<span class="keyword">if</span> <label for="r27" class="ident">cfg</label>.<a href="#line-21" class="ident">UseNumber</a> {</code></span>
+<span class="codeline" id="line-158"><code>		<label for="r29" class="ident">api</label>.<a href="#line-200" class="ident">useNumber</a>(<label for="r31" class="ident">decoderExtension</label>)</code></span>
+<span class="codeline" id="line-159"><code>	}</code></span>
+<span class="codeline" id="line-160"><code>	<span class="keyword">if</span> <label for="r27" class="ident">cfg</label>.<a href="#line-25" class="ident">ValidateJsonRawMessage</a> {</code></span>
+<span class="codeline" id="line-161"><code>		<label for="r29" class="ident">api</label>.<a href="#line-182" class="ident">validateJsonRawMessage</a>(<label for="r30" class="ident">encoderExtension</label>)</code></span>
+<span class="codeline" id="line-162"><code>	}</code></span>
+<span class="codeline" id="line-163"><code>	<label for="r29" class="ident">api</label>.<a href="#line-77" class="ident">encoderExtension</a> = <label for="r30" class="ident">encoderExtension</label></code></span>
+<span class="codeline" id="line-164"><code>	<label for="r29" class="ident">api</label>.<a href="#line-78" class="ident">decoderExtension</a> = <label for="r31" class="ident">decoderExtension</label></code></span>
+<span class="codeline" id="line-165"><code>	<label for="r29" class="ident">api</label>.<a href="#line-69" class="ident">configBeforeFrozen</a> = <label for="r27" class="ident">cfg</label></code></span>
+<span class="codeline" id="line-166"><code>	<span class="keyword">return</span> <label for="r29" class="ident">api</label></code></span>
+<span class="codeline" id="line-167"><code>}</code></span>
+<span class="codeline" id="line-168"><code></code></span>
+<span class="codeline" id="line-169"><code><span class="keyword">func</span> (<label for="r32" class="ident">cfg</label> <a href="#line-16" class="ident">Config</a>) <label for="r33" class="ident">frozeWithCacheReuse</label>(<label for="r34" class="ident">extraExtensions</label> []<a href="reflect_extension.go.html#line-48" class="ident">Extension</a>) *<a href="#line-68" class="ident">frozenConfig</a> {</code></span>
+<span class="codeline" id="line-170"><code>	<label for="r35" class="ident">api</label> := <a href="#line-116" class="ident">getFrozenConfigFromCache</a>(<label for="r32" class="ident">cfg</label>)</code></span>
+<span class="codeline" id="line-171"><code>	<span class="keyword">if</span> <label for="r35" class="ident">api</label> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-172"><code>		<span class="keyword">return</span> <label for="r35" class="ident">api</label></code></span>
+<span class="codeline" id="line-173"><code>	}</code></span>
+<span class="codeline" id="line-174"><code>	<label for="r35" class="ident">api</label> = <label for="r32" class="ident">cfg</label>.<a href="#line-129" class="ident">Froze</a>().(*<a href="#line-68" class="ident">frozenConfig</a>)</code></span>
+<span class="codeline" id="line-175"><code>	<span class="keyword">for</span> <label for="r36" class="ident">_</label>, <label for="r37" class="ident">extension</label> := <span class="keyword">range</span> <label for="r34" class="ident">extraExtensions</label> {</code></span>
+<span class="codeline" id="line-176"><code>		<label for="r35" class="ident">api</label>.<a href="#line-222" class="ident">RegisterExtension</a>(<label for="r37" class="ident">extension</label>)</code></span>
+<span class="codeline" id="line-177"><code>	}</code></span>
+<span class="codeline" id="line-178"><code>	<a href="#line-124" class="ident">addFrozenConfigToCache</a>(<label for="r32" class="ident">cfg</label>, <label for="r35" class="ident">api</label>)</code></span>
+<span class="codeline" id="line-179"><code>	<span class="keyword">return</span> <label for="r35" class="ident">api</label></code></span>
+<span class="codeline" id="line-180"><code>}</code></span>
+<span class="codeline" id="line-181"><code></code></span>
+<span class="codeline" id="line-182"><code><span class="keyword">func</span> (<label for="r38" class="ident">cfg</label> *<a href="#line-68" class="ident">frozenConfig</a>) <label for="r39" class="ident">validateJsonRawMessage</label>(<label for="r40" class="ident">extension</label> <a href="reflect_extension.go.html#line-96" class="ident">EncoderExtension</a>) {</code></span>
+<span class="codeline" id="line-183"><code>	<label for="r41" class="ident">encoder</label> := &amp;<a href="reflect_extension.go.html#line-176" class="ident">funcEncoder</a>{<span class="keyword">func</span>(<label for="r42" class="ident">ptr</label> <a href="../../../../pkg/unsafe.html" class="ident i4">unsafe</a>.<a href="../../../../pkg/unsafe.html#name-Pointer" class="ident">Pointer</a>, <label for="r43" class="ident">stream</label> *<a href="stream.go.html#line-9" class="ident">Stream</a>) {</code></span>
+<span class="codeline" id="line-184"><code>		<label for="r44" class="ident">rawMessage</label> := *(*<a href="../../../../pkg/encoding/json.html" class="ident i0">json</a>.<a href="../../../encoding/json/stream.go.html#line-260" class="ident">RawMessage</a>)(<label for="r42" class="ident">ptr</label>)</code></span>
+<span class="codeline" id="line-185"><code>		<label for="r45" class="ident">iter</label> := <label for="r38" class="ident">cfg</label>.<a href="pool.go.html#line-32" class="ident">BorrowIterator</a>([]<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<label for="r44" class="ident">rawMessage</label>))</code></span>
+<span class="codeline" id="line-186"><code>		<span class="keyword">defer</span> <label for="r38" class="ident">cfg</label>.<a href="pool.go.html#line-38" class="ident">ReturnIterator</a>(<label for="r45" class="ident">iter</label>)</code></span>
+<span class="codeline" id="line-187"><code>		<label for="r45" class="ident">iter</label>.<a href="iter.go.html#line-291" class="ident">Read</a>()</code></span>
+<span class="codeline" id="line-188"><code>		<span class="keyword">if</span> <label for="r45" class="ident">iter</label>.<a href="iter.go.html#line-80" class="ident">Error</a> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> &amp;&amp; <label for="r45" class="ident">iter</label>.<a href="iter.go.html#line-80" class="ident">Error</a> != <a href="../../../../pkg/io.html" class="ident i1">io</a>.<a href="../../../io/io.go.html#line-44" class="ident">EOF</a> {</code></span>
+<span class="codeline" id="line-189"><code>			<label for="r43" class="ident">stream</label>.<a href="stream.go.html#line-118" class="ident">WriteRaw</a>(<span class="lit-string">"null"</span>)</code></span>
+<span class="codeline" id="line-190"><code>		} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-191"><code>			<label for="r43" class="ident">stream</label>.<a href="stream.go.html#line-118" class="ident">WriteRaw</a>(<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>(<label for="r44" class="ident">rawMessage</label>))</code></span>
+<span class="codeline" id="line-192"><code>		}</code></span>
+<span class="codeline" id="line-193"><code>	}, <span class="keyword">func</span>(<label for="r46" class="ident">ptr</label> <a href="../../../../pkg/unsafe.html" class="ident i4">unsafe</a>.<a href="../../../../pkg/unsafe.html#name-Pointer" class="ident">Pointer</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-194"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(*((*<a href="../../../../pkg/encoding/json.html" class="ident i0">json</a>.<a href="../../../encoding/json/stream.go.html#line-260" class="ident">RawMessage</a>)(<label for="r46" class="ident">ptr</label>))) == <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-195"><code>	}}</code></span>
+<span class="codeline" id="line-196"><code>	<label for="r40" class="ident">extension</label>[<a href="../../../../pkg/github.com/modern-go/reflect2.html" class="ident i6">reflect2</a>.<a href="../../modern-go/reflect2/reflect2.go.html#line-215" class="ident">TypeOfPtr</a>((*<a href="../../../../pkg/encoding/json.html" class="ident i0">json</a>.<a href="../../../encoding/json/stream.go.html#line-260" class="ident">RawMessage</a>)(<a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)).<a href="../../modern-go/reflect2/reflect2.go.html#line-113" class="ident">Elem</a>()] = <label for="r41" class="ident">encoder</label></code></span>
+<span class="codeline" id="line-197"><code>	<label for="r40" class="ident">extension</label>[<a href="../../../../pkg/github.com/modern-go/reflect2.html" class="ident i6">reflect2</a>.<a href="../../modern-go/reflect2/reflect2.go.html#line-215" class="ident">TypeOfPtr</a>((*<a href="adapter.go.html#line-9" class="ident">RawMessage</a>)(<a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)).<a href="../../modern-go/reflect2/reflect2.go.html#line-113" class="ident">Elem</a>()] = <label for="r41" class="ident">encoder</label></code></span>
+<span class="codeline" id="line-198"><code>}</code></span>
+<span class="codeline" id="line-199"><code></code></span>
+<span class="codeline" id="line-200"><code><span class="keyword">func</span> (<label for="r47" class="ident">cfg</label> *<a href="#line-68" class="ident">frozenConfig</a>) <label for="r48" class="ident">useNumber</label>(<label for="r49" class="ident">extension</label> <a href="reflect_extension.go.html#line-132" class="ident">DecoderExtension</a>) {</code></span>
+<span class="codeline" id="line-201"><code>	<label for="r49" class="ident">extension</label>[<a href="../../../../pkg/github.com/modern-go/reflect2.html" class="ident i6">reflect2</a>.<a href="../../modern-go/reflect2/reflect2.go.html#line-215" class="ident">TypeOfPtr</a>((*<span class="keyword">interface</span>{})(<a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)).<a href="../../modern-go/reflect2/reflect2.go.html#line-113" class="ident">Elem</a>()] = &amp;<a href="reflect_extension.go.html#line-168" class="ident">funcDecoder</a>{<span class="keyword">func</span>(<label for="r50" class="ident">ptr</label> <a href="../../../../pkg/unsafe.html" class="ident i4">unsafe</a>.<a href="../../../../pkg/unsafe.html#name-Pointer" class="ident">Pointer</a>, <label for="r51" class="ident">iter</label> *<a href="iter.go.html#line-71" class="ident">Iterator</a>) {</code></span>
+<span class="codeline" id="line-202"><code>		<label for="r52" class="ident">exitingValue</label> := *((*<span class="keyword">interface</span>{})(<label for="r50" class="ident">ptr</label>))</code></span>
+<span class="codeline" id="line-203"><code>		<span class="keyword">if</span> <label for="r52" class="ident">exitingValue</label> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> &amp;&amp; <a href="../../../../pkg/reflect.html" class="ident i2">reflect</a>.<a href="../../../reflect/type.go.html#line-1368" class="ident">TypeOf</a>(<label for="r52" class="ident">exitingValue</label>).<a href="../../../reflect/type.go.html#line-100" class="ident">Kind</a>() == <a href="../../../../pkg/reflect.html" class="ident i2">reflect</a>.<a href="../../../reflect/type.go.html#line-257" class="ident">Ptr</a> {</code></span>
+<span class="codeline" id="line-204"><code>			<label for="r51" class="ident">iter</label>.<a href="reflect.go.html#line-62" class="ident">ReadVal</a>(<label for="r52" class="ident">exitingValue</label>)</code></span>
+<span class="codeline" id="line-205"><code>			<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-206"><code>		}</code></span>
+<span class="codeline" id="line-207"><code>		<span class="keyword">if</span> <label for="r51" class="ident">iter</label>.<a href="iter.go.html#line-150" class="ident">WhatIsNext</a>() == <a href="iter.go.html#line-18" class="ident">NumberValue</a> {</code></span>
+<span class="codeline" id="line-208"><code>			*((*<span class="keyword">interface</span>{})(<label for="r50" class="ident">ptr</label>)) = <a href="../../../../pkg/encoding/json.html" class="ident i0">json</a>.<a href="../../../encoding/json/decode.go.html#line-188" class="ident">Number</a>(<label for="r51" class="ident">iter</label>.<a href="iter_float.go.html#line-159" class="ident">readNumberAsString</a>())</code></span>
+<span class="codeline" id="line-209"><code>		} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-210"><code>			*((*<span class="keyword">interface</span>{})(<label for="r50" class="ident">ptr</label>)) = <label for="r51" class="ident">iter</label>.<a href="iter.go.html#line-291" class="ident">Read</a>()</code></span>
+<span class="codeline" id="line-211"><code>		}</code></span>
+<span class="codeline" id="line-212"><code>	}}</code></span>
+<span class="codeline" id="line-213"><code>}</code></span>
+<span class="codeline" id="line-214"><code><span class="keyword">func</span> (<label for="r53" class="ident">cfg</label> *<a href="#line-68" class="ident">frozenConfig</a>) <label for="r54" class="ident">getTagKey</label>() <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a> {</code></span>
+<span class="codeline" id="line-215"><code>	<label for="r55" class="ident">tagKey</label> := <label for="r53" class="ident">cfg</label>.<a href="#line-69" class="ident">configBeforeFrozen</a>.<a href="#line-23" class="ident">TagKey</a></code></span>
+<span class="codeline" id="line-216"><code>	<span class="keyword">if</span> <label for="r55" class="ident">tagKey</label> == <span class="lit-string">""</span> {</code></span>
+<span class="codeline" id="line-217"><code>		<span class="keyword">return</span> <span class="lit-string">"json"</span></code></span>
+<span class="codeline" id="line-218"><code>	}</code></span>
+<span class="codeline" id="line-219"><code>	<span class="keyword">return</span> <label for="r55" class="ident">tagKey</label></code></span>
+<span class="codeline" id="line-220"><code>}</code></span>
+<span class="codeline" id="line-221"><code></code></span>
+<span class="codeline" id="line-222"><code><span class="keyword">func</span> (<label for="r56" class="ident">cfg</label> *<a href="#line-68" class="ident">frozenConfig</a>) <label for="r57" class="ident"><a href="../../../../imp/github.com/json-iterator/go.frozenConfig^52e2c.html#name-.RegisterExtension" class="ident">RegisterExtension</a></label>(<label for="r58" class="ident">extension</label> <a href="reflect_extension.go.html#line-48" class="ident">Extension</a>) {</code></span>
+<span class="codeline" id="line-223"><code>	<label for="r56" class="ident">cfg</label>.<a href="#line-79" class="ident">extraExtensions</a> = <a href="../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r56" class="ident">cfg</label>.<a href="#line-79" class="ident">extraExtensions</a>, <label for="r58" class="ident">extension</label>)</code></span>
+<span class="codeline" id="line-224"><code>	<label for="r59" class="ident">copied</label> := <label for="r56" class="ident">cfg</label>.<a href="#line-69" class="ident">configBeforeFrozen</a></code></span>
+<span class="codeline" id="line-225"><code>	<label for="r56" class="ident">cfg</label>.<a href="#line-69" class="ident">configBeforeFrozen</a> = <label for="r59" class="ident">copied</label></code></span>
+<span class="codeline" id="line-226"><code>}</code></span>
+<span class="codeline" id="line-227"><code></code></span>
+<span class="codeline" id="line-228"><code><span class="keyword">type</span> <a href="../../../../pkg/github.com/json-iterator/go.html#name-lossyFloat32Encoder" class="ident">lossyFloat32Encoder</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-229"><code>}</code></span>
+<span class="codeline" id="line-230"><code></code></span>
+<span class="codeline" id="line-231"><code><span class="keyword">func</span> (<label for="r60" class="ident">encoder</label> *<a href="#line-228" class="ident">lossyFloat32Encoder</a>) <label for="r61" class="ident"><a href="../../../../imp/github.com/json-iterator/go.lossyFloat32Encoder^e5495.html#name-.Encode" class="ident">Encode</a></label>(<label for="r62" class="ident">ptr</label> <a href="../../../../pkg/unsafe.html" class="ident i4">unsafe</a>.<a href="../../../../pkg/unsafe.html#name-Pointer" class="ident">Pointer</a>, <label for="r63" class="ident">stream</label> *<a href="stream.go.html#line-9" class="ident">Stream</a>) {</code></span>
+<span class="codeline" id="line-232"><code>	<label for="r63" class="ident">stream</label>.<a href="stream_float.go.html#line-33" class="ident">WriteFloat32Lossy</a>(*((*<a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a>)(<label for="r62" class="ident">ptr</label>)))</code></span>
+<span class="codeline" id="line-233"><code>}</code></span>
+<span class="codeline" id="line-234"><code></code></span>
+<span class="codeline" id="line-235"><code><span class="keyword">func</span> (<label for="r64" class="ident">encoder</label> *<a href="#line-228" class="ident">lossyFloat32Encoder</a>) <label for="r65" class="ident"><a href="../../../../imp/github.com/json-iterator/go.lossyFloat32Encoder^e5495.html#name-.IsEmpty" class="ident">IsEmpty</a></label>(<label for="r66" class="ident">ptr</label> <a href="../../../../pkg/unsafe.html" class="ident i4">unsafe</a>.<a href="../../../../pkg/unsafe.html#name-Pointer" class="ident">Pointer</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-236"><code>	<span class="keyword">return</span> *((*<a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a>)(<label for="r66" class="ident">ptr</label>)) == <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-237"><code>}</code></span>
+<span class="codeline" id="line-238"><code></code></span>
+<span class="codeline" id="line-239"><code><span class="keyword">type</span> <a href="../../../../pkg/github.com/json-iterator/go.html#name-lossyFloat64Encoder" class="ident">lossyFloat64Encoder</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-240"><code>}</code></span>
+<span class="codeline" id="line-241"><code></code></span>
+<span class="codeline" id="line-242"><code><span class="keyword">func</span> (<label for="r67" class="ident">encoder</label> *<a href="#line-239" class="ident">lossyFloat64Encoder</a>) <label for="r68" class="ident"><a href="../../../../imp/github.com/json-iterator/go.lossyFloat64Encoder^bef85.html#name-.Encode" class="ident">Encode</a></label>(<label for="r69" class="ident">ptr</label> <a href="../../../../pkg/unsafe.html" class="ident i4">unsafe</a>.<a href="../../../../pkg/unsafe.html#name-Pointer" class="ident">Pointer</a>, <label for="r70" class="ident">stream</label> *<a href="stream.go.html#line-9" class="ident">Stream</a>) {</code></span>
+<span class="codeline" id="line-243"><code>	<label for="r70" class="ident">stream</label>.<a href="stream_float.go.html#line-82" class="ident">WriteFloat64Lossy</a>(*((*<a href="../../../../pkg/builtin.html#name-float64" class="ident">float64</a>)(<label for="r69" class="ident">ptr</label>)))</code></span>
+<span class="codeline" id="line-244"><code>}</code></span>
+<span class="codeline" id="line-245"><code></code></span>
+<span class="codeline" id="line-246"><code><span class="keyword">func</span> (<label for="r71" class="ident">encoder</label> *<a href="#line-239" class="ident">lossyFloat64Encoder</a>) <label for="r72" class="ident"><a href="../../../../imp/github.com/json-iterator/go.lossyFloat64Encoder^bef85.html#name-.IsEmpty" class="ident">IsEmpty</a></label>(<label for="r73" class="ident">ptr</label> <a href="../../../../pkg/unsafe.html" class="ident i4">unsafe</a>.<a href="../../../../pkg/unsafe.html#name-Pointer" class="ident">Pointer</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-247"><code>	<span class="keyword">return</span> *((*<a href="../../../../pkg/builtin.html#name-float64" class="ident">float64</a>)(<label for="r73" class="ident">ptr</label>)) == <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-248"><code>}</code></span>
+<span class="codeline" id="line-249"><code></code></span>
+<span class="codeline" id="line-250"><code><span class="comment">// EnableLossyFloatMarshalling keeps 10**(-6) precision</span></code></span>
+<span class="codeline" id="line-251"><code><span class="comment">// for float variables for better performance.</span></code></span>
+<span class="codeline" id="line-252"><code><span class="keyword">func</span> (<label for="r74" class="ident">cfg</label> *<a href="#line-68" class="ident">frozenConfig</a>) <label for="r75" class="ident">marshalFloatWith6Digits</label>(<label for="r76" class="ident">extension</label> <a href="reflect_extension.go.html#line-96" class="ident">EncoderExtension</a>) {</code></span>
+<span class="codeline" id="line-253"><code>	<span class="comment">// for better performance</span></code></span>
+<span class="codeline" id="line-254"><code>	<label for="r76" class="ident">extension</label>[<a href="../../../../pkg/github.com/modern-go/reflect2.html" class="ident i6">reflect2</a>.<a href="../../modern-go/reflect2/reflect2.go.html#line-215" class="ident">TypeOfPtr</a>((*<a href="../../../../pkg/builtin.html#name-float32" class="ident">float32</a>)(<a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)).<a href="../../modern-go/reflect2/reflect2.go.html#line-113" class="ident">Elem</a>()] = &amp;<a href="#line-228" class="ident">lossyFloat32Encoder</a>{}</code></span>
+<span class="codeline" id="line-255"><code>	<label for="r76" class="ident">extension</label>[<a href="../../../../pkg/github.com/modern-go/reflect2.html" class="ident i6">reflect2</a>.<a href="../../modern-go/reflect2/reflect2.go.html#line-215" class="ident">TypeOfPtr</a>((*<a href="../../../../pkg/builtin.html#name-float64" class="ident">float64</a>)(<a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)).<a href="../../modern-go/reflect2/reflect2.go.html#line-113" class="ident">Elem</a>()] = &amp;<a href="#line-239" class="ident">lossyFloat64Encoder</a>{}</code></span>
+<span class="codeline" id="line-256"><code>}</code></span>
+<span class="codeline" id="line-257"><code></code></span>
+<span class="codeline" id="line-258"><code><span class="keyword">type</span> <a href="../../../../pkg/github.com/json-iterator/go.html#name-htmlEscapedStringEncoder" class="ident">htmlEscapedStringEncoder</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-259"><code>}</code></span>
+<span class="codeline" id="line-260"><code></code></span>
+<span class="codeline" id="line-261"><code><span class="keyword">func</span> (<label for="r77" class="ident">encoder</label> *<a href="#line-258" class="ident">htmlEscapedStringEncoder</a>) <label for="r78" class="ident"><a href="../../../../imp/github.com/json-iterator/go.htmlEscapedStringEncoder^2285e.html#name-.Encode" class="ident">Encode</a></label>(<label for="r79" class="ident">ptr</label> <a href="../../../../pkg/unsafe.html" class="ident i4">unsafe</a>.<a href="../../../../pkg/unsafe.html#name-Pointer" class="ident">Pointer</a>, <label for="r80" class="ident">stream</label> *<a href="stream.go.html#line-9" class="ident">Stream</a>) {</code></span>
+<span class="codeline" id="line-262"><code>	<label for="r81" class="ident">str</label> := *((*<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>)(<label for="r79" class="ident">ptr</label>))</code></span>
+<span class="codeline" id="line-263"><code>	<label for="r80" class="ident">stream</label>.<a href="stream_str.go.html#line-221" class="ident">WriteStringWithHTMLEscaped</a>(<label for="r81" class="ident">str</label>)</code></span>
+<span class="codeline" id="line-264"><code>}</code></span>
+<span class="codeline" id="line-265"><code></code></span>
+<span class="codeline" id="line-266"><code><span class="keyword">func</span> (<label for="r82" class="ident">encoder</label> *<a href="#line-258" class="ident">htmlEscapedStringEncoder</a>) <label for="r83" class="ident"><a href="../../../../imp/github.com/json-iterator/go.htmlEscapedStringEncoder^2285e.html#name-.IsEmpty" class="ident">IsEmpty</a></label>(<label for="r84" class="ident">ptr</label> <a href="../../../../pkg/unsafe.html" class="ident i4">unsafe</a>.<a href="../../../../pkg/unsafe.html#name-Pointer" class="ident">Pointer</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-267"><code>	<span class="keyword">return</span> *((*<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>)(<label for="r84" class="ident">ptr</label>)) == <span class="lit-string">""</span></code></span>
+<span class="codeline" id="line-268"><code>}</code></span>
+<span class="codeline" id="line-269"><code></code></span>
+<span class="codeline" id="line-270"><code><span class="keyword">func</span> (<label for="r85" class="ident">cfg</label> *<a href="#line-68" class="ident">frozenConfig</a>) <label for="r86" class="ident">escapeHTML</label>(<label for="r87" class="ident">encoderExtension</label> <a href="reflect_extension.go.html#line-96" class="ident">EncoderExtension</a>) {</code></span>
+<span class="codeline" id="line-271"><code>	<label for="r87" class="ident">encoderExtension</label>[<a href="../../../../pkg/github.com/modern-go/reflect2.html" class="ident i6">reflect2</a>.<a href="../../modern-go/reflect2/reflect2.go.html#line-215" class="ident">TypeOfPtr</a>((*<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>)(<a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)).<a href="../../modern-go/reflect2/reflect2.go.html#line-113" class="ident">Elem</a>()] = &amp;<a href="#line-258" class="ident">htmlEscapedStringEncoder</a>{}</code></span>
+<span class="codeline" id="line-272"><code>}</code></span>
+<span class="codeline" id="line-273"><code></code></span>
+<span class="codeline" id="line-274"><code><span class="keyword">func</span> (<label for="r88" class="ident">cfg</label> *<a href="#line-68" class="ident">frozenConfig</a>) <label for="r89" class="ident">cleanDecoders</label>() {</code></span>
+<span class="codeline" id="line-275"><code>	<a href="reflect_extension.go.html#line-13" class="ident">typeDecoders</a> = <span class="keyword">map</span>[<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>]<a href="reflect.go.html#line-21" class="ident">ValDecoder</a>{}</code></span>
+<span class="codeline" id="line-276"><code>	<a href="reflect_extension.go.html#line-14" class="ident">fieldDecoders</a> = <span class="keyword">map</span>[<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>]<a href="reflect.go.html#line-21" class="ident">ValDecoder</a>{}</code></span>
+<span class="codeline" id="line-277"><code>	*<label for="r88" class="ident">cfg</label> = *(<label for="r88" class="ident">cfg</label>.<a href="#line-69" class="ident">configBeforeFrozen</a>.<a href="#line-129" class="ident">Froze</a>().(*<a href="#line-68" class="ident">frozenConfig</a>))</code></span>
+<span class="codeline" id="line-278"><code>}</code></span>
+<span class="codeline" id="line-279"><code></code></span>
+<span class="codeline" id="line-280"><code><span class="keyword">func</span> (<label for="r90" class="ident">cfg</label> *<a href="#line-68" class="ident">frozenConfig</a>) <label for="r91" class="ident">cleanEncoders</label>() {</code></span>
+<span class="codeline" id="line-281"><code>	<a href="reflect_extension.go.html#line-15" class="ident">typeEncoders</a> = <span class="keyword">map</span>[<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>]<a href="reflect.go.html#line-28" class="ident">ValEncoder</a>{}</code></span>
+<span class="codeline" id="line-282"><code>	<a href="reflect_extension.go.html#line-16" class="ident">fieldEncoders</a> = <span class="keyword">map</span>[<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>]<a href="reflect.go.html#line-28" class="ident">ValEncoder</a>{}</code></span>
+<span class="codeline" id="line-283"><code>	*<label for="r90" class="ident">cfg</label> = *(<label for="r90" class="ident">cfg</label>.<a href="#line-69" class="ident">configBeforeFrozen</a>.<a href="#line-129" class="ident">Froze</a>().(*<a href="#line-68" class="ident">frozenConfig</a>))</code></span>
+<span class="codeline" id="line-284"><code>}</code></span>
+<span class="codeline" id="line-285"><code></code></span>
+<span class="codeline" id="line-286"><code><span class="keyword">func</span> (<label for="r92" class="ident">cfg</label> *<a href="#line-68" class="ident">frozenConfig</a>) <label for="r93" class="ident"><a href="../../../../imp/github.com/json-iterator/go.frozenConfig^52e2c.html#name-.MarshalToString" class="ident">MarshalToString</a></label>(<label for="r94" class="ident">v</label> <span class="keyword">interface</span>{}) (<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>, <a href="../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-287"><code>	<label for="r95" class="ident">stream</label> := <label for="r92" class="ident">cfg</label>.<a href="pool.go.html#line-19" class="ident">BorrowStream</a>(<a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)</code></span>
+<span class="codeline" id="line-288"><code>	<span class="keyword">defer</span> <label for="r92" class="ident">cfg</label>.<a href="pool.go.html#line-25" class="ident">ReturnStream</a>(<label for="r95" class="ident">stream</label>)</code></span>
+<span class="codeline" id="line-289"><code>	<label for="r95" class="ident">stream</label>.<a href="reflect.go.html#line-87" class="ident">WriteVal</a>(<label for="r94" class="ident">v</label>)</code></span>
+<span class="codeline" id="line-290"><code>	<span class="keyword">if</span> <label for="r95" class="ident">stream</label>.<a href="stream.go.html#line-13" class="ident">Error</a> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-291"><code>		<span class="keyword">return</span> <span class="lit-string">""</span>, <label for="r95" class="ident">stream</label>.<a href="stream.go.html#line-13" class="ident">Error</a></code></span>
+<span class="codeline" id="line-292"><code>	}</code></span>
+<span class="codeline" id="line-293"><code>	<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>(<label for="r95" class="ident">stream</label>.<a href="stream.go.html#line-54" class="ident">Buffer</a>()), <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-294"><code>}</code></span>
+<span class="codeline" id="line-295"><code></code></span>
+<span class="codeline" id="line-296"><code><span class="keyword">func</span> (<label for="r96" class="ident">cfg</label> *<a href="#line-68" class="ident">frozenConfig</a>) <label for="r97" class="ident"><a href="../../../../imp/github.com/json-iterator/go.frozenConfig^52e2c.html#name-.Marshal" class="ident">Marshal</a></label>(<label for="r98" class="ident">v</label> <span class="keyword">interface</span>{}) ([]<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <a href="../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-297"><code>	<label for="r99" class="ident">stream</label> := <label for="r96" class="ident">cfg</label>.<a href="pool.go.html#line-19" class="ident">BorrowStream</a>(<a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)</code></span>
+<span class="codeline" id="line-298"><code>	<span class="keyword">defer</span> <label for="r96" class="ident">cfg</label>.<a href="pool.go.html#line-25" class="ident">ReturnStream</a>(<label for="r99" class="ident">stream</label>)</code></span>
+<span class="codeline" id="line-299"><code>	<label for="r99" class="ident">stream</label>.<a href="reflect.go.html#line-87" class="ident">WriteVal</a>(<label for="r98" class="ident">v</label>)</code></span>
+<span class="codeline" id="line-300"><code>	<span class="keyword">if</span> <label for="r99" class="ident">stream</label>.<a href="stream.go.html#line-13" class="ident">Error</a> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-301"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <label for="r99" class="ident">stream</label>.<a href="stream.go.html#line-13" class="ident">Error</a></code></span>
+<span class="codeline" id="line-302"><code>	}</code></span>
+<span class="codeline" id="line-303"><code>	<label for="r100" class="ident">result</label> := <label for="r99" class="ident">stream</label>.<a href="stream.go.html#line-54" class="ident">Buffer</a>()</code></span>
+<span class="codeline" id="line-304"><code>	<label for="r101" class="ident">copied</label> := <a href="../../../../pkg/builtin.html#name-make" class="ident">make</a>([]<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r100" class="ident">result</label>))</code></span>
+<span class="codeline" id="line-305"><code>	<a href="../../../../pkg/builtin.html#name-copy" class="ident">copy</a>(<label for="r101" class="ident">copied</label>, <label for="r100" class="ident">result</label>)</code></span>
+<span class="codeline" id="line-306"><code>	<span class="keyword">return</span> <label for="r101" class="ident">copied</label>, <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-307"><code>}</code></span>
+<span class="codeline" id="line-308"><code></code></span>
+<span class="codeline" id="line-309"><code><span class="keyword">func</span> (<label for="r102" class="ident">cfg</label> *<a href="#line-68" class="ident">frozenConfig</a>) <label for="r103" class="ident"><a href="../../../../imp/github.com/json-iterator/go.frozenConfig^52e2c.html#name-.MarshalIndent" class="ident">MarshalIndent</a></label>(<label for="r104" class="ident">v</label> <span class="keyword">interface</span>{}, <label for="r105" class="ident">prefix</label>, <label for="r106" class="ident">indent</label> <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>) ([]<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <a href="../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-310"><code>	<span class="keyword">if</span> <label for="r105" class="ident">prefix</label> != <span class="lit-string">""</span> {</code></span>
+<span class="codeline" id="line-311"><code>		<a href="../../../../pkg/builtin.html#name-panic" class="ident">panic</a>(<span class="lit-string">"prefix is not supported"</span>)</code></span>
+<span class="codeline" id="line-312"><code>	}</code></span>
+<span class="codeline" id="line-313"><code>	<span class="keyword">for</span> <label for="r107" class="ident">_</label>, <label for="r108" class="ident">r</label> := <span class="keyword">range</span> <label for="r106" class="ident">indent</label> {</code></span>
+<span class="codeline" id="line-314"><code>		<span class="keyword">if</span> <label for="r108" class="ident">r</label> != <span class="lit-number">' '</span> {</code></span>
+<span class="codeline" id="line-315"><code>			<a href="../../../../pkg/builtin.html#name-panic" class="ident">panic</a>(<span class="lit-string">"indent can only be space"</span>)</code></span>
+<span class="codeline" id="line-316"><code>		}</code></span>
+<span class="codeline" id="line-317"><code>	}</code></span>
+<span class="codeline" id="line-318"><code>	<label for="r109" class="ident">newCfg</label> := <label for="r102" class="ident">cfg</label>.<a href="#line-69" class="ident">configBeforeFrozen</a></code></span>
+<span class="codeline" id="line-319"><code>	<label for="r109" class="ident">newCfg</label>.<a href="#line-17" class="ident">IndentionStep</a> = <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r106" class="ident">indent</label>)</code></span>
+<span class="codeline" id="line-320"><code>	<span class="keyword">return</span> <label for="r109" class="ident">newCfg</label>.<a href="#line-169" class="ident">frozeWithCacheReuse</a>(<label for="r102" class="ident">cfg</label>.<a href="#line-79" class="ident">extraExtensions</a>).<a href="#line-296" class="ident">Marshal</a>(<label for="r104" class="ident">v</label>)</code></span>
+<span class="codeline" id="line-321"><code>}</code></span>
+<span class="codeline" id="line-322"><code></code></span>
+<span class="codeline" id="line-323"><code><span class="keyword">func</span> (<label for="r110" class="ident">cfg</label> *<a href="#line-68" class="ident">frozenConfig</a>) <label for="r111" class="ident"><a href="../../../../imp/github.com/json-iterator/go.frozenConfig^52e2c.html#name-.UnmarshalFromString" class="ident">UnmarshalFromString</a></label>(<label for="r112" class="ident">str</label> <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>, <label for="r113" class="ident">v</label> <span class="keyword">interface</span>{}) <a href="../../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
+<span class="codeline" id="line-324"><code>	<label for="r114" class="ident">data</label> := []<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<label for="r112" class="ident">str</label>)</code></span>
+<span class="codeline" id="line-325"><code>	<label for="r115" class="ident">iter</label> := <label for="r110" class="ident">cfg</label>.<a href="pool.go.html#line-32" class="ident">BorrowIterator</a>(<label for="r114" class="ident">data</label>)</code></span>
+<span class="codeline" id="line-326"><code>	<span class="keyword">defer</span> <label for="r110" class="ident">cfg</label>.<a href="pool.go.html#line-38" class="ident">ReturnIterator</a>(<label for="r115" class="ident">iter</label>)</code></span>
+<span class="codeline" id="line-327"><code>	<label for="r115" class="ident">iter</label>.<a href="reflect.go.html#line-62" class="ident">ReadVal</a>(<label for="r113" class="ident">v</label>)</code></span>
+<span class="codeline" id="line-328"><code>	<label for="r116" class="ident">c</label> := <label for="r115" class="ident">iter</label>.<a href="iter.go.html#line-181" class="ident">nextToken</a>()</code></span>
+<span class="codeline" id="line-329"><code>	<span class="keyword">if</span> <label for="r116" class="ident">c</label> == <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-330"><code>		<span class="keyword">if</span> <label for="r115" class="ident">iter</label>.<a href="iter.go.html#line-80" class="ident">Error</a> == <a href="../../../../pkg/io.html" class="ident i1">io</a>.<a href="../../../io/io.go.html#line-44" class="ident">EOF</a> {</code></span>
+<span class="codeline" id="line-331"><code>			<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-332"><code>		}</code></span>
+<span class="codeline" id="line-333"><code>		<span class="keyword">return</span> <label for="r115" class="ident">iter</label>.<a href="iter.go.html#line-80" class="ident">Error</a></code></span>
+<span class="codeline" id="line-334"><code>	}</code></span>
+<span class="codeline" id="line-335"><code>	<label for="r115" class="ident">iter</label>.<a href="iter.go.html#line-200" class="ident">ReportError</a>(<span class="lit-string">"Unmarshal"</span>, <span class="lit-string">"there are bytes left after unmarshal"</span>)</code></span>
+<span class="codeline" id="line-336"><code>	<span class="keyword">return</span> <label for="r115" class="ident">iter</label>.<a href="iter.go.html#line-80" class="ident">Error</a></code></span>
+<span class="codeline" id="line-337"><code>}</code></span>
+<span class="codeline" id="line-338"><code></code></span>
+<span class="codeline" id="line-339"><code><span class="keyword">func</span> (<label for="r117" class="ident">cfg</label> *<a href="#line-68" class="ident">frozenConfig</a>) <label for="r118" class="ident"><a href="../../../../imp/github.com/json-iterator/go.frozenConfig^52e2c.html#name-.Get" class="ident">Get</a></label>(<label for="r119" class="ident">data</label> []<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <label for="r120" class="ident">path</label> ...<span class="keyword">interface</span>{}) <a href="any.go.html#line-15" class="ident">Any</a> {</code></span>
+<span class="codeline" id="line-340"><code>	<label for="r121" class="ident">iter</label> := <label for="r117" class="ident">cfg</label>.<a href="pool.go.html#line-32" class="ident">BorrowIterator</a>(<label for="r119" class="ident">data</label>)</code></span>
+<span class="codeline" id="line-341"><code>	<span class="keyword">defer</span> <label for="r117" class="ident">cfg</label>.<a href="pool.go.html#line-38" class="ident">ReturnIterator</a>(<label for="r121" class="ident">iter</label>)</code></span>
+<span class="codeline" id="line-342"><code>	<span class="keyword">return</span> <a href="any.go.html#line-230" class="ident">locatePath</a>(<label for="r121" class="ident">iter</label>, <label for="r120" class="ident">path</label>)</code></span>
+<span class="codeline" id="line-343"><code>}</code></span>
+<span class="codeline" id="line-344"><code></code></span>
+<span class="codeline" id="line-345"><code><span class="keyword">func</span> (<label for="r122" class="ident">cfg</label> *<a href="#line-68" class="ident">frozenConfig</a>) <label for="r123" class="ident"><a href="../../../../imp/github.com/json-iterator/go.frozenConfig^52e2c.html#name-.Unmarshal" class="ident">Unmarshal</a></label>(<label for="r124" class="ident">data</label> []<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <label for="r125" class="ident">v</label> <span class="keyword">interface</span>{}) <a href="../../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
+<span class="codeline" id="line-346"><code>	<label for="r126" class="ident">iter</label> := <label for="r122" class="ident">cfg</label>.<a href="pool.go.html#line-32" class="ident">BorrowIterator</a>(<label for="r124" class="ident">data</label>)</code></span>
+<span class="codeline" id="line-347"><code>	<span class="keyword">defer</span> <label for="r122" class="ident">cfg</label>.<a href="pool.go.html#line-38" class="ident">ReturnIterator</a>(<label for="r126" class="ident">iter</label>)</code></span>
+<span class="codeline" id="line-348"><code>	<label for="r126" class="ident">iter</label>.<a href="reflect.go.html#line-62" class="ident">ReadVal</a>(<label for="r125" class="ident">v</label>)</code></span>
+<span class="codeline" id="line-349"><code>	<label for="r127" class="ident">c</label> := <label for="r126" class="ident">iter</label>.<a href="iter.go.html#line-181" class="ident">nextToken</a>()</code></span>
+<span class="codeline" id="line-350"><code>	<span class="keyword">if</span> <label for="r127" class="ident">c</label> == <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-351"><code>		<span class="keyword">if</span> <label for="r126" class="ident">iter</label>.<a href="iter.go.html#line-80" class="ident">Error</a> == <a href="../../../../pkg/io.html" class="ident i1">io</a>.<a href="../../../io/io.go.html#line-44" class="ident">EOF</a> {</code></span>
+<span class="codeline" id="line-352"><code>			<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-353"><code>		}</code></span>
+<span class="codeline" id="line-354"><code>		<span class="keyword">return</span> <label for="r126" class="ident">iter</label>.<a href="iter.go.html#line-80" class="ident">Error</a></code></span>
+<span class="codeline" id="line-355"><code>	}</code></span>
+<span class="codeline" id="line-356"><code>	<label for="r126" class="ident">iter</label>.<a href="iter.go.html#line-200" class="ident">ReportError</a>(<span class="lit-string">"Unmarshal"</span>, <span class="lit-string">"there are bytes left after unmarshal"</span>)</code></span>
+<span class="codeline" id="line-357"><code>	<span class="keyword">return</span> <label for="r126" class="ident">iter</label>.<a href="iter.go.html#line-80" class="ident">Error</a></code></span>
+<span class="codeline" id="line-358"><code>}</code></span>
+<span class="codeline" id="line-359"><code></code></span>
+<span class="codeline" id="line-360"><code><span class="keyword">func</span> (<label for="r128" class="ident">cfg</label> *<a href="#line-68" class="ident">frozenConfig</a>) <label for="r129" class="ident"><a href="../../../../imp/github.com/json-iterator/go.frozenConfig^52e2c.html#name-.NewEncoder" class="ident">NewEncoder</a></label>(<label for="r130" class="ident">writer</label> <a href="../../../../pkg/io.html" class="ident i1">io</a>.<a href="../../../io/io.go.html#line-96" class="ident">Writer</a>) *<a href="adapter.go.html#line-121" class="ident">Encoder</a> {</code></span>
+<span class="codeline" id="line-361"><code>	<label for="r131" class="ident">stream</label> := <a href="stream.go.html#line-22" class="ident">NewStream</a>(<label for="r128" class="ident">cfg</label>, <label for="r130" class="ident">writer</label>, <span class="lit-number">512</span>)</code></span>
+<span class="codeline" id="line-362"><code>	<span class="keyword">return</span> &amp;<a href="adapter.go.html#line-121" class="ident">Encoder</a>{<label for="r131" class="ident">stream</label>}</code></span>
+<span class="codeline" id="line-363"><code>}</code></span>
+<span class="codeline" id="line-364"><code></code></span>
+<span class="codeline" id="line-365"><code><span class="keyword">func</span> (<label for="r132" class="ident">cfg</label> *<a href="#line-68" class="ident">frozenConfig</a>) <label for="r133" class="ident"><a href="../../../../imp/github.com/json-iterator/go.frozenConfig^52e2c.html#name-.NewDecoder" class="ident">NewDecoder</a></label>(<label for="r134" class="ident">reader</label> <a href="../../../../pkg/io.html" class="ident i1">io</a>.<a href="../../../io/io.go.html#line-83" class="ident">Reader</a>) *<a href="adapter.go.html#line-59" class="ident">Decoder</a> {</code></span>
+<span class="codeline" id="line-366"><code>	<label for="r135" class="ident">iter</label> := <a href="iter.go.html#line-97" class="ident">Parse</a>(<label for="r132" class="ident">cfg</label>, <label for="r134" class="ident">reader</label>, <span class="lit-number">512</span>)</code></span>
+<span class="codeline" id="line-367"><code>	<span class="keyword">return</span> &amp;<a href="adapter.go.html#line-59" class="ident">Decoder</a>{<label for="r135" class="ident">iter</label>}</code></span>
+<span class="codeline" id="line-368"><code>}</code></span>
+<span class="codeline" id="line-369"><code></code></span>
+<span class="codeline" id="line-370"><code><span class="keyword">func</span> (<label for="r136" class="ident">cfg</label> *<a href="#line-68" class="ident">frozenConfig</a>) <label for="r137" class="ident"><a href="../../../../imp/github.com/json-iterator/go.frozenConfig^52e2c.html#name-.Valid" class="ident">Valid</a></label>(<label for="r138" class="ident">data</label> []<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-371"><code>	<label for="r139" class="ident">iter</label> := <label for="r136" class="ident">cfg</label>.<a href="pool.go.html#line-32" class="ident">BorrowIterator</a>(<label for="r138" class="ident">data</label>)</code></span>
+<span class="codeline" id="line-372"><code>	<span class="keyword">defer</span> <label for="r136" class="ident">cfg</label>.<a href="pool.go.html#line-38" class="ident">ReturnIterator</a>(<label for="r139" class="ident">iter</label>)</code></span>
+<span class="codeline" id="line-373"><code>	<label for="r139" class="ident">iter</label>.<a href="iter_skip.go.html#line-72" class="ident">Skip</a>()</code></span>
+<span class="codeline" id="line-374"><code>	<span class="keyword">return</span> <label for="r139" class="ident">iter</label>.<a href="iter.go.html#line-80" class="ident">Error</a> == <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-375"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>
