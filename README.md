@@ -1,15 +1,23 @@
-# schema-entry-go
+# schema-entry-go/V2
 
 通过定义结构体同时声明jsonschem提供复杂的启动参数设置项
+
+V2版本针对1.18以上的golang,大量使用了泛型.低版本请使用[V1版本](https://github.com/Golang-Tools/schema-entry-go/tree/v1),V1版本将不再更新
 
 ## 特性
 
 + 支持多级子命令
 + 每级子命令会提示其下一级的子命令
-+ 终点节点可以通过定义一个满足接口`EntryPointConfig`的结构体来指定参数的解析行为和入口函数的执行过程
++ 终点节点可以通过定义一个满足接口`EndPointConfigInterface`的结构体来指定参数的解析行为和入口函数的执行过程
 + 可以通过默认值,指定位置文件,环境变量,命令行参数来构造配置结构,其顺序是`命令行参数->环境变量->命令行指定的配置文件->配置指定的配置文件路径->默认值`
-+ 通过[定义满足接口`EntryPointConfig`的结构体中的`jsonschema`tag](https://github.com/alecthomas/jsonschema)来定义配置的校验规则
++ 通过[定义满足接口`EndPointConfigInterface`的结构体中的`jsonschema`tag](https://github.com/alecthomas/jsonschema)来定义配置的校验规则
 + 支持`json`和`yaml`两种格式的配置文件
+
+## TODO
+
++ 添加监听文件系统中指定配置文件变化的功能
++ 添加从etcd中获取配置的功能
++ 添加监听etcd中指定配置文件变化的功能
 
 ## 概念和一些规则
 
@@ -21,7 +29,11 @@
 2. 叶子节点,节点树当中没有子节点的节点
 3. 枝节点,既有父节点又有子节点的节点
 
-一个节点最多只能有一个父节点,但可以有多个子节点.节点与节点间可以使用`RegistSubNode(parent,child EntryPointNode)`函数来注册
+一个节点最多只能有一个父节点,但可以有多个子节点.节点与节点间可以使用如下几个方式来注册:
+
++ `func RegistSubNode(parent, child EntryPointInterface)`函数
++ `func (EntryPointInterface) SetChild(child EntryPointInterface) error`,这个方法当在叶子节点上注册子节点时会报错
++ `func (EntryPointInterface) SetParent(parent EntryPointInterface) EntryPointInterface`,这个方法一般从叶子节点开始向根节点注册.返回的是父节点,所以可以用pipeline的形式注册
 
 ### 参数的解析规则
 
@@ -37,9 +49,12 @@
     config满足接口:
 
     ```golang
-    //EntryPointConfig 节点配置
-    type EntryPointConfig interface {
-        Main()
+    //EndPointConfigInterface 叶子节点配置接口
+    type EndPointConfigInterface interface {
+        Main()         //进入时执行的程序
+        BeforeRefresh()    //配置刷新前执行的回调
+        OnRefresh() //配置刷新后执行的回调
+        OnRefreshError(error) //配置刷新失败后执行的回调
     }
     ```
 
@@ -71,7 +86,7 @@
 
 整个使用流程可以拆分为如下步骤
 
-1. 定义一个配置结构体,并为其实现`Main()`接口,这个`Main()`接口就是业务的入口
+1. 定义一个配置结构体,并为其实现`Main()`,`OnRefresh()`,`AfterRefresh()`接口,这个`Main()`接口就是业务的入口,剩下两个则是在监听模式(WatchMode)下配置更新后触发的回调函数.
 2. 使用`schema-entry-go.New(*EntryPointMeta, ...EntryPointConfig) (*EntryPoint, error)`来构造一个解析节点,如果这个节点不作为叶子节点那可以不填`...EntryPointConfig`部分参数
 3. 使用`schema-entry-go.RegistSubNode(parent *EntryPoint,child *EntryPoint)`或者`parent.RegistSubNode(child *EntryPoint)`来构造命令树结构.
 4. 调用根节点的`Parse(argv []string)`方法解析配置,一般是写成`root.Parse(os.Args)`
