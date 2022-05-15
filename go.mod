@@ -6,6 +6,7 @@ require (
 	github.com/Golang-Tools/loggerhelper v0.0.4
 	github.com/Golang-Tools/optparams v0.0.1
 	github.com/akamensky/argparse v1.3.1
+	github.com/docker/docker v20.10.16+incompatible
 	github.com/invopop/jsonschema v0.4.0
 	github.com/json-iterator/go v1.1.12
 	github.com/xeipuuv/gojsonschema v1.2.0
@@ -13,6 +14,7 @@ require (
 )
 
 require (
+	github.com/fsnotify/fsnotify v1.5.4 // indirect
 	github.com/iancoleman/orderedmap v0.0.0-20190318233801-ac98e3ecb4b0 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180228061459-e0a39a4cb421 // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect

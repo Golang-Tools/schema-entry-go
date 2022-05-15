@@ -9,9 +9,6 @@ var json = jsoniter.ConfigCompatibleWithStandardLibrary
 //EndPointConfigInterface 叶子节点配置接口
 type EndPointConfigInterface interface {
 	Main() //进入时执行的程序
-	// BeforeRefresh()       //配置刷新前执行的回调
-	// OnRefresh()           //配置刷新后执行的回调
-	// OnRefreshError(error) //配置刷新失败后执行的回调
 }
 
 type EntryPointInterface interface {

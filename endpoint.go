@@ -1,49 +1,61 @@
 package schemaentry
 
 import (
-	"errors"
 	"fmt"
-	"io/ioutil"
+	"io"
+	"net/url"
 	"os"
 	"reflect"
 	"strconv"
 	"strings"
+	"sync"
 	"unicode"
 
 	log "github.com/Golang-Tools/loggerhelper"
 	"github.com/Golang-Tools/optparams"
 	"github.com/akamensky/argparse"
+	"github.com/docker/docker/pkg/filenotify"
 	"github.com/invopop/jsonschema"
 	"github.com/xeipuuv/gojsonschema"
 	"gopkg.in/yaml.v2"
 )
 
-var (
-	//ErrNotAllowSetChildToEndPoint 叶子节点无法设置子节点
-	ErrNotAllowSetChildToEndPoint = errors.New("not allow set child to endpoint")
+type SupportedSerialization int8
+
+const (
+	SerializationJSON SupportedSerialization = iota
+	SerializationYAML
 )
 
 //EntryPoint 节点类
-//@generic T EndPointConfigInterface 内部`config`字段的类型
+//@generics T EndPointConfigInterface 内部`config`字段的类型
 type EndPoint[T EndPointConfigInterface] struct {
+	meta *EntryPointMeta
+
 	config T
-	meta   *EntryPointMeta
+	locker *sync.RWMutex
+
+	watchpath      string
+	beforeRefresh  func([]byte, SupportedSerialization) bool //刷新前执行,返回false则不会进行刷新
+	onRefresh      func(T)                                   //刷新后执行的回调
+	onRefreshError func(error)                               //刷新失败后执行的回调
 }
 
 //NewEndPoint创建一个节点对象
-//@generic T EndPointConfigInterface EntryPoint泛型的实例化参数
+//@generics T EndPointConfigInterface EntryPoint泛型的实例化参数
 //@params meta *EntryPointMeta 为节点的元信息
-func NewEndPoint[T EndPointConfigInterface](opts ...optparams.Option[EntryPointMeta]) (*EndPoint[T], error) {
-	config := new(T)
+func NewEndPoint[T EndPointConfigInterface](config T, opts ...optparams.Option[EntryPointMeta]) (*EndPoint[T], error) {
+	// config := new(T)
 	ep := new(EndPoint[T])
 	m := optparams.GetOption(new(EntryPointMeta), opts...)
 	if m.Name == "" {
-		v := reflect.ValueOf(*config)
+		v := reflect.ValueOf(config)
 		namel := strings.Split(v.Type().String(), ".")
 		m.Name = strings.ToLower(namel[len(namel)-1])
 	}
 	ep.meta = m
-	ep.config = *config
+	ep.config = config
+	ep.locker = &sync.RWMutex{}
 	return ep, nil
 }
 
@@ -79,17 +91,73 @@ func (ep *EndPoint[T]) SetParent(parent EntryPointInterface) EntryPointInterface
 	return parent
 }
 
-//Parse 解析节点
-func (ep *EndPoint[T]) Parse(argv []string) {
-	prog := GetNodeProg(ep)
-	parser := argparse.NewParser(prog, ep.meta.Description)
-	ep.PassArgs(parser, argv)
+//BeforeRefresh  注册刷新前执行
+//@generics T EndPointConfigInterface 内部`config`字段的类型
+//@params callback func([]byte, SupportedSerialization) bool 刷新前执行的函数,返回false则不会进行刷新
+func (ep *EndPoint[T]) BeforeRefresh(callback func([]byte, SupportedSerialization) bool) error {
+	if ep.beforeRefresh != nil {
+		return ErrReregistCallBack
+	}
+	ep.beforeRefresh = callback
+	return nil
 }
 
-//PassArgs 解析叶子节点
+//BeforeRefresh  注册刷新前执行
+//@generics T EndPointConfigInterface 内部`config`字段的类型
+//@params callback func(T) bool 注册刷新后执行的操作
+func (ep *EndPoint[T]) OnRefresh(callback func(T)) error {
+	if ep.onRefresh != nil {
+		return ErrReregistCallBack
+	}
+	ep.onRefresh = callback
+	return nil
+}
+
+//OnRefreshError 注册刷新失败后执行的回调
+//@generics T EndPointConfigInterface 内部`config`字段的类型
+//@params callback func(T) bool 注册刷新失败后执行的回调
+func (ep *EndPoint[T]) OnRefreshError(callback func(error)) error {
+	if ep.onRefreshError != nil {
+		return ErrReregistCallBack
+	}
+	ep.onRefreshError = callback
+	return nil
+}
+
+//Parse 解析节点并加载配置,配置加载顺序为
+func (ep *EndPoint[T]) Parse(argv []string) {
+	if ep.meta.WatchMode {
+		if ep.onRefresh == nil {
+			log.Error("watchmode need to set OnRefresh first")
+			os.Exit(1)
+		}
+	}
+	prog := GetNodeProg(ep)
+	parser := argparse.NewParser(prog, ep.meta.Description)
+	ok := ep.passArgs(parser, argv)
+	if ok {
+		if ep.meta.WatchMode {
+			stop, err := ep.startConfigfileWatch()
+			if err != nil {
+				log.Warn("start watchmode get error,roll back to nowatchmode", log.Dict{"err": err.Error()})
+			} else {
+				log.Info("watchmode is setted", log.Dict{"watch_file": ep.watchpath})
+				defer stop()
+			}
+
+		}
+		ep.config.Main()
+	}
+
+}
+
+//passArgs 解析叶子节点获取启动时的配置
+//@generics T EndPointConfigInterface 内部`config`字段的类型
 //@Params parser *argparse.Parser 命令行参数解析器对象
 //@Params argv []string 待解析的命令行参数
-func (ep *EndPoint[T]) PassArgs(parser *argparse.Parser, argv []string) {
+func (ep *EndPoint[T]) passArgs(parser *argparse.Parser, argv []string) bool {
+	ep.locker.Lock()
+	defer ep.locker.Unlock()
 	t := reflect.TypeOf(ep.config)
 	if t.Kind() == reflect.Ptr {
 		t = t.Elem()
@@ -104,16 +172,16 @@ func (ep *EndPoint[T]) PassArgs(parser *argparse.Parser, argv []string) {
 		}
 	}
 	if count == 0 {
-		ep.config.Main()
-		return
+		return true
 	}
 	//默认配置文件
-	err := ep.GetConfigFromConfigFile()
+	err := ep.getConfigFromConfigFile()
 	if err != nil {
 		log.Warn("GetConfigFromConfigFile wrong", log.Dict{"err": err})
 	}
 
-	filepathptr, flagConfptr, err := ep.ConfigPtrFromArgparse(parser, argv)
+	//构造命令行参数
+	filepathptr, flagConfptr, err := ep.configPtrFromArgparse(parser, argv)
 	if err != nil {
 		log.Error("ConfigPtrFromArgparse error", log.Dict{"err": err})
 		os.Exit(1)
@@ -121,32 +189,61 @@ func (ep *EndPoint[T]) PassArgs(parser *argparse.Parser, argv []string) {
 	//指定配置文件
 	filepath := *filepathptr
 	if filepath != "" {
-		_, err := ep.loadConfigFile(filepath)
+		ep.watchpath = filepath
+		U, err := url.Parse(filepath)
 		if err != nil {
-			log.Error("load ConfigFile wrong", log.Dict{"err": err, "filename": filepath})
-			os.Exit(1)
+			// 无法解析为url,当做是文件处理
+			_, err := ep.loadConfigFileFromFS(filepath)
+			if err != nil {
+				log.Error("load ConfigFile From FS wrong", log.Dict{"err": err, "filepath": filepath})
+				os.Exit(1)
+			}
 		}
+		switch U.Scheme {
+		case "":
+			{
+				_, err := ep.loadConfigFileFromFS(filepath)
+				if err != nil {
+					log.Error("load ConfigFile From URL wrong", log.Dict{"err": err, "filepath": filepath, "URL": filepath})
+					os.Exit(1)
+				}
+			}
+
+		case "file", "fs", "dockerfs":
+			{
+				_, err := ep.loadConfigFileFromFS(U.Path)
+				if err != nil {
+					log.Error("load ConfigFile From URL wrong", log.Dict{"err": err, "filepath": U.Path, "URL": filepath})
+					os.Exit(1)
+				}
+			}
+		default:
+			{
+				log.Error("Filepath schema error", log.Dict{"err": fmt.Sprintf("unsupported schema %s", U.Scheme)})
+				os.Exit(1)
+			}
+		}
+
 	}
 	// 环境变量->命令行
-	err = ep.ParseStruct(flagConfptr)
+	err = ep.parseStruct(flagConfptr)
 	if err != nil {
 		log.Error("ParseStruct error", log.Dict{"err": err})
 		os.Exit(1)
 	}
-	if ep.VerifyConfig() {
-		ep.config.Main()
-	}
+	return ep.verifyConfig()
 }
 
-//GetConfigFromConfigFile 从设置的或者默认配置文件中获取配置
-func (ep *EndPoint[T]) GetConfigFromConfigFile() error {
+//getConfigFromConfigFile 从设置的或者默认配置文件中获取配置
+//@generics T EndPointConfigInterface 内部`config`字段的类型
+func (ep *EndPoint[T]) getConfigFromConfigFile() error {
 	var conffilepath []string
 	if ep.meta.DefaultConfigFilePaths == nil {
 		configFileName := strings.Join(GetNodeProgList(ep), "_")
 		homepath, err := os.UserHomeDir()
 		if err != nil {
 			if ep.meta.DebugMode {
-				log.Info("find home path error", log.Dict{"err": err})
+				log.Debug("find home path error", log.Dict{"err": err})
 			}
 			conffilepath = []string{
 				fmt.Sprintf("./%s.json", configFileName),
@@ -168,7 +265,7 @@ func (ep *EndPoint[T]) GetConfigFromConfigFile() error {
 		conffilepath = ep.meta.DefaultConfigFilePaths
 	}
 	for _, filename := range conffilepath {
-		stop, err := ep.loadConfigFile(filename)
+		stop, err := ep.loadConfigFileFromFS(filename)
 		if !ep.meta.LoadAllConfigFile && stop {
 			if err != nil {
 				return err
@@ -177,7 +274,7 @@ func (ep *EndPoint[T]) GetConfigFromConfigFile() error {
 		} else {
 			if err != nil {
 				if ep.meta.DebugMode {
-					log.Info("can not load ConfigFile", log.Dict{"filename": filename, "wrong_msg": err})
+					log.Debug("can not load ConfigFile", log.Dict{"filename": filename, "wrong_msg": err})
 				}
 			}
 		}
@@ -185,39 +282,61 @@ func (ep *EndPoint[T]) GetConfigFromConfigFile() error {
 	return nil
 }
 
-//loadConfigFile 加载文件到配置
-//@Params filename 文件路径
-//@returns bool 是否结束查找
+//loadConfigFileFromFS 加载文件系统中的文件到配置
+//@generics T EndPointConfigInterface 内部`config`字段的类型
+//@params filename 文件路径
+//@returns []byte 文件内容
 //@returns error 错误信息
-func (ep *EndPoint[T]) loadConfigFile(filename string) (bool, error) {
+func (ep *EndPoint[T]) loadConfigFileContentFromFS(filename string) ([]byte, error) {
 	info, err := os.Stat(filename)
 	if err != nil {
 		if os.IsNotExist(err) {
-			return false, fmt.Errorf("find file %s not exist", filename)
+			return nil, fmt.Errorf("find file %s not exist", filename)
 		}
-		return false, fmt.Errorf("find file %s error: %s", filename, err)
+		return nil, fmt.Errorf("find file %s error: %s", filename, err)
 	}
 	if info.IsDir() {
-		return false, fmt.Errorf("find %s is a dir", filename)
+		return nil, fmt.Errorf("find %s is a dir", filename)
 	}
 	f, err := os.Open(filename)
 	if err != nil {
-		return true, err
+		return nil, err
 	}
 	defer f.Close()
-	fd, err := ioutil.ReadAll(f)
+	fd, err := io.ReadAll(f)
 	if err != nil {
-		return true, err
+		return nil, err
+	}
+
+	if fd == nil {
+		return nil, fmt.Errorf("find file %s 's content is nil", filename)
+	}
+	fds := string(fd)
+	if fds == "" {
+		return nil, fmt.Errorf("find file %s 's content is empty", filename)
+	}
+	return fd, err
+}
+
+//loadConfigFileFromFS 加载文件系统中的文件到配置
+//@generics T EndPointConfigInterface 内部`config`字段的类型
+//@params filename 文件路径
+//@returns bool 是否有有含义的配置以结束查找
+//@returns error 错误信息
+func (ep *EndPoint[T]) loadConfigFileFromFS(filename string) (bool, error) {
+	fd, err := ep.loadConfigFileContentFromFS(filename)
+	if err != nil {
+		return false, err
 	}
 	if strings.HasSuffix(filename, "json") {
-		err := json.Unmarshal(fd, &ep.config)
+		err := json.Unmarshal(fd, ep.config)
 		if err != nil {
-			return true, err
+			return false, err
 		}
 	} else if strings.HasSuffix(filename, "yml") || strings.HasSuffix(filename, "yaml") {
-		err := yaml.Unmarshal(fd, &ep.config)
+		err := yaml.Unmarshal(fd, ep.config)
 		if err != nil {
-			return true, err
+			return false, err
 		}
 	} else {
 		return false, fmt.Errorf("%s has not supported suffix", filename)
@@ -225,13 +344,14 @@ func (ep *EndPoint[T]) loadConfigFile(filename string) (bool, error) {
 	return true, nil
 }
 
-//ConfigPtrFromArgparse 构造命令行参数解析,并获取flag的ptr
-//@Params parser *argparse.Parser flag解析器
-//@Params argv []string 待解析的命令行参数
-//@Returns *string 指定configfile位置字符串
-//@Returns map[string]interface{} flag的ptr位置
-//@Returns error 错误信息
-func (ep *EndPoint[T]) ConfigPtrFromArgparse(parser *argparse.Parser, argv []string) (*string, map[string]interface{}, error) {
+//configPtrFromArgparse 构造命令行参数解析,并获取flag的ptr
+//@generics T EndPointConfigInterface 内部`config`字段的类型
+//@params parser *argparse.Parser flag解析器
+//@params argv []string 待解析的命令行参数
+//@returns *string 指定configfile位置字符串
+//@returns map[string]interface{} flag的ptr位置
+//@returns error 错误信息
+func (ep *EndPoint[T]) configPtrFromArgparse(parser *argparse.Parser, argv []string) (*string, map[string]interface{}, error) {
 	defer func() {
 		if err := recover(); err != nil {
 			log.Error("ConfigPtrFromArgparse get error", log.Dict{"err": err})
@@ -244,7 +364,13 @@ func (ep *EndPoint[T]) ConfigPtrFromArgparse(parser *argparse.Parser, argv []str
 	schema := r.Reflect(ep.config)
 
 	flagConfptr := map[string]interface{}{}
-	argconfigfilepath := parser.String("c", "config", &argparse.Options{Required: false, Help: "指定配置文件位置"})
+	required := false
+	help := "指定读取的配置文件位置"
+	if ep.meta.WatchMode {
+		required = true
+		help = "指定监控的配置文件位置"
+	}
+	argconfigfilepath := parser.String("c", "config", &argparse.Options{Required: required, Help: help})
 	t := reflect.TypeOf(ep.config)
 	if t.Kind() == reflect.Ptr {
 		t = t.Elem()
@@ -365,21 +491,22 @@ func (ep *EndPoint[T]) ConfigPtrFromArgparse(parser *argparse.Parser, argv []str
 	return argconfigfilepath, flagConfptr, nil
 }
 
-//ParseStruct 解析结构体,构造命令行参数解析和环境变量解析,并设置到对象的Config值中
+//parseStruct 解析结构体,构造命令行参数解析和环境变量解析,并设置到对象的Config值中
+//@generics T EndPointConfigInterface 内部`config`字段的类型
 //@Params flagConfptr map[string]interface{} 命令行参数除了指定的配置文件位置外的参数->值的指针的映射
 //@Returns error 解析过程中的错误
-func (ep *EndPoint[T]) ParseStruct(flagConfptr map[string]interface{}) error {
+func (ep *EndPoint[T]) parseStruct(flagConfptr map[string]interface{}) error {
 	r := jsonschema.Reflector{
 		DoNotReference: true,
 	}
 	schema := r.Reflect(ep.config)
-	EnvPrefix := ep.GetEnvPrefix()
+	EnvPrefix := ep.getEnvPrefix()
 	//设置参数
 	t := reflect.TypeOf(ep.config)
 	if t.Kind() == reflect.Ptr {
 		t = t.Elem()
 	}
-	v := reflect.ValueOf(&ep.config).Elem()
+	v := reflect.ValueOf(ep.config).Elem()
 	for i := 0; i < t.NumField(); i++ {
 		f := t.Field(i)
 		if unicode.IsLower([]rune(f.Name)[0]) || f.Tag.Get("json") == "-" || f.Tag.Get("yaml") == "-" {
@@ -399,23 +526,27 @@ func (ep *EndPoint[T]) ParseStruct(flagConfptr map[string]interface{}) error {
 		}
 		name := ReflectFieldName(f)
 		fieldschema_i, ok := schema.Properties.Get(name)
+		var defau interface{}
 		if ok {
 			fieldschema := fieldschema_i.(*jsonschema.Schema)
 			if fieldschema.Default != nil {
-				vf.Set(reflect.ValueOf(fieldschema.Default))
+				defau = fieldschema.Default
 			}
 		}
 
 		switch f.Type.Kind() {
 		case reflect.String:
 			{
+				if defau != nil {
+					vf.Set(reflect.ValueOf(defau))
+				}
 				//设置环境变量配置
 				getenvstr := ""
 				if !ep.meta.NotParseEnv {
 					loadenv := fmt.Sprintf("%s_%s", EnvPrefix, strings.ToUpper(f.Name))
 					getenvstr = os.Getenv(loadenv)
 					if ep.meta.DebugMode {
-						log.Info("load config from ENV", log.Dict{"env": loadenv, "value": getenvstr})
+						log.Debug("load config from ENV", log.Dict{"env": loadenv, "value": getenvstr})
 					}
 				}
 				if getenvstr != "" {
@@ -432,13 +563,16 @@ func (ep *EndPoint[T]) ParseStruct(flagConfptr map[string]interface{}) error {
 			}
 		case reflect.Bool:
 			{
+				if defau != nil {
+					vf.Set(reflect.ValueOf(defau))
+				}
 				//设置环境变量配置
 				getenvstr := ""
 				if !ep.meta.NotParseEnv {
 					loadenv := fmt.Sprintf("%s_%s", EnvPrefix, strings.ToUpper(f.Name))
 					getenvstr = os.Getenv(loadenv)
 					if ep.meta.DebugMode {
-						log.Info("load config from ENV", log.Dict{"env": loadenv, "value": getenvstr})
+						log.Debug("load config from ENV", log.Dict{"env": loadenv, "value": getenvstr})
 					}
 				}
 				if getenvstr != "" {
@@ -464,13 +598,16 @@ func (ep *EndPoint[T]) ParseStruct(flagConfptr map[string]interface{}) error {
 			}
 		case reflect.Int:
 			{
+				if defau != nil {
+					vf.Set(reflect.ValueOf(defau))
+				}
 				//设置环境变量配置
 				getenvstr := ""
 				if !ep.meta.NotParseEnv {
 					loadenv := fmt.Sprintf("%s_%s", EnvPrefix, strings.ToUpper(f.Name))
 					getenvstr = os.Getenv(loadenv)
 					if ep.meta.DebugMode {
-						log.Info("load config from ENV", log.Dict{"env": loadenv, "value": getenvstr})
+						log.Debug("load config from ENV", log.Dict{"env": loadenv, "value": getenvstr})
 					}
 				}
 				if getenvstr != "" {
@@ -491,13 +628,16 @@ func (ep *EndPoint[T]) ParseStruct(flagConfptr map[string]interface{}) error {
 			}
 		case reflect.Float64:
 			{
+				if defau != nil {
+					vf.Set(reflect.ValueOf(defau))
+				}
 				//设置环境变量配置
 				getenvstr := ""
 				if !ep.meta.NotParseEnv {
 					loadenv := fmt.Sprintf("%s_%s", EnvPrefix, strings.ToUpper(f.Name))
 					getenvstr = os.Getenv(loadenv)
 					if ep.meta.DebugMode {
-						log.Info("load config from ENV", log.Dict{"env": loadenv, "value": getenvstr})
+						log.Debug("load config from ENV", log.Dict{"env": loadenv, "value": getenvstr})
 					}
 				}
 				if getenvstr != "" {
@@ -521,13 +661,21 @@ func (ep *EndPoint[T]) ParseStruct(flagConfptr map[string]interface{}) error {
 				switch f.Type.String() {
 				case "[]string":
 					{
+						if defau != nil {
+							defa_i := defau.([]interface{})
+							defa_r := []string{}
+							for _, v := range defa_i {
+								defa_r = append(defa_r, v.(string))
+							}
+							vf.Set(reflect.ValueOf(defa_r))
+						}
 						//设置环境变量配置
 						getenvstr := ""
 						if !ep.meta.NotParseEnv {
 							loadenv := fmt.Sprintf("%s_%s", EnvPrefix, strings.ToUpper(f.Name))
 							getenvstr = os.Getenv(loadenv)
 							if ep.meta.DebugMode {
-								log.Info("load config from ENV", log.Dict{"env": loadenv, "value": getenvstr})
+								log.Debug("load config from ENV", log.Dict{"env": loadenv, "value": getenvstr})
 							}
 						}
 						if getenvstr != "" {
@@ -545,13 +693,26 @@ func (ep *EndPoint[T]) ParseStruct(flagConfptr map[string]interface{}) error {
 					}
 				case "[]int":
 					{
+						if defau != nil {
+							defa_i := defau.([]interface{})
+							defa_r := []int{}
+							for _, v := range defa_i {
+								value_str := v.(string)
+								value, err := strconv.Atoi(value_str)
+								if err != nil {
+									break
+								}
+								defa_r = append(defa_r, value)
+							}
+							vf.Set(reflect.ValueOf(defa_r))
+						}
 						//设置环境变量配置
 						getenvstr := ""
 						if !ep.meta.NotParseEnv {
 							loadenv := fmt.Sprintf("%s_%s", EnvPrefix, strings.ToUpper(f.Name))
 							getenvstr = os.Getenv(loadenv)
 							if ep.meta.DebugMode {
-								log.Info("load config from ENV", log.Dict{"env": loadenv, "value": getenvstr})
+								log.Debug("load config from ENV", log.Dict{"env": loadenv, "value": getenvstr})
 							}
 						}
 						if getenvstr != "" {
@@ -576,13 +737,26 @@ func (ep *EndPoint[T]) ParseStruct(flagConfptr map[string]interface{}) error {
 					}
 				case "[]float64":
 					{
+						if defau != nil {
+							defa_i := defau.([]interface{})
+							defa_r := []float64{}
+							for _, v := range defa_i {
+								value_str := v.(string)
+								value, err := strconv.ParseFloat(value_str, 64)
+								if err != nil {
+									break
+								}
+								defa_r = append(defa_r, value)
+							}
+							vf.Set(reflect.ValueOf(defa_r))
+						}
 						//设置环境变量配置
 						getenvstr := ""
 						if !ep.meta.NotParseEnv {
 							loadenv := fmt.Sprintf("%s_%s", EnvPrefix, strings.ToUpper(f.Name))
 							getenvstr = os.Getenv(loadenv)
 							if ep.meta.DebugMode {
-								log.Info("load config from ENV", log.Dict{"env": loadenv, "value": getenvstr})
+								log.Debug("load config from ENV", log.Dict{"env": loadenv, "value": getenvstr})
 							}
 						}
 						if getenvstr != "" {
@@ -620,8 +794,9 @@ func (ep *EndPoint[T]) ParseStruct(flagConfptr map[string]interface{}) error {
 	return nil
 }
 
-//GetEnvPrefix 获取实际的EnvPrefix
-func (ep *EndPoint[T]) GetEnvPrefix() string {
+//getEnvPrefix 获取实际的EnvPrefix
+//@generics T EndPointConfigInterface 内部`config`字段的类型
+func (ep *EndPoint[T]) getEnvPrefix() string {
 	var EnvPrefix string
 	if ep.meta.EnvPrefix != "" {
 		EnvPrefix = ep.meta.EnvPrefix
@@ -632,7 +807,8 @@ func (ep *EndPoint[T]) GetEnvPrefix() string {
 }
 
 //VerifyConfig 验证config是否符合要求
-func (ep *EndPoint[T]) VerifyConfig() bool {
+//@generics T EndPointConfigInterface 内部`config`字段的类型
+func (ep *EndPoint[T]) verifyConfig() bool {
 	if ep.meta.NotVerifySchema {
 		log.Warn("参数未校验")
 		return true
@@ -656,18 +832,196 @@ func (ep *EndPoint[T]) VerifyConfig() bool {
 	return false
 }
 
-// //RegistConfig 将对象注册进节点
-// //如果创建时没有设置,那么可以用这个方法设置,
-// func (ep *EntryPoint[T]) RegistConfig(config T) {
-// 	if ep.config == nil {
-// 		ep.config = config
-// 	} else {
-// 		log.Warn("节点的config已经被设置过了.")
-// 	}
-// }
+type StopWatchFunc func()
 
-// //RegistSubNode 将一个节点注册为当前节点的子节点
-// //@Params child EntryPointInterface节点对象,注意必须传入的是指针
-// func (ep *EntryPoint[T]) RegistSubNode(child EntryPointInterface) {
-// 	ep.meta.SetChild(child)
-// }
+//fsWatchHandler 监听文件系统执行操作
+//@generics T EndPointConfigInterface 内部`config`字段的类型
+//@params filepath string 文件路径
+//@params watcher filenotify.FileWatcher 文件系统监听器
+func (ep *EndPoint[T]) fsWatchHandler(filepath string, watcher filenotify.FileWatcher) {
+	if ep.meta.DebugMode {
+		log.Debug("FSWatchHandler start")
+	}
+	defer func() {
+		if ep.meta.DebugMode {
+			log.Debug("FSWatchHandler end")
+		}
+		if r := recover(); r != nil {
+			log.Error("FSWatchHandler get error", log.Dict{"r": r})
+		}
+	}()
+	for {
+		select {
+		case event, ok := <-watcher.Events():
+			{
+				if ep.meta.DebugMode {
+					log.Debug("FSWatchHandler get event", log.Dict{"event": event.String(), "ok": ok})
+				}
+				if !ok {
+					return
+				}
+				if strings.Contains(event.Op.String(), "WRITE") {
+					if ep.meta.DebugMode {
+						log.Debug("FSWatchHandler active")
+					}
+					skip := ep.refreshFSProcess(filepath)
+					if ep.meta.DebugMode && skip {
+						log.Debug("FSWatchHandler skip update", log.Dict{"event": event})
+					}
+				} else {
+					if ep.meta.DebugMode {
+						log.Debug("FSWatchHandler not active", log.Dict{"event": event.String()})
+					}
+				}
+			}
+		case err, ok := <-watcher.Errors():
+			if !ok {
+				return
+			}
+			log.Warn("FSWatchHandler watcher get error", log.Dict{"err": err.Error(), "ok": ok})
+		}
+	}
+}
+
+//refreshFSProcess 文件系统刷新配置流程
+//@params filepath string 配置文件路径
+//@returns bool 是否跳过更新
+func (ep *EndPoint[T]) refreshFSProcess(filepath string) bool {
+	var serialize_protocol SupportedSerialization
+	if strings.HasSuffix(filepath, "json") {
+		serialize_protocol = SerializationJSON
+	} else if strings.HasSuffix(filepath, "yml") || strings.HasSuffix(filepath, "yaml") {
+		serialize_protocol = SerializationYAML
+	} else {
+		if ep.onRefreshError != nil {
+			ep.onRefreshError(ErrUnsupportedSerialization)
+		} else {
+			log.Error("RefreshFSProcess get error", log.Dict{"step": "fix serialize_protocol", "error": fmt.Sprintf("unsupported serialization protocol %s", filepath)})
+		}
+		return false
+	}
+
+	fd, err := ep.loadConfigFileContentFromFS(filepath)
+	if err != nil {
+		if ep.onRefreshError != nil {
+			ep.onRefreshError(err)
+		} else {
+			log.Error("RefreshFSProcess get error", log.Dict{"step": "load config file content", "error": err.Error()})
+		}
+		return false
+	}
+	refresh := true
+	if ep.beforeRefresh != nil {
+		refresh = ep.beforeRefresh(fd, serialize_protocol)
+	}
+	if refresh {
+		ep.locker.Lock()
+		defer ep.locker.Unlock()
+		switch serialize_protocol {
+		case SerializationJSON:
+			{
+				err := json.Unmarshal(fd, ep.config)
+				if err != nil {
+					if ep.onRefreshError != nil {
+						ep.onRefreshError(err)
+					} else {
+						log.Error("RefreshFSProcess get error", log.Dict{"step": "Unmarshal JSON", "error": err.Error()})
+					}
+					return false
+				}
+			}
+		case SerializationYAML:
+			{
+				err := yaml.Unmarshal(fd, ep.config)
+				if err != nil {
+					if ep.onRefreshError != nil {
+						ep.onRefreshError(err)
+					} else {
+						log.Error("RefreshFSProcess get error", log.Dict{"step": "Unmarshal YAML", "error": err.Error()})
+					}
+					return false
+				}
+			}
+		default:
+			{
+				if ep.onRefreshError != nil {
+					ep.onRefreshError(ErrUnsupportedSerialization)
+				} else {
+					log.Error("RefreshFSProcess get error", log.Dict{"step": "Unmarshal Unsupported Protocol", "error": fmt.Sprintf("unsupported serialization protocol %s", filepath)})
+				}
+				return false
+			}
+		}
+		ep.onRefresh(ep.config)
+		return false
+		// err := json.Unmarshal(fd, ep.config)
+		// if err != nil {
+		// 	return false, err
+		// }
+	} else {
+		return true
+	}
+
+}
+
+//startConfigfileWatch 开始监听配置文件
+//@generics T EndPointConfigInterface 内部`config`字段的类型
+//@returns StopWatchFunc 停止监听函数
+func (ep *EndPoint[T]) startConfigfileWatch() (StopWatchFunc, error) {
+	U, err := url.Parse(ep.watchpath)
+
+	if err != nil {
+		path := ep.watchpath
+		watcher, err := filenotify.NewEventWatcher()
+		if err != nil {
+			log.Error("new fswatcher get error", log.Dict{"err": err.Error()})
+			return nil, err
+		}
+		go ep.fsWatchHandler(path, watcher)
+		watcher.Add(path)
+		return func() { watcher.Close() }, nil
+	}
+	switch U.Scheme {
+	case "":
+		{
+			path := ep.watchpath
+			watcher, err := filenotify.NewEventWatcher()
+			if err != nil {
+				log.Error("new fswatcher get error", log.Dict{"err": err.Error()})
+				return nil, err
+			}
+			go ep.fsWatchHandler(path, watcher)
+			watcher.Add(path)
+			return func() { watcher.Close() }, nil
+		}
+	case "file", "fs":
+		{
+			path := U.Path
+			watcher, err := filenotify.NewEventWatcher()
+			if err != nil {
+				log.Error("new fswatcher get error", log.Dict{"err": err.Error()})
+				return nil, err
+			}
+			go ep.fsWatchHandler(path, watcher)
+			watcher.Add(path)
+			return func() { watcher.Close() }, nil
+		}
+	case "dockerfs":
+		{
+			path := U.Path
+			watcher := filenotify.NewPollingWatcher()
+			if err != nil {
+				log.Error("new fswatcher get error", log.Dict{"err": err.Error()})
+				return nil, err
+			}
+			go ep.fsWatchHandler(path, watcher)
+			watcher.Add(path)
+			return func() { watcher.Close() }, nil
+		}
+	default:
+		{
+			log.Error("Filepath schema error", log.Dict{"err": fmt.Sprintf("unsupported schema %s", U.Scheme)})
+			return nil, ErrUnsupportedSchema
+		}
+	}
+}

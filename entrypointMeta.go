@@ -16,6 +16,7 @@ type EntryPointMeta struct {
 	EnvPrefix              string   //解析环境变量时的前缀
 	NotVerifySchema        bool     //是否不校验配置的schema
 	DebugMode              bool     //当设置为debugmode时才会打印中间过程的log
+	WatchMode              bool     //启用配置监听模式,
 	parent                 EntryPointInterface
 	subcmds                map[string]EntryPointInterface
 }
@@ -142,5 +143,14 @@ func WithNotVerifySchema() optparams.Option[EntryPointMeta] {
 func WithDebugMode() optparams.Option[EntryPointMeta] {
 	return optparams.NewFuncOption(func(o *EntryPointMeta) {
 		o.DebugMode = true
+	})
+}
+
+//WithWatchMode 设置监听模式
+//在程序执行过程中监听`-c`(或`--config`)指定的配置文件url内容变更.
+//当出现变更时更新`EndPoint[T]`对象中的config对象,并根据其中的回调函数设置执行相应回调
+func WithWatchMode() optparams.Option[EntryPointMeta] {
+	return optparams.NewFuncOption(func(o *EntryPointMeta) {
+		o.WatchMode = true
 	})
 }

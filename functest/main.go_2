@@ -2,9 +2,7 @@ package main
 
 import (
 	"fmt"
-	"os"
 
-	s "github.com/Golang-Tools/schema-entry-go/v2"
 	jsoniter "github.com/json-iterator/go"
 )
 
@@ -22,27 +20,10 @@ func (c *C) Main() {
 }
 
 func main() {
-	root, _ := s.New(&s.EntryPointMeta{Name: "foo", Description: "测试用foo", Usage: "foo cmd test"})
-	nodeb, _ := s.New(&s.EntryPointMeta{Name: "bar", Description: "测试用foo bar", Usage: "foo bar cmd test"})
-	nodec, _ := s.New(&s.EntryPointMeta{
-		Name:                   "par",
-		NotVerifySchema:        true,
-		DefaultConfigFilePaths: []string{"conf.json", "config.json", "testconf.yml"},
-		Description:            "测试用foo bar par",
-		Usage:                  "foo bar par cmd test",
-		LoadAllConfigFile:      true,
-		// DebugMode:              true,
-	}, &C{
-		Field: []int{1, 2, 3},
-		OK:    true,
-	})
-	// fmt.Println("获得schema  ", string(nodec.Schema))
-	// s.RegistSubNode(root, nodeb)
-	root.RegistSubNode(nodeb)
-	// s.RegistSubNode(nodeb, nodec)
-	nodeb.RegistSubNode(nodec)
-	os.Setenv("FOO_BAR_PAR_A", "123")
-	root.Parse([]string{"foo", "bar", "par"})
+	var x *C
+	x = *new(*C)
+	// x.A = 1
+	fmt.Println(x)
 }
 
 // 	root.Parse([]string{"foo", "bar", "par"})

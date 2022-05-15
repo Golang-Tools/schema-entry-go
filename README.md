@@ -12,10 +12,10 @@ V2版本针对1.18以上的golang,大量使用了泛型.低版本请使用[V1版
 + 可以通过默认值,指定位置文件,环境变量,命令行参数来构造配置结构,其顺序是`命令行参数->环境变量->命令行指定的配置文件->配置指定的配置文件路径->默认值`
 + 通过[定义满足接口`EndPointConfigInterface`的结构体中的`jsonschema`tag](https://github.com/alecthomas/jsonschema)来定义配置的校验规则
 + 支持`json`和`yaml`两种格式的配置文件
++ 支持`watch`模式,可以通过监听指定文件更新配置
 
 ## TODO
 
-+ 添加监听文件系统中指定配置文件变化的功能
 + 添加从etcd中获取配置的功能
 + 添加监听etcd中指定配置文件变化的功能
 
@@ -28,6 +28,10 @@ V2版本针对1.18以上的golang,大量使用了泛型.低版本请使用[V1版
 1. 根节点,一颗节点树的起始点,它没有父节点
 2. 叶子节点,节点树当中没有子节点的节点
 3. 枝节点,既有父节点又有子节点的节点
+
+叶子节点或者是要执行的的根节点我们使用`func NewEndPoint[T EndPointConfigInterface](config T, opts ...optparams.Option[EntryPointMeta]) (*EndPoint[T], error)`来创建
+
+不用执行的根节点和枝节点我们使用`func NewEntryPoint(opts ...optparams.Option[EntryPointMeta]) (*EntryPoint, error)`来创建
 
 一个节点最多只能有一个父节点,但可以有多个子节点.节点与节点间可以使用如下几个方式来注册:
 
@@ -52,9 +56,6 @@ V2版本针对1.18以上的golang,大量使用了泛型.低版本请使用[V1版
     //EndPointConfigInterface 叶子节点配置接口
     type EndPointConfigInterface interface {
         Main()         //进入时执行的程序
-        BeforeRefresh()    //配置刷新前执行的回调
-        OnRefresh() //配置刷新后执行的回调
-        OnRefreshError(error) //配置刷新失败后执行的回调
     }
     ```
 
@@ -64,7 +65,7 @@ V2版本针对1.18以上的golang,大量使用了泛型.低版本请使用[V1版
     使用配置指定路径的配置替换默认值(可以通过`EntryPointMeta.DefaultConfigFilePaths`配置默认路径)
                 |
                 v
-    使用命令行参数`--config_path`指定的配置文件替换默认值(如果不为空字符串)
+    使用命令行参数`--config`指定的配置文件替换默认值(如果不为空字符串)
                 |
                 v
 
@@ -82,13 +83,22 @@ V2版本针对1.18以上的golang,大量使用了泛型.低版本请使用[V1版
     执行`config.Main`
     ```
 
+## watchmode
+
+监听模式用于持续监听一个文件以保持配置最新,在更新模式下我们必须在命令行里显示的指定`-c`或者`--config`,来指向一个路径,支持两种方式指定路径:
+
++ path模式,即直接指定文件系统中的路径,这种方式只能针对本地文件系统,使用的路径可以为绝对路径或者相对路径
++ url模式,即使用url的形式指定路径,其形式为`schema://user:password@host:port/path?params`这种方式相对比较有扩展性,支持的获取方式有
+    + 本地文件系统,使用`schema`可以为`file`, `fs`,使用的路径只能是绝对路径,比如`file:///Users/mac/WORKSPACE/GITHUB/GolangTools/schema-entry-go/watch.json`
+    + docker容器中的文件系统`schema`,可以为`dockerfs`,使用的路径只能是绝对路径,比如`dockerfs:///Users/mac/WORKSPACE/GITHUB/GolangTools/schema-entry-go/watch.json`
+
 ## 使用方法
 
 整个使用流程可以拆分为如下步骤
 
-1. 定义一个配置结构体,并为其实现`Main()`,`OnRefresh()`,`AfterRefresh()`接口,这个`Main()`接口就是业务的入口,剩下两个则是在监听模式(WatchMode)下配置更新后触发的回调函数.
-2. 使用`schema-entry-go.New(*EntryPointMeta, ...EntryPointConfig) (*EntryPoint, error)`来构造一个解析节点,如果这个节点不作为叶子节点那可以不填`...EntryPointConfig`部分参数
-3. 使用`schema-entry-go.RegistSubNode(parent *EntryPoint,child *EntryPoint)`或者`parent.RegistSubNode(child *EntryPoint)`来构造命令树结构.
+1. 定义一个配置结构体,并为其实现`Main()`接口,这个`Main()`接口就是业务的入口
+2. 使用`NewEndPoint`来构造一个叶子节点,如果有多个叶子节点可以用`NewEntryPoint`来构造根节点和枝节点用于串联叶子节点
+3. [可选]如果有根节点和枝节点则将各个节点串联成树
 4. 调用根节点的`Parse(argv []string)`方法解析配置,一般是写成`root.Parse(os.Args)`
 
 下面是一个例子,例子中使用`github.com/alecthomas/jsonschema`在结构体构造时声明了jsonschema约束.
@@ -99,41 +109,51 @@ package main
 import (
     "fmt"
     "os"
+    "time"
 
-    s "github.com/Golang-Tools/schema-entry-go"
-    "github.com/alecthomas/jsonschema"
+    s "github.com/Golang-Tools/schema-entry-go/v2"
     jsoniter "github.com/json-iterator/go"
 )
 
 var json = jsoniter.ConfigCompatibleWithStandardLibrary
 
 type C struct {
-    A     int   `json:"a" jsonschema:"required,title=field,description=测试列表"`
-    Field []int `json:"field" jsonschema:"required,title=field,description=测试列表"`
-    s     int
+    A            int   `yaml:"aa" jsonschema:"required,title=a,description=测试int,maximum=10,default=10"`
+    B            int   `yaml:"b" jsonschema:"required,title=b,description=测试int,maximum=10,default=100"`
+    OK           bool  `json:"ok" jsonschema:"title=o,description=测试bool"`
+    Field        []int `json:"field" jsonschema:"required,title=f,description=测试列表"`
+    FieldDefault []int `json:"field_default" jsonschema:"required,title=d,description=测试列表默认值,default=1,default=2,default=3,default=4,default=5"`
+    WatchValue   int   `json:"WatchValue" jsonschema:"required,title=w,description=测试监听"`
+    s            int
+}
+
+func (c *C) Test() {
+    fmt.Println(c)
 }
 
 func (c *C) Main() {
-    fmt.Println(c.Field)
-    fmt.Println(c.A)
+    c.Test()
+    time.Sleep(time.Duration(1) * time.Minute)
 }
 
 func main() {
-    root, _ := s.New(&s.EntryPointMeta{Name: "foo", Usage: "foo cmd test"})
-    nodeb, _ := s.New(&s.EntryPointMeta{Name: "bar", Usage: "foo bar cmd test"})
-    nodec, _ := s.New(&s.EntryPointMeta{Name: "par", Usage: "foo bar par cmd test"}, &C{
-        Field: []int{1, 2, 3},
+    root, _ := s.NewEntryPoint(s.WithName("foo"), s.WithDescription("测试用foo"), s.WithUsage("foo cmd test"))
+    nodeb, _ := s.NewEntryPoint(s.WithName("bar"), s.WithDescription("测试用foo bar"), s.WithUsage("foo bar cmd test"))
+    nodec, _ := s.NewEndPoint(new(C), s.WithName("par"), s.WithNotVerifySchema(),
+        s.WithDefaultConfigFilePaths("conf.json", "config.json", "testconf.yml"),
+        s.WithDescription("测试用foo bar par"),
+        s.WithUsage("foo bar par cmd test"),
+        s.WithLoadAllConfigFile(),
+        s.WithWatchMode(),
+    )
+    nodec.OnRefresh(func(c *C) {
+        c.Test()
     })
-    s.RegistSubNode(root, nodeb)
-    nodeb.RegistSubNode(nodec)
     os.Setenv("FOO_BAR_PAR_A", "123")
-    root.Parse([]string{"foo", "bar", "par", "--Field=4", "--Field=5", "--Field=6"})
+    nodec.SetParent(nodeb).SetParent(root).Parse(os.Args)
 }
+
 ```
-
-使用时需要注意:
-
-+ 函数`New`,`RegistSubNode`以及节点对象的`RegistSubNode`方法中传入的都是指针而非值.
 
 ## 缺陷
 
@@ -142,3 +162,10 @@ func main() {
 
     + `int`,`float64`,`bool`,`string`
     + `[]int`,`[]float64`,`[]string`
+    + 如果是`[]int`,`[]float64`,`[]string`这三种类型设置`default`需要像这样写
+
+        ```golang
+        FieldDefault []int `json:"field_default" jsonschema:"default=1,default=2,default=3,default=4,default=5"`
+        ```
+
+        它等价于JSONSchema中的`default:[1,2,3,4,5]`

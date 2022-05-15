@@ -54,15 +54,15 @@ func (ep *EntryPoint) SetParent(parent EntryPointInterface) EntryPointInterface 
 	return parent
 }
 
-//Parse 解析节点
+//Parse 解析节点生成命令行说明文档
 func (ep *EntryPoint) Parse(argv []string) {
 	prog := GetNodeProg(ep)
 	parser := argparse.NewParser(prog, ep.meta.Description)
-	ep.PassArgsTosub(parser, argv)
+	ep.passArgsTosub(parser, argv)
 }
 
-//PassArgsTosub 将解析传导给子节点
-func (ep EntryPoint) PassArgsTosub(parser *argparse.Parser, argv []string) {
+//passArgsTosub 将解析传导给子节点
+func (ep EntryPoint) passArgsTosub(parser *argparse.Parser, argv []string) {
 	if len(argv) <= 1 {
 		parser.HelpFunc = func(c *argparse.Command, msg interface{}) string {
 			var help string
@@ -85,14 +85,14 @@ func (ep EntryPoint) PassArgsTosub(parser *argparse.Parser, argv []string) {
 		fmt.Print(parser.Help(nil))
 		os.Exit(0)
 	}
-	scmds := []string{}
+	// scmds := []string{}
 	insubcmd := false
 	for subcmd := range ep.meta.Subcmds() {
 		if argv[1] == subcmd {
 			insubcmd = true
 			break
-		} else {
-			scmds = append(scmds, subcmd)
+			// } else {
+			// scmds = append(scmds, subcmd)
 		}
 	}
 	if insubcmd {

@@ -5,3 +5,5 @@
 主要改动
 
 1. 修改使用的jsonschema映射包为`github.com/invopop/jsonschema`
+2. 增加watchmode用于持续更新配置
+3. 可以在jsonschema中使用`default`字段规定默认值
