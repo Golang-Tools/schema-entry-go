@@ -11,7 +11,7 @@ import (
 	"sync"
 	"unicode"
 
-	log "github.com/Golang-Tools/loggerhelper"
+	log "github.com/Golang-Tools/loggerhelper/v2"
 	"github.com/Golang-Tools/optparams"
 	"github.com/akamensky/argparse"
 	"github.com/docker/docker/pkg/filenotify"
@@ -63,7 +63,7 @@ func (ep *EndPoint[T]) Schema() []byte {
 	s := jsonschema.Reflect(ep.config)
 	schemabytes, err := s.MarshalJSON()
 	if err != nil {
-		log.Warn("config结构无法映射为jsonschema", log.Dict{"err": err.Error()})
+		logger.Warn("config结构无法映射为jsonschema", log.Dict{"err": err.Error()})
 		return nil
 	}
 	return schemabytes
@@ -128,7 +128,7 @@ func (ep *EndPoint[T]) OnRefreshError(callback func(error)) error {
 func (ep *EndPoint[T]) Parse(argv []string) {
 	if ep.meta.WatchMode {
 		if ep.onRefresh == nil {
-			log.Error("watchmode need to set OnRefresh first")
+			logger.Error("watchmode need to set OnRefresh first")
 			os.Exit(1)
 		}
 	}
@@ -139,9 +139,9 @@ func (ep *EndPoint[T]) Parse(argv []string) {
 		if ep.meta.WatchMode {
 			stop, err := ep.startConfigfileWatch()
 			if err != nil {
-				log.Warn("start watchmode get error,roll back to nowatchmode", log.Dict{"err": err.Error()})
+				logger.Warn("start watchmode get error,roll back to nowatchmode", log.Dict{"err": err.Error()})
 			} else {
-				log.Info("watchmode is setted", log.Dict{"watch_file": ep.watchpath})
+				logger.Info("watchmode is setted", log.Dict{"watch_file": ep.watchpath})
 				defer stop()
 			}
 
@@ -177,13 +177,13 @@ func (ep *EndPoint[T]) passArgs(parser *argparse.Parser, argv []string) bool {
 	//默认配置文件
 	err := ep.getConfigFromConfigFile()
 	if err != nil {
-		log.Warn("GetConfigFromConfigFile wrong", log.Dict{"err": err})
+		logger.Warn("GetConfigFromConfigFile wrong", log.Dict{"err": err})
 	}
 
 	//构造命令行参数
 	filepathptr, flagConfptr, err := ep.configPtrFromArgparse(parser, argv)
 	if err != nil {
-		log.Error("ConfigPtrFromArgparse error", log.Dict{"err": err})
+		logger.Error("ConfigPtrFromArgparse error", log.Dict{"err": err})
 		os.Exit(1)
 	}
 	//指定配置文件
@@ -195,7 +195,7 @@ func (ep *EndPoint[T]) passArgs(parser *argparse.Parser, argv []string) bool {
 			// 无法解析为url,当做是文件处理
 			_, err := ep.loadConfigFileFromFS(filepath)
 			if err != nil {
-				log.Error("load ConfigFile From FS wrong", log.Dict{"err": err, "filepath": filepath})
+				logger.Error("load ConfigFile From FS wrong", log.Dict{"err": err, "filepath": filepath})
 				os.Exit(1)
 			}
 		}
@@ -204,7 +204,7 @@ func (ep *EndPoint[T]) passArgs(parser *argparse.Parser, argv []string) bool {
 			{
 				_, err := ep.loadConfigFileFromFS(filepath)
 				if err != nil {
-					log.Error("load ConfigFile From URL wrong", log.Dict{"err": err, "filepath": filepath, "URL": filepath})
+					logger.Error("load ConfigFile From URL wrong", log.Dict{"err": err, "filepath": filepath, "URL": filepath})
 					os.Exit(1)
 				}
 			}
@@ -213,13 +213,13 @@ func (ep *EndPoint[T]) passArgs(parser *argparse.Parser, argv []string) bool {
 			{
 				_, err := ep.loadConfigFileFromFS(U.Path)
 				if err != nil {
-					log.Error("load ConfigFile From URL wrong", log.Dict{"err": err, "filepath": U.Path, "URL": filepath})
+					logger.Error("load ConfigFile From URL wrong", log.Dict{"err": err, "filepath": U.Path, "URL": filepath})
 					os.Exit(1)
 				}
 			}
 		default:
 			{
-				log.Error("Filepath schema error", log.Dict{"err": fmt.Sprintf("unsupported schema %s", U.Scheme)})
+				logger.Error("Filepath schema error", log.Dict{"err": fmt.Sprintf("unsupported schema %s", U.Scheme)})
 				os.Exit(1)
 			}
 		}
@@ -228,7 +228,7 @@ func (ep *EndPoint[T]) passArgs(parser *argparse.Parser, argv []string) bool {
 	// 环境变量->命令行
 	err = ep.parseStruct(flagConfptr)
 	if err != nil {
-		log.Error("ParseStruct error", log.Dict{"err": err})
+		logger.Error("ParseStruct error", log.Dict{"err": err})
 		os.Exit(1)
 	}
 	return ep.verifyConfig()
@@ -242,9 +242,7 @@ func (ep *EndPoint[T]) getConfigFromConfigFile() error {
 		configFileName := strings.Join(GetNodeProgList(ep), "_")
 		homepath, err := os.UserHomeDir()
 		if err != nil {
-			if ep.meta.DebugMode {
-				log.Debug("find home path error", log.Dict{"err": err})
-			}
+			logger.Debug("find home path error", log.Dict{"err": err})
 			conffilepath = []string{
 				fmt.Sprintf("./%s.json", configFileName),
 				fmt.Sprintf("/%s/config.json", configFileName),
@@ -273,9 +271,7 @@ func (ep *EndPoint[T]) getConfigFromConfigFile() error {
 			break
 		} else {
 			if err != nil {
-				if ep.meta.DebugMode {
-					log.Debug("can not load ConfigFile", log.Dict{"filename": filename, "wrong_msg": err})
-				}
+				logger.Debug("can not load ConfigFile", log.Dict{"filename": filename, "wrong_msg": err})
 			}
 		}
 	}
@@ -354,7 +350,7 @@ func (ep *EndPoint[T]) loadConfigFileFromFS(filename string) (bool, error) {
 func (ep *EndPoint[T]) configPtrFromArgparse(parser *argparse.Parser, argv []string) (*string, map[string]interface{}, error) {
 	defer func() {
 		if err := recover(); err != nil {
-			log.Error("ConfigPtrFromArgparse get error", log.Dict{"err": err})
+			logger.Error("ConfigPtrFromArgparse get error", log.Dict{"err": err})
 			os.Exit(1)
 		}
 	}()
@@ -386,7 +382,7 @@ func (ep *EndPoint[T]) configPtrFromArgparse(parser *argparse.Parser, argv []str
 		name := ReflectFieldName(f)
 		fieldschema_i, ok := schema.Properties.Get(name)
 		if !ok {
-			log.Warn("schema.Properties.Get(name) not ok", log.Dict{"name": name, "Properties": schema.Properties})
+			logger.Warn("schema.Properties.Get(name) not ok", log.Dict{"name": name, "Properties": schema.Properties})
 			jsonschemaTag := f.Tag.Get("jsonschema")
 			if jsonschemaTag != "" {
 				jstags := strings.Split(jsonschemaTag, ",")
@@ -545,9 +541,7 @@ func (ep *EndPoint[T]) parseStruct(flagConfptr map[string]interface{}) error {
 				if !ep.meta.NotParseEnv {
 					loadenv := fmt.Sprintf("%s_%s", EnvPrefix, strings.ToUpper(f.Name))
 					getenvstr = os.Getenv(loadenv)
-					if ep.meta.DebugMode {
-						log.Debug("load config from ENV", log.Dict{"env": loadenv, "value": getenvstr})
-					}
+					logger.Debug("load config from ENV", log.Dict{"env": loadenv, "value": getenvstr})
 				}
 				if getenvstr != "" {
 					vf.Set(reflect.ValueOf(getenvstr))
@@ -571,9 +565,7 @@ func (ep *EndPoint[T]) parseStruct(flagConfptr map[string]interface{}) error {
 				if !ep.meta.NotParseEnv {
 					loadenv := fmt.Sprintf("%s_%s", EnvPrefix, strings.ToUpper(f.Name))
 					getenvstr = os.Getenv(loadenv)
-					if ep.meta.DebugMode {
-						log.Debug("load config from ENV", log.Dict{"env": loadenv, "value": getenvstr})
-					}
+					logger.Debug("load config from ENV", log.Dict{"env": loadenv, "value": getenvstr})
 				}
 				if getenvstr != "" {
 					if strings.ToUpper(getenvstr) == "TRUE" {
@@ -606,9 +598,7 @@ func (ep *EndPoint[T]) parseStruct(flagConfptr map[string]interface{}) error {
 				if !ep.meta.NotParseEnv {
 					loadenv := fmt.Sprintf("%s_%s", EnvPrefix, strings.ToUpper(f.Name))
 					getenvstr = os.Getenv(loadenv)
-					if ep.meta.DebugMode {
-						log.Debug("load config from ENV", log.Dict{"env": loadenv, "value": getenvstr})
-					}
+					logger.Debug("load config from ENV", log.Dict{"env": loadenv, "value": getenvstr})
 				}
 				if getenvstr != "" {
 					intv, err := strconv.Atoi(getenvstr)
@@ -636,9 +626,7 @@ func (ep *EndPoint[T]) parseStruct(flagConfptr map[string]interface{}) error {
 				if !ep.meta.NotParseEnv {
 					loadenv := fmt.Sprintf("%s_%s", EnvPrefix, strings.ToUpper(f.Name))
 					getenvstr = os.Getenv(loadenv)
-					if ep.meta.DebugMode {
-						log.Debug("load config from ENV", log.Dict{"env": loadenv, "value": getenvstr})
-					}
+					logger.Debug("load config from ENV", log.Dict{"env": loadenv, "value": getenvstr})
 				}
 				if getenvstr != "" {
 					fv, err := strconv.ParseFloat(getenvstr, 64)
@@ -674,9 +662,7 @@ func (ep *EndPoint[T]) parseStruct(flagConfptr map[string]interface{}) error {
 						if !ep.meta.NotParseEnv {
 							loadenv := fmt.Sprintf("%s_%s", EnvPrefix, strings.ToUpper(f.Name))
 							getenvstr = os.Getenv(loadenv)
-							if ep.meta.DebugMode {
-								log.Debug("load config from ENV", log.Dict{"env": loadenv, "value": getenvstr})
-							}
+							logger.Debug("load config from ENV", log.Dict{"env": loadenv, "value": getenvstr})
 						}
 						if getenvstr != "" {
 							sl := strings.Split(getenvstr, ",")
@@ -711,9 +697,7 @@ func (ep *EndPoint[T]) parseStruct(flagConfptr map[string]interface{}) error {
 						if !ep.meta.NotParseEnv {
 							loadenv := fmt.Sprintf("%s_%s", EnvPrefix, strings.ToUpper(f.Name))
 							getenvstr = os.Getenv(loadenv)
-							if ep.meta.DebugMode {
-								log.Debug("load config from ENV", log.Dict{"env": loadenv, "value": getenvstr})
-							}
+							logger.Debug("load config from ENV", log.Dict{"env": loadenv, "value": getenvstr})
 						}
 						if getenvstr != "" {
 							r := []int{}
@@ -755,9 +739,7 @@ func (ep *EndPoint[T]) parseStruct(flagConfptr map[string]interface{}) error {
 						if !ep.meta.NotParseEnv {
 							loadenv := fmt.Sprintf("%s_%s", EnvPrefix, strings.ToUpper(f.Name))
 							getenvstr = os.Getenv(loadenv)
-							if ep.meta.DebugMode {
-								log.Debug("load config from ENV", log.Dict{"env": loadenv, "value": getenvstr})
-							}
+							logger.Debug("load config from ENV", log.Dict{"env": loadenv, "value": getenvstr})
 						}
 						if getenvstr != "" {
 							r := []float64{}
@@ -810,14 +792,14 @@ func (ep *EndPoint[T]) getEnvPrefix() string {
 //@generics T EndPointConfigInterface 内部`config`字段的类型
 func (ep *EndPoint[T]) verifyConfig() bool {
 	if ep.meta.NotVerifySchema {
-		log.Warn("参数未校验")
+		logger.Warn("参数未校验")
 		return true
 	}
 	configLoader := gojsonschema.NewGoLoader(ep.config)
 	schemaLoader := gojsonschema.NewBytesLoader(ep.Schema())
 	result, err := gojsonschema.Validate(schemaLoader, configLoader)
 	if err != nil {
-		log.Error("模式校验执行错误", log.Dict{"err": err})
+		logger.Error("模式校验执行错误", log.Dict{"err": err})
 		return false
 	}
 	if result.Valid() {
@@ -828,7 +810,7 @@ func (ep *EndPoint[T]) verifyConfig() bool {
 	for index, e := range errs {
 		errsS[fmt.Sprintf("conflict-%d", index)] = e.Details()
 	}
-	log.Error("模式校验错误", errsS)
+	logger.Error("模式校验错误", errsS)
 	return false
 }
 
@@ -839,46 +821,38 @@ type StopWatchFunc func()
 //@params filepath string 文件路径
 //@params watcher filenotify.FileWatcher 文件系统监听器
 func (ep *EndPoint[T]) fsWatchHandler(filepath string, watcher filenotify.FileWatcher) {
-	if ep.meta.DebugMode {
-		log.Debug("FSWatchHandler start")
-	}
+
+	logger.Debug("FSWatchHandler start")
+
 	defer func() {
-		if ep.meta.DebugMode {
-			log.Debug("FSWatchHandler end")
-		}
+		logger.Debug("FSWatchHandler end")
 		if r := recover(); r != nil {
-			log.Error("FSWatchHandler get error", log.Dict{"r": r})
+			logger.Error("FSWatchHandler get error", log.Dict{"r": r})
 		}
 	}()
 	for {
 		select {
 		case event, ok := <-watcher.Events():
 			{
-				if ep.meta.DebugMode {
-					log.Debug("FSWatchHandler get event", log.Dict{"event": event.String(), "ok": ok})
-				}
+				logger.Debug("FSWatchHandler get event", log.Dict{"event": event.String(), "ok": ok})
 				if !ok {
 					return
 				}
 				if strings.Contains(event.Op.String(), "WRITE") {
-					if ep.meta.DebugMode {
-						log.Debug("FSWatchHandler active")
-					}
+					logger.Debug("FSWatchHandler active")
 					skip := ep.refreshFSProcess(filepath)
-					if ep.meta.DebugMode && skip {
-						log.Debug("FSWatchHandler skip update", log.Dict{"event": event})
+					if skip {
+						logger.Debug("FSWatchHandler skip update", log.Dict{"event": event})
 					}
 				} else {
-					if ep.meta.DebugMode {
-						log.Debug("FSWatchHandler not active", log.Dict{"event": event.String()})
-					}
+					logger.Debug("FSWatchHandler not active", log.Dict{"event": event.String()})
 				}
 			}
 		case err, ok := <-watcher.Errors():
 			if !ok {
 				return
 			}
-			log.Warn("FSWatchHandler watcher get error", log.Dict{"err": err.Error(), "ok": ok})
+			logger.Warn("FSWatchHandler watcher get error", log.Dict{"err": err.Error(), "ok": ok})
 		}
 	}
 }
@@ -896,7 +870,7 @@ func (ep *EndPoint[T]) refreshFSProcess(filepath string) bool {
 		if ep.onRefreshError != nil {
 			ep.onRefreshError(ErrUnsupportedSerialization)
 		} else {
-			log.Error("RefreshFSProcess get error", log.Dict{"step": "fix serialize_protocol", "error": fmt.Sprintf("unsupported serialization protocol %s", filepath)})
+			logger.Error("RefreshFSProcess get error", log.Dict{"step": "fix serialize_protocol", "error": fmt.Sprintf("unsupported serialization protocol %s", filepath)})
 		}
 		return false
 	}
@@ -906,7 +880,7 @@ func (ep *EndPoint[T]) refreshFSProcess(filepath string) bool {
 		if ep.onRefreshError != nil {
 			ep.onRefreshError(err)
 		} else {
-			log.Error("RefreshFSProcess get error", log.Dict{"step": "load config file content", "error": err.Error()})
+			logger.Error("RefreshFSProcess get error", log.Dict{"step": "load config file content", "error": err.Error()})
 		}
 		return false
 	}
@@ -925,7 +899,7 @@ func (ep *EndPoint[T]) refreshFSProcess(filepath string) bool {
 					if ep.onRefreshError != nil {
 						ep.onRefreshError(err)
 					} else {
-						log.Error("RefreshFSProcess get error", log.Dict{"step": "Unmarshal JSON", "error": err.Error()})
+						logger.Error("RefreshFSProcess get error", log.Dict{"step": "Unmarshal JSON", "error": err.Error()})
 					}
 					return false
 				}
@@ -937,7 +911,7 @@ func (ep *EndPoint[T]) refreshFSProcess(filepath string) bool {
 					if ep.onRefreshError != nil {
 						ep.onRefreshError(err)
 					} else {
-						log.Error("RefreshFSProcess get error", log.Dict{"step": "Unmarshal YAML", "error": err.Error()})
+						logger.Error("RefreshFSProcess get error", log.Dict{"step": "Unmarshal YAML", "error": err.Error()})
 					}
 					return false
 				}
@@ -947,7 +921,7 @@ func (ep *EndPoint[T]) refreshFSProcess(filepath string) bool {
 				if ep.onRefreshError != nil {
 					ep.onRefreshError(ErrUnsupportedSerialization)
 				} else {
-					log.Error("RefreshFSProcess get error", log.Dict{"step": "Unmarshal Unsupported Protocol", "error": fmt.Sprintf("unsupported serialization protocol %s", filepath)})
+					logger.Error("RefreshFSProcess get error", log.Dict{"step": "Unmarshal Unsupported Protocol", "error": fmt.Sprintf("unsupported serialization protocol %s", filepath)})
 				}
 				return false
 			}
@@ -974,7 +948,7 @@ func (ep *EndPoint[T]) startConfigfileWatch() (StopWatchFunc, error) {
 		path := ep.watchpath
 		watcher, err := filenotify.NewEventWatcher()
 		if err != nil {
-			log.Error("new fswatcher get error", log.Dict{"err": err.Error()})
+			logger.Error("new fswatcher get error", log.Dict{"err": err.Error()})
 			return nil, err
 		}
 		go ep.fsWatchHandler(path, watcher)
@@ -987,7 +961,7 @@ func (ep *EndPoint[T]) startConfigfileWatch() (StopWatchFunc, error) {
 			path := ep.watchpath
 			watcher, err := filenotify.NewEventWatcher()
 			if err != nil {
-				log.Error("new fswatcher get error", log.Dict{"err": err.Error()})
+				logger.Error("new fswatcher get error", log.Dict{"err": err.Error()})
 				return nil, err
 			}
 			go ep.fsWatchHandler(path, watcher)
@@ -999,7 +973,7 @@ func (ep *EndPoint[T]) startConfigfileWatch() (StopWatchFunc, error) {
 			path := U.Path
 			watcher, err := filenotify.NewEventWatcher()
 			if err != nil {
-				log.Error("new fswatcher get error", log.Dict{"err": err.Error()})
+				logger.Error("new fswatcher get error", log.Dict{"err": err.Error()})
 				return nil, err
 			}
 			go ep.fsWatchHandler(path, watcher)
@@ -1011,7 +985,7 @@ func (ep *EndPoint[T]) startConfigfileWatch() (StopWatchFunc, error) {
 			path := U.Path
 			watcher := filenotify.NewPollingWatcher()
 			if err != nil {
-				log.Error("new fswatcher get error", log.Dict{"err": err.Error()})
+				logger.Error("new fswatcher get error", log.Dict{"err": err.Error()})
 				return nil, err
 			}
 			go ep.fsWatchHandler(path, watcher)
@@ -1020,7 +994,7 @@ func (ep *EndPoint[T]) startConfigfileWatch() (StopWatchFunc, error) {
 		}
 	default:
 		{
-			log.Error("Filepath schema error", log.Dict{"err": fmt.Sprintf("unsupported schema %s", U.Scheme)})
+			logger.Error("Filepath schema error", log.Dict{"err": fmt.Sprintf("unsupported schema %s", U.Scheme)})
 			return nil, ErrUnsupportedSchema
 		}
 	}

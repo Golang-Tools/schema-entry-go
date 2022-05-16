@@ -1,5 +1,5 @@
-github.com/Golang-Tools/loggerhelper v0.0.4 h1:7x1UvZCnS40t7anaEgky2cvhfiD+MQusnmf232Gcs8A=
-github.com/Golang-Tools/loggerhelper v0.0.4/go.mod h1:r3VG48hq/MaSFSziAF7h4AibqL40suVIAcyNq2XAkAI=
+github.com/Golang-Tools/loggerhelper/v2 v2.0.1 h1:7hLqxmVvxqFrYqopNtVyLvz4bmm09khkwyIgxs99c2g=
+github.com/Golang-Tools/loggerhelper/v2 v2.0.1/go.mod h1:Irbg0Kybp0vzn5CigsXSJZfaGunHF0xlXFBx4yvMtO8=
 github.com/Golang-Tools/optparams v0.0.1 h1:uzRDcACHaydwasl7NB+4HrjgVSwZmdTeUijn0T8vHF4=
 github.com/Golang-Tools/optparams v0.0.1/go.mod h1:08rnaQXFIrtvhNmTx7DiJWnCfS0SJYs5G/Y6QZhmWjk=
 github.com/akamensky/argparse v1.3.1 h1:kP6+OyvR0fuBH6UhbE6yh/nskrDEIQgEA1SUXDPjx4g=
@@ -39,8 +39,8 @@ github.com/xeipuuv/gojsonschema v1.2.0 h1:LhYJRs+L4fBtjZUfuSZIKGeVu0QRy8e5Xi7D17
 github.com/xeipuuv/gojsonschema v1.2.0/go.mod h1:anYRn/JVcOK2ZgGU+IjEV4nwlhoK5sQluxsYJ78Id3Y=
 golang.org/x/sys v0.0.0-20191026070338-33540a1f6037/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
 golang.org/x/sys v0.0.0-20220412211240-33da011f77ad/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
-golang.org/x/sys v0.0.0-20220503163025-988cb79eb6c6 h1:nonptSpoQ4vQjyraW20DXPAglgQfVnM9ZC6MmNLMR60=
-golang.org/x/sys v0.0.0-20220503163025-988cb79eb6c6/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
+golang.org/x/sys v0.0.0-20220513210249-45d2b4557a2a h1:N2T1jUrTQE9Re6TFF5PhvEHXHCguynGhKjWVsIUt5cY=
+golang.org/x/sys v0.0.0-20220513210249-45d2b4557a2a/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
 gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405 h1:yhCVgyC4o1eVCa2tZl7eS0r+SDo693bJlVdllGtEeKM=
 gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=
 gopkg.in/yaml.v2 v2.4.0 h1:D8xgwECY7CYvx+Y2n4sBz93Jn9JRvxdiyyo8CTfuKaY=

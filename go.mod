@@ -3,7 +3,7 @@ module github.com/Golang-Tools/schema-entry-go/v2
 go 1.18
 
 require (
-	github.com/Golang-Tools/loggerhelper v0.0.4
+	github.com/Golang-Tools/loggerhelper/v2 v2.0.1
 	github.com/Golang-Tools/optparams v0.0.1
 	github.com/akamensky/argparse v1.3.1
 	github.com/docker/docker v20.10.16+incompatible
@@ -21,5 +21,5 @@ require (
 	github.com/sirupsen/logrus v1.8.1 // indirect
 	github.com/xeipuuv/gojsonpointer v0.0.0-20180127040702-4e3ac2762d5f // indirect
 	github.com/xeipuuv/gojsonreference v0.0.0-20180127040603-bd5ef7bd5415 // indirect
-	golang.org/x/sys v0.0.0-20220503163025-988cb79eb6c6 // indirect
+	golang.org/x/sys v0.0.0-20220513210249-45d2b4557a2a // indirect
 )

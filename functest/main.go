@@ -5,6 +5,7 @@ import (
 	"os"
 	"time"
 
+	log "github.com/Golang-Tools/loggerhelper/v2"
 	s "github.com/Golang-Tools/schema-entry-go/v2"
 	jsoniter "github.com/json-iterator/go"
 )
@@ -31,6 +32,7 @@ func (c *C) Main() {
 }
 
 func main() {
+	log.Set(log.WithLevel("Warn"))
 	root, _ := s.NewEntryPoint(s.WithName("foo"), s.WithDescription("测试用foo"), s.WithUsage("foo cmd test"))
 	nodeb, _ := s.NewEntryPoint(s.WithName("bar"), s.WithDescription("测试用foo bar"), s.WithUsage("foo bar cmd test"))
 	nodec, _ := s.NewEndPoint(new(C), s.WithName("par"), s.WithNotVerifySchema(),

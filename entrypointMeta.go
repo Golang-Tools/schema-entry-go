@@ -1,7 +1,7 @@
 package schemaentry
 
 import (
-	log "github.com/Golang-Tools/loggerhelper"
+	log "github.com/Golang-Tools/loggerhelper/v2"
 	"github.com/Golang-Tools/optparams"
 )
 
@@ -15,10 +15,10 @@ type EntryPointMeta struct {
 	NotParseEnv            bool     //是否不解析环境变量
 	EnvPrefix              string   //解析环境变量时的前缀
 	NotVerifySchema        bool     //是否不校验配置的schema
-	DebugMode              bool     //当设置为debugmode时才会打印中间过程的log
-	WatchMode              bool     //启用配置监听模式,
-	parent                 EntryPointInterface
-	subcmds                map[string]EntryPointInterface
+	// DebugMode              bool     //当设置为debugmode时才会打印中间过程的log
+	WatchMode bool //启用配置监听模式,
+	parent    EntryPointInterface
+	subcmds   map[string]EntryPointInterface
 }
 
 func (ep *EntryPointMeta) Parent() EntryPointInterface {
@@ -53,7 +53,7 @@ func (ep *EntryPointMeta) SetParent(parent EntryPointInterface) {
 	if ep.parent == nil {
 		ep.parent = parent
 	} else {
-		log.Warn("节点已经设置过父节点", log.Dict{"parent": ep.parent.Meta().Name})
+		logger.Warn("节点已经设置过父节点", log.Dict{"parent": ep.parent.Meta().Name})
 	}
 }
 
@@ -79,7 +79,7 @@ func WithConfig(conf *EntryPointMeta) optparams.Option[EntryPointMeta] {
 		o.NotParseEnv = conf.NotParseEnv
 		o.EnvPrefix = conf.EnvPrefix
 		o.NotVerifySchema = conf.NotVerifySchema
-		o.DebugMode = conf.DebugMode
+		o.WatchMode = conf.WatchMode
 	})
 }
 
@@ -136,13 +136,6 @@ func WithNotParseEnv() optparams.Option[EntryPointMeta] {
 func WithNotVerifySchema() optparams.Option[EntryPointMeta] {
 	return optparams.NewFuncOption(func(o *EntryPointMeta) {
 		o.NotVerifySchema = true
-	})
-}
-
-//WithDebugMode 设置打印中间过程的log
-func WithDebugMode() optparams.Option[EntryPointMeta] {
-	return optparams.NewFuncOption(func(o *EntryPointMeta) {
-		o.DebugMode = true
 	})
 }
 
