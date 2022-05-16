@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: p256_asm_amd64.s in package crypto/elliptic</title>
-<link href="../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -687,10 +687,10 @@
 <span class="codeline" id="line-668"><code>	RET</code></span>
 <span class="codeline" id="line-669"><code>/* ---------------------------------------*/</code></span>
 <span class="codeline" id="line-670"><code>// Constant time point access to base point table.</code></span>
-<span class="codeline" id="line-671"><code>// func p256SelectBase(point, table []uint64, idx int)</code></span>
+<span class="codeline" id="line-671"><code>// func p256SelectBase(point *[12]uint64, table string, idx int)</code></span>
 <span class="codeline" id="line-672"><code>TEXT ·p256SelectBase(SB),NOSPLIT,$0</code></span>
-<span class="codeline" id="line-673"><code>	MOVQ idx+48(FP),AX</code></span>
-<span class="codeline" id="line-674"><code>	MOVQ table+24(FP),DI</code></span>
+<span class="codeline" id="line-673"><code>	MOVQ idx+24(FP),AX</code></span>
+<span class="codeline" id="line-674"><code>	MOVQ table+8(FP),DI</code></span>
 <span class="codeline" id="line-675"><code>	MOVQ point+0(FP),DX</code></span>
 <span class="codeline" id="line-676"><code></code></span>
 <span class="codeline" id="line-677"><code>	PXOR X15, X15	// X15 = 0</code></span>
@@ -2366,7 +2366,7 @@
 <span class="codeline" id="line-2347"><code>/* ---------------------------------------*/</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

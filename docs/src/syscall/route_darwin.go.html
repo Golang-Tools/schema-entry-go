@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: route_darwin.go in package syscall</title>
-<link href="../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../jvs/golds-v0.3.6.js"></script>
+<link href="../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -97,8 +97,8 @@ input[id=i0]:checked ~pre .i0
 <span class="codeline" id="line-33"><code>	Data   []<a href="../../pkg/builtin.html#name-byte" class="ident">byte</a></code></span>
 <span class="codeline" id="line-34"><code>}</code></span>
 <span class="codeline" id="line-35"><code></code></span>
-<span class="codeline" id="line-36"><code><span class="keyword">func</span> (<label for="r7" class="ident">m</label> *<a href="#line-31" class="ident">InterfaceMulticastAddrMessage</a>) <label for="r8" class="ident"><a href="../../imp/syscall.InterfaceMulticastAddrMessage.html#name-sockaddr" class="ident">sockaddr</a></label>() ([]<a href="syscall_unix.go.html#line-227" class="ident">Sockaddr</a>, <a href="../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
-<span class="codeline" id="line-37"><code>	<span class="keyword">var</span> <label for="r9" class="ident">sas</label> [<a href="zerrors_darwin_amd64.go.html#line-792" class="ident">RTAX_MAX</a>]<a href="syscall_unix.go.html#line-227" class="ident">Sockaddr</a></code></span>
+<span class="codeline" id="line-36"><code><span class="keyword">func</span> (<label for="r7" class="ident">m</label> *<a href="#line-31" class="ident">InterfaceMulticastAddrMessage</a>) <label for="r8" class="ident"><a href="../../imp/syscall.InterfaceMulticastAddrMessage.html#name-sockaddr" class="ident">sockaddr</a></label>() ([]<a href="syscall_unix.go.html#line-234" class="ident">Sockaddr</a>, <a href="../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-37"><code>	<span class="keyword">var</span> <label for="r9" class="ident">sas</label> [<a href="zerrors_darwin_amd64.go.html#line-792" class="ident">RTAX_MAX</a>]<a href="syscall_unix.go.html#line-234" class="ident">Sockaddr</a></code></span>
 <span class="codeline" id="line-38"><code>	<label for="r10" class="ident">b</label> := <label for="r7" class="ident">m</label>.<a href="#line-33" class="ident">Data</a>[:]</code></span>
 <span class="codeline" id="line-39"><code>	<span class="keyword">for</span> <label for="r11" class="ident">i</label> := <a href="../../pkg/builtin.html#name-uint" class="ident">uint</a>(<span class="lit-number">0</span>); <label for="r11" class="ident">i</label> &lt; <a href="zerrors_darwin_amd64.go.html#line-792" class="ident">RTAX_MAX</a> &amp;&amp; <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r10" class="ident">b</label>) &gt;= <a href="route_bsd.go.html#line-16" class="ident">minRoutingSockaddrLen</a>; <label for="r11" class="ident">i</label>++ {</code></span>
 <span class="codeline" id="line-40"><code>		<span class="keyword">if</span> <label for="r7" class="ident">m</label>.<a href="#line-32" class="ident">Header</a>.<a href="ztypes_darwin_amd64.go.html#line-377" class="ident">Addrs</a>&amp;(<span class="lit-number">1</span>&lt;&lt;<label for="r11" class="ident">i</label>) == <span class="lit-number">0</span> {</code></span>
@@ -133,7 +133,7 @@ input[id=i0]:checked ~pre .i0
 <span class="codeline" id="line-69"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

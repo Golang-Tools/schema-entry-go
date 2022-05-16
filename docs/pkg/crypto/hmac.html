@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Package: crypto/hmac</title>
-<link href="../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../jvs/golds-v0.3.6.js"></script>
+<link href="../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="package-details"><code><span style="font-size:xx-large;">package <b>hmac</b></span>
@@ -28,13 +28,13 @@
 		Receivers should be careful to use Equal to compare MACs in order to avoid
 		timing side-channels:
 
-			// ValidMAC reports whether messageMAC is a valid HMAC tag for message.
-			func ValidMAC(message, messageMAC, key []byte) bool {
-				mac := hmac.New(sha256.New, key)
-				mac.Write(message)
-				expectedMAC := mac.Sum(nil)
-				return hmac.Equal(messageMAC, expectedMAC)
-			}</span></div>
+		// ValidMAC reports whether messageMAC is a valid HMAC tag for message.
+		func ValidMAC(message, messageMAC, key []byte) bool {
+			mac := hmac.New(sha256.New, key)
+			mac.Write(message)
+			expectedMAC := mac.Sum(nil)
+			return hmac.Equal(messageMAC, expectedMAC)
+		}</span></div>
 <div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 2, neither is exported)</i></span></span>
 
 <div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div></div><div>	<input type='checkbox' class="showhide" id="unexported-typenames-showhide"><i><label for="unexported-typenames-showhide" class="show-inline">/* 2 unexporteds ... */</label><label for="unexported-typenames-showhide" class="hide-inline">/* 2 unexporteds: */</label></i><div class="anchor type-res hidden" id="name-hmac" data-popularity="350">	<input type='checkbox' class="fold" id="hmac-fold-content"><label for="hmac-fold-content"> type <a href="../../src/crypto/hmac/hmac.go.html#line-45">hmac</a> <i>(struct)</i></label><span id='hmac-fold-content-docs' class="fold-docs">
@@ -51,35 +51,39 @@
 			<span class="nodocs"><a href="../../src/crypto/hmac/hmac.go.html#line-46">opad</a> <i>[]<a href="../builtin.html#name-byte">byte</a></i></span></i></span><span class="hidden"><i>
 			<span class="nodocs"><a href="../../src/crypto/hmac/hmac.go.html#line-47">outer</a> <i><a href="../hash.html">hash</a>.<a href="../hash.html#name-Hash">Hash</a></i></span></i></span></span>
 		<input type='checkbox' class="fold" id="hmac-fold-methods"><label for="hmac-fold-methods">Methods (<i>total 5, all are exported</i>)</label><span id='hmac-fold-methods-items' class="fold-items"><span>
-			<span class="nodocs">(*T) <a href="../../src/crypto/hmac/hmac.go.html#line-76">BlockSize</a>() <a href="../builtin.html#name-int">int</a></span></span><span>
-			<span class="nodocs">(*T) <a href="../../src/crypto/hmac/hmac.go.html#line-78">Reset</a>()</span></span><span>
-			<span class="nodocs">(*T) <a href="../../src/crypto/hmac/hmac.go.html#line-75">Size</a>() <a href="../builtin.html#name-int">int</a></span></span><span>
-			<span class="nodocs">(*T) <a href="../../src/crypto/hmac/hmac.go.html#line-55">Sum</a>(in []<a href="../builtin.html#name-byte">byte</a>) []<a href="../builtin.html#name-byte">byte</a></span></span><span>
-			<span class="nodocs">(*T) <a href="../../src/crypto/hmac/hmac.go.html#line-71">Write</a>(p []<a href="../builtin.html#name-byte">byte</a>) (n <a href="../builtin.html#name-int">int</a>, err <a href="../builtin.html#name-error">error</a>)</span></span></span>
+			<span class="nodocs">(*hmac) <a href="../../src/crypto/hmac/hmac.go.html#line-76">BlockSize</a>() <a href="../builtin.html#name-int">int</a></span></span><span>
+			<span class="nodocs">(*hmac) <a href="../../src/crypto/hmac/hmac.go.html#line-78">Reset</a>()</span></span><span>
+			<span class="nodocs">(*hmac) <a href="../../src/crypto/hmac/hmac.go.html#line-75">Size</a>() <a href="../builtin.html#name-int">int</a></span></span><span>
+			<span class="nodocs">(*hmac) <a href="../../src/crypto/hmac/hmac.go.html#line-55">Sum</a>(in []<a href="../builtin.html#name-byte">byte</a>) []<a href="../builtin.html#name-byte">byte</a></span></span><span>
+			<span class="nodocs">(*hmac) <a href="../../src/crypto/hmac/hmac.go.html#line-71">Write</a>(p []<a href="../builtin.html#name-byte">byte</a>) (n <a href="../builtin.html#name-int">int</a>, err <a href="../builtin.html#name-error">error</a>)</span></span></span>
 		<input type='checkbox' class="fold" id="hmac-fold-impls"><label for="hmac-fold-impls">Implements (<i>at least 2, both are exported</i>)</label><span id='hmac-fold-impls-items' class="fold-items"><span>
-			*T : hash.<a href="../hash.html#name-Hash">Hash</a></span><span>
-			*T : io.<a href="../io.html#name-Writer">Writer</a></span></span>
+			*hmac : hash.<a href="../hash.html#name-Hash">Hash</a></span><span>
+			*hmac : io.<a href="../io.html#name-Writer">Writer</a></span></span>
 
-</span></div><div class="anchor type-res hidden" id="name-marshalable" data-popularity="1250">	<input type='checkbox' class="fold" id="marshalable-fold-content"><label for="marshalable-fold-content"> type <a href="../../src/crypto/hmac/hmac.go.html#line-40">marshalable</a> <b><i>(interface)</i></b></label><span id='marshalable-fold-content-docs' class="fold-docs">
+</span></div><div class="anchor type-res hidden" id="name-marshalable" data-popularity="1850">	<input type='checkbox' class="fold" id="marshalable-fold-content"><label for="marshalable-fold-content"> type <a href="../../src/crypto/hmac/hmac.go.html#line-40">marshalable</a> <b><i>(interface)</i></b></label><span id='marshalable-fold-content-docs' class="fold-docs">
 		Marshalable is the combination of encoding.BinaryMarshaler and
 		encoding.BinaryUnmarshaler. Their method definitions are repeated here to
 		avoid a dependency on the encoding package.
 
 		<input type='checkbox' class="fold" id="marshalable-fold-methods"><label for="marshalable-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='marshalable-fold-methods-items' class="fold-items"><span>
-			<span class="nodocs">( T) <a href="../../src/crypto/hmac/hmac.go.html#line-41">MarshalBinary</a>() ([]<a href="../builtin.html#name-byte">byte</a>, <a href="../builtin.html#name-error">error</a>)</span></span><span>
-			<span class="nodocs">( T) <a href="../../src/crypto/hmac/hmac.go.html#line-42">UnmarshalBinary</a>([]<a href="../builtin.html#name-byte">byte</a>) <a href="../builtin.html#name-error">error</a></span></span></span>
-		<input type='checkbox' class="fold" id="marshalable-fold-impledby"><label for="marshalable-fold-impledby">Implemented By (<i>at least 7, in which 2 are exported</i>)</label><span id='marshalable-fold-impledby-items' class="fold-items"><span>
+			<span class="nodocs">( marshalable) <a href="../../src/crypto/hmac/hmac.go.html#line-41">MarshalBinary</a>() ([]<a href="../builtin.html#name-byte">byte</a>, <a href="../builtin.html#name-error">error</a>)</span></span><span>
+			<span class="nodocs">( marshalable) <a href="../../src/crypto/hmac/hmac.go.html#line-42">UnmarshalBinary</a>([]<a href="../builtin.html#name-byte">byte</a>) <a href="../builtin.html#name-error">error</a></span></span></span>
+		<input type='checkbox' class="fold" id="marshalable-fold-impledby"><label for="marshalable-fold-impledby">Implemented By (<i>at least 11, in which 5 are exported</i>)</label><span id='marshalable-fold-impledby-items' class="fold-items"><span>
+			*net/netip.<a href="../net/netip.html#name-Addr">Addr</a></span><span>
+			*net/netip.<a href="../net/netip.html#name-AddrPort">AddrPort</a></span><span>
+			*net/netip.<a href="../net/netip.html#name-Prefix">Prefix</a></span><span>
 			*net/url.<a href="../net/url.html#name-URL">URL</a></span><span>
 			*time.<a href="../time.html#name-Time">Time</a></span>
-			<input type='checkbox' checked class="showhide" id="marshalable-showhide-impedBys"><i><label for="marshalable-showhide-impedBys" class="show-inline">/* 5+ unexporteds ... */</label><label for="marshalable-showhide-impedBys" class="hide-inline">/* 5+ unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' checked class="showhide" id="marshalable-showhide-impedBys"><i><label for="marshalable-showhide-impedBys" class="show-inline">/* 6+ unexporteds ... */</label><label for="marshalable-showhide-impedBys" class="hide-inline">/* 6+ unexporteds: */</label></i><span class="hidden"><i>
 			*crypto/md5.<a href="md5.html#name-digest">digest</a></i></span><span class="hidden"><i>
 			*crypto/sha1.<a href="sha1.html#name-digest">digest</a></i></span><span class="hidden"><i>
 			*crypto/sha256.<a href="sha256.html#name-digest">digest</a></i></span><span class="hidden"><i>
 			*crypto/sha512.<a href="sha512.html#name-digest">digest</a></i></span><span class="hidden"><i>
-			*hash/crc32.<a href="../hash/crc32.html#name-digest">digest</a></i></span></span>
+			*hash/crc32.<a href="../hash/crc32.html#name-digest">digest</a></i></span><span class="hidden"><i>
+			*net.<a href="../net.html#name-addrPortUDPAddr">addrPortUDPAddr</a></i></span></span>
 		<input type='checkbox' class="fold" id="marshalable-fold-impls"><label for="marshalable-fold-impls">Implements (<i>at least 2, both are exported</i>)</label><span id='marshalable-fold-impls-items' class="fold-items"><span>
-			 T : encoding.<a href="../encoding.html#name-BinaryMarshaler">BinaryMarshaler</a></span><span>
-			 T : encoding.<a href="../encoding.html#name-BinaryUnmarshaler">BinaryUnmarshaler</a></span></span>
+			 marshalable : encoding.<a href="../encoding.html#name-BinaryMarshaler">BinaryMarshaler</a></span><span>
+			 marshalable : encoding.<a href="../encoding.html#name-BinaryUnmarshaler">BinaryUnmarshaler</a></span></span>
 
 </span></div></div>
 <div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 2, both are exported)</i></span></span>
@@ -97,7 +101,7 @@
 
 </span></div></div></code></pre><pre id="footer">
 <table><tr><td><img src="../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

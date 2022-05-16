@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: config.go in package github.com/json-iterator/go</title>
-<link href="../../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -404,15 +404,15 @@ input[id=i6]:checked ~pre .i6
 <span class="codeline" id="line-88"><code>}</code></span>
 <span class="codeline" id="line-89"><code></code></span>
 <span class="codeline" id="line-90"><code><span class="keyword">func</span> (<label for="r2" class="ident">cfg</label> *<a href="#line-68" class="ident">frozenConfig</a>) <label for="r3" class="ident">addDecoderToCache</label>(<label for="r4" class="ident">cacheKey</label> <a href="../../../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a>, <label for="r5" class="ident">decoder</label> <a href="reflect.go.html#line-21" class="ident">ValDecoder</a>) {</code></span>
-<span class="codeline" id="line-91"><code>	<label for="r2" class="ident">cfg</label>.<a href="#line-75" class="ident">decoderCache</a>.<a href="../../../sync/map.go.html#line-136" class="ident">Store</a>(<label for="r4" class="ident">cacheKey</label>, <label for="r5" class="ident">decoder</label>)</code></span>
+<span class="codeline" id="line-91"><code>	<label for="r2" class="ident">cfg</label>.<a href="#line-75" class="ident">decoderCache</a>.<a href="../../../sync/map.go.html#line-137" class="ident">Store</a>(<label for="r4" class="ident">cacheKey</label>, <label for="r5" class="ident">decoder</label>)</code></span>
 <span class="codeline" id="line-92"><code>}</code></span>
 <span class="codeline" id="line-93"><code></code></span>
 <span class="codeline" id="line-94"><code><span class="keyword">func</span> (<label for="r6" class="ident">cfg</label> *<a href="#line-68" class="ident">frozenConfig</a>) <label for="r7" class="ident">addEncoderToCache</label>(<label for="r8" class="ident">cacheKey</label> <a href="../../../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a>, <label for="r9" class="ident">encoder</label> <a href="reflect.go.html#line-28" class="ident">ValEncoder</a>) {</code></span>
-<span class="codeline" id="line-95"><code>	<label for="r6" class="ident">cfg</label>.<a href="#line-76" class="ident">encoderCache</a>.<a href="../../../sync/map.go.html#line-136" class="ident">Store</a>(<label for="r8" class="ident">cacheKey</label>, <label for="r9" class="ident">encoder</label>)</code></span>
+<span class="codeline" id="line-95"><code>	<label for="r6" class="ident">cfg</label>.<a href="#line-76" class="ident">encoderCache</a>.<a href="../../../sync/map.go.html#line-137" class="ident">Store</a>(<label for="r8" class="ident">cacheKey</label>, <label for="r9" class="ident">encoder</label>)</code></span>
 <span class="codeline" id="line-96"><code>}</code></span>
 <span class="codeline" id="line-97"><code></code></span>
 <span class="codeline" id="line-98"><code><span class="keyword">func</span> (<label for="r10" class="ident">cfg</label> *<a href="#line-68" class="ident">frozenConfig</a>) <label for="r11" class="ident">getDecoderFromCache</label>(<label for="r12" class="ident">cacheKey</label> <a href="../../../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a>) <a href="reflect.go.html#line-21" class="ident">ValDecoder</a> {</code></span>
-<span class="codeline" id="line-99"><code>	<label for="r13" class="ident">decoder</label>, <label for="r14" class="ident">found</label> := <label for="r10" class="ident">cfg</label>.<a href="#line-75" class="ident">decoderCache</a>.<a href="../../../sync/map.go.html#line-102" class="ident">Load</a>(<label for="r12" class="ident">cacheKey</label>)</code></span>
+<span class="codeline" id="line-99"><code>	<label for="r13" class="ident">decoder</label>, <label for="r14" class="ident">found</label> := <label for="r10" class="ident">cfg</label>.<a href="#line-75" class="ident">decoderCache</a>.<a href="../../../sync/map.go.html#line-103" class="ident">Load</a>(<label for="r12" class="ident">cacheKey</label>)</code></span>
 <span class="codeline" id="line-100"><code>	<span class="keyword">if</span> <label for="r14" class="ident">found</label> {</code></span>
 <span class="codeline" id="line-101"><code>		<span class="keyword">return</span> <label for="r13" class="ident">decoder</label>.(<a href="reflect.go.html#line-21" class="ident">ValDecoder</a>)</code></span>
 <span class="codeline" id="line-102"><code>	}</code></span>
@@ -420,7 +420,7 @@ input[id=i6]:checked ~pre .i6
 <span class="codeline" id="line-104"><code>}</code></span>
 <span class="codeline" id="line-105"><code></code></span>
 <span class="codeline" id="line-106"><code><span class="keyword">func</span> (<label for="r15" class="ident">cfg</label> *<a href="#line-68" class="ident">frozenConfig</a>) <label for="r16" class="ident">getEncoderFromCache</label>(<label for="r17" class="ident">cacheKey</label> <a href="../../../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a>) <a href="reflect.go.html#line-28" class="ident">ValEncoder</a> {</code></span>
-<span class="codeline" id="line-107"><code>	<label for="r18" class="ident">encoder</label>, <label for="r19" class="ident">found</label> := <label for="r15" class="ident">cfg</label>.<a href="#line-76" class="ident">encoderCache</a>.<a href="../../../sync/map.go.html#line-102" class="ident">Load</a>(<label for="r17" class="ident">cacheKey</label>)</code></span>
+<span class="codeline" id="line-107"><code>	<label for="r18" class="ident">encoder</label>, <label for="r19" class="ident">found</label> := <label for="r15" class="ident">cfg</label>.<a href="#line-76" class="ident">encoderCache</a>.<a href="../../../sync/map.go.html#line-103" class="ident">Load</a>(<label for="r17" class="ident">cacheKey</label>)</code></span>
 <span class="codeline" id="line-108"><code>	<span class="keyword">if</span> <label for="r19" class="ident">found</label> {</code></span>
 <span class="codeline" id="line-109"><code>		<span class="keyword">return</span> <label for="r18" class="ident">encoder</label>.(<a href="reflect.go.html#line-28" class="ident">ValEncoder</a>)</code></span>
 <span class="codeline" id="line-110"><code>	}</code></span>
@@ -430,7 +430,7 @@ input[id=i6]:checked ~pre .i6
 <span class="codeline" id="line-114"><code><span class="keyword">var</span> <a href="../../../../pkg/github.com/json-iterator/go.html#name-cfgCache" class="ident">cfgCache</a> = <a href="../../../../pkg/github.com/modern-go/concurrent.html" class="ident i5">concurrent</a>.<a href="../../modern-go/concurrent/go_above_19.go.html#line-11" class="ident">NewMap</a>()</code></span>
 <span class="codeline" id="line-115"><code></code></span>
 <span class="codeline" id="line-116"><code><span class="keyword">func</span> <label for="r20" class="ident"><a href="../../../../pkg/github.com/json-iterator/go.html#name-getFrozenConfigFromCache" class="ident">getFrozenConfigFromCache</a></label>(<label for="r21" class="ident">cfg</label> <a href="#line-16" class="ident">Config</a>) *<a href="#line-68" class="ident">frozenConfig</a> {</code></span>
-<span class="codeline" id="line-117"><code>	<label for="r22" class="ident">obj</label>, <label for="r23" class="ident">found</label> := <a href="#line-114" class="ident">cfgCache</a>.<a href="../../../sync/map.go.html#line-102" class="ident">Load</a>(<label for="r21" class="ident">cfg</label>)</code></span>
+<span class="codeline" id="line-117"><code>	<label for="r22" class="ident">obj</label>, <label for="r23" class="ident">found</label> := <a href="#line-114" class="ident">cfgCache</a>.<a href="../../../sync/map.go.html#line-103" class="ident">Load</a>(<label for="r21" class="ident">cfg</label>)</code></span>
 <span class="codeline" id="line-118"><code>	<span class="keyword">if</span> <label for="r23" class="ident">found</label> {</code></span>
 <span class="codeline" id="line-119"><code>		<span class="keyword">return</span> <label for="r22" class="ident">obj</label>.(*<a href="#line-68" class="ident">frozenConfig</a>)</code></span>
 <span class="codeline" id="line-120"><code>	}</code></span>
@@ -438,7 +438,7 @@ input[id=i6]:checked ~pre .i6
 <span class="codeline" id="line-122"><code>}</code></span>
 <span class="codeline" id="line-123"><code></code></span>
 <span class="codeline" id="line-124"><code><span class="keyword">func</span> <label for="r24" class="ident"><a href="../../../../pkg/github.com/json-iterator/go.html#name-addFrozenConfigToCache" class="ident">addFrozenConfigToCache</a></label>(<label for="r25" class="ident">cfg</label> <a href="#line-16" class="ident">Config</a>, <label for="r26" class="ident">frozenConfig</label> *<a href="#line-68" class="ident">frozenConfig</a>) {</code></span>
-<span class="codeline" id="line-125"><code>	<a href="#line-114" class="ident">cfgCache</a>.<a href="../../../sync/map.go.html#line-136" class="ident">Store</a>(<label for="r25" class="ident">cfg</label>, <label for="r26" class="ident">frozenConfig</label>)</code></span>
+<span class="codeline" id="line-125"><code>	<a href="#line-114" class="ident">cfgCache</a>.<a href="../../../sync/map.go.html#line-137" class="ident">Store</a>(<label for="r25" class="ident">cfg</label>, <label for="r26" class="ident">frozenConfig</label>)</code></span>
 <span class="codeline" id="line-126"><code>}</code></span>
 <span class="codeline" id="line-127"><code></code></span>
 <span class="codeline" id="line-128"><code><span class="comment">// Froze forge API from config</span></code></span>
@@ -516,7 +516,7 @@ input[id=i6]:checked ~pre .i6
 <span class="codeline" id="line-200"><code><span class="keyword">func</span> (<label for="r47" class="ident">cfg</label> *<a href="#line-68" class="ident">frozenConfig</a>) <label for="r48" class="ident">useNumber</label>(<label for="r49" class="ident">extension</label> <a href="reflect_extension.go.html#line-132" class="ident">DecoderExtension</a>) {</code></span>
 <span class="codeline" id="line-201"><code>	<label for="r49" class="ident">extension</label>[<a href="../../../../pkg/github.com/modern-go/reflect2.html" class="ident i6">reflect2</a>.<a href="../../modern-go/reflect2/reflect2.go.html#line-215" class="ident">TypeOfPtr</a>((*<span class="keyword">interface</span>{})(<a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)).<a href="../../modern-go/reflect2/reflect2.go.html#line-113" class="ident">Elem</a>()] = &amp;<a href="reflect_extension.go.html#line-168" class="ident">funcDecoder</a>{<span class="keyword">func</span>(<label for="r50" class="ident">ptr</label> <a href="../../../../pkg/unsafe.html" class="ident i4">unsafe</a>.<a href="../../../../pkg/unsafe.html#name-Pointer" class="ident">Pointer</a>, <label for="r51" class="ident">iter</label> *<a href="iter.go.html#line-71" class="ident">Iterator</a>) {</code></span>
 <span class="codeline" id="line-202"><code>		<label for="r52" class="ident">exitingValue</label> := *((*<span class="keyword">interface</span>{})(<label for="r50" class="ident">ptr</label>))</code></span>
-<span class="codeline" id="line-203"><code>		<span class="keyword">if</span> <label for="r52" class="ident">exitingValue</label> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> &amp;&amp; <a href="../../../../pkg/reflect.html" class="ident i2">reflect</a>.<a href="../../../reflect/type.go.html#line-1368" class="ident">TypeOf</a>(<label for="r52" class="ident">exitingValue</label>).<a href="../../../reflect/type.go.html#line-100" class="ident">Kind</a>() == <a href="../../../../pkg/reflect.html" class="ident i2">reflect</a>.<a href="../../../reflect/type.go.html#line-257" class="ident">Ptr</a> {</code></span>
+<span class="codeline" id="line-203"><code>		<span class="keyword">if</span> <label for="r52" class="ident">exitingValue</label> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> &amp;&amp; <a href="../../../../pkg/reflect.html" class="ident i2">reflect</a>.<a href="../../../reflect/type.go.html#line-1424" class="ident">TypeOf</a>(<label for="r52" class="ident">exitingValue</label>).<a href="../../../reflect/type.go.html#line-101" class="ident">Kind</a>() == <a href="../../../../pkg/reflect.html" class="ident i2">reflect</a>.<a href="../../../reflect/type.go.html#line-272" class="ident">Ptr</a> {</code></span>
 <span class="codeline" id="line-204"><code>			<label for="r51" class="ident">iter</label>.<a href="reflect.go.html#line-62" class="ident">ReadVal</a>(<label for="r52" class="ident">exitingValue</label>)</code></span>
 <span class="codeline" id="line-205"><code>			<span class="keyword">return</span></code></span>
 <span class="codeline" id="line-206"><code>		}</code></span>
@@ -691,7 +691,7 @@ input[id=i6]:checked ~pre .i6
 <span class="codeline" id="line-375"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

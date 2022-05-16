@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: comment_extractor.go in package github.com/invopop/jsonschema</title>
+<link href="../../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.4.9.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	comment_extractor.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../pkg/github.com/invopop/jsonschema.html">github.com/invopop/jsonschema</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20],
+input[id=r21]:checked ~pre label[for=r21],
+input[id=r22]:checked ~pre label[for=r22],
+input[id=r23]:checked ~pre label[for=r23],
+input[id=r24]:checked ~pre label[for=r24],
+input[id=r25]:checked ~pre label[for=r25],
+input[id=r26]:checked ~pre label[for=r26],
+input[id=r27]:checked ~pre label[for=r27],
+input[id=r28]:checked ~pre label[for=r28],
+input[id=r29]:checked ~pre label[for=r29]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1,
+input[id=i2]:checked ~pre .i2,
+input[id=i3]:checked ~pre .i3,
+input[id=i4]:checked ~pre .i4,
+input[id=i5]:checked ~pre .i5,
+input[id=i6]:checked ~pre .i6,
+input[id=i7]:checked ~pre .i7,
+input[id=i8]:checked ~pre .i8
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="r21" type="radio" name="g"/>
+<input id="r22" type="radio" name="g"/>
+<input id="r23" type="radio" name="g"/>
+<input id="r24" type="radio" name="g"/>
+<input id="r25" type="radio" name="g"/>
+<input id="r26" type="radio" name="g"/>
+<input id="r27" type="radio" name="g"/>
+<input id="r28" type="radio" name="g"/>
+<input id="r29" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+<input id="i2" type="radio" name="i"/>
+<input id="i3" type="radio" name="i"/>
+<input id="i4" type="radio" name="i"/>
+<input id="i5" type="radio" name="i"/>
+<input id="i6" type="radio" name="i"/>
+<input id="i7" type="radio" name="i"/>
+<input id="i8" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> jsonschema</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-4"><code>	<label for="i0"><span class="lit-string i0">"fmt"</span></label></code></span>
+<span class="codeline" id="line-5"><code>	<label for="i1"><span class="lit-string i1">"io/fs"</span></label></code></span>
+<span class="codeline" id="line-6"><code>	<a href="../../../../pkg/path.html" class="ident i2">gopath</a> <label for="i2"><span class="lit-string i2">"path"</span></label></code></span>
+<span class="codeline" id="line-7"><code>	<label for="i3"><span class="lit-string i3">"path/filepath"</span></label></code></span>
+<span class="codeline" id="line-8"><code>	<label for="i4"><span class="lit-string i4">"strings"</span></label></code></span>
+<span class="codeline" id="line-9"><code></code></span>
+<span class="codeline" id="line-10"><code>	<label for="i5"><span class="lit-string i5">"go/ast"</span></label></code></span>
+<span class="codeline" id="line-11"><code>	<label for="i6"><span class="lit-string i6">"go/doc"</span></label></code></span>
+<span class="codeline" id="line-12"><code>	<label for="i7"><span class="lit-string i7">"go/parser"</span></label></code></span>
+<span class="codeline" id="line-13"><code>	<label for="i8"><span class="lit-string i8">"go/token"</span></label></code></span>
+<span class="codeline" id="line-14"><code>)</code></span>
+<span class="codeline" id="line-15"><code></code></span>
+<span class="codeline" id="line-16"><code><span class="comment">// ExtractGoComments will read all the go files contained in the provided path,</span></code></span>
+<span class="codeline" id="line-17"><code><span class="comment">// including sub-directories, in order to generate a dictionary of comments</span></code></span>
+<span class="codeline" id="line-18"><code><span class="comment">// associated with Types and Fields. The results will be added to the `commentsMap`</span></code></span>
+<span class="codeline" id="line-19"><code><span class="comment">// provided in the parameters and expected to be used for Schema "description" fields.</span></code></span>
+<span class="codeline" id="line-20"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-21"><code><span class="comment">// The `go/parser` library is used to extract all the comments and unfortunately doesn't</span></code></span>
+<span class="codeline" id="line-22"><code><span class="comment">// have a built-in way to determine the fully qualified name of a package. The `base` paremeter,</span></code></span>
+<span class="codeline" id="line-23"><code><span class="comment">// the URL used to import that package, is thus required to be able to match reflected types.</span></code></span>
+<span class="codeline" id="line-24"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-25"><code><span class="comment">// When parsing type comments, we use the `go/doc`'s Synopsis method to extract the first phrase</span></code></span>
+<span class="codeline" id="line-26"><code><span class="comment">// only. Field comments, which tend to be much shorter, will include everything.</span></code></span>
+<span class="codeline" id="line-27"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../pkg/github.com/invopop/jsonschema.html#name-ExtractGoComments" class="ident">ExtractGoComments</a></label>(<label for="r1" class="ident">base</label>, <label for="r2" class="ident">path</label> <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>, <label for="r3" class="ident">commentMap</label> <span class="keyword">map</span>[<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>]<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="../../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
+<span class="codeline" id="line-28"><code>	<label for="r4" class="ident">fset</label> := <a href="../../../../pkg/go/token.html" class="ident i8">token</a>.<a href="../../../go/token/position.go.html#line-394" class="ident">NewFileSet</a>()</code></span>
+<span class="codeline" id="line-29"><code>	<label for="r5" class="ident">dict</label> := <a href="../../../../pkg/builtin.html#name-make" class="ident">make</a>(<span class="keyword">map</span>[<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>][]*<a href="../../../../pkg/go/ast.html" class="ident i5">ast</a>.<a href="../../../go/ast/ast.go.html#line-1072" class="ident">Package</a>)</code></span>
+<span class="codeline" id="line-30"><code>	<label for="r6" class="ident">err</label> := <a href="../../../../pkg/path/filepath.html" class="ident i3">filepath</a>.<a href="../../../path/filepath/path.go.html#line-500" class="ident">Walk</a>(<label for="r2" class="ident">path</label>, <span class="keyword">func</span>(<label for="r7" class="ident">path</label> <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>, <label for="r8" class="ident">info</label> <a href="../../../../pkg/io/fs.html" class="ident i1">fs</a>.<a href="../../../io/fs/fs.go.html#line-150" class="ident">FileInfo</a>, <label for="r9" class="ident">err</label> <a href="../../../../pkg/builtin.html#name-error" class="ident">error</a>) <a href="../../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
+<span class="codeline" id="line-31"><code>		<span class="keyword">if</span> <label for="r9" class="ident">err</label> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-32"><code>			<span class="keyword">return</span> <label for="r9" class="ident">err</label></code></span>
+<span class="codeline" id="line-33"><code>		}</code></span>
+<span class="codeline" id="line-34"><code>		<span class="keyword">if</span> <label for="r8" class="ident">info</label>.<a href="../../../io/fs/fs.go.html#line-155" class="ident">IsDir</a>() {</code></span>
+<span class="codeline" id="line-35"><code>			<label for="r10" class="ident">d</label>, <label for="r11" class="ident">err</label> := <a href="../../../../pkg/go/parser.html" class="ident i7">parser</a>.<a href="../../../go/parser/interface.go.html#line-140" class="ident">ParseDir</a>(<label for="r4" class="ident">fset</label>, <label for="r7" class="ident">path</label>, <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../../pkg/go/parser.html" class="ident i7">parser</a>.<a href="../../../go/parser/interface.go.html#line-54" class="ident">ParseComments</a>)</code></span>
+<span class="codeline" id="line-36"><code>			<span class="keyword">if</span> <label for="r11" class="ident">err</label> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-37"><code>				<span class="keyword">return</span> <label for="r11" class="ident">err</label></code></span>
+<span class="codeline" id="line-38"><code>			}</code></span>
+<span class="codeline" id="line-39"><code>			<span class="keyword">for</span> <label for="r12" class="ident">_</label>, <label for="r13" class="ident">v</label> := <span class="keyword">range</span> <label for="r10" class="ident">d</label> {</code></span>
+<span class="codeline" id="line-40"><code>				<span class="comment">// paths may have multiple packages, like for tests</span></code></span>
+<span class="codeline" id="line-41"><code>				<label for="r14" class="ident">k</label> := <a href="../../../../pkg/path.html" class="ident i2">gopath</a>.<a href="../../../path/path.go.html#line-162" class="ident">Join</a>(<label for="r1" class="ident">base</label>, <label for="r7" class="ident">path</label>)</code></span>
+<span class="codeline" id="line-42"><code>				<label for="r5" class="ident">dict</label>[<label for="r14" class="ident">k</label>] = <a href="../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r5" class="ident">dict</label>[<label for="r14" class="ident">k</label>], <label for="r13" class="ident">v</label>)</code></span>
+<span class="codeline" id="line-43"><code>			}</code></span>
+<span class="codeline" id="line-44"><code>		}</code></span>
+<span class="codeline" id="line-45"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-46"><code>	})</code></span>
+<span class="codeline" id="line-47"><code>	<span class="keyword">if</span> <label for="r6" class="ident">err</label> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-48"><code>		<span class="keyword">return</span> <label for="r6" class="ident">err</label></code></span>
+<span class="codeline" id="line-49"><code>	}</code></span>
+<span class="codeline" id="line-50"><code></code></span>
+<span class="codeline" id="line-51"><code>	<span class="keyword">for</span> <label for="r15" class="ident">pkg</label>, <label for="r16" class="ident">p</label> := <span class="keyword">range</span> <label for="r5" class="ident">dict</label> {</code></span>
+<span class="codeline" id="line-52"><code>		<span class="keyword">for</span> <label for="r17" class="ident">_</label>, <label for="r18" class="ident">f</label> := <span class="keyword">range</span> <label for="r16" class="ident">p</label> {</code></span>
+<span class="codeline" id="line-53"><code>			<label for="r19" class="ident">gtxt</label> := <span class="lit-string">""</span></code></span>
+<span class="codeline" id="line-54"><code>			<label for="r20" class="ident">typ</label> := <span class="lit-string">""</span></code></span>
+<span class="codeline" id="line-55"><code>			<a href="../../../../pkg/go/ast.html" class="ident i5">ast</a>.<a href="../../../go/ast/walk.go.html#line-398" class="ident">Inspect</a>(<label for="r18" class="ident">f</label>, <span class="keyword">func</span>(<label for="r21" class="ident">n</label> <a href="../../../../pkg/go/ast.html" class="ident i5">ast</a>.<a href="../../../go/ast/ast.go.html#line-33" class="ident">Node</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-56"><code>				<span class="keyword">switch</span> x := <label for="r21" class="ident">n</label>.(<span class="keyword">type</span>) {</code></span>
+<span class="codeline" id="line-57"><code>				<span class="keyword">case</span> *<a href="../../../../pkg/go/ast.html" class="ident i5">ast</a>.<a href="../../../go/ast/ast.go.html#line-914" class="ident">TypeSpec</a>:</code></span>
+<span class="codeline" id="line-58"><code>					<label for="r20" class="ident">typ</label> = <label for="r22" class="ident">x</label>.<a href="../../../go/ast/ast.go.html#line-916" class="ident">Name</a>.<a href="../../../go/ast/ast.go.html#line-594" class="ident">String</a>()</code></span>
+<span class="codeline" id="line-59"><code>					<span class="keyword">if</span> !<a href="../../../../pkg/go/ast.html" class="ident i5">ast</a>.<a href="../../../go/ast/ast.go.html#line-588" class="ident">IsExported</a>(<label for="r20" class="ident">typ</label>) {</code></span>
+<span class="codeline" id="line-60"><code>						<label for="r20" class="ident">typ</label> = <span class="lit-string">""</span></code></span>
+<span class="codeline" id="line-61"><code>					} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-62"><code>						<label for="r23" class="ident">txt</label> := <label for="r22" class="ident">x</label>.<a href="../../../go/ast/ast.go.html#line-915" class="ident">Doc</a>.<a href="../../../go/ast/ast.go.html#line-99" class="ident">Text</a>()</code></span>
+<span class="codeline" id="line-63"><code>						<span class="keyword">if</span> <label for="r23" class="ident">txt</label> == <span class="lit-string">""</span> &amp;&amp; <label for="r19" class="ident">gtxt</label> != <span class="lit-string">""</span> {</code></span>
+<span class="codeline" id="line-64"><code>							<label for="r23" class="ident">txt</label> = <label for="r19" class="ident">gtxt</label></code></span>
+<span class="codeline" id="line-65"><code>							<label for="r19" class="ident">gtxt</label> = <span class="lit-string">""</span></code></span>
+<span class="codeline" id="line-66"><code>						}</code></span>
+<span class="codeline" id="line-67"><code>						<label for="r23" class="ident">txt</label> = <a href="../../../../pkg/go/doc.html" class="ident i6">doc</a>.<a href="../../../go/doc/synopsis.go.html#line-68" class="ident">Synopsis</a>(<label for="r23" class="ident">txt</label>)</code></span>
+<span class="codeline" id="line-68"><code>						<label for="r3" class="ident">commentMap</label>[<a href="../../../../pkg/fmt.html" class="ident i0">fmt</a>.<a href="../../../fmt/print.go.html#line-217" class="ident">Sprintf</a>(<span class="lit-string">"%s.%s"</span>, <label for="r15" class="ident">pkg</label>, <label for="r20" class="ident">typ</label>)] = <a href="../../../../pkg/strings.html" class="ident i4">strings</a>.<a href="../../../strings/strings.go.html#line-940" class="ident">TrimSpace</a>(<label for="r23" class="ident">txt</label>)</code></span>
+<span class="codeline" id="line-69"><code>					}</code></span>
+<span class="codeline" id="line-70"><code>				<span class="keyword">case</span> *<a href="../../../../pkg/go/ast.html" class="ident i5">ast</a>.<a href="../../../go/ast/ast.go.html#line-196" class="ident">Field</a>:</code></span>
+<span class="codeline" id="line-71"><code>					<label for="r24" class="ident">txt</label> := <label for="r25" class="ident">x</label>.<a href="../../../go/ast/ast.go.html#line-197" class="ident">Doc</a>.<a href="../../../go/ast/ast.go.html#line-99" class="ident">Text</a>()</code></span>
+<span class="codeline" id="line-72"><code>					<span class="keyword">if</span> <label for="r20" class="ident">typ</label> != <span class="lit-string">""</span> &amp;&amp; <label for="r24" class="ident">txt</label> != <span class="lit-string">""</span> {</code></span>
+<span class="codeline" id="line-73"><code>						<span class="keyword">for</span> <label for="r26" class="ident">_</label>, <label for="r27" class="ident">n</label> := <span class="keyword">range</span> <label for="r25" class="ident">x</label>.<a href="../../../go/ast/ast.go.html#line-198" class="ident">Names</a> {</code></span>
+<span class="codeline" id="line-74"><code>							<span class="keyword">if</span> <a href="../../../../pkg/go/ast.html" class="ident i5">ast</a>.<a href="../../../go/ast/ast.go.html#line-588" class="ident">IsExported</a>(<label for="r27" class="ident">n</label>.<a href="../../../go/ast/ast.go.html#line-594" class="ident">String</a>()) {</code></span>
+<span class="codeline" id="line-75"><code>								<label for="r28" class="ident">k</label> := <a href="../../../../pkg/fmt.html" class="ident i0">fmt</a>.<a href="../../../fmt/print.go.html#line-217" class="ident">Sprintf</a>(<span class="lit-string">"%s.%s.%s"</span>, <label for="r15" class="ident">pkg</label>, <label for="r20" class="ident">typ</label>, <label for="r27" class="ident">n</label>)</code></span>
+<span class="codeline" id="line-76"><code>								<label for="r3" class="ident">commentMap</label>[<label for="r28" class="ident">k</label>] = <a href="../../../../pkg/strings.html" class="ident i4">strings</a>.<a href="../../../strings/strings.go.html#line-940" class="ident">TrimSpace</a>(<label for="r24" class="ident">txt</label>)</code></span>
+<span class="codeline" id="line-77"><code>							}</code></span>
+<span class="codeline" id="line-78"><code>						}</code></span>
+<span class="codeline" id="line-79"><code>					}</code></span>
+<span class="codeline" id="line-80"><code>				<span class="keyword">case</span> *<a href="../../../../pkg/go/ast.html" class="ident i5">ast</a>.<a href="../../../go/ast/ast.go.html#line-982" class="ident">GenDecl</a>:</code></span>
+<span class="codeline" id="line-81"><code>					<span class="comment">// remember for the next type</span></code></span>
+<span class="codeline" id="line-82"><code>					<label for="r19" class="ident">gtxt</label> = <label for="r29" class="ident">x</label>.<a href="../../../go/ast/ast.go.html#line-983" class="ident">Doc</a>.<a href="../../../go/ast/ast.go.html#line-99" class="ident">Text</a>()</code></span>
+<span class="codeline" id="line-83"><code>				}</code></span>
+<span class="codeline" id="line-84"><code>				<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-85"><code>			})</code></span>
+<span class="codeline" id="line-86"><code>		}</code></span>
+<span class="codeline" id="line-87"><code>	}</code></span>
+<span class="codeline" id="line-88"><code></code></span>
+<span class="codeline" id="line-89"><code>	<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-90"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

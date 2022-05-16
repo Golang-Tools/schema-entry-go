@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: schemaentry.go in package github.com/Golang-Tools/schema-entry-go/v2</title>
+<link href="../../../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.4.9.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	schemaentry.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../pkg/github.com/Golang-Tools^b0a0c/schema-entry-go/v2.html">github.com/Golang-Tools/schema-entry-go/v2</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0,
+input[id=i1]:checked ~pre .i1
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+<input id="i1" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> schemaentry</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-4"><code>	<a href="../../../../../pkg/github.com/Golang-Tools^b0a0c/loggerhelper/v2.html" class="ident i0">log</a> <label for="i0"><span class="lit-string i0">"github.com/Golang-Tools/loggerhelper/v2"</span></label></code></span>
+<span class="codeline" id="line-5"><code>	<a href="../../../../../pkg/github.com/json-iterator/go.html" class="ident i1">jsoniter</a> <label for="i1"><span class="lit-string i1">"github.com/json-iterator/go"</span></label></code></span>
+<span class="codeline" id="line-6"><code>)</code></span>
+<span class="codeline" id="line-7"><code></code></span>
+<span class="codeline" id="line-8"><code><span class="keyword">var</span> <a href="../../../../../pkg/github.com/Golang-Tools^b0a0c/schema-entry-go/v2.html#name-json" class="ident">json</a> = <a href="../../../../../pkg/github.com/json-iterator/go.html" class="ident i1">jsoniter</a>.<a href="../../../json-iterator/go/config.go.html#line-55" class="ident">ConfigCompatibleWithStandardLibrary</a></code></span>
+<span class="codeline" id="line-9"><code><span class="keyword">var</span> <a href="../../../../../pkg/github.com/Golang-Tools^b0a0c/schema-entry-go/v2.html#name-logger" class="ident">logger</a> *<a href="../../../../../pkg/github.com/Golang-Tools^b0a0c/loggerhelper/v2.html" class="ident i0">log</a>.<a href="../../loggerhelper/v2/log.go.html#line-7" class="ident">Log</a></code></span>
+<span class="codeline" id="line-10"><code></code></span>
+<span class="codeline" id="line-11"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../../pkg/github.com/Golang-Tools^b0a0c/schema-entry-go/v2.html#name-init" class="ident">init</a></label>() {</code></span>
+<span class="codeline" id="line-12"><code>	<a href="../../../../../pkg/github.com/Golang-Tools^b0a0c/loggerhelper/v2.html" class="ident i0">log</a>.<a href="../../loggerhelper/v2/loggerhelper.go.html#line-65" class="ident">Set</a>(<a href="../../../../../pkg/github.com/Golang-Tools^b0a0c/loggerhelper/v2.html" class="ident i0">log</a>.<a href="../../loggerhelper/v2/options.go.html#line-117" class="ident">WithExtFields</a>(<a href="../../../../../pkg/github.com/Golang-Tools^b0a0c/loggerhelper/v2.html" class="ident i0">log</a>.<a href="../../loggerhelper/v2/loggerhelper.go.html#line-26" class="ident">Dict</a>{<span class="lit-string">"module"</span>: <span class="lit-string">"schema-entry-go"</span>}))</code></span>
+<span class="codeline" id="line-13"><code>	<a href="#line-9" class="ident">logger</a> = <a href="../../../../../pkg/github.com/Golang-Tools^b0a0c/loggerhelper/v2.html" class="ident i0">log</a>.<a href="../../loggerhelper/v2/loggerhelper.go.html#line-54" class="ident">Export</a>()</code></span>
+<span class="codeline" id="line-14"><code>	<a href="../../../../../pkg/github.com/Golang-Tools^b0a0c/loggerhelper/v2.html" class="ident i0">log</a>.<a href="../../loggerhelper/v2/loggerhelper.go.html#line-65" class="ident">Set</a>(<a href="../../../../../pkg/github.com/Golang-Tools^b0a0c/loggerhelper/v2.html" class="ident i0">log</a>.<a href="../../loggerhelper/v2/options.go.html#line-117" class="ident">WithExtFields</a>(<a href="../../../../../pkg/github.com/Golang-Tools^b0a0c/loggerhelper/v2.html" class="ident i0">log</a>.<a href="../../loggerhelper/v2/loggerhelper.go.html#line-26" class="ident">Dict</a>{}))</code></span>
+<span class="codeline" id="line-15"><code>}</code></span>
+<span class="codeline" id="line-16"><code></code></span>
+<span class="codeline" id="line-17"><code><span class="comment">//EndPointConfigInterface 叶子节点配置接口</span></code></span>
+<span class="codeline" id="line-18"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/Golang-Tools^b0a0c/schema-entry-go/v2.html#name-EndPointConfigInterface" class="ident">EndPointConfigInterface</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-19"><code>	<a href="../../../../../imp/github.com/Golang-Tools^b0a0c/schema-entry-go/v2.EndPointConfigInterface.html#name-Main" class="ident">Main</a>() <span class="comment">//进入时执行的程序</span></code></span>
+<span class="codeline" id="line-20"><code>}</code></span>
+<span class="codeline" id="line-21"><code></code></span>
+<span class="codeline" id="line-22"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/Golang-Tools^b0a0c/schema-entry-go/v2.html#name-EntryPointInterface" class="ident">EntryPointInterface</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-23"><code>	<a href="../../../../../imp/github.com/Golang-Tools^b0a0c/schema-entry-go/v2.EntryPointInterface.html#name-Meta" class="ident">Meta</a>() *<a href="entrypointMeta.go^fde83.html#line-9" class="ident">EntryPointMeta</a></code></span>
+<span class="codeline" id="line-24"><code>	<a href="../../../../../imp/github.com/Golang-Tools^b0a0c/schema-entry-go/v2.EntryPointInterface.html#name-Schema" class="ident">Schema</a>() []<a href="../../../../../pkg/builtin.html#name-byte" class="ident">byte</a></code></span>
+<span class="codeline" id="line-25"><code>	<a href="../../../../../imp/github.com/Golang-Tools^b0a0c/schema-entry-go/v2.EntryPointInterface.html#name-IsRoot" class="ident">IsRoot</a>() <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-26"><code>	<a href="../../../../../imp/github.com/Golang-Tools^b0a0c/schema-entry-go/v2.EntryPointInterface.html#name-IsEndpoint" class="ident">IsEndpoint</a>() <a href="../../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
+<span class="codeline" id="line-27"><code>	<a href="../../../../../imp/github.com/Golang-Tools^b0a0c/schema-entry-go/v2.EntryPointInterface.html#name-SetChild" class="ident">SetChild</a>(<a href="#line-22" class="ident">EntryPointInterface</a>) <a href="../../../../../pkg/builtin.html#name-error" class="ident">error</a></code></span>
+<span class="codeline" id="line-28"><code>	<a href="../../../../../imp/github.com/Golang-Tools^b0a0c/schema-entry-go/v2.EntryPointInterface.html#name-SetParent" class="ident">SetParent</a>(<a href="#line-22" class="ident">EntryPointInterface</a>) <a href="#line-22" class="ident">EntryPointInterface</a></code></span>
+<span class="codeline" id="line-29"><code>	<a href="../../../../../imp/github.com/Golang-Tools^b0a0c/schema-entry-go/v2.EntryPointInterface.html#name-Parse" class="ident">Parse</a>([]<a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>)</code></span>
+<span class="codeline" id="line-30"><code>}</code></span>
+<span class="codeline" id="line-31"><code></code></span>
+<span class="codeline" id="line-32"><code><span class="comment">//RegistSubNode 将一对节点互设为父子节点</span></code></span>
+<span class="codeline" id="line-33"><code><span class="comment">//@params parent EntryPointInterface 父节点</span></code></span>
+<span class="codeline" id="line-34"><code><span class="comment">//@params child EntryPointInterface 子节点</span></code></span>
+<span class="codeline" id="line-35"><code><span class="keyword">func</span> <label for="r1" class="ident"><a href="../../../../../pkg/github.com/Golang-Tools^b0a0c/schema-entry-go/v2.html#name-RegistSubNode" class="ident">RegistSubNode</a></label>(<label for="r2" class="ident">parent</label>, <label for="r3" class="ident">child</label> <a href="#line-22" class="ident">EntryPointInterface</a>) {</code></span>
+<span class="codeline" id="line-36"><code>	<label for="r2" class="ident">parent</label>.<a href="#line-27" class="ident">SetChild</a>(<label for="r3" class="ident">child</label>)</code></span>
+<span class="codeline" id="line-37"><code>	<label for="r3" class="ident">child</label>.<a href="#line-28" class="ident">SetParent</a>(<label for="r2" class="ident">parent</label>)</code></span>
+<span class="codeline" id="line-38"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

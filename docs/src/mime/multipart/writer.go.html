@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: writer.go in package mime/multipart</title>
-<link href="../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -241,7 +241,7 @@ input[id=i7]:checked ~pre .i7
 <span class="codeline" id="line-83"><code></code></span>
 <span class="codeline" id="line-84"><code><span class="keyword">func</span> <label for="r13" class="ident"><a href="../../../pkg/mime/multipart.html#name-randomBoundary" class="ident">randomBoundary</a></label>() <a href="../../../pkg/builtin.html#name-string" class="ident">string</a> {</code></span>
 <span class="codeline" id="line-85"><code>	<span class="keyword">var</span> <label for="r14" class="ident">buf</label> [<span class="lit-number">30</span>]<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a></code></span>
-<span class="codeline" id="line-86"><code>	<label for="r15" class="ident">_</label>, <label for="r16" class="ident">err</label> := <a href="../../../pkg/io.html" class="ident i4">io</a>.<a href="../../io/io.go.html#line-346" class="ident">ReadFull</a>(<a href="../../../pkg/crypto/rand.html" class="ident i1">rand</a>.<a href="../../crypto/rand/rand.go.html#line-19" class="ident">Reader</a>, <label for="r14" class="ident">buf</label>[:])</code></span>
+<span class="codeline" id="line-86"><code>	<label for="r15" class="ident">_</label>, <label for="r16" class="ident">err</label> := <a href="../../../pkg/io.html" class="ident i4">io</a>.<a href="../../io/io.go.html#line-349" class="ident">ReadFull</a>(<a href="../../../pkg/crypto/rand.html" class="ident i1">rand</a>.<a href="../../crypto/rand/rand.go.html#line-20" class="ident">Reader</a>, <label for="r14" class="ident">buf</label>[:])</code></span>
 <span class="codeline" id="line-87"><code>	<span class="keyword">if</span> <label for="r16" class="ident">err</label> != <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
 <span class="codeline" id="line-88"><code>		<a href="../../../pkg/builtin.html#name-panic" class="ident">panic</a>(<label for="r16" class="ident">err</label>)</code></span>
 <span class="codeline" id="line-89"><code>	}</code></span>
@@ -276,7 +276,7 @@ input[id=i7]:checked ~pre .i7
 <span class="codeline" id="line-118"><code>		}</code></span>
 <span class="codeline" id="line-119"><code>	}</code></span>
 <span class="codeline" id="line-120"><code>	<a href="../../../pkg/fmt.html" class="ident i3">fmt</a>.<a href="../../fmt/print.go.html#line-202" class="ident">Fprintf</a>(&amp;<label for="r21" class="ident">b</label>, <span class="lit-string">"\r\n"</span>)</code></span>
-<span class="codeline" id="line-121"><code>	<label for="r28" class="ident">_</label>, <label for="r29" class="ident">err</label> := <a href="../../../pkg/io.html" class="ident i4">io</a>.<a href="../../io/io.go.html#line-381" class="ident">Copy</a>(<label for="r17" class="ident">w</label>.<a href="#line-20" class="ident">w</a>, &amp;<label for="r21" class="ident">b</label>)</code></span>
+<span class="codeline" id="line-121"><code>	<label for="r28" class="ident">_</label>, <label for="r29" class="ident">err</label> := <a href="../../../pkg/io.html" class="ident i4">io</a>.<a href="../../io/io.go.html#line-384" class="ident">Copy</a>(<label for="r17" class="ident">w</label>.<a href="#line-20" class="ident">w</a>, &amp;<label for="r21" class="ident">b</label>)</code></span>
 <span class="codeline" id="line-122"><code>	<span class="keyword">if</span> <label for="r29" class="ident">err</label> != <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
 <span class="codeline" id="line-123"><code>		<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <label for="r29" class="ident">err</label></code></span>
 <span class="codeline" id="line-124"><code>	}</code></span>
@@ -359,7 +359,7 @@ input[id=i7]:checked ~pre .i7
 <span class="codeline" id="line-201"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

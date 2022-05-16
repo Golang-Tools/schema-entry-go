@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: once.go in package sync</title>
-<link href="../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../jvs/golds-v0.3.6.js"></script>
+<link href="../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -98,7 +98,7 @@ input[id=i0]:checked ~pre .i0
 <span class="codeline" id="line-62"><code></code></span>
 <span class="codeline" id="line-63"><code><span class="keyword">func</span> (<label for="r3" class="ident">o</label> *<a href="#line-14" class="ident">Once</a>) <label for="r4" class="ident">doSlow</label>(<label for="r5" class="ident">f</label> <span class="keyword">func</span>()) {</code></span>
 <span class="codeline" id="line-64"><code>	<label for="r3" class="ident">o</label>.<a href="#line-21" class="ident">m</a>.<a href="mutex.go.html#line-72" class="ident">Lock</a>()</code></span>
-<span class="codeline" id="line-65"><code>	<span class="keyword">defer</span> <label for="r3" class="ident">o</label>.<a href="#line-21" class="ident">m</a>.<a href="mutex.go.html#line-179" class="ident">Unlock</a>()</code></span>
+<span class="codeline" id="line-65"><code>	<span class="keyword">defer</span> <label for="r3" class="ident">o</label>.<a href="#line-21" class="ident">m</a>.<a href="mutex.go.html#line-203" class="ident">Unlock</a>()</code></span>
 <span class="codeline" id="line-66"><code>	<span class="keyword">if</span> <label for="r3" class="ident">o</label>.<a href="#line-20" class="ident">done</a> == <span class="lit-number">0</span> {</code></span>
 <span class="codeline" id="line-67"><code>		<span class="keyword">defer</span> <a href="../../pkg/sync/atomic.html" class="ident i0">atomic</a>.<a href="atomic/doc.go.html#line-135" class="ident">StoreUint32</a>(&amp;<label for="r3" class="ident">o</label>.<a href="#line-20" class="ident">done</a>, <span class="lit-number">1</span>)</code></span>
 <span class="codeline" id="line-68"><code>		<label for="r5" class="ident">f</label>()</code></span>
@@ -106,7 +106,7 @@ input[id=i0]:checked ~pre .i0
 <span class="codeline" id="line-70"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

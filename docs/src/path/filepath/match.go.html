@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: match.go in package path/filepath</title>
-<link href="../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -297,7 +297,7 @@ input[id=i5]:checked ~pre .i5
 <span class="codeline" id="line-99"><code>	<span class="keyword">for</span> <label for="r21" class="ident">i</label> = <span class="lit-number">0</span>; <label for="r21" class="ident">i</label> &lt; <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r16" class="ident">pattern</label>); <label for="r21" class="ident">i</label>++ {</code></span>
 <span class="codeline" id="line-100"><code>		<span class="keyword">switch</span> <label for="r16" class="ident">pattern</label>[<label for="r21" class="ident">i</label>] {</code></span>
 <span class="codeline" id="line-101"><code>		<span class="keyword">case</span> <span class="lit-number">'\\'</span>:</code></span>
-<span class="codeline" id="line-102"><code>			<span class="keyword">if</span> <a href="../../../pkg/runtime.html" class="ident i2">runtime</a>.<a href="../../runtime/extern.go.html#line-253" class="ident">GOOS</a> != <span class="lit-string">"windows"</span> {</code></span>
+<span class="codeline" id="line-102"><code>			<span class="keyword">if</span> <a href="../../../pkg/runtime.html" class="ident i2">runtime</a>.<a href="../../runtime/extern.go.html#line-271" class="ident">GOOS</a> != <span class="lit-string">"windows"</span> {</code></span>
 <span class="codeline" id="line-103"><code>				<span class="comment">// error check handled in matchChunk: bad pattern.</span></code></span>
 <span class="codeline" id="line-104"><code>				<span class="keyword">if</span> <label for="r21" class="ident">i</label>+<span class="lit-number">1</span> &lt; <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r16" class="ident">pattern</label>) {</code></span>
 <span class="codeline" id="line-105"><code>					<label for="r21" class="ident">i</label>++</code></span>
@@ -382,7 +382,7 @@ input[id=i5]:checked ~pre .i5
 <span class="codeline" id="line-184"><code>			<label for="r24" class="ident">chunk</label> = <label for="r24" class="ident">chunk</label>[<span class="lit-number">1</span>:]</code></span>
 <span class="codeline" id="line-185"><code></code></span>
 <span class="codeline" id="line-186"><code>		<span class="keyword">case</span> <span class="lit-number">'\\'</span>:</code></span>
-<span class="codeline" id="line-187"><code>			<span class="keyword">if</span> <a href="../../../pkg/runtime.html" class="ident i2">runtime</a>.<a href="../../runtime/extern.go.html#line-253" class="ident">GOOS</a> != <span class="lit-string">"windows"</span> {</code></span>
+<span class="codeline" id="line-187"><code>			<span class="keyword">if</span> <a href="../../../pkg/runtime.html" class="ident i2">runtime</a>.<a href="../../runtime/extern.go.html#line-271" class="ident">GOOS</a> != <span class="lit-string">"windows"</span> {</code></span>
 <span class="codeline" id="line-188"><code>				<label for="r24" class="ident">chunk</label> = <label for="r24" class="ident">chunk</label>[<span class="lit-number">1</span>:]</code></span>
 <span class="codeline" id="line-189"><code>				<span class="keyword">if</span> <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r24" class="ident">chunk</label>) == <span class="lit-number">0</span> {</code></span>
 <span class="codeline" id="line-190"><code>					<span class="keyword">return</span> <span class="lit-string">""</span>, <a href="../../../pkg/builtin.html#name-false" class="ident">false</a>, <a href="#line-17" class="ident">ErrBadPattern</a></code></span>
@@ -412,7 +412,7 @@ input[id=i5]:checked ~pre .i5
 <span class="codeline" id="line-214"><code>		<label for="r43" class="ident">err</label> = <a href="#line-17" class="ident">ErrBadPattern</a></code></span>
 <span class="codeline" id="line-215"><code>		<span class="keyword">return</span></code></span>
 <span class="codeline" id="line-216"><code>	}</code></span>
-<span class="codeline" id="line-217"><code>	<span class="keyword">if</span> <label for="r40" class="ident">chunk</label>[<span class="lit-number">0</span>] == <span class="lit-number">'\\'</span> &amp;&amp; <a href="../../../pkg/runtime.html" class="ident i2">runtime</a>.<a href="../../runtime/extern.go.html#line-253" class="ident">GOOS</a> != <span class="lit-string">"windows"</span> {</code></span>
+<span class="codeline" id="line-217"><code>	<span class="keyword">if</span> <label for="r40" class="ident">chunk</label>[<span class="lit-number">0</span>] == <span class="lit-number">'\\'</span> &amp;&amp; <a href="../../../pkg/runtime.html" class="ident i2">runtime</a>.<a href="../../runtime/extern.go.html#line-271" class="ident">GOOS</a> != <span class="lit-string">"windows"</span> {</code></span>
 <span class="codeline" id="line-218"><code>		<label for="r40" class="ident">chunk</label> = <label for="r40" class="ident">chunk</label>[<span class="lit-number">1</span>:]</code></span>
 <span class="codeline" id="line-219"><code>		<span class="keyword">if</span> <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r40" class="ident">chunk</label>) == <span class="lit-number">0</span> {</code></span>
 <span class="codeline" id="line-220"><code>			<label for="r43" class="ident">err</label> = <a href="#line-17" class="ident">ErrBadPattern</a></code></span>
@@ -452,7 +452,7 @@ input[id=i5]:checked ~pre .i5
 <span class="codeline" id="line-254"><code></code></span>
 <span class="codeline" id="line-255"><code>	<label for="r51" class="ident">dir</label>, <label for="r52" class="ident">file</label> := <a href="path.go.html#line-196" class="ident">Split</a>(<label for="r46" class="ident">pattern</label>)</code></span>
 <span class="codeline" id="line-256"><code>	<label for="r53" class="ident">volumeLen</label> := <span class="lit-number">0</span></code></span>
-<span class="codeline" id="line-257"><code>	<span class="keyword">if</span> <a href="../../../pkg/runtime.html" class="ident i2">runtime</a>.<a href="../../runtime/extern.go.html#line-253" class="ident">GOOS</a> == <span class="lit-string">"windows"</span> {</code></span>
+<span class="codeline" id="line-257"><code>	<span class="keyword">if</span> <a href="../../../pkg/runtime.html" class="ident i2">runtime</a>.<a href="../../runtime/extern.go.html#line-271" class="ident">GOOS</a> == <span class="lit-string">"windows"</span> {</code></span>
 <span class="codeline" id="line-258"><code>		<label for="r53" class="ident">volumeLen</label>, <label for="r51" class="ident">dir</label> = <a href="#line-300" class="ident">cleanGlobPathWindows</a>(<label for="r51" class="ident">dir</label>)</code></span>
 <span class="codeline" id="line-259"><code>	} <span class="keyword">else</span> {</code></span>
 <span class="codeline" id="line-260"><code>		<label for="r51" class="ident">dir</label> = <a href="#line-287" class="ident">cleanGlobPath</a>(<label for="r51" class="ident">dir</label>)</code></span>
@@ -526,7 +526,7 @@ input[id=i5]:checked ~pre .i5
 <span class="codeline" id="line-328"><code>	<span class="keyword">if</span> !<label for="r70" class="ident">fi</label>.<a href="../../io/fs/fs.go.html#line-155" class="ident">IsDir</a>() {</code></span>
 <span class="codeline" id="line-329"><code>		<span class="keyword">return</span> <span class="comment">// ignore I/O error</span></code></span>
 <span class="codeline" id="line-330"><code>	}</code></span>
-<span class="codeline" id="line-331"><code>	<label for="r72" class="ident">d</label>, <label for="r71" class="ident">err</label> := <a href="../../../pkg/os.html" class="ident i1">os</a>.<a href="../../os/file.go.html#line-310" class="ident">Open</a>(<label for="r65" class="ident">dir</label>)</code></span>
+<span class="codeline" id="line-331"><code>	<label for="r72" class="ident">d</label>, <label for="r71" class="ident">err</label> := <a href="../../../pkg/os.html" class="ident i1">os</a>.<a href="../../os/file.go.html#line-317" class="ident">Open</a>(<label for="r65" class="ident">dir</label>)</code></span>
 <span class="codeline" id="line-332"><code>	<span class="keyword">if</span> <label for="r71" class="ident">err</label> != <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
 <span class="codeline" id="line-333"><code>		<span class="keyword">return</span> <span class="comment">// ignore I/O error</span></code></span>
 <span class="codeline" id="line-334"><code>	}</code></span>
@@ -551,14 +551,14 @@ input[id=i5]:checked ~pre .i5
 <span class="codeline" id="line-353"><code><span class="comment">// recognized by Match.</span></code></span>
 <span class="codeline" id="line-354"><code><span class="keyword">func</span> <label for="r79" class="ident"><a href="../../../pkg/path/filepath.html#name-hasMeta" class="ident">hasMeta</a></label>(<label for="r80" class="ident">path</label> <a href="../../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
 <span class="codeline" id="line-355"><code>	<label for="r81" class="ident">magicChars</label> := <span class="lit-string">`*?[`</span></code></span>
-<span class="codeline" id="line-356"><code>	<span class="keyword">if</span> <a href="../../../pkg/runtime.html" class="ident i2">runtime</a>.<a href="../../runtime/extern.go.html#line-253" class="ident">GOOS</a> != <span class="lit-string">"windows"</span> {</code></span>
+<span class="codeline" id="line-356"><code>	<span class="keyword">if</span> <a href="../../../pkg/runtime.html" class="ident i2">runtime</a>.<a href="../../runtime/extern.go.html#line-271" class="ident">GOOS</a> != <span class="lit-string">"windows"</span> {</code></span>
 <span class="codeline" id="line-357"><code>		<label for="r81" class="ident">magicChars</label> = <span class="lit-string">`*?[\`</span></code></span>
 <span class="codeline" id="line-358"><code>	}</code></span>
 <span class="codeline" id="line-359"><code>	<span class="keyword">return</span> <a href="../../../pkg/strings.html" class="ident i4">strings</a>.<a href="../../strings/strings.go.html#line-66" class="ident">ContainsAny</a>(<label for="r80" class="ident">path</label>, <label for="r81" class="ident">magicChars</label>)</code></span>
 <span class="codeline" id="line-360"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

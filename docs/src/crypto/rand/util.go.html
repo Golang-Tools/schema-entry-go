@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: util.go in package crypto/rand</title>
-<link href="../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -119,7 +119,7 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-45"><code>	<label for="r7" class="ident">bigMod</label> := <a href="../../../pkg/builtin.html#name-new" class="ident">new</a>(<a href="../../../pkg/math/big.html" class="ident i2">big</a>.<a href="../../math/big/int.go.html#line-25" class="ident">Int</a>)</code></span>
 <span class="codeline" id="line-46"><code></code></span>
 <span class="codeline" id="line-47"><code>	<span class="keyword">for</span> {</code></span>
-<span class="codeline" id="line-48"><code>		_, <label for="r4" class="ident">err</label> = <a href="../../../pkg/io.html" class="ident i1">io</a>.<a href="../../io/io.go.html#line-346" class="ident">ReadFull</a>(<label for="r1" class="ident">rand</label>, <label for="r6" class="ident">bytes</label>)</code></span>
+<span class="codeline" id="line-48"><code>		_, <label for="r4" class="ident">err</label> = <a href="../../../pkg/io.html" class="ident i1">io</a>.<a href="../../io/io.go.html#line-349" class="ident">ReadFull</a>(<label for="r1" class="ident">rand</label>, <label for="r6" class="ident">bytes</label>)</code></span>
 <span class="codeline" id="line-49"><code>		<span class="keyword">if</span> <label for="r4" class="ident">err</label> != <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
 <span class="codeline" id="line-50"><code>			<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <label for="r4" class="ident">err</label></code></span>
 <span class="codeline" id="line-51"><code>		}</code></span>
@@ -200,7 +200,7 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-126"><code>	<label for="r22" class="ident">bytes</label> := <a href="../../../pkg/builtin.html#name-make" class="ident">make</a>([]<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <label for="r20" class="ident">k</label>)</code></span>
 <span class="codeline" id="line-127"><code></code></span>
 <span class="codeline" id="line-128"><code>	<span class="keyword">for</span> {</code></span>
-<span class="codeline" id="line-129"><code>		_, <label for="r18" class="ident">err</label> = <a href="../../../pkg/io.html" class="ident i1">io</a>.<a href="../../io/io.go.html#line-346" class="ident">ReadFull</a>(<label for="r15" class="ident">rand</label>, <label for="r22" class="ident">bytes</label>)</code></span>
+<span class="codeline" id="line-129"><code>		_, <label for="r18" class="ident">err</label> = <a href="../../../pkg/io.html" class="ident i1">io</a>.<a href="../../io/io.go.html#line-349" class="ident">ReadFull</a>(<label for="r15" class="ident">rand</label>, <label for="r22" class="ident">bytes</label>)</code></span>
 <span class="codeline" id="line-130"><code>		<span class="keyword">if</span> <label for="r18" class="ident">err</label> != <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
 <span class="codeline" id="line-131"><code>			<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <label for="r18" class="ident">err</label></code></span>
 <span class="codeline" id="line-132"><code>		}</code></span>
@@ -217,7 +217,7 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-143"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

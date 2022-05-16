@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Package: hash</title>
-<link href="../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../jvs/golds-v0.3.6.js"></script>
+<link href="../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="package-details"><code><span style="font-size:xx-large;">package <b>hash</b></span>
@@ -91,23 +91,23 @@
 		See the Go compatibility document for background: https://golang.org/doc/go1compat
 
 		<input type='checkbox' class="fold" id="Hash-fold-methods"><label for="Hash-fold-methods">Methods (<i>total 5, all are exported</i>)</label><span id='Hash-fold-methods-items' class="fold-items"><span>
-			<input type='checkbox' class="fold" id="Hash-fold-method-BlockSize"><label for="Hash-fold-method-BlockSize">( T) <a href="../src/hash/hash.go.html#line-45">BlockSize</a>() <a href="builtin.html#name-int">int</a></label><span id='Hash-fold-method-BlockSize-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Hash-fold-method-BlockSize"><label for="Hash-fold-method-BlockSize">( Hash) <a href="../src/hash/hash.go.html#line-45">BlockSize</a>() <a href="builtin.html#name-int">int</a></label><span id='Hash-fold-method-BlockSize-docs' class="fold-docs">
 				BlockSize returns the hash's underlying block size.
 				The Write method must be able to accept any amount
 				of data, but it may operate more efficiently if all writes
 				are a multiple of the block size.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Hash-fold-method-Reset"><label for="Hash-fold-method-Reset">( T) <a href="../src/hash/hash.go.html#line-36">Reset</a>()</label><span id='Hash-fold-method-Reset-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Hash-fold-method-Reset"><label for="Hash-fold-method-Reset">( Hash) <a href="../src/hash/hash.go.html#line-36">Reset</a>()</label><span id='Hash-fold-method-Reset-docs' class="fold-docs">
 				Reset resets the Hash to its initial state.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Hash-fold-method-Size"><label for="Hash-fold-method-Size">( T) <a href="../src/hash/hash.go.html#line-39">Size</a>() <a href="builtin.html#name-int">int</a></label><span id='Hash-fold-method-Size-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Hash-fold-method-Size"><label for="Hash-fold-method-Size">( Hash) <a href="../src/hash/hash.go.html#line-39">Size</a>() <a href="builtin.html#name-int">int</a></label><span id='Hash-fold-method-Size-docs' class="fold-docs">
 				Size returns the number of bytes Sum will return.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Hash-fold-method-Sum"><label for="Hash-fold-method-Sum">( T) <a href="../src/hash/hash.go.html#line-33">Sum</a>(b []<a href="builtin.html#name-byte">byte</a>) []<a href="builtin.html#name-byte">byte</a></label><span id='Hash-fold-method-Sum-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Hash-fold-method-Sum"><label for="Hash-fold-method-Sum">( Hash) <a href="../src/hash/hash.go.html#line-33">Sum</a>(b []<a href="builtin.html#name-byte">byte</a>) []<a href="builtin.html#name-byte">byte</a></label><span id='Hash-fold-method-Sum-docs' class="fold-docs">
 				Sum appends the current hash to b and returns the resulting slice.
 				It does not change the underlying hash state.
 </span></span><span>
-			<span class="nodocs">( T) <a href="../src/io/io.go.html#line-97">Write</a>(p []<a href="builtin.html#name-byte">byte</a>) (n <a href="builtin.html#name-int">int</a>, err <a href="builtin.html#name-error">error</a>)</span></span></span>
+			<span class="nodocs">( Hash) <a href="../src/io/io.go.html#line-97">Write</a>(p []<a href="builtin.html#name-byte">byte</a>) (n <a href="builtin.html#name-int">int</a>, err <a href="builtin.html#name-error">error</a>)</span></span></span>
 		<input type='checkbox' class="fold" id="Hash-fold-impledby"><label for="Hash-fold-impledby">Implemented By (<i>at least 10, in which 2 are exported</i>)</label><span id='Hash-fold-impledby-items' class="fold-items"><span>
 			 <a href="#name-Hash32">Hash32</a> <i>(interface)</i></span><span>
 			 <a href="#name-Hash64">Hash64</a> <i>(interface)</i></span>
@@ -121,7 +121,7 @@
 			 crypto/tls.<a href="crypto/tls.html#name-constantTimeHash">constantTimeHash</a> <i>(interface)</i></i></span><span class="hidden"><i>
 			*crypto/tls.<a href="crypto/tls.html#name-cthWrapper">cthWrapper</a></i></span></span>
 		<input type='checkbox' class="fold" id="Hash-fold-impls"><label for="Hash-fold-impls">Implements (<i>at least one exported</i>)</label><span id='Hash-fold-impls-items' class="fold-items"><span>
-			 T : io.<a href="io.html#name-Writer">Writer</a></span></span>
+			 Hash : io.<a href="io.html#name-Writer">Writer</a></span></span>
 		<input type='checkbox' class="fold" id="Hash-fold-results"><label for="Hash-fold-results">As Outputs Of (<i>at least 13, in which 10 are exported</i>)</label><span id='Hash-fold-results-items' class="fold-items"><span>
 			func crypto.<a href="crypto.html#name-Hash">Hash</a>.<a href="../src/crypto/crypto.go.html#line-127">New</a>() <b>Hash</b></span><span>
 			func crypto/hmac.<a href="crypto/hmac.html#name-New">New</a>(h func() <b>Hash</b>, key []<a href="builtin.html#name-byte">byte</a>) <b>Hash</b></span><span>
@@ -152,30 +152,30 @@
 		Hash32 is the common interface implemented by all 32-bit hash functions.
 
 		<input type='checkbox' class="fold" id="Hash32-fold-methods"><label for="Hash32-fold-methods">Methods (<i>total 6, all are exported</i>)</label><span id='Hash32-fold-methods-items' class="fold-items"><span>
-			<input type='checkbox' class="fold" id="Hash32-fold-method-BlockSize"><label for="Hash32-fold-method-BlockSize">( T) <a href="../src/hash/hash.go.html#line-45">BlockSize</a>() <a href="builtin.html#name-int">int</a></label><span id='Hash32-fold-method-BlockSize-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Hash32-fold-method-BlockSize"><label for="Hash32-fold-method-BlockSize">( Hash32) <a href="../src/hash/hash.go.html#line-45">BlockSize</a>() <a href="builtin.html#name-int">int</a></label><span id='Hash32-fold-method-BlockSize-docs' class="fold-docs">
 				BlockSize returns the hash's underlying block size.
 				The Write method must be able to accept any amount
 				of data, but it may operate more efficiently if all writes
 				are a multiple of the block size.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Hash32-fold-method-Reset"><label for="Hash32-fold-method-Reset">( T) <a href="../src/hash/hash.go.html#line-36">Reset</a>()</label><span id='Hash32-fold-method-Reset-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Hash32-fold-method-Reset"><label for="Hash32-fold-method-Reset">( Hash32) <a href="../src/hash/hash.go.html#line-36">Reset</a>()</label><span id='Hash32-fold-method-Reset-docs' class="fold-docs">
 				Reset resets the Hash to its initial state.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Hash32-fold-method-Size"><label for="Hash32-fold-method-Size">( T) <a href="../src/hash/hash.go.html#line-39">Size</a>() <a href="builtin.html#name-int">int</a></label><span id='Hash32-fold-method-Size-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Hash32-fold-method-Size"><label for="Hash32-fold-method-Size">( Hash32) <a href="../src/hash/hash.go.html#line-39">Size</a>() <a href="builtin.html#name-int">int</a></label><span id='Hash32-fold-method-Size-docs' class="fold-docs">
 				Size returns the number of bytes Sum will return.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Hash32-fold-method-Sum"><label for="Hash32-fold-method-Sum">( T) <a href="../src/hash/hash.go.html#line-33">Sum</a>(b []<a href="builtin.html#name-byte">byte</a>) []<a href="builtin.html#name-byte">byte</a></label><span id='Hash32-fold-method-Sum-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Hash32-fold-method-Sum"><label for="Hash32-fold-method-Sum">( Hash32) <a href="../src/hash/hash.go.html#line-33">Sum</a>(b []<a href="builtin.html#name-byte">byte</a>) []<a href="builtin.html#name-byte">byte</a></label><span id='Hash32-fold-method-Sum-docs' class="fold-docs">
 				Sum appends the current hash to b and returns the resulting slice.
 				It does not change the underlying hash state.
 </span></span><span>
-			<span class="nodocs">( T) <a href="../src/hash/hash.go.html#line-51">Sum32</a>() <a href="builtin.html#name-uint32">uint32</a></span></span><span>
-			<span class="nodocs">( T) <a href="../src/io/io.go.html#line-97">Write</a>(p []<a href="builtin.html#name-byte">byte</a>) (n <a href="builtin.html#name-int">int</a>, err <a href="builtin.html#name-error">error</a>)</span></span></span>
+			<span class="nodocs">( Hash32) <a href="../src/hash/hash.go.html#line-51">Sum32</a>() <a href="builtin.html#name-uint32">uint32</a></span></span><span>
+			<span class="nodocs">( Hash32) <a href="../src/io/io.go.html#line-97">Write</a>(p []<a href="builtin.html#name-byte">byte</a>) (n <a href="builtin.html#name-int">int</a>, err <a href="builtin.html#name-error">error</a>)</span></span></span>
 		<input type='checkbox' class="fold" id="Hash32-fold-impledby"><label for="Hash32-fold-impledby">Implemented By (<i>at least one unexported</i>)</label><span id='Hash32-fold-impledby-items' class="fold-items">
 			<input type='checkbox' class="showhide" id="Hash32-showhide-impedBys"><i><label for="Hash32-showhide-impedBys" class="show-inline">/* at least one unexported ... */</label><label for="Hash32-showhide-impedBys" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
 			*hash/crc32.<a href="hash/crc32.html#name-digest">digest</a></i></span></span>
 		<input type='checkbox' class="fold" id="Hash32-fold-impls"><label for="Hash32-fold-impls">Implements (<i>at least 2, both are exported</i>)</label><span id='Hash32-fold-impls-items' class="fold-items"><span>
-			 T : <a href="#name-Hash">Hash</a></span><span>
-			 T : io.<a href="io.html#name-Writer">Writer</a></span></span>
+			 Hash32 : <a href="#name-Hash">Hash</a></span><span>
+			 Hash32 : io.<a href="io.html#name-Writer">Writer</a></span></span>
 		<input type='checkbox' class="fold" id="Hash32-fold-results"><label for="Hash32-fold-results">As Outputs Of (<i>at least 2, both are exported</i>)</label><span id='Hash32-fold-results-items' class="fold-items"><span>
 			func hash/crc32.<a href="hash/crc32.html#name-New">New</a>(tab *<a href="hash/crc32.html">crc32</a>.<a href="hash/crc32.html#name-Table">Table</a>) <b>Hash32</b></span><span>
 			func hash/crc32.<a href="hash/crc32.html#name-NewIEEE">NewIEEE</a>() <b>Hash32</b></span></span>
@@ -184,31 +184,31 @@
 		Hash64 is the common interface implemented by all 64-bit hash functions.
 
 		<input type='checkbox' class="fold" id="Hash64-fold-methods"><label for="Hash64-fold-methods">Methods (<i>total 6, all are exported</i>)</label><span id='Hash64-fold-methods-items' class="fold-items"><span>
-			<input type='checkbox' class="fold" id="Hash64-fold-method-BlockSize"><label for="Hash64-fold-method-BlockSize">( T) <a href="../src/hash/hash.go.html#line-45">BlockSize</a>() <a href="builtin.html#name-int">int</a></label><span id='Hash64-fold-method-BlockSize-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Hash64-fold-method-BlockSize"><label for="Hash64-fold-method-BlockSize">( Hash64) <a href="../src/hash/hash.go.html#line-45">BlockSize</a>() <a href="builtin.html#name-int">int</a></label><span id='Hash64-fold-method-BlockSize-docs' class="fold-docs">
 				BlockSize returns the hash's underlying block size.
 				The Write method must be able to accept any amount
 				of data, but it may operate more efficiently if all writes
 				are a multiple of the block size.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Hash64-fold-method-Reset"><label for="Hash64-fold-method-Reset">( T) <a href="../src/hash/hash.go.html#line-36">Reset</a>()</label><span id='Hash64-fold-method-Reset-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Hash64-fold-method-Reset"><label for="Hash64-fold-method-Reset">( Hash64) <a href="../src/hash/hash.go.html#line-36">Reset</a>()</label><span id='Hash64-fold-method-Reset-docs' class="fold-docs">
 				Reset resets the Hash to its initial state.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Hash64-fold-method-Size"><label for="Hash64-fold-method-Size">( T) <a href="../src/hash/hash.go.html#line-39">Size</a>() <a href="builtin.html#name-int">int</a></label><span id='Hash64-fold-method-Size-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Hash64-fold-method-Size"><label for="Hash64-fold-method-Size">( Hash64) <a href="../src/hash/hash.go.html#line-39">Size</a>() <a href="builtin.html#name-int">int</a></label><span id='Hash64-fold-method-Size-docs' class="fold-docs">
 				Size returns the number of bytes Sum will return.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Hash64-fold-method-Sum"><label for="Hash64-fold-method-Sum">( T) <a href="../src/hash/hash.go.html#line-33">Sum</a>(b []<a href="builtin.html#name-byte">byte</a>) []<a href="builtin.html#name-byte">byte</a></label><span id='Hash64-fold-method-Sum-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Hash64-fold-method-Sum"><label for="Hash64-fold-method-Sum">( Hash64) <a href="../src/hash/hash.go.html#line-33">Sum</a>(b []<a href="builtin.html#name-byte">byte</a>) []<a href="builtin.html#name-byte">byte</a></label><span id='Hash64-fold-method-Sum-docs' class="fold-docs">
 				Sum appends the current hash to b and returns the resulting slice.
 				It does not change the underlying hash state.
 </span></span><span>
-			<span class="nodocs">( T) <a href="../src/hash/hash.go.html#line-57">Sum64</a>() <a href="builtin.html#name-uint64">uint64</a></span></span><span>
-			<span class="nodocs">( T) <a href="../src/io/io.go.html#line-97">Write</a>(p []<a href="builtin.html#name-byte">byte</a>) (n <a href="builtin.html#name-int">int</a>, err <a href="builtin.html#name-error">error</a>)</span></span></span>
+			<span class="nodocs">( Hash64) <a href="../src/hash/hash.go.html#line-57">Sum64</a>() <a href="builtin.html#name-uint64">uint64</a></span></span><span>
+			<span class="nodocs">( Hash64) <a href="../src/io/io.go.html#line-97">Write</a>(p []<a href="builtin.html#name-byte">byte</a>) (n <a href="builtin.html#name-int">int</a>, err <a href="builtin.html#name-error">error</a>)</span></span></span>
 		<input type='checkbox' class="fold" id="Hash64-fold-impls"><label for="Hash64-fold-impls">Implements (<i>at least 2, both are exported</i>)</label><span id='Hash64-fold-impls-items' class="fold-items"><span>
-			 T : <a href="#name-Hash">Hash</a></span><span>
-			 T : io.<a href="io.html#name-Writer">Writer</a></span></span>
+			 Hash64 : <a href="#name-Hash">Hash</a></span><span>
+			 Hash64 : io.<a href="io.html#name-Writer">Writer</a></span></span>
 
 </span></div></div></code></pre><pre id="footer">
 <table><tr><td><img src="../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

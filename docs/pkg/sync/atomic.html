@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Package: sync/atomic</title>
-<link href="../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../jvs/golds-v0.3.6.js"></script>
+<link href="../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="package-details"><code><span style="font-size:xx-large;">package <b>atomic</b></span>
@@ -15,7 +15,7 @@
 	<a href="../../index.html#pkg-sync/atomic">sync/atomic</a><i> (on <a href="https://pkg.go.dev/sync/atomic" target="_blank">go.dev</a>)</i>
 
 <span class="title">Dependency Relation</span>
-	imports <a href="../../dep/sync/atomic.html">one package</a>, and imported by <a href="../../dep/sync/atomic.html#imported-by">11 packages</a>
+	imports <a href="../../dep/sync/atomic.html">one package</a>, and imported by <a href="../../dep/sync/atomic.html#imported-by">13 packages</a>
 
 <div id="files"><span class="title">Involved Source Files</span>
 
@@ -32,24 +32,24 @@
 		The swap operation, implemented by the SwapT functions, is the atomic
 		equivalent of:
 
-			old = *addr
-			*addr = new
-			return old
+		old = *addr
+		*addr = new
+		return old
 
 		The compare-and-swap operation, implemented by the CompareAndSwapT
 		functions, is the atomic equivalent of:
 
-			if *addr == old {
-				*addr = new
-				return true
-			}
-			return false
+		if *addr == old {
+			*addr = new
+			return true
+		}
+		return false
 
 		The add operation, implemented by the AddT functions, is the atomic
 		equivalent of:
 
-			*addr += delta
-			return *addr
+		*addr += delta
+		return *addr
 
 		The load and store operations, implemented by the LoadT and StoreT
 		functions, are the atomic equivalents of "return *addr" and
@@ -89,7 +89,7 @@
 			}()
 			// Create worker goroutines that handle incoming requests
 			// using the latest config value.
-			for i := 0; i < 10; i++ {
+			for i := 0; i &lt; 10; i++ {
 				go func() {
 					for r := range requests() {
 						c := config.Load()
@@ -139,7 +139,7 @@
 </div>
 <div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 2, in which 1 are exported)</i></span></span>
 
-<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-Value" data-popularity="105">	<input type='checkbox' class="fold" id="Value-fold-content"><label for="Value-fold-content"> type <a href="../../src/sync/atomic/value.go.html#line-16">Value</a> <i>(struct)</i></label><span id='Value-fold-content-docs' class="fold-docs">
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-Value" data-popularity="205">	<input type='checkbox' class="fold" id="Value-fold-content"><label for="Value-fold-content"> type <a href="../../src/sync/atomic/value.go.html#line-16">Value</a> <i>(struct)</i></label><span id='Value-fold-content-docs' class="fold-docs">
 		A Value provides an atomic load and store of a consistently typed value.
 		The zero value for a Value returns nil from Load.
 		Once Store has been called, a Value must not be copied.
@@ -148,16 +148,30 @@
 
 		<input type='checkbox' class="fold" id="Value-fold-fields"><label for="Value-fold-fields">Fields (<i>only one, which is unexported</i>)</label><span id='Value-fold-fields-items' class="fold-items">
 			<input type='checkbox' class="showhide" id="Value-showhide-fields"><i><label for="Value-showhide-fields" class="show-inline">/* one unexported ... */</label><label for="Value-showhide-fields" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
-			<span class="nodocs"><a href="../../src/sync/atomic/value.go.html#line-17">v</a> <i>interface{}</i></span></i></span></span>
-		<input type='checkbox' class="fold" id="Value-fold-methods"><label for="Value-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='Value-fold-methods-items' class="fold-items"><span>
-			<input type='checkbox' class="fold" id="Value-fold-method-Load"><label for="Value-fold-method-Load">(*T) <a href="../../src/sync/atomic/value.go.html#line-28">Load</a>() (x interface{})</label><span id='Value-fold-method-Load-docs' class="fold-docs">
+			<span class="nodocs"><a href="../../src/sync/atomic/value.go.html#line-17">v</a> <i><a href="../builtin.html#name-any">any</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="Value-fold-methods"><label for="Value-fold-methods">Methods (<i>total 4, all are exported</i>)</label><span id='Value-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Value-fold-method-CompareAndSwap"><label for="Value-fold-method-CompareAndSwap">(*Value) <a href="../../src/sync/atomic/value.go.html#line-135">CompareAndSwap</a>(old, new <a href="../builtin.html#name-any">any</a>) (swapped <a href="../builtin.html#name-bool">bool</a>)</label><span id='Value-fold-method-CompareAndSwap-docs' class="fold-docs">
+				CompareAndSwap executes the compare-and-swap operation for the Value.
+
+				All calls to CompareAndSwap for a given Value must use values of the same
+				concrete type. CompareAndSwap of an inconsistent type panics, as does
+				CompareAndSwap(old, nil).
+</span></span><span>
+			<input type='checkbox' class="fold" id="Value-fold-method-Load"><label for="Value-fold-method-Load">(*Value) <a href="../../src/sync/atomic/value.go.html#line-28">Load</a>() (val <a href="../builtin.html#name-any">any</a>)</label><span id='Value-fold-method-Load-docs' class="fold-docs">
 				Load returns the value set by the most recent Store.
 				It returns nil if there has been no call to Store for this Value.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Value-fold-method-Store"><label for="Value-fold-method-Store">(*T) <a href="../../src/sync/atomic/value.go.html#line-45">Store</a>(x interface{})</label><span id='Value-fold-method-Store-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Value-fold-method-Store"><label for="Value-fold-method-Store">(*Value) <a href="../../src/sync/atomic/value.go.html#line-47">Store</a>(val <a href="../builtin.html#name-any">any</a>)</label><span id='Value-fold-method-Store-docs' class="fold-docs">
 				Store sets the value of the Value to x.
 				All calls to Store for a given Value must use values of the same concrete type.
 				Store of an inconsistent type panics, as does Store(nil).
+</span></span><span>
+			<input type='checkbox' class="fold" id="Value-fold-method-Swap"><label for="Value-fold-method-Swap">(*Value) <a href="../../src/sync/atomic/value.go.html#line-90">Swap</a>(new <a href="../builtin.html#name-any">any</a>) (old <a href="../builtin.html#name-any">any</a>)</label><span id='Value-fold-method-Swap-docs' class="fold-docs">
+				Swap stores new into Value and returns the previous value. It returns nil if
+				the Value is empty.
+
+				All calls to Swap for a given Value must use values of the same concrete
+				type. Swap of an inconsistent type panics, as does Swap(nil).
 </span></span></span>
 		<input type='checkbox' class="fold" id="Value-fold-values"><label for="Value-fold-values">As Types Of (<i>only one, which is unexported</i>)</label><span id='Value-fold-values-items' class="fold-items">
 			<input type='checkbox' class="showhide" id="Value-showhide-values"><i><label for="Value-showhide-values" class="show-inline">/* one unexported ... */</label><label for="Value-showhide-values" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
@@ -265,12 +279,15 @@
 </span></div><div class="anchor value-res" id="name-SwapUintptr">	<input type='checkbox' class="fold" id="SwapUintptr-fold-content"><label for="SwapUintptr-fold-content"> func <a href="../../src/sync/atomic/doc.go.html#line-68">SwapUintptr</a>(addr *<a href="../builtin.html#name-uintptr">uintptr</a>, new <a href="../builtin.html#name-uintptr">uintptr</a>) (old <a href="../builtin.html#name-uintptr">uintptr</a>)</label><span id='SwapUintptr-fold-content-docs' class="fold-docs">
 		SwapUintptr atomically stores new into *addr and returns the previous *addr value.
 
-</span></div>	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* 2 unexporteds ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* 2 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-runtime_procPin"><i>	<input type='checkbox' class="fold" id="runtime_procPin-fold-content"><label for="runtime_procPin-fold-content"> func <a href="../../src/sync/atomic/value.go.html#line-85">runtime_procPin</a>()</label><span id='runtime_procPin-fold-content-docs' class="fold-docs">
+</span></div>	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* 2 unexporteds ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* 2 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-runtime_procPin"><i>	<input type='checkbox' class="fold" id="runtime_procPin-fold-content"><label for="runtime_procPin-fold-content"> func <a href="../../src/sync/atomic/value.go.html#line-193">runtime_procPin</a>()</label><span id='runtime_procPin-fold-content-docs' class="fold-docs">
 		Disable/enable preemption, implemented in runtime.
 
-</span></i></div><div class="anchor value-res hidden" id="name-runtime_procUnpin"><i>	<span class="nodocs"> func <a href="../../src/sync/atomic/value.go.html#line-86">runtime_procUnpin</a>()</span></i></div></div></code></pre><pre id="footer">
+</span></i></div><div class="anchor value-res hidden" id="name-runtime_procUnpin"><i>	<span class="nodocs"> func <a href="../../src/sync/atomic/value.go.html#line-194">runtime_procUnpin</a>()</span></i></div></div>
+<div id="exported-variables"><span class="title">Package-Level Variables<span class="title-stat"><i> (only one, which is unexported)</i></span></span>
+
+	<input type='checkbox' class="showhide" id="unexported-variables-showhide"><i><label for="unexported-variables-showhide" class="show-inline">/* one unexported ... */</label><label for="unexported-variables-showhide" class="hide-inline">/* one unexported: */</label></i><div class="anchor value-res hidden" id="name-firstStoreInProgress"><i>	<span class="nodocs">  var <a href="../../src/sync/atomic/value.go.html#line-42">firstStoreInProgress</a> <a href="../builtin.html#name-byte">byte</a></span></i></div></div></code></pre><pre id="footer">
 <table><tr><td><img src="../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

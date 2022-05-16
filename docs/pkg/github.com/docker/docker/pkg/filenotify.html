@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: github.com/docker/docker/pkg/filenotify</title>
+<link href="../../../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.4.9.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>filenotify</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../../../index.html#pkg-github.com/docker/docker/pkg/filenotify">github.com/docker/docker/pkg/filenotify</a><i> (on <a href="https://pkg.go.dev/github.com/docker/docker/pkg/filenotify" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../../../../dep/github.com/docker/docker/pkg/filenotify.html">7 packages</a>, and imported by <a href="../../../../../dep/github.com/docker/docker/pkg/filenotify.html#imported-by">one package</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<input type='checkbox' checked class="fold" id="file-0-fold-content"><label for="file-0-fold-content">   <a href="../../../../../src/github.com/docker/docker/pkg/filenotify/filenotify.go.html#doc">#d</a> <a href="../../../../../src/github.com/docker/docker/pkg/filenotify/filenotify.go.html">filenotify.go</a></label><span id='file-0-fold-content-items' class="fold-items">
+		Package filenotify provides a mechanism for watching file(s) for changes.
+		Generally leans on fsnotify, but provides a poll-based notifier which fsnotify does not support.
+		These are wrapped up in a common interface so that either can be used interchangeably in your code.
+</span>
+	<span class="nodocs">      <a href="../../../../../src/github.com/docker/docker/pkg/filenotify/fsnotify.go.html">fsnotify.go</a></span>
+	<span class="nodocs">      <a href="../../../../../src/github.com/docker/docker/pkg/filenotify/poller.go.html">poller.go</a></span></div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 3, in which 1 are exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-FileWatcher" data-popularity="860">	<input type='checkbox' class="fold" id="FileWatcher-fold-content"><label for="FileWatcher-fold-content"> type <a href="../../../../../src/github.com/docker/docker/pkg/filenotify/filenotify.go.html#line-9">FileWatcher</a> <b><i>(interface)</i></b></label><span id='FileWatcher-fold-content-docs' class="fold-docs">
+		FileWatcher is an interface for implementing file notification watchers
+
+		<input type='checkbox' class="fold" id="FileWatcher-fold-methods"><label for="FileWatcher-fold-methods">Methods (<i>total 5, all are exported</i>)</label><span id='FileWatcher-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( FileWatcher) <a href="../../../../../src/github.com/docker/docker/pkg/filenotify/filenotify.go.html#line-12">Add</a>(name <a href="../../../../builtin.html#name-string">string</a>) <a href="../../../../builtin.html#name-error">error</a></span></span><span>
+			<span class="nodocs">( FileWatcher) <a href="../../../../../src/github.com/docker/docker/pkg/filenotify/filenotify.go.html#line-14">Close</a>() <a href="../../../../builtin.html#name-error">error</a></span></span><span>
+			<span class="nodocs">( FileWatcher) <a href="../../../../../src/github.com/docker/docker/pkg/filenotify/filenotify.go.html#line-11">Errors</a>() &lt;-chan <a href="../../../../builtin.html#name-error">error</a></span></span><span>
+			<span class="nodocs">( FileWatcher) <a href="../../../../../src/github.com/docker/docker/pkg/filenotify/filenotify.go.html#line-10">Events</a>() &lt;-chan <a href="../../../fsnotify/fsnotify.html">fsnotify</a>.<a href="../../../fsnotify/fsnotify.html#name-Event">Event</a></span></span><span>
+			<span class="nodocs">( FileWatcher) <a href="../../../../../src/github.com/docker/docker/pkg/filenotify/filenotify.go.html#line-13">Remove</a>(name <a href="../../../../builtin.html#name-string">string</a>) <a href="../../../../builtin.html#name-error">error</a></span></span></span>
+		<input type='checkbox' class="fold" id="FileWatcher-fold-impledby"><label for="FileWatcher-fold-impledby">Implemented By (<i>at least 2, neither is exported</i>)</label><span id='FileWatcher-fold-impledby-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="FileWatcher-showhide-impedBys"><i><label for="FileWatcher-showhide-impedBys" class="show-inline">/* 2+ unexporteds ... */</label><label for="FileWatcher-showhide-impedBys" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			*<a href="#name-filePoller">filePoller</a></i></span><span class="hidden"><i>
+			*<a href="#name-fsNotifyWatcher">fsNotifyWatcher</a></i></span></span>
+		<input type='checkbox' class="fold" id="FileWatcher-fold-impls"><label for="FileWatcher-fold-impls">Implements (<i>at least one exported</i>)</label><span id='FileWatcher-fold-impls-items' class="fold-items"><span>
+			 FileWatcher : io.<a href="../../../../io.html#name-Closer">Closer</a></span></span>
+		<input type='checkbox' class="fold" id="FileWatcher-fold-results"><label for="FileWatcher-fold-results">As Outputs Of (<i>at least 3, all are exported</i>)</label><span id='FileWatcher-fold-results-items' class="fold-items"><span>
+			func <a href="#name-New">New</a>() (<b>FileWatcher</b>, <a href="../../../../builtin.html#name-error">error</a>)</span><span>
+			func <a href="#name-NewEventWatcher">NewEventWatcher</a>() (<b>FileWatcher</b>, <a href="../../../../builtin.html#name-error">error</a>)</span><span>
+			func <a href="#name-NewPollingWatcher">NewPollingWatcher</a>() <b>FileWatcher</b></span></span>
+		<input type='checkbox' class="fold" id="FileWatcher-fold-params"><label for="FileWatcher-fold-params">As Inputs Of (<i>at least one unexported</i>)</label><span id='FileWatcher-fold-params-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="FileWatcher-showhide-outputofs"><i><label for="FileWatcher-showhide-outputofs" class="show-inline">/* at least one unexported ... */</label><label for="FileWatcher-showhide-outputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func github.com/Golang-Tools/schema-entry-go/v2.(*<a href="../../../Golang-Tools^b0a0c/schema-entry-go/v2.html#name-EndPoint">EndPoint</a>)[T].<a href="../../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/endpoint.go.html#line-823">fsWatchHandler</a>(filepath <a href="../../../../builtin.html#name-string">string</a>, watcher <b>FileWatcher</b>)</i></span></span>
+
+</span></div></div><div>	<input type='checkbox' class="showhide" id="unexported-typenames-showhide"><i><label for="unexported-typenames-showhide" class="show-inline">/* 2 unexporteds ... */</label><label for="unexported-typenames-showhide" class="hide-inline">/* 2 unexporteds: */</label></i><div class="anchor type-res hidden" id="name-filePoller" data-popularity="550">	<input type='checkbox' class="fold" id="filePoller-fold-content"><label for="filePoller-fold-content"> type <a href="../../../../../src/github.com/docker/docker/pkg/filenotify/poller.go.html#line-28">filePoller</a> <i>(struct)</i></label><span id='filePoller-fold-content-docs' class="fold-docs">
+		filePoller is used to poll files for changes, especially in cases where fsnotify
+		can't be run (e.g. when inotify handles are exhausted)
+		filePoller satisfies the FileWatcher interface
+
+		<input type='checkbox' class="fold" id="filePoller-fold-fields"><label for="filePoller-fold-fields">Fields (<i>total 5, none are exported</i>)</label><span id='filePoller-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="filePoller-showhide-fields"><i><label for="filePoller-showhide-fields" class="show-inline">/* 5 unexporteds ... */</label><label for="filePoller-showhide-fields" class="hide-inline">/* 5 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="filePoller-fold-field-closed"><label for="filePoller-fold-field-closed"><a href="../../../../../src/github.com/docker/docker/pkg/filenotify/poller.go.html#line-38">closed</a> <i><a href="../../../../builtin.html#name-bool">bool</a></i></label><span id='filePoller-fold-field-closed-docs' class="fold-docs">
+				closed is used to specify when the poller has already closed
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="filePoller-fold-field-errors"><label for="filePoller-fold-field-errors"><a href="../../../../../src/github.com/docker/docker/pkg/filenotify/poller.go.html#line-34">errors</a> <i>chan <a href="../../../../builtin.html#name-error">error</a></i></label><span id='filePoller-fold-field-errors-docs' class="fold-docs">
+				errors is the channel to listen to for watch errors
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="filePoller-fold-field-events"><label for="filePoller-fold-field-events"><a href="../../../../../src/github.com/docker/docker/pkg/filenotify/poller.go.html#line-32">events</a> <i>chan <a href="../../../fsnotify/fsnotify.html">fsnotify</a>.<a href="../../../fsnotify/fsnotify.html#name-Event">Event</a></i></label><span id='filePoller-fold-field-events-docs' class="fold-docs">
+				events is the channel to listen to for watch events
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="filePoller-fold-field-mu"><label for="filePoller-fold-field-mu"><a href="../../../../../src/github.com/docker/docker/pkg/filenotify/poller.go.html#line-36">mu</a> <i><a href="../../../../sync.html">sync</a>.<a href="../../../../sync.html#name-Mutex">Mutex</a></i></label><span id='filePoller-fold-field-mu-docs' class="fold-docs">
+				mu locks the poller for modification
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="filePoller-fold-field-watches"><label for="filePoller-fold-field-watches"><a href="../../../../../src/github.com/docker/docker/pkg/filenotify/poller.go.html#line-30">watches</a> <i>map[<a href="../../../../builtin.html#name-string">string</a>]chan struct{}</i></label><span id='filePoller-fold-field-watches-docs' class="fold-docs">
+				watches is the list of files currently being polled, close the associated channel to stop the watch
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="filePoller-fold-methods"><label for="filePoller-fold-methods">Methods (<i>total 9, in which 5 are exported</i>)</label><span id='filePoller-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="filePoller-fold-method-Add"><label for="filePoller-fold-method-Add">(*filePoller) <a href="../../../../../src/github.com/docker/docker/pkg/filenotify/poller.go.html#line-43">Add</a>(name <a href="../../../../builtin.html#name-string">string</a>) <a href="../../../../builtin.html#name-error">error</a></label><span id='filePoller-fold-method-Add-docs' class="fold-docs">
+				Add adds a filename to the list of watches
+				once added the file is polled for changes in a separate goroutine
+</span></span><span>
+			<input type='checkbox' class="fold" id="filePoller-fold-method-Close"><label for="filePoller-fold-method-Close">(*filePoller) <a href="../../../../../src/github.com/docker/docker/pkg/filenotify/poller.go.html#line-110">Close</a>() <a href="../../../../builtin.html#name-error">error</a></label><span id='filePoller-fold-method-Close-docs' class="fold-docs">
+				Close closes the poller
+				All watches are stopped, removed, and the poller cannot be added to
+</span></span><span>
+			<input type='checkbox' class="fold" id="filePoller-fold-method-Errors"><label for="filePoller-fold-method-Errors">(*filePoller) <a href="../../../../../src/github.com/docker/docker/pkg/filenotify/poller.go.html#line-104">Errors</a>() &lt;-chan <a href="../../../../builtin.html#name-error">error</a></label><span id='filePoller-fold-method-Errors-docs' class="fold-docs">
+				Errors returns the errors channel
+				This is used for notifications about errors on watched files
+</span></span><span>
+			<input type='checkbox' class="fold" id="filePoller-fold-method-Events"><label for="filePoller-fold-method-Events">(*filePoller) <a href="../../../../../src/github.com/docker/docker/pkg/filenotify/poller.go.html#line-98">Events</a>() &lt;-chan <a href="../../../fsnotify/fsnotify.html">fsnotify</a>.<a href="../../../fsnotify/fsnotify.html#name-Event">Event</a></label><span id='filePoller-fold-method-Events-docs' class="fold-docs">
+				Events returns the event channel
+				This is used for notifications on events about watched files
+</span></span><span>
+			<input type='checkbox' class="fold" id="filePoller-fold-method-Remove"><label for="filePoller-fold-method-Remove">(*filePoller) <a href="../../../../../src/github.com/docker/docker/pkg/filenotify/poller.go.html#line-76">Remove</a>(name <a href="../../../../builtin.html#name-string">string</a>) <a href="../../../../builtin.html#name-error">error</a></label><span id='filePoller-fold-method-Remove-docs' class="fold-docs">
+				Remove stops and removes watch with the specified name
+</span></span>
+			<input type='checkbox' checked class="showhide" id="filePoller-showhide-methods"><i><label for="filePoller-showhide-methods" class="show-inline">/* 4 unexporteds ... */</label><label for="filePoller-showhide-methods" class="hide-inline">/* 4 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*filePoller) <a href="../../../../../src/github.com/docker/docker/pkg/filenotify/poller.go.html#line-82">remove</a>(name <a href="../../../../builtin.html#name-string">string</a>) <a href="../../../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="filePoller-fold-method-sendErr"><label for="filePoller-fold-method-sendErr">(*filePoller) <a href="../../../../../src/github.com/docker/docker/pkg/filenotify/poller.go.html#line-136">sendErr</a>(e <a href="../../../../builtin.html#name-error">error</a>, chClose &lt;-chan struct{}) <a href="../../../../builtin.html#name-error">error</a></label><span id='filePoller-fold-method-sendErr-docs' class="fold-docs">
+				sendErr publishes the specified error to the errors channel
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="filePoller-fold-method-sendEvent"><label for="filePoller-fold-method-sendEvent">(*filePoller) <a href="../../../../../src/github.com/docker/docker/pkg/filenotify/poller.go.html#line-126">sendEvent</a>(e <a href="../../../fsnotify/fsnotify.html">fsnotify</a>.<a href="../../../fsnotify/fsnotify.html#name-Event">Event</a>, chClose &lt;-chan struct{}) <a href="../../../../builtin.html#name-error">error</a></label><span id='filePoller-fold-method-sendEvent-docs' class="fold-docs">
+				sendEvent publishes the specified event to the events channel
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="filePoller-fold-method-watch"><label for="filePoller-fold-method-watch">(*filePoller) <a href="../../../../../src/github.com/docker/docker/pkg/filenotify/poller.go.html#line-147">watch</a>(f *<a href="../../../../os.html">os</a>.<a href="../../../../os.html#name-File">File</a>, lastFi <a href="../../../../os.html">os</a>.<a href="../../../../os.html#name-FileInfo">FileInfo</a>, chClose chan struct{})</label><span id='filePoller-fold-method-watch-docs' class="fold-docs">
+				watch is responsible for polling the specified file for changes
+				upon finding changes to a file or errors, sendEvent/sendErr is called
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="filePoller-fold-impls"><label for="filePoller-fold-impls">Implements (<i>at least 2, both are exported</i>)</label><span id='filePoller-fold-impls-items' class="fold-items"><span>
+			*filePoller : <a href="#name-FileWatcher">FileWatcher</a></span><span>
+			*filePoller : io.<a href="../../../../io.html#name-Closer">Closer</a></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-fsNotifyWatcher" data-popularity="700">	<input type='checkbox' class="fold" id="fsNotifyWatcher-fold-content"><label for="fsNotifyWatcher-fold-content"> type <a href="../../../../../src/github.com/docker/docker/pkg/filenotify/fsnotify.go.html#line-6">fsNotifyWatcher</a> <i>(struct)</i></label><span id='fsNotifyWatcher-fold-content-docs' class="fold-docs">
+		fsNotifyWatcher wraps the fsnotify package to satisfy the FileNotifier interface
+
+		<input type='checkbox' class="fold" id="fsNotifyWatcher-fold-fields"><label for="fsNotifyWatcher-fold-fields">Fields (<i>total 10, in which 1 are exported</i>)</label><span id='fsNotifyWatcher-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../../src/github.com/docker/docker/pkg/filenotify/fsnotify.go.html#line-7">Watcher</a> <i>*<a href="../../../fsnotify/fsnotify.html">fsnotify</a>.<a href="../../../fsnotify/fsnotify.html#name-Watcher">Watcher</a></i></span></span>
+			<input type='checkbox' checked class="showhide" id="fsNotifyWatcher-showhide-fields"><i><label for="fsNotifyWatcher-showhide-fields" class="show-inline">/* 9 unexporteds ... */</label><label for="fsNotifyWatcher-showhide-fields" class="hide-inline">/* 9 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="fsNotifyWatcher-fold-field-dirFlags"><label for="fsNotifyWatcher-fold-field-dirFlags"><a href="../../../../../src/github.com/docker/docker/pkg/filenotify/fsnotify.go.html#line-7" class="path-duplicate">Watcher</a>.<a href="../../../../../src/github.com/fsnotify/fsnotify/kqueue.go.html#line-33">dirFlags</a> <i>map[<a href="../../../../builtin.html#name-string">string</a>]<a href="../../../../builtin.html#name-uint32">uint32</a></i></label><span id='fsNotifyWatcher-fold-field-dirFlags-docs' class="fold-docs">
+				// Map of watched directories to fflags used in kqueue.
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="fsNotifyWatcher-fold-field-done"><label for="fsNotifyWatcher-fold-field-done"><a href="../../../../../src/github.com/docker/docker/pkg/filenotify/fsnotify.go.html#line-7" class="path-duplicate">Watcher</a>.<a href="../../../../../src/github.com/fsnotify/fsnotify/kqueue.go.html#line-26">done</a> <i>chan struct{}</i></label><span id='fsNotifyWatcher-fold-field-done-docs' class="fold-docs">
+				// Channel for sending a "quit message" to the reader goroutine
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="fsNotifyWatcher-fold-field-externalWatches"><label for="fsNotifyWatcher-fold-field-externalWatches"><a href="../../../../../src/github.com/docker/docker/pkg/filenotify/fsnotify.go.html#line-7" class="path-duplicate">Watcher</a>.<a href="../../../../../src/github.com/fsnotify/fsnotify/kqueue.go.html#line-32">externalWatches</a> <i>map[<a href="../../../../builtin.html#name-string">string</a>]<a href="../../../../builtin.html#name-bool">bool</a></i></label><span id='fsNotifyWatcher-fold-field-externalWatches-docs' class="fold-docs">
+				// Map of watches added by user of the library.
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="fsNotifyWatcher-fold-field-fileExists"><label for="fsNotifyWatcher-fold-field-fileExists"><a href="../../../../../src/github.com/docker/docker/pkg/filenotify/fsnotify.go.html#line-7" class="path-duplicate">Watcher</a>.<a href="../../../../../src/github.com/fsnotify/fsnotify/kqueue.go.html#line-35">fileExists</a> <i>map[<a href="../../../../builtin.html#name-string">string</a>]<a href="../../../../builtin.html#name-bool">bool</a></i></label><span id='fsNotifyWatcher-fold-field-fileExists-docs' class="fold-docs">
+				// Keep track of if we know this file exists (to stop duplicate create events).
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="fsNotifyWatcher-fold-field-isClosed"><label for="fsNotifyWatcher-fold-field-isClosed"><a href="../../../../../src/github.com/docker/docker/pkg/filenotify/fsnotify.go.html#line-7" class="path-duplicate">Watcher</a>.<a href="../../../../../src/github.com/fsnotify/fsnotify/kqueue.go.html#line-36">isClosed</a> <i><a href="../../../../builtin.html#name-bool">bool</a></i></label><span id='fsNotifyWatcher-fold-field-isClosed-docs' class="fold-docs">
+				// Set to true when Close() is first called
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="fsNotifyWatcher-fold-field-kq"><label for="fsNotifyWatcher-fold-field-kq"><a href="../../../../../src/github.com/docker/docker/pkg/filenotify/fsnotify.go.html#line-7" class="path-duplicate">Watcher</a>.<a href="../../../../../src/github.com/fsnotify/fsnotify/kqueue.go.html#line-28">kq</a> <i><a href="../../../../builtin.html#name-int">int</a></i></label><span id='fsNotifyWatcher-fold-field-kq-docs' class="fold-docs">
+				// File descriptor (as returned by the kqueue() syscall).
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="fsNotifyWatcher-fold-field-mu"><label for="fsNotifyWatcher-fold-field-mu"><a href="../../../../../src/github.com/docker/docker/pkg/filenotify/fsnotify.go.html#line-7" class="path-duplicate">Watcher</a>.<a href="../../../../../src/github.com/fsnotify/fsnotify/kqueue.go.html#line-30">mu</a> <i><a href="../../../../sync.html">sync</a>.<a href="../../../../sync.html#name-Mutex">Mutex</a></i></label><span id='fsNotifyWatcher-fold-field-mu-docs' class="fold-docs">
+				// Protects access to watcher data
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="fsNotifyWatcher-fold-field-paths"><label for="fsNotifyWatcher-fold-field-paths"><a href="../../../../../src/github.com/docker/docker/pkg/filenotify/fsnotify.go.html#line-7" class="path-duplicate">Watcher</a>.<a href="../../../../../src/github.com/fsnotify/fsnotify/kqueue.go.html#line-34">paths</a> <i>map[<a href="../../../../builtin.html#name-int">int</a>]<a href="../../../fsnotify/fsnotify.html">fsnotify</a>.<a href="../../../fsnotify/fsnotify.html#name-pathInfo">pathInfo</a></i></label><span id='fsNotifyWatcher-fold-field-paths-docs' class="fold-docs">
+				// Map file descriptors to path names for processing kqueue events.
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="fsNotifyWatcher-fold-field-watches"><label for="fsNotifyWatcher-fold-field-watches"><a href="../../../../../src/github.com/docker/docker/pkg/filenotify/fsnotify.go.html#line-7" class="path-duplicate">Watcher</a>.<a href="../../../../../src/github.com/fsnotify/fsnotify/kqueue.go.html#line-31">watches</a> <i>map[<a href="../../../../builtin.html#name-string">string</a>]<a href="../../../../builtin.html#name-int">int</a></i></label><span id='fsNotifyWatcher-fold-field-watches-docs' class="fold-docs">
+				// Map of watched file descriptors (key: path).
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="fsNotifyWatcher-fold-methods"><label for="fsNotifyWatcher-fold-methods">Methods (<i>total 12, in which 6 are exported</i>)</label><span id='fsNotifyWatcher-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="fsNotifyWatcher-fold-method-Add"><label for="fsNotifyWatcher-fold-method-Add">( fsNotifyWatcher) <a href="../../../../../src/github.com/fsnotify/fsnotify/kqueue.go.html#line-95">Add</a>(name <a href="../../../../builtin.html#name-string">string</a>) <a href="../../../../builtin.html#name-error">error</a></label><span id='fsNotifyWatcher-fold-method-Add-docs' class="fold-docs">
+				Add starts watching the named file or directory (non-recursively).
+</span></span><span>
+			<input type='checkbox' class="fold" id="fsNotifyWatcher-fold-method-Close"><label for="fsNotifyWatcher-fold-method-Close">( fsNotifyWatcher) <a href="../../../../../src/github.com/fsnotify/fsnotify/kqueue.go.html#line-68">Close</a>() <a href="../../../../builtin.html#name-error">error</a></label><span id='fsNotifyWatcher-fold-method-Close-docs' class="fold-docs">
+				Close removes all watches and closes the events channel.
+</span></span><span>
+			<input type='checkbox' class="fold" id="fsNotifyWatcher-fold-method-Errors"><label for="fsNotifyWatcher-fold-method-Errors">(*fsNotifyWatcher) <a href="../../../../../src/github.com/docker/docker/pkg/filenotify/fsnotify.go.html#line-16">Errors</a>() &lt;-chan <a href="../../../../builtin.html#name-error">error</a></label><span id='fsNotifyWatcher-fold-method-Errors-docs' class="fold-docs">
+				Errors returns the fsnotify error channel receiver
+</span></span><span>
+			<input type='checkbox' class="fold" id="fsNotifyWatcher-fold-method-Events"><label for="fsNotifyWatcher-fold-method-Events">(*fsNotifyWatcher) <a href="../../../../../src/github.com/docker/docker/pkg/filenotify/fsnotify.go.html#line-11">Events</a>() &lt;-chan <a href="../../../fsnotify/fsnotify.html">fsnotify</a>.<a href="../../../fsnotify/fsnotify.html#name-Event">Event</a></label><span id='fsNotifyWatcher-fold-method-Events-docs' class="fold-docs">
+				Events returns the fsnotify event channel receiver
+</span></span><span>
+			<input type='checkbox' class="fold" id="fsNotifyWatcher-fold-method-Remove"><label for="fsNotifyWatcher-fold-method-Remove">( fsNotifyWatcher) <a href="../../../../../src/github.com/fsnotify/fsnotify/kqueue.go.html#line-104">Remove</a>(name <a href="../../../../builtin.html#name-string">string</a>) <a href="../../../../builtin.html#name-error">error</a></label><span id='fsNotifyWatcher-fold-method-Remove-docs' class="fold-docs">
+				Remove stops watching the the named file or directory (non-recursively).
+</span></span><span>
+			<input type='checkbox' class="fold" id="fsNotifyWatcher-fold-method-WatchList"><label for="fsNotifyWatcher-fold-method-WatchList">( fsNotifyWatcher) <a href="../../../../../src/github.com/fsnotify/fsnotify/kqueue.go.html#line-152">WatchList</a>() []<a href="../../../../builtin.html#name-string">string</a></label><span id='fsNotifyWatcher-fold-method-WatchList-docs' class="fold-docs">
+				WatchList returns the directories and files that are being monitered.
+</span></span>
+			<input type='checkbox' checked class="showhide" id="fsNotifyWatcher-showhide-methods"><i><label for="fsNotifyWatcher-showhide-methods" class="show-inline">/* 6 unexporteds ... */</label><label for="fsNotifyWatcher-showhide-methods" class="hide-inline">/* 6 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="fsNotifyWatcher-fold-method-addWatch"><label for="fsNotifyWatcher-fold-method-addWatch">( fsNotifyWatcher) <a href="../../../../../src/github.com/fsnotify/fsnotify/kqueue.go.html#line-173">addWatch</a>(name <a href="../../../../builtin.html#name-string">string</a>, flags <a href="../../../../builtin.html#name-uint32">uint32</a>) (<a href="../../../../builtin.html#name-string">string</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='fsNotifyWatcher-fold-method-addWatch-docs' class="fold-docs">
+				addWatch adds name to the watched file set.
+				The flags are interpreted as described in kevent(2).
+				Returns the real path to the file which was added, if any, which may be different from the one passed in the case of symlinks.
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs">( fsNotifyWatcher) <a href="../../../../../src/github.com/fsnotify/fsnotify/kqueue.go.html#line-479">internalWatch</a>(name <a href="../../../../builtin.html#name-string">string</a>, fileInfo <a href="../../../../os.html">os</a>.<a href="../../../../os.html#name-FileInfo">FileInfo</a>) (<a href="../../../../builtin.html#name-string">string</a>, <a href="../../../../builtin.html#name-error">error</a>)</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="fsNotifyWatcher-fold-method-readEvents"><label for="fsNotifyWatcher-fold-method-readEvents">( fsNotifyWatcher) <a href="../../../../../src/github.com/fsnotify/fsnotify/kqueue.go.html#line-275">readEvents</a>()</label><span id='fsNotifyWatcher-fold-method-readEvents-docs' class="fold-docs">
+				readEvents reads from kqueue and converts the received kevents into
+				Event values that it sends down the Events channel.
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="fsNotifyWatcher-fold-method-sendDirectoryChangeEvents"><label for="fsNotifyWatcher-fold-method-sendDirectoryChangeEvents">( fsNotifyWatcher) <a href="../../../../../src/github.com/fsnotify/fsnotify/kqueue.go.html#line-430">sendDirectoryChangeEvents</a>(dirPath <a href="../../../../builtin.html#name-string">string</a>)</label><span id='fsNotifyWatcher-fold-method-sendDirectoryChangeEvents-docs' class="fold-docs">
+				sendDirectoryEvents searches the directory for newly created files
+				and sends them over the event channel. This functionality is to have
+				the BSD version of fsnotify match Linux inotify which provides a
+				create event for files created in a watched directory.
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="fsNotifyWatcher-fold-method-sendFileCreatedEventIfNew"><label for="fsNotifyWatcher-fold-method-sendFileCreatedEventIfNew">( fsNotifyWatcher) <a href="../../../../../src/github.com/fsnotify/fsnotify/kqueue.go.html#line-453">sendFileCreatedEventIfNew</a>(filePath <a href="../../../../builtin.html#name-string">string</a>, fileInfo <a href="../../../../os.html">os</a>.<a href="../../../../os.html#name-FileInfo">FileInfo</a>) (err <a href="../../../../builtin.html#name-error">error</a>)</label><span id='fsNotifyWatcher-fold-method-sendFileCreatedEventIfNew-docs' class="fold-docs">
+				sendFileCreatedEvent sends a create event if the file isn't already being tracked.
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="fsNotifyWatcher-fold-method-watchDirectoryFiles"><label for="fsNotifyWatcher-fold-method-watchDirectoryFiles">( fsNotifyWatcher) <a href="../../../../../src/github.com/fsnotify/fsnotify/kqueue.go.html#line-404">watchDirectoryFiles</a>(dirPath <a href="../../../../builtin.html#name-string">string</a>) <a href="../../../../builtin.html#name-error">error</a></label><span id='fsNotifyWatcher-fold-method-watchDirectoryFiles-docs' class="fold-docs">
+				watchDirectoryFiles to mimic inotify when adding a watch on a directory
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="fsNotifyWatcher-fold-impls"><label for="fsNotifyWatcher-fold-impls">Implements (<i>at least 2, both are exported</i>)</label><span id='fsNotifyWatcher-fold-impls-items' class="fold-items"><span>
+			*fsNotifyWatcher : <a href="#name-FileWatcher">FileWatcher</a></span><span>
+			 fsNotifyWatcher : io.<a href="../../../../io.html#name-Closer">Closer</a></span></span>
+
+</span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 3, all are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-New">	<input type='checkbox' class="fold" id="New-fold-content"><label for="New-fold-content"> func <a href="../../../../../src/github.com/docker/docker/pkg/filenotify/filenotify.go.html#line-18">New</a>() (<a href="#name-FileWatcher">FileWatcher</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='New-fold-content-docs' class="fold-docs">
+		New tries to use an fs-event watcher, and falls back to the poller if there is an error
+
+</span></div><div class="anchor value-res" id="name-NewEventWatcher">	<input type='checkbox' class="fold" id="NewEventWatcher-fold-content"><label for="NewEventWatcher-fold-content"> func <a href="../../../../../src/github.com/docker/docker/pkg/filenotify/filenotify.go.html#line-34">NewEventWatcher</a>() (<a href="#name-FileWatcher">FileWatcher</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='NewEventWatcher-fold-content-docs' class="fold-docs">
+		NewEventWatcher returns an fs-event based file watcher
+
+</span></div><div class="anchor value-res" id="name-NewPollingWatcher">	<input type='checkbox' class="fold" id="NewPollingWatcher-fold-content"><label for="NewPollingWatcher-fold-content"> func <a href="../../../../../src/github.com/docker/docker/pkg/filenotify/filenotify.go.html#line-26">NewPollingWatcher</a>() <a href="#name-FileWatcher">FileWatcher</a></label><span id='NewPollingWatcher-fold-content-docs' class="fold-docs">
+		NewPollingWatcher returns a poll-based file watcher
+
+</span></div></div>
+<div id="exported-variables"><span class="title">Package-Level Variables<span class="title-stat"><i> (total 2, neither is exported)</i></span></span>
+
+	<input type='checkbox' class="showhide" id="unexported-variables-showhide"><i><label for="unexported-variables-showhide" class="show-inline">/* 2 unexporteds ... */</label><label for="unexported-variables-showhide" class="hide-inline">/* 2 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-errNoSuchWatch"><i>	<input type='checkbox' class="fold" id="errNoSuchWatch-fold-content"><label for="errNoSuchWatch-fold-content">  var <a href="../../../../../src/github.com/docker/docker/pkg/filenotify/poller.go.html#line-19">errNoSuchWatch</a> <a href="../../../../builtin.html#name-error">error</a></label><span id='errNoSuchWatch-fold-content-docs' class="fold-docs">
+		errNoSuchWatch is returned when trying to remove a watch that doesn't exist
+
+</span></i></div><div class="anchor value-res hidden" id="name-errPollerClosed"><i>	<input type='checkbox' class="fold" id="errPollerClosed-fold-content"><label for="errPollerClosed-fold-content">  var <a href="../../../../../src/github.com/docker/docker/pkg/filenotify/poller.go.html#line-17">errPollerClosed</a> <a href="../../../../builtin.html#name-error">error</a></label><span id='errPollerClosed-fold-content-docs' class="fold-docs">
+		errPollerClosed is returned when the poller is closed
+
+</span></i></div></div>
+<div id="exported-constants"><span class="title">Package-Level Constants<span class="title-stat"><i> (only one, which is unexported)</i></span></span>
+
+	<input type='checkbox' class="showhide" id="unexported-constants-showhide"><i><label for="unexported-constants-showhide" class="show-inline">/* one unexported ... */</label><label for="unexported-constants-showhide" class="hide-inline">/* one unexported: */</label></i><div class="anchor value-res hidden" id="name-watchWaitTime"><i>	<input type='checkbox' class="fold" id="watchWaitTime-fold-content"><label for="watchWaitTime-fold-content">const <a href="../../../../../src/github.com/docker/docker/pkg/filenotify/poller.go.html#line-23">watchWaitTime</a> <a href="../../../../time.html">time</a>.<a href="../../../../time.html#name-Duration">Duration</a> = 200000000</label><span id='watchWaitTime-fold-content-docs' class="fold-docs">
+		watchWaitTime is the time to wait between file poll loops
+
+</span></i></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

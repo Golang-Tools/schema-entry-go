@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: types.go in package os</title>
-<link href="../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../jvs/golds-v0.3.6.js"></script>
+<link href="../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -105,8 +105,8 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-55"><code>	<a href="../../pkg/os.html#name-ModePerm" class="ident">ModePerm</a> = <a href="../../pkg/io/fs.html" class="ident i0">fs</a>.<a href="../io/fs/fs.go.html#line-191" class="ident">ModePerm</a> <span class="comment">// Unix permission bits, 0o777</span></code></span>
 <span class="codeline" id="line-56"><code>)</code></span>
 <span class="codeline" id="line-57"><code></code></span>
-<span class="codeline" id="line-58"><code><span class="keyword">func</span> (<label for="r1" class="ident">fs</label> *<a href="types_unix.go.html#line-16" class="ident">fileStat</a>) <label for="r2" class="ident"><a href="../../imp/os.fileStat^c93d7.html#name-.Name" class="ident">Name</a></label>() <a href="../../pkg/builtin.html#name-string" class="ident">string</a> { <span class="keyword">return</span> <label for="r1" class="ident">fs</label>.<a href="types_unix.go.html#line-17" class="ident">name</a> }</code></span>
-<span class="codeline" id="line-59"><code><span class="keyword">func</span> (<label for="r3" class="ident">fs</label> *<a href="types_unix.go.html#line-16" class="ident">fileStat</a>) <label for="r4" class="ident"><a href="../../imp/os.fileStat^c93d7.html#name-.IsDir" class="ident">IsDir</a></label>() <a href="../../pkg/builtin.html#name-bool" class="ident">bool</a>  { <span class="keyword">return</span> <label for="r3" class="ident">fs</label>.<a href="types_unix.go.html#line-25" class="ident">Mode</a>().<a href="../io/fs/fs.go.html#line-222" class="ident">IsDir</a>() }</code></span>
+<span class="codeline" id="line-58"><code><span class="keyword">func</span> (<label for="r1" class="ident">fs</label> *<a href="types_unix.go.html#line-15" class="ident">fileStat</a>) <label for="r2" class="ident"><a href="../../imp/os.fileStat^c93d7.html#name-.Name" class="ident">Name</a></label>() <a href="../../pkg/builtin.html#name-string" class="ident">string</a> { <span class="keyword">return</span> <label for="r1" class="ident">fs</label>.<a href="types_unix.go.html#line-16" class="ident">name</a> }</code></span>
+<span class="codeline" id="line-59"><code><span class="keyword">func</span> (<label for="r3" class="ident">fs</label> *<a href="types_unix.go.html#line-15" class="ident">fileStat</a>) <label for="r4" class="ident"><a href="../../imp/os.fileStat^c93d7.html#name-.IsDir" class="ident">IsDir</a></label>() <a href="../../pkg/builtin.html#name-bool" class="ident">bool</a>  { <span class="keyword">return</span> <label for="r3" class="ident">fs</label>.<a href="types_unix.go.html#line-24" class="ident">Mode</a>().<a href="../io/fs/fs.go.html#line-222" class="ident">IsDir</a>() }</code></span>
 <span class="codeline" id="line-60"><code></code></span>
 <span class="codeline" id="line-61"><code><span class="comment">// SameFile reports whether fi1 and fi2 describe the same file.</span></code></span>
 <span class="codeline" id="line-62"><code><span class="comment">// For example, on Unix this means that the device and inode fields</span></code></span>
@@ -115,16 +115,16 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-65"><code><span class="comment">// SameFile only applies to results returned by this package's Stat.</span></code></span>
 <span class="codeline" id="line-66"><code><span class="comment">// It returns false in other cases.</span></code></span>
 <span class="codeline" id="line-67"><code><span class="keyword">func</span> <label for="r5" class="ident"><a href="../../pkg/os.html#name-SameFile" class="ident">SameFile</a></label>(<label for="r6" class="ident">fi1</label>, <label for="r7" class="ident">fi2</label> <a href="#line-21" class="ident">FileInfo</a>) <a href="../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
-<span class="codeline" id="line-68"><code>	<label for="r8" class="ident">fs1</label>, <label for="r9" class="ident">ok1</label> := <label for="r6" class="ident">fi1</label>.(*<a href="types_unix.go.html#line-16" class="ident">fileStat</a>)</code></span>
-<span class="codeline" id="line-69"><code>	<label for="r10" class="ident">fs2</label>, <label for="r11" class="ident">ok2</label> := <label for="r7" class="ident">fi2</label>.(*<a href="types_unix.go.html#line-16" class="ident">fileStat</a>)</code></span>
+<span class="codeline" id="line-68"><code>	<label for="r8" class="ident">fs1</label>, <label for="r9" class="ident">ok1</label> := <label for="r6" class="ident">fi1</label>.(*<a href="types_unix.go.html#line-15" class="ident">fileStat</a>)</code></span>
+<span class="codeline" id="line-69"><code>	<label for="r10" class="ident">fs2</label>, <label for="r11" class="ident">ok2</label> := <label for="r7" class="ident">fi2</label>.(*<a href="types_unix.go.html#line-15" class="ident">fileStat</a>)</code></span>
 <span class="codeline" id="line-70"><code>	<span class="keyword">if</span> !<label for="r9" class="ident">ok1</label> || !<label for="r11" class="ident">ok2</label> {</code></span>
 <span class="codeline" id="line-71"><code>		<span class="keyword">return</span> <a href="../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
 <span class="codeline" id="line-72"><code>	}</code></span>
-<span class="codeline" id="line-73"><code>	<span class="keyword">return</span> <a href="types_unix.go.html#line-29" class="ident">sameFile</a>(<label for="r8" class="ident">fs1</label>, <label for="r10" class="ident">fs2</label>)</code></span>
+<span class="codeline" id="line-73"><code>	<span class="keyword">return</span> <a href="types_unix.go.html#line-28" class="ident">sameFile</a>(<label for="r8" class="ident">fs1</label>, <label for="r10" class="ident">fs2</label>)</code></span>
 <span class="codeline" id="line-74"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

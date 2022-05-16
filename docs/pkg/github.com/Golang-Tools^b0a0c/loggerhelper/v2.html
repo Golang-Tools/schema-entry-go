@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: github.com/Golang-Tools/loggerhelper/v2</title>
+<link href="../../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.4.9.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>loggerhelper</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../../index.html#pkg-github.com/Golang-Tools/loggerhelper/v2">github.com/Golang-Tools/loggerhelper/v2</a><i> (on <a href="https://pkg.go.dev/github.com/Golang-Tools/loggerhelper/v2" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../../../dep/github.com/Golang-Tools^b0a0c/loggerhelper/v2.html">6 packages</a>, and imported by <a href="../../../../dep/github.com/Golang-Tools^b0a0c/loggerhelper/v2.html#imported-by">2 packages</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<span class="nodocs">      <a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/log.go.html">log.go</a></span>
+	<span class="nodocs">      <a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/loggerhelper.go.html">loggerhelper.go</a></span>
+	<span class="nodocs">      <a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/options.go.html">options.go</a></span></div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 4, all are exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-Dict" data-popularity="0">	<input type='checkbox' class="fold" id="Dict-fold-content"><label for="Dict-fold-content"> type <a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/loggerhelper.go.html#line-26">Dict</a> <i>(map)</i></label><span id='Dict-fold-content-docs' class="fold-docs">
+		Dict 简化键值对的写法
+
+</span></div><div class="anchor type-res" id="name-FormatType" data-popularity="10">	<input type='checkbox' class="fold" id="FormatType-fold-content"><label for="FormatType-fold-content"> type <a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/options.go.html#line-13">FormatType</a> <a href="../../../builtin.html#name-int32">int32</a> <i>(basic type)</i></label><span id='FormatType-fold-content-docs' class="fold-docs">
+		redis类型
+
+		<input type='checkbox' class="fold" id="FormatType-fold-values"><label for="FormatType-fold-values">As Types Of (<i>total 2, both are exported</i>)</label><span id='FormatType-fold-values-items' class="fold-items"><span>
+			const <a href="#name-FormatType_JSON">FormatType_JSON</a></span><span>
+			const <a href="#name-FormatType_Text">FormatType_Text</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-Log" data-popularity="430">	<input type='checkbox' class="fold" id="Log-fold-content"><label for="Log-fold-content"> type <a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/log.go.html#line-7">Log</a> <i>(struct)</i></label><span id='Log-fold-content-docs' class="fold-docs">
+		针对不同业务可以设置不同的Log对象
+		它是固定了一些字段的logger
+
+		<input type='checkbox' class="fold" id="Log-fold-fields"><label for="Log-fold-fields">Fields (<i>only one, which is unexported</i>)</label><span id='Log-fold-fields-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Log-showhide-fields"><i><label for="Log-showhide-fields" class="show-inline">/* one unexported ... */</label><label for="Log-showhide-fields" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/log.go.html#line-8">log</a> <i>*<a href="../../sirupsen/logrus.html">logrus</a>.<a href="../../sirupsen/logrus.html#name-Entry">Entry</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="Log-fold-methods"><label for="Log-fold-methods">Methods (<i>total 7, all are exported</i>)</label><span id='Log-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Log-fold-method-Debug"><label for="Log-fold-method-Debug">(*Log) <a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/log.go.html#line-36">Debug</a>(message <a href="../../../builtin.html#name-string">string</a>, fields ...map[<a href="../../../builtin.html#name-string">string</a>]interface{})</label><span id='Log-fold-method-Debug-docs' class="fold-docs">
+				Debug 打印Debug级别信息
+				@params message string 事件消息
+				@params fields ...map[string]interface{} 信息字段
+</span></span><span>
+			<input type='checkbox' class="fold" id="Log-fold-method-Error"><label for="Log-fold-method-Error">(*Log) <a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/log.go.html#line-102">Error</a>(message <a href="../../../builtin.html#name-string">string</a>, fields ...map[<a href="../../../builtin.html#name-string">string</a>]interface{})</label><span id='Log-fold-method-Error-docs' class="fold-docs">
+				Error 打印Error级别信息
+				@params message string 事件消息
+				@params fields ...map[string]interface{} 信息字段
+</span></span><span>
+			<input type='checkbox' class="fold" id="Log-fold-method-Fatal"><label for="Log-fold-method-Fatal">(*Log) <a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/log.go.html#line-124">Fatal</a>(message <a href="../../../builtin.html#name-string">string</a>, fields ...map[<a href="../../../builtin.html#name-string">string</a>]interface{})</label><span id='Log-fold-method-Fatal-docs' class="fold-docs">
+				Fatal 打印Fatal级别信息
+				@params message string 事件消息
+				@params fields ...map[string]interface{} 信息字段
+</span></span><span>
+			<input type='checkbox' class="fold" id="Log-fold-method-Info"><label for="Log-fold-method-Info">(*Log) <a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/log.go.html#line-58">Info</a>(message <a href="../../../builtin.html#name-string">string</a>, fields ...map[<a href="../../../builtin.html#name-string">string</a>]interface{})</label><span id='Log-fold-method-Info-docs' class="fold-docs">
+				Info 打印Info级别信息
+				@params message string 事件消息
+				@params fields ...map[string]interface{} 信息字段
+</span></span><span>
+			<input type='checkbox' class="fold" id="Log-fold-method-Panic"><label for="Log-fold-method-Panic">(*Log) <a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/log.go.html#line-145">Panic</a>(message <a href="../../../builtin.html#name-string">string</a>, fields ...map[<a href="../../../builtin.html#name-string">string</a>]interface{})</label><span id='Log-fold-method-Panic-docs' class="fold-docs">
+				Panic 打印Panic级别信息
+				@params message string 事件消息
+				@params fields ...map[string]interface{} 信息字段
+</span></span><span>
+			<input type='checkbox' class="fold" id="Log-fold-method-Trace"><label for="Log-fold-method-Trace">(*Log) <a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/log.go.html#line-14">Trace</a>(message <a href="../../../builtin.html#name-string">string</a>, fields ...map[<a href="../../../builtin.html#name-string">string</a>]interface{})</label><span id='Log-fold-method-Trace-docs' class="fold-docs">
+				Trace 打印Trace级别信息
+				@params message string 事件消息
+				@params fields ...map[string]interface{} 信息字段
+</span></span><span>
+			<input type='checkbox' class="fold" id="Log-fold-method-Warn"><label for="Log-fold-method-Warn">(*Log) <a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/log.go.html#line-80">Warn</a>(message <a href="../../../builtin.html#name-string">string</a>, fields ...map[<a href="../../../builtin.html#name-string">string</a>]interface{})</label><span id='Log-fold-method-Warn-docs' class="fold-docs">
+				Warn 打印Warn级别信息
+				@params message string 事件消息
+				@params fields ...map[string]interface{} 信息字段
+</span></span></span>
+		<input type='checkbox' class="fold" id="Log-fold-results"><label for="Log-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='Log-fold-results-items' class="fold-items"><span>
+			func <a href="#name-Export">Export</a>() *<b>Log</b></span></span>
+		<input type='checkbox' class="fold" id="Log-fold-values"><label for="Log-fold-values">As Types Of (<i>only one, which is unexported</i>)</label><span id='Log-fold-values-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Log-showhide-values"><i><label for="Log-showhide-values" class="show-inline">/* one unexported ... */</label><label for="Log-showhide-values" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			  var github.com/Golang-Tools/schema-entry-go/v2.<a href="../schema-entry-go/v2.html#name-logger">logger</a> *<a href="">log</a>.<b><a href="#name-Log">Log</a></b></i></span></span>
+
+</span></div><div class="anchor type-res" id="name-Options" data-popularity="10">	<input type='checkbox' class="fold" id="Options-fold-content"><label for="Options-fold-content"> type <a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/options.go.html#line-23">Options</a> <i>(struct)</i></label><span id='Options-fold-content-docs' class="fold-docs">
+		Option 设置key行为的选项
+		@attribute MaxTTL time.Duration 为0则不设置过期
+		@attribute AutoRefresh string 需要为crontab格式的字符串,否则不会自动定时刷新
+
+		<input type='checkbox' class="fold" id="Options-fold-fields"><label for="Options-fold-fields">Fields (<i>total 8, all are exported</i>)</label><span id='Options-fold-fields-items' class="fold-items"><span>
+			<span class="nodocs"><a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/options.go.html#line-28">DefaultFieldMap</a> <i><a href="../../sirupsen/logrus.html">logrus</a>.<a href="../../sirupsen/logrus.html#name-FieldMap">FieldMap</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/options.go.html#line-25">DisableTimeField</a> <i><a href="../../../builtin.html#name-bool">bool</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/options.go.html#line-29">ExtFields</a> <i>map[<a href="../../../builtin.html#name-string">string</a>]interface{}</i></span></span><span>
+			<span class="nodocs"><a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/options.go.html#line-31">Hooks</a> <i>[]<a href="../../sirupsen/logrus.html">logrus</a>.<a href="../../sirupsen/logrus.html#name-Hook">Hook</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/options.go.html#line-27">Level</a> <i><a href="../../sirupsen/logrus.html">logrus</a>.<a href="../../sirupsen/logrus.html#name-Level">Level</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/options.go.html#line-30">Output</a> <i><a href="../../../io.html">io</a>.<a href="../../../io.html#name-Writer">Writer</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/options.go.html#line-26">TimeFormat</a> <i><a href="../../../builtin.html#name-string">string</a></i></span></span><span>
+			<span class="nodocs"><a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/options.go.html#line-24">Type</a> <i><a href="#name-FormatType">FormatType</a></i></span></span></span>
+		<input type='checkbox' class="fold" id="Options-fold-values"><label for="Options-fold-values">As Types Of (<i>total 2, in which 1 are exported</i>)</label><span id='Options-fold-values-items' class="fold-items"><span>
+			  var <a href="#name-DefaultOpts">DefaultOpts</a></span>
+			<input type='checkbox' class="showhide" id="Options-showhide-values"><i><label for="Options-showhide-values" class="show-inline">/* one unexported ... */</label><label for="Options-showhide-values" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			  var <a href="#name-dopts">dopts</a> *<b>Options</b></i></span></span>
+
+</span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 23, in which 21 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-AddExtField">	<input type='checkbox' class="fold" id="AddExtField-fold-content"><label for="AddExtField-fold-content"> func <a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/options.go.html#line-106">AddExtField</a>(field <a href="../../../builtin.html#name-string">string</a>, value interface{}) <a href="../optparams.html">optparams</a>.<a href="../optparams.html#name-Option">Option</a>[<a href="#name-Options">Options</a>]</label><span id='AddExtField-fold-content-docs' class="fold-docs">
+		AddExtField SetLogger函数的参数,用于增加扩展字段
+
+</span></div><div class="anchor value-res" id="name-AddHooks">	<input type='checkbox' class="fold" id="AddHooks-fold-content"><label for="AddHooks-fold-content"> func <a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/options.go.html#line-89">AddHooks</a>(hooks ...<a href="../../sirupsen/logrus.html">logrus</a>.<a href="../../sirupsen/logrus.html#name-Hook">Hook</a>) <a href="../optparams.html">optparams</a>.<a href="../optparams.html#name-Option">Option</a>[<a href="#name-Options">Options</a>]</label><span id='AddHooks-fold-content-docs' class="fold-docs">
+		AddHooks SetLogger函数的参数,用于增加钩子
+
+</span></div><div class="anchor value-res" id="name-Debug">	<input type='checkbox' class="fold" id="Debug-fold-content"><label for="Debug-fold-content"> func <a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/loggerhelper.go.html#line-156">Debug</a>(message <a href="../../../builtin.html#name-string">string</a>, fields ...map[<a href="../../../builtin.html#name-string">string</a>]interface{})</label><span id='Debug-fold-content-docs' class="fold-docs">
+		Debug 默认log打印Debug级别信息
+		@params message string 事件消息
+		@params fields ...map[string]interface{} 信息字段
+
+</span></div><div class="anchor value-res" id="name-Error">	<input type='checkbox' class="fold" id="Error-fold-content"><label for="Error-fold-content"> func <a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/loggerhelper.go.html#line-282">Error</a>(message <a href="../../../builtin.html#name-string">string</a>, fields ...map[<a href="../../../builtin.html#name-string">string</a>]interface{})</label><span id='Error-fold-content-docs' class="fold-docs">
+		Error 默认log打印Error级别信息
+		@params message string 事件消息
+		@params fields ...map[string]interface{} 信息字段
+
+</span></div><div class="anchor value-res" id="name-Export">	<input type='checkbox' class="fold" id="Export-fold-content"><label for="Export-fold-content"> func <a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/loggerhelper.go.html#line-54">Export</a>() *<a href="#name-Log">Log</a></label><span id='Export-fold-content-docs' class="fold-docs">
+		Export 导出Log对象
+		该函数用于导出当前的默认logrus.Entry给特定模块使用
+
+</span></div><div class="anchor value-res" id="name-Fatal">	<input type='checkbox' class="fold" id="Fatal-fold-content"><label for="Fatal-fold-content"> func <a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/loggerhelper.go.html#line-324">Fatal</a>(message <a href="../../../builtin.html#name-string">string</a>, fields ...map[<a href="../../../builtin.html#name-string">string</a>]interface{})</label><span id='Fatal-fold-content-docs' class="fold-docs">
+		Fatal 默认log打印Fatal级别信息
+		@params message string 事件消息
+		@params fields ...map[string]interface{} 信息字段
+
+</span></div><div class="anchor value-res" id="name-GetLogger">	<input type='checkbox' class="fold" id="GetLogger-fold-content"><label for="GetLogger-fold-content"> func <a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/loggerhelper.go.html#line-48">GetLogger</a>() *<a href="../../sirupsen/logrus.html">logrus</a>.<a href="../../sirupsen/logrus.html#name-Logger">Logger</a></label><span id='GetLogger-fold-content-docs' class="fold-docs">
+		GetLogger 获取模块维护得logrus.Logger对象
+		该接口用于导出logger给其他模块使用
+
+</span></div><div class="anchor value-res" id="name-Info">	<input type='checkbox' class="fold" id="Info-fold-content"><label for="Info-fold-content"> func <a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/loggerhelper.go.html#line-198">Info</a>(message <a href="../../../builtin.html#name-string">string</a>, fields ...map[<a href="../../../builtin.html#name-string">string</a>]interface{})</label><span id='Info-fold-content-docs' class="fold-docs">
+		Info 默认log打印Info级别信息
+		@params message string 事件消息
+		@params fields ...map[string]interface{} 信息字段
+
+</span></div><div class="anchor value-res" id="name-New">	<input type='checkbox' class="fold" id="New-fold-content"><label for="New-fold-content"> func <a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/loggerhelper.go.html#line-29">New</a>() *<a href="../../sirupsen/logrus.html">logrus</a>.<a href="../../sirupsen/logrus.html#name-Logger">Logger</a></label><span id='New-fold-content-docs' class="fold-docs">
+		New 初始化log的配置
+
+</span></div><div class="anchor value-res" id="name-Panic">	<input type='checkbox' class="fold" id="Panic-fold-content"><label for="Panic-fold-content"> func <a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/loggerhelper.go.html#line-366">Panic</a>(message <a href="../../../builtin.html#name-string">string</a>, fields ...map[<a href="../../../builtin.html#name-string">string</a>]interface{})</label><span id='Panic-fold-content-docs' class="fold-docs">
+		Panic 默认log打印Panic级别信息
+		@params message string 事件消息
+		@params fields ...map[string]interface{} 信息字段
+
+</span></div><div class="anchor value-res" id="name-Set">	<input type='checkbox' class="fold" id="Set-fold-content"><label for="Set-fold-content"> func <a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/loggerhelper.go.html#line-65">Set</a>(opts ...<a href="../optparams.html">optparams</a>.<a href="../optparams.html#name-Option">Option</a>[<a href="#name-Options">Options</a>])</label><span id='Set-fold-content-docs' class="fold-docs">
+		Set 设置logger
+		@params opts ...Option 初始化使用的参数,具体可以看options.go文件
+
+</span></div><div class="anchor value-res" id="name-Trace">	<input type='checkbox' class="fold" id="Trace-fold-content"><label for="Trace-fold-content"> func <a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/loggerhelper.go.html#line-114">Trace</a>(message <a href="../../../builtin.html#name-string">string</a>, fields ...map[<a href="../../../builtin.html#name-string">string</a>]interface{})</label><span id='Trace-fold-content-docs' class="fold-docs">
+		Trace 默认log打印Trace级别信息
+		@params message string 事件消息
+		@params fields ...map[string]interface{} 信息字段
+
+</span></div><div class="anchor value-res" id="name-Warn">	<input type='checkbox' class="fold" id="Warn-fold-content"><label for="Warn-fold-content"> func <a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/loggerhelper.go.html#line-240">Warn</a>(message <a href="../../../builtin.html#name-string">string</a>, fields ...map[<a href="../../../builtin.html#name-string">string</a>]interface{})</label><span id='Warn-fold-content-docs' class="fold-docs">
+		Warn 默认log打印Warn级别信息
+		@params message string 事件消息
+		@params fields ...map[string]interface{} 信息字段
+
+</span></div><div class="anchor value-res" id="name-WithAddExtFields">	<input type='checkbox' class="fold" id="WithAddExtFields-fold-content"><label for="WithAddExtFields-fold-content"> func <a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/options.go.html#line-124">WithAddExtFields</a>(extFields map[<a href="../../../builtin.html#name-string">string</a>]interface{}) <a href="../optparams.html">optparams</a>.<a href="../optparams.html#name-Option">Option</a>[<a href="#name-Options">Options</a>]</label><span id='WithAddExtFields-fold-content-docs' class="fold-docs">
+		WithAddExtFields SetLogger函数的参数,用于添加设置扩展字段
+
+</span></div><div class="anchor value-res" id="name-WithDefaultFieldMap">	<input type='checkbox' class="fold" id="WithDefaultFieldMap-fold-content"><label for="WithDefaultFieldMap-fold-content"> func <a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/options.go.html#line-99">WithDefaultFieldMap</a>(fm <a href="../../sirupsen/logrus.html">logrus</a>.<a href="../../sirupsen/logrus.html#name-FieldMap">FieldMap</a>) <a href="../optparams.html">optparams</a>.<a href="../optparams.html#name-Option">Option</a>[<a href="#name-Options">Options</a>]</label><span id='WithDefaultFieldMap-fold-content-docs' class="fold-docs">
+		WithDefaultFieldMap SetLogger函数的参数,用于设置默认字段的新命名
+
+</span></div><div class="anchor value-res" id="name-WithDisableTimeField">	<input type='checkbox' class="fold" id="WithDisableTimeField-fold-content"><label for="WithDisableTimeField-fold-content"> func <a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/options.go.html#line-58">WithDisableTimeField</a>() <a href="../optparams.html">optparams</a>.<a href="../optparams.html#name-Option">Option</a>[<a href="#name-Options">Options</a>]</label><span id='WithDisableTimeField-fold-content-docs' class="fold-docs">
+		WithDisableTimeField SetLogger函数的参数,用于设置使用text格式替换json格式
+
+</span></div><div class="anchor value-res" id="name-WithExtFields">	<input type='checkbox' class="fold" id="WithExtFields-fold-content"><label for="WithExtFields-fold-content"> func <a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/options.go.html#line-117">WithExtFields</a>(extFields map[<a href="../../../builtin.html#name-string">string</a>]interface{}) <a href="../optparams.html">optparams</a>.<a href="../optparams.html#name-Option">Option</a>[<a href="#name-Options">Options</a>]</label><span id='WithExtFields-fold-content-docs' class="fold-docs">
+		WithExtFields SetLogger函数的参数,用于重置扩展字段
+
+</span></div><div class="anchor value-res" id="name-WithLevel">	<input type='checkbox' class="fold" id="WithLevel-fold-content"><label for="WithLevel-fold-content"> func <a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/options.go.html#line-82">WithLevel</a>(loglevel <a href="../../../builtin.html#name-string">string</a>) <a href="../optparams.html">optparams</a>.<a href="../optparams.html#name-Option">Option</a>[<a href="#name-Options">Options</a>]</label><span id='WithLevel-fold-content-docs' class="fold-docs">
+		WithLevel SetLogger函数的参数,用于设置log等级
+
+</span></div><div class="anchor value-res" id="name-WithOutput">	<input type='checkbox' class="fold" id="WithOutput-fold-content"><label for="WithOutput-fold-content"> func <a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/options.go.html#line-137">WithOutput</a>(writer <a href="../../../io.html">io</a>.<a href="../../../io.html#name-Writer">Writer</a>) <a href="../optparams.html">optparams</a>.<a href="../optparams.html#name-Option">Option</a>[<a href="#name-Options">Options</a>]</label><span id='WithOutput-fold-content-docs' class="fold-docs">
+		WithOutput SetLogger函数的参数,用于设置log的写入io
+
+</span></div><div class="anchor value-res" id="name-WithTextFormat">	<input type='checkbox' class="fold" id="WithTextFormat-fold-content"><label for="WithTextFormat-fold-content"> func <a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/options.go.html#line-51">WithTextFormat</a>() <a href="../optparams.html">optparams</a>.<a href="../optparams.html#name-Option">Option</a>[<a href="#name-Options">Options</a>]</label><span id='WithTextFormat-fold-content-docs' class="fold-docs">
+		WithTextFormat SetLogger函数的参数,用于设置使用text格式替换json格式
+
+</span></div><div class="anchor value-res" id="name-WithTimeFormat">	<input type='checkbox' class="fold" id="WithTimeFormat-fold-content"><label for="WithTimeFormat-fold-content"> func <a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/options.go.html#line-65">WithTimeFormat</a>(TimeFormat <a href="../../../builtin.html#name-string">string</a>) <a href="../optparams.html">optparams</a>.<a href="../optparams.html#name-Option">Option</a>[<a href="#name-Options">Options</a>]</label><span id='WithTimeFormat-fold-content-docs' class="fold-docs">
+		WithTimeFormat SetLogger函数的参数,用于设置使用指定的时间解析格式,默认为RFC3339Nano
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* 2 unexporteds ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* 2 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-init"><i>	<input type='checkbox' class="fold" id="init-fold-content"><label for="init-fold-content"> func <a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/loggerhelper.go.html#line-37">init</a>()</label><span id='init-fold-content-docs' class="fold-docs">
+		init 模块初始化
+		赋值默认锁和logger
+
+</span></i></div><div class="anchor value-res hidden" id="name-parseLevel"><i>	<input type='checkbox' class="fold" id="parseLevel-fold-content"><label for="parseLevel-fold-content"> func <a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/options.go.html#line-72">parseLevel</a>(loglevel <a href="../../../builtin.html#name-string">string</a>) <a href="../../sirupsen/logrus.html">logrus</a>.<a href="../../sirupsen/logrus.html#name-Level">Level</a></label><span id='parseLevel-fold-content-docs' class="fold-docs">
+		parseLevel 将字符串转为`logrus.Level`,未知的字符串默认匹配为"logrus.DebugLevel"
+
+</span></i></div></div>
+<div id="exported-variables"><span class="title">Package-Level Variables<span class="title-stat"><i> (total 5, in which 1 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-DefaultOpts">	<span class="nodocs">  var <a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/options.go.html#line-34">DefaultOpts</a> <a href="#name-Options">Options</a></span></div>	<input type='checkbox' class="showhide" id="unexported-variables-showhide"><i><label for="unexported-variables-showhide" class="show-inline">/* 4 unexporteds ... */</label><label for="unexported-variables-showhide" class="hide-inline">/* 4 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-defaultlog"><i>	<input type='checkbox' class="fold" id="defaultlog-fold-content"><label for="defaultlog-fold-content">  var <a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/loggerhelper.go.html#line-17">defaultlog</a> *<a href="../../sirupsen/logrus.html">logrus</a>.<a href="../../sirupsen/logrus.html#name-Entry">Entry</a></label><span id='defaultlog-fold-content-docs' class="fold-docs">
+		默认的Log对象
+
+</span></i></div><div class="anchor value-res hidden" id="name-dopts"><i>	<span class="nodocs">  var <a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/loggerhelper.go.html#line-22">dopts</a> *<a href="#name-Options">Options</a></span></i></div><div class="anchor value-res hidden" id="name-locker"><i>	<input type='checkbox' class="fold" id="locker-fold-content"><label for="locker-fold-content">  var <a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/loggerhelper.go.html#line-20">locker</a> *<a href="../../../sync.html">sync</a>.<a href="../../../sync.html#name-Mutex">Mutex</a></label><span id='locker-fold-content-docs' class="fold-docs">
+		锁对象,防止重置出现冲突
+
+</span></i></div><div class="anchor value-res hidden" id="name-logger"><i>	<input type='checkbox' class="fold" id="logger-fold-content"><label for="logger-fold-content">  var <a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/loggerhelper.go.html#line-14">logger</a> *<a href="../../sirupsen/logrus.html">logrus</a>.<a href="../../sirupsen/logrus.html#name-Logger">Logger</a></label><span id='logger-fold-content-docs' class="fold-docs">
+		Logger 默认的logger
+
+</span></i></div></div>
+<div id="exported-constants"><span class="title">Package-Level Constants<span class="title-stat"><i> (total 2, both are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-FormatType_JSON">	<span class="nodocs">const <a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/options.go.html#line-16">FormatType_JSON</a> <a href="#name-FormatType">FormatType</a> = 0</span></div><div class="anchor value-res" id="name-FormatType_Text">	<span class="nodocs">const <a href="../../../../src/github.com/Golang-Tools^b0a0c/loggerhelper/v2/options.go.html#line-17">FormatType_Text</a> <a href="#name-FormatType">FormatType</a> = 1</span></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

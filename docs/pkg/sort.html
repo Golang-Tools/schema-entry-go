@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Package: sort</title>
-<link href="../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../jvs/golds-v0.3.6.js"></script>
+<link href="../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="package-details"><code><span style="font-size:xx-large;">package <b>sort</b></span>
@@ -15,7 +15,7 @@
 	<a href="../index.html#pkg-sort">sort</a><i> (on <a href="https://pkg.go.dev/sort" target="_blank">go.dev</a>)</i>
 
 <span class="title">Dependency Relation</span>
-	imports <a href="../dep/sort.html">one package</a>, and imported by <a href="../dep/sort.html#imported-by">25 packages</a>
+	imports <a href="../dep/sort.html">one package</a>, and imported by <a href="../dep/sort.html#imported-by">27 packages</a>
 
 <div id="files"><span class="title">Involved Source Files</span>
 
@@ -51,7 +51,7 @@
 		
 		func (a ByAge) Len() int           { return len(a) }
 		func (a ByAge) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
-		func (a ByAge) Less(i, j int) bool { return a[i].Age < a[j].Age }
+		func (a ByAge) Less(i, j int) bool { return a[i].Age &lt; a[j].Age }
 		
 		func main() {
 			people := []Person{
@@ -74,7 +74,7 @@
 			// are ignored.) Here we re-sort in reverse order: compare
 			// the closure with ByAge.Less.
 			sort.Slice(people, func(i, j int) bool {
-				return people[i].Age > people[j].Age
+				return people[i].Age &gt; people[j].Age
 			})
 			fmt.Println(people)
 		
@@ -180,15 +180,55 @@
 			a := []int{1, 3, 6, 10, 15, 21, 28, 36, 45, 55}
 			x := 6
 		
-			i := sort.Search(len(a), func(i int) bool { return a[i] >= x })
-			if i < len(a) && a[i] == x {
+			i := sort.Search(len(a), func(i int) bool { return a[i] &gt;= x })
+			if i &lt; len(a) &amp;&amp; a[i] == x {
 				fmt.Printf("found %d at index %d in %v\n", x, i, a)
 			} else {
 				fmt.Printf("%d not found in %v\n", x, a)
 			}
 		}
 </span>
-	<input type='checkbox' class="fold" id="example-7-fold-content"><label for="example-7-fold-content">Search_descendingOrder</label><span id='example-7-fold-content-items' class="fold-items">
+	<input type='checkbox' class="fold" id="example-7-fold-content"><label for="example-7-fold-content">SearchFloat64s</label><span id='example-7-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+			"sort"
+		)
+		
+		func main() {
+			a := []float64{1.0, 2.0, 3.3, 4.6, 6.1, 7.2, 8.0}
+		
+			x := 2.0
+			i := sort.SearchFloat64s(a, x)
+			fmt.Printf("found %g at index %d in %v\n", x, i, a)
+		
+			x = 0.5
+			i = sort.SearchFloat64s(a, x)
+			fmt.Printf("%g not found, can be inserted at index %d in %v\n", x, i, a)
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-8-fold-content"><label for="example-8-fold-content">SearchInts</label><span id='example-8-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+			"sort"
+		)
+		
+		func main() {
+			a := []int{1, 2, 3, 4, 6, 7, 8}
+		
+			x := 2
+			i := sort.SearchInts(a, x)
+			fmt.Printf("found %d at index %d in %v\n", x, i, a)
+		
+			x = 5
+			i = sort.SearchInts(a, x)
+			fmt.Printf("%d not found, can be inserted at index %d in %v\n", x, i, a)
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-9-fold-content"><label for="example-9-fold-content">Search_descendingOrder</label><span id='example-9-fold-content-items' class="fold-items">
 		package main
 		
 		import (
@@ -200,15 +240,15 @@
 			a := []int{55, 45, 36, 28, 21, 15, 10, 6, 3, 1}
 			x := 6
 		
-			i := sort.Search(len(a), func(i int) bool { return a[i] <= x })
-			if i < len(a) && a[i] == x {
+			i := sort.Search(len(a), func(i int) bool { return a[i] &lt;= x })
+			if i &lt; len(a) &amp;&amp; a[i] == x {
 				fmt.Printf("found %d at index %d in %v\n", x, i, a)
 			} else {
 				fmt.Printf("%d not found in %v\n", x, a)
 			}
 		}
 </span>
-	<input type='checkbox' class="fold" id="example-8-fold-content"><label for="example-8-fold-content">Slice</label><span id='example-8-fold-content-items' class="fold-items">
+	<input type='checkbox' class="fold" id="example-10-fold-content"><label for="example-10-fold-content">Slice</label><span id='example-10-fold-content-items' class="fold-items">
 		package main
 		
 		import (
@@ -226,14 +266,14 @@
 				{"Vera", 24},
 				{"Bob", 75},
 			}
-			sort.Slice(people, func(i, j int) bool { return people[i].Name < people[j].Name })
+			sort.Slice(people, func(i, j int) bool { return people[i].Name &lt; people[j].Name })
 			fmt.Println("By name:", people)
 		
-			sort.Slice(people, func(i, j int) bool { return people[i].Age < people[j].Age })
+			sort.Slice(people, func(i, j int) bool { return people[i].Age &lt; people[j].Age })
 			fmt.Println("By age:", people)
 		}
 </span>
-	<input type='checkbox' class="fold" id="example-9-fold-content"><label for="example-9-fold-content">SliceStable</label><span id='example-9-fold-content-items' class="fold-items">
+	<input type='checkbox' class="fold" id="example-11-fold-content"><label for="example-11-fold-content">SliceStable</label><span id='example-11-fold-content-items' class="fold-items">
 		package main
 		
 		import (
@@ -258,16 +298,16 @@
 			}
 		
 			// Sort by name, preserving original order
-			sort.SliceStable(people, func(i, j int) bool { return people[i].Name < people[j].Name })
+			sort.SliceStable(people, func(i, j int) bool { return people[i].Name &lt; people[j].Name })
 			fmt.Println("By name:", people)
 		
 			// Sort by age preserving name order
-			sort.SliceStable(people, func(i, j int) bool { return people[i].Age < people[j].Age })
+			sort.SliceStable(people, func(i, j int) bool { return people[i].Age &lt; people[j].Age })
 			fmt.Println("By age,name:", people)
 		
 		}
 </span>
-	<input type='checkbox' class="fold" id="example-10-fold-content"><label for="example-10-fold-content">Strings</label><span id='example-10-fold-content-items' class="fold-items">
+	<input type='checkbox' class="fold" id="example-12-fold-content"><label for="example-12-fold-content">Strings</label><span id='example-12-fold-content-items' class="fold-items">
 		package main
 		
 		import (
@@ -281,7 +321,7 @@
 			fmt.Println(s)
 		}
 </span>
-	<input type='checkbox' class="fold" id="example-11-fold-content"><label for="example-11-fold-content">_sortKeys</label><span id='example-11-fold-content-items' class="fold-items">
+	<input type='checkbox' class="fold" id="example-13-fold-content"><label for="example-13-fold-content">_sortKeys</label><span id='example-13-fold-content-items' class="fold-items">
 		package main
 		
 		import (
@@ -305,7 +345,7 @@
 		
 		// Sort is a method on the function type, By, that sorts the argument slice according to the function.
 		func (by By) Sort(planets []Planet) {
-			ps := &planetSorter{
+			ps := &amp;planetSorter{
 				planets: planets,
 				by:      by, // The Sort method's receiver is the function (closure) that defines the sort order.
 			}
@@ -330,7 +370,7 @@
 		
 		// Less is part of sort.Interface. It is implemented by calling the "by" closure in the sorter.
 		func (s *planetSorter) Less(i, j int) bool {
-			return s.by(&s.planets[i], &s.planets[j])
+			return s.by(&amp;s.planets[i], &amp;s.planets[j])
 		}
 		
 		var planets = []Planet{
@@ -344,13 +384,13 @@
 		func main() {
 			// Closures that order the Planet structure.
 			name := func(p1, p2 *Planet) bool {
-				return p1.name < p2.name
+				return p1.name &lt; p2.name
 			}
 			mass := func(p1, p2 *Planet) bool {
-				return p1.mass < p2.mass
+				return p1.mass &lt; p2.mass
 			}
 			distance := func(p1, p2 *Planet) bool {
-				return p1.distance < p2.distance
+				return p1.distance &lt; p2.distance
 			}
 			decreasingDistance := func(p1, p2 *Planet) bool {
 				return distance(p2, p1)
@@ -371,7 +411,7 @@
 		
 		}
 </span>
-	<input type='checkbox' class="fold" id="example-12-fold-content"><label for="example-12-fold-content">_sortMultiKeys</label><span id='example-12-fold-content-items' class="fold-items">
+	<input type='checkbox' class="fold" id="example-14-fold-content"><label for="example-14-fold-content">_sortMultiKeys</label><span id='example-14-fold-content-items' class="fold-items">
 		package main
 		
 		import (
@@ -403,7 +443,7 @@
 		// OrderedBy returns a Sorter that sorts using the less functions, in order.
 		// Call its Sort method to sort the data.
 		func OrderedBy(less ...lessFunc) *multiSorter {
-			return &multiSorter{
+			return &amp;multiSorter{
 				less: less,
 			}
 		}
@@ -425,17 +465,17 @@
 		// -1, 0, 1 and reduce the number of calls for greater efficiency: an
 		// exercise for the reader.
 		func (ms *multiSorter) Less(i, j int) bool {
-			p, q := &ms.changes[i], &ms.changes[j]
+			p, q := &amp;ms.changes[i], &amp;ms.changes[j]
 			// Try all but the last comparison.
 			var k int
-			for k = 0; k < len(ms.less)-1; k++ {
+			for k = 0; k &lt; len(ms.less)-1; k++ {
 				less := ms.less[k]
 				switch {
 				case less(p, q):
-					// p < q, so we have a decision.
+					// p &lt; q, so we have a decision.
 					return true
 				case less(q, p):
-					// p > q, so we have a decision.
+					// p &gt; q, so we have a decision.
 					return false
 				}
 				// p == q; try the next comparison.
@@ -463,16 +503,16 @@
 		func main() {
 			// Closures that order the Change structure.
 			user := func(c1, c2 *Change) bool {
-				return c1.user < c2.user
+				return c1.user &lt; c2.user
 			}
 			language := func(c1, c2 *Change) bool {
-				return c1.language < c2.language
+				return c1.language &lt; c2.language
 			}
 			increasingLines := func(c1, c2 *Change) bool {
-				return c1.lines < c2.lines
+				return c1.lines &lt; c2.lines
 			}
 			decreasingLines := func(c1, c2 *Change) bool {
-				return c1.lines > c2.lines // Note: > orders downwards.
+				return c1.lines &gt; c2.lines // Note: &gt; orders downwards.
 			}
 		
 			// Simple use: Sort by user.
@@ -481,20 +521,20 @@
 		
 			// More examples.
 			OrderedBy(user, increasingLines).Sort(changes)
-			fmt.Println("By user,<lines:", changes)
+			fmt.Println("By user,&lt;lines:", changes)
 		
 			OrderedBy(user, decreasingLines).Sort(changes)
-			fmt.Println("By user,>lines:", changes)
+			fmt.Println("By user,&gt;lines:", changes)
 		
 			OrderedBy(language, increasingLines).Sort(changes)
-			fmt.Println("By language,<lines:", changes)
+			fmt.Println("By language,&lt;lines:", changes)
 		
 			OrderedBy(language, increasingLines, user).Sort(changes)
-			fmt.Println("By language,<lines,user:", changes)
+			fmt.Println("By language,&lt;lines,user:", changes)
 		
 		}
 </span>
-	<input type='checkbox' class="fold" id="example-13-fold-content"><label for="example-13-fold-content">_sortWrapper</label><span id='example-13-fold-content-items' class="fold-items">
+	<input type='checkbox' class="fold" id="example-15-fold-content"><label for="example-15-fold-content">_sortWrapper</label><span id='example-15-fold-content-items' class="fold-items">
 		package main
 		
 		import (
@@ -520,13 +560,13 @@
 		// Swap methods of the embedded Organs value.
 		type ByName struct{ Organs }
 		
-		func (s ByName) Less(i, j int) bool { return s.Organs[i].Name < s.Organs[j].Name }
+		func (s ByName) Less(i, j int) bool { return s.Organs[i].Name &lt; s.Organs[j].Name }
 		
 		// ByWeight implements sort.Interface by providing Less and using the Len and
 		// Swap methods of the embedded Organs value.
 		type ByWeight struct{ Organs }
 		
-		func (s ByWeight) Less(i, j int) bool { return s.Organs[i].Weight < s.Organs[j].Weight }
+		func (s ByWeight) Less(i, j int) bool { return s.Organs[i].Weight &lt; s.Organs[j].Weight }
 		
 		func main() {
 			s := []*Organ{
@@ -557,13 +597,13 @@
 </div>
 <div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 6, in which 4 are exported)</i></span></span>
 
-<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-Float64Slice" data-popularity="300">	<input type='checkbox' class="fold" id="Float64Slice-fold-content"><label for="Float64Slice-fold-content"> type <a href="../src/sort/sort.go.html#line-293">Float64Slice</a> <i>([]T)</i></label><span id='Float64Slice-fold-content-docs' class="fold-docs">
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-Float64Slice" data-popularity="300">	<input type='checkbox' class="fold" id="Float64Slice-fold-content"><label for="Float64Slice-fold-content"> type <a href="../src/sort/sort.go.html#line-293">Float64Slice</a> <i>([])</i></label><span id='Float64Slice-fold-content-docs' class="fold-docs">
 		Float64Slice implements Interface for a []float64, sorting in increasing order,
 		with not-a-number (NaN) values ordered before other values.
 
 		<input type='checkbox' class="fold" id="Float64Slice-fold-methods"><label for="Float64Slice-fold-methods">Methods (<i>total 5, all are exported</i>)</label><span id='Float64Slice-fold-methods-items' class="fold-items"><span>
-			<span class="nodocs">( T) <a href="../src/sort/sort.go.html#line-295">Len</a>() <a href="builtin.html#name-int">int</a></span></span><span>
-			<input type='checkbox' class="fold" id="Float64Slice-fold-method-Less"><label for="Float64Slice-fold-method-Less">( T) <a href="../src/sort/sort.go.html#line-304">Less</a>(i, j <a href="builtin.html#name-int">int</a>) <a href="builtin.html#name-bool">bool</a></label><span id='Float64Slice-fold-method-Less-docs' class="fold-docs">
+			<span class="nodocs">( Float64Slice) <a href="../src/sort/sort.go.html#line-295">Len</a>() <a href="builtin.html#name-int">int</a></span></span><span>
+			<input type='checkbox' class="fold" id="Float64Slice-fold-method-Less"><label for="Float64Slice-fold-method-Less">( Float64Slice) <a href="../src/sort/sort.go.html#line-304">Less</a>(i, j <a href="builtin.html#name-int">int</a>) <a href="builtin.html#name-bool">bool</a></label><span id='Float64Slice-fold-method-Less-docs' class="fold-docs">
 				Less reports whether x[i] should be ordered before x[j], as required by the sort Interface.
 				Note that floating-point comparison by itself is not a transitive relation: it does not
 				report a consistent ordering for not-a-number (NaN) values.
@@ -571,25 +611,25 @@
 
 					x[i] &lt; x[j] || (math.IsNaN(x[i]) &amp;&amp; !math.IsNaN(x[j]))
 </span></span><span>
-			<input type='checkbox' class="fold" id="Float64Slice-fold-method-Search"><label for="Float64Slice-fold-method-Search">( T) <a href="../src/sort/search.go.html#line-109">Search</a>(x <a href="builtin.html#name-float64">float64</a>) <a href="builtin.html#name-int">int</a></label><span id='Float64Slice-fold-method-Search-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Float64Slice-fold-method-Search"><label for="Float64Slice-fold-method-Search">( Float64Slice) <a href="../src/sort/search.go.html#line-109">Search</a>(x <a href="builtin.html#name-float64">float64</a>) <a href="builtin.html#name-int">int</a></label><span id='Float64Slice-fold-method-Search-docs' class="fold-docs">
 				Search returns the result of applying SearchFloat64s to the receiver and x.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Float64Slice-fold-method-Sort"><label for="Float64Slice-fold-method-Sort">( T) <a href="../src/sort/sort.go.html#line-313">Sort</a>()</label><span id='Float64Slice-fold-method-Sort-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Float64Slice-fold-method-Sort"><label for="Float64Slice-fold-method-Sort">( Float64Slice) <a href="../src/sort/sort.go.html#line-313">Sort</a>()</label><span id='Float64Slice-fold-method-Sort-docs' class="fold-docs">
 				Sort is a convenience method: x.Sort() calls Sort(x).
 </span></span><span>
-			<span class="nodocs">( T) <a href="../src/sort/sort.go.html#line-305">Swap</a>(i, j <a href="builtin.html#name-int">int</a>)</span></span></span>
+			<span class="nodocs">( Float64Slice) <a href="../src/sort/sort.go.html#line-305">Swap</a>(i, j <a href="builtin.html#name-int">int</a>)</span></span></span>
 		<input type='checkbox' class="fold" id="Float64Slice-fold-impls"><label for="Float64Slice-fold-impls">Implements (<i>at least one exported</i>)</label><span id='Float64Slice-fold-impls-items' class="fold-items"><span>
-			 T : <a href="#name-Interface">Interface</a></span></span>
+			 Float64Slice : <a href="#name-Interface">Interface</a></span></span>
 
-</span></div><div class="anchor type-res" id="name-Interface" data-popularity="4465">	<input type='checkbox' class="fold" id="Interface-fold-content"><label for="Interface-fold-content"> type <a href="../src/sort/sort.go.html#line-12">Interface</a> <b><i>(interface)</i></b></label><span id='Interface-fold-content-docs' class="fold-docs">
+</span></div><div class="anchor type-res" id="name-Interface" data-popularity="4765">	<input type='checkbox' class="fold" id="Interface-fold-content"><label for="Interface-fold-content"> type <a href="../src/sort/sort.go.html#line-12">Interface</a> <b><i>(interface)</i></b></label><span id='Interface-fold-content-docs' class="fold-docs">
 		An implementation of Interface can be sorted by the routines in this package.
 		The methods refer to elements of the underlying collection by integer index.
 
 		<input type='checkbox' class="fold" id="Interface-fold-methods"><label for="Interface-fold-methods">Methods (<i>total 3, all are exported</i>)</label><span id='Interface-fold-methods-items' class="fold-items"><span>
-			<input type='checkbox' class="fold" id="Interface-fold-method-Len"><label for="Interface-fold-method-Len">( T) <a href="../src/sort/sort.go.html#line-14">Len</a>() <a href="builtin.html#name-int">int</a></label><span id='Interface-fold-method-Len-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Interface-fold-method-Len"><label for="Interface-fold-method-Len">( Interface) <a href="../src/sort/sort.go.html#line-14">Len</a>() <a href="builtin.html#name-int">int</a></label><span id='Interface-fold-method-Len-docs' class="fold-docs">
 				Len is the number of elements in the collection.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Interface-fold-method-Less"><label for="Interface-fold-method-Less">( T) <a href="../src/sort/sort.go.html#line-31">Less</a>(i, j <a href="builtin.html#name-int">int</a>) <a href="builtin.html#name-bool">bool</a></label><span id='Interface-fold-method-Less-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Interface-fold-method-Less"><label for="Interface-fold-method-Less">( Interface) <a href="../src/sort/sort.go.html#line-31">Less</a>(i, j <a href="builtin.html#name-int">int</a>) <a href="builtin.html#name-bool">bool</a></label><span id='Interface-fold-method-Less-docs' class="fold-docs">
 				Less reports whether the element with index i
 				must sort before the element with index j.
 
@@ -606,25 +646,27 @@
 				is not a transitive ordering when not-a-number (NaN) values are involved.
 				See Float64Slice.Less for a correct implementation for floating-point values.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Interface-fold-method-Swap"><label for="Interface-fold-method-Swap">( T) <a href="../src/sort/sort.go.html#line-34">Swap</a>(i, j <a href="builtin.html#name-int">int</a>)</label><span id='Interface-fold-method-Swap-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Interface-fold-method-Swap"><label for="Interface-fold-method-Swap">( Interface) <a href="../src/sort/sort.go.html#line-34">Swap</a>(i, j <a href="builtin.html#name-int">int</a>)</label><span id='Interface-fold-method-Swap-docs' class="fold-docs">
 				Swap swaps the elements with indexes i and j.
 </span></span></span>
-		<input type='checkbox' class="fold" id="Interface-fold-impledby"><label for="Interface-fold-impledby">Implemented By (<i>at least 25, in which 6 are exported</i>)</label><span id='Interface-fold-impledby-items' class="fold-items"><span>
+		<input type='checkbox' class="fold" id="Interface-fold-impledby"><label for="Interface-fold-impledby">Implemented By (<i>at least 27, in which 7 are exported</i>)</label><span id='Interface-fold-impledby-items' class="fold-items"><span>
 			 <a href="#name-Float64Slice">Float64Slice</a></span><span>
 			 <a href="#name-IntSlice">IntSlice</a></span><span>
 			 <a href="#name-StringSlice">StringSlice</a></span><span>
 			 github.com/iancoleman/orderedmap.<a href="github.com/iancoleman/orderedmap.html#name-ByIndex">ByIndex</a></span><span>
 			 github.com/iancoleman/orderedmap.<a href="github.com/iancoleman/orderedmap.html#name-ByPair">ByPair</a></span><span>
+			 go/scanner.<a href="go/scanner.html#name-ErrorList">ErrorList</a></span><span>
 			*internal/fmtsort.<a href="internal/fmtsort.html#name-SortedMap">SortedMap</a></span>
-			<input type='checkbox' class="showhide" id="Interface-showhide-impedBys"><i><label for="Interface-showhide-impedBys" class="show-inline">/* 19+ unexporteds ... */</label><label for="Interface-showhide-impedBys" class="hide-inline">/* 19+ unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="showhide" id="Interface-showhide-impedBys"><i><label for="Interface-showhide-impedBys" class="show-inline">/* 20+ unexporteds ... */</label><label for="Interface-showhide-impedBys" class="hide-inline">/* 20+ unexporteds: */</label></i><span class="hidden"><i>
 			 <a href="#name-reverse">reverse</a></i></span><span class="hidden"><i>
 			 compress/flate.<a href="compress/flate.html#name-byFreq">byFreq</a></i></span><span class="hidden"><i>
 			 compress/flate.<a href="compress/flate.html#name-byLiteral">byLiteral</a></i></span><span class="hidden"><i>
 			 encoding/json.<a href="encoding/json.html#name-byIndex">byIndex</a></i></span><span class="hidden"><i>
-			 github.com/ghodss/yaml.<a href="github.com/ghodss/yaml.html#name-byIndex">byIndex</a></i></span><span class="hidden"><i>
-			 github.com/ghodss/yaml.<a href="github.com/ghodss/yaml.html#name-byName">byName</a></i></span><span class="hidden"><i>
 			 github.com/json-iterator/go.<a href="github.com/json-iterator/go.html#name-encodedKeyValues">encodedKeyValues</a></i></span><span class="hidden"><i>
 			 github.com/json-iterator/go.<a href="github.com/json-iterator/go.html#name-sortableBindings">sortableBindings</a></i></span><span class="hidden"><i>
+			 go/ast.<a href="go/ast.html#name-byInterval">byInterval</a></i></span><span class="hidden"><i>
+			 go/ast.<a href="go/ast.html#name-byPos">byPos</a></i></span><span class="hidden"><i>
+			*go/doc.<a href="go/doc.html#name-data">data</a></i></span><span class="hidden"><i>
 			 gopkg.in/yaml.v2.<a href="gopkg.in/yaml.v2.html#name-keyList">keyList</a></i></span><span class="hidden"><i>
 			 net.<a href="net.html#name-byMaskLength">byMaskLength</a></i></span><span class="hidden"><i>
 			 net.<a href="net.html#name-byPref">byPref</a></i></span><span class="hidden"><i>
@@ -655,37 +697,37 @@
 			func <a href="#name-swapRange">swapRange</a>(data <b>Interface</b>, a, b, n <a href="builtin.html#name-int">int</a>)</i></span><span class="hidden"><i>
 			func <a href="#name-symMerge">symMerge</a>(data <b>Interface</b>, a, m, b <a href="builtin.html#name-int">int</a>)</i></span></span>
 
-</span></div><div class="anchor type-res" id="name-IntSlice" data-popularity="300">	<input type='checkbox' class="fold" id="IntSlice-fold-content"><label for="IntSlice-fold-content"> type <a href="../src/sort/sort.go.html#line-282">IntSlice</a> <i>([]T)</i></label><span id='IntSlice-fold-content-docs' class="fold-docs">
+</span></div><div class="anchor type-res" id="name-IntSlice" data-popularity="300">	<input type='checkbox' class="fold" id="IntSlice-fold-content"><label for="IntSlice-fold-content"> type <a href="../src/sort/sort.go.html#line-282">IntSlice</a> <i>([])</i></label><span id='IntSlice-fold-content-docs' class="fold-docs">
 		IntSlice attaches the methods of Interface to []int, sorting in increasing order.
 
 		<input type='checkbox' class="fold" id="IntSlice-fold-methods"><label for="IntSlice-fold-methods">Methods (<i>total 5, all are exported</i>)</label><span id='IntSlice-fold-methods-items' class="fold-items"><span>
-			<span class="nodocs">( T) <a href="../src/sort/sort.go.html#line-284">Len</a>() <a href="builtin.html#name-int">int</a></span></span><span>
-			<span class="nodocs">( T) <a href="../src/sort/sort.go.html#line-285">Less</a>(i, j <a href="builtin.html#name-int">int</a>) <a href="builtin.html#name-bool">bool</a></span></span><span>
-			<input type='checkbox' class="fold" id="IntSlice-fold-method-Search"><label for="IntSlice-fold-method-Search">( T) <a href="../src/sort/search.go.html#line-106">Search</a>(x <a href="builtin.html#name-int">int</a>) <a href="builtin.html#name-int">int</a></label><span id='IntSlice-fold-method-Search-docs' class="fold-docs">
+			<span class="nodocs">( IntSlice) <a href="../src/sort/sort.go.html#line-284">Len</a>() <a href="builtin.html#name-int">int</a></span></span><span>
+			<span class="nodocs">( IntSlice) <a href="../src/sort/sort.go.html#line-285">Less</a>(i, j <a href="builtin.html#name-int">int</a>) <a href="builtin.html#name-bool">bool</a></span></span><span>
+			<input type='checkbox' class="fold" id="IntSlice-fold-method-Search"><label for="IntSlice-fold-method-Search">( IntSlice) <a href="../src/sort/search.go.html#line-106">Search</a>(x <a href="builtin.html#name-int">int</a>) <a href="builtin.html#name-int">int</a></label><span id='IntSlice-fold-method-Search-docs' class="fold-docs">
 				Search returns the result of applying SearchInts to the receiver and x.
 </span></span><span>
-			<input type='checkbox' class="fold" id="IntSlice-fold-method-Sort"><label for="IntSlice-fold-method-Sort">( T) <a href="../src/sort/sort.go.html#line-289">Sort</a>()</label><span id='IntSlice-fold-method-Sort-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="IntSlice-fold-method-Sort"><label for="IntSlice-fold-method-Sort">( IntSlice) <a href="../src/sort/sort.go.html#line-289">Sort</a>()</label><span id='IntSlice-fold-method-Sort-docs' class="fold-docs">
 				Sort is a convenience method: x.Sort() calls Sort(x).
 </span></span><span>
-			<span class="nodocs">( T) <a href="../src/sort/sort.go.html#line-286">Swap</a>(i, j <a href="builtin.html#name-int">int</a>)</span></span></span>
+			<span class="nodocs">( IntSlice) <a href="../src/sort/sort.go.html#line-286">Swap</a>(i, j <a href="builtin.html#name-int">int</a>)</span></span></span>
 		<input type='checkbox' class="fold" id="IntSlice-fold-impls"><label for="IntSlice-fold-impls">Implements (<i>at least one exported</i>)</label><span id='IntSlice-fold-impls-items' class="fold-items"><span>
-			 T : <a href="#name-Interface">Interface</a></span></span>
+			 IntSlice : <a href="#name-Interface">Interface</a></span></span>
 
-</span></div><div class="anchor type-res" id="name-StringSlice" data-popularity="300">	<input type='checkbox' class="fold" id="StringSlice-fold-content"><label for="StringSlice-fold-content"> type <a href="../src/sort/sort.go.html#line-316">StringSlice</a> <i>([]T)</i></label><span id='StringSlice-fold-content-docs' class="fold-docs">
+</span></div><div class="anchor type-res" id="name-StringSlice" data-popularity="300">	<input type='checkbox' class="fold" id="StringSlice-fold-content"><label for="StringSlice-fold-content"> type <a href="../src/sort/sort.go.html#line-316">StringSlice</a> <i>([])</i></label><span id='StringSlice-fold-content-docs' class="fold-docs">
 		StringSlice attaches the methods of Interface to []string, sorting in increasing order.
 
 		<input type='checkbox' class="fold" id="StringSlice-fold-methods"><label for="StringSlice-fold-methods">Methods (<i>total 5, all are exported</i>)</label><span id='StringSlice-fold-methods-items' class="fold-items"><span>
-			<span class="nodocs">( T) <a href="../src/sort/sort.go.html#line-318">Len</a>() <a href="builtin.html#name-int">int</a></span></span><span>
-			<span class="nodocs">( T) <a href="../src/sort/sort.go.html#line-319">Less</a>(i, j <a href="builtin.html#name-int">int</a>) <a href="builtin.html#name-bool">bool</a></span></span><span>
-			<input type='checkbox' class="fold" id="StringSlice-fold-method-Search"><label for="StringSlice-fold-method-Search">( T) <a href="../src/sort/search.go.html#line-112">Search</a>(x <a href="builtin.html#name-string">string</a>) <a href="builtin.html#name-int">int</a></label><span id='StringSlice-fold-method-Search-docs' class="fold-docs">
+			<span class="nodocs">( StringSlice) <a href="../src/sort/sort.go.html#line-318">Len</a>() <a href="builtin.html#name-int">int</a></span></span><span>
+			<span class="nodocs">( StringSlice) <a href="../src/sort/sort.go.html#line-319">Less</a>(i, j <a href="builtin.html#name-int">int</a>) <a href="builtin.html#name-bool">bool</a></span></span><span>
+			<input type='checkbox' class="fold" id="StringSlice-fold-method-Search"><label for="StringSlice-fold-method-Search">( StringSlice) <a href="../src/sort/search.go.html#line-112">Search</a>(x <a href="builtin.html#name-string">string</a>) <a href="builtin.html#name-int">int</a></label><span id='StringSlice-fold-method-Search-docs' class="fold-docs">
 				Search returns the result of applying SearchStrings to the receiver and x.
 </span></span><span>
-			<input type='checkbox' class="fold" id="StringSlice-fold-method-Sort"><label for="StringSlice-fold-method-Sort">( T) <a href="../src/sort/sort.go.html#line-323">Sort</a>()</label><span id='StringSlice-fold-method-Sort-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="StringSlice-fold-method-Sort"><label for="StringSlice-fold-method-Sort">( StringSlice) <a href="../src/sort/sort.go.html#line-323">Sort</a>()</label><span id='StringSlice-fold-method-Sort-docs' class="fold-docs">
 				Sort is a convenience method: x.Sort() calls Sort(x).
 </span></span><span>
-			<span class="nodocs">( T) <a href="../src/sort/sort.go.html#line-320">Swap</a>(i, j <a href="builtin.html#name-int">int</a>)</span></span></span>
+			<span class="nodocs">( StringSlice) <a href="../src/sort/sort.go.html#line-320">Swap</a>(i, j <a href="builtin.html#name-int">int</a>)</span></span></span>
 		<input type='checkbox' class="fold" id="StringSlice-fold-impls"><label for="StringSlice-fold-impls">Implements (<i>at least one exported</i>)</label><span id='StringSlice-fold-impls-items' class="fold-items"><span>
-			 T : <a href="#name-Interface">Interface</a></span></span>
+			 StringSlice : <a href="#name-Interface">Interface</a></span></span>
 
 </span></div></div><div>	<input type='checkbox' class="showhide" id="unexported-typenames-showhide"><i><label for="unexported-typenames-showhide" class="show-inline">/* 2 unexporteds ... */</label><label for="unexported-typenames-showhide" class="hide-inline">/* 2 unexporteds: */</label></i><div class="anchor type-res hidden" id="name-lessSwap" data-popularity="350">	<input type='checkbox' class="fold" id="lessSwap-fold-content"><label for="lessSwap-fold-content"> type <a href="../src/sort/sort.go.html#line-247">lessSwap</a> <i>(struct)</i></label><span id='lessSwap-fold-content-docs' class="fold-docs">
 		lessSwap is a pair of Less and Swap function for use with the
@@ -716,17 +758,17 @@
 				another Interface implementation.
 </span></span></span>
 		<input type='checkbox' class="fold" id="reverse-fold-methods"><label for="reverse-fold-methods">Methods (<i>total 3, all are exported</i>)</label><span id='reverse-fold-methods-items' class="fold-items"><span>
-			<input type='checkbox' class="fold" id="reverse-fold-method-Len"><label for="reverse-fold-method-Len">( T) <a href="../src/sort/sort.go.html#line-14">Len</a>() <a href="builtin.html#name-int">int</a></label><span id='reverse-fold-method-Len-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="reverse-fold-method-Len"><label for="reverse-fold-method-Len">( reverse) <a href="../src/sort/sort.go.html#line-14">Len</a>() <a href="builtin.html#name-int">int</a></label><span id='reverse-fold-method-Len-docs' class="fold-docs">
 				Len is the number of elements in the collection.
 </span></span><span>
-			<input type='checkbox' class="fold" id="reverse-fold-method-Less"><label for="reverse-fold-method-Less">( T) <a href="../src/sort/sort.go.html#line-259">Less</a>(i, j <a href="builtin.html#name-int">int</a>) <a href="builtin.html#name-bool">bool</a></label><span id='reverse-fold-method-Less-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="reverse-fold-method-Less"><label for="reverse-fold-method-Less">( reverse) <a href="../src/sort/sort.go.html#line-259">Less</a>(i, j <a href="builtin.html#name-int">int</a>) <a href="builtin.html#name-bool">bool</a></label><span id='reverse-fold-method-Less-docs' class="fold-docs">
 				Less returns the opposite of the embedded implementation's Less method.
 </span></span><span>
-			<input type='checkbox' class="fold" id="reverse-fold-method-Swap"><label for="reverse-fold-method-Swap">( T) <a href="../src/sort/sort.go.html#line-34">Swap</a>(i, j <a href="builtin.html#name-int">int</a>)</label><span id='reverse-fold-method-Swap-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="reverse-fold-method-Swap"><label for="reverse-fold-method-Swap">( reverse) <a href="../src/sort/sort.go.html#line-34">Swap</a>(i, j <a href="builtin.html#name-int">int</a>)</label><span id='reverse-fold-method-Swap-docs' class="fold-docs">
 				Swap swaps the elements with indexes i and j.
 </span></span></span>
 		<input type='checkbox' class="fold" id="reverse-fold-impls"><label for="reverse-fold-impls">Implements (<i>at least one exported</i>)</label><span id='reverse-fold-impls-items' class="fold-items"><span>
-			 T : <a href="#name-Interface">Interface</a></span></span>
+			 reverse : <a href="#name-Interface">Interface</a></span></span>
 
 </span></div></div>
 <div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 39, in which 17 are exported)</i></span></span>
@@ -820,7 +862,7 @@
 		present (it could be len(a)).
 		The slice must be sorted in ascending order.
 
-</span></div><div class="anchor value-res" id="name-Slice">	<input type='checkbox' class="fold" id="Slice-fold-content"><label for="Slice-fold-content"> func <a href="../src/sort/slice.go.html#line-16">Slice</a>(x interface{}, less func(i, j <a href="builtin.html#name-int">int</a>) <a href="builtin.html#name-bool">bool</a>)</label><span id='Slice-fold-content-docs' class="fold-docs">
+</span></div><div class="anchor value-res" id="name-Slice">	<input type='checkbox' class="fold" id="Slice-fold-content"><label for="Slice-fold-content"> func <a href="../src/sort/slice.go.html#line-16">Slice</a>(x <a href="builtin.html#name-any">any</a>, less func(i, j <a href="builtin.html#name-int">int</a>) <a href="builtin.html#name-bool">bool</a>)</label><span id='Slice-fold-content-docs' class="fold-docs">
 		Slice sorts the slice x given the provided less function.
 		It panics if x is not a slice.
 
@@ -831,11 +873,11 @@
 		The less function must satisfy the same requirements as
 		the Interface type's Less method.
 
-</span></div><div class="anchor value-res" id="name-SliceIsSorted">	<input type='checkbox' class="fold" id="SliceIsSorted-fold-content"><label for="SliceIsSorted-fold-content"> func <a href="../src/sort/slice.go.html#line-37">SliceIsSorted</a>(x interface{}, less func(i, j <a href="builtin.html#name-int">int</a>) <a href="builtin.html#name-bool">bool</a>) <a href="builtin.html#name-bool">bool</a></label><span id='SliceIsSorted-fold-content-docs' class="fold-docs">
+</span></div><div class="anchor value-res" id="name-SliceIsSorted">	<input type='checkbox' class="fold" id="SliceIsSorted-fold-content"><label for="SliceIsSorted-fold-content"> func <a href="../src/sort/slice.go.html#line-37">SliceIsSorted</a>(x <a href="builtin.html#name-any">any</a>, less func(i, j <a href="builtin.html#name-int">int</a>) <a href="builtin.html#name-bool">bool</a>) <a href="builtin.html#name-bool">bool</a></label><span id='SliceIsSorted-fold-content-docs' class="fold-docs">
 		SliceIsSorted reports whether the slice x is sorted according to the provided less function.
 		It panics if x is not a slice.
 
-</span></div><div class="anchor value-res" id="name-SliceStable">	<input type='checkbox' class="fold" id="SliceStable-fold-content"><label for="SliceStable-fold-content"> func <a href="../src/sort/slice.go.html#line-29">SliceStable</a>(x interface{}, less func(i, j <a href="builtin.html#name-int">int</a>) <a href="builtin.html#name-bool">bool</a>)</label><span id='SliceStable-fold-content-docs' class="fold-docs">
+</span></div><div class="anchor value-res" id="name-SliceStable">	<input type='checkbox' class="fold" id="SliceStable-fold-content"><label for="SliceStable-fold-content"> func <a href="../src/sort/slice.go.html#line-29">SliceStable</a>(x <a href="builtin.html#name-any">any</a>, less func(i, j <a href="builtin.html#name-int">int</a>) <a href="builtin.html#name-bool">bool</a>)</label><span id='SliceStable-fold-content-docs' class="fold-docs">
 		SliceStable sorts the slice x using the provided less
 		function, keeping equal elements in their original order.
 		It panics if x is not a slice.
@@ -844,12 +886,13 @@
 		the Interface type's Less method.
 
 </span></div><div class="anchor value-res" id="name-Sort">	<input type='checkbox' class="fold" id="Sort-fold-content"><label for="Sort-fold-content"> func <a href="../src/sort/sort.go.html#line-229">Sort</a>(data <a href="#name-Interface">Interface</a>)</label><span id='Sort-fold-content-docs' class="fold-docs">
-		Sort sorts data.
+		Sort sorts data in ascending order as determined by the Less method.
 		It makes one call to data.Len to determine n and O(n*log(n)) calls to
 		data.Less and data.Swap. The sort is not guaranteed to be stable.
 
-</span></div><div class="anchor value-res" id="name-Stable">	<input type='checkbox' class="fold" id="Stable-fold-content"><label for="Stable-fold-content"> func <a href="../src/sort/sort.go.html#line-377">Stable</a>(data <a href="#name-Interface">Interface</a>)</label><span id='Stable-fold-content-docs' class="fold-docs">
-		Stable sorts data while keeping the original order of equal elements.
+</span></div><div class="anchor value-res" id="name-Stable">	<input type='checkbox' class="fold" id="Stable-fold-content"><label for="Stable-fold-content"> func <a href="../src/sort/sort.go.html#line-378">Stable</a>(data <a href="#name-Interface">Interface</a>)</label><span id='Stable-fold-content-docs' class="fold-docs">
+		Stable sorts data in ascending order as determined by the Less method,
+		while keeping the original order of equal elements.
 
 		It makes one call to data.Len to determine n, O(n*log(n)) calls to
 		data.Less and O(n*log(n)*log(n)) calls to data.Swap.
@@ -888,7 +931,7 @@
 </span></i></div><div class="anchor value-res hidden" id="name-quickSort"><i>	<span class="nodocs"> func <a href="../src/sort/sort.go.html#line-196">quickSort</a>(data <a href="#name-Interface">Interface</a>, a, b, maxDepth <a href="builtin.html#name-int">int</a>)</span></i></div><div class="anchor value-res hidden" id="name-quickSort_func"><i>	<input type='checkbox' class="fold" id="quickSort_func-fold-content"><label for="quickSort_func-fold-content"> func <a href="../src/sort/zfuncversion.go.html#line-136">quickSort_func</a>(data <a href="#name-lessSwap">lessSwap</a>, a, b, maxDepth <a href="builtin.html#name-int">int</a>)</label><span id='quickSort_func-fold-content-docs' class="fold-docs">
 		Auto-generated variant of sort.go:quickSort
 
-</span></i></div><div class="anchor value-res hidden" id="name-rotate"><i>	<input type='checkbox' class="fold" id="rotate-fold-content"><label for="rotate-fold-content"> func <a href="../src/sort/sort.go.html#line-510">rotate</a>(data <a href="#name-Interface">Interface</a>, a, m, b <a href="builtin.html#name-int">int</a>)</label><span id='rotate-fold-content-docs' class="fold-docs">
+</span></i></div><div class="anchor value-res hidden" id="name-rotate"><i>	<input type='checkbox' class="fold" id="rotate-fold-content"><label for="rotate-fold-content"> func <a href="../src/sort/sort.go.html#line-511">rotate</a>(data <a href="#name-Interface">Interface</a>, a, m, b <a href="builtin.html#name-int">int</a>)</label><span id='rotate-fold-content-docs' class="fold-docs">
 		rotate rotates two consecutive blocks u = data[a:m] and v = data[m:b] in data:
 		Data of the form 'x u v y' is changed to 'x v u y'.
 		rotate performs at most b-a many calls to data.Swap,
@@ -904,13 +947,13 @@
 </span></i></div><div class="anchor value-res hidden" id="name-siftDown_func"><i>	<input type='checkbox' class="fold" id="siftDown_func-fold-content"><label for="siftDown_func-fold-content"> func <a href="../src/sort/zfuncversion.go.html#line-19">siftDown_func</a>(data <a href="#name-lessSwap">lessSwap</a>, lo, hi, first <a href="builtin.html#name-int">int</a>)</label><span id='siftDown_func-fold-content-docs' class="fold-docs">
 		Auto-generated variant of sort.go:siftDown
 
-</span></i></div><div class="anchor value-res hidden" id="name-stable"><i>	<span class="nodocs"> func <a href="../src/sort/sort.go.html#line-381">stable</a>(data <a href="#name-Interface">Interface</a>, n <a href="builtin.html#name-int">int</a>)</span></i></div><div class="anchor value-res hidden" id="name-stable_func"><i>	<input type='checkbox' class="fold" id="stable_func-fold-content"><label for="stable_func-fold-content"> func <a href="../src/sort/zfuncversion.go.html#line-163">stable_func</a>(data <a href="#name-lessSwap">lessSwap</a>, n <a href="builtin.html#name-int">int</a>)</label><span id='stable_func-fold-content-docs' class="fold-docs">
+</span></i></div><div class="anchor value-res hidden" id="name-stable"><i>	<span class="nodocs"> func <a href="../src/sort/sort.go.html#line-382">stable</a>(data <a href="#name-Interface">Interface</a>, n <a href="builtin.html#name-int">int</a>)</span></i></div><div class="anchor value-res hidden" id="name-stable_func"><i>	<input type='checkbox' class="fold" id="stable_func-fold-content"><label for="stable_func-fold-content"> func <a href="../src/sort/zfuncversion.go.html#line-163">stable_func</a>(data <a href="#name-lessSwap">lessSwap</a>, n <a href="builtin.html#name-int">int</a>)</label><span id='stable_func-fold-content-docs' class="fold-docs">
 		Auto-generated variant of sort.go:stable
 
 </span></i></div><div class="anchor value-res hidden" id="name-swapRange"><i>	<span class="nodocs"> func <a href="../src/sort/sort.go.html#line-103">swapRange</a>(data <a href="#name-Interface">Interface</a>, a, b, n <a href="builtin.html#name-int">int</a>)</span></i></div><div class="anchor value-res hidden" id="name-swapRange_func"><i>	<input type='checkbox' class="fold" id="swapRange_func-fold-content"><label for="swapRange_func-fold-content"> func <a href="../src/sort/zfuncversion.go.html#line-65">swapRange_func</a>(data <a href="#name-lessSwap">lessSwap</a>, a, b, n <a href="builtin.html#name-int">int</a>)</label><span id='swapRange_func-fold-content-docs' class="fold-docs">
 		Auto-generated variant of sort.go:swapRange
 
-</span></i></div><div class="anchor value-res hidden" id="name-symMerge"><i>	<input type='checkbox' class="fold" id="symMerge-fold-content"><label for="symMerge-fold-content"> func <a href="../src/sort/sort.go.html#line-424">symMerge</a>(data <a href="#name-Interface">Interface</a>, a, m, b <a href="builtin.html#name-int">int</a>)</label><span id='symMerge-fold-content-docs' class="fold-docs">
+</span></i></div><div class="anchor value-res hidden" id="name-symMerge"><i>	<input type='checkbox' class="fold" id="symMerge-fold-content"><label for="symMerge-fold-content"> func <a href="../src/sort/sort.go.html#line-425">symMerge</a>(data <a href="#name-Interface">Interface</a>, a, m, b <a href="builtin.html#name-int">int</a>)</label><span id='symMerge-fold-content-docs' class="fold-docs">
 		symMerge merges the two sorted subsequences data[a:m] and data[m:b] using
 		the SymMerge algorithm from Pok-Son Kim and Arne Kutzner, "Stable Minimum
 		Storage Merging by Symmetric Comparisons", in Susanne Albers and Tomasz
@@ -937,9 +980,9 @@
 </span></i></div></div>
 <div id="exported-variables"><span class="title">Package-Level Variables<span class="title-stat"><i> (total 2, neither is exported)</i></span></span>
 
-	<input type='checkbox' class="showhide" id="unexported-variables-showhide"><i><label for="unexported-variables-showhide" class="show-inline">/* 2 unexporteds ... */</label><label for="unexported-variables-showhide" class="hide-inline">/* 2 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-reflectSwapper"><i>	<span class="nodocs">  var <a href="../src/sort/slice_go113.go.html#line-12">reflectSwapper</a> func(slice interface{}) func(i <a href="builtin.html#name-int">int</a>, j <a href="builtin.html#name-int">int</a>)</span></i></div><div class="anchor value-res hidden" id="name-reflectValueOf"><i>	<span class="nodocs">  var <a href="../src/sort/slice_go113.go.html#line-11">reflectValueOf</a> func(i interface{}) <a href="internal/reflectlite.html">reflectlite</a>.<a href="internal/reflectlite.html#name-Value">Value</a></span></i></div></div></code></pre><pre id="footer">
+	<input type='checkbox' class="showhide" id="unexported-variables-showhide"><i><label for="unexported-variables-showhide" class="show-inline">/* 2 unexporteds ... */</label><label for="unexported-variables-showhide" class="hide-inline">/* 2 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-reflectSwapper"><i>	<span class="nodocs">  var <a href="../src/sort/slice_go113.go.html#line-13">reflectSwapper</a> func(slice interface{}) func(i <a href="builtin.html#name-int">int</a>, j <a href="builtin.html#name-int">int</a>)</span></i></div><div class="anchor value-res hidden" id="name-reflectValueOf"><i>	<span class="nodocs">  var <a href="../src/sort/slice_go113.go.html#line-12">reflectValueOf</a> func(i interface{}) <a href="internal/reflectlite.html">reflectlite</a>.<a href="internal/reflectlite.html#name-Value">Value</a></span></i></div></div></code></pre><pre id="footer">
 <table><tr><td><img src="../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

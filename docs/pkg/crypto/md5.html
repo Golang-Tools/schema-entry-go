@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Package: crypto/md5</title>
-<link href="../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../jvs/golds-v0.3.6.js"></script>
+<link href="../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="package-details"><code><span style="font-size:xx-large;">package <b>md5</b></span>
@@ -98,22 +98,22 @@
 			<span class="nodocs"><a href="../../src/crypto/md5/md5.go.html#line-39">s</a> <i>[4]<a href="../builtin.html#name-uint32">uint32</a></i></span></i></span><span class="hidden"><i>
 			<span class="nodocs"><a href="../../src/crypto/md5/md5.go.html#line-40">x</a> <i>[64]<a href="../builtin.html#name-byte">byte</a></i></span></i></span></span>
 		<input type='checkbox' class="fold" id="digest-fold-methods"><label for="digest-fold-methods">Methods (<i>total 8, in which 7 are exported</i>)</label><span id='digest-fold-methods-items' class="fold-items"><span>
-			<span class="nodocs">(*T) <a href="../../src/crypto/md5/md5.go.html#line-121">BlockSize</a>() <a href="../builtin.html#name-int">int</a></span></span><span>
-			<span class="nodocs">(*T) <a href="../../src/crypto/md5/md5.go.html#line-59">MarshalBinary</a>() ([]<a href="../builtin.html#name-byte">byte</a>, <a href="../builtin.html#name-error">error</a>)</span></span><span>
-			<span class="nodocs">(*T) <a href="../../src/crypto/md5/md5.go.html#line-45">Reset</a>()</span></span><span>
-			<span class="nodocs">(*T) <a href="../../src/crypto/md5/md5.go.html#line-119">Size</a>() <a href="../builtin.html#name-int">int</a></span></span><span>
-			<span class="nodocs">(*T) <a href="../../src/crypto/md5/md5.go.html#line-157">Sum</a>(in []<a href="../builtin.html#name-byte">byte</a>) []<a href="../builtin.html#name-byte">byte</a></span></span><span>
-			<span class="nodocs">(*T) <a href="../../src/crypto/md5/md5.go.html#line-72">UnmarshalBinary</a>(b []<a href="../builtin.html#name-byte">byte</a>) <a href="../builtin.html#name-error">error</a></span></span><span>
-			<span class="nodocs">(*T) <a href="../../src/crypto/md5/md5.go.html#line-123">Write</a>(p []<a href="../builtin.html#name-byte">byte</a>) (nn <a href="../builtin.html#name-int">int</a>, err <a href="../builtin.html#name-error">error</a>)</span></span>
+			<span class="nodocs">(*digest) <a href="../../src/crypto/md5/md5.go.html#line-121">BlockSize</a>() <a href="../builtin.html#name-int">int</a></span></span><span>
+			<span class="nodocs">(*digest) <a href="../../src/crypto/md5/md5.go.html#line-59">MarshalBinary</a>() ([]<a href="../builtin.html#name-byte">byte</a>, <a href="../builtin.html#name-error">error</a>)</span></span><span>
+			<span class="nodocs">(*digest) <a href="../../src/crypto/md5/md5.go.html#line-45">Reset</a>()</span></span><span>
+			<span class="nodocs">(*digest) <a href="../../src/crypto/md5/md5.go.html#line-119">Size</a>() <a href="../builtin.html#name-int">int</a></span></span><span>
+			<span class="nodocs">(*digest) <a href="../../src/crypto/md5/md5.go.html#line-157">Sum</a>(in []<a href="../builtin.html#name-byte">byte</a>) []<a href="../builtin.html#name-byte">byte</a></span></span><span>
+			<span class="nodocs">(*digest) <a href="../../src/crypto/md5/md5.go.html#line-72">UnmarshalBinary</a>(b []<a href="../builtin.html#name-byte">byte</a>) <a href="../builtin.html#name-error">error</a></span></span><span>
+			<span class="nodocs">(*digest) <a href="../../src/crypto/md5/md5.go.html#line-123">Write</a>(p []<a href="../builtin.html#name-byte">byte</a>) (nn <a href="../builtin.html#name-int">int</a>, err <a href="../builtin.html#name-error">error</a>)</span></span>
 			<input type='checkbox' checked class="showhide" id="digest-showhide-methods"><i><label for="digest-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="digest-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../src/crypto/md5/md5.go.html#line-164">checkSum</a>() [16]<a href="../builtin.html#name-byte">byte</a></span></i></span></span>
+			<span class="nodocs">(*digest) <a href="../../src/crypto/md5/md5.go.html#line-164">checkSum</a>() [16]<a href="../builtin.html#name-byte">byte</a></span></i></span></span>
 		<input type='checkbox' class="fold" id="digest-fold-impls"><label for="digest-fold-impls">Implements (<i>at least 5, in which 4 are exported</i>)</label><span id='digest-fold-impls-items' class="fold-items"><span>
-			*T : encoding.<a href="../encoding.html#name-BinaryMarshaler">BinaryMarshaler</a></span><span>
-			*T : encoding.<a href="../encoding.html#name-BinaryUnmarshaler">BinaryUnmarshaler</a></span><span>
-			*T : hash.<a href="../hash.html#name-Hash">Hash</a></span><span>
-			*T : io.<a href="../io.html#name-Writer">Writer</a></span>
+			*digest : encoding.<a href="../encoding.html#name-BinaryMarshaler">BinaryMarshaler</a></span><span>
+			*digest : encoding.<a href="../encoding.html#name-BinaryUnmarshaler">BinaryUnmarshaler</a></span><span>
+			*digest : hash.<a href="../hash.html#name-Hash">Hash</a></span><span>
+			*digest : io.<a href="../io.html#name-Writer">Writer</a></span>
 			<input type='checkbox' checked class="showhide" id="digest-showhide-impls"><i><label for="digest-showhide-impls" class="show-inline">/* at least one unexported ... */</label><label for="digest-showhide-impls" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
-			*T : crypto/hmac.<a href="hmac.html#name-marshalable">marshalable</a></i></span></span>
+			*digest : crypto/hmac.<a href="hmac.html#name-marshalable">marshalable</a></i></span></span>
 		<input type='checkbox' class="fold" id="digest-fold-params"><label for="digest-fold-params">As Inputs Of (<i>at least 2, neither is exported</i>)</label><span id='digest-fold-params-items' class="fold-items">
 			<input type='checkbox' checked class="showhide" id="digest-showhide-outputofs"><i><label for="digest-showhide-outputofs" class="show-inline">/* 2+ unexporteds ... */</label><label for="digest-showhide-outputofs" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
 			func <a href="#name-block">block</a>(dig *<b>digest</b>, p []<a href="../builtin.html#name-byte">byte</a>)</i></span><span class="hidden"><i>
@@ -141,7 +141,7 @@
 
 </span></div>	<input type='checkbox' class="showhide" id="unexported-constants-showhide"><i><label for="unexported-constants-showhide" class="show-inline">/* 7 unexporteds ... */</label><label for="unexported-constants-showhide" class="hide-inline">/* 7 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-haveAsm"><i>	<span class="nodocs">const <a href="../../src/crypto/md5/md5block_decl.go.html#line-9">haveAsm</a> = true</span></i></div><div class="anchor value-res hidden" id="name-init0"><i>	<span class="nodocs">const <a href="../../src/crypto/md5/md5.go.html#line-31">init0</a> = 1732584193</span></i></div><div class="anchor value-res hidden" id="name-init1"><i>	<span class="nodocs">const <a href="../../src/crypto/md5/md5.go.html#line-32">init1</a> = 4023233417</span></i></div><div class="anchor value-res hidden" id="name-init2"><i>	<span class="nodocs">const <a href="../../src/crypto/md5/md5.go.html#line-33">init2</a> = 2562383102</span></i></div><div class="anchor value-res hidden" id="name-init3"><i>	<span class="nodocs">const <a href="../../src/crypto/md5/md5.go.html#line-34">init3</a> = 271733878</span></i></div><div class="anchor value-res hidden" id="name-magic"><i>	<span class="nodocs">const <a href="../../src/crypto/md5/md5.go.html#line-55">magic</a> = "md5\x01"</span></i></div><div class="anchor value-res hidden" id="name-marshaledSize"><i>	<span class="nodocs">const <a href="../../src/crypto/md5/md5.go.html#line-56">marshaledSize</a> <a href="../builtin.html#name-int">int</a> = 92</span></i></div></div></code></pre><pre id="footer">
 <table><tr><td><img src="../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

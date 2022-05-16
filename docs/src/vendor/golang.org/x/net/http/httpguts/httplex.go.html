@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: httplex.go in package vendor/golang.org/x/net/http/httpguts</title>
-<link href="../../../../../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../../../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../../../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../../../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -455,7 +455,7 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-327"><code>		<span class="keyword">return</span> <label for="r45" class="ident">v</label>, <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
 <span class="codeline" id="line-328"><code>	}</code></span>
 <span class="codeline" id="line-329"><code></code></span>
-<span class="codeline" id="line-330"><code>	<label for="r46" class="ident">host</label>, <label for="r47" class="ident">port</label>, <label for="r48" class="ident">err</label> := <a href="../../../../../../../pkg/net.html" class="ident i0">net</a>.<a href="../../../../../../net/ipsock.go.html#line-156" class="ident">SplitHostPort</a>(<label for="r45" class="ident">v</label>)</code></span>
+<span class="codeline" id="line-330"><code>	<label for="r46" class="ident">host</label>, <label for="r47" class="ident">port</label>, <label for="r48" class="ident">err</label> := <a href="../../../../../../../pkg/net.html" class="ident i0">net</a>.<a href="../../../../../../net/ipsock.go.html#line-164" class="ident">SplitHostPort</a>(<label for="r45" class="ident">v</label>)</code></span>
 <span class="codeline" id="line-331"><code>	<span class="keyword">if</span> <label for="r48" class="ident">err</label> != <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
 <span class="codeline" id="line-332"><code>		<span class="comment">// The input 'v' argument was just a "host" argument,</span></code></span>
 <span class="codeline" id="line-333"><code><span class="comment">		// without a port. This error should not be returned</span></code></span>
@@ -463,7 +463,7 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-335"><code>		<label for="r46" class="ident">host</label> = <label for="r45" class="ident">v</label></code></span>
 <span class="codeline" id="line-336"><code>		<label for="r47" class="ident">port</label> = <span class="lit-string">""</span></code></span>
 <span class="codeline" id="line-337"><code>	}</code></span>
-<span class="codeline" id="line-338"><code>	<label for="r46" class="ident">host</label>, <label for="r48" class="ident">err</label> = <a href="../../../../../../../pkg/vendor/golang.org/x/net/idna.html" class="ident i0">idna</a>.<a href="../../idna/idna10.0.0.go.html#line-46" class="ident">ToASCII</a>(<label for="r46" class="ident">host</label>)</code></span>
+<span class="codeline" id="line-338"><code>	<label for="r46" class="ident">host</label>, <label for="r48" class="ident">err</label> = <a href="../../../../../../../pkg/vendor/golang.org/x/net/idna.html" class="ident i0">idna</a>.<a href="../../idna/idna10.0.0.go.html#line-47" class="ident">ToASCII</a>(<label for="r46" class="ident">host</label>)</code></span>
 <span class="codeline" id="line-339"><code>	<span class="keyword">if</span> <label for="r48" class="ident">err</label> != <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
 <span class="codeline" id="line-340"><code>		<span class="comment">// Non-UTF-8? Not representable in Punycode, in any</span></code></span>
 <span class="codeline" id="line-341"><code><span class="comment">		// case.</span></code></span>
@@ -472,11 +472,11 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-344"><code>	<span class="keyword">if</span> <label for="r47" class="ident">port</label> == <span class="lit-string">""</span> {</code></span>
 <span class="codeline" id="line-345"><code>		<span class="keyword">return</span> <label for="r46" class="ident">host</label>, <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
 <span class="codeline" id="line-346"><code>	}</code></span>
-<span class="codeline" id="line-347"><code>	<span class="keyword">return</span> <a href="../../../../../../../pkg/net.html" class="ident i0">net</a>.<a href="../../../../../../net/ipsock.go.html#line-227" class="ident">JoinHostPort</a>(<label for="r46" class="ident">host</label>, <label for="r47" class="ident">port</label>), <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-347"><code>	<span class="keyword">return</span> <a href="../../../../../../../pkg/net.html" class="ident i0">net</a>.<a href="../../../../../../net/ipsock.go.html#line-235" class="ident">JoinHostPort</a>(<label for="r46" class="ident">host</label>, <label for="r47" class="ident">port</label>), <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
 <span class="codeline" id="line-348"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../../../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

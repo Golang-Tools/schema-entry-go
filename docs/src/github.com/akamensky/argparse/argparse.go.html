@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: argparse.go in package github.com/akamensky/argparse</title>
-<link href="../../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -1004,7 +1004,7 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-541"><code>		}</code></span>
 <span class="codeline" id="line-542"><code>	}</code></span>
 <span class="codeline" id="line-543"><code>	<span class="comment">// Add program/Command description to the result</span></code></span>
-<span class="codeline" id="line-544"><code>	<label for="r163" class="ident">result</label> = <label for="r163" class="ident">result</label> + <span class="lit-string">"\n\n"</span> + <a href="../../../../pkg/strings.html" class="ident i3">strings</a>.<a href="../../../strings/strings.go.html#line-519" class="ident">Repeat</a>(<span class="lit-string">" "</span>, <label for="r168" class="ident">leftPadding</label>)</code></span>
+<span class="codeline" id="line-544"><code>	<label for="r163" class="ident">result</label> = <label for="r163" class="ident">result</label> + <span class="lit-string">"\n\n"</span> + <a href="../../../../pkg/strings.html" class="ident i3">strings</a>.<a href="../../../strings/strings.go.html#line-523" class="ident">Repeat</a>(<span class="lit-string">" "</span>, <label for="r168" class="ident">leftPadding</label>)</code></span>
 <span class="codeline" id="line-545"><code>	<label for="r163" class="ident">result</label> = <a href="extras.go.html#line-10" class="ident">addToLastLine</a>(<label for="r163" class="ident">result</label>, <label for="r161" class="ident">o</label>.<a href="#line-22" class="ident">description</a>, <label for="r166" class="ident">maxWidth</label>, <label for="r168" class="ident">leftPadding</label>, <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a>)</code></span>
 <span class="codeline" id="line-546"><code>	<label for="r163" class="ident">result</label> = <label for="r163" class="ident">result</label> + <span class="lit-string">"\n\n"</span></code></span>
 <span class="codeline" id="line-547"><code></code></span>
@@ -1032,7 +1032,7 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-569"><code>				<span class="keyword">continue</span></code></span>
 <span class="codeline" id="line-570"><code>			}</code></span>
 <span class="codeline" id="line-571"><code>			<label for="r183" class="ident">cmd</label> := <span class="lit-string">"  "</span> + <label for="r182" class="ident">com</label>.<a href="#line-21" class="ident">name</a></code></span>
-<span class="codeline" id="line-572"><code>			<label for="r183" class="ident">cmd</label> = <label for="r183" class="ident">cmd</label> + <a href="../../../../pkg/strings.html" class="ident i3">strings</a>.<a href="../../../strings/strings.go.html#line-519" class="ident">Repeat</a>(<span class="lit-string">" "</span>, <label for="r178" class="ident">cmdPadding</label>-<a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r183" class="ident">cmd</label>)-<span class="lit-number">1</span>)</code></span>
+<span class="codeline" id="line-572"><code>			<label for="r183" class="ident">cmd</label> = <label for="r183" class="ident">cmd</label> + <a href="../../../../pkg/strings.html" class="ident i3">strings</a>.<a href="../../../strings/strings.go.html#line-523" class="ident">Repeat</a>(<span class="lit-string">" "</span>, <label for="r178" class="ident">cmdPadding</label>-<a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r183" class="ident">cmd</label>)-<span class="lit-number">1</span>)</code></span>
 <span class="codeline" id="line-573"><code>			<label for="r183" class="ident">cmd</label> = <a href="extras.go.html#line-10" class="ident">addToLastLine</a>(<label for="r183" class="ident">cmd</label>, <label for="r182" class="ident">com</label>.<a href="#line-22" class="ident">description</a>, <label for="r176" class="ident">maxWidth</label>, <label for="r178" class="ident">cmdPadding</label>, <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a>)</code></span>
 <span class="codeline" id="line-574"><code>			<label for="r177" class="ident">cmdContent</label> = <label for="r177" class="ident">cmdContent</label> + <label for="r183" class="ident">cmd</label> + <span class="lit-string">"\n"</span></code></span>
 <span class="codeline" id="line-575"><code>		}</code></span>
@@ -1071,7 +1071,7 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-608"><code>					<label for="r195" class="ident">arg</label> = <label for="r195" class="ident">arg</label> + <span class="lit-string">"    "</span></code></span>
 <span class="codeline" id="line-609"><code>				}</code></span>
 <span class="codeline" id="line-610"><code>				<label for="r195" class="ident">arg</label> = <label for="r195" class="ident">arg</label> + <span class="lit-string">"--"</span> + <label for="r194" class="ident">argument</label>.<a href="argument.go.html#line-15" class="ident">lname</a></code></span>
-<span class="codeline" id="line-611"><code>				<label for="r195" class="ident">arg</label> = <label for="r195" class="ident">arg</label> + <a href="../../../../pkg/strings.html" class="ident i3">strings</a>.<a href="../../../strings/strings.go.html#line-519" class="ident">Repeat</a>(<span class="lit-string">" "</span>, <label for="r190" class="ident">argPadding</label>-<a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r195" class="ident">arg</label>))</code></span>
+<span class="codeline" id="line-611"><code>				<label for="r195" class="ident">arg</label> = <label for="r195" class="ident">arg</label> + <a href="../../../../pkg/strings.html" class="ident i3">strings</a>.<a href="../../../strings/strings.go.html#line-523" class="ident">Repeat</a>(<span class="lit-string">" "</span>, <label for="r190" class="ident">argPadding</label>-<a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r195" class="ident">arg</label>))</code></span>
 <span class="codeline" id="line-612"><code>				<span class="keyword">if</span> <label for="r194" class="ident">argument</label>.<a href="argument.go.html#line-13" class="ident">opts</a> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> &amp;&amp; <label for="r194" class="ident">argument</label>.<a href="argument.go.html#line-13" class="ident">opts</a>.<a href="#line-100" class="ident">Help</a> != <span class="lit-string">""</span> {</code></span>
 <span class="codeline" id="line-613"><code>					<label for="r195" class="ident">arg</label> = <a href="extras.go.html#line-10" class="ident">addToLastLine</a>(<label for="r195" class="ident">arg</label>, <label for="r194" class="ident">argument</label>.<a href="argument.go.html#line-442" class="ident">getHelpMessage</a>(), <label for="r187" class="ident">maxWidth</label>, <label for="r190" class="ident">argPadding</label>, <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a>)</code></span>
 <span class="codeline" id="line-614"><code>				}</code></span>
@@ -1153,14 +1153,14 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-690"><code>		}</code></span>
 <span class="codeline" id="line-691"><code>	}</code></span>
 <span class="codeline" id="line-692"><code>	<span class="keyword">if</span> <label for="r213" class="ident">result</label> == <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> &amp;&amp; <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r214" class="ident">unparsed</label>) &gt; <span class="lit-number">0</span> {</code></span>
-<span class="codeline" id="line-693"><code>		<span class="keyword">return</span> <a href="../../../../pkg/errors.html" class="ident i0">errors</a>.<a href="../../../errors/errors.go.html#line-58" class="ident">New</a>(<span class="lit-string">"unknown arguments "</span> + <a href="../../../../pkg/strings.html" class="ident i3">strings</a>.<a href="../../../strings/strings.go.html#line-421" class="ident">Join</a>(<label for="r214" class="ident">unparsed</label>, <span class="lit-string">" "</span>))</code></span>
+<span class="codeline" id="line-693"><code>		<span class="keyword">return</span> <a href="../../../../pkg/errors.html" class="ident i0">errors</a>.<a href="../../../errors/errors.go.html#line-58" class="ident">New</a>(<span class="lit-string">"unknown arguments "</span> + <a href="../../../../pkg/strings.html" class="ident i3">strings</a>.<a href="../../../strings/strings.go.html#line-425" class="ident">Join</a>(<label for="r214" class="ident">unparsed</label>, <span class="lit-string">" "</span>))</code></span>
 <span class="codeline" id="line-694"><code>	}</code></span>
 <span class="codeline" id="line-695"><code></code></span>
 <span class="codeline" id="line-696"><code>	<span class="keyword">return</span> <label for="r213" class="ident">result</label></code></span>
 <span class="codeline" id="line-697"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

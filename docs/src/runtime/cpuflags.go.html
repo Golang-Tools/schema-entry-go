@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: cpuflags.go in package runtime</title>
-<link href="../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../jvs/golds-v0.3.6.js"></script>
+<link href="../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -37,10 +37,10 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-11"><code></code></span>
 <span class="codeline" id="line-12"><code><span class="comment">// Offsets into internal/cpu records for use in assembly.</span></code></span>
 <span class="codeline" id="line-13"><code><span class="keyword">const</span> (</code></span>
-<span class="codeline" id="line-14"><code>	<a href="../../pkg/runtime.html#name-offsetX86HasAVX" class="ident">offsetX86HasAVX</a>  = <a href="../../pkg/unsafe.html" class="ident i1">unsafe</a>.<a href="../../pkg/unsafe.html#name-Offsetof" class="ident">Offsetof</a>(<a href="../../pkg/internal/cpu.html" class="ident i0">cpu</a>.<a href="../internal/cpu/cpu.go.html#line-26" class="ident">X86</a>.<a href="../internal/cpu/cpu.go.html#line-30" class="ident">HasAVX</a>)</code></span>
-<span class="codeline" id="line-15"><code>	<a href="../../pkg/runtime.html#name-offsetX86HasAVX2" class="ident">offsetX86HasAVX2</a> = <a href="../../pkg/unsafe.html" class="ident i1">unsafe</a>.<a href="../../pkg/unsafe.html#name-Offsetof" class="ident">Offsetof</a>(<a href="../../pkg/internal/cpu.html" class="ident i0">cpu</a>.<a href="../internal/cpu/cpu.go.html#line-26" class="ident">X86</a>.<a href="../internal/cpu/cpu.go.html#line-31" class="ident">HasAVX2</a>)</code></span>
-<span class="codeline" id="line-16"><code>	<a href="../../pkg/runtime.html#name-offsetX86HasERMS" class="ident">offsetX86HasERMS</a> = <a href="../../pkg/unsafe.html" class="ident i1">unsafe</a>.<a href="../../pkg/unsafe.html#name-Offsetof" class="ident">Offsetof</a>(<a href="../../pkg/internal/cpu.html" class="ident i0">cpu</a>.<a href="../internal/cpu/cpu.go.html#line-26" class="ident">X86</a>.<a href="../internal/cpu/cpu.go.html#line-34" class="ident">HasERMS</a>)</code></span>
-<span class="codeline" id="line-17"><code>	<a href="../../pkg/runtime.html#name-offsetX86HasSSE2" class="ident">offsetX86HasSSE2</a> = <a href="../../pkg/unsafe.html" class="ident i1">unsafe</a>.<a href="../../pkg/unsafe.html#name-Offsetof" class="ident">Offsetof</a>(<a href="../../pkg/internal/cpu.html" class="ident i0">cpu</a>.<a href="../internal/cpu/cpu.go.html#line-26" class="ident">X86</a>.<a href="../internal/cpu/cpu.go.html#line-39" class="ident">HasSSE2</a>)</code></span>
+<span class="codeline" id="line-14"><code>	<a href="../../pkg/runtime.html#name-offsetX86HasAVX" class="ident">offsetX86HasAVX</a>    = <a href="../../pkg/unsafe.html" class="ident i1">unsafe</a>.<a href="../../pkg/unsafe.html#name-Offsetof" class="ident">Offsetof</a>(<a href="../../pkg/internal/cpu.html" class="ident i0">cpu</a>.<a href="../internal/cpu/cpu.go.html#line-26" class="ident">X86</a>.<a href="../internal/cpu/cpu.go.html#line-30" class="ident">HasAVX</a>)</code></span>
+<span class="codeline" id="line-15"><code>	<a href="../../pkg/runtime.html#name-offsetX86HasAVX2" class="ident">offsetX86HasAVX2</a>   = <a href="../../pkg/unsafe.html" class="ident i1">unsafe</a>.<a href="../../pkg/unsafe.html#name-Offsetof" class="ident">Offsetof</a>(<a href="../../pkg/internal/cpu.html" class="ident i0">cpu</a>.<a href="../internal/cpu/cpu.go.html#line-26" class="ident">X86</a>.<a href="../internal/cpu/cpu.go.html#line-31" class="ident">HasAVX2</a>)</code></span>
+<span class="codeline" id="line-16"><code>	<a href="../../pkg/runtime.html#name-offsetX86HasERMS" class="ident">offsetX86HasERMS</a>   = <a href="../../pkg/unsafe.html" class="ident i1">unsafe</a>.<a href="../../pkg/unsafe.html#name-Offsetof" class="ident">Offsetof</a>(<a href="../../pkg/internal/cpu.html" class="ident i0">cpu</a>.<a href="../internal/cpu/cpu.go.html#line-26" class="ident">X86</a>.<a href="../internal/cpu/cpu.go.html#line-34" class="ident">HasERMS</a>)</code></span>
+<span class="codeline" id="line-17"><code>	<a href="../../pkg/runtime.html#name-offsetX86HasRDTSCP" class="ident">offsetX86HasRDTSCP</a> = <a href="../../pkg/unsafe.html" class="ident i1">unsafe</a>.<a href="../../pkg/unsafe.html#name-Offsetof" class="ident">Offsetof</a>(<a href="../../pkg/internal/cpu.html" class="ident i0">cpu</a>.<a href="../internal/cpu/cpu.go.html#line-26" class="ident">X86</a>.<a href="../internal/cpu/cpu.go.html#line-39" class="ident">HasRDTSCP</a>)</code></span>
 <span class="codeline" id="line-18"><code></code></span>
 <span class="codeline" id="line-19"><code>	<a href="../../pkg/runtime.html#name-offsetARMHasIDIVA" class="ident">offsetARMHasIDIVA</a> = <a href="../../pkg/unsafe.html" class="ident i1">unsafe</a>.<a href="../../pkg/unsafe.html#name-Offsetof" class="ident">Offsetof</a>(<a href="../../pkg/internal/cpu.html" class="ident i0">cpu</a>.<a href="../internal/cpu/cpu.go.html#line-49" class="ident">ARM</a>.<a href="../internal/cpu/cpu.go.html#line-52" class="ident">HasIDIVA</a>)</code></span>
 <span class="codeline" id="line-20"><code></code></span>
@@ -60,7 +60,7 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-34"><code>)</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

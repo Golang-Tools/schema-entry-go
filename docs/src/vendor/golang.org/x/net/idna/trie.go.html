@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: trie.go in package vendor/golang.org/x/net/idna</title>
-<link href="../../../../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -67,7 +67,7 @@ input[id=r16]:checked ~pre label[for=r16]
 <span class="codeline" id="line-11"><code><span class="keyword">func</span> (<label for="r0" class="ident">c</label> <a href="trieval.go.html#line-40" class="ident">info</a>) <label for="r1" class="ident">appendMapping</label>(<label for="r2" class="ident">b</label> []<a href="../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <label for="r3" class="ident">s</label> <a href="../../../../../../pkg/builtin.html#name-string" class="ident">string</a>) []<a href="../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a> {</code></span>
 <span class="codeline" id="line-12"><code>	<label for="r4" class="ident">index</label> := <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r0" class="ident">c</label> &gt;&gt; <a href="trieval.go.html#line-45" class="ident">indexShift</a>)</code></span>
 <span class="codeline" id="line-13"><code>	<span class="keyword">if</span> <label for="r0" class="ident">c</label>&amp;<a href="trieval.go.html#line-46" class="ident">xorBit</a> == <span class="lit-number">0</span> {</code></span>
-<span class="codeline" id="line-14"><code>		<label for="r5" class="ident">s</label> := <a href="tables13.0.0.go.html#line-10" class="ident">mappings</a>[<label for="r4" class="ident">index</label>:]</code></span>
+<span class="codeline" id="line-14"><code>		<label for="r5" class="ident">s</label> := <a href="tables13.0.0.go.html#line-11" class="ident">mappings</a>[<label for="r4" class="ident">index</label>:]</code></span>
 <span class="codeline" id="line-15"><code>		<span class="keyword">return</span> <a href="../../../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r2" class="ident">b</label>, <label for="r5" class="ident">s</label>[<span class="lit-number">1</span>:<label for="r5" class="ident">s</label>[<span class="lit-number">0</span>]+<span class="lit-number">1</span>]...)</code></span>
 <span class="codeline" id="line-16"><code>	}</code></span>
 <span class="codeline" id="line-17"><code>	<label for="r2" class="ident">b</label> = <a href="../../../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r2" class="ident">b</label>, <label for="r3" class="ident">s</label>...)</code></span>
@@ -75,9 +75,9 @@ input[id=r16]:checked ~pre label[for=r16]
 <span class="codeline" id="line-19"><code>		<span class="comment">// TODO: support and handle two-byte inline masks</span></code></span>
 <span class="codeline" id="line-20"><code>		<label for="r2" class="ident">b</label>[<a href="../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r2" class="ident">b</label>)-<span class="lit-number">1</span>] ^= <a href="../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<label for="r4" class="ident">index</label>)</code></span>
 <span class="codeline" id="line-21"><code>	} <span class="keyword">else</span> {</code></span>
-<span class="codeline" id="line-22"><code>		<span class="keyword">for</span> <label for="r6" class="ident">p</label> := <a href="../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r2" class="ident">b</label>) - <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<a href="tables13.0.0.go.html#line-149" class="ident">xorData</a>[<label for="r4" class="ident">index</label>]); <label for="r6" class="ident">p</label> &lt; <a href="../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r2" class="ident">b</label>); <label for="r6" class="ident">p</label>++ {</code></span>
+<span class="codeline" id="line-22"><code>		<span class="keyword">for</span> <label for="r6" class="ident">p</label> := <a href="../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r2" class="ident">b</label>) - <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<a href="tables13.0.0.go.html#line-150" class="ident">xorData</a>[<label for="r4" class="ident">index</label>]); <label for="r6" class="ident">p</label> &lt; <a href="../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r2" class="ident">b</label>); <label for="r6" class="ident">p</label>++ {</code></span>
 <span class="codeline" id="line-23"><code>			<label for="r4" class="ident">index</label>++</code></span>
-<span class="codeline" id="line-24"><code>			<label for="r2" class="ident">b</label>[<label for="r6" class="ident">p</label>] ^= <a href="tables13.0.0.go.html#line-149" class="ident">xorData</a>[<label for="r4" class="ident">index</label>]</code></span>
+<span class="codeline" id="line-24"><code>			<label for="r2" class="ident">b</label>[<label for="r6" class="ident">p</label>] ^= <a href="tables13.0.0.go.html#line-150" class="ident">xorData</a>[<label for="r4" class="ident">index</label>]</code></span>
 <span class="codeline" id="line-25"><code>		}</code></span>
 <span class="codeline" id="line-26"><code>	}</code></span>
 <span class="codeline" id="line-27"><code>	<span class="keyword">return</span> <label for="r2" class="ident">b</label></code></span>
@@ -96,12 +96,12 @@ input[id=r16]:checked ~pre label[for=r16]
 <span class="codeline" id="line-40"><code>}</code></span>
 <span class="codeline" id="line-41"><code></code></span>
 <span class="codeline" id="line-42"><code><span class="keyword">var</span> <a href="../../../../../../pkg/vendor/golang.org/x/net/idna.html#name-idnaSparse" class="ident">idnaSparse</a> = <a href="#line-37" class="ident">sparseBlocks</a>{</code></span>
-<span class="codeline" id="line-43"><code>	<a href="#line-38" class="ident">values</a>: <a href="tables13.0.0.go.html#line-2398" class="ident">idnaSparseValues</a>[:],</code></span>
-<span class="codeline" id="line-44"><code>	<a href="#line-39" class="ident">offset</a>: <a href="tables13.0.0.go.html#line-2395" class="ident">idnaSparseOffset</a>[:],</code></span>
+<span class="codeline" id="line-43"><code>	<a href="#line-38" class="ident">values</a>: <a href="tables13.0.0.go.html#line-2399" class="ident">idnaSparseValues</a>[:],</code></span>
+<span class="codeline" id="line-44"><code>	<a href="#line-39" class="ident">offset</a>: <a href="tables13.0.0.go.html#line-2396" class="ident">idnaSparseOffset</a>[:],</code></span>
 <span class="codeline" id="line-45"><code>}</code></span>
 <span class="codeline" id="line-46"><code></code></span>
 <span class="codeline" id="line-47"><code><span class="comment">// Don't use newIdnaTrie to avoid unconditional linking in of the table.</span></code></span>
-<span class="codeline" id="line-48"><code><span class="keyword">var</span> <a href="../../../../../../pkg/vendor/golang.org/x/net/idna.html#name-trie" class="ident">trie</a> = &amp;<a href="tables13.0.0.go.html#line-550" class="ident">idnaTrie</a>{}</code></span>
+<span class="codeline" id="line-48"><code><span class="keyword">var</span> <a href="../../../../../../pkg/vendor/golang.org/x/net/idna.html#name-trie" class="ident">trie</a> = &amp;<a href="tables13.0.0.go.html#line-551" class="ident">idnaTrie</a>{}</code></span>
 <span class="codeline" id="line-49"><code></code></span>
 <span class="codeline" id="line-50"><code><span class="comment">// lookup determines the type of block n and looks up the value for b.</span></code></span>
 <span class="codeline" id="line-51"><code><span class="comment">// For n &lt; t.cutoff, the block is a simple lookup table. Otherwise, the block</span></code></span>
@@ -128,7 +128,7 @@ input[id=r16]:checked ~pre label[for=r16]
 <span class="codeline" id="line-72"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

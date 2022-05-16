@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: sub.go in package io/fs</title>
-<link href="../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -66,7 +66,12 @@ input[id=r46]:checked ~pre label[for=r46],
 input[id=r47]:checked ~pre label[for=r47],
 input[id=r48]:checked ~pre label[for=r48],
 input[id=r49]:checked ~pre label[for=r49],
-input[id=r50]:checked ~pre label[for=r50]
+input[id=r50]:checked ~pre label[for=r50],
+input[id=r51]:checked ~pre label[for=r51],
+input[id=r52]:checked ~pre label[for=r52],
+input[id=r53]:checked ~pre label[for=r53],
+input[id=r54]:checked ~pre label[for=r54],
+input[id=r55]:checked ~pre label[for=r55]
 {background: #226; color: #ff8;}
 input[id=i0]:checked ~pre .i0,
 input[id=i1]:checked ~pre .i1
@@ -122,6 +127,11 @@ input[id=i1]:checked ~pre .i1
 <input id="r48" type="radio" name="g"/>
 <input id="r49" type="radio" name="g"/>
 <input id="r50" type="radio" name="g"/>
+<input id="r51" type="radio" name="g"/>
+<input id="r52" type="radio" name="g"/>
+<input id="r53" type="radio" name="g"/>
+<input id="r54" type="radio" name="g"/>
+<input id="r55" type="radio" name="g"/>
 <input id="i0" type="radio" name="i"/>
 <input id="i1" type="radio" name="i"/>
 
@@ -147,10 +157,10 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-19"><code></code></span>
 <span class="codeline" id="line-20"><code><span class="comment">// Sub returns an FS corresponding to the subtree rooted at fsys's dir.</span></code></span>
 <span class="codeline" id="line-21"><code><span class="comment">//</span></code></span>
-<span class="codeline" id="line-22"><code><span class="comment">// If fs implements SubFS, Sub calls returns fsys.Sub(dir).</span></code></span>
-<span class="codeline" id="line-23"><code><span class="comment">// Otherwise, if dir is ".", Sub returns fsys unchanged.</span></code></span>
+<span class="codeline" id="line-22"><code><span class="comment">// If dir is ".", Sub returns fsys unchanged.</span></code></span>
+<span class="codeline" id="line-23"><code><span class="comment">// Otherwise, if fs implements SubFS, Sub returns fsys.Sub(dir).</span></code></span>
 <span class="codeline" id="line-24"><code><span class="comment">// Otherwise, Sub returns a new FS implementation sub that,</span></code></span>
-<span class="codeline" id="line-25"><code><span class="comment">// in effect, implements sub.Open(dir) as fsys.Open(path.Join(dir, name)).</span></code></span>
+<span class="codeline" id="line-25"><code><span class="comment">// in effect, implements sub.Open(name) as fsys.Open(path.Join(dir, name)).</span></code></span>
 <span class="codeline" id="line-26"><code><span class="comment">// The implementation also translates calls to ReadDir, ReadFile, and Glob appropriately.</span></code></span>
 <span class="codeline" id="line-27"><code><span class="comment">//</span></code></span>
 <span class="codeline" id="line-28"><code><span class="comment">// Note that Sub(os.DirFS("/"), "prefix") is equivalent to os.DirFS("/prefix")</span></code></span>
@@ -196,7 +206,7 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-68"><code>	<span class="keyword">return</span> <span class="lit-string">""</span>, <a href="../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
 <span class="codeline" id="line-69"><code>}</code></span>
 <span class="codeline" id="line-70"><code></code></span>
-<span class="codeline" id="line-71"><code><span class="comment">// fixErr shortens any reported names in PathErrors by stripping dir.</span></code></span>
+<span class="codeline" id="line-71"><code><span class="comment">// fixErr shortens any reported names in PathErrors by stripping f.dir.</span></code></span>
 <span class="codeline" id="line-72"><code><span class="keyword">func</span> (<label for="r14" class="ident">f</label> *<a href="#line-47" class="ident">subFS</a>) <label for="r15" class="ident">fixErr</label>(<label for="r16" class="ident">err</label> <a href="../../../pkg/builtin.html#name-error" class="ident">error</a>) <a href="../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
 <span class="codeline" id="line-73"><code>	<span class="keyword">if</span> <label for="r17" class="ident">e</label>, <label for="r18" class="ident">ok</label> := <label for="r16" class="ident">err</label>.(*<a href="fs.go.html#line-243" class="ident">PathError</a>); <label for="r18" class="ident">ok</label> {</code></span>
 <span class="codeline" id="line-74"><code>		<span class="keyword">if</span> <label for="r19" class="ident">short</label>, <label for="r20" class="ident">ok</label> := <label for="r14" class="ident">f</label>.<a href="#line-61" class="ident">shorten</a>(<label for="r17" class="ident">e</label>.<a href="fs.go.html#line-245" class="ident">Path</a>); <label for="r20" class="ident">ok</label> {</code></span>
@@ -229,7 +239,7 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-101"><code>	<span class="keyword">if</span> <label for="r37" class="ident">err</label> != <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
 <span class="codeline" id="line-102"><code>		<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <label for="r37" class="ident">err</label></code></span>
 <span class="codeline" id="line-103"><code>	}</code></span>
-<span class="codeline" id="line-104"><code>	<label for="r38" class="ident">data</label>, <label for="r37" class="ident">err</label> := <a href="readfile.go.html#line-29" class="ident">ReadFile</a>(<label for="r33" class="ident">f</label>.<a href="#line-48" class="ident">fsys</a>, <label for="r36" class="ident">full</label>)</code></span>
+<span class="codeline" id="line-104"><code>	<label for="r38" class="ident">data</label>, <label for="r37" class="ident">err</label> := <a href="readfile.go.html#line-32" class="ident">ReadFile</a>(<label for="r33" class="ident">f</label>.<a href="#line-48" class="ident">fsys</a>, <label for="r36" class="ident">full</label>)</code></span>
 <span class="codeline" id="line-105"><code>	<span class="keyword">return</span> <label for="r38" class="ident">data</label>, <label for="r33" class="ident">f</label>.<a href="#line-72" class="ident">fixErr</a>(<label for="r37" class="ident">err</label>)</code></span>
 <span class="codeline" id="line-106"><code>}</code></span>
 <span class="codeline" id="line-107"><code></code></span>
@@ -253,9 +263,20 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-125"><code>	}</code></span>
 <span class="codeline" id="line-126"><code>	<span class="keyword">return</span> <label for="r45" class="ident">list</label>, <label for="r39" class="ident">f</label>.<a href="#line-72" class="ident">fixErr</a>(<label for="r46" class="ident">err</label>)</code></span>
 <span class="codeline" id="line-127"><code>}</code></span>
+<span class="codeline" id="line-128"><code></code></span>
+<span class="codeline" id="line-129"><code><span class="keyword">func</span> (<label for="r51" class="ident">f</label> *<a href="#line-47" class="ident">subFS</a>) <label for="r52" class="ident"><a href="../../../imp/io/fs.subFS^3268f.html#name-.Sub" class="ident">Sub</a></label>(<label for="r53" class="ident">dir</label> <a href="../../../pkg/builtin.html#name-string" class="ident">string</a>) (<a href="fs.go.html#line-21" class="ident">FS</a>, <a href="../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-130"><code>	<span class="keyword">if</span> <label for="r53" class="ident">dir</label> == <span class="lit-string">"."</span> {</code></span>
+<span class="codeline" id="line-131"><code>		<span class="keyword">return</span> <label for="r51" class="ident">f</label>, <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-132"><code>	}</code></span>
+<span class="codeline" id="line-133"><code>	<label for="r54" class="ident">full</label>, <label for="r55" class="ident">err</label> := <label for="r51" class="ident">f</label>.<a href="#line-53" class="ident">fullName</a>(<span class="lit-string">"sub"</span>, <label for="r53" class="ident">dir</label>)</code></span>
+<span class="codeline" id="line-134"><code>	<span class="keyword">if</span> <label for="r55" class="ident">err</label> != <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-135"><code>		<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <label for="r55" class="ident">err</label></code></span>
+<span class="codeline" id="line-136"><code>	}</code></span>
+<span class="codeline" id="line-137"><code>	<span class="keyword">return</span> &amp;<a href="#line-47" class="ident">subFS</a>{<label for="r51" class="ident">f</label>.<a href="#line-48" class="ident">fsys</a>, <label for="r54" class="ident">full</label>}, <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-138"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

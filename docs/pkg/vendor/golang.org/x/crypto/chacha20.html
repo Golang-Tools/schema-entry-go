@@ -5,14 +5,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Package: vendor/golang.org/x/crypto/chacha20</title>
-<link href="../../../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="package-details"><code><span style="font-size:xx-large;">package <b>chacha20</b></span>
 
 <span class="title">Import Path</span>
-	<a href="../../../../../index.html#pkg-vendor/golang.org/x/crypto/chacha20">vendor/golang.org/x/crypto/chacha20</a><i> (on <a href="https://pkg.go.dev/vendor/golang.org/x/crypto/chacha20" target="_blank">go.dev</a>)</i>
+	<a href="../../../../../index.html#pkg-vendor/golang.org/x/crypto/chacha20">vendor/golang.org/x/crypto/chacha20</a><i> (on <a href="https://pkg.go.dev/golang.org/x/crypto/chacha20" target="_blank">go.dev</a>)</i>
 
 <span class="title">Dependency Relation</span>
 	imports <a href="../../../../../dep/vendor/golang.org/x/crypto/chacha20.html">6 packages</a>, and imported by <a href="../../../../../dep/vendor/golang.org/x/crypto/chacha20.html#imported-by">one package</a>
@@ -66,7 +66,7 @@
 				are computed the first time.
 </span></i></span></span>
 		<input type='checkbox' class="fold" id="Cipher-fold-methods"><label for="Cipher-fold-methods">Methods (<i>total 4, in which 2 are exported</i>)</label><span id='Cipher-fold-methods-items' class="fold-items"><span>
-			<input type='checkbox' class="fold" id="Cipher-fold-method-SetCounter"><label for="Cipher-fold-method-SetCounter">(*T) <a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-152">SetCounter</a>(counter <a href="../../../../builtin.html#name-uint32">uint32</a>)</label><span id='Cipher-fold-method-SetCounter-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Cipher-fold-method-SetCounter"><label for="Cipher-fold-method-SetCounter">(*Cipher) <a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-152">SetCounter</a>(counter <a href="../../../../builtin.html#name-uint32">uint32</a>)</label><span id='Cipher-fold-method-SetCounter-docs' class="fold-docs">
 				SetCounter sets the Cipher counter. The next invocation of XORKeyStream will
 				behave as if (64 * counter) bytes had been encrypted so far.
 
@@ -76,7 +76,7 @@
 				Note that the execution time of XORKeyStream is not independent of the
 				counter value.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Cipher-fold-method-XORKeyStream"><label for="Cipher-fold-method-XORKeyStream">(*T) <a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-184">XORKeyStream</a>(dst, src []<a href="../../../../builtin.html#name-byte">byte</a>)</label><span id='Cipher-fold-method-XORKeyStream-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Cipher-fold-method-XORKeyStream"><label for="Cipher-fold-method-XORKeyStream">(*Cipher) <a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-184">XORKeyStream</a>(dst, src []<a href="../../../../builtin.html#name-byte">byte</a>)</label><span id='Cipher-fold-method-XORKeyStream-docs' class="fold-docs">
 				XORKeyStream XORs each byte in the given slice with a byte from the
 				cipher's key stream. Dst and src must overlap entirely or not at all.
 
@@ -89,10 +89,10 @@
 				maintains state and does not reset at each XORKeyStream call.
 </span></span>
 			<input type='checkbox' class="showhide" id="Cipher-showhide-methods"><i><label for="Cipher-showhide-methods" class="show-inline">/* 2 unexporteds ... */</label><label for="Cipher-showhide-methods" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_noasm.go.html#line-11">xorKeyStreamBlocks</a>(dst, src []<a href="../../../../builtin.html#name-byte">byte</a>)</span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-256">xorKeyStreamBlocksGeneric</a>(dst, src []<a href="../../../../builtin.html#name-byte">byte</a>)</span></i></span></span>
+			<span class="nodocs">(*Cipher) <a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_noasm.go.html#line-12">xorKeyStreamBlocks</a>(dst, src []<a href="../../../../builtin.html#name-byte">byte</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*Cipher) <a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-256">xorKeyStreamBlocksGeneric</a>(dst, src []<a href="../../../../builtin.html#name-byte">byte</a>)</span></i></span></span>
 		<input type='checkbox' class="fold" id="Cipher-fold-impls"><label for="Cipher-fold-impls">Implements (<i>at least one exported</i>)</label><span id='Cipher-fold-impls-items' class="fold-items"><span>
-			*T : crypto/cipher.<a href="../../../../crypto/cipher.html#name-Stream">Stream</a></span></span>
+			*Cipher : crypto/cipher.<a href="../../../../crypto/cipher.html#name-Stream">Stream</a></span></span>
 		<input type='checkbox' class="fold" id="Cipher-fold-results"><label for="Cipher-fold-results">As Outputs Of (<i>at least 2, in which 1 are exported</i>)</label><span id='Cipher-fold-results-items' class="fold-items"><span>
 			func <a href="#name-NewUnauthenticatedCipher">NewUnauthenticatedCipher</a>(key, nonce []<a href="../../../../builtin.html#name-byte">byte</a>) (*<b>Cipher</b>, <a href="../../../../builtin.html#name-error">error</a>)</span>
 			<input type='checkbox' class="showhide" id="Cipher-showhide-inputofs"><i><label for="Cipher-showhide-inputofs" class="show-inline">/* at least one unexported ... */</label><label for="Cipher-showhide-inputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
@@ -146,7 +146,7 @@
 		NonceSizeX is the size of the nonce used with the XChaCha20 variant of
 		this cipher, in bytes.
 
-</span></div>	<input type='checkbox' class="showhide" id="unexported-constants-showhide"><i><label for="unexported-constants-showhide" class="show-inline">/* 7 unexporteds ... */</label><label for="unexported-constants-showhide" class="hide-inline">/* 7 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-blockSize"><i>	<span class="nodocs">const <a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-123">blockSize</a> = 64</span></i></div><div class="anchor value-res hidden" id="name-bufSize"><i>	<span class="nodocs">const <a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_noasm.go.html#line-9">bufSize</a> = 64</span></i></div><div class="anchor value-res hidden" id="name-j0"><i>	<input type='checkbox' class="fold" id="j0-fold-content"><label for="j0-fold-content">const <a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-117">j0</a> <a href="../../../../builtin.html#name-uint32">uint32</a> = 1634760805 // expa</label><span id='j0-fold-content-docs' class="fold-docs">
+</span></div>	<input type='checkbox' class="showhide" id="unexported-constants-showhide"><i><label for="unexported-constants-showhide" class="show-inline">/* 7 unexporteds ... */</label><label for="unexported-constants-showhide" class="hide-inline">/* 7 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-blockSize"><i>	<span class="nodocs">const <a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-123">blockSize</a> = 64</span></i></div><div class="anchor value-res hidden" id="name-bufSize"><i>	<span class="nodocs">const <a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_noasm.go.html#line-10">bufSize</a> = 64</span></i></div><div class="anchor value-res hidden" id="name-j0"><i>	<input type='checkbox' class="fold" id="j0-fold-content"><label for="j0-fold-content">const <a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-117">j0</a> <a href="../../../../builtin.html#name-uint32">uint32</a> = 1634760805 // expa</label><span id='j0-fold-content-docs' class="fold-docs">
 		The constant first 4 words of the ChaCha20 state.
 
 </span></i></div><div class="anchor value-res hidden" id="name-j1"><i>	<input type='checkbox' class="fold" id="j1-fold-content"><label for="j1-fold-content">const <a href="../../../../../src/vendor/golang.org/x/crypto/chacha20/chacha_generic.go.html#line-118">j1</a> <a href="../../../../builtin.html#name-uint32">uint32</a> = 857760878 // nd 3</label><span id='j1-fold-content-docs' class="fold-docs">
@@ -163,7 +163,7 @@
 
 </span></i></div></div></code></pre><pre id="footer">
 <table><tr><td><img src="../../../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: fd_mutex.go in package internal/poll</title>
-<link href="../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -314,9 +314,9 @@ input[id=i0]:checked ~pre .i0
 <span class="codeline" id="line-198"><code></code></span>
 <span class="codeline" id="line-199"><code><span class="comment">// incref adds a reference to fd.</span></code></span>
 <span class="codeline" id="line-200"><code><span class="comment">// It returns an error when fd cannot be used.</span></code></span>
-<span class="codeline" id="line-201"><code><span class="keyword">func</span> (<label for="r34" class="ident">fd</label> *<a href="fd_unix.go.html#line-17" class="ident">FD</a>) <label for="r35" class="ident">incref</label>() <a href="../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
-<span class="codeline" id="line-202"><code>	<span class="keyword">if</span> !<label for="r34" class="ident">fd</label>.<a href="fd_unix.go.html#line-19" class="ident">fdmu</a>.<a href="#line-53" class="ident">incref</a>() {</code></span>
-<span class="codeline" id="line-203"><code>		<span class="keyword">return</span> <a href="fd.go.html#line-31" class="ident">errClosing</a>(<label for="r34" class="ident">fd</label>.<a href="fd_unix.go.html#line-45" class="ident">isFile</a>)</code></span>
+<span class="codeline" id="line-201"><code><span class="keyword">func</span> (<label for="r34" class="ident">fd</label> *<a href="fd_unix.go.html#line-18" class="ident">FD</a>) <label for="r35" class="ident">incref</label>() <a href="../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
+<span class="codeline" id="line-202"><code>	<span class="keyword">if</span> !<label for="r34" class="ident">fd</label>.<a href="fd_unix.go.html#line-20" class="ident">fdmu</a>.<a href="#line-53" class="ident">incref</a>() {</code></span>
+<span class="codeline" id="line-203"><code>		<span class="keyword">return</span> <a href="fd.go.html#line-42" class="ident">errClosing</a>(<label for="r34" class="ident">fd</label>.<a href="fd_unix.go.html#line-46" class="ident">isFile</a>)</code></span>
 <span class="codeline" id="line-204"><code>	}</code></span>
 <span class="codeline" id="line-205"><code>	<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
 <span class="codeline" id="line-206"><code>}</code></span>
@@ -324,18 +324,18 @@ input[id=i0]:checked ~pre .i0
 <span class="codeline" id="line-208"><code><span class="comment">// decref removes a reference from fd.</span></code></span>
 <span class="codeline" id="line-209"><code><span class="comment">// It also closes fd when the state of fd is set to closed and there</span></code></span>
 <span class="codeline" id="line-210"><code><span class="comment">// is no remaining reference.</span></code></span>
-<span class="codeline" id="line-211"><code><span class="keyword">func</span> (<label for="r36" class="ident">fd</label> *<a href="fd_unix.go.html#line-17" class="ident">FD</a>) <label for="r37" class="ident">decref</label>() <a href="../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
-<span class="codeline" id="line-212"><code>	<span class="keyword">if</span> <label for="r36" class="ident">fd</label>.<a href="fd_unix.go.html#line-19" class="ident">fdmu</a>.<a href="#line-102" class="ident">decref</a>() {</code></span>
-<span class="codeline" id="line-213"><code>		<span class="keyword">return</span> <label for="r36" class="ident">fd</label>.<a href="fd_unix.go.html#line-73" class="ident">destroy</a>()</code></span>
+<span class="codeline" id="line-211"><code><span class="keyword">func</span> (<label for="r36" class="ident">fd</label> *<a href="fd_unix.go.html#line-18" class="ident">FD</a>) <label for="r37" class="ident">decref</label>() <a href="../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
+<span class="codeline" id="line-212"><code>	<span class="keyword">if</span> <label for="r36" class="ident">fd</label>.<a href="fd_unix.go.html#line-20" class="ident">fdmu</a>.<a href="#line-102" class="ident">decref</a>() {</code></span>
+<span class="codeline" id="line-213"><code>		<span class="keyword">return</span> <label for="r36" class="ident">fd</label>.<a href="fd_unix.go.html#line-74" class="ident">destroy</a>()</code></span>
 <span class="codeline" id="line-214"><code>	}</code></span>
 <span class="codeline" id="line-215"><code>	<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
 <span class="codeline" id="line-216"><code>}</code></span>
 <span class="codeline" id="line-217"><code></code></span>
 <span class="codeline" id="line-218"><code><span class="comment">// readLock adds a reference to fd and locks fd for reading.</span></code></span>
 <span class="codeline" id="line-219"><code><span class="comment">// It returns an error when fd cannot be used for reading.</span></code></span>
-<span class="codeline" id="line-220"><code><span class="keyword">func</span> (<label for="r38" class="ident">fd</label> *<a href="fd_unix.go.html#line-17" class="ident">FD</a>) <label for="r39" class="ident">readLock</label>() <a href="../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
-<span class="codeline" id="line-221"><code>	<span class="keyword">if</span> !<label for="r38" class="ident">fd</label>.<a href="fd_unix.go.html#line-19" class="ident">fdmu</a>.<a href="#line-117" class="ident">rwlock</a>(<a href="../../../pkg/builtin.html#name-true" class="ident">true</a>) {</code></span>
-<span class="codeline" id="line-222"><code>		<span class="keyword">return</span> <a href="fd.go.html#line-31" class="ident">errClosing</a>(<label for="r38" class="ident">fd</label>.<a href="fd_unix.go.html#line-45" class="ident">isFile</a>)</code></span>
+<span class="codeline" id="line-220"><code><span class="keyword">func</span> (<label for="r38" class="ident">fd</label> *<a href="fd_unix.go.html#line-18" class="ident">FD</a>) <label for="r39" class="ident">readLock</label>() <a href="../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
+<span class="codeline" id="line-221"><code>	<span class="keyword">if</span> !<label for="r38" class="ident">fd</label>.<a href="fd_unix.go.html#line-20" class="ident">fdmu</a>.<a href="#line-117" class="ident">rwlock</a>(<a href="../../../pkg/builtin.html#name-true" class="ident">true</a>) {</code></span>
+<span class="codeline" id="line-222"><code>		<span class="keyword">return</span> <a href="fd.go.html#line-42" class="ident">errClosing</a>(<label for="r38" class="ident">fd</label>.<a href="fd_unix.go.html#line-46" class="ident">isFile</a>)</code></span>
 <span class="codeline" id="line-223"><code>	}</code></span>
 <span class="codeline" id="line-224"><code>	<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
 <span class="codeline" id="line-225"><code>}</code></span>
@@ -343,17 +343,17 @@ input[id=i0]:checked ~pre .i0
 <span class="codeline" id="line-227"><code><span class="comment">// readUnlock removes a reference from fd and unlocks fd for reading.</span></code></span>
 <span class="codeline" id="line-228"><code><span class="comment">// It also closes fd when the state of fd is set to closed and there</span></code></span>
 <span class="codeline" id="line-229"><code><span class="comment">// is no remaining reference.</span></code></span>
-<span class="codeline" id="line-230"><code><span class="keyword">func</span> (<label for="r40" class="ident">fd</label> *<a href="fd_unix.go.html#line-17" class="ident">FD</a>) <label for="r41" class="ident">readUnlock</label>() {</code></span>
-<span class="codeline" id="line-231"><code>	<span class="keyword">if</span> <label for="r40" class="ident">fd</label>.<a href="fd_unix.go.html#line-19" class="ident">fdmu</a>.<a href="#line-162" class="ident">rwunlock</a>(<a href="../../../pkg/builtin.html#name-true" class="ident">true</a>) {</code></span>
-<span class="codeline" id="line-232"><code>		<label for="r40" class="ident">fd</label>.<a href="fd_unix.go.html#line-73" class="ident">destroy</a>()</code></span>
+<span class="codeline" id="line-230"><code><span class="keyword">func</span> (<label for="r40" class="ident">fd</label> *<a href="fd_unix.go.html#line-18" class="ident">FD</a>) <label for="r41" class="ident">readUnlock</label>() {</code></span>
+<span class="codeline" id="line-231"><code>	<span class="keyword">if</span> <label for="r40" class="ident">fd</label>.<a href="fd_unix.go.html#line-20" class="ident">fdmu</a>.<a href="#line-162" class="ident">rwunlock</a>(<a href="../../../pkg/builtin.html#name-true" class="ident">true</a>) {</code></span>
+<span class="codeline" id="line-232"><code>		<label for="r40" class="ident">fd</label>.<a href="fd_unix.go.html#line-74" class="ident">destroy</a>()</code></span>
 <span class="codeline" id="line-233"><code>	}</code></span>
 <span class="codeline" id="line-234"><code>}</code></span>
 <span class="codeline" id="line-235"><code></code></span>
 <span class="codeline" id="line-236"><code><span class="comment">// writeLock adds a reference to fd and locks fd for writing.</span></code></span>
 <span class="codeline" id="line-237"><code><span class="comment">// It returns an error when fd cannot be used for writing.</span></code></span>
-<span class="codeline" id="line-238"><code><span class="keyword">func</span> (<label for="r42" class="ident">fd</label> *<a href="fd_unix.go.html#line-17" class="ident">FD</a>) <label for="r43" class="ident">writeLock</label>() <a href="../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
-<span class="codeline" id="line-239"><code>	<span class="keyword">if</span> !<label for="r42" class="ident">fd</label>.<a href="fd_unix.go.html#line-19" class="ident">fdmu</a>.<a href="#line-117" class="ident">rwlock</a>(<a href="../../../pkg/builtin.html#name-false" class="ident">false</a>) {</code></span>
-<span class="codeline" id="line-240"><code>		<span class="keyword">return</span> <a href="fd.go.html#line-31" class="ident">errClosing</a>(<label for="r42" class="ident">fd</label>.<a href="fd_unix.go.html#line-45" class="ident">isFile</a>)</code></span>
+<span class="codeline" id="line-238"><code><span class="keyword">func</span> (<label for="r42" class="ident">fd</label> *<a href="fd_unix.go.html#line-18" class="ident">FD</a>) <label for="r43" class="ident">writeLock</label>() <a href="../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
+<span class="codeline" id="line-239"><code>	<span class="keyword">if</span> !<label for="r42" class="ident">fd</label>.<a href="fd_unix.go.html#line-20" class="ident">fdmu</a>.<a href="#line-117" class="ident">rwlock</a>(<a href="../../../pkg/builtin.html#name-false" class="ident">false</a>) {</code></span>
+<span class="codeline" id="line-240"><code>		<span class="keyword">return</span> <a href="fd.go.html#line-42" class="ident">errClosing</a>(<label for="r42" class="ident">fd</label>.<a href="fd_unix.go.html#line-46" class="ident">isFile</a>)</code></span>
 <span class="codeline" id="line-241"><code>	}</code></span>
 <span class="codeline" id="line-242"><code>	<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
 <span class="codeline" id="line-243"><code>}</code></span>
@@ -361,14 +361,14 @@ input[id=i0]:checked ~pre .i0
 <span class="codeline" id="line-245"><code><span class="comment">// writeUnlock removes a reference from fd and unlocks fd for writing.</span></code></span>
 <span class="codeline" id="line-246"><code><span class="comment">// It also closes fd when the state of fd is set to closed and there</span></code></span>
 <span class="codeline" id="line-247"><code><span class="comment">// is no remaining reference.</span></code></span>
-<span class="codeline" id="line-248"><code><span class="keyword">func</span> (<label for="r44" class="ident">fd</label> *<a href="fd_unix.go.html#line-17" class="ident">FD</a>) <label for="r45" class="ident">writeUnlock</label>() {</code></span>
-<span class="codeline" id="line-249"><code>	<span class="keyword">if</span> <label for="r44" class="ident">fd</label>.<a href="fd_unix.go.html#line-19" class="ident">fdmu</a>.<a href="#line-162" class="ident">rwunlock</a>(<a href="../../../pkg/builtin.html#name-false" class="ident">false</a>) {</code></span>
-<span class="codeline" id="line-250"><code>		<label for="r44" class="ident">fd</label>.<a href="fd_unix.go.html#line-73" class="ident">destroy</a>()</code></span>
+<span class="codeline" id="line-248"><code><span class="keyword">func</span> (<label for="r44" class="ident">fd</label> *<a href="fd_unix.go.html#line-18" class="ident">FD</a>) <label for="r45" class="ident">writeUnlock</label>() {</code></span>
+<span class="codeline" id="line-249"><code>	<span class="keyword">if</span> <label for="r44" class="ident">fd</label>.<a href="fd_unix.go.html#line-20" class="ident">fdmu</a>.<a href="#line-162" class="ident">rwunlock</a>(<a href="../../../pkg/builtin.html#name-false" class="ident">false</a>) {</code></span>
+<span class="codeline" id="line-250"><code>		<label for="r44" class="ident">fd</label>.<a href="fd_unix.go.html#line-74" class="ident">destroy</a>()</code></span>
 <span class="codeline" id="line-251"><code>	}</code></span>
 <span class="codeline" id="line-252"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

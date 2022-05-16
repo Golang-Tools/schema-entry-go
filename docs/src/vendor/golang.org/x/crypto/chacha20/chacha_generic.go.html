@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: chacha_generic.go in package vendor/golang.org/x/crypto/chacha20</title>
-<link href="../../../../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -266,7 +266,7 @@ input[id=i4]:checked ~pre .i4
 <span class="codeline" id="line-43"><code>	<span class="comment">// The last len bytes of buf are leftover key stream bytes from the previous</span></code></span>
 <span class="codeline" id="line-44"><code><span class="comment">	// XORKeyStream invocation. The size of buf depends on how many blocks are</span></code></span>
 <span class="codeline" id="line-45"><code><span class="comment">	// computed at a time by xorKeyStreamBlocks.</span></code></span>
-<span class="codeline" id="line-46"><code>	buf [<a href="chacha_noasm.go.html#line-9" class="ident">bufSize</a>]<a href="../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a></code></span>
+<span class="codeline" id="line-46"><code>	buf [<a href="chacha_noasm.go.html#line-10" class="ident">bufSize</a>]<a href="../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a></code></span>
 <span class="codeline" id="line-47"><code>	len <a href="../../../../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
 <span class="codeline" id="line-48"><code></code></span>
 <span class="codeline" id="line-49"><code>	<span class="comment">// overflow is set when the counter overflowed, no more blocks can be</span></code></span>
@@ -412,13 +412,13 @@ input[id=i4]:checked ~pre .i4
 <span class="codeline" id="line-189"><code>		<a href="../../../../../../pkg/builtin.html#name-panic" class="ident">panic</a>(<span class="lit-string">"chacha20: output smaller than input"</span>)</code></span>
 <span class="codeline" id="line-190"><code>	}</code></span>
 <span class="codeline" id="line-191"><code>	<label for="r20" class="ident">dst</label> = <label for="r20" class="ident">dst</label>[:<a href="../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r21" class="ident">src</label>)]</code></span>
-<span class="codeline" id="line-192"><code>	<span class="keyword">if</span> <a href="../../../../../../pkg/vendor/golang.org/x/crypto/internal/subtle.html" class="ident i0">subtle</a>.<a href="../internal/subtle/aliasing.go.html#line-27" class="ident">InexactOverlap</a>(<label for="r20" class="ident">dst</label>, <label for="r21" class="ident">src</label>) {</code></span>
+<span class="codeline" id="line-192"><code>	<span class="keyword">if</span> <a href="../../../../../../pkg/vendor/golang.org/x/crypto/internal/subtle.html" class="ident i0">subtle</a>.<a href="../internal/subtle/aliasing.go.html#line-28" class="ident">InexactOverlap</a>(<label for="r20" class="ident">dst</label>, <label for="r21" class="ident">src</label>) {</code></span>
 <span class="codeline" id="line-193"><code>		<a href="../../../../../../pkg/builtin.html#name-panic" class="ident">panic</a>(<span class="lit-string">"chacha20: invalid buffer overlap"</span>)</code></span>
 <span class="codeline" id="line-194"><code>	}</code></span>
 <span class="codeline" id="line-195"><code></code></span>
 <span class="codeline" id="line-196"><code>	<span class="comment">// First, drain any remaining key stream from a previous XORKeyStream.</span></code></span>
 <span class="codeline" id="line-197"><code>	<span class="keyword">if</span> <label for="r18" class="ident">s</label>.<a href="#line-47" class="ident">len</a> != <span class="lit-number">0</span> {</code></span>
-<span class="codeline" id="line-198"><code>		<label for="r22" class="ident">keyStream</label> := <label for="r18" class="ident">s</label>.<a href="#line-46" class="ident">buf</a>[<a href="chacha_noasm.go.html#line-9" class="ident">bufSize</a>-<label for="r18" class="ident">s</label>.<a href="#line-47" class="ident">len</a>:]</code></span>
+<span class="codeline" id="line-198"><code>		<label for="r22" class="ident">keyStream</label> := <label for="r18" class="ident">s</label>.<a href="#line-46" class="ident">buf</a>[<a href="chacha_noasm.go.html#line-10" class="ident">bufSize</a>-<label for="r18" class="ident">s</label>.<a href="#line-47" class="ident">len</a>:]</code></span>
 <span class="codeline" id="line-199"><code>		<span class="keyword">if</span> <a href="../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r21" class="ident">src</label>) &lt; <a href="../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r22" class="ident">keyStream</label>) {</code></span>
 <span class="codeline" id="line-200"><code>			<label for="r22" class="ident">keyStream</label> = <label for="r22" class="ident">keyStream</label>[:<a href="../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r21" class="ident">src</label>)]</code></span>
 <span class="codeline" id="line-201"><code>		}</code></span>
@@ -447,19 +447,19 @@ input[id=i4]:checked ~pre .i4
 <span class="codeline" id="line-224"><code><span class="comment">	// multiple of bufSize. Platform-specific ones process multiple blocks at a</span></code></span>
 <span class="codeline" id="line-225"><code><span class="comment">	// time, so have bufSizes that are a multiple of blockSize.</span></code></span>
 <span class="codeline" id="line-226"><code></code></span>
-<span class="codeline" id="line-227"><code>	<label for="r26" class="ident">full</label> := <a href="../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r21" class="ident">src</label>) - <a href="../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r21" class="ident">src</label>)%<a href="chacha_noasm.go.html#line-9" class="ident">bufSize</a></code></span>
+<span class="codeline" id="line-227"><code>	<label for="r26" class="ident">full</label> := <a href="../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r21" class="ident">src</label>) - <a href="../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r21" class="ident">src</label>)%<a href="chacha_noasm.go.html#line-10" class="ident">bufSize</a></code></span>
 <span class="codeline" id="line-228"><code>	<span class="keyword">if</span> <label for="r26" class="ident">full</label> &gt; <span class="lit-number">0</span> {</code></span>
-<span class="codeline" id="line-229"><code>		<label for="r18" class="ident">s</label>.<a href="chacha_noasm.go.html#line-11" class="ident">xorKeyStreamBlocks</a>(<label for="r20" class="ident">dst</label>[:<label for="r26" class="ident">full</label>], <label for="r21" class="ident">src</label>[:<label for="r26" class="ident">full</label>])</code></span>
+<span class="codeline" id="line-229"><code>		<label for="r18" class="ident">s</label>.<a href="chacha_noasm.go.html#line-12" class="ident">xorKeyStreamBlocks</a>(<label for="r20" class="ident">dst</label>[:<label for="r26" class="ident">full</label>], <label for="r21" class="ident">src</label>[:<label for="r26" class="ident">full</label>])</code></span>
 <span class="codeline" id="line-230"><code>	}</code></span>
 <span class="codeline" id="line-231"><code>	<label for="r20" class="ident">dst</label>, <label for="r21" class="ident">src</label> = <label for="r20" class="ident">dst</label>[<label for="r26" class="ident">full</label>:], <label for="r21" class="ident">src</label>[<label for="r26" class="ident">full</label>:]</code></span>
 <span class="codeline" id="line-232"><code></code></span>
 <span class="codeline" id="line-233"><code>	<span class="comment">// If using a multi-block xorKeyStreamBlocks would overflow, use the generic</span></code></span>
 <span class="codeline" id="line-234"><code><span class="comment">	// one that does one block at a time.</span></code></span>
-<span class="codeline" id="line-235"><code>	<span class="keyword">const</span> <label for="r27" class="ident">blocksPerBuf</label> = <a href="chacha_noasm.go.html#line-9" class="ident">bufSize</a> / <a href="#line-123" class="ident">blockSize</a></code></span>
+<span class="codeline" id="line-235"><code>	<span class="keyword">const</span> <label for="r27" class="ident">blocksPerBuf</label> = <a href="chacha_noasm.go.html#line-10" class="ident">bufSize</a> / <a href="#line-123" class="ident">blockSize</a></code></span>
 <span class="codeline" id="line-236"><code>	<span class="keyword">if</span> <a href="../../../../../../pkg/builtin.html#name-uint64" class="ident">uint64</a>(<label for="r18" class="ident">s</label>.<a href="#line-40" class="ident">counter</a>)+<label for="r27" class="ident">blocksPerBuf</label> &gt; <span class="lit-number">1</span>&lt;&lt;<span class="lit-number">32</span> {</code></span>
-<span class="codeline" id="line-237"><code>		<label for="r18" class="ident">s</label>.<a href="#line-46" class="ident">buf</a> = [<a href="chacha_noasm.go.html#line-9" class="ident">bufSize</a>]<a href="../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>{}</code></span>
+<span class="codeline" id="line-237"><code>		<label for="r18" class="ident">s</label>.<a href="#line-46" class="ident">buf</a> = [<a href="chacha_noasm.go.html#line-10" class="ident">bufSize</a>]<a href="../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>{}</code></span>
 <span class="codeline" id="line-238"><code>		<label for="r28" class="ident">numBlocks</label> := (<a href="../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r21" class="ident">src</label>) + <a href="#line-123" class="ident">blockSize</a> - <span class="lit-number">1</span>) / <a href="#line-123" class="ident">blockSize</a></code></span>
-<span class="codeline" id="line-239"><code>		<label for="r29" class="ident">buf</label> := <label for="r18" class="ident">s</label>.<a href="#line-46" class="ident">buf</a>[<a href="chacha_noasm.go.html#line-9" class="ident">bufSize</a>-<label for="r28" class="ident">numBlocks</label>*<a href="#line-123" class="ident">blockSize</a>:]</code></span>
+<span class="codeline" id="line-239"><code>		<label for="r29" class="ident">buf</label> := <label for="r18" class="ident">s</label>.<a href="#line-46" class="ident">buf</a>[<a href="chacha_noasm.go.html#line-10" class="ident">bufSize</a>-<label for="r28" class="ident">numBlocks</label>*<a href="#line-123" class="ident">blockSize</a>:]</code></span>
 <span class="codeline" id="line-240"><code>		<a href="../../../../../../pkg/builtin.html#name-copy" class="ident">copy</a>(<label for="r29" class="ident">buf</label>, <label for="r21" class="ident">src</label>)</code></span>
 <span class="codeline" id="line-241"><code>		<label for="r18" class="ident">s</label>.<a href="#line-256" class="ident">xorKeyStreamBlocksGeneric</a>(<label for="r29" class="ident">buf</label>, <label for="r29" class="ident">buf</label>)</code></span>
 <span class="codeline" id="line-242"><code>		<label for="r18" class="ident">s</label>.<a href="#line-47" class="ident">len</a> = <a href="../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r29" class="ident">buf</label>) - <a href="../../../../../../pkg/builtin.html#name-copy" class="ident">copy</a>(<label for="r20" class="ident">dst</label>, <label for="r29" class="ident">buf</label>)</code></span>
@@ -469,10 +469,10 @@ input[id=i4]:checked ~pre .i4
 <span class="codeline" id="line-246"><code>	<span class="comment">// If we have a partial (multi-)block, pad it for xorKeyStreamBlocks, and</span></code></span>
 <span class="codeline" id="line-247"><code><span class="comment">	// keep the leftover keystream for the next XORKeyStream invocation.</span></code></span>
 <span class="codeline" id="line-248"><code>	<span class="keyword">if</span> <a href="../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r21" class="ident">src</label>) &gt; <span class="lit-number">0</span> {</code></span>
-<span class="codeline" id="line-249"><code>		<label for="r18" class="ident">s</label>.<a href="#line-46" class="ident">buf</a> = [<a href="chacha_noasm.go.html#line-9" class="ident">bufSize</a>]<a href="../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>{}</code></span>
+<span class="codeline" id="line-249"><code>		<label for="r18" class="ident">s</label>.<a href="#line-46" class="ident">buf</a> = [<a href="chacha_noasm.go.html#line-10" class="ident">bufSize</a>]<a href="../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>{}</code></span>
 <span class="codeline" id="line-250"><code>		<a href="../../../../../../pkg/builtin.html#name-copy" class="ident">copy</a>(<label for="r18" class="ident">s</label>.<a href="#line-46" class="ident">buf</a>[:], <label for="r21" class="ident">src</label>)</code></span>
-<span class="codeline" id="line-251"><code>		<label for="r18" class="ident">s</label>.<a href="chacha_noasm.go.html#line-11" class="ident">xorKeyStreamBlocks</a>(<label for="r18" class="ident">s</label>.<a href="#line-46" class="ident">buf</a>[:], <label for="r18" class="ident">s</label>.<a href="#line-46" class="ident">buf</a>[:])</code></span>
-<span class="codeline" id="line-252"><code>		<label for="r18" class="ident">s</label>.<a href="#line-47" class="ident">len</a> = <a href="chacha_noasm.go.html#line-9" class="ident">bufSize</a> - <a href="../../../../../../pkg/builtin.html#name-copy" class="ident">copy</a>(<label for="r20" class="ident">dst</label>, <label for="r18" class="ident">s</label>.<a href="#line-46" class="ident">buf</a>[:])</code></span>
+<span class="codeline" id="line-251"><code>		<label for="r18" class="ident">s</label>.<a href="chacha_noasm.go.html#line-12" class="ident">xorKeyStreamBlocks</a>(<label for="r18" class="ident">s</label>.<a href="#line-46" class="ident">buf</a>[:], <label for="r18" class="ident">s</label>.<a href="#line-46" class="ident">buf</a>[:])</code></span>
+<span class="codeline" id="line-252"><code>		<label for="r18" class="ident">s</label>.<a href="#line-47" class="ident">len</a> = <a href="chacha_noasm.go.html#line-10" class="ident">bufSize</a> - <a href="../../../../../../pkg/builtin.html#name-copy" class="ident">copy</a>(<label for="r20" class="ident">dst</label>, <label for="r18" class="ident">s</label>.<a href="#line-46" class="ident">buf</a>[:])</code></span>
 <span class="codeline" id="line-253"><code>	}</code></span>
 <span class="codeline" id="line-254"><code>}</code></span>
 <span class="codeline" id="line-255"><code></code></span>
@@ -621,7 +621,7 @@ input[id=i4]:checked ~pre .i4
 <span class="codeline" id="line-398"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

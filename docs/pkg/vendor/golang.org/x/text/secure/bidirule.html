@@ -5,14 +5,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Package: vendor/golang.org/x/text/secure/bidirule</title>
-<link href="../../../../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="package-details"><code><span style="font-size:xx-large;">package <b>bidirule</b></span>
 
 <span class="title">Import Path</span>
-	<a href="../../../../../../index.html#pkg-vendor/golang.org/x/text/secure/bidirule">vendor/golang.org/x/text/secure/bidirule</a><i> (on <a href="https://pkg.go.dev/vendor/golang.org/x/text/secure/bidirule" target="_blank">go.dev</a>)</i>
+	<a href="../../../../../../index.html#pkg-vendor/golang.org/x/text/secure/bidirule">vendor/golang.org/x/text/secure/bidirule</a><i> (on <a href="https://pkg.go.dev/golang.org/x/text/secure/bidirule" target="_blank">go.dev</a>)</i>
 
 <span class="title">Dependency Relation</span>
 	imports <a href="../../../../../../dep/vendor/golang.org/x/text/secure/bidirule.html">4 packages</a>, and imported by <a href="../../../../../../dep/vendor/golang.org/x/text/secure/bidirule.html#imported-by">one package</a>
@@ -37,27 +37,27 @@
 			<span class="nodocs"><a href="../../../../../../src/vendor/golang.org/x/text/secure/bidirule/bidirule.go.html#line-196">seen</a> <i><a href="../../../../../builtin.html#name-uint16">uint16</a></i></span></i></span><span class="hidden"><i>
 			<span class="nodocs"><a href="../../../../../../src/vendor/golang.org/x/text/secure/bidirule/bidirule.go.html#line-194">state</a> <i><a href="#name-ruleState">ruleState</a></i></span></i></span></span>
 		<input type='checkbox' class="fold" id="Transformer-fold-methods"><label for="Transformer-fold-methods">Methods (<i>total 7, in which 3 are exported</i>)</label><span id='Transformer-fold-methods-items' class="fold-items"><span>
-			<input type='checkbox' class="fold" id="Transformer-fold-method-Reset"><label for="Transformer-fold-method-Reset">(*T) <a href="../../../../../../src/vendor/golang.org/x/text/secure/bidirule/bidirule.go.html#line-207">Reset</a>()</label><span id='Transformer-fold-method-Reset-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Transformer-fold-method-Reset"><label for="Transformer-fold-method-Reset">(*Transformer) <a href="../../../../../../src/vendor/golang.org/x/text/secure/bidirule/bidirule.go.html#line-207">Reset</a>()</label><span id='Transformer-fold-method-Reset-docs' class="fold-docs">
 				Reset implements transform.Transformer.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Transformer-fold-method-Span"><label for="Transformer-fold-method-Span">(*T) <a href="../../../../../../src/vendor/golang.org/x/text/secure/bidirule/bidirule.go.html#line-226">Span</a>(src []<a href="../../../../../builtin.html#name-byte">byte</a>, atEOF <a href="../../../../../builtin.html#name-bool">bool</a>) (n <a href="../../../../../builtin.html#name-int">int</a>, err <a href="../../../../../builtin.html#name-error">error</a>)</label><span id='Transformer-fold-method-Span-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Transformer-fold-method-Span"><label for="Transformer-fold-method-Span">(*Transformer) <a href="../../../../../../src/vendor/golang.org/x/text/secure/bidirule/bidirule.go.html#line-226">Span</a>(src []<a href="../../../../../builtin.html#name-byte">byte</a>, atEOF <a href="../../../../../builtin.html#name-bool">bool</a>) (n <a href="../../../../../builtin.html#name-int">int</a>, err <a href="../../../../../builtin.html#name-error">error</a>)</label><span id='Transformer-fold-method-Span-docs' class="fold-docs">
 				Span returns the first n bytes of src that conform to the Bidi rule.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Transformer-fold-method-Transform"><label for="Transformer-fold-method-Transform">(*T) <a href="../../../../../../src/vendor/golang.org/x/text/secure/bidirule/bidirule.go.html#line-211">Transform</a>(dst, src []<a href="../../../../../builtin.html#name-byte">byte</a>, atEOF <a href="../../../../../builtin.html#name-bool">bool</a>) (nDst, nSrc <a href="../../../../../builtin.html#name-int">int</a>, err <a href="../../../../../builtin.html#name-error">error</a>)</label><span id='Transformer-fold-method-Transform-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Transformer-fold-method-Transform"><label for="Transformer-fold-method-Transform">(*Transformer) <a href="../../../../../../src/vendor/golang.org/x/text/secure/bidirule/bidirule.go.html#line-211">Transform</a>(dst, src []<a href="../../../../../builtin.html#name-byte">byte</a>, atEOF <a href="../../../../../builtin.html#name-bool">bool</a>) (nDst, nSrc <a href="../../../../../builtin.html#name-int">int</a>, err <a href="../../../../../builtin.html#name-error">error</a>)</label><span id='Transformer-fold-method-Transform-docs' class="fold-docs">
 				Transform implements transform.Transformer. This Transformer has state and
 				needs to be reset between uses.
 </span></span>
 			<input type='checkbox' class="showhide" id="Transformer-showhide-methods"><i><label for="Transformer-showhide-methods" class="show-inline">/* 4 unexporteds ... */</label><label for="Transformer-showhide-methods" class="hide-inline">/* 4 unexporteds: */</label></i><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../../../../../src/vendor/golang.org/x/text/secure/bidirule/bidirule.go.html#line-257">advance</a>(s []<a href="../../../../../builtin.html#name-byte">byte</a>) (n <a href="../../../../../builtin.html#name-int">int</a>, ok <a href="../../../../../builtin.html#name-bool">bool</a>)</span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../../../../../src/vendor/golang.org/x/text/secure/bidirule/bidirule.go.html#line-299">advanceString</a>(s <a href="../../../../../builtin.html#name-string">string</a>) (n <a href="../../../../../builtin.html#name-int">int</a>, ok <a href="../../../../../builtin.html#name-bool">bool</a>)</span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../../../../../src/vendor/golang.org/x/text/secure/bidirule/bidirule10.0.0.go.html#line-9">isFinal</a>() <a href="../../../../../builtin.html#name-bool">bool</a></span></i></span><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="Transformer-fold-method-isRTL"><label for="Transformer-fold-method-isRTL">(*T) <a href="../../../../../../src/vendor/golang.org/x/text/secure/bidirule/bidirule.go.html#line-201">isRTL</a>() <a href="../../../../../builtin.html#name-bool">bool</a></label><span id='Transformer-fold-method-isRTL-docs' class="fold-docs">
+			<span class="nodocs">(*Transformer) <a href="../../../../../../src/vendor/golang.org/x/text/secure/bidirule/bidirule.go.html#line-257">advance</a>(s []<a href="../../../../../builtin.html#name-byte">byte</a>) (n <a href="../../../../../builtin.html#name-int">int</a>, ok <a href="../../../../../builtin.html#name-bool">bool</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*Transformer) <a href="../../../../../../src/vendor/golang.org/x/text/secure/bidirule/bidirule.go.html#line-299">advanceString</a>(s <a href="../../../../../builtin.html#name-string">string</a>) (n <a href="../../../../../builtin.html#name-int">int</a>, ok <a href="../../../../../builtin.html#name-bool">bool</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*Transformer) <a href="../../../../../../src/vendor/golang.org/x/text/secure/bidirule/bidirule10.0.0.go.html#line-10">isFinal</a>() <a href="../../../../../builtin.html#name-bool">bool</a></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Transformer-fold-method-isRTL"><label for="Transformer-fold-method-isRTL">(*Transformer) <a href="../../../../../../src/vendor/golang.org/x/text/secure/bidirule/bidirule.go.html#line-201">isRTL</a>() <a href="../../../../../builtin.html#name-bool">bool</a></label><span id='Transformer-fold-method-isRTL-docs' class="fold-docs">
 				A rule can only be violated for "Bidi Domain names", meaning if one of the
 				following categories has been observed.
 </span></i></span></span>
 		<input type='checkbox' class="fold" id="Transformer-fold-impls"><label for="Transformer-fold-impls">Implements (<i>at least 2, both are exported</i>)</label><span id='Transformer-fold-impls-items' class="fold-items"><span>
-			*T : vendor/golang.org/x/text/transform.<a href="../transform.html#name-SpanningTransformer">SpanningTransformer</a></span><span>
-			*T : vendor/golang.org/x/text/transform.<a href="../transform.html#name-Transformer">Transformer</a></span></span>
+			*Transformer : vendor/golang.org/x/text/transform.<a href="../transform.html#name-SpanningTransformer">SpanningTransformer</a></span><span>
+			*Transformer : vendor/golang.org/x/text/transform.<a href="../transform.html#name-Transformer">Transformer</a></span></span>
 		<input type='checkbox' class="fold" id="Transformer-fold-results"><label for="Transformer-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='Transformer-fold-results-items' class="fold-items"><span>
 			func <a href="#name-New">New</a>() *<b>Transformer</b></span></span>
 
@@ -120,7 +120,7 @@
 
 </span></i></div><div class="anchor value-res hidden" id="name-ruleInitial"><i>	<span class="nodocs">const <a href="../../../../../../src/vendor/golang.org/x/text/secure/bidirule/bidirule.go.html#line-51">ruleInitial</a> <a href="#name-ruleState">ruleState</a> = 0</span></i></div><div class="anchor value-res hidden" id="name-ruleInvalid"><i>	<span class="nodocs">const <a href="../../../../../../src/vendor/golang.org/x/text/secure/bidirule/bidirule.go.html#line-56">ruleInvalid</a> <a href="#name-ruleState">ruleState</a> = 5</span></i></div><div class="anchor value-res hidden" id="name-ruleLTR"><i>	<span class="nodocs">const <a href="../../../../../../src/vendor/golang.org/x/text/secure/bidirule/bidirule.go.html#line-52">ruleLTR</a> <a href="#name-ruleState">ruleState</a> = 1</span></i></div><div class="anchor value-res hidden" id="name-ruleLTRFinal"><i>	<span class="nodocs">const <a href="../../../../../../src/vendor/golang.org/x/text/secure/bidirule/bidirule.go.html#line-53">ruleLTRFinal</a> <a href="#name-ruleState">ruleState</a> = 2</span></i></div><div class="anchor value-res hidden" id="name-ruleRTL"><i>	<span class="nodocs">const <a href="../../../../../../src/vendor/golang.org/x/text/secure/bidirule/bidirule.go.html#line-54">ruleRTL</a> <a href="#name-ruleState">ruleState</a> = 3</span></i></div><div class="anchor value-res hidden" id="name-ruleRTLFinal"><i>	<span class="nodocs">const <a href="../../../../../../src/vendor/golang.org/x/text/secure/bidirule/bidirule.go.html#line-55">ruleRTLFinal</a> <a href="#name-ruleState">ruleState</a> = 4</span></i></div></div></code></pre><pre id="footer">
 <table><tr><td><img src="../../../../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

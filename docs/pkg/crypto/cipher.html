@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Package: crypto/cipher</title>
-<link href="../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../jvs/golds-v0.3.6.js"></script>
+<link href="../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="package-details"><code><span style="font-size:xx-large;">package <b>cipher</b></span>
@@ -60,7 +60,7 @@
 		
 			// The IV needs to be unique, but not secure. Therefore it's common to
 			// include it at the beginning of the ciphertext.
-			if len(ciphertext) < aes.BlockSize {
+			if len(ciphertext) &lt; aes.BlockSize {
 				panic("ciphertext too short")
 			}
 			iv := ciphertext[:aes.BlockSize]
@@ -163,7 +163,7 @@
 		
 			// The IV needs to be unique, but not secure. Therefore it's common to
 			// include it at the beginning of the ciphertext.
-			if len(ciphertext) < aes.BlockSize {
+			if len(ciphertext) &lt; aes.BlockSize {
 				panic("ciphertext too short")
 			}
 			iv := ciphertext[:aes.BlockSize]
@@ -429,7 +429,7 @@
 			var iv [aes.BlockSize]byte
 			stream := cipher.NewOFB(block, iv[:])
 		
-			reader := &cipher.StreamReader{S: stream, R: bReader}
+			reader := &amp;cipher.StreamReader{S: stream, R: bReader}
 			// Copy the input to the output stream, decrypting as we go.
 			if _, err := io.Copy(os.Stdout, reader); err != nil {
 				panic(err)
@@ -475,7 +475,7 @@
 		
 			var out bytes.Buffer
 		
-			writer := &cipher.StreamWriter{S: stream, W: &out}
+			writer := &amp;cipher.StreamWriter{S: stream, W: &amp;out}
 			// Copy the input to the output buffer, encrypting as we go.
 			if _, err := io.Copy(writer, bReader); err != nil {
 				panic(err)
@@ -498,11 +498,11 @@
 			https://en.wikipedia.org/wiki/Authenticated_encryption
 
 		<input type='checkbox' class="fold" id="AEAD-fold-methods"><label for="AEAD-fold-methods">Methods (<i>total 4, all are exported</i>)</label><span id='AEAD-fold-methods-items' class="fold-items"><span>
-			<input type='checkbox' class="fold" id="AEAD-fold-method-NonceSize"><label for="AEAD-fold-method-NonceSize">( T) <a href="../../src/crypto/cipher/gcm.go.html#line-20">NonceSize</a>() <a href="../builtin.html#name-int">int</a></label><span id='AEAD-fold-method-NonceSize-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="AEAD-fold-method-NonceSize"><label for="AEAD-fold-method-NonceSize">( AEAD) <a href="../../src/crypto/cipher/gcm.go.html#line-20">NonceSize</a>() <a href="../builtin.html#name-int">int</a></label><span id='AEAD-fold-method-NonceSize-docs' class="fold-docs">
 				NonceSize returns the size of the nonce that must be passed to Seal
 				and Open.
 </span></span><span>
-			<input type='checkbox' class="fold" id="AEAD-fold-method-Open"><label for="AEAD-fold-method-Open">( T) <a href="../../src/crypto/cipher/gcm.go.html#line-46">Open</a>(dst, nonce, ciphertext, additionalData []<a href="../builtin.html#name-byte">byte</a>) ([]<a href="../builtin.html#name-byte">byte</a>, <a href="../builtin.html#name-error">error</a>)</label><span id='AEAD-fold-method-Open-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="AEAD-fold-method-Open"><label for="AEAD-fold-method-Open">( AEAD) <a href="../../src/crypto/cipher/gcm.go.html#line-46">Open</a>(dst, nonce, ciphertext, additionalData []<a href="../builtin.html#name-byte">byte</a>) ([]<a href="../builtin.html#name-byte">byte</a>, <a href="../builtin.html#name-error">error</a>)</label><span id='AEAD-fold-method-Open-docs' class="fold-docs">
 				Open decrypts and authenticates ciphertext, authenticates the
 				additional data and, if successful, appends the resulting plaintext
 				to dst, returning the updated slice. The nonce must be NonceSize()
@@ -515,11 +515,11 @@
 				Even if the function fails, the contents of dst, up to its capacity,
 				may be overwritten.
 </span></span><span>
-			<input type='checkbox' class="fold" id="AEAD-fold-method-Overhead"><label for="AEAD-fold-method-Overhead">( T) <a href="../../src/crypto/cipher/gcm.go.html#line-24">Overhead</a>() <a href="../builtin.html#name-int">int</a></label><span id='AEAD-fold-method-Overhead-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="AEAD-fold-method-Overhead"><label for="AEAD-fold-method-Overhead">( AEAD) <a href="../../src/crypto/cipher/gcm.go.html#line-24">Overhead</a>() <a href="../builtin.html#name-int">int</a></label><span id='AEAD-fold-method-Overhead-docs' class="fold-docs">
 				Overhead returns the maximum difference between the lengths of a
 				plaintext and its ciphertext.
 </span></span><span>
-			<input type='checkbox' class="fold" id="AEAD-fold-method-Seal"><label for="AEAD-fold-method-Seal">( T) <a href="../../src/crypto/cipher/gcm.go.html#line-33">Seal</a>(dst, nonce, plaintext, additionalData []<a href="../builtin.html#name-byte">byte</a>) []<a href="../builtin.html#name-byte">byte</a></label><span id='AEAD-fold-method-Seal-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="AEAD-fold-method-Seal"><label for="AEAD-fold-method-Seal">( AEAD) <a href="../../src/crypto/cipher/gcm.go.html#line-33">Seal</a>(dst, nonce, plaintext, additionalData []<a href="../builtin.html#name-byte">byte</a>) []<a href="../builtin.html#name-byte">byte</a></label><span id='AEAD-fold-method-Seal-docs' class="fold-docs">
 				Seal encrypts and authenticates plaintext, authenticates the
 				additional data and appends the result to dst, returning the updated
 				slice. The nonce must be NonceSize() bytes long and unique for all
@@ -553,14 +553,14 @@
 		extend that capability to streams of blocks.
 
 		<input type='checkbox' class="fold" id="Block-fold-methods"><label for="Block-fold-methods">Methods (<i>total 3, all are exported</i>)</label><span id='Block-fold-methods-items' class="fold-items"><span>
-			<input type='checkbox' class="fold" id="Block-fold-method-BlockSize"><label for="Block-fold-method-BlockSize">( T) <a href="../../src/crypto/cipher/cipher.go.html#line-17">BlockSize</a>() <a href="../builtin.html#name-int">int</a></label><span id='Block-fold-method-BlockSize-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Block-fold-method-BlockSize"><label for="Block-fold-method-BlockSize">( Block) <a href="../../src/crypto/cipher/cipher.go.html#line-17">BlockSize</a>() <a href="../builtin.html#name-int">int</a></label><span id='Block-fold-method-BlockSize-docs' class="fold-docs">
 				BlockSize returns the cipher's block size.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Block-fold-method-Decrypt"><label for="Block-fold-method-Decrypt">( T) <a href="../../src/crypto/cipher/cipher.go.html#line-25">Decrypt</a>(dst, src []<a href="../builtin.html#name-byte">byte</a>)</label><span id='Block-fold-method-Decrypt-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Block-fold-method-Decrypt"><label for="Block-fold-method-Decrypt">( Block) <a href="../../src/crypto/cipher/cipher.go.html#line-25">Decrypt</a>(dst, src []<a href="../builtin.html#name-byte">byte</a>)</label><span id='Block-fold-method-Decrypt-docs' class="fold-docs">
 				Decrypt decrypts the first block in src into dst.
 				Dst and src must overlap entirely or not at all.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Block-fold-method-Encrypt"><label for="Block-fold-method-Encrypt">( T) <a href="../../src/crypto/cipher/cipher.go.html#line-21">Encrypt</a>(dst, src []<a href="../builtin.html#name-byte">byte</a>)</label><span id='Block-fold-method-Encrypt-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Block-fold-method-Encrypt"><label for="Block-fold-method-Encrypt">( Block) <a href="../../src/crypto/cipher/cipher.go.html#line-21">Encrypt</a>(dst, src []<a href="../builtin.html#name-byte">byte</a>)</label><span id='Block-fold-method-Encrypt-docs' class="fold-docs">
 				Encrypt encrypts the first block in src into dst.
 				Dst and src must overlap entirely or not at all.
 </span></span></span>
@@ -598,10 +598,10 @@
 		ECB etc).
 
 		<input type='checkbox' class="fold" id="BlockMode-fold-methods"><label for="BlockMode-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='BlockMode-fold-methods-items' class="fold-items"><span>
-			<input type='checkbox' class="fold" id="BlockMode-fold-method-BlockSize"><label for="BlockMode-fold-method-BlockSize">( T) <a href="../../src/crypto/cipher/cipher.go.html#line-47">BlockSize</a>() <a href="../builtin.html#name-int">int</a></label><span id='BlockMode-fold-method-BlockSize-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="BlockMode-fold-method-BlockSize"><label for="BlockMode-fold-method-BlockSize">( BlockMode) <a href="../../src/crypto/cipher/cipher.go.html#line-47">BlockSize</a>() <a href="../builtin.html#name-int">int</a></label><span id='BlockMode-fold-method-BlockSize-docs' class="fold-docs">
 				BlockSize returns the mode's block size.
 </span></span><span>
-			<input type='checkbox' class="fold" id="BlockMode-fold-method-CryptBlocks"><label for="BlockMode-fold-method-CryptBlocks">( T) <a href="../../src/crypto/cipher/cipher.go.html#line-60">CryptBlocks</a>(dst, src []<a href="../builtin.html#name-byte">byte</a>)</label><span id='BlockMode-fold-method-CryptBlocks-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="BlockMode-fold-method-CryptBlocks"><label for="BlockMode-fold-method-CryptBlocks">( BlockMode) <a href="../../src/crypto/cipher/cipher.go.html#line-60">CryptBlocks</a>(dst, src []<a href="../builtin.html#name-byte">byte</a>)</label><span id='BlockMode-fold-method-CryptBlocks-docs' class="fold-docs">
 				CryptBlocks encrypts or decrypts a number of blocks. The length of
 				src must be a multiple of the block size. Dst and src must overlap
 				entirely or not at all.
@@ -627,7 +627,7 @@
 		A Stream represents a stream cipher.
 
 		<input type='checkbox' class="fold" id="Stream-fold-methods"><label for="Stream-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='Stream-fold-methods-items' class="fold-items"><span>
-			<input type='checkbox' class="fold" id="Stream-fold-method-XORKeyStream"><label for="Stream-fold-method-XORKeyStream">( T) <a href="../../src/crypto/cipher/cipher.go.html#line-40">XORKeyStream</a>(dst, src []<a href="../builtin.html#name-byte">byte</a>)</label><span id='Stream-fold-method-XORKeyStream-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Stream-fold-method-XORKeyStream"><label for="Stream-fold-method-XORKeyStream">( Stream) <a href="../../src/crypto/cipher/cipher.go.html#line-40">XORKeyStream</a>(dst, src []<a href="../builtin.html#name-byte">byte</a>)</label><span id='Stream-fold-method-XORKeyStream-docs' class="fold-docs">
 				XORKeyStream XORs each byte in the given slice with a byte from the
 				cipher's key stream. Dst and src must overlap entirely or not at all.
 
@@ -662,9 +662,9 @@
 			<span class="nodocs"><a href="../../src/crypto/cipher/io.go.html#line-16">R</a> <i><a href="../io.html">io</a>.<a href="../io.html#name-Reader">Reader</a></i></span></span><span>
 			<span class="nodocs"><a href="../../src/crypto/cipher/io.go.html#line-15">S</a> <i><a href="#name-Stream">Stream</a></i></span></span></span>
 		<input type='checkbox' class="fold" id="StreamReader-fold-methods"><label for="StreamReader-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='StreamReader-fold-methods-items' class="fold-items"><span>
-			<span class="nodocs">( T) <a href="../../src/crypto/cipher/io.go.html#line-19">Read</a>(dst []<a href="../builtin.html#name-byte">byte</a>) (n <a href="../builtin.html#name-int">int</a>, err <a href="../builtin.html#name-error">error</a>)</span></span></span>
+			<span class="nodocs">( StreamReader) <a href="../../src/crypto/cipher/io.go.html#line-19">Read</a>(dst []<a href="../builtin.html#name-byte">byte</a>) (n <a href="../builtin.html#name-int">int</a>, err <a href="../builtin.html#name-error">error</a>)</span></span></span>
 		<input type='checkbox' class="fold" id="StreamReader-fold-impls"><label for="StreamReader-fold-impls">Implements (<i>at least one exported</i>)</label><span id='StreamReader-fold-impls-items' class="fold-items"><span>
-			 T : io.<a href="../io.html#name-Reader">Reader</a></span></span>
+			 StreamReader : io.<a href="../io.html#name-Reader">Reader</a></span></span>
 		<input type='checkbox' class="fold" id="StreamReader-fold-params"><label for="StreamReader-fold-params">As Inputs Of (<i>at least 2, neither is exported</i>)</label><span id='StreamReader-fold-params-items' class="fold-items">
 			<input type='checkbox' class="showhide" id="StreamReader-showhide-outputofs"><i><label for="StreamReader-showhide-outputofs" class="show-inline">/* 2+ unexporteds ... */</label><label for="StreamReader-showhide-outputofs" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
 			func crypto/ecdsa.<a href="ecdsa.html#name-sign">sign</a>(priv *<a href="ecdsa.html">ecdsa</a>.<a href="ecdsa.html#name-PrivateKey">PrivateKey</a>, csprng *<b>StreamReader</b>, c <a href="elliptic.html">elliptic</a>.<a href="elliptic.html#name-Curve">Curve</a>, hash []<a href="../builtin.html#name-byte">byte</a>) (r, s *<a href="../math/big.html">big</a>.<a href="../math/big.html#name-Int">Int</a>, err <a href="../builtin.html#name-error">error</a>)</i></span><span class="hidden"><i>
@@ -684,15 +684,15 @@
 			<span class="nodocs"><a href="../../src/crypto/cipher/io.go.html#line-31">S</a> <i><a href="#name-Stream">Stream</a></i></span></span><span>
 			<span class="nodocs"><a href="../../src/crypto/cipher/io.go.html#line-32">W</a> <i><a href="../io.html">io</a>.<a href="../io.html#name-Writer">Writer</a></i></span></span></span>
 		<input type='checkbox' class="fold" id="StreamWriter-fold-methods"><label for="StreamWriter-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='StreamWriter-fold-methods-items' class="fold-items"><span>
-			<input type='checkbox' class="fold" id="StreamWriter-fold-method-Close"><label for="StreamWriter-fold-method-Close">( T) <a href="../../src/crypto/cipher/io.go.html#line-48">Close</a>() <a href="../builtin.html#name-error">error</a></label><span id='StreamWriter-fold-method-Close-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="StreamWriter-fold-method-Close"><label for="StreamWriter-fold-method-Close">( StreamWriter) <a href="../../src/crypto/cipher/io.go.html#line-48">Close</a>() <a href="../builtin.html#name-error">error</a></label><span id='StreamWriter-fold-method-Close-docs' class="fold-docs">
 				Close closes the underlying Writer and returns its Close return value, if the Writer
 				is also an io.Closer. Otherwise it returns nil.
 </span></span><span>
-			<span class="nodocs">( T) <a href="../../src/crypto/cipher/io.go.html#line-36">Write</a>(src []<a href="../builtin.html#name-byte">byte</a>) (n <a href="../builtin.html#name-int">int</a>, err <a href="../builtin.html#name-error">error</a>)</span></span></span>
+			<span class="nodocs">( StreamWriter) <a href="../../src/crypto/cipher/io.go.html#line-36">Write</a>(src []<a href="../builtin.html#name-byte">byte</a>) (n <a href="../builtin.html#name-int">int</a>, err <a href="../builtin.html#name-error">error</a>)</span></span></span>
 		<input type='checkbox' class="fold" id="StreamWriter-fold-impls"><label for="StreamWriter-fold-impls">Implements (<i>at least 3, all are exported</i>)</label><span id='StreamWriter-fold-impls-items' class="fold-items"><span>
-			 T : io.<a href="../io.html#name-Closer">Closer</a></span><span>
-			 T : io.<a href="../io.html#name-WriteCloser">WriteCloser</a></span><span>
-			 T : io.<a href="../io.html#name-Writer">Writer</a></span></span>
+			 StreamWriter : io.<a href="../io.html#name-Closer">Closer</a></span><span>
+			 StreamWriter : io.<a href="../io.html#name-WriteCloser">WriteCloser</a></span><span>
+			 StreamWriter : io.<a href="../io.html#name-Writer">Writer</a></span></span>
 
 </span></div></div><div>	<input type='checkbox' class="showhide" id="unexported-typenames-showhide"><i><label for="unexported-typenames-showhide" class="show-inline">/* 12 unexporteds ... */</label><label for="unexported-typenames-showhide" class="hide-inline">/* 12 unexporteds: */</label></i><div class="anchor type-res hidden" id="name-cbc" data-popularity="75">	<input type='checkbox' class="fold" id="cbc-fold-content"><label for="cbc-fold-content"> type <a href="../../src/crypto/cipher/cbc.go.html#line-16">cbc</a> <i>(struct)</i></label><span id='cbc-fold-content-docs' class="fold-docs">
 
@@ -713,13 +713,13 @@
 		BlockMode if found.
 
 		<input type='checkbox' class="fold" id="cbcDecAble-fold-methods"><label for="cbcDecAble-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='cbcDecAble-fold-methods-items' class="fold-items"><span>
-			<span class="nodocs">( T) <a href="../../src/crypto/cipher/cbc.go.html#line-99">NewCBCDecrypter</a>(iv []<a href="../builtin.html#name-byte">byte</a>) <a href="#name-BlockMode">BlockMode</a></span></span></span>
+			<span class="nodocs">( cbcDecAble) <a href="../../src/crypto/cipher/cbc.go.html#line-99">NewCBCDecrypter</a>(iv []<a href="../builtin.html#name-byte">byte</a>) <a href="#name-BlockMode">BlockMode</a></span></span></span>
 		<input type='checkbox' class="fold" id="cbcDecAble-fold-impledby"><label for="cbcDecAble-fold-impledby">Implemented By (<i>at least one unexported</i>)</label><span id='cbcDecAble-fold-impledby-items' class="fold-items">
 			<input type='checkbox' checked class="showhide" id="cbcDecAble-showhide-impedBys"><i><label for="cbcDecAble-showhide-impedBys" class="show-inline">/* at least one unexported ... */</label><label for="cbcDecAble-showhide-impedBys" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
 			 crypto/aes.<a href="aes.html#name-cbcDecAble">cbcDecAble</a> <i>(interface)</i></i></span></span>
 		<input type='checkbox' class="fold" id="cbcDecAble-fold-impls"><label for="cbcDecAble-fold-impls">Implements (<i>at least one unexported</i>)</label><span id='cbcDecAble-fold-impls-items' class="fold-items">
 			<input type='checkbox' checked class="showhide" id="cbcDecAble-showhide-impls"><i><label for="cbcDecAble-showhide-impls" class="show-inline">/* at least one unexported ... */</label><label for="cbcDecAble-showhide-impls" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
-			 T : crypto/aes.<a href="aes.html#name-cbcDecAble">cbcDecAble</a></i></span></span>
+			 cbcDecAble : crypto/aes.<a href="aes.html#name-cbcDecAble">cbcDecAble</a></i></span></span>
 
 </span></div><div class="anchor type-res hidden" id="name-cbcDecrypter" data-popularity="250">	<input type='checkbox' class="fold" id="cbcDecrypter-fold-content"><label for="cbcDecrypter-fold-content"> type <a href="../../src/crypto/cipher/cbc.go.html#line-92">cbcDecrypter</a> <a href="#name-cbc">cbc</a> <i>(struct)</i></label><span id='cbcDecrypter-fold-content-docs' class="fold-docs">
 
@@ -730,13 +730,13 @@
 			<span class="nodocs"><a href="../../src/crypto/cipher/cbc.go.html#line-19">iv</a> <i>[]<a href="../builtin.html#name-byte">byte</a></i></span></i></span><span class="hidden"><i>
 			<span class="nodocs"><a href="../../src/crypto/cipher/cbc.go.html#line-20">tmp</a> <i>[]<a href="../builtin.html#name-byte">byte</a></i></span></i></span></span>
 		<input type='checkbox' class="fold" id="cbcDecrypter-fold-methods"><label for="cbcDecrypter-fold-methods">Methods (<i>total 3, all are exported</i>)</label><span id='cbcDecrypter-fold-methods-items' class="fold-items"><span>
-			<span class="nodocs">(*T) <a href="../../src/crypto/cipher/cbc.go.html#line-115">BlockSize</a>() <a href="../builtin.html#name-int">int</a></span></span><span>
-			<span class="nodocs">(*T) <a href="../../src/crypto/cipher/cbc.go.html#line-117">CryptBlocks</a>(dst, src []<a href="../builtin.html#name-byte">byte</a>)</span></span><span>
-			<span class="nodocs">(*T) <a href="../../src/crypto/cipher/cbc.go.html#line-158">SetIV</a>(iv []<a href="../builtin.html#name-byte">byte</a>)</span></span></span>
+			<span class="nodocs">(*cbcDecrypter) <a href="../../src/crypto/cipher/cbc.go.html#line-115">BlockSize</a>() <a href="../builtin.html#name-int">int</a></span></span><span>
+			<span class="nodocs">(*cbcDecrypter) <a href="../../src/crypto/cipher/cbc.go.html#line-117">CryptBlocks</a>(dst, src []<a href="../builtin.html#name-byte">byte</a>)</span></span><span>
+			<span class="nodocs">(*cbcDecrypter) <a href="../../src/crypto/cipher/cbc.go.html#line-158">SetIV</a>(iv []<a href="../builtin.html#name-byte">byte</a>)</span></span></span>
 		<input type='checkbox' class="fold" id="cbcDecrypter-fold-impls"><label for="cbcDecrypter-fold-impls">Implements (<i>at least 2, in which 1 are exported</i>)</label><span id='cbcDecrypter-fold-impls-items' class="fold-items"><span>
-			*T : <a href="#name-BlockMode">BlockMode</a></span>
+			*cbcDecrypter : <a href="#name-BlockMode">BlockMode</a></span>
 			<input type='checkbox' checked class="showhide" id="cbcDecrypter-showhide-impls"><i><label for="cbcDecrypter-showhide-impls" class="show-inline">/* at least one unexported ... */</label><label for="cbcDecrypter-showhide-impls" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
-			*T : crypto/tls.<a href="tls.html#name-cbcMode">cbcMode</a></i></span></span>
+			*cbcDecrypter : crypto/tls.<a href="tls.html#name-cbcMode">cbcMode</a></i></span></span>
 
 </span></div><div class="anchor type-res hidden" id="name-cbcEncAble" data-popularity="250">	<input type='checkbox' class="fold" id="cbcEncAble-fold-content"><label for="cbcEncAble-fold-content"> type <a href="../../src/crypto/cipher/cbc.go.html#line-38">cbcEncAble</a> <b><i>(interface)</i></b></label><span id='cbcEncAble-fold-content-docs' class="fold-docs">
 		cbcEncAble is an interface implemented by ciphers that have a specific
@@ -745,13 +745,13 @@
 		BlockMode if found.
 
 		<input type='checkbox' class="fold" id="cbcEncAble-fold-methods"><label for="cbcEncAble-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='cbcEncAble-fold-methods-items' class="fold-items"><span>
-			<span class="nodocs">( T) <a href="../../src/crypto/cipher/cbc.go.html#line-39">NewCBCEncrypter</a>(iv []<a href="../builtin.html#name-byte">byte</a>) <a href="#name-BlockMode">BlockMode</a></span></span></span>
+			<span class="nodocs">( cbcEncAble) <a href="../../src/crypto/cipher/cbc.go.html#line-39">NewCBCEncrypter</a>(iv []<a href="../builtin.html#name-byte">byte</a>) <a href="#name-BlockMode">BlockMode</a></span></span></span>
 		<input type='checkbox' class="fold" id="cbcEncAble-fold-impledby"><label for="cbcEncAble-fold-impledby">Implemented By (<i>at least one unexported</i>)</label><span id='cbcEncAble-fold-impledby-items' class="fold-items">
 			<input type='checkbox' checked class="showhide" id="cbcEncAble-showhide-impedBys"><i><label for="cbcEncAble-showhide-impedBys" class="show-inline">/* at least one unexported ... */</label><label for="cbcEncAble-showhide-impedBys" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
 			 crypto/aes.<a href="aes.html#name-cbcEncAble">cbcEncAble</a> <i>(interface)</i></i></span></span>
 		<input type='checkbox' class="fold" id="cbcEncAble-fold-impls"><label for="cbcEncAble-fold-impls">Implements (<i>at least one unexported</i>)</label><span id='cbcEncAble-fold-impls-items' class="fold-items">
 			<input type='checkbox' checked class="showhide" id="cbcEncAble-showhide-impls"><i><label for="cbcEncAble-showhide-impls" class="show-inline">/* at least one unexported ... */</label><label for="cbcEncAble-showhide-impls" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
-			 T : crypto/aes.<a href="aes.html#name-cbcEncAble">cbcEncAble</a></i></span></span>
+			 cbcEncAble : crypto/aes.<a href="aes.html#name-cbcEncAble">cbcEncAble</a></i></span></span>
 
 </span></div><div class="anchor type-res hidden" id="name-cbcEncrypter" data-popularity="250">	<input type='checkbox' class="fold" id="cbcEncrypter-fold-content"><label for="cbcEncrypter-fold-content"> type <a href="../../src/crypto/cipher/cbc.go.html#line-32">cbcEncrypter</a> <a href="#name-cbc">cbc</a> <i>(struct)</i></label><span id='cbcEncrypter-fold-content-docs' class="fold-docs">
 
@@ -762,13 +762,13 @@
 			<span class="nodocs"><a href="../../src/crypto/cipher/cbc.go.html#line-19">iv</a> <i>[]<a href="../builtin.html#name-byte">byte</a></i></span></i></span><span class="hidden"><i>
 			<span class="nodocs"><a href="../../src/crypto/cipher/cbc.go.html#line-20">tmp</a> <i>[]<a href="../builtin.html#name-byte">byte</a></i></span></i></span></span>
 		<input type='checkbox' class="fold" id="cbcEncrypter-fold-methods"><label for="cbcEncrypter-fold-methods">Methods (<i>total 3, all are exported</i>)</label><span id='cbcEncrypter-fold-methods-items' class="fold-items"><span>
-			<span class="nodocs">(*T) <a href="../../src/crypto/cipher/cbc.go.html#line-55">BlockSize</a>() <a href="../builtin.html#name-int">int</a></span></span><span>
-			<span class="nodocs">(*T) <a href="../../src/crypto/cipher/cbc.go.html#line-57">CryptBlocks</a>(dst, src []<a href="../builtin.html#name-byte">byte</a>)</span></span><span>
-			<span class="nodocs">(*T) <a href="../../src/crypto/cipher/cbc.go.html#line-85">SetIV</a>(iv []<a href="../builtin.html#name-byte">byte</a>)</span></span></span>
+			<span class="nodocs">(*cbcEncrypter) <a href="../../src/crypto/cipher/cbc.go.html#line-55">BlockSize</a>() <a href="../builtin.html#name-int">int</a></span></span><span>
+			<span class="nodocs">(*cbcEncrypter) <a href="../../src/crypto/cipher/cbc.go.html#line-57">CryptBlocks</a>(dst, src []<a href="../builtin.html#name-byte">byte</a>)</span></span><span>
+			<span class="nodocs">(*cbcEncrypter) <a href="../../src/crypto/cipher/cbc.go.html#line-85">SetIV</a>(iv []<a href="../builtin.html#name-byte">byte</a>)</span></span></span>
 		<input type='checkbox' class="fold" id="cbcEncrypter-fold-impls"><label for="cbcEncrypter-fold-impls">Implements (<i>at least 2, in which 1 are exported</i>)</label><span id='cbcEncrypter-fold-impls-items' class="fold-items"><span>
-			*T : <a href="#name-BlockMode">BlockMode</a></span>
+			*cbcEncrypter : <a href="#name-BlockMode">BlockMode</a></span>
 			<input type='checkbox' checked class="showhide" id="cbcEncrypter-showhide-impls"><i><label for="cbcEncrypter-showhide-impls" class="show-inline">/* at least one unexported ... */</label><label for="cbcEncrypter-showhide-impls" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
-			*T : crypto/tls.<a href="tls.html#name-cbcMode">cbcMode</a></i></span></span>
+			*cbcEncrypter : crypto/tls.<a href="tls.html#name-cbcMode">cbcMode</a></i></span></span>
 
 </span></div><div class="anchor type-res hidden" id="name-cfb" data-popularity="100">	<input type='checkbox' class="fold" id="cfb-fold-content"><label for="cfb-fold-content"> type <a href="../../src/crypto/cipher/cfb.go.html#line-11">cfb</a> <i>(struct)</i></label><span id='cfb-fold-content-docs' class="fold-docs">
 
@@ -780,9 +780,9 @@
 			<span class="nodocs"><a href="../../src/crypto/cipher/cfb.go.html#line-14">out</a> <i>[]<a href="../builtin.html#name-byte">byte</a></i></span></i></span><span class="hidden"><i>
 			<span class="nodocs"><a href="../../src/crypto/cipher/cfb.go.html#line-15">outUsed</a> <i><a href="../builtin.html#name-int">int</a></i></span></i></span></span>
 		<input type='checkbox' class="fold" id="cfb-fold-methods"><label for="cfb-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='cfb-fold-methods-items' class="fold-items"><span>
-			<span class="nodocs">(*T) <a href="../../src/crypto/cipher/cfb.go.html#line-20">XORKeyStream</a>(dst, src []<a href="../builtin.html#name-byte">byte</a>)</span></span></span>
+			<span class="nodocs">(*cfb) <a href="../../src/crypto/cipher/cfb.go.html#line-20">XORKeyStream</a>(dst, src []<a href="../builtin.html#name-byte">byte</a>)</span></span></span>
 		<input type='checkbox' class="fold" id="cfb-fold-impls"><label for="cfb-fold-impls">Implements (<i>at least one exported</i>)</label><span id='cfb-fold-impls-items' class="fold-items"><span>
-			*T : <a href="#name-Stream">Stream</a></span></span>
+			*cfb : <a href="#name-Stream">Stream</a></span></span>
 
 </span></div><div class="anchor type-res hidden" id="name-ctr" data-popularity="150">	<input type='checkbox' class="fold" id="ctr-fold-content"><label for="ctr-fold-content"> type <a href="../../src/crypto/cipher/ctr.go.html#line-17">ctr</a> <i>(struct)</i></label><span id='ctr-fold-content-docs' class="fold-docs">
 
@@ -793,11 +793,11 @@
 			<span class="nodocs"><a href="../../src/crypto/cipher/ctr.go.html#line-20">out</a> <i>[]<a href="../builtin.html#name-byte">byte</a></i></span></i></span><span class="hidden"><i>
 			<span class="nodocs"><a href="../../src/crypto/cipher/ctr.go.html#line-21">outUsed</a> <i><a href="../builtin.html#name-int">int</a></i></span></i></span></span>
 		<input type='checkbox' class="fold" id="ctr-fold-methods"><label for="ctr-fold-methods">Methods (<i>total 2, in which 1 are exported</i>)</label><span id='ctr-fold-methods-items' class="fold-items"><span>
-			<span class="nodocs">(*T) <a href="../../src/crypto/cipher/ctr.go.html#line-75">XORKeyStream</a>(dst, src []<a href="../builtin.html#name-byte">byte</a>)</span></span>
+			<span class="nodocs">(*ctr) <a href="../../src/crypto/cipher/ctr.go.html#line-75">XORKeyStream</a>(dst, src []<a href="../builtin.html#name-byte">byte</a>)</span></span>
 			<input type='checkbox' checked class="showhide" id="ctr-showhide-methods"><i><label for="ctr-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="ctr-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../src/crypto/cipher/ctr.go.html#line-54">refill</a>()</span></i></span></span>
+			<span class="nodocs">(*ctr) <a href="../../src/crypto/cipher/ctr.go.html#line-54">refill</a>()</span></i></span></span>
 		<input type='checkbox' class="fold" id="ctr-fold-impls"><label for="ctr-fold-impls">Implements (<i>at least one exported</i>)</label><span id='ctr-fold-impls-items' class="fold-items"><span>
-			*T : <a href="#name-Stream">Stream</a></span></span>
+			*ctr : <a href="#name-Stream">Stream</a></span></span>
 
 </span></div><div class="anchor type-res hidden" id="name-ctrAble" data-popularity="250">	<input type='checkbox' class="fold" id="ctrAble-fold-content"><label for="ctrAble-fold-content"> type <a href="../../src/crypto/cipher/ctr.go.html#line-29">ctrAble</a> <b><i>(interface)</i></b></label><span id='ctrAble-fold-content-docs' class="fold-docs">
 		ctrAble is an interface implemented by ciphers that have a specific optimized
@@ -805,13 +805,13 @@
 		and return the specific Stream if found.
 
 		<input type='checkbox' class="fold" id="ctrAble-fold-methods"><label for="ctrAble-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='ctrAble-fold-methods-items' class="fold-items"><span>
-			<span class="nodocs">( T) <a href="../../src/crypto/cipher/ctr.go.html#line-30">NewCTR</a>(iv []<a href="../builtin.html#name-byte">byte</a>) <a href="#name-Stream">Stream</a></span></span></span>
+			<span class="nodocs">( ctrAble) <a href="../../src/crypto/cipher/ctr.go.html#line-30">NewCTR</a>(iv []<a href="../builtin.html#name-byte">byte</a>) <a href="#name-Stream">Stream</a></span></span></span>
 		<input type='checkbox' class="fold" id="ctrAble-fold-impledby"><label for="ctrAble-fold-impledby">Implemented By (<i>at least one unexported</i>)</label><span id='ctrAble-fold-impledby-items' class="fold-items">
 			<input type='checkbox' checked class="showhide" id="ctrAble-showhide-impedBys"><i><label for="ctrAble-showhide-impedBys" class="show-inline">/* at least one unexported ... */</label><label for="ctrAble-showhide-impedBys" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
 			 crypto/aes.<a href="aes.html#name-ctrAble">ctrAble</a> <i>(interface)</i></i></span></span>
 		<input type='checkbox' class="fold" id="ctrAble-fold-impls"><label for="ctrAble-fold-impls">Implements (<i>at least one unexported</i>)</label><span id='ctrAble-fold-impls-items' class="fold-items">
 			<input type='checkbox' checked class="showhide" id="ctrAble-showhide-impls"><i><label for="ctrAble-showhide-impls" class="show-inline">/* at least one unexported ... */</label><label for="ctrAble-showhide-impls" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
-			 T : crypto/aes.<a href="aes.html#name-ctrAble">ctrAble</a></i></span></span>
+			 ctrAble : crypto/aes.<a href="aes.html#name-ctrAble">ctrAble</a></i></span></span>
 
 </span></div><div class="anchor type-res hidden" id="name-gcm" data-popularity="550">	<input type='checkbox' class="fold" id="gcm-fold-content"><label for="gcm-fold-content"> type <a href="../../src/crypto/cipher/gcm.go.html#line-69">gcm</a> <i>(struct)</i></label><span id='gcm-fold-content-docs' class="fold-docs">
 		gcm represents a Galois Counter Mode with a specific key. See
@@ -827,36 +827,36 @@
 </span></i></span><span class="hidden"><i>
 			<span class="nodocs"><a href="../../src/crypto/cipher/gcm.go.html#line-72">tagSize</a> <i><a href="../builtin.html#name-int">int</a></i></span></i></span></span>
 		<input type='checkbox' class="fold" id="gcm-fold-methods"><label for="gcm-fold-methods">Methods (<i>total 10, in which 4 are exported</i>)</label><span id='gcm-fold-methods-items' class="fold-items"><span>
-			<span class="nodocs">(*T) <a href="../../src/crypto/cipher/gcm.go.html#line-159">NonceSize</a>() <a href="../builtin.html#name-int">int</a></span></span><span>
-			<span class="nodocs">(*T) <a href="../../src/crypto/cipher/gcm.go.html#line-197">Open</a>(dst, nonce, ciphertext, data []<a href="../builtin.html#name-byte">byte</a>) ([]<a href="../builtin.html#name-byte">byte</a>, <a href="../builtin.html#name-error">error</a>)</span></span><span>
-			<span class="nodocs">(*T) <a href="../../src/crypto/cipher/gcm.go.html#line-163">Overhead</a>() <a href="../builtin.html#name-int">int</a></span></span><span>
-			<span class="nodocs">(*T) <a href="../../src/crypto/cipher/gcm.go.html#line-167">Seal</a>(dst, nonce, plaintext, data []<a href="../builtin.html#name-byte">byte</a>) []<a href="../builtin.html#name-byte">byte</a></span></span>
+			<span class="nodocs">(*gcm) <a href="../../src/crypto/cipher/gcm.go.html#line-159">NonceSize</a>() <a href="../builtin.html#name-int">int</a></span></span><span>
+			<span class="nodocs">(*gcm) <a href="../../src/crypto/cipher/gcm.go.html#line-197">Open</a>(dst, nonce, ciphertext, data []<a href="../builtin.html#name-byte">byte</a>) ([]<a href="../builtin.html#name-byte">byte</a>, <a href="../builtin.html#name-error">error</a>)</span></span><span>
+			<span class="nodocs">(*gcm) <a href="../../src/crypto/cipher/gcm.go.html#line-163">Overhead</a>() <a href="../builtin.html#name-int">int</a></span></span><span>
+			<span class="nodocs">(*gcm) <a href="../../src/crypto/cipher/gcm.go.html#line-167">Seal</a>(dst, nonce, plaintext, data []<a href="../builtin.html#name-byte">byte</a>) []<a href="../builtin.html#name-byte">byte</a></span></span>
 			<input type='checkbox' checked class="showhide" id="gcm-showhide-methods"><i><label for="gcm-showhide-methods" class="show-inline">/* 6 unexporteds ... */</label><label for="gcm-showhide-methods" class="hide-inline">/* 6 unexporteds: */</label></i><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="gcm-fold-method-auth"><label for="gcm-fold-method-auth">(*T) <a href="../../src/crypto/cipher/gcm.go.html#line-412">auth</a>(out, ciphertext, additionalData []<a href="../builtin.html#name-byte">byte</a>, tagMask *[16]<a href="../builtin.html#name-byte">byte</a>)</label><span id='gcm-fold-method-auth-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="gcm-fold-method-auth"><label for="gcm-fold-method-auth">(*gcm) <a href="../../src/crypto/cipher/gcm.go.html#line-412">auth</a>(out, ciphertext, additionalData []<a href="../builtin.html#name-byte">byte</a>, tagMask *[16]<a href="../builtin.html#name-byte">byte</a>)</label><span id='gcm-fold-method-auth-docs' class="fold-docs">
 				auth calculates GHASH(ciphertext, additionalData), masks the result with
 				tagMask and writes the result to out.
 </span></i></span><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="gcm-fold-method-counterCrypt"><label for="gcm-fold-method-counterCrypt">(*T) <a href="../../src/crypto/cipher/gcm.go.html#line-368">counterCrypt</a>(out, in []<a href="../builtin.html#name-byte">byte</a>, counter *[16]<a href="../builtin.html#name-byte">byte</a>)</label><span id='gcm-fold-method-counterCrypt-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="gcm-fold-method-counterCrypt"><label for="gcm-fold-method-counterCrypt">(*gcm) <a href="../../src/crypto/cipher/gcm.go.html#line-368">counterCrypt</a>(out, in []<a href="../builtin.html#name-byte">byte</a>, counter *[16]<a href="../builtin.html#name-byte">byte</a>)</label><span id='gcm-fold-method-counterCrypt-docs' class="fold-docs">
 				counterCrypt crypts in to out using g.cipher in counter mode.
 </span></i></span><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="gcm-fold-method-deriveCounter"><label for="gcm-fold-method-deriveCounter">(*T) <a href="../../src/crypto/cipher/gcm.go.html#line-390">deriveCounter</a>(counter *[16]<a href="../builtin.html#name-byte">byte</a>, nonce []<a href="../builtin.html#name-byte">byte</a>)</label><span id='gcm-fold-method-deriveCounter-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="gcm-fold-method-deriveCounter"><label for="gcm-fold-method-deriveCounter">(*gcm) <a href="../../src/crypto/cipher/gcm.go.html#line-390">deriveCounter</a>(counter *[16]<a href="../builtin.html#name-byte">byte</a>, nonce []<a href="../builtin.html#name-byte">byte</a>)</label><span id='gcm-fold-method-deriveCounter-docs' class="fold-docs">
 				deriveCounter computes the initial GCM counter state from the given nonce.
 				See NIST SP 800-38D, section 7.1. This assumes that counter is filled with
 				zeros on entry.
 </span></i></span><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="gcm-fold-method-mul"><label for="gcm-fold-method-mul">(*T) <a href="../../src/crypto/cipher/gcm.go.html#line-289">mul</a>(y *<a href="#name-gcmFieldElement">gcmFieldElement</a>)</label><span id='gcm-fold-method-mul-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="gcm-fold-method-mul"><label for="gcm-fold-method-mul">(*gcm) <a href="../../src/crypto/cipher/gcm.go.html#line-289">mul</a>(y *<a href="#name-gcmFieldElement">gcmFieldElement</a>)</label><span id='gcm-fold-method-mul-docs' class="fold-docs">
 				mul sets y to y*H, where H is the GCM key, fixed during NewGCMWithNonceSize.
 </span></i></span><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="gcm-fold-method-update"><label for="gcm-fold-method-update">(*T) <a href="../../src/crypto/cipher/gcm.go.html#line-334">update</a>(y *<a href="#name-gcmFieldElement">gcmFieldElement</a>, data []<a href="../builtin.html#name-byte">byte</a>)</label><span id='gcm-fold-method-update-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="gcm-fold-method-update"><label for="gcm-fold-method-update">(*gcm) <a href="../../src/crypto/cipher/gcm.go.html#line-334">update</a>(y *<a href="#name-gcmFieldElement">gcmFieldElement</a>, data []<a href="../builtin.html#name-byte">byte</a>)</label><span id='gcm-fold-method-update-docs' class="fold-docs">
 				update extends y with more polynomial terms from data. If data is not a
 				multiple of gcmBlockSize bytes long then the remainder is zero padded.
 </span></i></span><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="gcm-fold-method-updateBlocks"><label for="gcm-fold-method-updateBlocks">(*T) <a href="../../src/crypto/cipher/gcm.go.html#line-323">updateBlocks</a>(y *<a href="#name-gcmFieldElement">gcmFieldElement</a>, blocks []<a href="../builtin.html#name-byte">byte</a>)</label><span id='gcm-fold-method-updateBlocks-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="gcm-fold-method-updateBlocks"><label for="gcm-fold-method-updateBlocks">(*gcm) <a href="../../src/crypto/cipher/gcm.go.html#line-323">updateBlocks</a>(y *<a href="#name-gcmFieldElement">gcmFieldElement</a>, blocks []<a href="../builtin.html#name-byte">byte</a>)</label><span id='gcm-fold-method-updateBlocks-docs' class="fold-docs">
 				updateBlocks extends y with more polynomial terms from blocks, based on
 				Horner's rule. There must be a multiple of gcmBlockSize bytes in blocks.
 </span></i></span></span>
 		<input type='checkbox' class="fold" id="gcm-fold-impls"><label for="gcm-fold-impls">Implements (<i>at least one exported</i>)</label><span id='gcm-fold-impls-items' class="fold-items"><span>
-			*T : <a href="#name-AEAD">AEAD</a></span></span>
+			*gcm : <a href="#name-AEAD">AEAD</a></span></span>
 
 </span></div><div class="anchor type-res hidden" id="name-gcmAble" data-popularity="400">	<input type='checkbox' class="fold" id="gcmAble-fold-content"><label for="gcmAble-fold-content"> type <a href="../../src/crypto/cipher/gcm.go.html#line-52">gcmAble</a> <b><i>(interface)</i></b></label><span id='gcmAble-fold-content-docs' class="fold-docs">
 		gcmAble is an interface implemented by ciphers that have a specific optimized
@@ -864,14 +864,14 @@
 		and return the specific AEAD if found.
 
 		<input type='checkbox' class="fold" id="gcmAble-fold-methods"><label for="gcmAble-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='gcmAble-fold-methods-items' class="fold-items"><span>
-			<span class="nodocs">( T) <a href="../../src/crypto/cipher/gcm.go.html#line-53">NewGCM</a>(nonceSize, tagSize <a href="../builtin.html#name-int">int</a>) (<a href="#name-AEAD">AEAD</a>, <a href="../builtin.html#name-error">error</a>)</span></span></span>
+			<span class="nodocs">( gcmAble) <a href="../../src/crypto/cipher/gcm.go.html#line-53">NewGCM</a>(nonceSize, tagSize <a href="../builtin.html#name-int">int</a>) (<a href="#name-AEAD">AEAD</a>, <a href="../builtin.html#name-error">error</a>)</span></span></span>
 		<input type='checkbox' class="fold" id="gcmAble-fold-impledby"><label for="gcmAble-fold-impledby">Implemented By (<i>at least 2, neither is exported</i>)</label><span id='gcmAble-fold-impledby-items' class="fold-items">
 			<input type='checkbox' checked class="showhide" id="gcmAble-showhide-impedBys"><i><label for="gcmAble-showhide-impedBys" class="show-inline">/* 2+ unexporteds ... */</label><label for="gcmAble-showhide-impedBys" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
 			*crypto/aes.<a href="aes.html#name-aesCipherGCM">aesCipherGCM</a></i></span><span class="hidden"><i>
 			 crypto/aes.<a href="aes.html#name-gcmAble">gcmAble</a> <i>(interface)</i></i></span></span>
 		<input type='checkbox' class="fold" id="gcmAble-fold-impls"><label for="gcmAble-fold-impls">Implements (<i>at least one unexported</i>)</label><span id='gcmAble-fold-impls-items' class="fold-items">
 			<input type='checkbox' checked class="showhide" id="gcmAble-showhide-impls"><i><label for="gcmAble-showhide-impls" class="show-inline">/* at least one unexported ... */</label><label for="gcmAble-showhide-impls" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
-			 T : crypto/aes.<a href="aes.html#name-gcmAble">gcmAble</a></i></span></span>
+			 gcmAble : crypto/aes.<a href="aes.html#name-gcmAble">gcmAble</a></i></span></span>
 
 </span></div><div class="anchor type-res hidden" id="name-gcmFieldElement" data-popularity="220">	<input type='checkbox' class="fold" id="gcmFieldElement-fold-content"><label for="gcmFieldElement-fold-content"> type <a href="../../src/crypto/cipher/gcm.go.html#line-63">gcmFieldElement</a> <i>(struct)</i></label><span id='gcmFieldElement-fold-content-docs' class="fold-docs">
 		gcmFieldElement represents a value in GF(2¹²⁸). In order to reflect the GCM
@@ -904,11 +904,11 @@
 			<span class="nodocs"><a href="../../src/crypto/cipher/ofb.go.html#line-14">out</a> <i>[]<a href="../builtin.html#name-byte">byte</a></i></span></i></span><span class="hidden"><i>
 			<span class="nodocs"><a href="../../src/crypto/cipher/ofb.go.html#line-15">outUsed</a> <i><a href="../builtin.html#name-int">int</a></i></span></i></span></span>
 		<input type='checkbox' class="fold" id="ofb-fold-methods"><label for="ofb-fold-methods">Methods (<i>total 2, in which 1 are exported</i>)</label><span id='ofb-fold-methods-items' class="fold-items"><span>
-			<span class="nodocs">(*T) <a href="../../src/crypto/cipher/ofb.go.html#line-58">XORKeyStream</a>(dst, src []<a href="../builtin.html#name-byte">byte</a>)</span></span>
+			<span class="nodocs">(*ofb) <a href="../../src/crypto/cipher/ofb.go.html#line-58">XORKeyStream</a>(dst, src []<a href="../builtin.html#name-byte">byte</a>)</span></span>
 			<input type='checkbox' checked class="showhide" id="ofb-showhide-methods"><i><label for="ofb-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="ofb-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../src/crypto/cipher/ofb.go.html#line-41">refill</a>()</span></i></span></span>
+			<span class="nodocs">(*ofb) <a href="../../src/crypto/cipher/ofb.go.html#line-41">refill</a>()</span></i></span></span>
 		<input type='checkbox' class="fold" id="ofb-fold-impls"><label for="ofb-fold-impls">Implements (<i>at least one exported</i>)</label><span id='ofb-fold-impls-items' class="fold-items"><span>
-			*T : <a href="#name-Stream">Stream</a></span></span>
+			*ofb : <a href="#name-Stream">Stream</a></span></span>
 
 </span></div></div>
 <div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 21, in which 9 are exported)</i></span></span>
@@ -1000,7 +1000,7 @@
 
 	<input type='checkbox' class="showhide" id="unexported-constants-showhide"><i><label for="unexported-constants-showhide" class="show-inline">/* 5 unexporteds ... */</label><label for="unexported-constants-showhide" class="hide-inline">/* 5 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-gcmBlockSize"><i>	<span class="nodocs">const <a href="../../src/crypto/cipher/gcm.go.html#line-153">gcmBlockSize</a> = 16</span></i></div><div class="anchor value-res hidden" id="name-gcmMinimumTagSize"><i>	<span class="nodocs">const <a href="../../src/crypto/cipher/gcm.go.html#line-155">gcmMinimumTagSize</a> = 12 // NIST SP 800-38D recommends tags with 12 or more bytes.</span></i></div><div class="anchor value-res hidden" id="name-gcmStandardNonceSize"><i>	<span class="nodocs">const <a href="../../src/crypto/cipher/gcm.go.html#line-156">gcmStandardNonceSize</a> = 12</span></i></div><div class="anchor value-res hidden" id="name-gcmTagSize"><i>	<span class="nodocs">const <a href="../../src/crypto/cipher/gcm.go.html#line-154">gcmTagSize</a> = 16</span></i></div><div class="anchor value-res hidden" id="name-streamBufferSize"><i>	<span class="nodocs">const <a href="../../src/crypto/cipher/ctr.go.html#line-24">streamBufferSize</a> = 512</span></i></div></div></code></pre><pre id="footer">
 <table><tr><td><img src="../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: signal_darwin_amd64.go in package runtime</title>
-<link href="../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../jvs/golds-v0.3.6.js"></script>
+<link href="../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -220,7 +220,7 @@ input[id=i0]:checked ~pre .i0
 <span class="codeline" id="line-66"><code>		<label for="r64" class="ident">code</label> := (*[<span class="lit-number">2</span>]<a href="../../pkg/builtin.html#name-byte" class="ident">byte</a>)(<a href="../../pkg/unsafe.html" class="ident i0">unsafe</a>.<a href="../../pkg/unsafe.html#name-Pointer" class="ident">Pointer</a>(<label for="r63" class="ident">pc</label> - <span class="lit-number">2</span>))</code></span>
 <span class="codeline" id="line-67"><code>		<span class="keyword">if</span> <label for="r64" class="ident">code</label>[<span class="lit-number">1</span>] != <span class="lit-number">0xCC</span> &amp;&amp; (<label for="r64" class="ident">code</label>[<span class="lit-number">0</span>] != <span class="lit-number">0xCD</span> || <label for="r64" class="ident">code</label>[<span class="lit-number">1</span>] != <span class="lit-number">3</span>) {</code></span>
 <span class="codeline" id="line-68"><code>			<span class="comment">// SIGTRAP on something other than INT 3.</span></code></span>
-<span class="codeline" id="line-69"><code>			<label for="r60" class="ident">c</label>.<a href="#line-48" class="ident">set_sigcode</a>(<a href="os_darwin.go.html#line-340" class="ident">_SI_USER</a>)</code></span>
+<span class="codeline" id="line-69"><code>			<label for="r60" class="ident">c</label>.<a href="#line-48" class="ident">set_sigcode</a>(<a href="os_darwin.go.html#line-353" class="ident">_SI_USER</a>)</code></span>
 <span class="codeline" id="line-70"><code>		}</code></span>
 <span class="codeline" id="line-71"><code></code></span>
 <span class="codeline" id="line-72"><code>	<span class="keyword">case</span> <a href="defs_darwin_amd64.go.html#line-44" class="ident">_SIGSEGV</a>:</code></span>
@@ -238,15 +238,15 @@ input[id=i0]:checked ~pre .i0
 <span class="codeline" id="line-84"><code><span class="comment">		// in real life, people will probably search for it and find this code.</span></code></span>
 <span class="codeline" id="line-85"><code><span class="comment">		// There are no Google hits for b01dfacedebac1e or 0xb01dfacedebac1e</span></code></span>
 <span class="codeline" id="line-86"><code><span class="comment">		// as I type this comment.</span></code></span>
-<span class="codeline" id="line-87"><code>		<span class="keyword">if</span> <label for="r60" class="ident">c</label>.<a href="#line-43" class="ident">sigcode</a>() == <a href="os_darwin.go.html#line-340" class="ident">_SI_USER</a> {</code></span>
-<span class="codeline" id="line-88"><code>			<label for="r60" class="ident">c</label>.<a href="#line-48" class="ident">set_sigcode</a>(<a href="os_darwin.go.html#line-340" class="ident">_SI_USER</a> + <span class="lit-number">1</span>)</code></span>
+<span class="codeline" id="line-87"><code>		<span class="keyword">if</span> <label for="r60" class="ident">c</label>.<a href="#line-43" class="ident">sigcode</a>() == <a href="os_darwin.go.html#line-353" class="ident">_SI_USER</a> {</code></span>
+<span class="codeline" id="line-88"><code>			<label for="r60" class="ident">c</label>.<a href="#line-48" class="ident">set_sigcode</a>(<a href="os_darwin.go.html#line-353" class="ident">_SI_USER</a> + <span class="lit-number">1</span>)</code></span>
 <span class="codeline" id="line-89"><code>			<label for="r60" class="ident">c</label>.<a href="#line-49" class="ident">set_sigaddr</a>(<span class="lit-number">0xb01dfacedebac1e</span>)</code></span>
 <span class="codeline" id="line-90"><code>		}</code></span>
 <span class="codeline" id="line-91"><code>	}</code></span>
 <span class="codeline" id="line-92"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: utf8.go in package unicode/utf8</title>
-<link href="../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -125,7 +125,14 @@ input[id=r105]:checked ~pre label[for=r105],
 input[id=r106]:checked ~pre label[for=r106],
 input[id=r107]:checked ~pre label[for=r107],
 input[id=r108]:checked ~pre label[for=r108],
-input[id=r109]:checked ~pre label[for=r109]
+input[id=r109]:checked ~pre label[for=r109],
+input[id=r110]:checked ~pre label[for=r110],
+input[id=r111]:checked ~pre label[for=r111],
+input[id=r112]:checked ~pre label[for=r112],
+input[id=r113]:checked ~pre label[for=r113],
+input[id=r114]:checked ~pre label[for=r114],
+input[id=r115]:checked ~pre label[for=r115],
+input[id=r116]:checked ~pre label[for=r116]
 {background: #226; color: #ff8;}
 {background: brown; color: #eed;}
 </style><input id="r0" type="radio" name="g"/>
@@ -238,6 +245,13 @@ input[id=r109]:checked ~pre label[for=r109]
 <input id="r107" type="radio" name="g"/>
 <input id="r108" type="radio" name="g"/>
 <input id="r109" type="radio" name="g"/>
+<input id="r110" type="radio" name="g"/>
+<input id="r111" type="radio" name="g"/>
+<input id="r112" type="radio" name="g"/>
+<input id="r113" type="radio" name="g"/>
+<input id="r114" type="radio" name="g"/>
+<input id="r115" type="radio" name="g"/>
+<input id="r116" type="radio" name="g"/>
 
 <pre class="line-numbers">
 <span class="codeline" id="line-1"><code><span class="comment">// Copyright 2009 The Go Authors. All rights reserved.</span></code></span>
@@ -503,7 +517,7 @@ input[id=r109]:checked ~pre label[for=r109]
 <span class="codeline" id="line-262"><code>		<label for="r42" class="ident">lim</label> = <span class="lit-number">0</span></code></span>
 <span class="codeline" id="line-263"><code>	}</code></span>
 <span class="codeline" id="line-264"><code>	<span class="keyword">for</span> <label for="r41" class="ident">start</label>--; <label for="r41" class="ident">start</label> &gt;= <label for="r42" class="ident">lim</label>; <label for="r41" class="ident">start</label>-- {</code></span>
-<span class="codeline" id="line-265"><code>		<span class="keyword">if</span> <a href="#line-448" class="ident">RuneStart</a>(<label for="r37" class="ident">p</label>[<label for="r41" class="ident">start</label>]) {</code></span>
+<span class="codeline" id="line-265"><code>		<span class="keyword">if</span> <a href="#line-474" class="ident">RuneStart</a>(<label for="r37" class="ident">p</label>[<label for="r41" class="ident">start</label>]) {</code></span>
 <span class="codeline" id="line-266"><code>			<span class="keyword">break</span></code></span>
 <span class="codeline" id="line-267"><code>		}</code></span>
 <span class="codeline" id="line-268"><code>	}</code></span>
@@ -543,7 +557,7 @@ input[id=r109]:checked ~pre label[for=r109]
 <span class="codeline" id="line-302"><code>		<label for="r49" class="ident">lim</label> = <span class="lit-number">0</span></code></span>
 <span class="codeline" id="line-303"><code>	}</code></span>
 <span class="codeline" id="line-304"><code>	<span class="keyword">for</span> <label for="r48" class="ident">start</label>--; <label for="r48" class="ident">start</label> &gt;= <label for="r49" class="ident">lim</label>; <label for="r48" class="ident">start</label>-- {</code></span>
-<span class="codeline" id="line-305"><code>		<span class="keyword">if</span> <a href="#line-448" class="ident">RuneStart</a>(<label for="r44" class="ident">s</label>[<label for="r48" class="ident">start</label>]) {</code></span>
+<span class="codeline" id="line-305"><code>		<span class="keyword">if</span> <a href="#line-474" class="ident">RuneStart</a>(<label for="r44" class="ident">s</label>[<label for="r48" class="ident">start</label>]) {</code></span>
 <span class="codeline" id="line-306"><code>			<span class="keyword">break</span></code></span>
 <span class="codeline" id="line-307"><code>		}</code></span>
 <span class="codeline" id="line-308"><code>	}</code></span>
@@ -610,190 +624,216 @@ input[id=r109]:checked ~pre label[for=r109]
 <span class="codeline" id="line-369"><code>	}</code></span>
 <span class="codeline" id="line-370"><code>}</code></span>
 <span class="codeline" id="line-371"><code></code></span>
-<span class="codeline" id="line-372"><code><span class="comment">// RuneCount returns the number of runes in p. Erroneous and short</span></code></span>
-<span class="codeline" id="line-373"><code><span class="comment">// encodings are treated as single runes of width 1 byte.</span></code></span>
-<span class="codeline" id="line-374"><code><span class="keyword">func</span> <label for="r56" class="ident"><a href="../../../pkg/unicode/utf8.html#name-RuneCount" class="ident">RuneCount</a></label>(<label for="r57" class="ident">p</label> []<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>) <a href="../../../pkg/builtin.html#name-int" class="ident">int</a> {</code></span>
-<span class="codeline" id="line-375"><code>	<label for="r58" class="ident">np</label> := <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r57" class="ident">p</label>)</code></span>
-<span class="codeline" id="line-376"><code>	<span class="keyword">var</span> <label for="r59" class="ident">n</label> <a href="../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
-<span class="codeline" id="line-377"><code>	<span class="keyword">for</span> <label for="r60" class="ident">i</label> := <span class="lit-number">0</span>; <label for="r60" class="ident">i</label> &lt; <label for="r58" class="ident">np</label>; {</code></span>
-<span class="codeline" id="line-378"><code>		<label for="r59" class="ident">n</label>++</code></span>
-<span class="codeline" id="line-379"><code>		<label for="r61" class="ident">c</label> := <label for="r57" class="ident">p</label>[<label for="r60" class="ident">i</label>]</code></span>
-<span class="codeline" id="line-380"><code>		<span class="keyword">if</span> <label for="r61" class="ident">c</label> &lt; <a href="#line-17" class="ident">RuneSelf</a> {</code></span>
-<span class="codeline" id="line-381"><code>			<span class="comment">// ASCII fast path</span></code></span>
-<span class="codeline" id="line-382"><code>			<label for="r60" class="ident">i</label>++</code></span>
-<span class="codeline" id="line-383"><code>			<span class="keyword">continue</span></code></span>
-<span class="codeline" id="line-384"><code>		}</code></span>
-<span class="codeline" id="line-385"><code>		<label for="r62" class="ident">x</label> := <a href="#line-65" class="ident">first</a>[<label for="r61" class="ident">c</label>]</code></span>
-<span class="codeline" id="line-386"><code>		<span class="keyword">if</span> <label for="r62" class="ident">x</label> == <a href="#line-53" class="ident">xx</a> {</code></span>
-<span class="codeline" id="line-387"><code>			<label for="r60" class="ident">i</label>++ <span class="comment">// invalid.</span></code></span>
-<span class="codeline" id="line-388"><code>			<span class="keyword">continue</span></code></span>
-<span class="codeline" id="line-389"><code>		}</code></span>
-<span class="codeline" id="line-390"><code>		<label for="r63" class="ident">size</label> := <a href="../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r62" class="ident">x</label> &amp; <span class="lit-number">7</span>)</code></span>
-<span class="codeline" id="line-391"><code>		<span class="keyword">if</span> <label for="r60" class="ident">i</label>+<label for="r63" class="ident">size</label> &gt; <label for="r58" class="ident">np</label> {</code></span>
-<span class="codeline" id="line-392"><code>			<label for="r60" class="ident">i</label>++ <span class="comment">// Short or invalid.</span></code></span>
-<span class="codeline" id="line-393"><code>			<span class="keyword">continue</span></code></span>
-<span class="codeline" id="line-394"><code>		}</code></span>
-<span class="codeline" id="line-395"><code>		<label for="r64" class="ident">accept</label> := <a href="#line-94" class="ident">acceptRanges</a>[<label for="r62" class="ident">x</label>&gt;&gt;<span class="lit-number">4</span>]</code></span>
-<span class="codeline" id="line-396"><code>		<span class="keyword">if</span> <label for="r65" class="ident">c</label> := <label for="r57" class="ident">p</label>[<label for="r60" class="ident">i</label>+<span class="lit-number">1</span>]; <label for="r65" class="ident">c</label> &lt; <label for="r64" class="ident">accept</label>.<a href="#line-89" class="ident">lo</a> || <label for="r64" class="ident">accept</label>.<a href="#line-90" class="ident">hi</a> &lt; <label for="r65" class="ident">c</label> {</code></span>
-<span class="codeline" id="line-397"><code>			<label for="r63" class="ident">size</label> = <span class="lit-number">1</span></code></span>
-<span class="codeline" id="line-398"><code>		} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r63" class="ident">size</label> == <span class="lit-number">2</span> {</code></span>
-<span class="codeline" id="line-399"><code>		} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r66" class="ident">c</label> := <label for="r57" class="ident">p</label>[<label for="r60" class="ident">i</label>+<span class="lit-number">2</span>]; <label for="r66" class="ident">c</label> &lt; <a href="#line-46" class="ident">locb</a> || <a href="#line-47" class="ident">hicb</a> &lt; <label for="r66" class="ident">c</label> {</code></span>
-<span class="codeline" id="line-400"><code>			<label for="r63" class="ident">size</label> = <span class="lit-number">1</span></code></span>
-<span class="codeline" id="line-401"><code>		} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r63" class="ident">size</label> == <span class="lit-number">3</span> {</code></span>
-<span class="codeline" id="line-402"><code>		} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r67" class="ident">c</label> := <label for="r57" class="ident">p</label>[<label for="r60" class="ident">i</label>+<span class="lit-number">3</span>]; <label for="r67" class="ident">c</label> &lt; <a href="#line-46" class="ident">locb</a> || <a href="#line-47" class="ident">hicb</a> &lt; <label for="r67" class="ident">c</label> {</code></span>
-<span class="codeline" id="line-403"><code>			<label for="r63" class="ident">size</label> = <span class="lit-number">1</span></code></span>
-<span class="codeline" id="line-404"><code>		}</code></span>
-<span class="codeline" id="line-405"><code>		<label for="r60" class="ident">i</label> += <label for="r63" class="ident">size</label></code></span>
-<span class="codeline" id="line-406"><code>	}</code></span>
-<span class="codeline" id="line-407"><code>	<span class="keyword">return</span> <label for="r59" class="ident">n</label></code></span>
-<span class="codeline" id="line-408"><code>}</code></span>
-<span class="codeline" id="line-409"><code></code></span>
-<span class="codeline" id="line-410"><code><span class="comment">// RuneCountInString is like RuneCount but its input is a string.</span></code></span>
-<span class="codeline" id="line-411"><code><span class="keyword">func</span> <label for="r68" class="ident"><a href="../../../pkg/unicode/utf8.html#name-RuneCountInString" class="ident">RuneCountInString</a></label>(<label for="r69" class="ident">s</label> <a href="../../../pkg/builtin.html#name-string" class="ident">string</a>) (<label for="r70" class="ident">n</label> <a href="../../../pkg/builtin.html#name-int" class="ident">int</a>) {</code></span>
-<span class="codeline" id="line-412"><code>	<label for="r71" class="ident">ns</label> := <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r69" class="ident">s</label>)</code></span>
-<span class="codeline" id="line-413"><code>	<span class="keyword">for</span> <label for="r72" class="ident">i</label> := <span class="lit-number">0</span>; <label for="r72" class="ident">i</label> &lt; <label for="r71" class="ident">ns</label>; <label for="r70" class="ident">n</label>++ {</code></span>
-<span class="codeline" id="line-414"><code>		<label for="r73" class="ident">c</label> := <label for="r69" class="ident">s</label>[<label for="r72" class="ident">i</label>]</code></span>
-<span class="codeline" id="line-415"><code>		<span class="keyword">if</span> <label for="r73" class="ident">c</label> &lt; <a href="#line-17" class="ident">RuneSelf</a> {</code></span>
-<span class="codeline" id="line-416"><code>			<span class="comment">// ASCII fast path</span></code></span>
-<span class="codeline" id="line-417"><code>			<label for="r72" class="ident">i</label>++</code></span>
-<span class="codeline" id="line-418"><code>			<span class="keyword">continue</span></code></span>
-<span class="codeline" id="line-419"><code>		}</code></span>
-<span class="codeline" id="line-420"><code>		<label for="r74" class="ident">x</label> := <a href="#line-65" class="ident">first</a>[<label for="r73" class="ident">c</label>]</code></span>
-<span class="codeline" id="line-421"><code>		<span class="keyword">if</span> <label for="r74" class="ident">x</label> == <a href="#line-53" class="ident">xx</a> {</code></span>
-<span class="codeline" id="line-422"><code>			<label for="r72" class="ident">i</label>++ <span class="comment">// invalid.</span></code></span>
-<span class="codeline" id="line-423"><code>			<span class="keyword">continue</span></code></span>
-<span class="codeline" id="line-424"><code>		}</code></span>
-<span class="codeline" id="line-425"><code>		<label for="r75" class="ident">size</label> := <a href="../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r74" class="ident">x</label> &amp; <span class="lit-number">7</span>)</code></span>
-<span class="codeline" id="line-426"><code>		<span class="keyword">if</span> <label for="r72" class="ident">i</label>+<label for="r75" class="ident">size</label> &gt; <label for="r71" class="ident">ns</label> {</code></span>
-<span class="codeline" id="line-427"><code>			<label for="r72" class="ident">i</label>++ <span class="comment">// Short or invalid.</span></code></span>
-<span class="codeline" id="line-428"><code>			<span class="keyword">continue</span></code></span>
-<span class="codeline" id="line-429"><code>		}</code></span>
-<span class="codeline" id="line-430"><code>		<label for="r76" class="ident">accept</label> := <a href="#line-94" class="ident">acceptRanges</a>[<label for="r74" class="ident">x</label>&gt;&gt;<span class="lit-number">4</span>]</code></span>
-<span class="codeline" id="line-431"><code>		<span class="keyword">if</span> <label for="r77" class="ident">c</label> := <label for="r69" class="ident">s</label>[<label for="r72" class="ident">i</label>+<span class="lit-number">1</span>]; <label for="r77" class="ident">c</label> &lt; <label for="r76" class="ident">accept</label>.<a href="#line-89" class="ident">lo</a> || <label for="r76" class="ident">accept</label>.<a href="#line-90" class="ident">hi</a> &lt; <label for="r77" class="ident">c</label> {</code></span>
-<span class="codeline" id="line-432"><code>			<label for="r75" class="ident">size</label> = <span class="lit-number">1</span></code></span>
-<span class="codeline" id="line-433"><code>		} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r75" class="ident">size</label> == <span class="lit-number">2</span> {</code></span>
-<span class="codeline" id="line-434"><code>		} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r78" class="ident">c</label> := <label for="r69" class="ident">s</label>[<label for="r72" class="ident">i</label>+<span class="lit-number">2</span>]; <label for="r78" class="ident">c</label> &lt; <a href="#line-46" class="ident">locb</a> || <a href="#line-47" class="ident">hicb</a> &lt; <label for="r78" class="ident">c</label> {</code></span>
-<span class="codeline" id="line-435"><code>			<label for="r75" class="ident">size</label> = <span class="lit-number">1</span></code></span>
-<span class="codeline" id="line-436"><code>		} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r75" class="ident">size</label> == <span class="lit-number">3</span> {</code></span>
-<span class="codeline" id="line-437"><code>		} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r79" class="ident">c</label> := <label for="r69" class="ident">s</label>[<label for="r72" class="ident">i</label>+<span class="lit-number">3</span>]; <label for="r79" class="ident">c</label> &lt; <a href="#line-46" class="ident">locb</a> || <a href="#line-47" class="ident">hicb</a> &lt; <label for="r79" class="ident">c</label> {</code></span>
-<span class="codeline" id="line-438"><code>			<label for="r75" class="ident">size</label> = <span class="lit-number">1</span></code></span>
-<span class="codeline" id="line-439"><code>		}</code></span>
-<span class="codeline" id="line-440"><code>		<label for="r72" class="ident">i</label> += <label for="r75" class="ident">size</label></code></span>
-<span class="codeline" id="line-441"><code>	}</code></span>
-<span class="codeline" id="line-442"><code>	<span class="keyword">return</span> <label for="r70" class="ident">n</label></code></span>
-<span class="codeline" id="line-443"><code>}</code></span>
-<span class="codeline" id="line-444"><code></code></span>
-<span class="codeline" id="line-445"><code><span class="comment">// RuneStart reports whether the byte could be the first byte of an encoded,</span></code></span>
-<span class="codeline" id="line-446"><code><span class="comment">// possibly invalid rune. Second and subsequent bytes always have the top two</span></code></span>
-<span class="codeline" id="line-447"><code><span class="comment">// bits set to 10.</span></code></span>
-<span class="codeline" id="line-448"><code><span class="keyword">func</span> <label for="r80" class="ident"><a href="../../../pkg/unicode/utf8.html#name-RuneStart" class="ident">RuneStart</a></label>(<label for="r81" class="ident">b</label> <a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>) <a href="../../../pkg/builtin.html#name-bool" class="ident">bool</a> { <span class="keyword">return</span> <label for="r81" class="ident">b</label>&amp;<span class="lit-number">0xC0</span> != <span class="lit-number">0x80</span> }</code></span>
-<span class="codeline" id="line-449"><code></code></span>
-<span class="codeline" id="line-450"><code><span class="comment">// Valid reports whether p consists entirely of valid UTF-8-encoded runes.</span></code></span>
-<span class="codeline" id="line-451"><code><span class="keyword">func</span> <label for="r82" class="ident"><a href="../../../pkg/unicode/utf8.html#name-Valid" class="ident">Valid</a></label>(<label for="r83" class="ident">p</label> []<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>) <a href="../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
-<span class="codeline" id="line-452"><code>	<span class="comment">// Fast path. Check for and skip 8 bytes of ASCII characters per iteration.</span></code></span>
-<span class="codeline" id="line-453"><code>	<span class="keyword">for</span> <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r83" class="ident">p</label>) &gt;= <span class="lit-number">8</span> {</code></span>
-<span class="codeline" id="line-454"><code>		<span class="comment">// Combining two 32 bit loads allows the same code to be used</span></code></span>
-<span class="codeline" id="line-455"><code><span class="comment">		// for 32 and 64 bit platforms.</span></code></span>
-<span class="codeline" id="line-456"><code><span class="comment">		// The compiler can generate a 32bit load for first32 and second32</span></code></span>
-<span class="codeline" id="line-457"><code><span class="comment">		// on many platforms. See test/codegen/memcombine.go.</span></code></span>
-<span class="codeline" id="line-458"><code>		<label for="r84" class="ident">first32</label> := <a href="../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r83" class="ident">p</label>[<span class="lit-number">0</span>]) | <a href="../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r83" class="ident">p</label>[<span class="lit-number">1</span>])&lt;&lt;<span class="lit-number">8</span> | <a href="../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r83" class="ident">p</label>[<span class="lit-number">2</span>])&lt;&lt;<span class="lit-number">16</span> | <a href="../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r83" class="ident">p</label>[<span class="lit-number">3</span>])&lt;&lt;<span class="lit-number">24</span></code></span>
-<span class="codeline" id="line-459"><code>		<label for="r85" class="ident">second32</label> := <a href="../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r83" class="ident">p</label>[<span class="lit-number">4</span>]) | <a href="../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r83" class="ident">p</label>[<span class="lit-number">5</span>])&lt;&lt;<span class="lit-number">8</span> | <a href="../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r83" class="ident">p</label>[<span class="lit-number">6</span>])&lt;&lt;<span class="lit-number">16</span> | <a href="../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r83" class="ident">p</label>[<span class="lit-number">7</span>])&lt;&lt;<span class="lit-number">24</span></code></span>
-<span class="codeline" id="line-460"><code>		<span class="keyword">if</span> (<label for="r84" class="ident">first32</label>|<label for="r85" class="ident">second32</label>)&amp;<span class="lit-number">0x80808080</span> != <span class="lit-number">0</span> {</code></span>
-<span class="codeline" id="line-461"><code>			<span class="comment">// Found a non ASCII byte (&gt;= RuneSelf).</span></code></span>
-<span class="codeline" id="line-462"><code>			<span class="keyword">break</span></code></span>
-<span class="codeline" id="line-463"><code>		}</code></span>
-<span class="codeline" id="line-464"><code>		<label for="r83" class="ident">p</label> = <label for="r83" class="ident">p</label>[<span class="lit-number">8</span>:]</code></span>
-<span class="codeline" id="line-465"><code>	}</code></span>
-<span class="codeline" id="line-466"><code>	<label for="r86" class="ident">n</label> := <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r83" class="ident">p</label>)</code></span>
-<span class="codeline" id="line-467"><code>	<span class="keyword">for</span> <label for="r87" class="ident">i</label> := <span class="lit-number">0</span>; <label for="r87" class="ident">i</label> &lt; <label for="r86" class="ident">n</label>; {</code></span>
-<span class="codeline" id="line-468"><code>		<label for="r88" class="ident">pi</label> := <label for="r83" class="ident">p</label>[<label for="r87" class="ident">i</label>]</code></span>
-<span class="codeline" id="line-469"><code>		<span class="keyword">if</span> <label for="r88" class="ident">pi</label> &lt; <a href="#line-17" class="ident">RuneSelf</a> {</code></span>
-<span class="codeline" id="line-470"><code>			<label for="r87" class="ident">i</label>++</code></span>
-<span class="codeline" id="line-471"><code>			<span class="keyword">continue</span></code></span>
-<span class="codeline" id="line-472"><code>		}</code></span>
-<span class="codeline" id="line-473"><code>		<label for="r89" class="ident">x</label> := <a href="#line-65" class="ident">first</a>[<label for="r88" class="ident">pi</label>]</code></span>
-<span class="codeline" id="line-474"><code>		<span class="keyword">if</span> <label for="r89" class="ident">x</label> == <a href="#line-53" class="ident">xx</a> {</code></span>
-<span class="codeline" id="line-475"><code>			<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-false" class="ident">false</a> <span class="comment">// Illegal starter byte.</span></code></span>
-<span class="codeline" id="line-476"><code>		}</code></span>
-<span class="codeline" id="line-477"><code>		<label for="r90" class="ident">size</label> := <a href="../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r89" class="ident">x</label> &amp; <span class="lit-number">7</span>)</code></span>
-<span class="codeline" id="line-478"><code>		<span class="keyword">if</span> <label for="r87" class="ident">i</label>+<label for="r90" class="ident">size</label> &gt; <label for="r86" class="ident">n</label> {</code></span>
-<span class="codeline" id="line-479"><code>			<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-false" class="ident">false</a> <span class="comment">// Short or invalid.</span></code></span>
-<span class="codeline" id="line-480"><code>		}</code></span>
-<span class="codeline" id="line-481"><code>		<label for="r91" class="ident">accept</label> := <a href="#line-94" class="ident">acceptRanges</a>[<label for="r89" class="ident">x</label>&gt;&gt;<span class="lit-number">4</span>]</code></span>
-<span class="codeline" id="line-482"><code>		<span class="keyword">if</span> <label for="r92" class="ident">c</label> := <label for="r83" class="ident">p</label>[<label for="r87" class="ident">i</label>+<span class="lit-number">1</span>]; <label for="r92" class="ident">c</label> &lt; <label for="r91" class="ident">accept</label>.<a href="#line-89" class="ident">lo</a> || <label for="r91" class="ident">accept</label>.<a href="#line-90" class="ident">hi</a> &lt; <label for="r92" class="ident">c</label> {</code></span>
-<span class="codeline" id="line-483"><code>			<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
-<span class="codeline" id="line-484"><code>		} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r90" class="ident">size</label> == <span class="lit-number">2</span> {</code></span>
-<span class="codeline" id="line-485"><code>		} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r93" class="ident">c</label> := <label for="r83" class="ident">p</label>[<label for="r87" class="ident">i</label>+<span class="lit-number">2</span>]; <label for="r93" class="ident">c</label> &lt; <a href="#line-46" class="ident">locb</a> || <a href="#line-47" class="ident">hicb</a> &lt; <label for="r93" class="ident">c</label> {</code></span>
-<span class="codeline" id="line-486"><code>			<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
-<span class="codeline" id="line-487"><code>		} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r90" class="ident">size</label> == <span class="lit-number">3</span> {</code></span>
-<span class="codeline" id="line-488"><code>		} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r94" class="ident">c</label> := <label for="r83" class="ident">p</label>[<label for="r87" class="ident">i</label>+<span class="lit-number">3</span>]; <label for="r94" class="ident">c</label> &lt; <a href="#line-46" class="ident">locb</a> || <a href="#line-47" class="ident">hicb</a> &lt; <label for="r94" class="ident">c</label> {</code></span>
-<span class="codeline" id="line-489"><code>			<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
-<span class="codeline" id="line-490"><code>		}</code></span>
-<span class="codeline" id="line-491"><code>		<label for="r87" class="ident">i</label> += <label for="r90" class="ident">size</label></code></span>
-<span class="codeline" id="line-492"><code>	}</code></span>
-<span class="codeline" id="line-493"><code>	<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
-<span class="codeline" id="line-494"><code>}</code></span>
-<span class="codeline" id="line-495"><code></code></span>
-<span class="codeline" id="line-496"><code><span class="comment">// ValidString reports whether s consists entirely of valid UTF-8-encoded runes.</span></code></span>
-<span class="codeline" id="line-497"><code><span class="keyword">func</span> <label for="r95" class="ident"><a href="../../../pkg/unicode/utf8.html#name-ValidString" class="ident">ValidString</a></label>(<label for="r96" class="ident">s</label> <a href="../../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
-<span class="codeline" id="line-498"><code>	<span class="comment">// Fast path. Check for and skip 8 bytes of ASCII characters per iteration.</span></code></span>
-<span class="codeline" id="line-499"><code>	<span class="keyword">for</span> <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r96" class="ident">s</label>) &gt;= <span class="lit-number">8</span> {</code></span>
-<span class="codeline" id="line-500"><code>		<span class="comment">// Combining two 32 bit loads allows the same code to be used</span></code></span>
-<span class="codeline" id="line-501"><code><span class="comment">		// for 32 and 64 bit platforms.</span></code></span>
-<span class="codeline" id="line-502"><code><span class="comment">		// The compiler can generate a 32bit load for first32 and second32</span></code></span>
-<span class="codeline" id="line-503"><code><span class="comment">		// on many platforms. See test/codegen/memcombine.go.</span></code></span>
-<span class="codeline" id="line-504"><code>		<label for="r97" class="ident">first32</label> := <a href="../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r96" class="ident">s</label>[<span class="lit-number">0</span>]) | <a href="../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r96" class="ident">s</label>[<span class="lit-number">1</span>])&lt;&lt;<span class="lit-number">8</span> | <a href="../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r96" class="ident">s</label>[<span class="lit-number">2</span>])&lt;&lt;<span class="lit-number">16</span> | <a href="../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r96" class="ident">s</label>[<span class="lit-number">3</span>])&lt;&lt;<span class="lit-number">24</span></code></span>
-<span class="codeline" id="line-505"><code>		<label for="r98" class="ident">second32</label> := <a href="../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r96" class="ident">s</label>[<span class="lit-number">4</span>]) | <a href="../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r96" class="ident">s</label>[<span class="lit-number">5</span>])&lt;&lt;<span class="lit-number">8</span> | <a href="../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r96" class="ident">s</label>[<span class="lit-number">6</span>])&lt;&lt;<span class="lit-number">16</span> | <a href="../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r96" class="ident">s</label>[<span class="lit-number">7</span>])&lt;&lt;<span class="lit-number">24</span></code></span>
-<span class="codeline" id="line-506"><code>		<span class="keyword">if</span> (<label for="r97" class="ident">first32</label>|<label for="r98" class="ident">second32</label>)&amp;<span class="lit-number">0x80808080</span> != <span class="lit-number">0</span> {</code></span>
-<span class="codeline" id="line-507"><code>			<span class="comment">// Found a non ASCII byte (&gt;= RuneSelf).</span></code></span>
-<span class="codeline" id="line-508"><code>			<span class="keyword">break</span></code></span>
-<span class="codeline" id="line-509"><code>		}</code></span>
-<span class="codeline" id="line-510"><code>		<label for="r96" class="ident">s</label> = <label for="r96" class="ident">s</label>[<span class="lit-number">8</span>:]</code></span>
-<span class="codeline" id="line-511"><code>	}</code></span>
-<span class="codeline" id="line-512"><code>	<label for="r99" class="ident">n</label> := <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r96" class="ident">s</label>)</code></span>
-<span class="codeline" id="line-513"><code>	<span class="keyword">for</span> <label for="r100" class="ident">i</label> := <span class="lit-number">0</span>; <label for="r100" class="ident">i</label> &lt; <label for="r99" class="ident">n</label>; {</code></span>
-<span class="codeline" id="line-514"><code>		<label for="r101" class="ident">si</label> := <label for="r96" class="ident">s</label>[<label for="r100" class="ident">i</label>]</code></span>
-<span class="codeline" id="line-515"><code>		<span class="keyword">if</span> <label for="r101" class="ident">si</label> &lt; <a href="#line-17" class="ident">RuneSelf</a> {</code></span>
-<span class="codeline" id="line-516"><code>			<label for="r100" class="ident">i</label>++</code></span>
-<span class="codeline" id="line-517"><code>			<span class="keyword">continue</span></code></span>
-<span class="codeline" id="line-518"><code>		}</code></span>
-<span class="codeline" id="line-519"><code>		<label for="r102" class="ident">x</label> := <a href="#line-65" class="ident">first</a>[<label for="r101" class="ident">si</label>]</code></span>
-<span class="codeline" id="line-520"><code>		<span class="keyword">if</span> <label for="r102" class="ident">x</label> == <a href="#line-53" class="ident">xx</a> {</code></span>
-<span class="codeline" id="line-521"><code>			<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-false" class="ident">false</a> <span class="comment">// Illegal starter byte.</span></code></span>
-<span class="codeline" id="line-522"><code>		}</code></span>
-<span class="codeline" id="line-523"><code>		<label for="r103" class="ident">size</label> := <a href="../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r102" class="ident">x</label> &amp; <span class="lit-number">7</span>)</code></span>
-<span class="codeline" id="line-524"><code>		<span class="keyword">if</span> <label for="r100" class="ident">i</label>+<label for="r103" class="ident">size</label> &gt; <label for="r99" class="ident">n</label> {</code></span>
-<span class="codeline" id="line-525"><code>			<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-false" class="ident">false</a> <span class="comment">// Short or invalid.</span></code></span>
-<span class="codeline" id="line-526"><code>		}</code></span>
-<span class="codeline" id="line-527"><code>		<label for="r104" class="ident">accept</label> := <a href="#line-94" class="ident">acceptRanges</a>[<label for="r102" class="ident">x</label>&gt;&gt;<span class="lit-number">4</span>]</code></span>
-<span class="codeline" id="line-528"><code>		<span class="keyword">if</span> <label for="r105" class="ident">c</label> := <label for="r96" class="ident">s</label>[<label for="r100" class="ident">i</label>+<span class="lit-number">1</span>]; <label for="r105" class="ident">c</label> &lt; <label for="r104" class="ident">accept</label>.<a href="#line-89" class="ident">lo</a> || <label for="r104" class="ident">accept</label>.<a href="#line-90" class="ident">hi</a> &lt; <label for="r105" class="ident">c</label> {</code></span>
-<span class="codeline" id="line-529"><code>			<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
-<span class="codeline" id="line-530"><code>		} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r103" class="ident">size</label> == <span class="lit-number">2</span> {</code></span>
-<span class="codeline" id="line-531"><code>		} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r106" class="ident">c</label> := <label for="r96" class="ident">s</label>[<label for="r100" class="ident">i</label>+<span class="lit-number">2</span>]; <label for="r106" class="ident">c</label> &lt; <a href="#line-46" class="ident">locb</a> || <a href="#line-47" class="ident">hicb</a> &lt; <label for="r106" class="ident">c</label> {</code></span>
-<span class="codeline" id="line-532"><code>			<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
-<span class="codeline" id="line-533"><code>		} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r103" class="ident">size</label> == <span class="lit-number">3</span> {</code></span>
-<span class="codeline" id="line-534"><code>		} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r107" class="ident">c</label> := <label for="r96" class="ident">s</label>[<label for="r100" class="ident">i</label>+<span class="lit-number">3</span>]; <label for="r107" class="ident">c</label> &lt; <a href="#line-46" class="ident">locb</a> || <a href="#line-47" class="ident">hicb</a> &lt; <label for="r107" class="ident">c</label> {</code></span>
-<span class="codeline" id="line-535"><code>			<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
-<span class="codeline" id="line-536"><code>		}</code></span>
-<span class="codeline" id="line-537"><code>		<label for="r100" class="ident">i</label> += <label for="r103" class="ident">size</label></code></span>
-<span class="codeline" id="line-538"><code>	}</code></span>
-<span class="codeline" id="line-539"><code>	<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
-<span class="codeline" id="line-540"><code>}</code></span>
-<span class="codeline" id="line-541"><code></code></span>
-<span class="codeline" id="line-542"><code><span class="comment">// ValidRune reports whether r can be legally encoded as UTF-8.</span></code></span>
-<span class="codeline" id="line-543"><code><span class="comment">// Code points that are out of range or a surrogate half are illegal.</span></code></span>
-<span class="codeline" id="line-544"><code><span class="keyword">func</span> <label for="r108" class="ident"><a href="../../../pkg/unicode/utf8.html#name-ValidRune" class="ident">ValidRune</a></label>(<label for="r109" class="ident">r</label> <a href="../../../pkg/builtin.html#name-rune" class="ident">rune</a>) <a href="../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
-<span class="codeline" id="line-545"><code>	<span class="keyword">switch</span> {</code></span>
-<span class="codeline" id="line-546"><code>	<span class="keyword">case</span> <span class="lit-number">0</span> &lt;= <label for="r109" class="ident">r</label> &amp;&amp; <label for="r109" class="ident">r</label> &lt; <a href="#line-24" class="ident">surrogateMin</a>:</code></span>
-<span class="codeline" id="line-547"><code>		<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
-<span class="codeline" id="line-548"><code>	<span class="keyword">case</span> <a href="#line-25" class="ident">surrogateMax</a> &lt; <label for="r109" class="ident">r</label> &amp;&amp; <label for="r109" class="ident">r</label> &lt;= <a href="#line-18" class="ident">MaxRune</a>:</code></span>
-<span class="codeline" id="line-549"><code>		<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
-<span class="codeline" id="line-550"><code>	}</code></span>
-<span class="codeline" id="line-551"><code>	<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
-<span class="codeline" id="line-552"><code>}</code></span>
+<span class="codeline" id="line-372"><code><span class="comment">// AppendRune appends the UTF-8 encoding of r to the end of p and</span></code></span>
+<span class="codeline" id="line-373"><code><span class="comment">// returns the extended buffer. If the rune is out of range,</span></code></span>
+<span class="codeline" id="line-374"><code><span class="comment">// it appends the encoding of RuneError.</span></code></span>
+<span class="codeline" id="line-375"><code><span class="keyword">func</span> <label for="r56" class="ident"><a href="../../../pkg/unicode/utf8.html#name-AppendRune" class="ident">AppendRune</a></label>(<label for="r57" class="ident">p</label> []<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <label for="r58" class="ident">r</label> <a href="../../../pkg/builtin.html#name-rune" class="ident">rune</a>) []<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a> {</code></span>
+<span class="codeline" id="line-376"><code>	<span class="comment">// This function is inlineable for fast handling of ASCII.</span></code></span>
+<span class="codeline" id="line-377"><code>	<span class="keyword">if</span> <a href="../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r58" class="ident">r</label>) &lt;= <a href="#line-41" class="ident">rune1Max</a> {</code></span>
+<span class="codeline" id="line-378"><code>		<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r57" class="ident">p</label>, <a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<label for="r58" class="ident">r</label>))</code></span>
+<span class="codeline" id="line-379"><code>	}</code></span>
+<span class="codeline" id="line-380"><code>	<span class="keyword">return</span> <a href="#line-383" class="ident">appendRuneNonASCII</a>(<label for="r57" class="ident">p</label>, <label for="r58" class="ident">r</label>)</code></span>
+<span class="codeline" id="line-381"><code>}</code></span>
+<span class="codeline" id="line-382"><code></code></span>
+<span class="codeline" id="line-383"><code><span class="keyword">func</span> <label for="r59" class="ident"><a href="../../../pkg/unicode/utf8.html#name-appendRuneNonASCII" class="ident">appendRuneNonASCII</a></label>(<label for="r60" class="ident">p</label> []<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <label for="r61" class="ident">r</label> <a href="../../../pkg/builtin.html#name-rune" class="ident">rune</a>) []<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a> {</code></span>
+<span class="codeline" id="line-384"><code>	<span class="comment">// Negative values are erroneous. Making it unsigned addresses the problem.</span></code></span>
+<span class="codeline" id="line-385"><code>	<span class="keyword">switch</span> <label for="r62" class="ident">i</label> := <a href="../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r61" class="ident">r</label>); {</code></span>
+<span class="codeline" id="line-386"><code>	<span class="keyword">case</span> <label for="r62" class="ident">i</label> &lt;= <a href="#line-42" class="ident">rune2Max</a>:</code></span>
+<span class="codeline" id="line-387"><code>		<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r60" class="ident">p</label>, <a href="#line-31" class="ident">t2</a>|<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<label for="r61" class="ident">r</label>&gt;&gt;<span class="lit-number">6</span>), <a href="#line-30" class="ident">tx</a>|<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<label for="r61" class="ident">r</label>)&amp;<a href="#line-36" class="ident">maskx</a>)</code></span>
+<span class="codeline" id="line-388"><code>	<span class="keyword">case</span> <label for="r62" class="ident">i</label> &gt; <a href="#line-18" class="ident">MaxRune</a>, <a href="#line-24" class="ident">surrogateMin</a> &lt;= <label for="r62" class="ident">i</label> &amp;&amp; <label for="r62" class="ident">i</label> &lt;= <a href="#line-25" class="ident">surrogateMax</a>:</code></span>
+<span class="codeline" id="line-389"><code>		<label for="r61" class="ident">r</label> = <a href="#line-16" class="ident">RuneError</a></code></span>
+<span class="codeline" id="line-390"><code>		<span class="keyword">fallthrough</span></code></span>
+<span class="codeline" id="line-391"><code>	<span class="keyword">case</span> <label for="r62" class="ident">i</label> &lt;= <a href="#line-43" class="ident">rune3Max</a>:</code></span>
+<span class="codeline" id="line-392"><code>		<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r60" class="ident">p</label>, <a href="#line-32" class="ident">t3</a>|<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<label for="r61" class="ident">r</label>&gt;&gt;<span class="lit-number">12</span>), <a href="#line-30" class="ident">tx</a>|<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<label for="r61" class="ident">r</label>&gt;&gt;<span class="lit-number">6</span>)&amp;<a href="#line-36" class="ident">maskx</a>, <a href="#line-30" class="ident">tx</a>|<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<label for="r61" class="ident">r</label>)&amp;<a href="#line-36" class="ident">maskx</a>)</code></span>
+<span class="codeline" id="line-393"><code>	<span class="keyword">default</span>:</code></span>
+<span class="codeline" id="line-394"><code>		<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r60" class="ident">p</label>, <a href="#line-33" class="ident">t4</a>|<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<label for="r61" class="ident">r</label>&gt;&gt;<span class="lit-number">18</span>), <a href="#line-30" class="ident">tx</a>|<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<label for="r61" class="ident">r</label>&gt;&gt;<span class="lit-number">12</span>)&amp;<a href="#line-36" class="ident">maskx</a>, <a href="#line-30" class="ident">tx</a>|<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<label for="r61" class="ident">r</label>&gt;&gt;<span class="lit-number">6</span>)&amp;<a href="#line-36" class="ident">maskx</a>, <a href="#line-30" class="ident">tx</a>|<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<label for="r61" class="ident">r</label>)&amp;<a href="#line-36" class="ident">maskx</a>)</code></span>
+<span class="codeline" id="line-395"><code>	}</code></span>
+<span class="codeline" id="line-396"><code>}</code></span>
+<span class="codeline" id="line-397"><code></code></span>
+<span class="codeline" id="line-398"><code><span class="comment">// RuneCount returns the number of runes in p. Erroneous and short</span></code></span>
+<span class="codeline" id="line-399"><code><span class="comment">// encodings are treated as single runes of width 1 byte.</span></code></span>
+<span class="codeline" id="line-400"><code><span class="keyword">func</span> <label for="r63" class="ident"><a href="../../../pkg/unicode/utf8.html#name-RuneCount" class="ident">RuneCount</a></label>(<label for="r64" class="ident">p</label> []<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>) <a href="../../../pkg/builtin.html#name-int" class="ident">int</a> {</code></span>
+<span class="codeline" id="line-401"><code>	<label for="r65" class="ident">np</label> := <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r64" class="ident">p</label>)</code></span>
+<span class="codeline" id="line-402"><code>	<span class="keyword">var</span> <label for="r66" class="ident">n</label> <a href="../../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
+<span class="codeline" id="line-403"><code>	<span class="keyword">for</span> <label for="r67" class="ident">i</label> := <span class="lit-number">0</span>; <label for="r67" class="ident">i</label> &lt; <label for="r65" class="ident">np</label>; {</code></span>
+<span class="codeline" id="line-404"><code>		<label for="r66" class="ident">n</label>++</code></span>
+<span class="codeline" id="line-405"><code>		<label for="r68" class="ident">c</label> := <label for="r64" class="ident">p</label>[<label for="r67" class="ident">i</label>]</code></span>
+<span class="codeline" id="line-406"><code>		<span class="keyword">if</span> <label for="r68" class="ident">c</label> &lt; <a href="#line-17" class="ident">RuneSelf</a> {</code></span>
+<span class="codeline" id="line-407"><code>			<span class="comment">// ASCII fast path</span></code></span>
+<span class="codeline" id="line-408"><code>			<label for="r67" class="ident">i</label>++</code></span>
+<span class="codeline" id="line-409"><code>			<span class="keyword">continue</span></code></span>
+<span class="codeline" id="line-410"><code>		}</code></span>
+<span class="codeline" id="line-411"><code>		<label for="r69" class="ident">x</label> := <a href="#line-65" class="ident">first</a>[<label for="r68" class="ident">c</label>]</code></span>
+<span class="codeline" id="line-412"><code>		<span class="keyword">if</span> <label for="r69" class="ident">x</label> == <a href="#line-53" class="ident">xx</a> {</code></span>
+<span class="codeline" id="line-413"><code>			<label for="r67" class="ident">i</label>++ <span class="comment">// invalid.</span></code></span>
+<span class="codeline" id="line-414"><code>			<span class="keyword">continue</span></code></span>
+<span class="codeline" id="line-415"><code>		}</code></span>
+<span class="codeline" id="line-416"><code>		<label for="r70" class="ident">size</label> := <a href="../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r69" class="ident">x</label> &amp; <span class="lit-number">7</span>)</code></span>
+<span class="codeline" id="line-417"><code>		<span class="keyword">if</span> <label for="r67" class="ident">i</label>+<label for="r70" class="ident">size</label> &gt; <label for="r65" class="ident">np</label> {</code></span>
+<span class="codeline" id="line-418"><code>			<label for="r67" class="ident">i</label>++ <span class="comment">// Short or invalid.</span></code></span>
+<span class="codeline" id="line-419"><code>			<span class="keyword">continue</span></code></span>
+<span class="codeline" id="line-420"><code>		}</code></span>
+<span class="codeline" id="line-421"><code>		<label for="r71" class="ident">accept</label> := <a href="#line-94" class="ident">acceptRanges</a>[<label for="r69" class="ident">x</label>&gt;&gt;<span class="lit-number">4</span>]</code></span>
+<span class="codeline" id="line-422"><code>		<span class="keyword">if</span> <label for="r72" class="ident">c</label> := <label for="r64" class="ident">p</label>[<label for="r67" class="ident">i</label>+<span class="lit-number">1</span>]; <label for="r72" class="ident">c</label> &lt; <label for="r71" class="ident">accept</label>.<a href="#line-89" class="ident">lo</a> || <label for="r71" class="ident">accept</label>.<a href="#line-90" class="ident">hi</a> &lt; <label for="r72" class="ident">c</label> {</code></span>
+<span class="codeline" id="line-423"><code>			<label for="r70" class="ident">size</label> = <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-424"><code>		} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r70" class="ident">size</label> == <span class="lit-number">2</span> {</code></span>
+<span class="codeline" id="line-425"><code>		} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r73" class="ident">c</label> := <label for="r64" class="ident">p</label>[<label for="r67" class="ident">i</label>+<span class="lit-number">2</span>]; <label for="r73" class="ident">c</label> &lt; <a href="#line-46" class="ident">locb</a> || <a href="#line-47" class="ident">hicb</a> &lt; <label for="r73" class="ident">c</label> {</code></span>
+<span class="codeline" id="line-426"><code>			<label for="r70" class="ident">size</label> = <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-427"><code>		} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r70" class="ident">size</label> == <span class="lit-number">3</span> {</code></span>
+<span class="codeline" id="line-428"><code>		} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r74" class="ident">c</label> := <label for="r64" class="ident">p</label>[<label for="r67" class="ident">i</label>+<span class="lit-number">3</span>]; <label for="r74" class="ident">c</label> &lt; <a href="#line-46" class="ident">locb</a> || <a href="#line-47" class="ident">hicb</a> &lt; <label for="r74" class="ident">c</label> {</code></span>
+<span class="codeline" id="line-429"><code>			<label for="r70" class="ident">size</label> = <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-430"><code>		}</code></span>
+<span class="codeline" id="line-431"><code>		<label for="r67" class="ident">i</label> += <label for="r70" class="ident">size</label></code></span>
+<span class="codeline" id="line-432"><code>	}</code></span>
+<span class="codeline" id="line-433"><code>	<span class="keyword">return</span> <label for="r66" class="ident">n</label></code></span>
+<span class="codeline" id="line-434"><code>}</code></span>
+<span class="codeline" id="line-435"><code></code></span>
+<span class="codeline" id="line-436"><code><span class="comment">// RuneCountInString is like RuneCount but its input is a string.</span></code></span>
+<span class="codeline" id="line-437"><code><span class="keyword">func</span> <label for="r75" class="ident"><a href="../../../pkg/unicode/utf8.html#name-RuneCountInString" class="ident">RuneCountInString</a></label>(<label for="r76" class="ident">s</label> <a href="../../../pkg/builtin.html#name-string" class="ident">string</a>) (<label for="r77" class="ident">n</label> <a href="../../../pkg/builtin.html#name-int" class="ident">int</a>) {</code></span>
+<span class="codeline" id="line-438"><code>	<label for="r78" class="ident">ns</label> := <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r76" class="ident">s</label>)</code></span>
+<span class="codeline" id="line-439"><code>	<span class="keyword">for</span> <label for="r79" class="ident">i</label> := <span class="lit-number">0</span>; <label for="r79" class="ident">i</label> &lt; <label for="r78" class="ident">ns</label>; <label for="r77" class="ident">n</label>++ {</code></span>
+<span class="codeline" id="line-440"><code>		<label for="r80" class="ident">c</label> := <label for="r76" class="ident">s</label>[<label for="r79" class="ident">i</label>]</code></span>
+<span class="codeline" id="line-441"><code>		<span class="keyword">if</span> <label for="r80" class="ident">c</label> &lt; <a href="#line-17" class="ident">RuneSelf</a> {</code></span>
+<span class="codeline" id="line-442"><code>			<span class="comment">// ASCII fast path</span></code></span>
+<span class="codeline" id="line-443"><code>			<label for="r79" class="ident">i</label>++</code></span>
+<span class="codeline" id="line-444"><code>			<span class="keyword">continue</span></code></span>
+<span class="codeline" id="line-445"><code>		}</code></span>
+<span class="codeline" id="line-446"><code>		<label for="r81" class="ident">x</label> := <a href="#line-65" class="ident">first</a>[<label for="r80" class="ident">c</label>]</code></span>
+<span class="codeline" id="line-447"><code>		<span class="keyword">if</span> <label for="r81" class="ident">x</label> == <a href="#line-53" class="ident">xx</a> {</code></span>
+<span class="codeline" id="line-448"><code>			<label for="r79" class="ident">i</label>++ <span class="comment">// invalid.</span></code></span>
+<span class="codeline" id="line-449"><code>			<span class="keyword">continue</span></code></span>
+<span class="codeline" id="line-450"><code>		}</code></span>
+<span class="codeline" id="line-451"><code>		<label for="r82" class="ident">size</label> := <a href="../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r81" class="ident">x</label> &amp; <span class="lit-number">7</span>)</code></span>
+<span class="codeline" id="line-452"><code>		<span class="keyword">if</span> <label for="r79" class="ident">i</label>+<label for="r82" class="ident">size</label> &gt; <label for="r78" class="ident">ns</label> {</code></span>
+<span class="codeline" id="line-453"><code>			<label for="r79" class="ident">i</label>++ <span class="comment">// Short or invalid.</span></code></span>
+<span class="codeline" id="line-454"><code>			<span class="keyword">continue</span></code></span>
+<span class="codeline" id="line-455"><code>		}</code></span>
+<span class="codeline" id="line-456"><code>		<label for="r83" class="ident">accept</label> := <a href="#line-94" class="ident">acceptRanges</a>[<label for="r81" class="ident">x</label>&gt;&gt;<span class="lit-number">4</span>]</code></span>
+<span class="codeline" id="line-457"><code>		<span class="keyword">if</span> <label for="r84" class="ident">c</label> := <label for="r76" class="ident">s</label>[<label for="r79" class="ident">i</label>+<span class="lit-number">1</span>]; <label for="r84" class="ident">c</label> &lt; <label for="r83" class="ident">accept</label>.<a href="#line-89" class="ident">lo</a> || <label for="r83" class="ident">accept</label>.<a href="#line-90" class="ident">hi</a> &lt; <label for="r84" class="ident">c</label> {</code></span>
+<span class="codeline" id="line-458"><code>			<label for="r82" class="ident">size</label> = <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-459"><code>		} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r82" class="ident">size</label> == <span class="lit-number">2</span> {</code></span>
+<span class="codeline" id="line-460"><code>		} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r85" class="ident">c</label> := <label for="r76" class="ident">s</label>[<label for="r79" class="ident">i</label>+<span class="lit-number">2</span>]; <label for="r85" class="ident">c</label> &lt; <a href="#line-46" class="ident">locb</a> || <a href="#line-47" class="ident">hicb</a> &lt; <label for="r85" class="ident">c</label> {</code></span>
+<span class="codeline" id="line-461"><code>			<label for="r82" class="ident">size</label> = <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-462"><code>		} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r82" class="ident">size</label> == <span class="lit-number">3</span> {</code></span>
+<span class="codeline" id="line-463"><code>		} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r86" class="ident">c</label> := <label for="r76" class="ident">s</label>[<label for="r79" class="ident">i</label>+<span class="lit-number">3</span>]; <label for="r86" class="ident">c</label> &lt; <a href="#line-46" class="ident">locb</a> || <a href="#line-47" class="ident">hicb</a> &lt; <label for="r86" class="ident">c</label> {</code></span>
+<span class="codeline" id="line-464"><code>			<label for="r82" class="ident">size</label> = <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-465"><code>		}</code></span>
+<span class="codeline" id="line-466"><code>		<label for="r79" class="ident">i</label> += <label for="r82" class="ident">size</label></code></span>
+<span class="codeline" id="line-467"><code>	}</code></span>
+<span class="codeline" id="line-468"><code>	<span class="keyword">return</span> <label for="r77" class="ident">n</label></code></span>
+<span class="codeline" id="line-469"><code>}</code></span>
+<span class="codeline" id="line-470"><code></code></span>
+<span class="codeline" id="line-471"><code><span class="comment">// RuneStart reports whether the byte could be the first byte of an encoded,</span></code></span>
+<span class="codeline" id="line-472"><code><span class="comment">// possibly invalid rune. Second and subsequent bytes always have the top two</span></code></span>
+<span class="codeline" id="line-473"><code><span class="comment">// bits set to 10.</span></code></span>
+<span class="codeline" id="line-474"><code><span class="keyword">func</span> <label for="r87" class="ident"><a href="../../../pkg/unicode/utf8.html#name-RuneStart" class="ident">RuneStart</a></label>(<label for="r88" class="ident">b</label> <a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>) <a href="../../../pkg/builtin.html#name-bool" class="ident">bool</a> { <span class="keyword">return</span> <label for="r88" class="ident">b</label>&amp;<span class="lit-number">0xC0</span> != <span class="lit-number">0x80</span> }</code></span>
+<span class="codeline" id="line-475"><code></code></span>
+<span class="codeline" id="line-476"><code><span class="comment">// Valid reports whether p consists entirely of valid UTF-8-encoded runes.</span></code></span>
+<span class="codeline" id="line-477"><code><span class="keyword">func</span> <label for="r89" class="ident"><a href="../../../pkg/unicode/utf8.html#name-Valid" class="ident">Valid</a></label>(<label for="r90" class="ident">p</label> []<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>) <a href="../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-478"><code>	<span class="comment">// Fast path. Check for and skip 8 bytes of ASCII characters per iteration.</span></code></span>
+<span class="codeline" id="line-479"><code>	<span class="keyword">for</span> <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r90" class="ident">p</label>) &gt;= <span class="lit-number">8</span> {</code></span>
+<span class="codeline" id="line-480"><code>		<span class="comment">// Combining two 32 bit loads allows the same code to be used</span></code></span>
+<span class="codeline" id="line-481"><code><span class="comment">		// for 32 and 64 bit platforms.</span></code></span>
+<span class="codeline" id="line-482"><code><span class="comment">		// The compiler can generate a 32bit load for first32 and second32</span></code></span>
+<span class="codeline" id="line-483"><code><span class="comment">		// on many platforms. See test/codegen/memcombine.go.</span></code></span>
+<span class="codeline" id="line-484"><code>		<label for="r91" class="ident">first32</label> := <a href="../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r90" class="ident">p</label>[<span class="lit-number">0</span>]) | <a href="../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r90" class="ident">p</label>[<span class="lit-number">1</span>])&lt;&lt;<span class="lit-number">8</span> | <a href="../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r90" class="ident">p</label>[<span class="lit-number">2</span>])&lt;&lt;<span class="lit-number">16</span> | <a href="../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r90" class="ident">p</label>[<span class="lit-number">3</span>])&lt;&lt;<span class="lit-number">24</span></code></span>
+<span class="codeline" id="line-485"><code>		<label for="r92" class="ident">second32</label> := <a href="../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r90" class="ident">p</label>[<span class="lit-number">4</span>]) | <a href="../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r90" class="ident">p</label>[<span class="lit-number">5</span>])&lt;&lt;<span class="lit-number">8</span> | <a href="../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r90" class="ident">p</label>[<span class="lit-number">6</span>])&lt;&lt;<span class="lit-number">16</span> | <a href="../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r90" class="ident">p</label>[<span class="lit-number">7</span>])&lt;&lt;<span class="lit-number">24</span></code></span>
+<span class="codeline" id="line-486"><code>		<span class="keyword">if</span> (<label for="r91" class="ident">first32</label>|<label for="r92" class="ident">second32</label>)&amp;<span class="lit-number">0x80808080</span> != <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-487"><code>			<span class="comment">// Found a non ASCII byte (&gt;= RuneSelf).</span></code></span>
+<span class="codeline" id="line-488"><code>			<span class="keyword">break</span></code></span>
+<span class="codeline" id="line-489"><code>		}</code></span>
+<span class="codeline" id="line-490"><code>		<label for="r90" class="ident">p</label> = <label for="r90" class="ident">p</label>[<span class="lit-number">8</span>:]</code></span>
+<span class="codeline" id="line-491"><code>	}</code></span>
+<span class="codeline" id="line-492"><code>	<label for="r93" class="ident">n</label> := <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r90" class="ident">p</label>)</code></span>
+<span class="codeline" id="line-493"><code>	<span class="keyword">for</span> <label for="r94" class="ident">i</label> := <span class="lit-number">0</span>; <label for="r94" class="ident">i</label> &lt; <label for="r93" class="ident">n</label>; {</code></span>
+<span class="codeline" id="line-494"><code>		<label for="r95" class="ident">pi</label> := <label for="r90" class="ident">p</label>[<label for="r94" class="ident">i</label>]</code></span>
+<span class="codeline" id="line-495"><code>		<span class="keyword">if</span> <label for="r95" class="ident">pi</label> &lt; <a href="#line-17" class="ident">RuneSelf</a> {</code></span>
+<span class="codeline" id="line-496"><code>			<label for="r94" class="ident">i</label>++</code></span>
+<span class="codeline" id="line-497"><code>			<span class="keyword">continue</span></code></span>
+<span class="codeline" id="line-498"><code>		}</code></span>
+<span class="codeline" id="line-499"><code>		<label for="r96" class="ident">x</label> := <a href="#line-65" class="ident">first</a>[<label for="r95" class="ident">pi</label>]</code></span>
+<span class="codeline" id="line-500"><code>		<span class="keyword">if</span> <label for="r96" class="ident">x</label> == <a href="#line-53" class="ident">xx</a> {</code></span>
+<span class="codeline" id="line-501"><code>			<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-false" class="ident">false</a> <span class="comment">// Illegal starter byte.</span></code></span>
+<span class="codeline" id="line-502"><code>		}</code></span>
+<span class="codeline" id="line-503"><code>		<label for="r97" class="ident">size</label> := <a href="../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r96" class="ident">x</label> &amp; <span class="lit-number">7</span>)</code></span>
+<span class="codeline" id="line-504"><code>		<span class="keyword">if</span> <label for="r94" class="ident">i</label>+<label for="r97" class="ident">size</label> &gt; <label for="r93" class="ident">n</label> {</code></span>
+<span class="codeline" id="line-505"><code>			<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-false" class="ident">false</a> <span class="comment">// Short or invalid.</span></code></span>
+<span class="codeline" id="line-506"><code>		}</code></span>
+<span class="codeline" id="line-507"><code>		<label for="r98" class="ident">accept</label> := <a href="#line-94" class="ident">acceptRanges</a>[<label for="r96" class="ident">x</label>&gt;&gt;<span class="lit-number">4</span>]</code></span>
+<span class="codeline" id="line-508"><code>		<span class="keyword">if</span> <label for="r99" class="ident">c</label> := <label for="r90" class="ident">p</label>[<label for="r94" class="ident">i</label>+<span class="lit-number">1</span>]; <label for="r99" class="ident">c</label> &lt; <label for="r98" class="ident">accept</label>.<a href="#line-89" class="ident">lo</a> || <label for="r98" class="ident">accept</label>.<a href="#line-90" class="ident">hi</a> &lt; <label for="r99" class="ident">c</label> {</code></span>
+<span class="codeline" id="line-509"><code>			<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-510"><code>		} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r97" class="ident">size</label> == <span class="lit-number">2</span> {</code></span>
+<span class="codeline" id="line-511"><code>		} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r100" class="ident">c</label> := <label for="r90" class="ident">p</label>[<label for="r94" class="ident">i</label>+<span class="lit-number">2</span>]; <label for="r100" class="ident">c</label> &lt; <a href="#line-46" class="ident">locb</a> || <a href="#line-47" class="ident">hicb</a> &lt; <label for="r100" class="ident">c</label> {</code></span>
+<span class="codeline" id="line-512"><code>			<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-513"><code>		} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r97" class="ident">size</label> == <span class="lit-number">3</span> {</code></span>
+<span class="codeline" id="line-514"><code>		} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r101" class="ident">c</label> := <label for="r90" class="ident">p</label>[<label for="r94" class="ident">i</label>+<span class="lit-number">3</span>]; <label for="r101" class="ident">c</label> &lt; <a href="#line-46" class="ident">locb</a> || <a href="#line-47" class="ident">hicb</a> &lt; <label for="r101" class="ident">c</label> {</code></span>
+<span class="codeline" id="line-515"><code>			<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-516"><code>		}</code></span>
+<span class="codeline" id="line-517"><code>		<label for="r94" class="ident">i</label> += <label for="r97" class="ident">size</label></code></span>
+<span class="codeline" id="line-518"><code>	}</code></span>
+<span class="codeline" id="line-519"><code>	<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-520"><code>}</code></span>
+<span class="codeline" id="line-521"><code></code></span>
+<span class="codeline" id="line-522"><code><span class="comment">// ValidString reports whether s consists entirely of valid UTF-8-encoded runes.</span></code></span>
+<span class="codeline" id="line-523"><code><span class="keyword">func</span> <label for="r102" class="ident"><a href="../../../pkg/unicode/utf8.html#name-ValidString" class="ident">ValidString</a></label>(<label for="r103" class="ident">s</label> <a href="../../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-524"><code>	<span class="comment">// Fast path. Check for and skip 8 bytes of ASCII characters per iteration.</span></code></span>
+<span class="codeline" id="line-525"><code>	<span class="keyword">for</span> <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r103" class="ident">s</label>) &gt;= <span class="lit-number">8</span> {</code></span>
+<span class="codeline" id="line-526"><code>		<span class="comment">// Combining two 32 bit loads allows the same code to be used</span></code></span>
+<span class="codeline" id="line-527"><code><span class="comment">		// for 32 and 64 bit platforms.</span></code></span>
+<span class="codeline" id="line-528"><code><span class="comment">		// The compiler can generate a 32bit load for first32 and second32</span></code></span>
+<span class="codeline" id="line-529"><code><span class="comment">		// on many platforms. See test/codegen/memcombine.go.</span></code></span>
+<span class="codeline" id="line-530"><code>		<label for="r104" class="ident">first32</label> := <a href="../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r103" class="ident">s</label>[<span class="lit-number">0</span>]) | <a href="../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r103" class="ident">s</label>[<span class="lit-number">1</span>])&lt;&lt;<span class="lit-number">8</span> | <a href="../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r103" class="ident">s</label>[<span class="lit-number">2</span>])&lt;&lt;<span class="lit-number">16</span> | <a href="../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r103" class="ident">s</label>[<span class="lit-number">3</span>])&lt;&lt;<span class="lit-number">24</span></code></span>
+<span class="codeline" id="line-531"><code>		<label for="r105" class="ident">second32</label> := <a href="../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r103" class="ident">s</label>[<span class="lit-number">4</span>]) | <a href="../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r103" class="ident">s</label>[<span class="lit-number">5</span>])&lt;&lt;<span class="lit-number">8</span> | <a href="../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r103" class="ident">s</label>[<span class="lit-number">6</span>])&lt;&lt;<span class="lit-number">16</span> | <a href="../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r103" class="ident">s</label>[<span class="lit-number">7</span>])&lt;&lt;<span class="lit-number">24</span></code></span>
+<span class="codeline" id="line-532"><code>		<span class="keyword">if</span> (<label for="r104" class="ident">first32</label>|<label for="r105" class="ident">second32</label>)&amp;<span class="lit-number">0x80808080</span> != <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-533"><code>			<span class="comment">// Found a non ASCII byte (&gt;= RuneSelf).</span></code></span>
+<span class="codeline" id="line-534"><code>			<span class="keyword">break</span></code></span>
+<span class="codeline" id="line-535"><code>		}</code></span>
+<span class="codeline" id="line-536"><code>		<label for="r103" class="ident">s</label> = <label for="r103" class="ident">s</label>[<span class="lit-number">8</span>:]</code></span>
+<span class="codeline" id="line-537"><code>	}</code></span>
+<span class="codeline" id="line-538"><code>	<label for="r106" class="ident">n</label> := <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r103" class="ident">s</label>)</code></span>
+<span class="codeline" id="line-539"><code>	<span class="keyword">for</span> <label for="r107" class="ident">i</label> := <span class="lit-number">0</span>; <label for="r107" class="ident">i</label> &lt; <label for="r106" class="ident">n</label>; {</code></span>
+<span class="codeline" id="line-540"><code>		<label for="r108" class="ident">si</label> := <label for="r103" class="ident">s</label>[<label for="r107" class="ident">i</label>]</code></span>
+<span class="codeline" id="line-541"><code>		<span class="keyword">if</span> <label for="r108" class="ident">si</label> &lt; <a href="#line-17" class="ident">RuneSelf</a> {</code></span>
+<span class="codeline" id="line-542"><code>			<label for="r107" class="ident">i</label>++</code></span>
+<span class="codeline" id="line-543"><code>			<span class="keyword">continue</span></code></span>
+<span class="codeline" id="line-544"><code>		}</code></span>
+<span class="codeline" id="line-545"><code>		<label for="r109" class="ident">x</label> := <a href="#line-65" class="ident">first</a>[<label for="r108" class="ident">si</label>]</code></span>
+<span class="codeline" id="line-546"><code>		<span class="keyword">if</span> <label for="r109" class="ident">x</label> == <a href="#line-53" class="ident">xx</a> {</code></span>
+<span class="codeline" id="line-547"><code>			<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-false" class="ident">false</a> <span class="comment">// Illegal starter byte.</span></code></span>
+<span class="codeline" id="line-548"><code>		}</code></span>
+<span class="codeline" id="line-549"><code>		<label for="r110" class="ident">size</label> := <a href="../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r109" class="ident">x</label> &amp; <span class="lit-number">7</span>)</code></span>
+<span class="codeline" id="line-550"><code>		<span class="keyword">if</span> <label for="r107" class="ident">i</label>+<label for="r110" class="ident">size</label> &gt; <label for="r106" class="ident">n</label> {</code></span>
+<span class="codeline" id="line-551"><code>			<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-false" class="ident">false</a> <span class="comment">// Short or invalid.</span></code></span>
+<span class="codeline" id="line-552"><code>		}</code></span>
+<span class="codeline" id="line-553"><code>		<label for="r111" class="ident">accept</label> := <a href="#line-94" class="ident">acceptRanges</a>[<label for="r109" class="ident">x</label>&gt;&gt;<span class="lit-number">4</span>]</code></span>
+<span class="codeline" id="line-554"><code>		<span class="keyword">if</span> <label for="r112" class="ident">c</label> := <label for="r103" class="ident">s</label>[<label for="r107" class="ident">i</label>+<span class="lit-number">1</span>]; <label for="r112" class="ident">c</label> &lt; <label for="r111" class="ident">accept</label>.<a href="#line-89" class="ident">lo</a> || <label for="r111" class="ident">accept</label>.<a href="#line-90" class="ident">hi</a> &lt; <label for="r112" class="ident">c</label> {</code></span>
+<span class="codeline" id="line-555"><code>			<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-556"><code>		} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r110" class="ident">size</label> == <span class="lit-number">2</span> {</code></span>
+<span class="codeline" id="line-557"><code>		} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r113" class="ident">c</label> := <label for="r103" class="ident">s</label>[<label for="r107" class="ident">i</label>+<span class="lit-number">2</span>]; <label for="r113" class="ident">c</label> &lt; <a href="#line-46" class="ident">locb</a> || <a href="#line-47" class="ident">hicb</a> &lt; <label for="r113" class="ident">c</label> {</code></span>
+<span class="codeline" id="line-558"><code>			<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-559"><code>		} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r110" class="ident">size</label> == <span class="lit-number">3</span> {</code></span>
+<span class="codeline" id="line-560"><code>		} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r114" class="ident">c</label> := <label for="r103" class="ident">s</label>[<label for="r107" class="ident">i</label>+<span class="lit-number">3</span>]; <label for="r114" class="ident">c</label> &lt; <a href="#line-46" class="ident">locb</a> || <a href="#line-47" class="ident">hicb</a> &lt; <label for="r114" class="ident">c</label> {</code></span>
+<span class="codeline" id="line-561"><code>			<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-562"><code>		}</code></span>
+<span class="codeline" id="line-563"><code>		<label for="r107" class="ident">i</label> += <label for="r110" class="ident">size</label></code></span>
+<span class="codeline" id="line-564"><code>	}</code></span>
+<span class="codeline" id="line-565"><code>	<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-566"><code>}</code></span>
+<span class="codeline" id="line-567"><code></code></span>
+<span class="codeline" id="line-568"><code><span class="comment">// ValidRune reports whether r can be legally encoded as UTF-8.</span></code></span>
+<span class="codeline" id="line-569"><code><span class="comment">// Code points that are out of range or a surrogate half are illegal.</span></code></span>
+<span class="codeline" id="line-570"><code><span class="keyword">func</span> <label for="r115" class="ident"><a href="../../../pkg/unicode/utf8.html#name-ValidRune" class="ident">ValidRune</a></label>(<label for="r116" class="ident">r</label> <a href="../../../pkg/builtin.html#name-rune" class="ident">rune</a>) <a href="../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-571"><code>	<span class="keyword">switch</span> {</code></span>
+<span class="codeline" id="line-572"><code>	<span class="keyword">case</span> <span class="lit-number">0</span> &lt;= <label for="r116" class="ident">r</label> &amp;&amp; <label for="r116" class="ident">r</label> &lt; <a href="#line-24" class="ident">surrogateMin</a>:</code></span>
+<span class="codeline" id="line-573"><code>		<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-574"><code>	<span class="keyword">case</span> <a href="#line-25" class="ident">surrogateMax</a> &lt; <label for="r116" class="ident">r</label> &amp;&amp; <label for="r116" class="ident">r</label> &lt;= <a href="#line-18" class="ident">MaxRune</a>:</code></span>
+<span class="codeline" id="line-575"><code>		<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-576"><code>	}</code></span>
+<span class="codeline" id="line-577"><code>	<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-578"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

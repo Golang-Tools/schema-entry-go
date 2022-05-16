@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Package: github.com/akamensky/argparse</title>
-<link href="../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="package-details"><code><span style="font-size:xx-large;">package <b>argparse</b></span>
@@ -33,10 +33,10 @@
 		Arg interface provides exporting of arg structure, while exposing it
 
 		<input type='checkbox' class="fold" id="Arg-fold-methods"><label for="Arg-fold-methods">Methods (<i>total 4, all are exported</i>)</label><span id='Arg-fold-methods-items' class="fold-items"><span>
-			<span class="nodocs">( T) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-30">GetLname</a>() <a href="../../builtin.html#name-string">string</a></span></span><span>
-			<span class="nodocs">( T) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-28">GetOpts</a>() *<a href="#name-Options">Options</a></span></span><span>
-			<span class="nodocs">( T) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-31">GetResult</a>() interface{}</span></span><span>
-			<span class="nodocs">( T) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-29">GetSname</a>() <a href="../../builtin.html#name-string">string</a></span></span></span>
+			<span class="nodocs">( Arg) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-30">GetLname</a>() <a href="../../builtin.html#name-string">string</a></span></span><span>
+			<span class="nodocs">( Arg) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-28">GetOpts</a>() *<a href="#name-Options">Options</a></span></span><span>
+			<span class="nodocs">( Arg) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-31">GetResult</a>() interface{}</span></span><span>
+			<span class="nodocs">( Arg) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-29">GetSname</a>() <a href="../../builtin.html#name-string">string</a></span></span></span>
 		<input type='checkbox' class="fold" id="Arg-fold-impledby"><label for="Arg-fold-impledby">Implemented By (<i>at least one unexported</i>)</label><span id='Arg-fold-impledby-items' class="fold-items">
 			<input type='checkbox' class="showhide" id="Arg-showhide-impedBys"><i><label for="Arg-showhide-impedBys" class="show-inline">/* at least one unexported ... */</label><label for="Arg-showhide-impedBys" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
 			 <a href="#name-arg">arg</a></i></span></span>
@@ -60,10 +60,10 @@
 			<span class="nodocs"><a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-27">parent</a> <i>*<b>Command</b></i></span></i></span><span class="hidden"><i>
 			<span class="nodocs"><a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-25">parsed</a> <i><a href="../../builtin.html#name-bool">bool</a></i></span></i></span></span>
 		<input type='checkbox' class="fold" id="Command-fold-methods"><label for="Command-fold-methods">Methods (<i>total 30, in which 22 are exported</i>)</label><span id='Command-fold-methods-items' class="fold-items"><span>
-			<input type='checkbox' class="fold" id="Command-fold-method-ExitOnHelp"><label for="Command-fold-method-ExitOnHelp">(*T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-170">ExitOnHelp</a>(b <a href="../../builtin.html#name-bool">bool</a>)</label><span id='Command-fold-method-ExitOnHelp-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Command-fold-method-ExitOnHelp"><label for="Command-fold-method-ExitOnHelp">(*Command) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-170">ExitOnHelp</a>(b <a href="../../builtin.html#name-bool">bool</a>)</label><span id='Command-fold-method-ExitOnHelp-docs' class="fold-docs">
 				ExitOnHelp sets the exitOnHelp variable of Parser
 </span></span><span>
-			<input type='checkbox' class="fold" id="Command-fold-method-File"><label for="Command-fold-method-File">(*T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-310">File</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, flag <a href="../../builtin.html#name-int">int</a>, perm <a href="../../os.html">os</a>.<a href="../../os.html#name-FileMode">FileMode</a>, opts *<a href="#name-Options">Options</a>) *<a href="../../os.html">os</a>.<a href="../../os.html#name-File">File</a></label><span id='Command-fold-method-File-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Command-fold-method-File"><label for="Command-fold-method-File">(*Command) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-310">File</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, flag <a href="../../builtin.html#name-int">int</a>, perm <a href="../../os.html">os</a>.<a href="../../os.html#name-FileMode">FileMode</a>, opts *<a href="#name-Options">Options</a>) *<a href="../../os.html">os</a>.<a href="../../os.html#name-File">File</a></label><span id='Command-fold-method-File-docs' class="fold-docs">
 				File creates new file argument, which is when provided will check if file exists or attempt to create it
 				depending on provided flags (same as for os.OpenFile).
 				It takes same as all other arguments short and long names, additionally it takes flags that specify
@@ -72,13 +72,13 @@
 				Returns a pointer to os.File which will be set to opened file on success. On error the Parser.Parse
 				will return error and the pointer might be nil.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Command-fold-method-FileList"><label for="Command-fold-method-FileList">(*T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-413">FileList</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, flag <a href="../../builtin.html#name-int">int</a>, perm <a href="../../os.html">os</a>.<a href="../../os.html#name-FileMode">FileMode</a>, opts *<a href="#name-Options">Options</a>) *[]<a href="../../os.html">os</a>.<a href="../../os.html#name-File">File</a></label><span id='Command-fold-method-FileList-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Command-fold-method-FileList"><label for="Command-fold-method-FileList">(*Command) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-413">FileList</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, flag <a href="../../builtin.html#name-int">int</a>, perm <a href="../../os.html">os</a>.<a href="../../os.html#name-FileMode">FileMode</a>, opts *<a href="#name-Options">Options</a>) *[]<a href="../../os.html">os</a>.<a href="../../os.html#name-File">File</a></label><span id='Command-fold-method-FileList-docs' class="fold-docs">
 				FileList creates new file list argument. This is the argument that is allowed to be present multiple times on CLI.
 				All appearances of this argument on CLI will be collected into the list of os.File values. If no argument
 				provided, then the list is empty. Takes same parameters as File
 				Returns a pointer the list of os.File values.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Command-fold-method-Flag"><label for="Command-fold-method-Flag">(*T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-190">Flag</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, opts *<a href="#name-Options">Options</a>) *<a href="../../builtin.html#name-bool">bool</a></label><span id='Command-fold-method-Flag-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Command-fold-method-Flag"><label for="Command-fold-method-Flag">(*Command) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-190">Flag</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, opts *<a href="#name-Options">Options</a>) *<a href="../../builtin.html#name-bool">bool</a></label><span id='Command-fold-method-Flag-docs' class="fold-docs">
 				Flag Creates new flag type of argument, which is boolean value showing if argument was provided or not.
 				Takes short name, long name and pointer to options (optional).
 				Short name must be single character, but can be omitted by giving empty string.
@@ -87,7 +87,7 @@
 				provided on Command line arguments, then the value is changed to true.
 				Set of Flag and FlagCounter shorthand arguments can be combined together such as `tar -cvaf foo.tar foo`
 </span></span><span>
-			<input type='checkbox' class="fold" id="Command-fold-method-FlagCounter"><label for="Command-fold-method-FlagCounter">(*T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-216">FlagCounter</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, opts *<a href="#name-Options">Options</a>) *<a href="../../builtin.html#name-int">int</a></label><span id='Command-fold-method-FlagCounter-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Command-fold-method-FlagCounter"><label for="Command-fold-method-FlagCounter">(*Command) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-216">FlagCounter</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, opts *<a href="#name-Options">Options</a>) *<a href="../../builtin.html#name-int">int</a></label><span id='Command-fold-method-FlagCounter-docs' class="fold-docs">
 				FlagCounter Creates new flagCounter type of argument, which is integer value showing the number of times the argument has been provided.
 				Takes short name, long name and pointer to options (optional).
 				Short name must be single character, but can be omitted by giving empty string.
@@ -96,61 +96,61 @@
 				provided on Command line arguments, the value is incremented by 1.
 				Set of FlagCounter and Flag shorthand arguments can be combined together such as `tar -cvaf foo.tar foo`
 </span></span><span>
-			<input type='checkbox' class="fold" id="Command-fold-method-Float"><label for="Command-fold-method-Float">(*T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-284">Float</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, opts *<a href="#name-Options">Options</a>) *<a href="../../builtin.html#name-float64">float64</a></label><span id='Command-fold-method-Float-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Command-fold-method-Float"><label for="Command-fold-method-Float">(*Command) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-284">Float</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, opts *<a href="#name-Options">Options</a>) *<a href="../../builtin.html#name-float64">float64</a></label><span id='Command-fold-method-Float-docs' class="fold-docs">
 				Float creates new float argument, which will attempt to parse following argument as float64.
 				Takes as arguments short name (must be single character or an empty string)
 				long name and (optional) options.
 				If parsing fails parser.Parse() will return an error.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Command-fold-method-FloatList"><label for="Command-fold-method-FloatList">(*T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-390">FloatList</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, opts *<a href="#name-Options">Options</a>) *[]<a href="../../builtin.html#name-float64">float64</a></label><span id='Command-fold-method-FloatList-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Command-fold-method-FloatList"><label for="Command-fold-method-FloatList">(*Command) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-390">FloatList</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, opts *<a href="#name-Options">Options</a>) *[]<a href="../../builtin.html#name-float64">float64</a></label><span id='Command-fold-method-FloatList-docs' class="fold-docs">
 				FloatList creates new float list argument. This is the argument that is allowed to be present multiple times on CLI.
 				All appearances of this argument on CLI will be collected into the list of float64 values. If no argument
 				provided, then the list is empty. Takes same parameters as Float
 				Returns a pointer the list of float64 values.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Command-fold-method-GetArgs"><label for="Command-fold-method-GetArgs">( T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-43">GetArgs</a>() (args []<a href="#name-Arg">Arg</a>)</label><span id='Command-fold-method-GetArgs-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Command-fold-method-GetArgs"><label for="Command-fold-method-GetArgs">( Command) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-43">GetArgs</a>() (args []<a href="#name-Arg">Arg</a>)</label><span id='Command-fold-method-GetArgs-docs' class="fold-docs">
 				GetArgs exposes Command's args field
 </span></span><span>
-			<input type='checkbox' class="fold" id="Command-fold-method-GetCommands"><label for="Command-fold-method-GetCommands">( T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-51">GetCommands</a>() []*<b>Command</b></label><span id='Command-fold-method-GetCommands-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Command-fold-method-GetCommands"><label for="Command-fold-method-GetCommands">( Command) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-51">GetCommands</a>() []*<b>Command</b></label><span id='Command-fold-method-GetCommands-docs' class="fold-docs">
 				GetCommands exposes Command's commands field
 </span></span><span>
-			<input type='checkbox' class="fold" id="Command-fold-method-GetDescription"><label for="Command-fold-method-GetDescription">( T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-38">GetDescription</a>() <a href="../../builtin.html#name-string">string</a></label><span id='Command-fold-method-GetDescription-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Command-fold-method-GetDescription"><label for="Command-fold-method-GetDescription">( Command) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-38">GetDescription</a>() <a href="../../builtin.html#name-string">string</a></label><span id='Command-fold-method-GetDescription-docs' class="fold-docs">
 				GetDescription exposes Command's description field
 </span></span><span>
-			<input type='checkbox' class="fold" id="Command-fold-method-GetName"><label for="Command-fold-method-GetName">( T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-33">GetName</a>() <a href="../../builtin.html#name-string">string</a></label><span id='Command-fold-method-GetName-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Command-fold-method-GetName"><label for="Command-fold-method-GetName">( Command) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-33">GetName</a>() <a href="../../builtin.html#name-string">string</a></label><span id='Command-fold-method-GetName-docs' class="fold-docs">
 				GetName exposes Command's name field
 </span></span><span>
-			<input type='checkbox' class="fold" id="Command-fold-method-GetParent"><label for="Command-fold-method-GetParent">( T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-56">GetParent</a>() *<b>Command</b></label><span id='Command-fold-method-GetParent-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Command-fold-method-GetParent"><label for="Command-fold-method-GetParent">( Command) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-56">GetParent</a>() *<b>Command</b></label><span id='Command-fold-method-GetParent-docs' class="fold-docs">
 				GetParent exposes Command's parent field
 </span></span><span>
-			<input type='checkbox' class="fold" id="Command-fold-method-Happened"><label for="Command-fold-method-Happened">(*T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-628">Happened</a>() <a href="../../builtin.html#name-bool">bool</a></label><span id='Command-fold-method-Happened-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Command-fold-method-Happened"><label for="Command-fold-method-Happened">(*Command) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-628">Happened</a>() <a href="../../builtin.html#name-bool">bool</a></label><span id='Command-fold-method-Happened-docs' class="fold-docs">
 				Happened shows whether Command was specified on CLI arguments or not. If Command did not "happen", then
 				all its descendant commands and arguments are not parsed. Returns a boolean value.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Command-fold-method-Help"><label for="Command-fold-method-Help">(*T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-62">Help</a>(msg interface{}) <a href="../../builtin.html#name-string">string</a></label><span id='Command-fold-method-Help-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Command-fold-method-Help"><label for="Command-fold-method-Help">(*Command) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-62">Help</a>(msg interface{}) <a href="../../builtin.html#name-string">string</a></label><span id='Command-fold-method-Help-docs' class="fold-docs">
 				Help calls the overriddable Command.HelpFunc on itself,
 				called when the help argument strings are passed via CLI
 </span></span><span>
-			<input type='checkbox' class="fold" id="Command-fold-method-Int"><label for="Command-fold-method-Int">(*T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-261">Int</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, opts *<a href="#name-Options">Options</a>) *<a href="../../builtin.html#name-int">int</a></label><span id='Command-fold-method-Int-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Command-fold-method-Int"><label for="Command-fold-method-Int">(*Command) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-261">Int</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, opts *<a href="#name-Options">Options</a>) *<a href="../../builtin.html#name-int">int</a></label><span id='Command-fold-method-Int-docs' class="fold-docs">
 				Int creates new int argument, which will attempt to parse following argument as int.
 				Takes as arguments short name (must be single character or an empty string)
 				long name and (optional) options.
 				If parsing fails parser.Parse() will return an error.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Command-fold-method-IntList"><label for="Command-fold-method-IntList">(*T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-367">IntList</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, opts *<a href="#name-Options">Options</a>) *[]<a href="../../builtin.html#name-int">int</a></label><span id='Command-fold-method-IntList-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Command-fold-method-IntList"><label for="Command-fold-method-IntList">(*Command) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-367">IntList</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, opts *<a href="#name-Options">Options</a>) *[]<a href="../../builtin.html#name-int">int</a></label><span id='Command-fold-method-IntList-docs' class="fold-docs">
 				IntList creates new integer list argument. This is the argument that is allowed to be present multiple times on CLI.
 				All appearances of this argument on CLI will be collected into the list of integers. If no argument
 				provided, then the list is empty. Takes same parameters as Int
 				Returns a pointer the list of integers.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Command-fold-method-List"><label for="Command-fold-method-List">(*T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-336">List</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, opts *<a href="#name-Options">Options</a>) *[]<a href="../../builtin.html#name-string">string</a></label><span id='Command-fold-method-List-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Command-fold-method-List"><label for="Command-fold-method-List">(*Command) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-336">List</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, opts *<a href="#name-Options">Options</a>) *[]<a href="../../builtin.html#name-string">string</a></label><span id='Command-fold-method-List-docs' class="fold-docs">
 				List creates new list argument. This is the argument that is allowed to be present multiple times on CLI.
 				All appearances of this argument on CLI will be collected into the list of default type values which is strings.
 				If no argument provided, then the list is empty.
 				Takes same parameters as String.
 				Returns a pointer the list of strings.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Command-fold-method-NewCommand"><label for="Command-fold-method-NewCommand">(*T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-130">NewCommand</a>(name <a href="../../builtin.html#name-string">string</a>, description <a href="../../builtin.html#name-string">string</a>) *<b>Command</b></label><span id='Command-fold-method-NewCommand-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Command-fold-method-NewCommand"><label for="Command-fold-method-NewCommand">(*Command) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-130">NewCommand</a>(name <a href="../../builtin.html#name-string">string</a>, description <a href="../../builtin.html#name-string">string</a>) *<b>Command</b></label><span id='Command-fold-method-NewCommand-docs' class="fold-docs">
 				NewCommand will create a sub-command and propagate all necessary fields.
 				All commands are always at the beginning of the arguments.
 				Parser can have commands and those commands can have sub-commands,
@@ -159,7 +159,7 @@
 				Commands are processed Parser -&gt; Command -&gt; sub-Command.
 				Arguments will be processed in order of sub-Command -&gt; Command -&gt; Parser.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Command-fold-method-Selector"><label for="Command-fold-method-Selector">(*T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-440">Selector</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, options []<a href="../../builtin.html#name-string">string</a>, opts *<a href="#name-Options">Options</a>) *<a href="../../builtin.html#name-string">string</a></label><span id='Command-fold-method-Selector-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Command-fold-method-Selector"><label for="Command-fold-method-Selector">(*Command) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-440">Selector</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, options []<a href="../../builtin.html#name-string">string</a>, opts *<a href="#name-Options">Options</a>) *<a href="../../builtin.html#name-string">string</a></label><span id='Command-fold-method-Selector-docs' class="fold-docs">
 				Selector creates a selector argument. Selector argument works in the same way as String argument, with
 				the difference that the string value must be from the list of options provided by the program.
 				Takes short and long names, argument options and a slice of strings which are allowed values
@@ -167,18 +167,18 @@
 				Returns a pointer to a string. If argument is not required (as in argparse.Options.Required),
 				and argument was not provided, then the string is empty.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Command-fold-method-String"><label for="Command-fold-method-String">(*T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-238">String</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, opts *<a href="#name-Options">Options</a>) *<a href="../../builtin.html#name-string">string</a></label><span id='Command-fold-method-String-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Command-fold-method-String"><label for="Command-fold-method-String">(*Command) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-238">String</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, opts *<a href="#name-Options">Options</a>) *<a href="../../builtin.html#name-string">string</a></label><span id='Command-fold-method-String-docs' class="fold-docs">
 				String creates new string argument, which will return whatever follows the argument on CLI.
 				Takes as arguments short name (must be single character or an empty string)
 				long name and (optional) options
 </span></span><span>
-			<input type='checkbox' class="fold" id="Command-fold-method-StringList"><label for="Command-fold-method-StringList">(*T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-344">StringList</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, opts *<a href="#name-Options">Options</a>) *[]<a href="../../builtin.html#name-string">string</a></label><span id='Command-fold-method-StringList-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Command-fold-method-StringList"><label for="Command-fold-method-StringList">(*Command) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-344">StringList</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, opts *<a href="#name-Options">Options</a>) *[]<a href="../../builtin.html#name-string">string</a></label><span id='Command-fold-method-StringList-docs' class="fold-docs">
 				StringList creates new string list argument. This is the argument that is allowed to be present multiple times on CLI.
 				All appearances of this argument on CLI will be collected into the list of strings. If no argument
 				provided, then the list is empty. Takes same parameters as String
 				Returns a pointer the list of strings.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Command-fold-method-Usage"><label for="Command-fold-method-Usage">(*T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-639">Usage</a>(msg interface{}) <a href="../../builtin.html#name-string">string</a></label><span id='Command-fold-method-Usage-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Command-fold-method-Usage"><label for="Command-fold-method-Usage">(*Command) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-639">Usage</a>(msg interface{}) <a href="../../builtin.html#name-string">string</a></label><span id='Command-fold-method-Usage-docs' class="fold-docs">
 				Usage returns a multiline string that is the same as a help message for this Parser or Command.
 				Since Parser is a Command as well, they work in exactly same way. Meaning that usage string
 				can be retrieved for any level of commands. It will only include information about this Command,
@@ -188,25 +188,25 @@
 				All other interface types will be ignored
 </span></span>
 			<input type='checkbox' class="showhide" id="Command-showhide-methods"><i><label for="Command-showhide-methods" class="show-inline">/* 8 unexporteds ... */</label><label for="Command-showhide-methods" class="hide-inline">/* 8 unexporteds: */</label></i><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../../src/github.com/akamensky/argparse/command.go.html#line-27">addArg</a>(a *<a href="#name-arg">arg</a>) <a href="../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="Command-fold-method-getPrecedingCommands"><label for="Command-fold-method-getPrecedingCommands">(*T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-486">getPrecedingCommands</a>(chain *[]<a href="../../builtin.html#name-string">string</a>, arguments *[]*<a href="#name-arg">arg</a>)</label><span id='Command-fold-method-getPrecedingCommands-docs' class="fold-docs">
+			<span class="nodocs">(*Command) <a href="../../../src/github.com/akamensky/argparse/command.go.html#line-27">addArg</a>(a *<a href="#name-arg">arg</a>) <a href="../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Command-fold-method-getPrecedingCommands"><label for="Command-fold-method-getPrecedingCommands">(*Command) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-486">getPrecedingCommands</a>(chain *[]<a href="../../builtin.html#name-string">string</a>, arguments *[]*<a href="#name-arg">arg</a>)</label><span id='Command-fold-method-getPrecedingCommands-docs' class="fold-docs">
 				getPrecedingCommands - collects info on command chain from root to current (o *Command) and all arguments in this chain
 </span></i></span><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="Command-fold-method-getSubCommands"><label for="Command-fold-method-getSubCommands">(*T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-506">getSubCommands</a>(chain *[]<a href="../../builtin.html#name-string">string</a>) []<b>Command</b></label><span id='Command-fold-method-getSubCommands-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Command-fold-method-getSubCommands"><label for="Command-fold-method-getSubCommands">(*Command) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-506">getSubCommands</a>(chain *[]<a href="../../builtin.html#name-string">string</a>) []<b>Command</b></label><span id='Command-fold-method-getSubCommands-docs' class="fold-docs">
 				getSubCommands - collects info on subcommands of current command
 </span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../../src/github.com/akamensky/argparse/command.go.html#line-8">help</a>(sname, lname <a href="../../builtin.html#name-string">string</a>)</span></i></span><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="Command-fold-method-parse"><label for="Command-fold-method-parse">(*T) <a href="../../../src/github.com/akamensky/argparse/command.go.html#line-139">parse</a>(args *[]<a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-error">error</a></label><span id='Command-fold-method-parse-docs' class="fold-docs">
+			<span class="nodocs">(*Command) <a href="../../../src/github.com/akamensky/argparse/command.go.html#line-8">help</a>(sname, lname <a href="../../builtin.html#name-string">string</a>)</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Command-fold-method-parse"><label for="Command-fold-method-parse">(*Command) <a href="../../../src/github.com/akamensky/argparse/command.go.html#line-139">parse</a>(args *[]<a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-error">error</a></label><span id='Command-fold-method-parse-docs' class="fold-docs">
 				Will parse provided list of arguments
 				common usage would be to pass directly os.Args
 </span></i></span><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="Command-fold-method-parseArguments"><label for="Command-fold-method-parseArguments">(*T) <a href="../../../src/github.com/akamensky/argparse/command.go.html#line-77">parseArguments</a>(args *[]<a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-error">error</a></label><span id='Command-fold-method-parseArguments-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Command-fold-method-parseArguments"><label for="Command-fold-method-parseArguments">(*Command) <a href="../../../src/github.com/akamensky/argparse/command.go.html#line-77">parseArguments</a>(args *[]<a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-error">error</a></label><span id='Command-fold-method-parseArguments-docs' class="fold-docs">
 				parseArguments - Parses arguments
 </span></i></span><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="Command-fold-method-parseSubCommands"><label for="Command-fold-method-parseSubCommands">(*T) <a href="../../../src/github.com/akamensky/argparse/command.go.html#line-59">parseSubCommands</a>(args *[]<a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-error">error</a></label><span id='Command-fold-method-parseSubCommands-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Command-fold-method-parseSubCommands"><label for="Command-fold-method-parseSubCommands">(*Command) <a href="../../../src/github.com/akamensky/argparse/command.go.html#line-59">parseSubCommands</a>(args *[]<a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-error">error</a></label><span id='Command-fold-method-parseSubCommands-docs' class="fold-docs">
 				parseSubCommands - Parses subcommands if any
 </span></i></span><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="Command-fold-method-precedingCommands2Result"><label for="Command-fold-method-precedingCommands2Result">(*T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-522">precedingCommands2Result</a>(result <a href="../../builtin.html#name-string">string</a>, chain []<a href="../../builtin.html#name-string">string</a>, arguments []*<a href="#name-arg">arg</a>, maxWidth <a href="../../builtin.html#name-int">int</a>) <a href="../../builtin.html#name-string">string</a></label><span id='Command-fold-method-precedingCommands2Result-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Command-fold-method-precedingCommands2Result"><label for="Command-fold-method-precedingCommands2Result">(*Command) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-522">precedingCommands2Result</a>(result <a href="../../builtin.html#name-string">string</a>, chain []<a href="../../builtin.html#name-string">string</a>, arguments []*<a href="#name-arg">arg</a>, maxWidth <a href="../../builtin.html#name-int">int</a>) <a href="../../builtin.html#name-string">string</a></label><span id='Command-fold-method-precedingCommands2Result-docs' class="fold-docs">
 				precedingCommands2Result - puts info about command chain from root to current (o *Command) into result string buffer
 </span></i></span></span>
 		<input type='checkbox' class="fold" id="Command-fold-results"><label for="Command-fold-results">As Outputs Of (<i>at least 4, in which 3 are exported</i>)</label><span id='Command-fold-results-items' class="fold-items"><span>
@@ -278,14 +278,14 @@
 			<span class="nodocs"><a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-77" class="path-duplicate">Command</a>.<a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-27">parent</a> <i>*<a href="#name-Command">Command</a></i></span></i></span><span class="hidden"><i>
 			<span class="nodocs"><a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-77" class="path-duplicate">Command</a>.<a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-25">parsed</a> <i><a href="../../builtin.html#name-bool">bool</a></i></span></i></span></span>
 		<input type='checkbox' class="fold" id="Parser-fold-methods"><label for="Parser-fold-methods">Methods (<i>total 33, in which 25 are exported</i>)</label><span id='Parser-fold-methods-items' class="fold-items"><span>
-			<input type='checkbox' class="fold" id="Parser-fold-method-DisableHelp"><label for="Parser-fold-method-DisableHelp">(*T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-153">DisableHelp</a>()</label><span id='Parser-fold-method-DisableHelp-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Parser-fold-method-DisableHelp"><label for="Parser-fold-method-DisableHelp">(*Parser) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-153">DisableHelp</a>()</label><span id='Parser-fold-method-DisableHelp-docs' class="fold-docs">
 				DisableHelp removes any help arguments from the commands list of arguments
 				This prevents prevents help from being parsed or invoked from the argument list
 </span></span><span>
-			<input type='checkbox' class="fold" id="Parser-fold-method-ExitOnHelp"><label for="Parser-fold-method-ExitOnHelp">(*T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-170">ExitOnHelp</a>(b <a href="../../builtin.html#name-bool">bool</a>)</label><span id='Parser-fold-method-ExitOnHelp-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Parser-fold-method-ExitOnHelp"><label for="Parser-fold-method-ExitOnHelp">(*Parser) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-170">ExitOnHelp</a>(b <a href="../../builtin.html#name-bool">bool</a>)</label><span id='Parser-fold-method-ExitOnHelp-docs' class="fold-docs">
 				ExitOnHelp sets the exitOnHelp variable of Parser
 </span></span><span>
-			<input type='checkbox' class="fold" id="Parser-fold-method-File"><label for="Parser-fold-method-File">(*T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-310">File</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, flag <a href="../../builtin.html#name-int">int</a>, perm <a href="../../os.html">os</a>.<a href="../../os.html#name-FileMode">FileMode</a>, opts *<a href="#name-Options">Options</a>) *<a href="../../os.html">os</a>.<a href="../../os.html#name-File">File</a></label><span id='Parser-fold-method-File-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Parser-fold-method-File"><label for="Parser-fold-method-File">(*Parser) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-310">File</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, flag <a href="../../builtin.html#name-int">int</a>, perm <a href="../../os.html">os</a>.<a href="../../os.html#name-FileMode">FileMode</a>, opts *<a href="#name-Options">Options</a>) *<a href="../../os.html">os</a>.<a href="../../os.html#name-File">File</a></label><span id='Parser-fold-method-File-docs' class="fold-docs">
 				File creates new file argument, which is when provided will check if file exists or attempt to create it
 				depending on provided flags (same as for os.OpenFile).
 				It takes same as all other arguments short and long names, additionally it takes flags that specify
@@ -294,13 +294,13 @@
 				Returns a pointer to os.File which will be set to opened file on success. On error the Parser.Parse
 				will return error and the pointer might be nil.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Parser-fold-method-FileList"><label for="Parser-fold-method-FileList">(*T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-413">FileList</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, flag <a href="../../builtin.html#name-int">int</a>, perm <a href="../../os.html">os</a>.<a href="../../os.html#name-FileMode">FileMode</a>, opts *<a href="#name-Options">Options</a>) *[]<a href="../../os.html">os</a>.<a href="../../os.html#name-File">File</a></label><span id='Parser-fold-method-FileList-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Parser-fold-method-FileList"><label for="Parser-fold-method-FileList">(*Parser) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-413">FileList</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, flag <a href="../../builtin.html#name-int">int</a>, perm <a href="../../os.html">os</a>.<a href="../../os.html#name-FileMode">FileMode</a>, opts *<a href="#name-Options">Options</a>) *[]<a href="../../os.html">os</a>.<a href="../../os.html#name-File">File</a></label><span id='Parser-fold-method-FileList-docs' class="fold-docs">
 				FileList creates new file list argument. This is the argument that is allowed to be present multiple times on CLI.
 				All appearances of this argument on CLI will be collected into the list of os.File values. If no argument
 				provided, then the list is empty. Takes same parameters as File
 				Returns a pointer the list of os.File values.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Parser-fold-method-Flag"><label for="Parser-fold-method-Flag">(*T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-190">Flag</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, opts *<a href="#name-Options">Options</a>) *<a href="../../builtin.html#name-bool">bool</a></label><span id='Parser-fold-method-Flag-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Parser-fold-method-Flag"><label for="Parser-fold-method-Flag">(*Parser) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-190">Flag</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, opts *<a href="#name-Options">Options</a>) *<a href="../../builtin.html#name-bool">bool</a></label><span id='Parser-fold-method-Flag-docs' class="fold-docs">
 				Flag Creates new flag type of argument, which is boolean value showing if argument was provided or not.
 				Takes short name, long name and pointer to options (optional).
 				Short name must be single character, but can be omitted by giving empty string.
@@ -309,7 +309,7 @@
 				provided on Command line arguments, then the value is changed to true.
 				Set of Flag and FlagCounter shorthand arguments can be combined together such as `tar -cvaf foo.tar foo`
 </span></span><span>
-			<input type='checkbox' class="fold" id="Parser-fold-method-FlagCounter"><label for="Parser-fold-method-FlagCounter">(*T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-216">FlagCounter</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, opts *<a href="#name-Options">Options</a>) *<a href="../../builtin.html#name-int">int</a></label><span id='Parser-fold-method-FlagCounter-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Parser-fold-method-FlagCounter"><label for="Parser-fold-method-FlagCounter">(*Parser) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-216">FlagCounter</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, opts *<a href="#name-Options">Options</a>) *<a href="../../builtin.html#name-int">int</a></label><span id='Parser-fold-method-FlagCounter-docs' class="fold-docs">
 				FlagCounter Creates new flagCounter type of argument, which is integer value showing the number of times the argument has been provided.
 				Takes short name, long name and pointer to options (optional).
 				Short name must be single character, but can be omitted by giving empty string.
@@ -318,61 +318,61 @@
 				provided on Command line arguments, the value is incremented by 1.
 				Set of FlagCounter and Flag shorthand arguments can be combined together such as `tar -cvaf foo.tar foo`
 </span></span><span>
-			<input type='checkbox' class="fold" id="Parser-fold-method-Float"><label for="Parser-fold-method-Float">(*T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-284">Float</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, opts *<a href="#name-Options">Options</a>) *<a href="../../builtin.html#name-float64">float64</a></label><span id='Parser-fold-method-Float-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Parser-fold-method-Float"><label for="Parser-fold-method-Float">(*Parser) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-284">Float</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, opts *<a href="#name-Options">Options</a>) *<a href="../../builtin.html#name-float64">float64</a></label><span id='Parser-fold-method-Float-docs' class="fold-docs">
 				Float creates new float argument, which will attempt to parse following argument as float64.
 				Takes as arguments short name (must be single character or an empty string)
 				long name and (optional) options.
 				If parsing fails parser.Parse() will return an error.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Parser-fold-method-FloatList"><label for="Parser-fold-method-FloatList">(*T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-390">FloatList</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, opts *<a href="#name-Options">Options</a>) *[]<a href="../../builtin.html#name-float64">float64</a></label><span id='Parser-fold-method-FloatList-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Parser-fold-method-FloatList"><label for="Parser-fold-method-FloatList">(*Parser) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-390">FloatList</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, opts *<a href="#name-Options">Options</a>) *[]<a href="../../builtin.html#name-float64">float64</a></label><span id='Parser-fold-method-FloatList-docs' class="fold-docs">
 				FloatList creates new float list argument. This is the argument that is allowed to be present multiple times on CLI.
 				All appearances of this argument on CLI will be collected into the list of float64 values. If no argument
 				provided, then the list is empty. Takes same parameters as Float
 				Returns a pointer the list of float64 values.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Parser-fold-method-GetArgs"><label for="Parser-fold-method-GetArgs">( T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-43">GetArgs</a>() (args []<a href="#name-Arg">Arg</a>)</label><span id='Parser-fold-method-GetArgs-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Parser-fold-method-GetArgs"><label for="Parser-fold-method-GetArgs">( Parser) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-43">GetArgs</a>() (args []<a href="#name-Arg">Arg</a>)</label><span id='Parser-fold-method-GetArgs-docs' class="fold-docs">
 				GetArgs exposes Command's args field
 </span></span><span>
-			<input type='checkbox' class="fold" id="Parser-fold-method-GetCommands"><label for="Parser-fold-method-GetCommands">( T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-51">GetCommands</a>() []*<a href="#name-Command">Command</a></label><span id='Parser-fold-method-GetCommands-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Parser-fold-method-GetCommands"><label for="Parser-fold-method-GetCommands">( Parser) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-51">GetCommands</a>() []*<a href="#name-Command">Command</a></label><span id='Parser-fold-method-GetCommands-docs' class="fold-docs">
 				GetCommands exposes Command's commands field
 </span></span><span>
-			<input type='checkbox' class="fold" id="Parser-fold-method-GetDescription"><label for="Parser-fold-method-GetDescription">( T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-38">GetDescription</a>() <a href="../../builtin.html#name-string">string</a></label><span id='Parser-fold-method-GetDescription-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Parser-fold-method-GetDescription"><label for="Parser-fold-method-GetDescription">( Parser) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-38">GetDescription</a>() <a href="../../builtin.html#name-string">string</a></label><span id='Parser-fold-method-GetDescription-docs' class="fold-docs">
 				GetDescription exposes Command's description field
 </span></span><span>
-			<input type='checkbox' class="fold" id="Parser-fold-method-GetName"><label for="Parser-fold-method-GetName">( T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-33">GetName</a>() <a href="../../builtin.html#name-string">string</a></label><span id='Parser-fold-method-GetName-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Parser-fold-method-GetName"><label for="Parser-fold-method-GetName">( Parser) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-33">GetName</a>() <a href="../../builtin.html#name-string">string</a></label><span id='Parser-fold-method-GetName-docs' class="fold-docs">
 				GetName exposes Command's name field
 </span></span><span>
-			<input type='checkbox' class="fold" id="Parser-fold-method-GetParent"><label for="Parser-fold-method-GetParent">( T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-56">GetParent</a>() *<a href="#name-Command">Command</a></label><span id='Parser-fold-method-GetParent-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Parser-fold-method-GetParent"><label for="Parser-fold-method-GetParent">( Parser) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-56">GetParent</a>() *<a href="#name-Command">Command</a></label><span id='Parser-fold-method-GetParent-docs' class="fold-docs">
 				GetParent exposes Command's parent field
 </span></span><span>
-			<input type='checkbox' class="fold" id="Parser-fold-method-Happened"><label for="Parser-fold-method-Happened">(*T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-628">Happened</a>() <a href="../../builtin.html#name-bool">bool</a></label><span id='Parser-fold-method-Happened-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Parser-fold-method-Happened"><label for="Parser-fold-method-Happened">(*Parser) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-628">Happened</a>() <a href="../../builtin.html#name-bool">bool</a></label><span id='Parser-fold-method-Happened-docs' class="fold-docs">
 				Happened shows whether Command was specified on CLI arguments or not. If Command did not "happen", then
 				all its descendant commands and arguments are not parsed. Returns a boolean value.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Parser-fold-method-Help"><label for="Parser-fold-method-Help">(*T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-62">Help</a>(msg interface{}) <a href="../../builtin.html#name-string">string</a></label><span id='Parser-fold-method-Help-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Parser-fold-method-Help"><label for="Parser-fold-method-Help">(*Parser) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-62">Help</a>(msg interface{}) <a href="../../builtin.html#name-string">string</a></label><span id='Parser-fold-method-Help-docs' class="fold-docs">
 				Help calls the overriddable Command.HelpFunc on itself,
 				called when the help argument strings are passed via CLI
 </span></span><span>
-			<input type='checkbox' class="fold" id="Parser-fold-method-Int"><label for="Parser-fold-method-Int">(*T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-261">Int</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, opts *<a href="#name-Options">Options</a>) *<a href="../../builtin.html#name-int">int</a></label><span id='Parser-fold-method-Int-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Parser-fold-method-Int"><label for="Parser-fold-method-Int">(*Parser) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-261">Int</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, opts *<a href="#name-Options">Options</a>) *<a href="../../builtin.html#name-int">int</a></label><span id='Parser-fold-method-Int-docs' class="fold-docs">
 				Int creates new int argument, which will attempt to parse following argument as int.
 				Takes as arguments short name (must be single character or an empty string)
 				long name and (optional) options.
 				If parsing fails parser.Parse() will return an error.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Parser-fold-method-IntList"><label for="Parser-fold-method-IntList">(*T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-367">IntList</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, opts *<a href="#name-Options">Options</a>) *[]<a href="../../builtin.html#name-int">int</a></label><span id='Parser-fold-method-IntList-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Parser-fold-method-IntList"><label for="Parser-fold-method-IntList">(*Parser) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-367">IntList</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, opts *<a href="#name-Options">Options</a>) *[]<a href="../../builtin.html#name-int">int</a></label><span id='Parser-fold-method-IntList-docs' class="fold-docs">
 				IntList creates new integer list argument. This is the argument that is allowed to be present multiple times on CLI.
 				All appearances of this argument on CLI will be collected into the list of integers. If no argument
 				provided, then the list is empty. Takes same parameters as Int
 				Returns a pointer the list of integers.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Parser-fold-method-List"><label for="Parser-fold-method-List">(*T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-336">List</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, opts *<a href="#name-Options">Options</a>) *[]<a href="../../builtin.html#name-string">string</a></label><span id='Parser-fold-method-List-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Parser-fold-method-List"><label for="Parser-fold-method-List">(*Parser) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-336">List</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, opts *<a href="#name-Options">Options</a>) *[]<a href="../../builtin.html#name-string">string</a></label><span id='Parser-fold-method-List-docs' class="fold-docs">
 				List creates new list argument. This is the argument that is allowed to be present multiple times on CLI.
 				All appearances of this argument on CLI will be collected into the list of default type values which is strings.
 				If no argument provided, then the list is empty.
 				Takes same parameters as String.
 				Returns a pointer the list of strings.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Parser-fold-method-NewCommand"><label for="Parser-fold-method-NewCommand">(*T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-130">NewCommand</a>(name <a href="../../builtin.html#name-string">string</a>, description <a href="../../builtin.html#name-string">string</a>) *<a href="#name-Command">Command</a></label><span id='Parser-fold-method-NewCommand-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Parser-fold-method-NewCommand"><label for="Parser-fold-method-NewCommand">(*Parser) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-130">NewCommand</a>(name <a href="../../builtin.html#name-string">string</a>, description <a href="../../builtin.html#name-string">string</a>) *<a href="#name-Command">Command</a></label><span id='Parser-fold-method-NewCommand-docs' class="fold-docs">
 				NewCommand will create a sub-command and propagate all necessary fields.
 				All commands are always at the beginning of the arguments.
 				Parser can have commands and those commands can have sub-commands,
@@ -381,7 +381,7 @@
 				Commands are processed Parser -&gt; Command -&gt; sub-Command.
 				Arguments will be processed in order of sub-Command -&gt; Command -&gt; Parser.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Parser-fold-method-Parse"><label for="Parser-fold-method-Parse">(*T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-681">Parse</a>(args []<a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-error">error</a></label><span id='Parser-fold-method-Parse-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Parser-fold-method-Parse"><label for="Parser-fold-method-Parse">(*Parser) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-681">Parse</a>(args []<a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-error">error</a></label><span id='Parser-fold-method-Parse-docs' class="fold-docs">
 				Parse method can be applied only on Parser. It takes a slice of strings (as in os.Args)
 				and it will process this slice as arguments of CLI (the original slice is not modified).
 				Returns error on any failure. In case of failure recommended course of action is to
@@ -390,7 +390,7 @@
 				In case no error returned all arguments should be safe to use. Safety of using arguments
 				before Parse operation is complete is not guaranteed.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Parser-fold-method-Selector"><label for="Parser-fold-method-Selector">(*T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-440">Selector</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, options []<a href="../../builtin.html#name-string">string</a>, opts *<a href="#name-Options">Options</a>) *<a href="../../builtin.html#name-string">string</a></label><span id='Parser-fold-method-Selector-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Parser-fold-method-Selector"><label for="Parser-fold-method-Selector">(*Parser) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-440">Selector</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, options []<a href="../../builtin.html#name-string">string</a>, opts *<a href="#name-Options">Options</a>) *<a href="../../builtin.html#name-string">string</a></label><span id='Parser-fold-method-Selector-docs' class="fold-docs">
 				Selector creates a selector argument. Selector argument works in the same way as String argument, with
 				the difference that the string value must be from the list of options provided by the program.
 				Takes short and long names, argument options and a slice of strings which are allowed values
@@ -398,21 +398,21 @@
 				Returns a pointer to a string. If argument is not required (as in argparse.Options.Required),
 				and argument was not provided, then the string is empty.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Parser-fold-method-SetHelp"><label for="Parser-fold-method-SetHelp">(*T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-178">SetHelp</a>(sname, lname <a href="../../builtin.html#name-string">string</a>)</label><span id='Parser-fold-method-SetHelp-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Parser-fold-method-SetHelp"><label for="Parser-fold-method-SetHelp">(*Parser) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-178">SetHelp</a>(sname, lname <a href="../../builtin.html#name-string">string</a>)</label><span id='Parser-fold-method-SetHelp-docs' class="fold-docs">
 				SetHelp removes the previous help argument, and creates a new one with the desired sname/lname
 </span></span><span>
-			<input type='checkbox' class="fold" id="Parser-fold-method-String"><label for="Parser-fold-method-String">(*T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-238">String</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, opts *<a href="#name-Options">Options</a>) *<a href="../../builtin.html#name-string">string</a></label><span id='Parser-fold-method-String-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Parser-fold-method-String"><label for="Parser-fold-method-String">(*Parser) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-238">String</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, opts *<a href="#name-Options">Options</a>) *<a href="../../builtin.html#name-string">string</a></label><span id='Parser-fold-method-String-docs' class="fold-docs">
 				String creates new string argument, which will return whatever follows the argument on CLI.
 				Takes as arguments short name (must be single character or an empty string)
 				long name and (optional) options
 </span></span><span>
-			<input type='checkbox' class="fold" id="Parser-fold-method-StringList"><label for="Parser-fold-method-StringList">(*T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-344">StringList</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, opts *<a href="#name-Options">Options</a>) *[]<a href="../../builtin.html#name-string">string</a></label><span id='Parser-fold-method-StringList-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Parser-fold-method-StringList"><label for="Parser-fold-method-StringList">(*Parser) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-344">StringList</a>(short <a href="../../builtin.html#name-string">string</a>, long <a href="../../builtin.html#name-string">string</a>, opts *<a href="#name-Options">Options</a>) *[]<a href="../../builtin.html#name-string">string</a></label><span id='Parser-fold-method-StringList-docs' class="fold-docs">
 				StringList creates new string list argument. This is the argument that is allowed to be present multiple times on CLI.
 				All appearances of this argument on CLI will be collected into the list of strings. If no argument
 				provided, then the list is empty. Takes same parameters as String
 				Returns a pointer the list of strings.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Parser-fold-method-Usage"><label for="Parser-fold-method-Usage">(*T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-639">Usage</a>(msg interface{}) <a href="../../builtin.html#name-string">string</a></label><span id='Parser-fold-method-Usage-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Parser-fold-method-Usage"><label for="Parser-fold-method-Usage">(*Parser) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-639">Usage</a>(msg interface{}) <a href="../../builtin.html#name-string">string</a></label><span id='Parser-fold-method-Usage-docs' class="fold-docs">
 				Usage returns a multiline string that is the same as a help message for this Parser or Command.
 				Since Parser is a Command as well, they work in exactly same way. Meaning that usage string
 				can be retrieved for any level of commands. It will only include information about this Command,
@@ -422,33 +422,34 @@
 				All other interface types will be ignored
 </span></span>
 			<input type='checkbox' class="showhide" id="Parser-showhide-methods"><i><label for="Parser-showhide-methods" class="show-inline">/* 8 unexporteds ... */</label><label for="Parser-showhide-methods" class="hide-inline">/* 8 unexporteds: */</label></i><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../../src/github.com/akamensky/argparse/command.go.html#line-27">addArg</a>(a *<a href="#name-arg">arg</a>) <a href="../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="Parser-fold-method-getPrecedingCommands"><label for="Parser-fold-method-getPrecedingCommands">(*T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-486">getPrecedingCommands</a>(chain *[]<a href="../../builtin.html#name-string">string</a>, arguments *[]*<a href="#name-arg">arg</a>)</label><span id='Parser-fold-method-getPrecedingCommands-docs' class="fold-docs">
+			<span class="nodocs">(*Parser) <a href="../../../src/github.com/akamensky/argparse/command.go.html#line-27">addArg</a>(a *<a href="#name-arg">arg</a>) <a href="../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Parser-fold-method-getPrecedingCommands"><label for="Parser-fold-method-getPrecedingCommands">(*Parser) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-486">getPrecedingCommands</a>(chain *[]<a href="../../builtin.html#name-string">string</a>, arguments *[]*<a href="#name-arg">arg</a>)</label><span id='Parser-fold-method-getPrecedingCommands-docs' class="fold-docs">
 				getPrecedingCommands - collects info on command chain from root to current (o *Command) and all arguments in this chain
 </span></i></span><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="Parser-fold-method-getSubCommands"><label for="Parser-fold-method-getSubCommands">(*T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-506">getSubCommands</a>(chain *[]<a href="../../builtin.html#name-string">string</a>) []<a href="#name-Command">Command</a></label><span id='Parser-fold-method-getSubCommands-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Parser-fold-method-getSubCommands"><label for="Parser-fold-method-getSubCommands">(*Parser) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-506">getSubCommands</a>(chain *[]<a href="../../builtin.html#name-string">string</a>) []<a href="#name-Command">Command</a></label><span id='Parser-fold-method-getSubCommands-docs' class="fold-docs">
 				getSubCommands - collects info on subcommands of current command
 </span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../../src/github.com/akamensky/argparse/command.go.html#line-8">help</a>(sname, lname <a href="../../builtin.html#name-string">string</a>)</span></i></span><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="Parser-fold-method-parse"><label for="Parser-fold-method-parse">(*T) <a href="../../../src/github.com/akamensky/argparse/command.go.html#line-139">parse</a>(args *[]<a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-error">error</a></label><span id='Parser-fold-method-parse-docs' class="fold-docs">
+			<span class="nodocs">(*Parser) <a href="../../../src/github.com/akamensky/argparse/command.go.html#line-8">help</a>(sname, lname <a href="../../builtin.html#name-string">string</a>)</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Parser-fold-method-parse"><label for="Parser-fold-method-parse">(*Parser) <a href="../../../src/github.com/akamensky/argparse/command.go.html#line-139">parse</a>(args *[]<a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-error">error</a></label><span id='Parser-fold-method-parse-docs' class="fold-docs">
 				Will parse provided list of arguments
 				common usage would be to pass directly os.Args
 </span></i></span><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="Parser-fold-method-parseArguments"><label for="Parser-fold-method-parseArguments">(*T) <a href="../../../src/github.com/akamensky/argparse/command.go.html#line-77">parseArguments</a>(args *[]<a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-error">error</a></label><span id='Parser-fold-method-parseArguments-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Parser-fold-method-parseArguments"><label for="Parser-fold-method-parseArguments">(*Parser) <a href="../../../src/github.com/akamensky/argparse/command.go.html#line-77">parseArguments</a>(args *[]<a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-error">error</a></label><span id='Parser-fold-method-parseArguments-docs' class="fold-docs">
 				parseArguments - Parses arguments
 </span></i></span><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="Parser-fold-method-parseSubCommands"><label for="Parser-fold-method-parseSubCommands">(*T) <a href="../../../src/github.com/akamensky/argparse/command.go.html#line-59">parseSubCommands</a>(args *[]<a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-error">error</a></label><span id='Parser-fold-method-parseSubCommands-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Parser-fold-method-parseSubCommands"><label for="Parser-fold-method-parseSubCommands">(*Parser) <a href="../../../src/github.com/akamensky/argparse/command.go.html#line-59">parseSubCommands</a>(args *[]<a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-error">error</a></label><span id='Parser-fold-method-parseSubCommands-docs' class="fold-docs">
 				parseSubCommands - Parses subcommands if any
 </span></i></span><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="Parser-fold-method-precedingCommands2Result"><label for="Parser-fold-method-precedingCommands2Result">(*T) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-522">precedingCommands2Result</a>(result <a href="../../builtin.html#name-string">string</a>, chain []<a href="../../builtin.html#name-string">string</a>, arguments []*<a href="#name-arg">arg</a>, maxWidth <a href="../../builtin.html#name-int">int</a>) <a href="../../builtin.html#name-string">string</a></label><span id='Parser-fold-method-precedingCommands2Result-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Parser-fold-method-precedingCommands2Result"><label for="Parser-fold-method-precedingCommands2Result">(*Parser) <a href="../../../src/github.com/akamensky/argparse/argparse.go.html#line-522">precedingCommands2Result</a>(result <a href="../../builtin.html#name-string">string</a>, chain []<a href="../../builtin.html#name-string">string</a>, arguments []*<a href="#name-arg">arg</a>, maxWidth <a href="../../builtin.html#name-int">int</a>) <a href="../../builtin.html#name-string">string</a></label><span id='Parser-fold-method-precedingCommands2Result-docs' class="fold-docs">
 				precedingCommands2Result - puts info about command chain from root to current (o *Command) into result string buffer
 </span></i></span></span>
 		<input type='checkbox' class="fold" id="Parser-fold-results"><label for="Parser-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='Parser-fold-results-items' class="fold-items"><span>
 			func <a href="#name-NewParser">NewParser</a>(name <a href="../../builtin.html#name-string">string</a>, description <a href="../../builtin.html#name-string">string</a>) *<b>Parser</b></span></span>
-		<input type='checkbox' class="fold" id="Parser-fold-params"><label for="Parser-fold-params">As Inputs Of (<i>at least 3, all are exported</i>)</label><span id='Parser-fold-params-items' class="fold-items"><span>
-			func github.com/Golang-Tools/schema-entry-go.(*<a href="../Golang-Tools^b0a0c/schema-entry-go.html#name-EntryPoint">EntryPoint</a>).<a href="../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/entrypoint.go.html#line-279">ConfigPtrFromArgparse</a>(parser *<b>Parser</b>, argv []<a href="../../builtin.html#name-string">string</a>) (*<a href="../../builtin.html#name-string">string</a>, map[<a href="../../builtin.html#name-string">string</a>]interface{}, <a href="../../builtin.html#name-error">error</a>)</span><span>
-			func github.com/Golang-Tools/schema-entry-go.(*<a href="../Golang-Tools^b0a0c/schema-entry-go.html#name-EntryPoint">EntryPoint</a>).<a href="../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/entrypoint.go.html#line-653">PassArgs</a>(parser *<b>Parser</b>, argv []<a href="../../builtin.html#name-string">string</a>)</span><span>
-			func github.com/Golang-Tools/schema-entry-go.<a href="../Golang-Tools^b0a0c/schema-entry-go.html#name-EntryPoint">EntryPoint</a>.<a href="../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/entrypoint.go.html#line-116">PassArgsTosub</a>(parser *<b>Parser</b>, argv []<a href="../../builtin.html#name-string">string</a>)</span></span>
+		<input type='checkbox' class="fold" id="Parser-fold-params"><label for="Parser-fold-params">As Inputs Of (<i>at least 3, none are exported</i>)</label><span id='Parser-fold-params-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Parser-showhide-outputofs"><i><label for="Parser-showhide-outputofs" class="show-inline">/* 3+ unexporteds ... */</label><label for="Parser-showhide-outputofs" class="hide-inline">/* 3+ unexporteds: */</label></i><span class="hidden"><i>
+			func github.com/Golang-Tools/schema-entry-go/v2.(*<a href="../Golang-Tools^b0a0c/schema-entry-go/v2.html#name-EndPoint">EndPoint</a>)[T].<a href="../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/endpoint.go.html#line-350">configPtrFromArgparse</a>(parser *<b>Parser</b>, argv []<a href="../../builtin.html#name-string">string</a>) (*<a href="../../builtin.html#name-string">string</a>, map[<a href="../../builtin.html#name-string">string</a>]interface{}, <a href="../../builtin.html#name-error">error</a>)</i></span><span class="hidden"><i>
+			func github.com/Golang-Tools/schema-entry-go/v2.(*<a href="../Golang-Tools^b0a0c/schema-entry-go/v2.html#name-EndPoint">EndPoint</a>)[T].<a href="../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/endpoint.go.html#line-158">passArgs</a>(parser *<b>Parser</b>, argv []<a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-bool">bool</a></i></span><span class="hidden"><i>
+			func github.com/Golang-Tools/schema-entry-go/v2.<a href="../Golang-Tools^b0a0c/schema-entry-go/v2.html#name-EntryPoint">EntryPoint</a>.<a href="../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypoint.go.html#line-65">passArgsTosub</a>(parser *<b>Parser</b>, argv []<a href="../../builtin.html#name-string">string</a>)</i></span></span>
 
 </span></div></div><div>	<input type='checkbox' class="showhide" id="unexported-typenames-showhide"><i><label for="unexported-typenames-showhide" class="show-inline">/* 3 unexporteds ... */</label><label for="unexported-typenames-showhide" class="hide-inline">/* 3 unexporteds: */</label></i><div class="anchor type-res hidden" id="name-arg" data-popularity="1540">	<input type='checkbox' class="fold" id="arg-fold-content"><label for="arg-fold-content"> type <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-11">arg</a> <i>(struct)</i></label><span id='arg-fold-content-docs' class="fold-docs">
 
@@ -491,62 +492,62 @@
 				// Specifies whether flag should be present only ones
 </span></i></span></span>
 		<input type='checkbox' class="fold" id="arg-fold-methods"><label for="arg-fold-methods">Methods (<i>total 27, in which 4 are exported</i>)</label><span id='arg-fold-methods-items' class="fold-items"><span>
-			<span class="nodocs">( T) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-42">GetLname</a>() <a href="../../builtin.html#name-string">string</a></span></span><span>
-			<span class="nodocs">( T) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-34">GetOpts</a>() *<a href="#name-Options">Options</a></span></span><span>
-			<input type='checkbox' class="fold" id="arg-fold-method-GetResult"><label for="arg-fold-method-GetResult">( T) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-48">GetResult</a>() interface{}</label><span id='arg-fold-method-GetResult-docs' class="fold-docs">
+			<span class="nodocs">( arg) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-42">GetLname</a>() <a href="../../builtin.html#name-string">string</a></span></span><span>
+			<span class="nodocs">( arg) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-34">GetOpts</a>() *<a href="#name-Options">Options</a></span></span><span>
+			<input type='checkbox' class="fold" id="arg-fold-method-GetResult"><label for="arg-fold-method-GetResult">( arg) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-48">GetResult</a>() interface{}</label><span id='arg-fold-method-GetResult-docs' class="fold-docs">
 				getResult returns the interface{} to the *(type) containing the argument's result value
 				Will contain the empty/default value if argument value was not given
 </span></span><span>
-			<span class="nodocs">( T) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-38">GetSname</a>() <a href="../../builtin.html#name-string">string</a></span></span>
+			<span class="nodocs">( arg) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-38">GetSname</a>() <a href="../../builtin.html#name-string">string</a></span></span>
 			<input type='checkbox' checked class="showhide" id="arg-showhide-methods"><i><label for="arg-showhide-methods" class="show-inline">/* 23 unexporteds ... */</label><label for="arg-showhide-methods" class="hide-inline">/* 23 unexporteds: */</label></i><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="arg-fold-method-check"><label for="arg-fold-method-check">(*T) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-109">check</a>(argument <a href="../../builtin.html#name-string">string</a>) (<a href="../../builtin.html#name-int">int</a>, <a href="../../builtin.html#name-error">error</a>)</label><span id='arg-fold-method-check-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="arg-fold-method-check"><label for="arg-fold-method-check">(*arg) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-109">check</a>(argument <a href="../../builtin.html#name-string">string</a>) (<a href="../../builtin.html#name-int">int</a>, <a href="../../builtin.html#name-error">error</a>)</label><span id='arg-fold-method-check-docs' class="fold-docs">
 				check if argumet present.
 				check - returns the argumet's number of occurrences and error.
 				For long name return value is 0 or 1.
 				For shorthand argument - 0 if there is no occurrences, or count of occurrences.
 				Shorthand argument with parametr, mast be the only or last in the argument string.
 </span></i></span><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="arg-fold-method-checkLongName"><label for="arg-fold-method-checkLongName">(*T) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-57">checkLongName</a>(argument <a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-int">int</a></label><span id='arg-fold-method-checkLongName-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="arg-fold-method-checkLongName"><label for="arg-fold-method-checkLongName">(*arg) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-57">checkLongName</a>(argument <a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-int">int</a></label><span id='arg-fold-method-checkLongName-docs' class="fold-docs">
 				checkLongName if long argumet present.
 				checkLongName - returns the argumet's long name number of occurrences and error.
 				For long name return value is 0 or 1.
 </span></i></span><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="arg-fold-method-checkShortName"><label for="arg-fold-method-checkShortName">(*T) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-75">checkShortName</a>(argument <a href="../../builtin.html#name-string">string</a>) (<a href="../../builtin.html#name-int">int</a>, <a href="../../builtin.html#name-error">error</a>)</label><span id='arg-fold-method-checkShortName-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="arg-fold-method-checkShortName"><label for="arg-fold-method-checkShortName">(*arg) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-75">checkShortName</a>(argument <a href="../../builtin.html#name-string">string</a>) (<a href="../../builtin.html#name-int">int</a>, <a href="../../builtin.html#name-error">error</a>)</label><span id='arg-fold-method-checkShortName-docs' class="fold-docs">
 				checkShortName if argumet present.
 				checkShortName - returns the argumet's short name number of occurrences and error.
 				For shorthand argument - 0 if there is no occurrences, or count of occurrences.
 				Shorthand argument with parametr, mast be the only or last in the argument string.
 </span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-442">getHelpMessage</a>() <a href="../../builtin.html#name-string">string</a></span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-401">name</a>() <a href="../../builtin.html#name-string">string</a></span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-385">parse</a>(args []<a href="../../builtin.html#name-string">string</a>, argCount <a href="../../builtin.html#name-int">int</a>) <a href="../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-196">parseBool</a>(args []<a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-249">parseFile</a>(args []<a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-318">parseFileList</a>(args []<a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-203">parseFloat</a>(args []<a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-300">parseFloatList</a>(args []<a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-173">parseInt</a>(args []<a href="../../builtin.html#name-string">string</a>, argCount <a href="../../builtin.html#name-int">int</a>) <a href="../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-282">parseIntList</a>(args []<a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-352">parseSomeType</a>(args []<a href="../../builtin.html#name-string">string</a>, argCount <a href="../../builtin.html#name-int">int</a>) <a href="../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-222">parseString</a>(args []<a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-268">parseStringList</a>(args []<a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="arg-fold-method-reduce"><label for="arg-fold-method-reduce">(*T) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-168">reduce</a>(position <a href="../../builtin.html#name-int">int</a>, args *[]<a href="../../builtin.html#name-string">string</a>)</label><span id='arg-fold-method-reduce-docs' class="fold-docs">
+			<span class="nodocs">(*arg) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-442">getHelpMessage</a>() <a href="../../builtin.html#name-string">string</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*arg) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-401">name</a>() <a href="../../builtin.html#name-string">string</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*arg) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-385">parse</a>(args []<a href="../../builtin.html#name-string">string</a>, argCount <a href="../../builtin.html#name-int">int</a>) <a href="../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*arg) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-196">parseBool</a>(args []<a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*arg) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-249">parseFile</a>(args []<a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*arg) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-318">parseFileList</a>(args []<a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*arg) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-203">parseFloat</a>(args []<a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*arg) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-300">parseFloatList</a>(args []<a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*arg) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-173">parseInt</a>(args []<a href="../../builtin.html#name-string">string</a>, argCount <a href="../../builtin.html#name-int">int</a>) <a href="../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*arg) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-282">parseIntList</a>(args []<a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*arg) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-352">parseSomeType</a>(args []<a href="../../builtin.html#name-string">string</a>, argCount <a href="../../builtin.html#name-int">int</a>) <a href="../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*arg) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-222">parseString</a>(args []<a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*arg) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-268">parseStringList</a>(args []<a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="arg-fold-method-reduce"><label for="arg-fold-method-reduce">(*arg) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-168">reduce</a>(position <a href="../../builtin.html#name-int">int</a>, args *[]<a href="../../builtin.html#name-string">string</a>)</label><span id='arg-fold-method-reduce-docs' class="fold-docs">
 				clear out already used argument from args at position
 </span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-118">reduceLongName</a>(position <a href="../../builtin.html#name-int">int</a>, args *[]<a href="../../builtin.html#name-string">string</a>)</span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-138">reduceShortName</a>(position <a href="../../builtin.html#name-int">int</a>, args *[]<a href="../../builtin.html#name-string">string</a>)</span></i></span><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="arg-fold-method-setDefault"><label for="arg-fold-method-setDefault">(*T) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-501">setDefault</a>() <a href="../../builtin.html#name-error">error</a></label><span id='arg-fold-method-setDefault-docs' class="fold-docs">
+			<span class="nodocs">(*arg) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-118">reduceLongName</a>(position <a href="../../builtin.html#name-int">int</a>, args *[]<a href="../../builtin.html#name-string">string</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*arg) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-138">reduceShortName</a>(position <a href="../../builtin.html#name-int">int</a>, args *[]<a href="../../builtin.html#name-string">string</a>)</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="arg-fold-method-setDefault"><label for="arg-fold-method-setDefault">(*arg) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-501">setDefault</a>() <a href="../../builtin.html#name-error">error</a></label><span id='arg-fold-method-setDefault-docs' class="fold-docs">
 				setDefault - if no value getted for specific argument, set default value, if provided
 </span></i></span><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="arg-fold-method-setDefaultFile"><label for="arg-fold-method-setDefaultFile">(*T) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-454">setDefaultFile</a>() <a href="../../builtin.html#name-error">error</a></label><span id='arg-fold-method-setDefaultFile-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="arg-fold-method-setDefaultFile"><label for="arg-fold-method-setDefaultFile">(*arg) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-454">setDefaultFile</a>() <a href="../../builtin.html#name-error">error</a></label><span id='arg-fold-method-setDefaultFile-docs' class="fold-docs">
 				setDefaultFile - gets default os.File object based on provided default filename string
 </span></i></span><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="arg-fold-method-setDefaultFiles"><label for="arg-fold-method-setDefaultFiles">(*T) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-469">setDefaultFiles</a>() <a href="../../builtin.html#name-error">error</a></label><span id='arg-fold-method-setDefaultFiles-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="arg-fold-method-setDefaultFiles"><label for="arg-fold-method-setDefaultFiles">(*arg) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-469">setDefaultFiles</a>() <a href="../../builtin.html#name-error">error</a></label><span id='arg-fold-method-setDefaultFiles-docs' class="fold-docs">
 				setDefaultFiles - gets list of default os.File objects based on provided list of default filenames strings
 </span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-413">usage</a>() <a href="../../builtin.html#name-string">string</a></span></i></span></span>
+			<span class="nodocs">(*arg) <a href="../../../src/github.com/akamensky/argparse/argument.go.html#line-413">usage</a>() <a href="../../builtin.html#name-string">string</a></span></i></span></span>
 		<input type='checkbox' class="fold" id="arg-fold-impls"><label for="arg-fold-impls">Implements (<i>at least one exported</i>)</label><span id='arg-fold-impls-items' class="fold-items"><span>
-			 T : <a href="#name-Arg">Arg</a></span></span>
+			 arg : <a href="#name-Arg">Arg</a></span></span>
 		<input type='checkbox' class="fold" id="arg-fold-params"><label for="arg-fold-params">As Inputs Of (<i>at least 4, none are exported</i>)</label><span id='arg-fold-params-items' class="fold-items">
 			<input type='checkbox' checked class="showhide" id="arg-showhide-outputofs"><i><label for="arg-showhide-outputofs" class="show-inline">/* 4+ unexporteds ... */</label><label for="arg-showhide-outputofs" class="hide-inline">/* 4+ unexporteds: */</label></i><span class="hidden"><i>
 			func <a href="#name-arguments2Result">arguments2Result</a>(result <a href="../../builtin.html#name-string">string</a>, arguments []*<b>arg</b>, maxWidth <a href="../../builtin.html#name-int">int</a>) <a href="../../builtin.html#name-string">string</a></i></span><span class="hidden"><i>
@@ -561,9 +562,9 @@
 			<span class="nodocs"><a href="../../../src/github.com/akamensky/argparse/errors.go.html#line-5">cmd</a> <i>*<a href="#name-Command">Command</a></i></span></i></span><span class="hidden"><i>
 			<span class="nodocs"><a href="../../../src/github.com/akamensky/argparse/errors.go.html#line-4">error</a> <i><a href="../../builtin.html#name-error">error</a></i></span></i></span></span>
 		<input type='checkbox' class="fold" id="subCommandError-fold-methods"><label for="subCommandError-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='subCommandError-fold-methods-items' class="fold-items"><span>
-			<span class="nodocs">( T) <a href="../../../src/github.com/akamensky/argparse/errors.go.html#line-8">Error</a>() <a href="../../builtin.html#name-string">string</a></span></span></span>
+			<span class="nodocs">( subCommandError) <a href="../../../src/github.com/akamensky/argparse/errors.go.html#line-8">Error</a>() <a href="../../builtin.html#name-string">string</a></span></span></span>
 		<input type='checkbox' class="fold" id="subCommandError-fold-impls"><label for="subCommandError-fold-impls">Implements (<i>at least one exported</i>)</label><span id='subCommandError-fold-impls-items' class="fold-items"><span>
-			 T : <a href="../../builtin.html#name-error">error</a></span></span>
+			 subCommandError : <a href="../../builtin.html#name-error">error</a></span></span>
 
 </span></div></div>
 <div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 8, in which 2 are exported)</i></span></span>
@@ -608,7 +609,7 @@
 
 </span></div></div></code></pre><pre id="footer">
 <table><tr><td><img src="../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

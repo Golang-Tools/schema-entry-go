@@ -5,14 +5,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Package: vendor/golang.org/x/net/http/httpproxy</title>
-<link href="../../../../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="package-details"><code><span style="font-size:xx-large;">package <b>httpproxy</b></span>
 
 <span class="title">Import Path</span>
-	<a href="../../../../../../index.html#pkg-vendor/golang.org/x/net/http/httpproxy">vendor/golang.org/x/net/http/httpproxy</a><i> (on <a href="https://pkg.go.dev/vendor/golang.org/x/net/http/httpproxy" target="_blank">go.dev</a>)</i>
+	<a href="../../../../../../index.html#pkg-vendor/golang.org/x/net/http/httpproxy">vendor/golang.org/x/net/http/httpproxy</a><i> (on <a href="https://pkg.go.dev/golang.org/x/net/http/httpproxy" target="_blank">go.dev</a>)</i>
 
 <span class="title">Dependency Relation</span>
 	imports <a href="../../../../../../dep/vendor/golang.org/x/net/http/httpproxy.html">8 packages</a>, and imported by <a href="../../../../../../dep/vendor/golang.org/x/net/http/httpproxy.html#imported-by">one package</a>
@@ -67,7 +67,7 @@
 				ignored.
 </span></span></span>
 		<input type='checkbox' class="fold" id="Config-fold-methods"><label for="Config-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='Config-fold-methods-items' class="fold-items"><span>
-			<input type='checkbox' class="fold" id="Config-fold-method-ProxyFunc"><label for="Config-fold-method-ProxyFunc">(*T) <a href="../../../../../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-118">ProxyFunc</a>() func(reqURL *<a href="../../../../../net/url.html">url</a>.<a href="../../../../../net/url.html#name-URL">URL</a>) (*<a href="../../../../../net/url.html">url</a>.<a href="../../../../../net/url.html#name-URL">URL</a>, <a href="../../../../../builtin.html#name-error">error</a>)</label><span id='Config-fold-method-ProxyFunc-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Config-fold-method-ProxyFunc"><label for="Config-fold-method-ProxyFunc">(*Config) <a href="../../../../../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-118">ProxyFunc</a>() func(reqURL *<a href="../../../../../net/url.html">url</a>.<a href="../../../../../net/url.html#name-URL">URL</a>) (*<a href="../../../../../net/url.html">url</a>.<a href="../../../../../net/url.html#name-URL">URL</a>, <a href="../../../../../builtin.html#name-error">error</a>)</label><span id='Config-fold-method-ProxyFunc-docs' class="fold-docs">
 				ProxyFunc returns a function that determines the proxy URL to use for
 				a given request URL. Changing the contents of cfg will not affect
 				proxy functions created earlier.
@@ -76,8 +76,8 @@
 				environment, or a proxy should not be used for the given request, as
 				defined by NO_PROXY.
 
-				As a special case, if req.URL.Host is "localhost" (with or without a
-				port number), then a nil URL and nil error will be returned.
+				As a special case, if req.URL.Host is "localhost" or a loopback address
+				(with or without a port number), then a nil URL and nil error will be returned.
 </span></span></span>
 		<input type='checkbox' class="fold" id="Config-fold-results"><label for="Config-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='Config-fold-results-items' class="fold-items"><span>
 			func <a href="#name-FromEnvironment">FromEnvironment</a>() *<b>Config</b></span></span>
@@ -87,10 +87,10 @@
 
 		<input type='checkbox' class="fold" id="allMatch-fold-methods"><label for="allMatch-fold-methods">Methods (<i>only one, which is unexported</i>)</label><span id='allMatch-fold-methods-items' class="fold-items">
 			<input type='checkbox' checked class="showhide" id="allMatch-showhide-methods"><i><label for="allMatch-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="allMatch-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
-			<span class="nodocs">( T) <a href="../../../../../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-332">match</a>(host, port <a href="../../../../../builtin.html#name-string">string</a>, ip <a href="../../../../../net.html">net</a>.<a href="../../../../../net.html#name-IP">IP</a>) <a href="../../../../../builtin.html#name-bool">bool</a></span></i></span></span>
+			<span class="nodocs">( allMatch) <a href="../../../../../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-332">match</a>(host, port <a href="../../../../../builtin.html#name-string">string</a>, ip <a href="../../../../../net.html">net</a>.<a href="../../../../../net.html#name-IP">IP</a>) <a href="../../../../../builtin.html#name-bool">bool</a></span></i></span></span>
 		<input type='checkbox' class="fold" id="allMatch-fold-impls"><label for="allMatch-fold-impls">Implements (<i>at least one unexported</i>)</label><span id='allMatch-fold-impls-items' class="fold-items">
 			<input type='checkbox' checked class="showhide" id="allMatch-showhide-impls"><i><label for="allMatch-showhide-impls" class="show-inline">/* at least one unexported ... */</label><label for="allMatch-showhide-impls" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
-			 T : <a href="#name-matcher">matcher</a></i></span></span>
+			 allMatch : <a href="#name-matcher">matcher</a></i></span></span>
 
 </span></div><div class="anchor type-res hidden" id="name-cidrMatch" data-popularity="100">	<input type='checkbox' class="fold" id="cidrMatch-fold-content"><label for="cidrMatch-fold-content"> type <a href="../../../../../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-336">cidrMatch</a> <i>(struct)</i></label><span id='cidrMatch-fold-content-docs' class="fold-docs">
 
@@ -99,10 +99,10 @@
 			<span class="nodocs"><a href="../../../../../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-337">cidr</a> <i>*<a href="../../../../../net.html">net</a>.<a href="../../../../../net.html#name-IPNet">IPNet</a></i></span></i></span></span>
 		<input type='checkbox' class="fold" id="cidrMatch-fold-methods"><label for="cidrMatch-fold-methods">Methods (<i>only one, which is unexported</i>)</label><span id='cidrMatch-fold-methods-items' class="fold-items">
 			<input type='checkbox' checked class="showhide" id="cidrMatch-showhide-methods"><i><label for="cidrMatch-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="cidrMatch-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
-			<span class="nodocs">( T) <a href="../../../../../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-340">match</a>(host, port <a href="../../../../../builtin.html#name-string">string</a>, ip <a href="../../../../../net.html">net</a>.<a href="../../../../../net.html#name-IP">IP</a>) <a href="../../../../../builtin.html#name-bool">bool</a></span></i></span></span>
+			<span class="nodocs">( cidrMatch) <a href="../../../../../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-340">match</a>(host, port <a href="../../../../../builtin.html#name-string">string</a>, ip <a href="../../../../../net.html">net</a>.<a href="../../../../../net.html#name-IP">IP</a>) <a href="../../../../../builtin.html#name-bool">bool</a></span></i></span></span>
 		<input type='checkbox' class="fold" id="cidrMatch-fold-impls"><label for="cidrMatch-fold-impls">Implements (<i>at least one unexported</i>)</label><span id='cidrMatch-fold-impls-items' class="fold-items">
 			<input type='checkbox' checked class="showhide" id="cidrMatch-showhide-impls"><i><label for="cidrMatch-showhide-impls" class="show-inline">/* at least one unexported ... */</label><label for="cidrMatch-showhide-impls" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
-			 T : <a href="#name-matcher">matcher</a></i></span></span>
+			 cidrMatch : <a href="#name-matcher">matcher</a></i></span></span>
 
 </span></div><div class="anchor type-res hidden" id="name-config" data-popularity="200">	<input type='checkbox' class="fold" id="config-fold-content"><label for="config-fold-content"> type <a href="../../../../../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-63">config</a> <i>(struct)</i></label><span id='config-fold-content-docs' class="fold-docs">
 		config holds the parsed configuration for HTTP proxy settings.
@@ -160,7 +160,7 @@
 				prefixes or an IP address in CIDR notation.
 </span></i></span></span>
 		<input type='checkbox' class="fold" id="config-fold-methods"><label for="config-fold-methods">Methods (<i>total 4, in which 1 are exported</i>)</label><span id='config-fold-methods-items' class="fold-items"><span>
-			<input type='checkbox' class="fold" id="config-fold-method-ProxyFunc"><label for="config-fold-method-ProxyFunc">(*T) <a href="../../../../../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-118">ProxyFunc</a>() func(reqURL *<a href="../../../../../net/url.html">url</a>.<a href="../../../../../net/url.html#name-URL">URL</a>) (*<a href="../../../../../net/url.html">url</a>.<a href="../../../../../net/url.html#name-URL">URL</a>, <a href="../../../../../builtin.html#name-error">error</a>)</label><span id='config-fold-method-ProxyFunc-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="config-fold-method-ProxyFunc"><label for="config-fold-method-ProxyFunc">(*config) <a href="../../../../../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-118">ProxyFunc</a>() func(reqURL *<a href="../../../../../net/url.html">url</a>.<a href="../../../../../net/url.html#name-URL">URL</a>) (*<a href="../../../../../net/url.html">url</a>.<a href="../../../../../net/url.html#name-URL">URL</a>, <a href="../../../../../builtin.html#name-error">error</a>)</label><span id='config-fold-method-ProxyFunc-docs' class="fold-docs">
 				ProxyFunc returns a function that determines the proxy URL to use for
 				a given request URL. Changing the contents of cfg will not affect
 				proxy functions created earlier.
@@ -169,13 +169,13 @@
 				environment, or a proxy should not be used for the given request, as
 				defined by NO_PROXY.
 
-				As a special case, if req.URL.Host is "localhost" (with or without a
-				port number), then a nil URL and nil error will be returned.
+				As a special case, if req.URL.Host is "localhost" or a loopback address
+				(with or without a port number), then a nil URL and nil error will be returned.
 </span></span>
 			<input type='checkbox' checked class="showhide" id="config-showhide-methods"><i><label for="config-showhide-methods" class="show-inline">/* 3 unexporteds ... */</label><label for="config-showhide-methods" class="hide-inline">/* 3 unexporteds: */</label></i><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../../../../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-208">init</a>()</span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../../../../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-127">proxyForURL</a>(reqURL *<a href="../../../../../net/url.html">url</a>.<a href="../../../../../net/url.html#name-URL">URL</a>) (*<a href="../../../../../net/url.html">url</a>.<a href="../../../../../net/url.html#name-URL">URL</a>, <a href="../../../../../builtin.html#name-error">error</a>)</span></i></span><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="config-fold-method-useProxy"><label for="config-fold-method-useProxy">(*T) <a href="../../../../../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-173">useProxy</a>(addr <a href="../../../../../builtin.html#name-string">string</a>) <a href="../../../../../builtin.html#name-bool">bool</a></label><span id='config-fold-method-useProxy-docs' class="fold-docs">
+			<span class="nodocs">(*config) <a href="../../../../../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-208">init</a>()</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*config) <a href="../../../../../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-127">proxyForURL</a>(reqURL *<a href="../../../../../net/url.html">url</a>.<a href="../../../../../net/url.html#name-URL">URL</a>) (*<a href="../../../../../net/url.html">url</a>.<a href="../../../../../net/url.html#name-URL">URL</a>, <a href="../../../../../builtin.html#name-error">error</a>)</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="config-fold-method-useProxy"><label for="config-fold-method-useProxy">(*config) <a href="../../../../../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-173">useProxy</a>(addr <a href="../../../../../builtin.html#name-string">string</a>) <a href="../../../../../builtin.html#name-bool">bool</a></label><span id='config-fold-method-useProxy-docs' class="fold-docs">
 				useProxy reports whether requests to addr should use a proxy,
 				according to the NO_PROXY or no_proxy environment variable.
 				addr is always a canonicalAddr with a host and port.
@@ -190,10 +190,10 @@
 			<span class="nodocs"><a href="../../../../../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-358">port</a> <i><a href="../../../../../builtin.html#name-string">string</a></i></span></i></span></span>
 		<input type='checkbox' class="fold" id="domainMatch-fold-methods"><label for="domainMatch-fold-methods">Methods (<i>only one, which is unexported</i>)</label><span id='domainMatch-fold-methods-items' class="fold-items">
 			<input type='checkbox' checked class="showhide" id="domainMatch-showhide-methods"><i><label for="domainMatch-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="domainMatch-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
-			<span class="nodocs">( T) <a href="../../../../../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-363">match</a>(host, port <a href="../../../../../builtin.html#name-string">string</a>, ip <a href="../../../../../net.html">net</a>.<a href="../../../../../net.html#name-IP">IP</a>) <a href="../../../../../builtin.html#name-bool">bool</a></span></i></span></span>
+			<span class="nodocs">( domainMatch) <a href="../../../../../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-363">match</a>(host, port <a href="../../../../../builtin.html#name-string">string</a>, ip <a href="../../../../../net.html">net</a>.<a href="../../../../../net.html#name-IP">IP</a>) <a href="../../../../../builtin.html#name-bool">bool</a></span></i></span></span>
 		<input type='checkbox' class="fold" id="domainMatch-fold-impls"><label for="domainMatch-fold-impls">Implements (<i>at least one unexported</i>)</label><span id='domainMatch-fold-impls-items' class="fold-items">
 			<input type='checkbox' checked class="showhide" id="domainMatch-showhide-impls"><i><label for="domainMatch-showhide-impls" class="show-inline">/* at least one unexported ... */</label><label for="domainMatch-showhide-impls" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
-			 T : <a href="#name-matcher">matcher</a></i></span></span>
+			 domainMatch : <a href="#name-matcher">matcher</a></i></span></span>
 
 </span></div><div class="anchor type-res hidden" id="name-ipMatch" data-popularity="100">	<input type='checkbox' class="fold" id="ipMatch-fold-content"><label for="ipMatch-fold-content"> type <a href="../../../../../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-344">ipMatch</a> <i>(struct)</i></label><span id='ipMatch-fold-content-docs' class="fold-docs">
 
@@ -203,17 +203,17 @@
 			<span class="nodocs"><a href="../../../../../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-346">port</a> <i><a href="../../../../../builtin.html#name-string">string</a></i></span></i></span></span>
 		<input type='checkbox' class="fold" id="ipMatch-fold-methods"><label for="ipMatch-fold-methods">Methods (<i>only one, which is unexported</i>)</label><span id='ipMatch-fold-methods-items' class="fold-items">
 			<input type='checkbox' checked class="showhide" id="ipMatch-showhide-methods"><i><label for="ipMatch-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="ipMatch-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
-			<span class="nodocs">( T) <a href="../../../../../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-349">match</a>(host, port <a href="../../../../../builtin.html#name-string">string</a>, ip <a href="../../../../../net.html">net</a>.<a href="../../../../../net.html#name-IP">IP</a>) <a href="../../../../../builtin.html#name-bool">bool</a></span></i></span></span>
+			<span class="nodocs">( ipMatch) <a href="../../../../../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-349">match</a>(host, port <a href="../../../../../builtin.html#name-string">string</a>, ip <a href="../../../../../net.html">net</a>.<a href="../../../../../net.html#name-IP">IP</a>) <a href="../../../../../builtin.html#name-bool">bool</a></span></i></span></span>
 		<input type='checkbox' class="fold" id="ipMatch-fold-impls"><label for="ipMatch-fold-impls">Implements (<i>at least one unexported</i>)</label><span id='ipMatch-fold-impls-items' class="fold-items">
 			<input type='checkbox' checked class="showhide" id="ipMatch-showhide-impls"><i><label for="ipMatch-showhide-impls" class="show-inline">/* at least one unexported ... */</label><label for="ipMatch-showhide-impls" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
-			 T : <a href="#name-matcher">matcher</a></i></span></span>
+			 ipMatch : <a href="#name-matcher">matcher</a></i></span></span>
 
 </span></div><div class="anchor type-res hidden" id="name-matcher" data-popularity="650">	<input type='checkbox' class="fold" id="matcher-fold-content"><label for="matcher-fold-content"> type <a href="../../../../../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-323">matcher</a> <b><i>(interface)</i></b></label><span id='matcher-fold-content-docs' class="fold-docs">
 		matcher represents the matching rule for a given value in the NO_PROXY list
 
 		<input type='checkbox' class="fold" id="matcher-fold-methods"><label for="matcher-fold-methods">Methods (<i>only one, which is unexported</i>)</label><span id='matcher-fold-methods-items' class="fold-items">
 			<input type='checkbox' checked class="showhide" id="matcher-showhide-methods"><i><label for="matcher-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="matcher-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="matcher-fold-method-match"><label for="matcher-fold-method-match">( T) <a href="../../../../../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-326">match</a>(host, port <a href="../../../../../builtin.html#name-string">string</a>, ip <a href="../../../../../net.html">net</a>.<a href="../../../../../net.html#name-IP">IP</a>) <a href="../../../../../builtin.html#name-bool">bool</a></label><span id='matcher-fold-method-match-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="matcher-fold-method-match"><label for="matcher-fold-method-match">( matcher) <a href="../../../../../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-326">match</a>(host, port <a href="../../../../../builtin.html#name-string">string</a>, ip <a href="../../../../../net.html">net</a>.<a href="../../../../../net.html#name-IP">IP</a>) <a href="../../../../../builtin.html#name-bool">bool</a></label><span id='matcher-fold-method-match-docs' class="fold-docs">
 				match returns true if the host and optional port or ip and optional port
 				are allowed
 </span></i></span></span>
@@ -249,7 +249,7 @@
 
 	<input type='checkbox' class="showhide" id="unexported-variables-showhide"><i><label for="unexported-variables-showhide" class="show-inline">/* one unexported ... */</label><label for="unexported-variables-showhide" class="hide-inline">/* one unexported: */</label></i><div class="anchor value-res hidden" id="name-portMap"><i>	<span class="nodocs">  var <a href="../../../../../../src/vendor/golang.org/x/net/http/httpproxy/proxy.go.html#line-274">portMap</a> map[<a href="../../../../../builtin.html#name-string">string</a>]<a href="../../../../../builtin.html#name-string">string</a></span></i></div></div></code></pre><pre id="footer">
 <table><tr><td><img src="../../../../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

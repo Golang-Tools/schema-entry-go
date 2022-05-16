@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: signal_amd64.go in package runtime</title>
-<link href="../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../jvs/golds-v0.3.6.js"></script>
+<link href="../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -41,7 +41,8 @@ input[id=r21]:checked ~pre label[for=r21],
 input[id=r22]:checked ~pre label[for=r22]
 {background: #226; color: #ff8;}
 input[id=i0]:checked ~pre .i0,
-input[id=i1]:checked ~pre .i1
+input[id=i1]:checked ~pre .i1,
+input[id=i2]:checked ~pre .i2
 {background: brown; color: #eed;}
 </style><input id="r0" type="radio" name="g"/>
 <input id="r1" type="radio" name="g"/>
@@ -68,20 +69,21 @@ input[id=i1]:checked ~pre .i1
 <input id="r22" type="radio" name="g"/>
 <input id="i0" type="radio" name="i"/>
 <input id="i1" type="radio" name="i"/>
+<input id="i2" type="radio" name="i"/>
 
 <pre class="line-numbers">
 <span class="codeline" id="line-1"><code><span class="comment">// Copyright 2013 The Go Authors. All rights reserved.</span></code></span>
 <span class="codeline" id="line-2"><code><span class="comment">// Use of this source code is governed by a BSD-style</span></code></span>
 <span class="codeline" id="line-3"><code><span class="comment">// license that can be found in the LICENSE file.</span></code></span>
 <span class="codeline" id="line-4"><code></code></span>
-<span class="codeline" id="line-5"><code><span class="comment">// +build amd64</span></code></span>
-<span class="codeline" id="line-6"><code><span class="comment">// +build darwin dragonfly freebsd linux netbsd openbsd solaris</span></code></span>
-<span class="codeline" id="line-7"><code></code></span>
-<span class="codeline" id="line-8"><code><span class="keyword">package</span> runtime</code></span>
-<span class="codeline" id="line-9"><code></code></span>
-<span class="codeline" id="line-10"><code><span class="keyword">import</span> (</code></span>
-<span class="codeline" id="line-11"><code>	<label for="i0"><span class="lit-string i0">"runtime/internal/sys"</span></label></code></span>
-<span class="codeline" id="line-12"><code>	<label for="i1"><span class="lit-string i1">"unsafe"</span></label></code></span>
+<span class="codeline" id="line-5"><code><span class="comment">//go:build amd64 &amp;&amp; (darwin || dragonfly || freebsd || linux || netbsd || openbsd || solaris)</span></code></span>
+<span class="codeline" id="line-6"><code></code></span>
+<span class="codeline" id="line-7"><code><span class="keyword">package</span> runtime</code></span>
+<span class="codeline" id="line-8"><code></code></span>
+<span class="codeline" id="line-9"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-10"><code>	<label for="i0"><span class="lit-string i0">"internal/abi"</span></label></code></span>
+<span class="codeline" id="line-11"><code>	<label for="i1"><span class="lit-string i1">"internal/goarch"</span></label></code></span>
+<span class="codeline" id="line-12"><code>	<label for="i2"><span class="lit-string i2">"unsafe"</span></label></code></span>
 <span class="codeline" id="line-13"><code>)</code></span>
 <span class="codeline" id="line-14"><code></code></span>
 <span class="codeline" id="line-15"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../pkg/runtime.html#name-dumpregs" class="ident">dumpregs</a></label>(<label for="r1" class="ident">c</label> *<a href="signal_darwin_amd64.go.html#line-9" class="ident">sigctxt</a>) {</code></span>
@@ -117,12 +119,12 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-45"><code><span class="keyword">func</span> (<label for="r8" class="ident">c</label> *<a href="signal_darwin_amd64.go.html#line-9" class="ident">sigctxt</a>) <label for="r9" class="ident">fault</label>() <a href="../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a> { <span class="keyword">return</span> <a href="../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a>(<label for="r8" class="ident">c</label>.<a href="signal_darwin_amd64.go.html#line-44" class="ident">sigaddr</a>()) }</code></span>
 <span class="codeline" id="line-46"><code></code></span>
 <span class="codeline" id="line-47"><code><span class="comment">// preparePanic sets up the stack to look like a call to sigpanic.</span></code></span>
-<span class="codeline" id="line-48"><code><span class="keyword">func</span> (<label for="r10" class="ident">c</label> *<a href="signal_darwin_amd64.go.html#line-9" class="ident">sigctxt</a>) <label for="r11" class="ident">preparePanic</label>(<label for="r12" class="ident">sig</label> <a href="../../pkg/builtin.html#name-uint32" class="ident">uint32</a>, <label for="r13" class="ident">gp</label> *<a href="runtime2.go.html#line-404" class="ident">g</a>) {</code></span>
+<span class="codeline" id="line-48"><code><span class="keyword">func</span> (<label for="r10" class="ident">c</label> *<a href="signal_darwin_amd64.go.html#line-9" class="ident">sigctxt</a>) <label for="r11" class="ident">preparePanic</label>(<label for="r12" class="ident">sig</label> <a href="../../pkg/builtin.html#name-uint32" class="ident">uint32</a>, <label for="r13" class="ident">gp</label> *<a href="runtime2.go.html#line-405" class="ident">g</a>) {</code></span>
 <span class="codeline" id="line-49"><code>	<span class="comment">// Work around Leopard bug that doesn't set FPE_INTDIV.</span></code></span>
 <span class="codeline" id="line-50"><code><span class="comment">	// Look at instruction to see if it is a divide.</span></code></span>
 <span class="codeline" id="line-51"><code><span class="comment">	// Not necessary in Snow Leopard (si_code will be != 0).</span></code></span>
-<span class="codeline" id="line-52"><code>	<span class="keyword">if</span> <a href="extern.go.html#line-253" class="ident">GOOS</a> == <span class="lit-string">"darwin"</span> &amp;&amp; <label for="r12" class="ident">sig</label> == <a href="defs_darwin_amd64.go.html#line-41" class="ident">_SIGFPE</a> &amp;&amp; <label for="r13" class="ident">gp</label>.<a href="runtime2.go.html#line-461" class="ident">sigcode0</a> == <span class="lit-number">0</span> {</code></span>
-<span class="codeline" id="line-53"><code>		<label for="r14" class="ident">pc</label> := (*[<span class="lit-number">4</span>]<a href="../../pkg/builtin.html#name-byte" class="ident">byte</a>)(<a href="../../pkg/unsafe.html" class="ident i1">unsafe</a>.<a href="../../pkg/unsafe.html#name-Pointer" class="ident">Pointer</a>(<label for="r13" class="ident">gp</label>.<a href="runtime2.go.html#line-463" class="ident">sigpc</a>))</code></span>
+<span class="codeline" id="line-52"><code>	<span class="keyword">if</span> <a href="extern.go.html#line-271" class="ident">GOOS</a> == <span class="lit-string">"darwin"</span> &amp;&amp; <label for="r12" class="ident">sig</label> == <a href="defs_darwin_amd64.go.html#line-41" class="ident">_SIGFPE</a> &amp;&amp; <label for="r13" class="ident">gp</label>.<a href="runtime2.go.html#line-477" class="ident">sigcode0</a> == <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-53"><code>		<label for="r14" class="ident">pc</label> := (*[<span class="lit-number">4</span>]<a href="../../pkg/builtin.html#name-byte" class="ident">byte</a>)(<a href="../../pkg/unsafe.html" class="ident i2">unsafe</a>.<a href="../../pkg/unsafe.html#name-Pointer" class="ident">Pointer</a>(<label for="r13" class="ident">gp</label>.<a href="runtime2.go.html#line-479" class="ident">sigpc</a>))</code></span>
 <span class="codeline" id="line-54"><code>		<label for="r15" class="ident">i</label> := <span class="lit-number">0</span></code></span>
 <span class="codeline" id="line-55"><code>		<span class="keyword">if</span> <label for="r14" class="ident">pc</label>[<label for="r15" class="ident">i</label>]&amp;<span class="lit-number">0xF0</span> == <span class="lit-number">0x40</span> { <span class="comment">// 64-bit REX prefix</span></code></span>
 <span class="codeline" id="line-56"><code>			<label for="r15" class="ident">i</label>++</code></span>
@@ -130,32 +132,35 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-58"><code>			<label for="r15" class="ident">i</label>++</code></span>
 <span class="codeline" id="line-59"><code>		}</code></span>
 <span class="codeline" id="line-60"><code>		<span class="keyword">if</span> <label for="r14" class="ident">pc</label>[<label for="r15" class="ident">i</label>] == <span class="lit-number">0xF6</span> || <label for="r14" class="ident">pc</label>[<label for="r15" class="ident">i</label>] == <span class="lit-number">0xF7</span> {</code></span>
-<span class="codeline" id="line-61"><code>			<label for="r13" class="ident">gp</label>.<a href="runtime2.go.html#line-461" class="ident">sigcode0</a> = <a href="defs_darwin_amd64.go.html#line-66" class="ident">_FPE_INTDIV</a></code></span>
+<span class="codeline" id="line-61"><code>			<label for="r13" class="ident">gp</label>.<a href="runtime2.go.html#line-477" class="ident">sigcode0</a> = <a href="defs_darwin_amd64.go.html#line-66" class="ident">_FPE_INTDIV</a></code></span>
 <span class="codeline" id="line-62"><code>		}</code></span>
 <span class="codeline" id="line-63"><code>	}</code></span>
 <span class="codeline" id="line-64"><code></code></span>
 <span class="codeline" id="line-65"><code>	<label for="r16" class="ident">pc</label> := <a href="../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a>(<label for="r10" class="ident">c</label>.<a href="signal_darwin_amd64.go.html#line-37" class="ident">rip</a>())</code></span>
 <span class="codeline" id="line-66"><code>	<label for="r17" class="ident">sp</label> := <a href="../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a>(<label for="r10" class="ident">c</label>.<a href="signal_darwin_amd64.go.html#line-25" class="ident">rsp</a>())</code></span>
 <span class="codeline" id="line-67"><code></code></span>
-<span class="codeline" id="line-68"><code>	<span class="keyword">if</span> <a href="panic.go.html#line-1371" class="ident">shouldPushSigpanic</a>(<label for="r13" class="ident">gp</label>, <label for="r16" class="ident">pc</label>, *(*<a href="../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a>)(<a href="../../pkg/unsafe.html" class="ident i1">unsafe</a>.<a href="../../pkg/unsafe.html#name-Pointer" class="ident">Pointer</a>(<label for="r17" class="ident">sp</label>))) {</code></span>
-<span class="codeline" id="line-69"><code>		<label for="r10" class="ident">c</label>.<a href="#line-76" class="ident">pushCall</a>(<a href="proc.go.html#line-447" class="ident">funcPC</a>(<a href="signal_unix.go.html#line-715" class="ident">sigpanic</a>), <label for="r16" class="ident">pc</label>)</code></span>
-<span class="codeline" id="line-70"><code>	} <span class="keyword">else</span> {</code></span>
-<span class="codeline" id="line-71"><code>		<span class="comment">// Not safe to push the call. Just clobber the frame.</span></code></span>
-<span class="codeline" id="line-72"><code>		<label for="r10" class="ident">c</label>.<a href="signal_darwin_amd64.go.html#line-46" class="ident">set_rip</a>(<a href="../../pkg/builtin.html#name-uint64" class="ident">uint64</a>(<a href="proc.go.html#line-447" class="ident">funcPC</a>(<a href="signal_unix.go.html#line-715" class="ident">sigpanic</a>)))</code></span>
-<span class="codeline" id="line-73"><code>	}</code></span>
-<span class="codeline" id="line-74"><code>}</code></span>
-<span class="codeline" id="line-75"><code></code></span>
-<span class="codeline" id="line-76"><code><span class="keyword">func</span> (<label for="r18" class="ident">c</label> *<a href="signal_darwin_amd64.go.html#line-9" class="ident">sigctxt</a>) <label for="r19" class="ident">pushCall</label>(<label for="r20" class="ident">targetPC</label>, <label for="r21" class="ident">resumePC</label> <a href="../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a>) {</code></span>
-<span class="codeline" id="line-77"><code>	<span class="comment">// Make it look like we called target at resumePC.</span></code></span>
-<span class="codeline" id="line-78"><code>	<label for="r22" class="ident">sp</label> := <a href="../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a>(<label for="r18" class="ident">c</label>.<a href="signal_darwin_amd64.go.html#line-25" class="ident">rsp</a>())</code></span>
-<span class="codeline" id="line-79"><code>	<label for="r22" class="ident">sp</label> -= <a href="../../pkg/runtime/internal/sys.html" class="ident i0">sys</a>.<a href="internal/sys/stubs.go.html#line-9" class="ident">PtrSize</a></code></span>
-<span class="codeline" id="line-80"><code>	*(*<a href="../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a>)(<a href="../../pkg/unsafe.html" class="ident i1">unsafe</a>.<a href="../../pkg/unsafe.html#name-Pointer" class="ident">Pointer</a>(<label for="r22" class="ident">sp</label>)) = <label for="r21" class="ident">resumePC</label></code></span>
-<span class="codeline" id="line-81"><code>	<label for="r18" class="ident">c</label>.<a href="signal_darwin_amd64.go.html#line-47" class="ident">set_rsp</a>(<a href="../../pkg/builtin.html#name-uint64" class="ident">uint64</a>(<label for="r22" class="ident">sp</label>))</code></span>
-<span class="codeline" id="line-82"><code>	<label for="r18" class="ident">c</label>.<a href="signal_darwin_amd64.go.html#line-46" class="ident">set_rip</a>(<a href="../../pkg/builtin.html#name-uint64" class="ident">uint64</a>(<label for="r20" class="ident">targetPC</label>))</code></span>
-<span class="codeline" id="line-83"><code>}</code></span>
+<span class="codeline" id="line-68"><code>	<span class="comment">// In case we are panicking from external code, we need to initialize</span></code></span>
+<span class="codeline" id="line-69"><code><span class="comment">	// Go special registers. We inject sigpanic0 (instead of sigpanic),</span></code></span>
+<span class="codeline" id="line-70"><code><span class="comment">	// which takes care of that.</span></code></span>
+<span class="codeline" id="line-71"><code>	<span class="keyword">if</span> <a href="panic.go.html#line-1246" class="ident">shouldPushSigpanic</a>(<label for="r13" class="ident">gp</label>, <label for="r16" class="ident">pc</label>, *(*<a href="../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a>)(<a href="../../pkg/unsafe.html" class="ident i2">unsafe</a>.<a href="../../pkg/unsafe.html#name-Pointer" class="ident">Pointer</a>(<label for="r17" class="ident">sp</label>))) {</code></span>
+<span class="codeline" id="line-72"><code>		<label for="r10" class="ident">c</label>.<a href="#line-79" class="ident">pushCall</a>(<a href="../../pkg/internal/abi.html" class="ident i0">abi</a>.<a href="../internal/abi/abi.go.html#line-117" class="ident">FuncPCABI0</a>(<a href="stubs.go.html#line-416" class="ident">sigpanic0</a>), <label for="r16" class="ident">pc</label>)</code></span>
+<span class="codeline" id="line-73"><code>	} <span class="keyword">else</span> {</code></span>
+<span class="codeline" id="line-74"><code>		<span class="comment">// Not safe to push the call. Just clobber the frame.</span></code></span>
+<span class="codeline" id="line-75"><code>		<label for="r10" class="ident">c</label>.<a href="signal_darwin_amd64.go.html#line-46" class="ident">set_rip</a>(<a href="../../pkg/builtin.html#name-uint64" class="ident">uint64</a>(<a href="../../pkg/internal/abi.html" class="ident i0">abi</a>.<a href="../internal/abi/abi.go.html#line-117" class="ident">FuncPCABI0</a>(<a href="stubs.go.html#line-416" class="ident">sigpanic0</a>)))</code></span>
+<span class="codeline" id="line-76"><code>	}</code></span>
+<span class="codeline" id="line-77"><code>}</code></span>
+<span class="codeline" id="line-78"><code></code></span>
+<span class="codeline" id="line-79"><code><span class="keyword">func</span> (<label for="r18" class="ident">c</label> *<a href="signal_darwin_amd64.go.html#line-9" class="ident">sigctxt</a>) <label for="r19" class="ident">pushCall</label>(<label for="r20" class="ident">targetPC</label>, <label for="r21" class="ident">resumePC</label> <a href="../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a>) {</code></span>
+<span class="codeline" id="line-80"><code>	<span class="comment">// Make it look like we called target at resumePC.</span></code></span>
+<span class="codeline" id="line-81"><code>	<label for="r22" class="ident">sp</label> := <a href="../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a>(<label for="r18" class="ident">c</label>.<a href="signal_darwin_amd64.go.html#line-25" class="ident">rsp</a>())</code></span>
+<span class="codeline" id="line-82"><code>	<label for="r22" class="ident">sp</label> -= <a href="../../pkg/internal/goarch.html" class="ident i1">goarch</a>.<a href="../internal/goarch/goarch.go.html#line-31" class="ident">PtrSize</a></code></span>
+<span class="codeline" id="line-83"><code>	*(*<a href="../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a>)(<a href="../../pkg/unsafe.html" class="ident i2">unsafe</a>.<a href="../../pkg/unsafe.html#name-Pointer" class="ident">Pointer</a>(<label for="r22" class="ident">sp</label>)) = <label for="r21" class="ident">resumePC</label></code></span>
+<span class="codeline" id="line-84"><code>	<label for="r18" class="ident">c</label>.<a href="signal_darwin_amd64.go.html#line-47" class="ident">set_rsp</a>(<a href="../../pkg/builtin.html#name-uint64" class="ident">uint64</a>(<label for="r22" class="ident">sp</label>))</code></span>
+<span class="codeline" id="line-85"><code>	<label for="r18" class="ident">c</label>.<a href="signal_darwin_amd64.go.html#line-46" class="ident">set_rip</a>(<a href="../../pkg/builtin.html#name-uint64" class="ident">uint64</a>(<label for="r20" class="ident">targetPC</label>))</code></span>
+<span class="codeline" id="line-86"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

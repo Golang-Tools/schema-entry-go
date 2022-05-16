@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: reader.go in package strings</title>
-<link href="../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../jvs/golds-v0.3.6.js"></script>
+<link href="../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -258,7 +258,7 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-140"><code>		<span class="keyword">return</span> <span class="lit-number">0</span>, <a href="../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
 <span class="codeline" id="line-141"><code>	}</code></span>
 <span class="codeline" id="line-142"><code>	<label for="r38" class="ident">s</label> := <label for="r33" class="ident">r</label>.<a href="#line-18" class="ident">s</a>[<label for="r33" class="ident">r</label>.<a href="#line-19" class="ident">i</a>:]</code></span>
-<span class="codeline" id="line-143"><code>	<label for="r39" class="ident">m</label>, <label for="r37" class="ident">err</label> := <a href="../../pkg/io.html" class="ident i1">io</a>.<a href="../io/io.go.html#line-307" class="ident">WriteString</a>(<label for="r35" class="ident">w</label>, <label for="r38" class="ident">s</label>)</code></span>
+<span class="codeline" id="line-143"><code>	<label for="r39" class="ident">m</label>, <label for="r37" class="ident">err</label> := <a href="../../pkg/io.html" class="ident i1">io</a>.<a href="../io/io.go.html#line-310" class="ident">WriteString</a>(<label for="r35" class="ident">w</label>, <label for="r38" class="ident">s</label>)</code></span>
 <span class="codeline" id="line-144"><code>	<span class="keyword">if</span> <label for="r39" class="ident">m</label> &gt; <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r38" class="ident">s</label>) {</code></span>
 <span class="codeline" id="line-145"><code>		<a href="../../pkg/builtin.html#name-panic" class="ident">panic</a>(<span class="lit-string">"strings.Reader.WriteTo: invalid WriteString count"</span>)</code></span>
 <span class="codeline" id="line-146"><code>	}</code></span>
@@ -278,7 +278,7 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-160"><code><span class="keyword">func</span> <label for="r43" class="ident"><a href="../../pkg/strings.html#name-NewReader" class="ident">NewReader</a></label>(<label for="r44" class="ident">s</label> <a href="../../pkg/builtin.html#name-string" class="ident">string</a>) *<a href="#line-17" class="ident">Reader</a> { <span class="keyword">return</span> &amp;<a href="#line-17" class="ident">Reader</a>{<label for="r44" class="ident">s</label>, <span class="lit-number">0</span>, -<span class="lit-number">1</span>} }</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: pkcs1.go in package crypto/x509</title>
-<link href="../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -231,7 +231,7 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-139"><code>	<span class="keyword">var</span> <label for="r22" class="ident">pub</label> <a href="#line-39" class="ident">pkcs1PublicKey</a></code></span>
 <span class="codeline" id="line-140"><code>	<label for="r23" class="ident">rest</label>, <label for="r24" class="ident">err</label> := <a href="../../../pkg/encoding/asn1.html" class="ident i1">asn1</a>.<a href="../../encoding/asn1/asn1.go.html#line-1089" class="ident">Unmarshal</a>(<label for="r21" class="ident">der</label>, &amp;<label for="r22" class="ident">pub</label>)</code></span>
 <span class="codeline" id="line-141"><code>	<span class="keyword">if</span> <label for="r24" class="ident">err</label> != <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
-<span class="codeline" id="line-142"><code>		<span class="keyword">if</span> <label for="r25" class="ident">_</label>, <label for="r26" class="ident">err</label> := <a href="../../../pkg/encoding/asn1.html" class="ident i1">asn1</a>.<a href="../../encoding/asn1/asn1.go.html#line-1089" class="ident">Unmarshal</a>(<label for="r21" class="ident">der</label>, &amp;<a href="x509.go.html#line-170" class="ident">publicKeyInfo</a>{}); <label for="r26" class="ident">err</label> == <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-142"><code>		<span class="keyword">if</span> <label for="r25" class="ident">_</label>, <label for="r26" class="ident">err</label> := <a href="../../../pkg/encoding/asn1.html" class="ident i1">asn1</a>.<a href="../../encoding/asn1/asn1.go.html#line-1089" class="ident">Unmarshal</a>(<label for="r21" class="ident">der</label>, &amp;<a href="x509.go.html#line-169" class="ident">publicKeyInfo</a>{}); <label for="r26" class="ident">err</label> == <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
 <span class="codeline" id="line-143"><code>			<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../pkg/errors.html" class="ident i2">errors</a>.<a href="../../errors/errors.go.html#line-58" class="ident">New</a>(<span class="lit-string">"x509: failed to parse public key (use ParsePKIXPublicKey instead for this key format)"</span>)</code></span>
 <span class="codeline" id="line-144"><code>		}</code></span>
 <span class="codeline" id="line-145"><code>		<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <label for="r24" class="ident">err</label></code></span>
@@ -265,7 +265,7 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-173"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

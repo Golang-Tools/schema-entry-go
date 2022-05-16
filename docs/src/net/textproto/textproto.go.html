@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: textproto.go in package net/textproto</title>
-<link href="../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -142,14 +142,14 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-59"><code>	<a href="reader.go.html#line-19" class="ident">Reader</a></code></span>
 <span class="codeline" id="line-60"><code>	<a href="writer.go.html#line-15" class="ident">Writer</a></code></span>
 <span class="codeline" id="line-61"><code>	<a href="pipeline.go.html#line-28" class="ident">Pipeline</a></code></span>
-<span class="codeline" id="line-62"><code>	conn <a href="../../../pkg/io.html" class="ident i2">io</a>.<a href="../../io/io.go.html#line-144" class="ident">ReadWriteCloser</a></code></span>
+<span class="codeline" id="line-62"><code>	conn <a href="../../../pkg/io.html" class="ident i2">io</a>.<a href="../../io/io.go.html#line-145" class="ident">ReadWriteCloser</a></code></span>
 <span class="codeline" id="line-63"><code>}</code></span>
 <span class="codeline" id="line-64"><code></code></span>
 <span class="codeline" id="line-65"><code><span class="comment">// NewConn returns a new Conn using conn for I/O.</span></code></span>
-<span class="codeline" id="line-66"><code><span class="keyword">func</span> <label for="r4" class="ident"><a href="../../../pkg/net/textproto.html#name-NewConn" class="ident">NewConn</a></label>(<label for="r5" class="ident">conn</label> <a href="../../../pkg/io.html" class="ident i2">io</a>.<a href="../../io/io.go.html#line-144" class="ident">ReadWriteCloser</a>) *<a href="#line-58" class="ident">Conn</a> {</code></span>
+<span class="codeline" id="line-66"><code><span class="keyword">func</span> <label for="r4" class="ident"><a href="../../../pkg/net/textproto.html#name-NewConn" class="ident">NewConn</a></label>(<label for="r5" class="ident">conn</label> <a href="../../../pkg/io.html" class="ident i2">io</a>.<a href="../../io/io.go.html#line-145" class="ident">ReadWriteCloser</a>) *<a href="#line-58" class="ident">Conn</a> {</code></span>
 <span class="codeline" id="line-67"><code>	<span class="keyword">return</span> &amp;<a href="#line-58" class="ident">Conn</a>{</code></span>
 <span class="codeline" id="line-68"><code>		<a href="#line-59" class="ident">Reader</a>: <a href="reader.go.html#line-19" class="ident">Reader</a>{<a href="reader.go.html#line-20" class="ident">R</a>: <a href="../../../pkg/bufio.html" class="ident i0">bufio</a>.<a href="../../bufio/bufio.go.html#line-62" class="ident">NewReader</a>(<label for="r5" class="ident">conn</label>)},</code></span>
-<span class="codeline" id="line-69"><code>		<a href="#line-60" class="ident">Writer</a>: <a href="writer.go.html#line-15" class="ident">Writer</a>{<a href="writer.go.html#line-16" class="ident">W</a>: <a href="../../../pkg/bufio.html" class="ident i0">bufio</a>.<a href="../../bufio/bufio.go.html#line-584" class="ident">NewWriter</a>(<label for="r5" class="ident">conn</label>)},</code></span>
+<span class="codeline" id="line-69"><code>		<a href="#line-60" class="ident">Writer</a>: <a href="writer.go.html#line-15" class="ident">Writer</a>{<a href="writer.go.html#line-16" class="ident">W</a>: <a href="../../../pkg/bufio.html" class="ident i0">bufio</a>.<a href="../../bufio/bufio.go.html#line-600" class="ident">NewWriter</a>(<label for="r5" class="ident">conn</label>)},</code></span>
 <span class="codeline" id="line-70"><code>		<a href="#line-62" class="ident">conn</a>:   <label for="r5" class="ident">conn</label>,</code></span>
 <span class="codeline" id="line-71"><code>	}</code></span>
 <span class="codeline" id="line-72"><code>}</code></span>
@@ -194,7 +194,7 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-111"><code><span class="comment">//	}</span></code></span>
 <span class="codeline" id="line-112"><code><span class="comment">//	return c.ReadCodeLine(250)</span></code></span>
 <span class="codeline" id="line-113"><code><span class="comment">//</span></code></span>
-<span class="codeline" id="line-114"><code><span class="keyword">func</span> (<label for="r13" class="ident">c</label> *<a href="#line-58" class="ident">Conn</a>) <label for="r14" class="ident">Cmd</label>(<label for="r15" class="ident">format</label> <a href="../../../pkg/builtin.html#name-string" class="ident">string</a>, <label for="r16" class="ident">args</label> ...<span class="keyword">interface</span>{}) (<label for="r17" class="ident">id</label> <a href="../../../pkg/builtin.html#name-uint" class="ident">uint</a>, <label for="r18" class="ident">err</label> <a href="../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-114"><code><span class="keyword">func</span> (<label for="r13" class="ident">c</label> *<a href="#line-58" class="ident">Conn</a>) <label for="r14" class="ident">Cmd</label>(<label for="r15" class="ident">format</label> <a href="../../../pkg/builtin.html#name-string" class="ident">string</a>, <label for="r16" class="ident">args</label> ...<a href="../../../pkg/builtin.html#name-any" class="ident">any</a>) (<label for="r17" class="ident">id</label> <a href="../../../pkg/builtin.html#name-uint" class="ident">uint</a>, <label for="r18" class="ident">err</label> <a href="../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
 <span class="codeline" id="line-115"><code>	<label for="r17" class="ident">id</label> = <label for="r13" class="ident">c</label>.<a href="pipeline.go.html#line-36" class="ident">Next</a>()</code></span>
 <span class="codeline" id="line-116"><code>	<label for="r13" class="ident">c</label>.<a href="pipeline.go.html#line-46" class="ident">StartRequest</a>(<label for="r17" class="ident">id</label>)</code></span>
 <span class="codeline" id="line-117"><code>	<label for="r18" class="ident">err</label> = <label for="r13" class="ident">c</label>.<a href="writer.go.html#line-29" class="ident">PrintfLine</a>(<label for="r15" class="ident">format</label>, <label for="r16" class="ident">args</label>...)</code></span>
@@ -237,7 +237,7 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-154"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Package: encoding/binary</title>
-<link href="../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../jvs/golds-v0.3.6.js"></script>
+<link href="../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="package-details"><code><span style="font-size:xx-large;">package <b>binary</b></span>
@@ -15,7 +15,7 @@
 	<a href="../../index.html#pkg-encoding/binary">encoding/binary</a><i> (on <a href="https://pkg.go.dev/encoding/binary" target="_blank">go.dev</a>)</i>
 
 <span class="title">Dependency Relation</span>
-	imports <a href="../../dep/encoding/binary.html">5 packages</a>, and imported by <a href="../../dep/encoding/binary.html#imported-by">18 packages</a>
+	imports <a href="../../dep/encoding/binary.html">5 packages</a>, and imported by <a href="../../dep/encoding/binary.html#imported-by">19 packages</a>
 
 <div id="files"><span class="title">Involved Source Files</span>
 
@@ -118,7 +118,7 @@
 			var pi float64
 			b := []byte{0x18, 0x2d, 0x44, 0x54, 0xfb, 0x21, 0x09, 0x40}
 			buf := bytes.NewReader(b)
-			err := binary.Read(buf, binary.LittleEndian, &pi)
+			err := binary.Read(buf, binary.LittleEndian, &amp;pi)
 			if err != nil {
 				fmt.Println("binary.Read failed:", err)
 			}
@@ -145,7 +145,7 @@
 				Too  uint16
 			}
 		
-			if err := binary.Read(r, binary.LittleEndian, &data); err != nil {
+			if err := binary.Read(r, binary.LittleEndian, &amp;data); err != nil {
 				fmt.Println("binary.Read failed:", err)
 			}
 		
@@ -241,7 +241,7 @@
 		
 		func main() {
 			buf := new(bytes.Buffer)
-			var data = []interface{}{
+			var data = []any{
 				uint16(61374),
 				int8(-54),
 				uint8(254),
@@ -263,48 +263,48 @@
 		16-, 32-, or 64-bit unsigned integers.
 
 		<input type='checkbox' class="fold" id="ByteOrder-fold-methods"><label for="ByteOrder-fold-methods">Methods (<i>total 7, all are exported</i>)</label><span id='ByteOrder-fold-methods-items' class="fold-items"><span>
-			<span class="nodocs">( T) <a href="../../src/encoding/binary/binary.go.html#line-38">PutUint16</a>([]<a href="../builtin.html#name-byte">byte</a>, <a href="../builtin.html#name-uint16">uint16</a>)</span></span><span>
-			<span class="nodocs">( T) <a href="../../src/encoding/binary/binary.go.html#line-39">PutUint32</a>([]<a href="../builtin.html#name-byte">byte</a>, <a href="../builtin.html#name-uint32">uint32</a>)</span></span><span>
-			<span class="nodocs">( T) <a href="../../src/encoding/binary/binary.go.html#line-40">PutUint64</a>([]<a href="../builtin.html#name-byte">byte</a>, <a href="../builtin.html#name-uint64">uint64</a>)</span></span><span>
-			<span class="nodocs">( T) <a href="../../src/encoding/binary/binary.go.html#line-41">String</a>() <a href="../builtin.html#name-string">string</a></span></span><span>
-			<span class="nodocs">( T) <a href="../../src/encoding/binary/binary.go.html#line-35">Uint16</a>([]<a href="../builtin.html#name-byte">byte</a>) <a href="../builtin.html#name-uint16">uint16</a></span></span><span>
-			<span class="nodocs">( T) <a href="../../src/encoding/binary/binary.go.html#line-36">Uint32</a>([]<a href="../builtin.html#name-byte">byte</a>) <a href="../builtin.html#name-uint32">uint32</a></span></span><span>
-			<span class="nodocs">( T) <a href="../../src/encoding/binary/binary.go.html#line-37">Uint64</a>([]<a href="../builtin.html#name-byte">byte</a>) <a href="../builtin.html#name-uint64">uint64</a></span></span></span>
+			<span class="nodocs">( ByteOrder) <a href="../../src/encoding/binary/binary.go.html#line-38">PutUint16</a>([]<a href="../builtin.html#name-byte">byte</a>, <a href="../builtin.html#name-uint16">uint16</a>)</span></span><span>
+			<span class="nodocs">( ByteOrder) <a href="../../src/encoding/binary/binary.go.html#line-39">PutUint32</a>([]<a href="../builtin.html#name-byte">byte</a>, <a href="../builtin.html#name-uint32">uint32</a>)</span></span><span>
+			<span class="nodocs">( ByteOrder) <a href="../../src/encoding/binary/binary.go.html#line-40">PutUint64</a>([]<a href="../builtin.html#name-byte">byte</a>, <a href="../builtin.html#name-uint64">uint64</a>)</span></span><span>
+			<span class="nodocs">( ByteOrder) <a href="../../src/encoding/binary/binary.go.html#line-41">String</a>() <a href="../builtin.html#name-string">string</a></span></span><span>
+			<span class="nodocs">( ByteOrder) <a href="../../src/encoding/binary/binary.go.html#line-35">Uint16</a>([]<a href="../builtin.html#name-byte">byte</a>) <a href="../builtin.html#name-uint16">uint16</a></span></span><span>
+			<span class="nodocs">( ByteOrder) <a href="../../src/encoding/binary/binary.go.html#line-36">Uint32</a>([]<a href="../builtin.html#name-byte">byte</a>) <a href="../builtin.html#name-uint32">uint32</a></span></span><span>
+			<span class="nodocs">( ByteOrder) <a href="../../src/encoding/binary/binary.go.html#line-37">Uint64</a>([]<a href="../builtin.html#name-byte">byte</a>) <a href="../builtin.html#name-uint64">uint64</a></span></span></span>
 		<input type='checkbox' class="fold" id="ByteOrder-fold-impledby"><label for="ByteOrder-fold-impledby">Implemented By (<i>at least 2, neither is exported</i>)</label><span id='ByteOrder-fold-impledby-items' class="fold-items">
 			<input type='checkbox' class="showhide" id="ByteOrder-showhide-impedBys"><i><label for="ByteOrder-showhide-impedBys" class="show-inline">/* 2+ unexporteds ... */</label><label for="ByteOrder-showhide-impedBys" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
 			 <a href="#name-bigEndian">bigEndian</a></i></span><span class="hidden"><i>
 			 <a href="#name-littleEndian">littleEndian</a></i></span></span>
 		<input type='checkbox' class="fold" id="ByteOrder-fold-impls"><label for="ByteOrder-fold-impls">Implements (<i>at least 5, in which 1 are exported</i>)</label><span id='ByteOrder-fold-impls-items' class="fold-items"><span>
-			 T : fmt.<a href="../fmt.html#name-Stringer">Stringer</a></span>
+			 ByteOrder : fmt.<a href="../fmt.html#name-Stringer">Stringer</a></span>
 			<input type='checkbox' class="showhide" id="ByteOrder-showhide-impls"><i><label for="ByteOrder-showhide-impls" class="show-inline">/* 4+ unexporteds ... */</label><label for="ByteOrder-showhide-impls" class="hide-inline">/* 4+ unexporteds: */</label></i><span class="hidden"><i>
-			 T : context.<a href="../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
-			 T : runtime.<a href="../runtime.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
-			 T : vendor/golang.org/x/net/route.<a href="../vendor/golang.org/x/net/route.html#name-binaryByteOrder">binaryByteOrder</a></i></span><span class="hidden"><i>
-			 T : vendor/golang.org/x/sys/cpu.<a href="../vendor/golang.org/x/sys/cpu.html#name-byteOrder">byteOrder</a></i></span></span>
+			 ByteOrder : context.<a href="../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 ByteOrder : runtime.<a href="../runtime.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 ByteOrder : vendor/golang.org/x/net/route.<a href="../vendor/golang.org/x/net/route.html#name-binaryByteOrder">binaryByteOrder</a></i></span><span class="hidden"><i>
+			 ByteOrder : vendor/golang.org/x/sys/cpu.<a href="../vendor/golang.org/x/sys/cpu.html#name-byteOrder">byteOrder</a></i></span></span>
 		<input type='checkbox' class="fold" id="ByteOrder-fold-params"><label for="ByteOrder-fold-params">As Inputs Of (<i>at least 2, both are exported</i>)</label><span id='ByteOrder-fold-params-items' class="fold-items"><span>
-			func <a href="#name-Read">Read</a>(r <a href="../io.html">io</a>.<a href="../io.html#name-Reader">Reader</a>, order <b>ByteOrder</b>, data interface{}) <a href="../builtin.html#name-error">error</a></span><span>
-			func <a href="#name-Write">Write</a>(w <a href="../io.html">io</a>.<a href="../io.html#name-Writer">Writer</a>, order <b>ByteOrder</b>, data interface{}) <a href="../builtin.html#name-error">error</a></span></span>
+			func <a href="#name-Read">Read</a>(r <a href="../io.html">io</a>.<a href="../io.html#name-Reader">Reader</a>, order <b>ByteOrder</b>, data <a href="../builtin.html#name-any">any</a>) <a href="../builtin.html#name-error">error</a></span><span>
+			func <a href="#name-Write">Write</a>(w <a href="../io.html">io</a>.<a href="../io.html#name-Writer">Writer</a>, order <b>ByteOrder</b>, data <a href="../builtin.html#name-any">any</a>) <a href="../builtin.html#name-error">error</a></span></span>
 
 </span></div></div><div>	<input type='checkbox' class="showhide" id="unexported-typenames-showhide"><i><label for="unexported-typenames-showhide" class="show-inline">/* 5 unexporteds ... */</label><label for="unexported-typenames-showhide" class="hide-inline">/* 5 unexporteds: */</label></i><div class="anchor type-res hidden" id="name-bigEndian" data-popularity="755">	<input type='checkbox' class="fold" id="bigEndian-fold-content"><label for="bigEndian-fold-content"> type <a href="../../src/encoding/binary/binary.go.html#line-98">bigEndian</a> <i>(struct)</i></label><span id='bigEndian-fold-content-docs' class="fold-docs">
 
 		<input type='checkbox' class="fold" id="bigEndian-fold-methods"><label for="bigEndian-fold-methods">Methods (<i>total 8, all are exported</i>)</label><span id='bigEndian-fold-methods-items' class="fold-items"><span>
-			<span class="nodocs">( T) <a href="../../src/encoding/binary/binary.go.html#line-144">GoString</a>() <a href="../builtin.html#name-string">string</a></span></span><span>
-			<span class="nodocs">( T) <a href="../../src/encoding/binary/binary.go.html#line-105">PutUint16</a>(b []<a href="../builtin.html#name-byte">byte</a>, v <a href="../builtin.html#name-uint16">uint16</a>)</span></span><span>
-			<span class="nodocs">( T) <a href="../../src/encoding/binary/binary.go.html#line-116">PutUint32</a>(b []<a href="../builtin.html#name-byte">byte</a>, v <a href="../builtin.html#name-uint32">uint32</a>)</span></span><span>
-			<span class="nodocs">( T) <a href="../../src/encoding/binary/binary.go.html#line-130">PutUint64</a>(b []<a href="../builtin.html#name-byte">byte</a>, v <a href="../builtin.html#name-uint64">uint64</a>)</span></span><span>
-			<span class="nodocs">( T) <a href="../../src/encoding/binary/binary.go.html#line-142">String</a>() <a href="../builtin.html#name-string">string</a></span></span><span>
-			<span class="nodocs">( T) <a href="../../src/encoding/binary/binary.go.html#line-100">Uint16</a>(b []<a href="../builtin.html#name-byte">byte</a>) <a href="../builtin.html#name-uint16">uint16</a></span></span><span>
-			<span class="nodocs">( T) <a href="../../src/encoding/binary/binary.go.html#line-111">Uint32</a>(b []<a href="../builtin.html#name-byte">byte</a>) <a href="../builtin.html#name-uint32">uint32</a></span></span><span>
-			<span class="nodocs">( T) <a href="../../src/encoding/binary/binary.go.html#line-124">Uint64</a>(b []<a href="../builtin.html#name-byte">byte</a>) <a href="../builtin.html#name-uint64">uint64</a></span></span></span>
+			<span class="nodocs">( bigEndian) <a href="../../src/encoding/binary/binary.go.html#line-144">GoString</a>() <a href="../builtin.html#name-string">string</a></span></span><span>
+			<span class="nodocs">( bigEndian) <a href="../../src/encoding/binary/binary.go.html#line-105">PutUint16</a>(b []<a href="../builtin.html#name-byte">byte</a>, v <a href="../builtin.html#name-uint16">uint16</a>)</span></span><span>
+			<span class="nodocs">( bigEndian) <a href="../../src/encoding/binary/binary.go.html#line-116">PutUint32</a>(b []<a href="../builtin.html#name-byte">byte</a>, v <a href="../builtin.html#name-uint32">uint32</a>)</span></span><span>
+			<span class="nodocs">( bigEndian) <a href="../../src/encoding/binary/binary.go.html#line-130">PutUint64</a>(b []<a href="../builtin.html#name-byte">byte</a>, v <a href="../builtin.html#name-uint64">uint64</a>)</span></span><span>
+			<span class="nodocs">( bigEndian) <a href="../../src/encoding/binary/binary.go.html#line-142">String</a>() <a href="../builtin.html#name-string">string</a></span></span><span>
+			<span class="nodocs">( bigEndian) <a href="../../src/encoding/binary/binary.go.html#line-100">Uint16</a>(b []<a href="../builtin.html#name-byte">byte</a>) <a href="../builtin.html#name-uint16">uint16</a></span></span><span>
+			<span class="nodocs">( bigEndian) <a href="../../src/encoding/binary/binary.go.html#line-111">Uint32</a>(b []<a href="../builtin.html#name-byte">byte</a>) <a href="../builtin.html#name-uint32">uint32</a></span></span><span>
+			<span class="nodocs">( bigEndian) <a href="../../src/encoding/binary/binary.go.html#line-124">Uint64</a>(b []<a href="../builtin.html#name-byte">byte</a>) <a href="../builtin.html#name-uint64">uint64</a></span></span></span>
 		<input type='checkbox' class="fold" id="bigEndian-fold-impls"><label for="bigEndian-fold-impls">Implements (<i>at least 7, in which 3 are exported</i>)</label><span id='bigEndian-fold-impls-items' class="fold-items"><span>
-			 T : <a href="#name-ByteOrder">ByteOrder</a></span><span>
-			 T : fmt.<a href="../fmt.html#name-GoStringer">GoStringer</a></span><span>
-			 T : fmt.<a href="../fmt.html#name-Stringer">Stringer</a></span>
+			 bigEndian : <a href="#name-ByteOrder">ByteOrder</a></span><span>
+			 bigEndian : fmt.<a href="../fmt.html#name-GoStringer">GoStringer</a></span><span>
+			 bigEndian : fmt.<a href="../fmt.html#name-Stringer">Stringer</a></span>
 			<input type='checkbox' checked class="showhide" id="bigEndian-showhide-impls"><i><label for="bigEndian-showhide-impls" class="show-inline">/* 4+ unexporteds ... */</label><label for="bigEndian-showhide-impls" class="hide-inline">/* 4+ unexporteds: */</label></i><span class="hidden"><i>
-			 T : context.<a href="../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
-			 T : runtime.<a href="../runtime.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
-			 T : vendor/golang.org/x/net/route.<a href="../vendor/golang.org/x/net/route.html#name-binaryByteOrder">binaryByteOrder</a></i></span><span class="hidden"><i>
-			 T : vendor/golang.org/x/sys/cpu.<a href="../vendor/golang.org/x/sys/cpu.html#name-byteOrder">byteOrder</a></i></span></span>
+			 bigEndian : context.<a href="../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 bigEndian : runtime.<a href="../runtime.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 bigEndian : vendor/golang.org/x/net/route.<a href="../vendor/golang.org/x/net/route.html#name-binaryByteOrder">binaryByteOrder</a></i></span><span class="hidden"><i>
+			 bigEndian : vendor/golang.org/x/sys/cpu.<a href="../vendor/golang.org/x/sys/cpu.html#name-byteOrder">byteOrder</a></i></span></span>
 		<input type='checkbox' class="fold" id="bigEndian-fold-values"><label for="bigEndian-fold-values">As Types Of (<i>only one, which is exported</i>)</label><span id='bigEndian-fold-values-items' class="fold-items"><span>
 			  var <a href="#name-BigEndian">BigEndian</a></span></span>
 
@@ -325,17 +325,17 @@
 			<span class="nodocs"><a href="../../src/encoding/binary/binary.go.html#line-457">order</a> <i><a href="#name-ByteOrder">ByteOrder</a></i></span></i></span></span>
 		<input type='checkbox' class="fold" id="decoder-fold-methods"><label for="decoder-fold-methods">Methods (<i>total 11, none are exported</i>)</label><span id='decoder-fold-methods-items' class="fold-items">
 			<input type='checkbox' checked class="showhide" id="decoder-showhide-methods"><i><label for="decoder-showhide-methods" class="show-inline">/* 11 unexporteds ... */</label><label for="decoder-showhide-methods" class="hide-inline">/* 11 unexporteds: */</label></i><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../src/encoding/binary/binary.go.html#line-465">bool</a>() <a href="../builtin.html#name-bool">bool</a></span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../src/encoding/binary/binary.go.html#line-528">int16</a>() <a href="../builtin.html#name-int16">int16</a></span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../src/encoding/binary/binary.go.html#line-532">int32</a>() <a href="../builtin.html#name-int32">int32</a></span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../src/encoding/binary/binary.go.html#line-536">int64</a>() <a href="../builtin.html#name-int64">int64</a></span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../src/encoding/binary/binary.go.html#line-524">int8</a>() <a href="../builtin.html#name-int8">int8</a></span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../src/encoding/binary/binary.go.html#line-684">skip</a>(v <a href="../reflect.html">reflect</a>.<a href="../reflect.html#name-Value">Value</a>)</span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../src/encoding/binary/binary.go.html#line-491">uint16</a>() <a href="../builtin.html#name-uint16">uint16</a></span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../src/encoding/binary/binary.go.html#line-502">uint32</a>() <a href="../builtin.html#name-uint32">uint32</a></span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../src/encoding/binary/binary.go.html#line-513">uint64</a>() <a href="../builtin.html#name-uint64">uint64</a></span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../src/encoding/binary/binary.go.html#line-480">uint8</a>() <a href="../builtin.html#name-uint8">uint8</a></span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../src/encoding/binary/binary.go.html#line-540">value</a>(v <a href="../reflect.html">reflect</a>.<a href="../reflect.html#name-Value">Value</a>)</span></i></span></span>
+			<span class="nodocs">(*decoder) <a href="../../src/encoding/binary/binary.go.html#line-465">bool</a>() <a href="../builtin.html#name-bool">bool</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*decoder) <a href="../../src/encoding/binary/binary.go.html#line-528">int16</a>() <a href="../builtin.html#name-int16">int16</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*decoder) <a href="../../src/encoding/binary/binary.go.html#line-532">int32</a>() <a href="../builtin.html#name-int32">int32</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*decoder) <a href="../../src/encoding/binary/binary.go.html#line-536">int64</a>() <a href="../builtin.html#name-int64">int64</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*decoder) <a href="../../src/encoding/binary/binary.go.html#line-524">int8</a>() <a href="../builtin.html#name-int8">int8</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*decoder) <a href="../../src/encoding/binary/binary.go.html#line-684">skip</a>(v <a href="../reflect.html">reflect</a>.<a href="../reflect.html#name-Value">Value</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*decoder) <a href="../../src/encoding/binary/binary.go.html#line-491">uint16</a>() <a href="../builtin.html#name-uint16">uint16</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*decoder) <a href="../../src/encoding/binary/binary.go.html#line-502">uint32</a>() <a href="../builtin.html#name-uint32">uint32</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*decoder) <a href="../../src/encoding/binary/binary.go.html#line-513">uint64</a>() <a href="../builtin.html#name-uint64">uint64</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*decoder) <a href="../../src/encoding/binary/binary.go.html#line-480">uint8</a>() <a href="../builtin.html#name-uint8">uint8</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*decoder) <a href="../../src/encoding/binary/binary.go.html#line-540">value</a>(v <a href="../reflect.html">reflect</a>.<a href="../reflect.html#name-Value">Value</a>)</span></i></span></span>
 
 </span></div><div class="anchor type-res hidden" id="name-encoder" data-popularity="550">	<input type='checkbox' class="fold" id="encoder-fold-content"><label for="encoder-fold-content"> type <a href="../../src/encoding/binary/binary.go.html#line-463">encoder</a> <a href="#name-coder">coder</a> <i>(struct)</i></label><span id='encoder-fold-content-docs' class="fold-docs">
 
@@ -346,38 +346,38 @@
 			<span class="nodocs"><a href="../../src/encoding/binary/binary.go.html#line-457">order</a> <i><a href="#name-ByteOrder">ByteOrder</a></i></span></i></span></span>
 		<input type='checkbox' class="fold" id="encoder-fold-methods"><label for="encoder-fold-methods">Methods (<i>total 11, none are exported</i>)</label><span id='encoder-fold-methods-items' class="fold-items">
 			<input type='checkbox' checked class="showhide" id="encoder-showhide-methods"><i><label for="encoder-showhide-methods" class="show-inline">/* 11 unexporteds ... */</label><label for="encoder-showhide-methods" class="hide-inline">/* 11 unexporteds: */</label></i><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../src/encoding/binary/binary.go.html#line-471">bool</a>(x <a href="../builtin.html#name-bool">bool</a>)</span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../src/encoding/binary/binary.go.html#line-530">int16</a>(x <a href="../builtin.html#name-int16">int16</a>)</span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../src/encoding/binary/binary.go.html#line-534">int32</a>(x <a href="../builtin.html#name-int32">int32</a>)</span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../src/encoding/binary/binary.go.html#line-538">int64</a>(x <a href="../builtin.html#name-int64">int64</a>)</span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../src/encoding/binary/binary.go.html#line-526">int8</a>(x <a href="../builtin.html#name-int8">int8</a>)</span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../src/encoding/binary/binary.go.html#line-688">skip</a>(v <a href="../reflect.html">reflect</a>.<a href="../reflect.html#name-Value">Value</a>)</span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../src/encoding/binary/binary.go.html#line-497">uint16</a>(x <a href="../builtin.html#name-uint16">uint16</a>)</span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../src/encoding/binary/binary.go.html#line-508">uint32</a>(x <a href="../builtin.html#name-uint32">uint32</a>)</span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../src/encoding/binary/binary.go.html#line-519">uint64</a>(x <a href="../builtin.html#name-uint64">uint64</a>)</span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../src/encoding/binary/binary.go.html#line-486">uint8</a>(x <a href="../builtin.html#name-uint8">uint8</a>)</span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../src/encoding/binary/binary.go.html#line-609">value</a>(v <a href="../reflect.html">reflect</a>.<a href="../reflect.html#name-Value">Value</a>)</span></i></span></span>
+			<span class="nodocs">(*encoder) <a href="../../src/encoding/binary/binary.go.html#line-471">bool</a>(x <a href="../builtin.html#name-bool">bool</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*encoder) <a href="../../src/encoding/binary/binary.go.html#line-530">int16</a>(x <a href="../builtin.html#name-int16">int16</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*encoder) <a href="../../src/encoding/binary/binary.go.html#line-534">int32</a>(x <a href="../builtin.html#name-int32">int32</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*encoder) <a href="../../src/encoding/binary/binary.go.html#line-538">int64</a>(x <a href="../builtin.html#name-int64">int64</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*encoder) <a href="../../src/encoding/binary/binary.go.html#line-526">int8</a>(x <a href="../builtin.html#name-int8">int8</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*encoder) <a href="../../src/encoding/binary/binary.go.html#line-688">skip</a>(v <a href="../reflect.html">reflect</a>.<a href="../reflect.html#name-Value">Value</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*encoder) <a href="../../src/encoding/binary/binary.go.html#line-497">uint16</a>(x <a href="../builtin.html#name-uint16">uint16</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*encoder) <a href="../../src/encoding/binary/binary.go.html#line-508">uint32</a>(x <a href="../builtin.html#name-uint32">uint32</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*encoder) <a href="../../src/encoding/binary/binary.go.html#line-519">uint64</a>(x <a href="../builtin.html#name-uint64">uint64</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*encoder) <a href="../../src/encoding/binary/binary.go.html#line-486">uint8</a>(x <a href="../builtin.html#name-uint8">uint8</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*encoder) <a href="../../src/encoding/binary/binary.go.html#line-609">value</a>(v <a href="../reflect.html">reflect</a>.<a href="../reflect.html#name-Value">Value</a>)</span></i></span></span>
 
 </span></div><div class="anchor type-res hidden" id="name-littleEndian" data-popularity="760">	<input type='checkbox' class="fold" id="littleEndian-fold-content"><label for="littleEndian-fold-content"> type <a href="../../src/encoding/binary/binary.go.html#line-50">littleEndian</a> <i>(struct)</i></label><span id='littleEndian-fold-content-docs' class="fold-docs">
 
 		<input type='checkbox' class="fold" id="littleEndian-fold-methods"><label for="littleEndian-fold-methods">Methods (<i>total 8, all are exported</i>)</label><span id='littleEndian-fold-methods-items' class="fold-items"><span>
-			<span class="nodocs">( T) <a href="../../src/encoding/binary/binary.go.html#line-96">GoString</a>() <a href="../builtin.html#name-string">string</a></span></span><span>
-			<span class="nodocs">( T) <a href="../../src/encoding/binary/binary.go.html#line-57">PutUint16</a>(b []<a href="../builtin.html#name-byte">byte</a>, v <a href="../builtin.html#name-uint16">uint16</a>)</span></span><span>
-			<span class="nodocs">( T) <a href="../../src/encoding/binary/binary.go.html#line-68">PutUint32</a>(b []<a href="../builtin.html#name-byte">byte</a>, v <a href="../builtin.html#name-uint32">uint32</a>)</span></span><span>
-			<span class="nodocs">( T) <a href="../../src/encoding/binary/binary.go.html#line-82">PutUint64</a>(b []<a href="../builtin.html#name-byte">byte</a>, v <a href="../builtin.html#name-uint64">uint64</a>)</span></span><span>
-			<span class="nodocs">( T) <a href="../../src/encoding/binary/binary.go.html#line-94">String</a>() <a href="../builtin.html#name-string">string</a></span></span><span>
-			<span class="nodocs">( T) <a href="../../src/encoding/binary/binary.go.html#line-52">Uint16</a>(b []<a href="../builtin.html#name-byte">byte</a>) <a href="../builtin.html#name-uint16">uint16</a></span></span><span>
-			<span class="nodocs">( T) <a href="../../src/encoding/binary/binary.go.html#line-63">Uint32</a>(b []<a href="../builtin.html#name-byte">byte</a>) <a href="../builtin.html#name-uint32">uint32</a></span></span><span>
-			<span class="nodocs">( T) <a href="../../src/encoding/binary/binary.go.html#line-76">Uint64</a>(b []<a href="../builtin.html#name-byte">byte</a>) <a href="../builtin.html#name-uint64">uint64</a></span></span></span>
+			<span class="nodocs">( littleEndian) <a href="../../src/encoding/binary/binary.go.html#line-96">GoString</a>() <a href="../builtin.html#name-string">string</a></span></span><span>
+			<span class="nodocs">( littleEndian) <a href="../../src/encoding/binary/binary.go.html#line-57">PutUint16</a>(b []<a href="../builtin.html#name-byte">byte</a>, v <a href="../builtin.html#name-uint16">uint16</a>)</span></span><span>
+			<span class="nodocs">( littleEndian) <a href="../../src/encoding/binary/binary.go.html#line-68">PutUint32</a>(b []<a href="../builtin.html#name-byte">byte</a>, v <a href="../builtin.html#name-uint32">uint32</a>)</span></span><span>
+			<span class="nodocs">( littleEndian) <a href="../../src/encoding/binary/binary.go.html#line-82">PutUint64</a>(b []<a href="../builtin.html#name-byte">byte</a>, v <a href="../builtin.html#name-uint64">uint64</a>)</span></span><span>
+			<span class="nodocs">( littleEndian) <a href="../../src/encoding/binary/binary.go.html#line-94">String</a>() <a href="../builtin.html#name-string">string</a></span></span><span>
+			<span class="nodocs">( littleEndian) <a href="../../src/encoding/binary/binary.go.html#line-52">Uint16</a>(b []<a href="../builtin.html#name-byte">byte</a>) <a href="../builtin.html#name-uint16">uint16</a></span></span><span>
+			<span class="nodocs">( littleEndian) <a href="../../src/encoding/binary/binary.go.html#line-63">Uint32</a>(b []<a href="../builtin.html#name-byte">byte</a>) <a href="../builtin.html#name-uint32">uint32</a></span></span><span>
+			<span class="nodocs">( littleEndian) <a href="../../src/encoding/binary/binary.go.html#line-76">Uint64</a>(b []<a href="../builtin.html#name-byte">byte</a>) <a href="../builtin.html#name-uint64">uint64</a></span></span></span>
 		<input type='checkbox' class="fold" id="littleEndian-fold-impls"><label for="littleEndian-fold-impls">Implements (<i>at least 7, in which 3 are exported</i>)</label><span id='littleEndian-fold-impls-items' class="fold-items"><span>
-			 T : <a href="#name-ByteOrder">ByteOrder</a></span><span>
-			 T : fmt.<a href="../fmt.html#name-GoStringer">GoStringer</a></span><span>
-			 T : fmt.<a href="../fmt.html#name-Stringer">Stringer</a></span>
+			 littleEndian : <a href="#name-ByteOrder">ByteOrder</a></span><span>
+			 littleEndian : fmt.<a href="../fmt.html#name-GoStringer">GoStringer</a></span><span>
+			 littleEndian : fmt.<a href="../fmt.html#name-Stringer">Stringer</a></span>
 			<input type='checkbox' checked class="showhide" id="littleEndian-showhide-impls"><i><label for="littleEndian-showhide-impls" class="show-inline">/* 4+ unexporteds ... */</label><label for="littleEndian-showhide-impls" class="hide-inline">/* 4+ unexporteds: */</label></i><span class="hidden"><i>
-			 T : context.<a href="../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
-			 T : runtime.<a href="../runtime.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
-			 T : vendor/golang.org/x/net/route.<a href="../vendor/golang.org/x/net/route.html#name-binaryByteOrder">binaryByteOrder</a></i></span><span class="hidden"><i>
-			 T : vendor/golang.org/x/sys/cpu.<a href="../vendor/golang.org/x/sys/cpu.html#name-byteOrder">byteOrder</a></i></span></span>
+			 littleEndian : context.<a href="../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 littleEndian : runtime.<a href="../runtime.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 littleEndian : vendor/golang.org/x/net/route.<a href="../vendor/golang.org/x/net/route.html#name-binaryByteOrder">binaryByteOrder</a></i></span><span class="hidden"><i>
+			 littleEndian : vendor/golang.org/x/sys/cpu.<a href="../vendor/golang.org/x/sys/cpu.html#name-byteOrder">byteOrder</a></i></span></span>
 		<input type='checkbox' class="fold" id="littleEndian-fold-values"><label for="littleEndian-fold-values">As Types Of (<i>total 2, in which 1 are exported</i>)</label><span id='littleEndian-fold-values-items' class="fold-items"><span>
 			  var <a href="#name-LittleEndian">LittleEndian</a></span>
 			<input type='checkbox' checked class="showhide" id="littleEndian-showhide-values"><i><label for="littleEndian-showhide-values" class="show-inline">/* one unexported ... */</label><label for="littleEndian-showhide-values" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
@@ -390,11 +390,11 @@
 		PutUvarint encodes a uint64 into buf and returns the number of bytes written.
 		If the buffer is too small, PutUvarint will panic.
 
-</span></div><div class="anchor value-res" id="name-PutVarint">	<input type='checkbox' class="fold" id="PutVarint-fold-content"><label for="PutVarint-fold-content"> func <a href="../../src/encoding/binary/varint.go.html#line-78">PutVarint</a>(buf []<a href="../builtin.html#name-byte">byte</a>, x <a href="../builtin.html#name-int64">int64</a>) <a href="../builtin.html#name-int">int</a></label><span id='PutVarint-fold-content-docs' class="fold-docs">
+</span></div><div class="anchor value-res" id="name-PutVarint">	<input type='checkbox' class="fold" id="PutVarint-fold-content"><label for="PutVarint-fold-content"> func <a href="../../src/encoding/binary/varint.go.html#line-83">PutVarint</a>(buf []<a href="../builtin.html#name-byte">byte</a>, x <a href="../builtin.html#name-int64">int64</a>) <a href="../builtin.html#name-int">int</a></label><span id='PutVarint-fold-content-docs' class="fold-docs">
 		PutVarint encodes an int64 into buf and returns the number of bytes written.
 		If the buffer is too small, PutVarint will panic.
 
-</span></div><div class="anchor value-res" id="name-Read">	<input type='checkbox' class="fold" id="Read-fold-content"><label for="Read-fold-content"> func <a href="../../src/encoding/binary/binary.go.html#line-162">Read</a>(r <a href="../io.html">io</a>.<a href="../io.html#name-Reader">Reader</a>, order <a href="#name-ByteOrder">ByteOrder</a>, data interface{}) <a href="../builtin.html#name-error">error</a></label><span id='Read-fold-content-docs' class="fold-docs">
+</span></div><div class="anchor value-res" id="name-Read">	<input type='checkbox' class="fold" id="Read-fold-content"><label for="Read-fold-content"> func <a href="../../src/encoding/binary/binary.go.html#line-162">Read</a>(r <a href="../io.html">io</a>.<a href="../io.html#name-Reader">Reader</a>, order <a href="#name-ByteOrder">ByteOrder</a>, data <a href="../builtin.html#name-any">any</a>) <a href="../builtin.html#name-error">error</a></label><span id='Read-fold-content-docs' class="fold-docs">
 		Read reads structured binary data from r into data.
 		Data must be a pointer to a fixed-size value or a slice
 		of fixed-size values.
@@ -412,13 +412,13 @@
 		If an EOF happens after reading some but not all the bytes,
 		Read returns ErrUnexpectedEOF.
 
-</span></div><div class="anchor value-res" id="name-ReadUvarint">	<input type='checkbox' class="fold" id="ReadUvarint-fold-content"><label for="ReadUvarint-fold-content"> func <a href="../../src/encoding/binary/varint.go.html#line-106">ReadUvarint</a>(r <a href="../io.html">io</a>.<a href="../io.html#name-ByteReader">ByteReader</a>) (<a href="../builtin.html#name-uint64">uint64</a>, <a href="../builtin.html#name-error">error</a>)</label><span id='ReadUvarint-fold-content-docs' class="fold-docs">
+</span></div><div class="anchor value-res" id="name-ReadUvarint">	<input type='checkbox' class="fold" id="ReadUvarint-fold-content"><label for="ReadUvarint-fold-content"> func <a href="../../src/encoding/binary/varint.go.html#line-111">ReadUvarint</a>(r <a href="../io.html">io</a>.<a href="../io.html#name-ByteReader">ByteReader</a>) (<a href="../builtin.html#name-uint64">uint64</a>, <a href="../builtin.html#name-error">error</a>)</label><span id='ReadUvarint-fold-content-docs' class="fold-docs">
 		ReadUvarint reads an encoded unsigned integer from r and returns it as a uint64.
 
-</span></div><div class="anchor value-res" id="name-ReadVarint">	<input type='checkbox' class="fold" id="ReadVarint-fold-content"><label for="ReadVarint-fold-content"> func <a href="../../src/encoding/binary/varint.go.html#line-127">ReadVarint</a>(r <a href="../io.html">io</a>.<a href="../io.html#name-ByteReader">ByteReader</a>) (<a href="../builtin.html#name-int64">int64</a>, <a href="../builtin.html#name-error">error</a>)</label><span id='ReadVarint-fold-content-docs' class="fold-docs">
+</span></div><div class="anchor value-res" id="name-ReadVarint">	<input type='checkbox' class="fold" id="ReadVarint-fold-content"><label for="ReadVarint-fold-content"> func <a href="../../src/encoding/binary/varint.go.html#line-132">ReadVarint</a>(r <a href="../io.html">io</a>.<a href="../io.html#name-ByteReader">ByteReader</a>) (<a href="../builtin.html#name-int64">int64</a>, <a href="../builtin.html#name-error">error</a>)</label><span id='ReadVarint-fold-content-docs' class="fold-docs">
 		ReadVarint reads an encoded signed integer from r and returns it as an int64.
 
-</span></div><div class="anchor value-res" id="name-Size">	<input type='checkbox' class="fold" id="Size-fold-content"><label for="Size-fold-content"> func <a href="../../src/encoding/binary/binary.go.html#line-395">Size</a>(v interface{}) <a href="../builtin.html#name-int">int</a></label><span id='Size-fold-content-docs' class="fold-docs">
+</span></div><div class="anchor value-res" id="name-Size">	<input type='checkbox' class="fold" id="Size-fold-content"><label for="Size-fold-content"> func <a href="../../src/encoding/binary/binary.go.html#line-395">Size</a>(v <a href="../builtin.html#name-any">any</a>) <a href="../builtin.html#name-int">int</a></label><span id='Size-fold-content-docs' class="fold-docs">
 		Size returns how many bytes Write would generate to encode the value v, which
 		must be a fixed-size value or a slice of fixed-size values, or a pointer to such data.
 		If v is neither of these, Size returns -1.
@@ -432,7 +432,7 @@
 			n  &lt; 0: value larger than 64 bits (overflow)
 			        and -n is the number of bytes read
 
-</span></div><div class="anchor value-res" id="name-Varint">	<input type='checkbox' class="fold" id="Varint-fold-content"><label for="Varint-fold-content"> func <a href="../../src/encoding/binary/varint.go.html#line-94">Varint</a>(buf []<a href="../builtin.html#name-byte">byte</a>) (<a href="../builtin.html#name-int64">int64</a>, <a href="../builtin.html#name-int">int</a>)</label><span id='Varint-fold-content-docs' class="fold-docs">
+</span></div><div class="anchor value-res" id="name-Varint">	<input type='checkbox' class="fold" id="Varint-fold-content"><label for="Varint-fold-content"> func <a href="../../src/encoding/binary/varint.go.html#line-99">Varint</a>(buf []<a href="../builtin.html#name-byte">byte</a>) (<a href="../builtin.html#name-int64">int64</a>, <a href="../builtin.html#name-int">int</a>)</label><span id='Varint-fold-content-docs' class="fold-docs">
 		Varint decodes an int64 from buf and returns that value and the
 		number of bytes read (&gt; 0). If an error occurred, the value is 0
 		and the number of bytes n is &lt;= 0 with the following meaning:
@@ -441,7 +441,7 @@
 			n  &lt; 0: value larger than 64 bits (overflow)
 			        and -n is the number of bytes read
 
-</span></div><div class="anchor value-res" id="name-Write">	<input type='checkbox' class="fold" id="Write-fold-content"><label for="Write-fold-content"> func <a href="../../src/encoding/binary/binary.go.html#line-271">Write</a>(w <a href="../io.html">io</a>.<a href="../io.html#name-Writer">Writer</a>, order <a href="#name-ByteOrder">ByteOrder</a>, data interface{}) <a href="../builtin.html#name-error">error</a></label><span id='Write-fold-content-docs' class="fold-docs">
+</span></div><div class="anchor value-res" id="name-Write">	<input type='checkbox' class="fold" id="Write-fold-content"><label for="Write-fold-content"> func <a href="../../src/encoding/binary/binary.go.html#line-271">Write</a>(w <a href="../io.html">io</a>.<a href="../io.html#name-Writer">Writer</a>, order <a href="#name-ByteOrder">ByteOrder</a>, data <a href="../builtin.html#name-any">any</a>) <a href="../builtin.html#name-error">error</a></label><span id='Write-fold-content-docs' class="fold-docs">
 		Write writes the binary representation of data into w.
 		Data must be a fixed-size value or a slice of fixed-size
 		values, or a pointer to such data.
@@ -457,7 +457,7 @@
 		it returns the length of the slice times the element size and does not count the memory
 		occupied by the header. If the type of v is not acceptable, dataSize returns -1.
 
-</span></i></div><div class="anchor value-res hidden" id="name-intDataSize"><i>	<input type='checkbox' class="fold" id="intDataSize-fold-content"><label for="intDataSize-fold-content"> func <a href="../../src/encoding/binary/binary.go.html#line-699">intDataSize</a>(data interface{}) <a href="../builtin.html#name-int">int</a></label><span id='intDataSize-fold-content-docs' class="fold-docs">
+</span></i></div><div class="anchor value-res hidden" id="name-intDataSize"><i>	<input type='checkbox' class="fold" id="intDataSize-fold-content"><label for="intDataSize-fold-content"> func <a href="../../src/encoding/binary/binary.go.html#line-699">intDataSize</a>(data <a href="../builtin.html#name-any">any</a>) <a href="../builtin.html#name-int">int</a></label><span id='intDataSize-fold-content-docs' class="fold-docs">
 		intDataSize returns the size of the data required to represent the data when encoded.
 		It returns zero if the type cannot be implemented by the fast path in Read or Write.
 
@@ -473,7 +473,7 @@
 </span></div><div class="anchor value-res" id="name-LittleEndian">	<input type='checkbox' class="fold" id="LittleEndian-fold-content"><label for="LittleEndian-fold-content">  var <a href="../../src/encoding/binary/binary.go.html#line-45">LittleEndian</a> <a href="#name-littleEndian">littleEndian</a></label><span id='LittleEndian-fold-content-docs' class="fold-docs">
 		LittleEndian is the little-endian implementation of ByteOrder.
 
-</span></div>	<input type='checkbox' class="showhide" id="unexported-variables-showhide"><i><label for="unexported-variables-showhide" class="show-inline">/* 2 unexporteds ... */</label><label for="unexported-variables-showhide" class="hide-inline">/* 2 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-overflow"><i>	<span class="nodocs">  var <a href="../../src/encoding/binary/varint.go.html#line-103">overflow</a> <a href="../builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-structSize"><i>	<span class="nodocs">  var <a href="../../src/encoding/binary/binary.go.html#line-399">structSize</a> <a href="../sync.html">sync</a>.<a href="../sync.html#name-Map">Map</a> // map[reflect.Type]int</span></i></div></div>
+</span></div>	<input type='checkbox' class="showhide" id="unexported-variables-showhide"><i><label for="unexported-variables-showhide" class="show-inline">/* 2 unexporteds ... */</label><label for="unexported-variables-showhide" class="hide-inline">/* 2 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-overflow"><i>	<span class="nodocs">  var <a href="../../src/encoding/binary/varint.go.html#line-108">overflow</a> <a href="../builtin.html#name-error">error</a></span></i></div><div class="anchor value-res hidden" id="name-structSize"><i>	<span class="nodocs">  var <a href="../../src/encoding/binary/binary.go.html#line-399">structSize</a> <a href="../sync.html">sync</a>.<a href="../sync.html#name-Map">Map</a> // map[reflect.Type]int</span></i></div></div>
 <div id="exported-constants"><span class="title">Package-Level Constants<span class="title-stat"><i> (total 3, all are exported)</i></span></span>
 
 <div class="anchor value-res" id="name-MaxVarintLen16">	<input type='checkbox' class="fold" id="MaxVarintLen16-fold-content"><label for="MaxVarintLen16-fold-content">const <a href="../../src/encoding/binary/varint.go.html#line-34">MaxVarintLen16</a> = 3</label><span id='MaxVarintLen16-fold-content-docs' class="fold-docs">
@@ -487,7 +487,7 @@
 
 </span></div></div></code></pre><pre id="footer">
 <table><tr><td><img src="../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

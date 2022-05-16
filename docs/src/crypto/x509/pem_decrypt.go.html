@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: pem_decrypt.go in package crypto/x509</title>
-<link href="../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -70,8 +70,7 @@ input[id=r50]:checked ~pre label[for=r50],
 input[id=r51]:checked ~pre label[for=r51],
 input[id=r52]:checked ~pre label[for=r52],
 input[id=r53]:checked ~pre label[for=r53],
-input[id=r54]:checked ~pre label[for=r54],
-input[id=r55]:checked ~pre label[for=r55]
+input[id=r54]:checked ~pre label[for=r54]
 {background: #226; color: #ff8;}
 input[id=i0]:checked ~pre .i0,
 input[id=i1]:checked ~pre .i1,
@@ -138,7 +137,6 @@ input[id=i8]:checked ~pre .i8
 <input id="r52" type="radio" name="g"/>
 <input id="r53" type="radio" name="g"/>
 <input id="r54" type="radio" name="g"/>
-<input id="r55" type="radio" name="g"/>
 <input id="i0" type="radio" name="i"/>
 <input id="i1" type="radio" name="i"/>
 <input id="i2" type="radio" name="i"/>
@@ -279,133 +277,132 @@ input[id=i8]:checked ~pre .i8
 <span class="codeline" id="line-127"><code>		<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../pkg/errors.html" class="ident i6">errors</a>.<a href="../../errors/errors.go.html#line-58" class="ident">New</a>(<span class="lit-string">"x509: no DEK-Info header in block"</span>)</code></span>
 <span class="codeline" id="line-128"><code>	}</code></span>
 <span class="codeline" id="line-129"><code></code></span>
-<span class="codeline" id="line-130"><code>	<label for="r17" class="ident">idx</label> := <a href="../../../pkg/strings.html" class="ident i8">strings</a>.<a href="../../strings/strings.go.html#line-1024" class="ident">Index</a>(<label for="r15" class="ident">dek</label>, <span class="lit-string">","</span>)</code></span>
-<span class="codeline" id="line-131"><code>	<span class="keyword">if</span> <label for="r17" class="ident">idx</label> == -<span class="lit-number">1</span> {</code></span>
+<span class="codeline" id="line-130"><code>	<label for="r17" class="ident">mode</label>, <label for="r18" class="ident">hexIV</label>, <label for="r16" class="ident">ok</label> := <a href="../../../pkg/strings.html" class="ident i8">strings</a>.<a href="../../strings/strings.go.html#line-1181" class="ident">Cut</a>(<label for="r15" class="ident">dek</label>, <span class="lit-string">","</span>)</code></span>
+<span class="codeline" id="line-131"><code>	<span class="keyword">if</span> !<label for="r16" class="ident">ok</label> {</code></span>
 <span class="codeline" id="line-132"><code>		<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../pkg/errors.html" class="ident i6">errors</a>.<a href="../../errors/errors.go.html#line-58" class="ident">New</a>(<span class="lit-string">"x509: malformed DEK-Info header"</span>)</code></span>
 <span class="codeline" id="line-133"><code>	}</code></span>
 <span class="codeline" id="line-134"><code></code></span>
-<span class="codeline" id="line-135"><code>	<label for="r18" class="ident">mode</label>, <label for="r19" class="ident">hexIV</label> := <label for="r15" class="ident">dek</label>[:<label for="r17" class="ident">idx</label>], <label for="r15" class="ident">dek</label>[<label for="r17" class="ident">idx</label>+<span class="lit-number">1</span>:]</code></span>
-<span class="codeline" id="line-136"><code>	<label for="r20" class="ident">ciph</label> := <a href="#line-235" class="ident">cipherByName</a>(<label for="r18" class="ident">mode</label>)</code></span>
-<span class="codeline" id="line-137"><code>	<span class="keyword">if</span> <label for="r20" class="ident">ciph</label> == <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
-<span class="codeline" id="line-138"><code>		<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../pkg/errors.html" class="ident i6">errors</a>.<a href="../../errors/errors.go.html#line-58" class="ident">New</a>(<span class="lit-string">"x509: unknown encryption mode"</span>)</code></span>
-<span class="codeline" id="line-139"><code>	}</code></span>
-<span class="codeline" id="line-140"><code>	<label for="r21" class="ident">iv</label>, <label for="r22" class="ident">err</label> := <a href="../../../pkg/encoding/hex.html" class="ident i4">hex</a>.<a href="../../encoding/hex/hex.go.html#line-110" class="ident">DecodeString</a>(<label for="r19" class="ident">hexIV</label>)</code></span>
-<span class="codeline" id="line-141"><code>	<span class="keyword">if</span> <label for="r22" class="ident">err</label> != <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
-<span class="codeline" id="line-142"><code>		<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <label for="r22" class="ident">err</label></code></span>
-<span class="codeline" id="line-143"><code>	}</code></span>
-<span class="codeline" id="line-144"><code>	<span class="keyword">if</span> <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r21" class="ident">iv</label>) != <label for="r20" class="ident">ciph</label>.<a href="#line-41" class="ident">blockSize</a> {</code></span>
-<span class="codeline" id="line-145"><code>		<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../pkg/errors.html" class="ident i6">errors</a>.<a href="../../errors/errors.go.html#line-58" class="ident">New</a>(<span class="lit-string">"x509: incorrect IV size"</span>)</code></span>
-<span class="codeline" id="line-146"><code>	}</code></span>
-<span class="codeline" id="line-147"><code></code></span>
-<span class="codeline" id="line-148"><code>	<span class="comment">// Based on the OpenSSL implementation. The salt is the first 8 bytes</span></code></span>
-<span class="codeline" id="line-149"><code><span class="comment">	// of the initialization vector.</span></code></span>
-<span class="codeline" id="line-150"><code>	<label for="r23" class="ident">key</label> := <label for="r20" class="ident">ciph</label>.<a href="#line-82" class="ident">deriveKey</a>(<label for="r14" class="ident">password</label>, <label for="r21" class="ident">iv</label>[:<span class="lit-number">8</span>])</code></span>
-<span class="codeline" id="line-151"><code>	<label for="r24" class="ident">block</label>, <label for="r22" class="ident">err</label> := <label for="r20" class="ident">ciph</label>.<a href="#line-39" class="ident">cipherFunc</a>(<label for="r23" class="ident">key</label>)</code></span>
-<span class="codeline" id="line-152"><code>	<span class="keyword">if</span> <label for="r22" class="ident">err</label> != <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
-<span class="codeline" id="line-153"><code>		<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <label for="r22" class="ident">err</label></code></span>
-<span class="codeline" id="line-154"><code>	}</code></span>
-<span class="codeline" id="line-155"><code></code></span>
-<span class="codeline" id="line-156"><code>	<span class="keyword">if</span> <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r13" class="ident">b</label>.<a href="../../encoding/pem/pem.go.html#line-30" class="ident">Bytes</a>)%<label for="r24" class="ident">block</label>.<a href="../cipher/cipher.go.html#line-17" class="ident">BlockSize</a>() != <span class="lit-number">0</span> {</code></span>
-<span class="codeline" id="line-157"><code>		<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../pkg/errors.html" class="ident i6">errors</a>.<a href="../../errors/errors.go.html#line-58" class="ident">New</a>(<span class="lit-string">"x509: encrypted PEM data is not a multiple of the block size"</span>)</code></span>
-<span class="codeline" id="line-158"><code>	}</code></span>
-<span class="codeline" id="line-159"><code></code></span>
-<span class="codeline" id="line-160"><code>	<label for="r25" class="ident">data</label> := <a href="../../../pkg/builtin.html#name-make" class="ident">make</a>([]<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r13" class="ident">b</label>.<a href="../../encoding/pem/pem.go.html#line-30" class="ident">Bytes</a>))</code></span>
-<span class="codeline" id="line-161"><code>	<label for="r26" class="ident">dec</label> := <a href="../../../pkg/crypto/cipher.html" class="ident i1">cipher</a>.<a href="../cipher/cbc.go.html#line-105" class="ident">NewCBCDecrypter</a>(<label for="r24" class="ident">block</label>, <label for="r21" class="ident">iv</label>)</code></span>
-<span class="codeline" id="line-162"><code>	<label for="r26" class="ident">dec</label>.<a href="../cipher/cipher.go.html#line-60" class="ident">CryptBlocks</a>(<label for="r25" class="ident">data</label>, <label for="r13" class="ident">b</label>.<a href="../../encoding/pem/pem.go.html#line-30" class="ident">Bytes</a>)</code></span>
-<span class="codeline" id="line-163"><code></code></span>
-<span class="codeline" id="line-164"><code>	<span class="comment">// Blocks are padded using a scheme where the last n bytes of padding are all</span></code></span>
-<span class="codeline" id="line-165"><code><span class="comment">	// equal to n. It can pad from 1 to blocksize bytes inclusive. See RFC 1423.</span></code></span>
-<span class="codeline" id="line-166"><code><span class="comment">	// For example:</span></code></span>
-<span class="codeline" id="line-167"><code><span class="comment">	//	[x y z 2 2]</span></code></span>
-<span class="codeline" id="line-168"><code><span class="comment">	//	[x y 7 7 7 7 7 7 7]</span></code></span>
-<span class="codeline" id="line-169"><code><span class="comment">	// If we detect a bad padding, we assume it is an invalid password.</span></code></span>
-<span class="codeline" id="line-170"><code>	<label for="r27" class="ident">dlen</label> := <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r25" class="ident">data</label>)</code></span>
-<span class="codeline" id="line-171"><code>	<span class="keyword">if</span> <label for="r27" class="ident">dlen</label> == <span class="lit-number">0</span> || <label for="r27" class="ident">dlen</label>%<label for="r20" class="ident">ciph</label>.<a href="#line-41" class="ident">blockSize</a> != <span class="lit-number">0</span> {</code></span>
-<span class="codeline" id="line-172"><code>		<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../pkg/errors.html" class="ident i6">errors</a>.<a href="../../errors/errors.go.html#line-58" class="ident">New</a>(<span class="lit-string">"x509: invalid padding"</span>)</code></span>
-<span class="codeline" id="line-173"><code>	}</code></span>
-<span class="codeline" id="line-174"><code>	<label for="r28" class="ident">last</label> := <a href="../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r25" class="ident">data</label>[<label for="r27" class="ident">dlen</label>-<span class="lit-number">1</span>])</code></span>
-<span class="codeline" id="line-175"><code>	<span class="keyword">if</span> <label for="r27" class="ident">dlen</label> &lt; <label for="r28" class="ident">last</label> {</code></span>
-<span class="codeline" id="line-176"><code>		<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="#line-110" class="ident">IncorrectPasswordError</a></code></span>
-<span class="codeline" id="line-177"><code>	}</code></span>
-<span class="codeline" id="line-178"><code>	<span class="keyword">if</span> <label for="r28" class="ident">last</label> == <span class="lit-number">0</span> || <label for="r28" class="ident">last</label> &gt; <label for="r20" class="ident">ciph</label>.<a href="#line-41" class="ident">blockSize</a> {</code></span>
-<span class="codeline" id="line-179"><code>		<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="#line-110" class="ident">IncorrectPasswordError</a></code></span>
-<span class="codeline" id="line-180"><code>	}</code></span>
-<span class="codeline" id="line-181"><code>	<span class="keyword">for</span> <label for="r29" class="ident">_</label>, <label for="r30" class="ident">val</label> := <span class="keyword">range</span> <label for="r25" class="ident">data</label>[<label for="r27" class="ident">dlen</label>-<label for="r28" class="ident">last</label>:] {</code></span>
-<span class="codeline" id="line-182"><code>		<span class="keyword">if</span> <a href="../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r30" class="ident">val</label>) != <label for="r28" class="ident">last</label> {</code></span>
-<span class="codeline" id="line-183"><code>			<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="#line-110" class="ident">IncorrectPasswordError</a></code></span>
-<span class="codeline" id="line-184"><code>		}</code></span>
-<span class="codeline" id="line-185"><code>	}</code></span>
-<span class="codeline" id="line-186"><code>	<span class="keyword">return</span> <label for="r25" class="ident">data</label>[:<label for="r27" class="ident">dlen</label>-<label for="r28" class="ident">last</label>], <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
-<span class="codeline" id="line-187"><code>}</code></span>
-<span class="codeline" id="line-188"><code></code></span>
-<span class="codeline" id="line-189"><code><span class="comment">// EncryptPEMBlock returns a PEM block of the specified type holding the</span></code></span>
-<span class="codeline" id="line-190"><code><span class="comment">// given DER encoded data encrypted with the specified algorithm and</span></code></span>
-<span class="codeline" id="line-191"><code><span class="comment">// password according to RFC 1423.</span></code></span>
-<span class="codeline" id="line-192"><code><span class="comment">//</span></code></span>
-<span class="codeline" id="line-193"><code><span class="comment">// Deprecated: Legacy PEM encryption as specified in RFC 1423 is insecure by</span></code></span>
-<span class="codeline" id="line-194"><code><span class="comment">// design. Since it does not authenticate the ciphertext, it is vulnerable to</span></code></span>
-<span class="codeline" id="line-195"><code><span class="comment">// padding oracle attacks that can let an attacker recover the plaintext.</span></code></span>
-<span class="codeline" id="line-196"><code><span class="keyword">func</span> <label for="r31" class="ident"><a href="../../../pkg/crypto/x509.html#name-EncryptPEMBlock" class="ident">EncryptPEMBlock</a></label>(<label for="r32" class="ident">rand</label> <a href="../../../pkg/io.html" class="ident i7">io</a>.<a href="../../io/io.go.html#line-83" class="ident">Reader</a>, <label for="r33" class="ident">blockType</label> <a href="../../../pkg/builtin.html#name-string" class="ident">string</a>, <label for="r34" class="ident">data</label>, <label for="r35" class="ident">password</label> []<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <label for="r36" class="ident">alg</label> <a href="#line-23" class="ident">PEMCipher</a>) (*<a href="../../../pkg/encoding/pem.html" class="ident i5">pem</a>.<a href="../../encoding/pem/pem.go.html#line-27" class="ident">Block</a>, <a href="../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
-<span class="codeline" id="line-197"><code>	<label for="r37" class="ident">ciph</label> := <a href="#line-245" class="ident">cipherByKey</a>(<label for="r36" class="ident">alg</label>)</code></span>
-<span class="codeline" id="line-198"><code>	<span class="keyword">if</span> <label for="r37" class="ident">ciph</label> == <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
-<span class="codeline" id="line-199"><code>		<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../pkg/errors.html" class="ident i6">errors</a>.<a href="../../errors/errors.go.html#line-58" class="ident">New</a>(<span class="lit-string">"x509: unknown encryption mode"</span>)</code></span>
-<span class="codeline" id="line-200"><code>	}</code></span>
-<span class="codeline" id="line-201"><code>	<label for="r38" class="ident">iv</label> := <a href="../../../pkg/builtin.html#name-make" class="ident">make</a>([]<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <label for="r37" class="ident">ciph</label>.<a href="#line-41" class="ident">blockSize</a>)</code></span>
-<span class="codeline" id="line-202"><code>	<span class="keyword">if</span> <label for="r39" class="ident">_</label>, <label for="r40" class="ident">err</label> := <a href="../../../pkg/io.html" class="ident i7">io</a>.<a href="../../io/io.go.html#line-346" class="ident">ReadFull</a>(<label for="r32" class="ident">rand</label>, <label for="r38" class="ident">iv</label>); <label for="r40" class="ident">err</label> != <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
-<span class="codeline" id="line-203"><code>		<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../pkg/errors.html" class="ident i6">errors</a>.<a href="../../errors/errors.go.html#line-58" class="ident">New</a>(<span class="lit-string">"x509: cannot generate IV: "</span> + <label for="r40" class="ident">err</label>.Error())</code></span>
-<span class="codeline" id="line-204"><code>	}</code></span>
-<span class="codeline" id="line-205"><code>	<span class="comment">// The salt is the first 8 bytes of the initialization vector,</span></code></span>
-<span class="codeline" id="line-206"><code><span class="comment">	// matching the key derivation in DecryptPEMBlock.</span></code></span>
-<span class="codeline" id="line-207"><code>	<label for="r41" class="ident">key</label> := <label for="r37" class="ident">ciph</label>.<a href="#line-82" class="ident">deriveKey</a>(<label for="r35" class="ident">password</label>, <label for="r38" class="ident">iv</label>[:<span class="lit-number">8</span>])</code></span>
-<span class="codeline" id="line-208"><code>	<label for="r42" class="ident">block</label>, <label for="r43" class="ident">err</label> := <label for="r37" class="ident">ciph</label>.<a href="#line-39" class="ident">cipherFunc</a>(<label for="r41" class="ident">key</label>)</code></span>
-<span class="codeline" id="line-209"><code>	<span class="keyword">if</span> <label for="r43" class="ident">err</label> != <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
-<span class="codeline" id="line-210"><code>		<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <label for="r43" class="ident">err</label></code></span>
-<span class="codeline" id="line-211"><code>	}</code></span>
-<span class="codeline" id="line-212"><code>	<label for="r44" class="ident">enc</label> := <a href="../../../pkg/crypto/cipher.html" class="ident i1">cipher</a>.<a href="../cipher/cbc.go.html#line-45" class="ident">NewCBCEncrypter</a>(<label for="r42" class="ident">block</label>, <label for="r38" class="ident">iv</label>)</code></span>
-<span class="codeline" id="line-213"><code>	<label for="r45" class="ident">pad</label> := <label for="r37" class="ident">ciph</label>.<a href="#line-41" class="ident">blockSize</a> - <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r34" class="ident">data</label>)%<label for="r37" class="ident">ciph</label>.<a href="#line-41" class="ident">blockSize</a></code></span>
-<span class="codeline" id="line-214"><code>	<label for="r46" class="ident">encrypted</label> := <a href="../../../pkg/builtin.html#name-make" class="ident">make</a>([]<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r34" class="ident">data</label>), <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r34" class="ident">data</label>)+<label for="r45" class="ident">pad</label>)</code></span>
-<span class="codeline" id="line-215"><code>	<span class="comment">// We could save this copy by encrypting all the whole blocks in</span></code></span>
-<span class="codeline" id="line-216"><code><span class="comment">	// the data separately, but it doesn't seem worth the additional</span></code></span>
-<span class="codeline" id="line-217"><code><span class="comment">	// code.</span></code></span>
-<span class="codeline" id="line-218"><code>	<a href="../../../pkg/builtin.html#name-copy" class="ident">copy</a>(<label for="r46" class="ident">encrypted</label>, <label for="r34" class="ident">data</label>)</code></span>
-<span class="codeline" id="line-219"><code>	<span class="comment">// See RFC 1423, Section 1.1.</span></code></span>
-<span class="codeline" id="line-220"><code>	<span class="keyword">for</span> <label for="r47" class="ident">i</label> := <span class="lit-number">0</span>; <label for="r47" class="ident">i</label> &lt; <label for="r45" class="ident">pad</label>; <label for="r47" class="ident">i</label>++ {</code></span>
-<span class="codeline" id="line-221"><code>		<label for="r46" class="ident">encrypted</label> = <a href="../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r46" class="ident">encrypted</label>, <a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<label for="r45" class="ident">pad</label>))</code></span>
-<span class="codeline" id="line-222"><code>	}</code></span>
-<span class="codeline" id="line-223"><code>	<label for="r44" class="ident">enc</label>.<a href="../cipher/cipher.go.html#line-60" class="ident">CryptBlocks</a>(<label for="r46" class="ident">encrypted</label>, <label for="r46" class="ident">encrypted</label>)</code></span>
-<span class="codeline" id="line-224"><code></code></span>
-<span class="codeline" id="line-225"><code>	<span class="keyword">return</span> &amp;<a href="../../../pkg/encoding/pem.html" class="ident i5">pem</a>.<a href="../../encoding/pem/pem.go.html#line-27" class="ident">Block</a>{</code></span>
-<span class="codeline" id="line-226"><code>		<a href="../../encoding/pem/pem.go.html#line-28" class="ident">Type</a>: <label for="r33" class="ident">blockType</label>,</code></span>
-<span class="codeline" id="line-227"><code>		<a href="../../encoding/pem/pem.go.html#line-29" class="ident">Headers</a>: <span class="keyword">map</span>[<a href="../../../pkg/builtin.html#name-string" class="ident">string</a>]<a href="../../../pkg/builtin.html#name-string" class="ident">string</a>{</code></span>
-<span class="codeline" id="line-228"><code>			<span class="lit-string">"Proc-Type"</span>: <span class="lit-string">"4,ENCRYPTED"</span>,</code></span>
-<span class="codeline" id="line-229"><code>			<span class="lit-string">"DEK-Info"</span>:  <label for="r37" class="ident">ciph</label>.<a href="#line-38" class="ident">name</a> + <span class="lit-string">","</span> + <a href="../../../pkg/encoding/hex.html" class="ident i4">hex</a>.<a href="../../encoding/hex/hex.go.html#line-98" class="ident">EncodeToString</a>(<label for="r38" class="ident">iv</label>),</code></span>
-<span class="codeline" id="line-230"><code>		},</code></span>
-<span class="codeline" id="line-231"><code>		<a href="../../encoding/pem/pem.go.html#line-30" class="ident">Bytes</a>: <label for="r46" class="ident">encrypted</label>,</code></span>
-<span class="codeline" id="line-232"><code>	}, <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
-<span class="codeline" id="line-233"><code>}</code></span>
-<span class="codeline" id="line-234"><code></code></span>
-<span class="codeline" id="line-235"><code><span class="keyword">func</span> <label for="r48" class="ident"><a href="../../../pkg/crypto/x509.html#name-cipherByName" class="ident">cipherByName</a></label>(<label for="r49" class="ident">name</label> <a href="../../../pkg/builtin.html#name-string" class="ident">string</a>) *<a href="#line-36" class="ident">rfc1423Algo</a> {</code></span>
-<span class="codeline" id="line-236"><code>	<span class="keyword">for</span> <label for="r50" class="ident">i</label> := <span class="keyword">range</span> <a href="#line-46" class="ident">rfc1423Algos</a> {</code></span>
-<span class="codeline" id="line-237"><code>		<label for="r51" class="ident">alg</label> := &amp;<a href="#line-46" class="ident">rfc1423Algos</a>[<label for="r50" class="ident">i</label>]</code></span>
-<span class="codeline" id="line-238"><code>		<span class="keyword">if</span> <label for="r51" class="ident">alg</label>.<a href="#line-38" class="ident">name</a> == <label for="r49" class="ident">name</label> {</code></span>
-<span class="codeline" id="line-239"><code>			<span class="keyword">return</span> <label for="r51" class="ident">alg</label></code></span>
-<span class="codeline" id="line-240"><code>		}</code></span>
-<span class="codeline" id="line-241"><code>	}</code></span>
-<span class="codeline" id="line-242"><code>	<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
-<span class="codeline" id="line-243"><code>}</code></span>
-<span class="codeline" id="line-244"><code></code></span>
-<span class="codeline" id="line-245"><code><span class="keyword">func</span> <label for="r52" class="ident"><a href="../../../pkg/crypto/x509.html#name-cipherByKey" class="ident">cipherByKey</a></label>(<label for="r53" class="ident">key</label> <a href="#line-23" class="ident">PEMCipher</a>) *<a href="#line-36" class="ident">rfc1423Algo</a> {</code></span>
-<span class="codeline" id="line-246"><code>	<span class="keyword">for</span> <label for="r54" class="ident">i</label> := <span class="keyword">range</span> <a href="#line-46" class="ident">rfc1423Algos</a> {</code></span>
-<span class="codeline" id="line-247"><code>		<label for="r55" class="ident">alg</label> := &amp;<a href="#line-46" class="ident">rfc1423Algos</a>[<label for="r54" class="ident">i</label>]</code></span>
-<span class="codeline" id="line-248"><code>		<span class="keyword">if</span> <label for="r55" class="ident">alg</label>.<a href="#line-37" class="ident">cipher</a> == <label for="r53" class="ident">key</label> {</code></span>
-<span class="codeline" id="line-249"><code>			<span class="keyword">return</span> <label for="r55" class="ident">alg</label></code></span>
-<span class="codeline" id="line-250"><code>		}</code></span>
-<span class="codeline" id="line-251"><code>	}</code></span>
-<span class="codeline" id="line-252"><code>	<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
-<span class="codeline" id="line-253"><code>}</code></span>
+<span class="codeline" id="line-135"><code>	<label for="r19" class="ident">ciph</label> := <a href="#line-234" class="ident">cipherByName</a>(<label for="r17" class="ident">mode</label>)</code></span>
+<span class="codeline" id="line-136"><code>	<span class="keyword">if</span> <label for="r19" class="ident">ciph</label> == <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-137"><code>		<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../pkg/errors.html" class="ident i6">errors</a>.<a href="../../errors/errors.go.html#line-58" class="ident">New</a>(<span class="lit-string">"x509: unknown encryption mode"</span>)</code></span>
+<span class="codeline" id="line-138"><code>	}</code></span>
+<span class="codeline" id="line-139"><code>	<label for="r20" class="ident">iv</label>, <label for="r21" class="ident">err</label> := <a href="../../../pkg/encoding/hex.html" class="ident i4">hex</a>.<a href="../../encoding/hex/hex.go.html#line-110" class="ident">DecodeString</a>(<label for="r18" class="ident">hexIV</label>)</code></span>
+<span class="codeline" id="line-140"><code>	<span class="keyword">if</span> <label for="r21" class="ident">err</label> != <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-141"><code>		<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <label for="r21" class="ident">err</label></code></span>
+<span class="codeline" id="line-142"><code>	}</code></span>
+<span class="codeline" id="line-143"><code>	<span class="keyword">if</span> <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r20" class="ident">iv</label>) != <label for="r19" class="ident">ciph</label>.<a href="#line-41" class="ident">blockSize</a> {</code></span>
+<span class="codeline" id="line-144"><code>		<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../pkg/errors.html" class="ident i6">errors</a>.<a href="../../errors/errors.go.html#line-58" class="ident">New</a>(<span class="lit-string">"x509: incorrect IV size"</span>)</code></span>
+<span class="codeline" id="line-145"><code>	}</code></span>
+<span class="codeline" id="line-146"><code></code></span>
+<span class="codeline" id="line-147"><code>	<span class="comment">// Based on the OpenSSL implementation. The salt is the first 8 bytes</span></code></span>
+<span class="codeline" id="line-148"><code><span class="comment">	// of the initialization vector.</span></code></span>
+<span class="codeline" id="line-149"><code>	<label for="r22" class="ident">key</label> := <label for="r19" class="ident">ciph</label>.<a href="#line-82" class="ident">deriveKey</a>(<label for="r14" class="ident">password</label>, <label for="r20" class="ident">iv</label>[:<span class="lit-number">8</span>])</code></span>
+<span class="codeline" id="line-150"><code>	<label for="r23" class="ident">block</label>, <label for="r21" class="ident">err</label> := <label for="r19" class="ident">ciph</label>.<a href="#line-39" class="ident">cipherFunc</a>(<label for="r22" class="ident">key</label>)</code></span>
+<span class="codeline" id="line-151"><code>	<span class="keyword">if</span> <label for="r21" class="ident">err</label> != <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-152"><code>		<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <label for="r21" class="ident">err</label></code></span>
+<span class="codeline" id="line-153"><code>	}</code></span>
+<span class="codeline" id="line-154"><code></code></span>
+<span class="codeline" id="line-155"><code>	<span class="keyword">if</span> <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r13" class="ident">b</label>.<a href="../../encoding/pem/pem.go.html#line-30" class="ident">Bytes</a>)%<label for="r23" class="ident">block</label>.<a href="../cipher/cipher.go.html#line-17" class="ident">BlockSize</a>() != <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-156"><code>		<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../pkg/errors.html" class="ident i6">errors</a>.<a href="../../errors/errors.go.html#line-58" class="ident">New</a>(<span class="lit-string">"x509: encrypted PEM data is not a multiple of the block size"</span>)</code></span>
+<span class="codeline" id="line-157"><code>	}</code></span>
+<span class="codeline" id="line-158"><code></code></span>
+<span class="codeline" id="line-159"><code>	<label for="r24" class="ident">data</label> := <a href="../../../pkg/builtin.html#name-make" class="ident">make</a>([]<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r13" class="ident">b</label>.<a href="../../encoding/pem/pem.go.html#line-30" class="ident">Bytes</a>))</code></span>
+<span class="codeline" id="line-160"><code>	<label for="r25" class="ident">dec</label> := <a href="../../../pkg/crypto/cipher.html" class="ident i1">cipher</a>.<a href="../cipher/cbc.go.html#line-105" class="ident">NewCBCDecrypter</a>(<label for="r23" class="ident">block</label>, <label for="r20" class="ident">iv</label>)</code></span>
+<span class="codeline" id="line-161"><code>	<label for="r25" class="ident">dec</label>.<a href="../cipher/cipher.go.html#line-60" class="ident">CryptBlocks</a>(<label for="r24" class="ident">data</label>, <label for="r13" class="ident">b</label>.<a href="../../encoding/pem/pem.go.html#line-30" class="ident">Bytes</a>)</code></span>
+<span class="codeline" id="line-162"><code></code></span>
+<span class="codeline" id="line-163"><code>	<span class="comment">// Blocks are padded using a scheme where the last n bytes of padding are all</span></code></span>
+<span class="codeline" id="line-164"><code><span class="comment">	// equal to n. It can pad from 1 to blocksize bytes inclusive. See RFC 1423.</span></code></span>
+<span class="codeline" id="line-165"><code><span class="comment">	// For example:</span></code></span>
+<span class="codeline" id="line-166"><code><span class="comment">	//	[x y z 2 2]</span></code></span>
+<span class="codeline" id="line-167"><code><span class="comment">	//	[x y 7 7 7 7 7 7 7]</span></code></span>
+<span class="codeline" id="line-168"><code><span class="comment">	// If we detect a bad padding, we assume it is an invalid password.</span></code></span>
+<span class="codeline" id="line-169"><code>	<label for="r26" class="ident">dlen</label> := <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r24" class="ident">data</label>)</code></span>
+<span class="codeline" id="line-170"><code>	<span class="keyword">if</span> <label for="r26" class="ident">dlen</label> == <span class="lit-number">0</span> || <label for="r26" class="ident">dlen</label>%<label for="r19" class="ident">ciph</label>.<a href="#line-41" class="ident">blockSize</a> != <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-171"><code>		<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../pkg/errors.html" class="ident i6">errors</a>.<a href="../../errors/errors.go.html#line-58" class="ident">New</a>(<span class="lit-string">"x509: invalid padding"</span>)</code></span>
+<span class="codeline" id="line-172"><code>	}</code></span>
+<span class="codeline" id="line-173"><code>	<label for="r27" class="ident">last</label> := <a href="../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r24" class="ident">data</label>[<label for="r26" class="ident">dlen</label>-<span class="lit-number">1</span>])</code></span>
+<span class="codeline" id="line-174"><code>	<span class="keyword">if</span> <label for="r26" class="ident">dlen</label> &lt; <label for="r27" class="ident">last</label> {</code></span>
+<span class="codeline" id="line-175"><code>		<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="#line-110" class="ident">IncorrectPasswordError</a></code></span>
+<span class="codeline" id="line-176"><code>	}</code></span>
+<span class="codeline" id="line-177"><code>	<span class="keyword">if</span> <label for="r27" class="ident">last</label> == <span class="lit-number">0</span> || <label for="r27" class="ident">last</label> &gt; <label for="r19" class="ident">ciph</label>.<a href="#line-41" class="ident">blockSize</a> {</code></span>
+<span class="codeline" id="line-178"><code>		<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="#line-110" class="ident">IncorrectPasswordError</a></code></span>
+<span class="codeline" id="line-179"><code>	}</code></span>
+<span class="codeline" id="line-180"><code>	<span class="keyword">for</span> <label for="r28" class="ident">_</label>, <label for="r29" class="ident">val</label> := <span class="keyword">range</span> <label for="r24" class="ident">data</label>[<label for="r26" class="ident">dlen</label>-<label for="r27" class="ident">last</label>:] {</code></span>
+<span class="codeline" id="line-181"><code>		<span class="keyword">if</span> <a href="../../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r29" class="ident">val</label>) != <label for="r27" class="ident">last</label> {</code></span>
+<span class="codeline" id="line-182"><code>			<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="#line-110" class="ident">IncorrectPasswordError</a></code></span>
+<span class="codeline" id="line-183"><code>		}</code></span>
+<span class="codeline" id="line-184"><code>	}</code></span>
+<span class="codeline" id="line-185"><code>	<span class="keyword">return</span> <label for="r24" class="ident">data</label>[:<label for="r26" class="ident">dlen</label>-<label for="r27" class="ident">last</label>], <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-186"><code>}</code></span>
+<span class="codeline" id="line-187"><code></code></span>
+<span class="codeline" id="line-188"><code><span class="comment">// EncryptPEMBlock returns a PEM block of the specified type holding the</span></code></span>
+<span class="codeline" id="line-189"><code><span class="comment">// given DER encoded data encrypted with the specified algorithm and</span></code></span>
+<span class="codeline" id="line-190"><code><span class="comment">// password according to RFC 1423.</span></code></span>
+<span class="codeline" id="line-191"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-192"><code><span class="comment">// Deprecated: Legacy PEM encryption as specified in RFC 1423 is insecure by</span></code></span>
+<span class="codeline" id="line-193"><code><span class="comment">// design. Since it does not authenticate the ciphertext, it is vulnerable to</span></code></span>
+<span class="codeline" id="line-194"><code><span class="comment">// padding oracle attacks that can let an attacker recover the plaintext.</span></code></span>
+<span class="codeline" id="line-195"><code><span class="keyword">func</span> <label for="r30" class="ident"><a href="../../../pkg/crypto/x509.html#name-EncryptPEMBlock" class="ident">EncryptPEMBlock</a></label>(<label for="r31" class="ident">rand</label> <a href="../../../pkg/io.html" class="ident i7">io</a>.<a href="../../io/io.go.html#line-83" class="ident">Reader</a>, <label for="r32" class="ident">blockType</label> <a href="../../../pkg/builtin.html#name-string" class="ident">string</a>, <label for="r33" class="ident">data</label>, <label for="r34" class="ident">password</label> []<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <label for="r35" class="ident">alg</label> <a href="#line-23" class="ident">PEMCipher</a>) (*<a href="../../../pkg/encoding/pem.html" class="ident i5">pem</a>.<a href="../../encoding/pem/pem.go.html#line-27" class="ident">Block</a>, <a href="../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-196"><code>	<label for="r36" class="ident">ciph</label> := <a href="#line-244" class="ident">cipherByKey</a>(<label for="r35" class="ident">alg</label>)</code></span>
+<span class="codeline" id="line-197"><code>	<span class="keyword">if</span> <label for="r36" class="ident">ciph</label> == <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-198"><code>		<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../pkg/errors.html" class="ident i6">errors</a>.<a href="../../errors/errors.go.html#line-58" class="ident">New</a>(<span class="lit-string">"x509: unknown encryption mode"</span>)</code></span>
+<span class="codeline" id="line-199"><code>	}</code></span>
+<span class="codeline" id="line-200"><code>	<label for="r37" class="ident">iv</label> := <a href="../../../pkg/builtin.html#name-make" class="ident">make</a>([]<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <label for="r36" class="ident">ciph</label>.<a href="#line-41" class="ident">blockSize</a>)</code></span>
+<span class="codeline" id="line-201"><code>	<span class="keyword">if</span> <label for="r38" class="ident">_</label>, <label for="r39" class="ident">err</label> := <a href="../../../pkg/io.html" class="ident i7">io</a>.<a href="../../io/io.go.html#line-349" class="ident">ReadFull</a>(<label for="r31" class="ident">rand</label>, <label for="r37" class="ident">iv</label>); <label for="r39" class="ident">err</label> != <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-202"><code>		<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../pkg/errors.html" class="ident i6">errors</a>.<a href="../../errors/errors.go.html#line-58" class="ident">New</a>(<span class="lit-string">"x509: cannot generate IV: "</span> + <label for="r39" class="ident">err</label>.Error())</code></span>
+<span class="codeline" id="line-203"><code>	}</code></span>
+<span class="codeline" id="line-204"><code>	<span class="comment">// The salt is the first 8 bytes of the initialization vector,</span></code></span>
+<span class="codeline" id="line-205"><code><span class="comment">	// matching the key derivation in DecryptPEMBlock.</span></code></span>
+<span class="codeline" id="line-206"><code>	<label for="r40" class="ident">key</label> := <label for="r36" class="ident">ciph</label>.<a href="#line-82" class="ident">deriveKey</a>(<label for="r34" class="ident">password</label>, <label for="r37" class="ident">iv</label>[:<span class="lit-number">8</span>])</code></span>
+<span class="codeline" id="line-207"><code>	<label for="r41" class="ident">block</label>, <label for="r42" class="ident">err</label> := <label for="r36" class="ident">ciph</label>.<a href="#line-39" class="ident">cipherFunc</a>(<label for="r40" class="ident">key</label>)</code></span>
+<span class="codeline" id="line-208"><code>	<span class="keyword">if</span> <label for="r42" class="ident">err</label> != <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-209"><code>		<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <label for="r42" class="ident">err</label></code></span>
+<span class="codeline" id="line-210"><code>	}</code></span>
+<span class="codeline" id="line-211"><code>	<label for="r43" class="ident">enc</label> := <a href="../../../pkg/crypto/cipher.html" class="ident i1">cipher</a>.<a href="../cipher/cbc.go.html#line-45" class="ident">NewCBCEncrypter</a>(<label for="r41" class="ident">block</label>, <label for="r37" class="ident">iv</label>)</code></span>
+<span class="codeline" id="line-212"><code>	<label for="r44" class="ident">pad</label> := <label for="r36" class="ident">ciph</label>.<a href="#line-41" class="ident">blockSize</a> - <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r33" class="ident">data</label>)%<label for="r36" class="ident">ciph</label>.<a href="#line-41" class="ident">blockSize</a></code></span>
+<span class="codeline" id="line-213"><code>	<label for="r45" class="ident">encrypted</label> := <a href="../../../pkg/builtin.html#name-make" class="ident">make</a>([]<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r33" class="ident">data</label>), <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r33" class="ident">data</label>)+<label for="r44" class="ident">pad</label>)</code></span>
+<span class="codeline" id="line-214"><code>	<span class="comment">// We could save this copy by encrypting all the whole blocks in</span></code></span>
+<span class="codeline" id="line-215"><code><span class="comment">	// the data separately, but it doesn't seem worth the additional</span></code></span>
+<span class="codeline" id="line-216"><code><span class="comment">	// code.</span></code></span>
+<span class="codeline" id="line-217"><code>	<a href="../../../pkg/builtin.html#name-copy" class="ident">copy</a>(<label for="r45" class="ident">encrypted</label>, <label for="r33" class="ident">data</label>)</code></span>
+<span class="codeline" id="line-218"><code>	<span class="comment">// See RFC 1423, Section 1.1.</span></code></span>
+<span class="codeline" id="line-219"><code>	<span class="keyword">for</span> <label for="r46" class="ident">i</label> := <span class="lit-number">0</span>; <label for="r46" class="ident">i</label> &lt; <label for="r44" class="ident">pad</label>; <label for="r46" class="ident">i</label>++ {</code></span>
+<span class="codeline" id="line-220"><code>		<label for="r45" class="ident">encrypted</label> = <a href="../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r45" class="ident">encrypted</label>, <a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<label for="r44" class="ident">pad</label>))</code></span>
+<span class="codeline" id="line-221"><code>	}</code></span>
+<span class="codeline" id="line-222"><code>	<label for="r43" class="ident">enc</label>.<a href="../cipher/cipher.go.html#line-60" class="ident">CryptBlocks</a>(<label for="r45" class="ident">encrypted</label>, <label for="r45" class="ident">encrypted</label>)</code></span>
+<span class="codeline" id="line-223"><code></code></span>
+<span class="codeline" id="line-224"><code>	<span class="keyword">return</span> &amp;<a href="../../../pkg/encoding/pem.html" class="ident i5">pem</a>.<a href="../../encoding/pem/pem.go.html#line-27" class="ident">Block</a>{</code></span>
+<span class="codeline" id="line-225"><code>		<a href="../../encoding/pem/pem.go.html#line-28" class="ident">Type</a>: <label for="r32" class="ident">blockType</label>,</code></span>
+<span class="codeline" id="line-226"><code>		<a href="../../encoding/pem/pem.go.html#line-29" class="ident">Headers</a>: <span class="keyword">map</span>[<a href="../../../pkg/builtin.html#name-string" class="ident">string</a>]<a href="../../../pkg/builtin.html#name-string" class="ident">string</a>{</code></span>
+<span class="codeline" id="line-227"><code>			<span class="lit-string">"Proc-Type"</span>: <span class="lit-string">"4,ENCRYPTED"</span>,</code></span>
+<span class="codeline" id="line-228"><code>			<span class="lit-string">"DEK-Info"</span>:  <label for="r36" class="ident">ciph</label>.<a href="#line-38" class="ident">name</a> + <span class="lit-string">","</span> + <a href="../../../pkg/encoding/hex.html" class="ident i4">hex</a>.<a href="../../encoding/hex/hex.go.html#line-98" class="ident">EncodeToString</a>(<label for="r37" class="ident">iv</label>),</code></span>
+<span class="codeline" id="line-229"><code>		},</code></span>
+<span class="codeline" id="line-230"><code>		<a href="../../encoding/pem/pem.go.html#line-30" class="ident">Bytes</a>: <label for="r45" class="ident">encrypted</label>,</code></span>
+<span class="codeline" id="line-231"><code>	}, <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-232"><code>}</code></span>
+<span class="codeline" id="line-233"><code></code></span>
+<span class="codeline" id="line-234"><code><span class="keyword">func</span> <label for="r47" class="ident"><a href="../../../pkg/crypto/x509.html#name-cipherByName" class="ident">cipherByName</a></label>(<label for="r48" class="ident">name</label> <a href="../../../pkg/builtin.html#name-string" class="ident">string</a>) *<a href="#line-36" class="ident">rfc1423Algo</a> {</code></span>
+<span class="codeline" id="line-235"><code>	<span class="keyword">for</span> <label for="r49" class="ident">i</label> := <span class="keyword">range</span> <a href="#line-46" class="ident">rfc1423Algos</a> {</code></span>
+<span class="codeline" id="line-236"><code>		<label for="r50" class="ident">alg</label> := &amp;<a href="#line-46" class="ident">rfc1423Algos</a>[<label for="r49" class="ident">i</label>]</code></span>
+<span class="codeline" id="line-237"><code>		<span class="keyword">if</span> <label for="r50" class="ident">alg</label>.<a href="#line-38" class="ident">name</a> == <label for="r48" class="ident">name</label> {</code></span>
+<span class="codeline" id="line-238"><code>			<span class="keyword">return</span> <label for="r50" class="ident">alg</label></code></span>
+<span class="codeline" id="line-239"><code>		}</code></span>
+<span class="codeline" id="line-240"><code>	}</code></span>
+<span class="codeline" id="line-241"><code>	<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-242"><code>}</code></span>
+<span class="codeline" id="line-243"><code></code></span>
+<span class="codeline" id="line-244"><code><span class="keyword">func</span> <label for="r51" class="ident"><a href="../../../pkg/crypto/x509.html#name-cipherByKey" class="ident">cipherByKey</a></label>(<label for="r52" class="ident">key</label> <a href="#line-23" class="ident">PEMCipher</a>) *<a href="#line-36" class="ident">rfc1423Algo</a> {</code></span>
+<span class="codeline" id="line-245"><code>	<span class="keyword">for</span> <label for="r53" class="ident">i</label> := <span class="keyword">range</span> <a href="#line-46" class="ident">rfc1423Algos</a> {</code></span>
+<span class="codeline" id="line-246"><code>		<label for="r54" class="ident">alg</label> := &amp;<a href="#line-46" class="ident">rfc1423Algos</a>[<label for="r53" class="ident">i</label>]</code></span>
+<span class="codeline" id="line-247"><code>		<span class="keyword">if</span> <label for="r54" class="ident">alg</label>.<a href="#line-37" class="ident">cipher</a> == <label for="r52" class="ident">key</label> {</code></span>
+<span class="codeline" id="line-248"><code>			<span class="keyword">return</span> <label for="r54" class="ident">alg</label></code></span>
+<span class="codeline" id="line-249"><code>		}</code></span>
+<span class="codeline" id="line-250"><code>	}</code></span>
+<span class="codeline" id="line-251"><code>	<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-252"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

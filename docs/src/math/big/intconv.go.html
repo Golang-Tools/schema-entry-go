@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: intconv.go in package math/big</title>
-<link href="../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -325,7 +325,7 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-179"><code><span class="comment">// base 8, and a ``0x'' or ``0X'' prefix selects base 16. Otherwise the selected</span></code></span>
 <span class="codeline" id="line-180"><code><span class="comment">// base is 10.</span></code></span>
 <span class="codeline" id="line-181"><code><span class="comment">//</span></code></span>
-<span class="codeline" id="line-182"><code><span class="keyword">func</span> (<label for="r33" class="ident">z</label> *<a href="int.go.html#line-25" class="ident">Int</a>) <label for="r34" class="ident">scan</label>(<label for="r35" class="ident">r</label> <a href="../../../pkg/io.html" class="ident i2">io</a>.<a href="../../io/io.go.html#line-268" class="ident">ByteScanner</a>, <label for="r36" class="ident">base</label> <a href="../../../pkg/builtin.html#name-int" class="ident">int</a>) (*<a href="int.go.html#line-25" class="ident">Int</a>, <a href="../../../pkg/builtin.html#name-int" class="ident">int</a>, <a href="../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-182"><code><span class="keyword">func</span> (<label for="r33" class="ident">z</label> *<a href="int.go.html#line-25" class="ident">Int</a>) <label for="r34" class="ident">scan</label>(<label for="r35" class="ident">r</label> <a href="../../../pkg/io.html" class="ident i2">io</a>.<a href="../../io/io.go.html#line-270" class="ident">ByteScanner</a>, <label for="r36" class="ident">base</label> <a href="../../../pkg/builtin.html#name-int" class="ident">int</a>) (*<a href="int.go.html#line-25" class="ident">Int</a>, <a href="../../../pkg/builtin.html#name-int" class="ident">int</a>, <a href="../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
 <span class="codeline" id="line-183"><code>	<span class="comment">// determine sign</span></code></span>
 <span class="codeline" id="line-184"><code>	<label for="r37" class="ident">neg</label>, <label for="r38" class="ident">err</label> := <a href="#line-199" class="ident">scanSign</a>(<label for="r35" class="ident">r</label>)</code></span>
 <span class="codeline" id="line-185"><code>	<span class="keyword">if</span> <label for="r38" class="ident">err</label> != <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
@@ -342,9 +342,9 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-196"><code>	<span class="keyword">return</span> <label for="r33" class="ident">z</label>, <label for="r36" class="ident">base</label>, <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
 <span class="codeline" id="line-197"><code>}</code></span>
 <span class="codeline" id="line-198"><code></code></span>
-<span class="codeline" id="line-199"><code><span class="keyword">func</span> <label for="r39" class="ident"><a href="../../../pkg/math/big.html#name-scanSign" class="ident">scanSign</a></label>(<label for="r40" class="ident">r</label> <a href="../../../pkg/io.html" class="ident i2">io</a>.<a href="../../io/io.go.html#line-268" class="ident">ByteScanner</a>) (<label for="r41" class="ident">neg</label> <a href="../../../pkg/builtin.html#name-bool" class="ident">bool</a>, <label for="r42" class="ident">err</label> <a href="../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-199"><code><span class="keyword">func</span> <label for="r39" class="ident"><a href="../../../pkg/math/big.html#name-scanSign" class="ident">scanSign</a></label>(<label for="r40" class="ident">r</label> <a href="../../../pkg/io.html" class="ident i2">io</a>.<a href="../../io/io.go.html#line-270" class="ident">ByteScanner</a>) (<label for="r41" class="ident">neg</label> <a href="../../../pkg/builtin.html#name-bool" class="ident">bool</a>, <label for="r42" class="ident">err</label> <a href="../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
 <span class="codeline" id="line-200"><code>	<span class="keyword">var</span> <label for="r43" class="ident">ch</label> <a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a></code></span>
-<span class="codeline" id="line-201"><code>	<span class="keyword">if</span> <label for="r43" class="ident">ch</label>, <label for="r42" class="ident">err</label> = <label for="r40" class="ident">r</label>.<a href="../../io/io.go.html#line-258" class="ident">ReadByte</a>(); <label for="r42" class="ident">err</label> != <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-201"><code>	<span class="keyword">if</span> <label for="r43" class="ident">ch</label>, <label for="r42" class="ident">err</label> = <label for="r40" class="ident">r</label>.<a href="../../io/io.go.html#line-259" class="ident">ReadByte</a>(); <label for="r42" class="ident">err</label> != <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
 <span class="codeline" id="line-202"><code>		<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-false" class="ident">false</a>, <label for="r42" class="ident">err</label></code></span>
 <span class="codeline" id="line-203"><code>	}</code></span>
 <span class="codeline" id="line-204"><code>	<span class="keyword">switch</span> <label for="r43" class="ident">ch</label> {</code></span>
@@ -353,7 +353,7 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-207"><code>	<span class="keyword">case</span> <span class="lit-number">'+'</span>:</code></span>
 <span class="codeline" id="line-208"><code>		<span class="comment">// nothing to do</span></code></span>
 <span class="codeline" id="line-209"><code>	<span class="keyword">default</span>:</code></span>
-<span class="codeline" id="line-210"><code>		<label for="r40" class="ident">r</label>.<a href="../../io/io.go.html#line-270" class="ident">UnreadByte</a>()</code></span>
+<span class="codeline" id="line-210"><code>		<label for="r40" class="ident">r</label>.<a href="../../io/io.go.html#line-272" class="ident">UnreadByte</a>()</code></span>
 <span class="codeline" id="line-211"><code>	}</code></span>
 <span class="codeline" id="line-212"><code>	<span class="keyword">return</span></code></span>
 <span class="codeline" id="line-213"><code>}</code></span>
@@ -403,7 +403,7 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-257"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

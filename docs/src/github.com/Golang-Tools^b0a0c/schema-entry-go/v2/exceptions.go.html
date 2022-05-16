@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: exceptions.go in package github.com/Golang-Tools/schema-entry-go/v2</title>
+<link href="../../../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.4.9.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	exceptions.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../pkg/github.com/Golang-Tools^b0a0c/schema-entry-go/v2.html">github.com/Golang-Tools/schema-entry-go/v2</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0
+{background: brown; color: #eed;}
+</style><input id="i0" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> schemaentry</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">import</span> <label for="i0"><span class="lit-string i0">"errors"</span></label></code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<span class="codeline" id="line-5"><code><span class="keyword">var</span> (</code></span>
+<span class="codeline" id="line-6"><code>	<span class="comment">//ErrNotAllowSetChildToEndPoint 叶子节点无法设置子节点</span></code></span>
+<span class="codeline" id="line-7"><code>	<a href="../../../../../pkg/github.com/Golang-Tools^b0a0c/schema-entry-go/v2.html#name-ErrNotAllowSetChildToEndPoint" class="ident">ErrNotAllowSetChildToEndPoint</a> = <a href="../../../../../pkg/errors.html" class="ident i0">errors</a>.<a href="../../../../errors/errors.go.html#line-58" class="ident">New</a>(<span class="lit-string">"not allow set child to endpoint"</span>)</code></span>
+<span class="codeline" id="line-8"><code>	<span class="comment">//ErrUnsupportedSchema 不支持的的schema类型</span></code></span>
+<span class="codeline" id="line-9"><code>	<a href="../../../../../pkg/github.com/Golang-Tools^b0a0c/schema-entry-go/v2.html#name-ErrUnsupportedSchema" class="ident">ErrUnsupportedSchema</a> = <a href="../../../../../pkg/errors.html" class="ident i0">errors</a>.<a href="../../../../errors/errors.go.html#line-58" class="ident">New</a>(<span class="lit-string">"unsupported schema"</span>)</code></span>
+<span class="codeline" id="line-10"><code></code></span>
+<span class="codeline" id="line-11"><code>	<span class="comment">//ErrReregistCallBack 重复注册回调函数</span></code></span>
+<span class="codeline" id="line-12"><code>	<a href="../../../../../pkg/github.com/Golang-Tools^b0a0c/schema-entry-go/v2.html#name-ErrReregistCallBack" class="ident">ErrReregistCallBack</a> = <a href="../../../../../pkg/errors.html" class="ident i0">errors</a>.<a href="../../../../errors/errors.go.html#line-58" class="ident">New</a>(<span class="lit-string">"not allow re-regist callback"</span>)</code></span>
+<span class="codeline" id="line-13"><code></code></span>
+<span class="codeline" id="line-14"><code>	<span class="comment">//ErrUnsupportedSerialization 不支持的序列化协议</span></code></span>
+<span class="codeline" id="line-15"><code>	<a href="../../../../../pkg/github.com/Golang-Tools^b0a0c/schema-entry-go/v2.html#name-ErrUnsupportedSerialization" class="ident">ErrUnsupportedSerialization</a> = <a href="../../../../../pkg/errors.html" class="ident i0">errors</a>.<a href="../../../../errors/errors.go.html#line-58" class="ident">New</a>(<span class="lit-string">"unsupported serialization protocol"</span>)</code></span>
+<span class="codeline" id="line-16"><code>)</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

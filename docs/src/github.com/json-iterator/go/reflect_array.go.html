@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: reflect_array.go in package github.com/json-iterator/go</title>
-<link href="../../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -123,7 +123,7 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-15"><code></code></span>
 <span class="codeline" id="line-16"><code><span class="keyword">func</span> <label for="r5" class="ident"><a href="../../../../pkg/github.com/json-iterator/go.html#name-encoderOfArray" class="ident">encoderOfArray</a></label>(<label for="r6" class="ident">ctx</label> *<a href="reflect.go.html#line-37" class="ident">ctx</a>, <label for="r7" class="ident">typ</label> <a href="../../../../pkg/github.com/modern-go/reflect2.html" class="ident i1">reflect2</a>.<a href="../../modern-go/reflect2/reflect2.go.html#line-10" class="ident">Type</a>) <a href="reflect.go.html#line-28" class="ident">ValEncoder</a> {</code></span>
 <span class="codeline" id="line-17"><code>	<label for="r8" class="ident">arrayType</label> := <label for="r7" class="ident">typ</label>.(*<a href="../../../../pkg/github.com/modern-go/reflect2.html" class="ident i1">reflect2</a>.<a href="../../modern-go/reflect2/unsafe_array.go.html#line-8" class="ident">UnsafeArrayType</a>)</code></span>
-<span class="codeline" id="line-18"><code>	<span class="keyword">if</span> <label for="r8" class="ident">arrayType</label>.<a href="../../../reflect/type.go.html#line-193" class="ident">Len</a>() == <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-18"><code>	<span class="keyword">if</span> <label for="r8" class="ident">arrayType</label>.<a href="../../../reflect/type.go.html#line-200" class="ident">Len</a>() == <span class="lit-number">0</span> {</code></span>
 <span class="codeline" id="line-19"><code>		<span class="keyword">return</span> <a href="#line-25" class="ident">emptyArrayEncoder</a>{}</code></span>
 <span class="codeline" id="line-20"><code>	}</code></span>
 <span class="codeline" id="line-21"><code>	<label for="r9" class="ident">encoder</label> := <a href="reflect.go.html#line-222" class="ident">encoderOfType</a>(<label for="r6" class="ident">ctx</label>.<a href="reflect.go.html#line-52" class="ident">append</a>(<span class="lit-string">"[arrayElem]"</span>), <label for="r8" class="ident">arrayType</label>.<a href="../../modern-go/reflect2/safe_type.go.html#line-21" class="ident">Elem</a>())</code></span>
@@ -149,7 +149,7 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-41"><code>	<label for="r20" class="ident">stream</label>.<a href="stream.go.html#line-183" class="ident">WriteArrayStart</a>()</code></span>
 <span class="codeline" id="line-42"><code>	<label for="r21" class="ident">elemPtr</label> := <a href="../../../../pkg/unsafe.html" class="ident i3">unsafe</a>.<a href="../../../../pkg/unsafe.html#name-Pointer" class="ident">Pointer</a>(<label for="r19" class="ident">ptr</label>)</code></span>
 <span class="codeline" id="line-43"><code>	<label for="r17" class="ident">encoder</label>.<a href="#line-37" class="ident">elemEncoder</a>.<a href="reflect.go.html#line-30" class="ident">Encode</a>(<label for="r21" class="ident">elemPtr</label>, <label for="r20" class="ident">stream</label>)</code></span>
-<span class="codeline" id="line-44"><code>	<span class="keyword">for</span> <label for="r22" class="ident">i</label> := <span class="lit-number">1</span>; <label for="r22" class="ident">i</label> &lt; <label for="r17" class="ident">encoder</label>.<a href="#line-36" class="ident">arrayType</a>.<a href="../../../reflect/type.go.html#line-193" class="ident">Len</a>(); <label for="r22" class="ident">i</label>++ {</code></span>
+<span class="codeline" id="line-44"><code>	<span class="keyword">for</span> <label for="r22" class="ident">i</label> := <span class="lit-number">1</span>; <label for="r22" class="ident">i</label> &lt; <label for="r17" class="ident">encoder</label>.<a href="#line-36" class="ident">arrayType</a>.<a href="../../../reflect/type.go.html#line-200" class="ident">Len</a>(); <label for="r22" class="ident">i</label>++ {</code></span>
 <span class="codeline" id="line-45"><code>		<label for="r20" class="ident">stream</label>.<a href="stream.go.html#line-177" class="ident">WriteMore</a>()</code></span>
 <span class="codeline" id="line-46"><code>		<label for="r21" class="ident">elemPtr</label> = <label for="r17" class="ident">encoder</label>.<a href="#line-36" class="ident">arrayType</a>.<a href="../../modern-go/reflect2/unsafe_array.go.html#line-63" class="ident">UnsafeGetIndex</a>(<label for="r19" class="ident">ptr</label>, <label for="r22" class="ident">i</label>)</code></span>
 <span class="codeline" id="line-47"><code>		<label for="r17" class="ident">encoder</label>.<a href="#line-37" class="ident">elemEncoder</a>.<a href="reflect.go.html#line-30" class="ident">Encode</a>(<label for="r21" class="ident">elemPtr</label>, <label for="r20" class="ident">stream</label>)</code></span>
@@ -196,7 +196,7 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-88"><code>	<label for="r30" class="ident">decoder</label>.<a href="#line-61" class="ident">elemDecoder</a>.<a href="reflect.go.html#line-22" class="ident">Decode</a>(<label for="r36" class="ident">elemPtr</label>, <label for="r33" class="ident">iter</label>)</code></span>
 <span class="codeline" id="line-89"><code>	<label for="r37" class="ident">length</label> := <span class="lit-number">1</span></code></span>
 <span class="codeline" id="line-90"><code>	<span class="keyword">for</span> <label for="r34" class="ident">c</label> = <label for="r33" class="ident">iter</label>.<a href="iter.go.html#line-181" class="ident">nextToken</a>(); <label for="r34" class="ident">c</label> == <span class="lit-number">','</span>; <label for="r34" class="ident">c</label> = <label for="r33" class="ident">iter</label>.<a href="iter.go.html#line-181" class="ident">nextToken</a>() {</code></span>
-<span class="codeline" id="line-91"><code>		<span class="keyword">if</span> <label for="r37" class="ident">length</label> &gt;= <label for="r35" class="ident">arrayType</label>.<a href="../../../reflect/type.go.html#line-193" class="ident">Len</a>() {</code></span>
+<span class="codeline" id="line-91"><code>		<span class="keyword">if</span> <label for="r37" class="ident">length</label> &gt;= <label for="r35" class="ident">arrayType</label>.<a href="../../../reflect/type.go.html#line-200" class="ident">Len</a>() {</code></span>
 <span class="codeline" id="line-92"><code>			<label for="r33" class="ident">iter</label>.<a href="iter_skip.go.html#line-72" class="ident">Skip</a>()</code></span>
 <span class="codeline" id="line-93"><code>			<span class="keyword">continue</span></code></span>
 <span class="codeline" id="line-94"><code>		}</code></span>
@@ -212,7 +212,7 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-104"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

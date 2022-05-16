@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: fma.go in package math</title>
-<link href="../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../jvs/golds-v0.3.6.js"></script>
+<link href="../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -270,7 +270,7 @@ input[id=i0]:checked ~pre .i0
 <span class="codeline" id="line-128"><code>	<label for="r48" class="ident">pe</label> -= <a href="../../pkg/builtin.html#name-int32" class="ident">int32</a>(<label for="r54" class="ident">is62zero</label>)</code></span>
 <span class="codeline" id="line-129"><code></code></span>
 <span class="codeline" id="line-130"><code>	<span class="comment">// Swap addition operands so |p| &gt;= |z|</span></code></span>
-<span class="codeline" id="line-131"><code>	<span class="keyword">if</span> <label for="r48" class="ident">pe</label> &lt; <label for="r46" class="ident">ze</label> || (<label for="r48" class="ident">pe</label> == <label for="r46" class="ident">ze</label> &amp;&amp; (<label for="r49" class="ident">pm1</label> &lt; <label for="r51" class="ident">zm1</label> || (<label for="r49" class="ident">pm1</label> == <label for="r51" class="ident">zm1</label> &amp;&amp; <label for="r50" class="ident">pm2</label> &lt; <label for="r52" class="ident">zm2</label>))) {</code></span>
+<span class="codeline" id="line-131"><code>	<span class="keyword">if</span> <label for="r48" class="ident">pe</label> &lt; <label for="r46" class="ident">ze</label> || <label for="r48" class="ident">pe</label> == <label for="r46" class="ident">ze</label> &amp;&amp; <label for="r49" class="ident">pm1</label> &lt; <label for="r51" class="ident">zm1</label> {</code></span>
 <span class="codeline" id="line-132"><code>		<label for="r53" class="ident">ps</label>, <label for="r48" class="ident">pe</label>, <label for="r49" class="ident">pm1</label>, <label for="r50" class="ident">pm2</label>, <label for="r45" class="ident">zs</label>, <label for="r46" class="ident">ze</label>, <label for="r51" class="ident">zm1</label>, <label for="r52" class="ident">zm2</label> = <label for="r45" class="ident">zs</label>, <label for="r46" class="ident">ze</label>, <label for="r51" class="ident">zm1</label>, <label for="r52" class="ident">zm2</label>, <label for="r53" class="ident">ps</label>, <label for="r48" class="ident">pe</label>, <label for="r49" class="ident">pm1</label>, <label for="r50" class="ident">pm2</label></code></span>
 <span class="codeline" id="line-133"><code>	}</code></span>
 <span class="codeline" id="line-134"><code></code></span>
@@ -312,7 +312,7 @@ input[id=i0]:checked ~pre .i0
 <span class="codeline" id="line-170"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

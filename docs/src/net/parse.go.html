@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: parse.go in package net</title>
-<link href="../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../jvs/golds-v0.3.6.js"></script>
+<link href="../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -135,19 +135,7 @@ input[id=r115]:checked ~pre label[for=r115],
 input[id=r116]:checked ~pre label[for=r116],
 input[id=r117]:checked ~pre label[for=r117],
 input[id=r118]:checked ~pre label[for=r118],
-input[id=r119]:checked ~pre label[for=r119],
-input[id=r120]:checked ~pre label[for=r120],
-input[id=r121]:checked ~pre label[for=r121],
-input[id=r122]:checked ~pre label[for=r122],
-input[id=r123]:checked ~pre label[for=r123],
-input[id=r124]:checked ~pre label[for=r124],
-input[id=r125]:checked ~pre label[for=r125],
-input[id=r126]:checked ~pre label[for=r126],
-input[id=r127]:checked ~pre label[for=r127],
-input[id=r128]:checked ~pre label[for=r128],
-input[id=r129]:checked ~pre label[for=r129],
-input[id=r130]:checked ~pre label[for=r130],
-input[id=r131]:checked ~pre label[for=r131]
+input[id=r119]:checked ~pre label[for=r119]
 {background: #226; color: #ff8;}
 input[id=i0]:checked ~pre .i0,
 input[id=i1]:checked ~pre .i1,
@@ -274,18 +262,6 @@ input[id=i3]:checked ~pre .i3
 <input id="r117" type="radio" name="g"/>
 <input id="r118" type="radio" name="g"/>
 <input id="r119" type="radio" name="g"/>
-<input id="r120" type="radio" name="g"/>
-<input id="r121" type="radio" name="g"/>
-<input id="r122" type="radio" name="g"/>
-<input id="r123" type="radio" name="g"/>
-<input id="r124" type="radio" name="g"/>
-<input id="r125" type="radio" name="g"/>
-<input id="r126" type="radio" name="g"/>
-<input id="r127" type="radio" name="g"/>
-<input id="r128" type="radio" name="g"/>
-<input id="r129" type="radio" name="g"/>
-<input id="r130" type="radio" name="g"/>
-<input id="r131" type="radio" name="g"/>
 <input id="i0" type="radio" name="i"/>
 <input id="i1" type="radio" name="i"/>
 <input id="i2" type="radio" name="i"/>
@@ -346,7 +322,7 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-52"><code>	}</code></span>
 <span class="codeline" id="line-53"><code>	<span class="keyword">if</span> <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r9" class="ident">f</label>.<a href="#line-19" class="ident">data</a>) &lt; <a href="../../pkg/builtin.html#name-cap" class="ident">cap</a>(<label for="r9" class="ident">f</label>.<a href="#line-19" class="ident">data</a>) {</code></span>
 <span class="codeline" id="line-54"><code>		<label for="r13" class="ident">ln</label> := <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r9" class="ident">f</label>.<a href="#line-19" class="ident">data</a>)</code></span>
-<span class="codeline" id="line-55"><code>		<label for="r14" class="ident">n</label>, <label for="r15" class="ident">err</label> := <a href="../../pkg/io.html" class="ident i1">io</a>.<a href="../io/io.go.html#line-346" class="ident">ReadFull</a>(<label for="r9" class="ident">f</label>.<a href="#line-18" class="ident">file</a>, <label for="r9" class="ident">f</label>.<a href="#line-19" class="ident">data</a>[<label for="r13" class="ident">ln</label>:<a href="../../pkg/builtin.html#name-cap" class="ident">cap</a>(<label for="r9" class="ident">f</label>.<a href="#line-19" class="ident">data</a>)])</code></span>
+<span class="codeline" id="line-55"><code>		<label for="r14" class="ident">n</label>, <label for="r15" class="ident">err</label> := <a href="../../pkg/io.html" class="ident i1">io</a>.<a href="../io/io.go.html#line-349" class="ident">ReadFull</a>(<label for="r9" class="ident">f</label>.<a href="#line-18" class="ident">file</a>, <label for="r9" class="ident">f</label>.<a href="#line-19" class="ident">data</a>[<label for="r13" class="ident">ln</label>:<a href="../../pkg/builtin.html#name-cap" class="ident">cap</a>(<label for="r9" class="ident">f</label>.<a href="#line-19" class="ident">data</a>)])</code></span>
 <span class="codeline" id="line-56"><code>		<span class="keyword">if</span> <label for="r14" class="ident">n</label> &gt;= <span class="lit-number">0</span> {</code></span>
 <span class="codeline" id="line-57"><code>			<label for="r9" class="ident">f</label>.<a href="#line-19" class="ident">data</a> = <label for="r9" class="ident">f</label>.<a href="#line-19" class="ident">data</a>[<span class="lit-number">0</span> : <label for="r13" class="ident">ln</label>+<label for="r14" class="ident">n</label>]</code></span>
 <span class="codeline" id="line-58"><code>		}</code></span>
@@ -359,7 +335,7 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-65"><code>}</code></span>
 <span class="codeline" id="line-66"><code></code></span>
 <span class="codeline" id="line-67"><code><span class="keyword">func</span> <label for="r16" class="ident"><a href="../../pkg/net.html#name-open" class="ident">open</a></label>(<label for="r17" class="ident">name</label> <a href="../../pkg/builtin.html#name-string" class="ident">string</a>) (*<a href="#line-17" class="ident">file</a>, <a href="../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
-<span class="codeline" id="line-68"><code>	<label for="r18" class="ident">fd</label>, <label for="r19" class="ident">err</label> := <a href="../../pkg/os.html" class="ident i2">os</a>.<a href="../os/file.go.html#line-310" class="ident">Open</a>(<label for="r17" class="ident">name</label>)</code></span>
+<span class="codeline" id="line-68"><code>	<label for="r18" class="ident">fd</label>, <label for="r19" class="ident">err</label> := <a href="../../pkg/os.html" class="ident i2">os</a>.<a href="../os/file.go.html#line-317" class="ident">Open</a>(<label for="r17" class="ident">name</label>)</code></span>
 <span class="codeline" id="line-69"><code>	<span class="keyword">if</span> <label for="r19" class="ident">err</label> != <a href="../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
 <span class="codeline" id="line-70"><code>		<span class="keyword">return</span> <a href="../../pkg/builtin.html#name-nil" class="ident">nil</a>, <label for="r19" class="ident">err</label></code></span>
 <span class="codeline" id="line-71"><code>	}</code></span>
@@ -466,217 +442,178 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-172"><code>	<span class="keyword">return</span> <a href="../../pkg/builtin.html#name-byte" class="ident">byte</a>(<label for="r53" class="ident">n</label>), <label for="r55" class="ident">ok</label> &amp;&amp; <label for="r54" class="ident">ei</label> == <span class="lit-number">2</span></code></span>
 <span class="codeline" id="line-173"><code>}</code></span>
 <span class="codeline" id="line-174"><code></code></span>
-<span class="codeline" id="line-175"><code><span class="comment">// Convert integer to decimal string.</span></code></span>
-<span class="codeline" id="line-176"><code><span class="keyword">func</span> <label for="r56" class="ident"><a href="../../pkg/net.html#name-itoa" class="ident">itoa</a></label>(<label for="r57" class="ident">val</label> <a href="../../pkg/builtin.html#name-int" class="ident">int</a>) <a href="../../pkg/builtin.html#name-string" class="ident">string</a> {</code></span>
-<span class="codeline" id="line-177"><code>	<span class="keyword">if</span> <label for="r57" class="ident">val</label> &lt; <span class="lit-number">0</span> {</code></span>
-<span class="codeline" id="line-178"><code>		<span class="keyword">return</span> <span class="lit-string">"-"</span> + <a href="#line-184" class="ident">uitoa</a>(<a href="../../pkg/builtin.html#name-uint" class="ident">uint</a>(-<label for="r57" class="ident">val</label>))</code></span>
+<span class="codeline" id="line-175"><code><span class="comment">// Convert i to a hexadecimal string. Leading zeros are not printed.</span></code></span>
+<span class="codeline" id="line-176"><code><span class="keyword">func</span> <label for="r56" class="ident"><a href="../../pkg/net.html#name-appendHex" class="ident">appendHex</a></label>(<label for="r57" class="ident">dst</label> []<a href="../../pkg/builtin.html#name-byte" class="ident">byte</a>, <label for="r58" class="ident">i</label> <a href="../../pkg/builtin.html#name-uint32" class="ident">uint32</a>) []<a href="../../pkg/builtin.html#name-byte" class="ident">byte</a> {</code></span>
+<span class="codeline" id="line-177"><code>	<span class="keyword">if</span> <label for="r58" class="ident">i</label> == <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-178"><code>		<span class="keyword">return</span> <a href="../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r57" class="ident">dst</label>, <span class="lit-number">'0'</span>)</code></span>
 <span class="codeline" id="line-179"><code>	}</code></span>
-<span class="codeline" id="line-180"><code>	<span class="keyword">return</span> <a href="#line-184" class="ident">uitoa</a>(<a href="../../pkg/builtin.html#name-uint" class="ident">uint</a>(<label for="r57" class="ident">val</label>))</code></span>
-<span class="codeline" id="line-181"><code>}</code></span>
-<span class="codeline" id="line-182"><code></code></span>
-<span class="codeline" id="line-183"><code><span class="comment">// Convert unsigned integer to decimal string.</span></code></span>
-<span class="codeline" id="line-184"><code><span class="keyword">func</span> <label for="r58" class="ident"><a href="../../pkg/net.html#name-uitoa" class="ident">uitoa</a></label>(<label for="r59" class="ident">val</label> <a href="../../pkg/builtin.html#name-uint" class="ident">uint</a>) <a href="../../pkg/builtin.html#name-string" class="ident">string</a> {</code></span>
-<span class="codeline" id="line-185"><code>	<span class="keyword">if</span> <label for="r59" class="ident">val</label> == <span class="lit-number">0</span> { <span class="comment">// avoid string allocation</span></code></span>
-<span class="codeline" id="line-186"><code>		<span class="keyword">return</span> <span class="lit-string">"0"</span></code></span>
-<span class="codeline" id="line-187"><code>	}</code></span>
-<span class="codeline" id="line-188"><code>	<span class="keyword">var</span> <label for="r60" class="ident">buf</label> [<span class="lit-number">20</span>]<a href="../../pkg/builtin.html#name-byte" class="ident">byte</a> <span class="comment">// big enough for 64bit value base 10</span></code></span>
-<span class="codeline" id="line-189"><code>	<label for="r61" class="ident">i</label> := <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r60" class="ident">buf</label>) - <span class="lit-number">1</span></code></span>
-<span class="codeline" id="line-190"><code>	<span class="keyword">for</span> <label for="r59" class="ident">val</label> &gt;= <span class="lit-number">10</span> {</code></span>
-<span class="codeline" id="line-191"><code>		<label for="r62" class="ident">q</label> := <label for="r59" class="ident">val</label> / <span class="lit-number">10</span></code></span>
-<span class="codeline" id="line-192"><code>		<label for="r60" class="ident">buf</label>[<label for="r61" class="ident">i</label>] = <a href="../../pkg/builtin.html#name-byte" class="ident">byte</a>(<span class="lit-number">'0'</span> + <label for="r59" class="ident">val</label> - <label for="r62" class="ident">q</label>*<span class="lit-number">10</span>)</code></span>
-<span class="codeline" id="line-193"><code>		<label for="r61" class="ident">i</label>--</code></span>
-<span class="codeline" id="line-194"><code>		<label for="r59" class="ident">val</label> = <label for="r62" class="ident">q</label></code></span>
-<span class="codeline" id="line-195"><code>	}</code></span>
-<span class="codeline" id="line-196"><code>	<span class="comment">// val &lt; 10</span></code></span>
-<span class="codeline" id="line-197"><code>	<label for="r60" class="ident">buf</label>[<label for="r61" class="ident">i</label>] = <a href="../../pkg/builtin.html#name-byte" class="ident">byte</a>(<span class="lit-number">'0'</span> + <label for="r59" class="ident">val</label>)</code></span>
-<span class="codeline" id="line-198"><code>	<span class="keyword">return</span> <a href="../../pkg/builtin.html#name-string" class="ident">string</a>(<label for="r60" class="ident">buf</label>[<label for="r61" class="ident">i</label>:])</code></span>
-<span class="codeline" id="line-199"><code>}</code></span>
-<span class="codeline" id="line-200"><code></code></span>
-<span class="codeline" id="line-201"><code><span class="comment">// Convert i to a hexadecimal string. Leading zeros are not printed.</span></code></span>
-<span class="codeline" id="line-202"><code><span class="keyword">func</span> <label for="r63" class="ident"><a href="../../pkg/net.html#name-appendHex" class="ident">appendHex</a></label>(<label for="r64" class="ident">dst</label> []<a href="../../pkg/builtin.html#name-byte" class="ident">byte</a>, <label for="r65" class="ident">i</label> <a href="../../pkg/builtin.html#name-uint32" class="ident">uint32</a>) []<a href="../../pkg/builtin.html#name-byte" class="ident">byte</a> {</code></span>
-<span class="codeline" id="line-203"><code>	<span class="keyword">if</span> <label for="r65" class="ident">i</label> == <span class="lit-number">0</span> {</code></span>
-<span class="codeline" id="line-204"><code>		<span class="keyword">return</span> <a href="../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r64" class="ident">dst</label>, <span class="lit-number">'0'</span>)</code></span>
-<span class="codeline" id="line-205"><code>	}</code></span>
-<span class="codeline" id="line-206"><code>	<span class="keyword">for</span> <label for="r66" class="ident">j</label> := <span class="lit-number">7</span>; <label for="r66" class="ident">j</label> &gt;= <span class="lit-number">0</span>; <label for="r66" class="ident">j</label>-- {</code></span>
-<span class="codeline" id="line-207"><code>		<label for="r67" class="ident">v</label> := <label for="r65" class="ident">i</label> &gt;&gt; <a href="../../pkg/builtin.html#name-uint" class="ident">uint</a>(<label for="r66" class="ident">j</label>*<span class="lit-number">4</span>)</code></span>
-<span class="codeline" id="line-208"><code>		<span class="keyword">if</span> <label for="r67" class="ident">v</label> &gt; <span class="lit-number">0</span> {</code></span>
-<span class="codeline" id="line-209"><code>			<label for="r64" class="ident">dst</label> = <a href="../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r64" class="ident">dst</label>, <a href="mac.go.html#line-7" class="ident">hexDigit</a>[<label for="r67" class="ident">v</label>&amp;<span class="lit-number">0xf</span>])</code></span>
-<span class="codeline" id="line-210"><code>		}</code></span>
-<span class="codeline" id="line-211"><code>	}</code></span>
-<span class="codeline" id="line-212"><code>	<span class="keyword">return</span> <label for="r64" class="ident">dst</label></code></span>
-<span class="codeline" id="line-213"><code>}</code></span>
-<span class="codeline" id="line-214"><code></code></span>
-<span class="codeline" id="line-215"><code><span class="comment">// Number of occurrences of b in s.</span></code></span>
-<span class="codeline" id="line-216"><code><span class="keyword">func</span> <label for="r68" class="ident"><a href="../../pkg/net.html#name-count" class="ident">count</a></label>(<label for="r69" class="ident">s</label> <a href="../../pkg/builtin.html#name-string" class="ident">string</a>, <label for="r70" class="ident">b</label> <a href="../../pkg/builtin.html#name-byte" class="ident">byte</a>) <a href="../../pkg/builtin.html#name-int" class="ident">int</a> {</code></span>
-<span class="codeline" id="line-217"><code>	<label for="r71" class="ident">n</label> := <span class="lit-number">0</span></code></span>
-<span class="codeline" id="line-218"><code>	<span class="keyword">for</span> <label for="r72" class="ident">i</label> := <span class="lit-number">0</span>; <label for="r72" class="ident">i</label> &lt; <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r69" class="ident">s</label>); <label for="r72" class="ident">i</label>++ {</code></span>
-<span class="codeline" id="line-219"><code>		<span class="keyword">if</span> <label for="r69" class="ident">s</label>[<label for="r72" class="ident">i</label>] == <label for="r70" class="ident">b</label> {</code></span>
-<span class="codeline" id="line-220"><code>			<label for="r71" class="ident">n</label>++</code></span>
-<span class="codeline" id="line-221"><code>		}</code></span>
-<span class="codeline" id="line-222"><code>	}</code></span>
-<span class="codeline" id="line-223"><code>	<span class="keyword">return</span> <label for="r71" class="ident">n</label></code></span>
-<span class="codeline" id="line-224"><code>}</code></span>
-<span class="codeline" id="line-225"><code></code></span>
-<span class="codeline" id="line-226"><code><span class="comment">// Index of rightmost occurrence of b in s.</span></code></span>
-<span class="codeline" id="line-227"><code><span class="keyword">func</span> <label for="r73" class="ident"><a href="../../pkg/net.html#name-last" class="ident">last</a></label>(<label for="r74" class="ident">s</label> <a href="../../pkg/builtin.html#name-string" class="ident">string</a>, <label for="r75" class="ident">b</label> <a href="../../pkg/builtin.html#name-byte" class="ident">byte</a>) <a href="../../pkg/builtin.html#name-int" class="ident">int</a> {</code></span>
-<span class="codeline" id="line-228"><code>	<label for="r76" class="ident">i</label> := <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r74" class="ident">s</label>)</code></span>
-<span class="codeline" id="line-229"><code>	<span class="keyword">for</span> <label for="r76" class="ident">i</label>--; <label for="r76" class="ident">i</label> &gt;= <span class="lit-number">0</span>; <label for="r76" class="ident">i</label>-- {</code></span>
-<span class="codeline" id="line-230"><code>		<span class="keyword">if</span> <label for="r74" class="ident">s</label>[<label for="r76" class="ident">i</label>] == <label for="r75" class="ident">b</label> {</code></span>
-<span class="codeline" id="line-231"><code>			<span class="keyword">break</span></code></span>
-<span class="codeline" id="line-232"><code>		}</code></span>
-<span class="codeline" id="line-233"><code>	}</code></span>
-<span class="codeline" id="line-234"><code>	<span class="keyword">return</span> <label for="r76" class="ident">i</label></code></span>
-<span class="codeline" id="line-235"><code>}</code></span>
-<span class="codeline" id="line-236"><code></code></span>
-<span class="codeline" id="line-237"><code><span class="comment">// lowerASCIIBytes makes x ASCII lowercase in-place.</span></code></span>
-<span class="codeline" id="line-238"><code><span class="keyword">func</span> <label for="r77" class="ident"><a href="../../pkg/net.html#name-lowerASCIIBytes" class="ident">lowerASCIIBytes</a></label>(<label for="r78" class="ident">x</label> []<a href="../../pkg/builtin.html#name-byte" class="ident">byte</a>) {</code></span>
-<span class="codeline" id="line-239"><code>	<span class="keyword">for</span> <label for="r79" class="ident">i</label>, <label for="r80" class="ident">b</label> := <span class="keyword">range</span> <label for="r78" class="ident">x</label> {</code></span>
-<span class="codeline" id="line-240"><code>		<span class="keyword">if</span> <span class="lit-number">'A'</span> &lt;= <label for="r80" class="ident">b</label> &amp;&amp; <label for="r80" class="ident">b</label> &lt;= <span class="lit-number">'Z'</span> {</code></span>
-<span class="codeline" id="line-241"><code>			<label for="r78" class="ident">x</label>[<label for="r79" class="ident">i</label>] += <span class="lit-number">'a'</span> - <span class="lit-number">'A'</span></code></span>
-<span class="codeline" id="line-242"><code>		}</code></span>
-<span class="codeline" id="line-243"><code>	}</code></span>
-<span class="codeline" id="line-244"><code>}</code></span>
-<span class="codeline" id="line-245"><code></code></span>
-<span class="codeline" id="line-246"><code><span class="comment">// lowerASCII returns the ASCII lowercase version of b.</span></code></span>
-<span class="codeline" id="line-247"><code><span class="keyword">func</span> <label for="r81" class="ident"><a href="../../pkg/net.html#name-lowerASCII" class="ident">lowerASCII</a></label>(<label for="r82" class="ident">b</label> <a href="../../pkg/builtin.html#name-byte" class="ident">byte</a>) <a href="../../pkg/builtin.html#name-byte" class="ident">byte</a> {</code></span>
-<span class="codeline" id="line-248"><code>	<span class="keyword">if</span> <span class="lit-number">'A'</span> &lt;= <label for="r82" class="ident">b</label> &amp;&amp; <label for="r82" class="ident">b</label> &lt;= <span class="lit-number">'Z'</span> {</code></span>
-<span class="codeline" id="line-249"><code>		<span class="keyword">return</span> <label for="r82" class="ident">b</label> + (<span class="lit-number">'a'</span> - <span class="lit-number">'A'</span>)</code></span>
-<span class="codeline" id="line-250"><code>	}</code></span>
-<span class="codeline" id="line-251"><code>	<span class="keyword">return</span> <label for="r82" class="ident">b</label></code></span>
+<span class="codeline" id="line-180"><code>	<span class="keyword">for</span> <label for="r59" class="ident">j</label> := <span class="lit-number">7</span>; <label for="r59" class="ident">j</label> &gt;= <span class="lit-number">0</span>; <label for="r59" class="ident">j</label>-- {</code></span>
+<span class="codeline" id="line-181"><code>		<label for="r60" class="ident">v</label> := <label for="r58" class="ident">i</label> &gt;&gt; <a href="../../pkg/builtin.html#name-uint" class="ident">uint</a>(<label for="r59" class="ident">j</label>*<span class="lit-number">4</span>)</code></span>
+<span class="codeline" id="line-182"><code>		<span class="keyword">if</span> <label for="r60" class="ident">v</label> &gt; <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-183"><code>			<label for="r57" class="ident">dst</label> = <a href="../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r57" class="ident">dst</label>, <a href="mac.go.html#line-7" class="ident">hexDigit</a>[<label for="r60" class="ident">v</label>&amp;<span class="lit-number">0xf</span>])</code></span>
+<span class="codeline" id="line-184"><code>		}</code></span>
+<span class="codeline" id="line-185"><code>	}</code></span>
+<span class="codeline" id="line-186"><code>	<span class="keyword">return</span> <label for="r57" class="ident">dst</label></code></span>
+<span class="codeline" id="line-187"><code>}</code></span>
+<span class="codeline" id="line-188"><code></code></span>
+<span class="codeline" id="line-189"><code><span class="comment">// Number of occurrences of b in s.</span></code></span>
+<span class="codeline" id="line-190"><code><span class="keyword">func</span> <label for="r61" class="ident"><a href="../../pkg/net.html#name-count" class="ident">count</a></label>(<label for="r62" class="ident">s</label> <a href="../../pkg/builtin.html#name-string" class="ident">string</a>, <label for="r63" class="ident">b</label> <a href="../../pkg/builtin.html#name-byte" class="ident">byte</a>) <a href="../../pkg/builtin.html#name-int" class="ident">int</a> {</code></span>
+<span class="codeline" id="line-191"><code>	<label for="r64" class="ident">n</label> := <span class="lit-number">0</span></code></span>
+<span class="codeline" id="line-192"><code>	<span class="keyword">for</span> <label for="r65" class="ident">i</label> := <span class="lit-number">0</span>; <label for="r65" class="ident">i</label> &lt; <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r62" class="ident">s</label>); <label for="r65" class="ident">i</label>++ {</code></span>
+<span class="codeline" id="line-193"><code>		<span class="keyword">if</span> <label for="r62" class="ident">s</label>[<label for="r65" class="ident">i</label>] == <label for="r63" class="ident">b</label> {</code></span>
+<span class="codeline" id="line-194"><code>			<label for="r64" class="ident">n</label>++</code></span>
+<span class="codeline" id="line-195"><code>		}</code></span>
+<span class="codeline" id="line-196"><code>	}</code></span>
+<span class="codeline" id="line-197"><code>	<span class="keyword">return</span> <label for="r64" class="ident">n</label></code></span>
+<span class="codeline" id="line-198"><code>}</code></span>
+<span class="codeline" id="line-199"><code></code></span>
+<span class="codeline" id="line-200"><code><span class="comment">// Index of rightmost occurrence of b in s.</span></code></span>
+<span class="codeline" id="line-201"><code><span class="keyword">func</span> <label for="r66" class="ident"><a href="../../pkg/net.html#name-last" class="ident">last</a></label>(<label for="r67" class="ident">s</label> <a href="../../pkg/builtin.html#name-string" class="ident">string</a>, <label for="r68" class="ident">b</label> <a href="../../pkg/builtin.html#name-byte" class="ident">byte</a>) <a href="../../pkg/builtin.html#name-int" class="ident">int</a> {</code></span>
+<span class="codeline" id="line-202"><code>	<label for="r69" class="ident">i</label> := <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r67" class="ident">s</label>)</code></span>
+<span class="codeline" id="line-203"><code>	<span class="keyword">for</span> <label for="r69" class="ident">i</label>--; <label for="r69" class="ident">i</label> &gt;= <span class="lit-number">0</span>; <label for="r69" class="ident">i</label>-- {</code></span>
+<span class="codeline" id="line-204"><code>		<span class="keyword">if</span> <label for="r67" class="ident">s</label>[<label for="r69" class="ident">i</label>] == <label for="r68" class="ident">b</label> {</code></span>
+<span class="codeline" id="line-205"><code>			<span class="keyword">break</span></code></span>
+<span class="codeline" id="line-206"><code>		}</code></span>
+<span class="codeline" id="line-207"><code>	}</code></span>
+<span class="codeline" id="line-208"><code>	<span class="keyword">return</span> <label for="r69" class="ident">i</label></code></span>
+<span class="codeline" id="line-209"><code>}</code></span>
+<span class="codeline" id="line-210"><code></code></span>
+<span class="codeline" id="line-211"><code><span class="comment">// hasUpperCase tells whether the given string contains at least one upper-case.</span></code></span>
+<span class="codeline" id="line-212"><code><span class="keyword">func</span> <label for="r70" class="ident"><a href="../../pkg/net.html#name-hasUpperCase" class="ident">hasUpperCase</a></label>(<label for="r71" class="ident">s</label> <a href="../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-213"><code>	<span class="keyword">for</span> <label for="r72" class="ident">i</label> := <span class="keyword">range</span> <label for="r71" class="ident">s</label> {</code></span>
+<span class="codeline" id="line-214"><code>		<span class="keyword">if</span> <span class="lit-number">'A'</span> &lt;= <label for="r71" class="ident">s</label>[<label for="r72" class="ident">i</label>] &amp;&amp; <label for="r71" class="ident">s</label>[<label for="r72" class="ident">i</label>] &lt;= <span class="lit-number">'Z'</span> {</code></span>
+<span class="codeline" id="line-215"><code>			<span class="keyword">return</span> <a href="../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-216"><code>		}</code></span>
+<span class="codeline" id="line-217"><code>	}</code></span>
+<span class="codeline" id="line-218"><code>	<span class="keyword">return</span> <a href="../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-219"><code>}</code></span>
+<span class="codeline" id="line-220"><code></code></span>
+<span class="codeline" id="line-221"><code><span class="comment">// lowerASCIIBytes makes x ASCII lowercase in-place.</span></code></span>
+<span class="codeline" id="line-222"><code><span class="keyword">func</span> <label for="r73" class="ident"><a href="../../pkg/net.html#name-lowerASCIIBytes" class="ident">lowerASCIIBytes</a></label>(<label for="r74" class="ident">x</label> []<a href="../../pkg/builtin.html#name-byte" class="ident">byte</a>) {</code></span>
+<span class="codeline" id="line-223"><code>	<span class="keyword">for</span> <label for="r75" class="ident">i</label>, <label for="r76" class="ident">b</label> := <span class="keyword">range</span> <label for="r74" class="ident">x</label> {</code></span>
+<span class="codeline" id="line-224"><code>		<span class="keyword">if</span> <span class="lit-number">'A'</span> &lt;= <label for="r76" class="ident">b</label> &amp;&amp; <label for="r76" class="ident">b</label> &lt;= <span class="lit-number">'Z'</span> {</code></span>
+<span class="codeline" id="line-225"><code>			<label for="r74" class="ident">x</label>[<label for="r75" class="ident">i</label>] += <span class="lit-number">'a'</span> - <span class="lit-number">'A'</span></code></span>
+<span class="codeline" id="line-226"><code>		}</code></span>
+<span class="codeline" id="line-227"><code>	}</code></span>
+<span class="codeline" id="line-228"><code>}</code></span>
+<span class="codeline" id="line-229"><code></code></span>
+<span class="codeline" id="line-230"><code><span class="comment">// lowerASCII returns the ASCII lowercase version of b.</span></code></span>
+<span class="codeline" id="line-231"><code><span class="keyword">func</span> <label for="r77" class="ident"><a href="../../pkg/net.html#name-lowerASCII" class="ident">lowerASCII</a></label>(<label for="r78" class="ident">b</label> <a href="../../pkg/builtin.html#name-byte" class="ident">byte</a>) <a href="../../pkg/builtin.html#name-byte" class="ident">byte</a> {</code></span>
+<span class="codeline" id="line-232"><code>	<span class="keyword">if</span> <span class="lit-number">'A'</span> &lt;= <label for="r78" class="ident">b</label> &amp;&amp; <label for="r78" class="ident">b</label> &lt;= <span class="lit-number">'Z'</span> {</code></span>
+<span class="codeline" id="line-233"><code>		<span class="keyword">return</span> <label for="r78" class="ident">b</label> + (<span class="lit-number">'a'</span> - <span class="lit-number">'A'</span>)</code></span>
+<span class="codeline" id="line-234"><code>	}</code></span>
+<span class="codeline" id="line-235"><code>	<span class="keyword">return</span> <label for="r78" class="ident">b</label></code></span>
+<span class="codeline" id="line-236"><code>}</code></span>
+<span class="codeline" id="line-237"><code></code></span>
+<span class="codeline" id="line-238"><code><span class="comment">// trimSpace returns x without any leading or trailing ASCII whitespace.</span></code></span>
+<span class="codeline" id="line-239"><code><span class="keyword">func</span> <label for="r79" class="ident"><a href="../../pkg/net.html#name-trimSpace" class="ident">trimSpace</a></label>(<label for="r80" class="ident">x</label> []<a href="../../pkg/builtin.html#name-byte" class="ident">byte</a>) []<a href="../../pkg/builtin.html#name-byte" class="ident">byte</a> {</code></span>
+<span class="codeline" id="line-240"><code>	<span class="keyword">for</span> <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r80" class="ident">x</label>) &gt; <span class="lit-number">0</span> &amp;&amp; <a href="#line-250" class="ident">isSpace</a>(<label for="r80" class="ident">x</label>[<span class="lit-number">0</span>]) {</code></span>
+<span class="codeline" id="line-241"><code>		<label for="r80" class="ident">x</label> = <label for="r80" class="ident">x</label>[<span class="lit-number">1</span>:]</code></span>
+<span class="codeline" id="line-242"><code>	}</code></span>
+<span class="codeline" id="line-243"><code>	<span class="keyword">for</span> <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r80" class="ident">x</label>) &gt; <span class="lit-number">0</span> &amp;&amp; <a href="#line-250" class="ident">isSpace</a>(<label for="r80" class="ident">x</label>[<a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r80" class="ident">x</label>)-<span class="lit-number">1</span>]) {</code></span>
+<span class="codeline" id="line-244"><code>		<label for="r80" class="ident">x</label> = <label for="r80" class="ident">x</label>[:<a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r80" class="ident">x</label>)-<span class="lit-number">1</span>]</code></span>
+<span class="codeline" id="line-245"><code>	}</code></span>
+<span class="codeline" id="line-246"><code>	<span class="keyword">return</span> <label for="r80" class="ident">x</label></code></span>
+<span class="codeline" id="line-247"><code>}</code></span>
+<span class="codeline" id="line-248"><code></code></span>
+<span class="codeline" id="line-249"><code><span class="comment">// isSpace reports whether b is an ASCII space character.</span></code></span>
+<span class="codeline" id="line-250"><code><span class="keyword">func</span> <label for="r81" class="ident"><a href="../../pkg/net.html#name-isSpace" class="ident">isSpace</a></label>(<label for="r82" class="ident">b</label> <a href="../../pkg/builtin.html#name-byte" class="ident">byte</a>) <a href="../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-251"><code>	<span class="keyword">return</span> <label for="r82" class="ident">b</label> == <span class="lit-number">' '</span> || <label for="r82" class="ident">b</label> == <span class="lit-number">'\t'</span> || <label for="r82" class="ident">b</label> == <span class="lit-number">'\n'</span> || <label for="r82" class="ident">b</label> == <span class="lit-number">'\r'</span></code></span>
 <span class="codeline" id="line-252"><code>}</code></span>
 <span class="codeline" id="line-253"><code></code></span>
-<span class="codeline" id="line-254"><code><span class="comment">// trimSpace returns x without any leading or trailing ASCII whitespace.</span></code></span>
-<span class="codeline" id="line-255"><code><span class="keyword">func</span> <label for="r83" class="ident"><a href="../../pkg/net.html#name-trimSpace" class="ident">trimSpace</a></label>(<label for="r84" class="ident">x</label> []<a href="../../pkg/builtin.html#name-byte" class="ident">byte</a>) []<a href="../../pkg/builtin.html#name-byte" class="ident">byte</a> {</code></span>
-<span class="codeline" id="line-256"><code>	<span class="keyword">for</span> <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r84" class="ident">x</label>) &gt; <span class="lit-number">0</span> &amp;&amp; <a href="#line-266" class="ident">isSpace</a>(<label for="r84" class="ident">x</label>[<span class="lit-number">0</span>]) {</code></span>
-<span class="codeline" id="line-257"><code>		<label for="r84" class="ident">x</label> = <label for="r84" class="ident">x</label>[<span class="lit-number">1</span>:]</code></span>
-<span class="codeline" id="line-258"><code>	}</code></span>
-<span class="codeline" id="line-259"><code>	<span class="keyword">for</span> <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r84" class="ident">x</label>) &gt; <span class="lit-number">0</span> &amp;&amp; <a href="#line-266" class="ident">isSpace</a>(<label for="r84" class="ident">x</label>[<a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r84" class="ident">x</label>)-<span class="lit-number">1</span>]) {</code></span>
-<span class="codeline" id="line-260"><code>		<label for="r84" class="ident">x</label> = <label for="r84" class="ident">x</label>[:<a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r84" class="ident">x</label>)-<span class="lit-number">1</span>]</code></span>
-<span class="codeline" id="line-261"><code>	}</code></span>
-<span class="codeline" id="line-262"><code>	<span class="keyword">return</span> <label for="r84" class="ident">x</label></code></span>
-<span class="codeline" id="line-263"><code>}</code></span>
-<span class="codeline" id="line-264"><code></code></span>
-<span class="codeline" id="line-265"><code><span class="comment">// isSpace reports whether b is an ASCII space character.</span></code></span>
-<span class="codeline" id="line-266"><code><span class="keyword">func</span> <label for="r85" class="ident"><a href="../../pkg/net.html#name-isSpace" class="ident">isSpace</a></label>(<label for="r86" class="ident">b</label> <a href="../../pkg/builtin.html#name-byte" class="ident">byte</a>) <a href="../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
-<span class="codeline" id="line-267"><code>	<span class="keyword">return</span> <label for="r86" class="ident">b</label> == <span class="lit-number">' '</span> || <label for="r86" class="ident">b</label> == <span class="lit-number">'\t'</span> || <label for="r86" class="ident">b</label> == <span class="lit-number">'\n'</span> || <label for="r86" class="ident">b</label> == <span class="lit-number">'\r'</span></code></span>
-<span class="codeline" id="line-268"><code>}</code></span>
-<span class="codeline" id="line-269"><code></code></span>
-<span class="codeline" id="line-270"><code><span class="comment">// removeComment returns line, removing any '#' byte and any following</span></code></span>
-<span class="codeline" id="line-271"><code><span class="comment">// bytes.</span></code></span>
-<span class="codeline" id="line-272"><code><span class="keyword">func</span> <label for="r87" class="ident"><a href="../../pkg/net.html#name-removeComment" class="ident">removeComment</a></label>(<label for="r88" class="ident">line</label> []<a href="../../pkg/builtin.html#name-byte" class="ident">byte</a>) []<a href="../../pkg/builtin.html#name-byte" class="ident">byte</a> {</code></span>
-<span class="codeline" id="line-273"><code>	<span class="keyword">if</span> <label for="r89" class="ident">i</label> := <a href="../../pkg/internal/bytealg.html" class="ident i0">bytealg</a>.<a href="../internal/bytealg/indexbyte_native.go.html#line-10" class="ident">IndexByte</a>(<label for="r88" class="ident">line</label>, <span class="lit-number">'#'</span>); <label for="r89" class="ident">i</label> != -<span class="lit-number">1</span> {</code></span>
-<span class="codeline" id="line-274"><code>		<span class="keyword">return</span> <label for="r88" class="ident">line</label>[:<label for="r89" class="ident">i</label>]</code></span>
-<span class="codeline" id="line-275"><code>	}</code></span>
-<span class="codeline" id="line-276"><code>	<span class="keyword">return</span> <label for="r88" class="ident">line</label></code></span>
-<span class="codeline" id="line-277"><code>}</code></span>
-<span class="codeline" id="line-278"><code></code></span>
-<span class="codeline" id="line-279"><code><span class="comment">// foreachLine runs fn on each line of x.</span></code></span>
-<span class="codeline" id="line-280"><code><span class="comment">// Each line (except for possibly the last) ends in '\n'.</span></code></span>
-<span class="codeline" id="line-281"><code><span class="comment">// It returns the first non-nil error returned by fn.</span></code></span>
-<span class="codeline" id="line-282"><code><span class="keyword">func</span> <label for="r90" class="ident"><a href="../../pkg/net.html#name-foreachLine" class="ident">foreachLine</a></label>(<label for="r91" class="ident">x</label> []<a href="../../pkg/builtin.html#name-byte" class="ident">byte</a>, <label for="r92" class="ident">fn</label> <span class="keyword">func</span>(<label for="r93" class="ident">line</label> []<a href="../../pkg/builtin.html#name-byte" class="ident">byte</a>) <a href="../../pkg/builtin.html#name-error" class="ident">error</a>) <a href="../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
-<span class="codeline" id="line-283"><code>	<span class="keyword">for</span> <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r91" class="ident">x</label>) &gt; <span class="lit-number">0</span> {</code></span>
-<span class="codeline" id="line-284"><code>		<label for="r94" class="ident">nl</label> := <a href="../../pkg/internal/bytealg.html" class="ident i0">bytealg</a>.<a href="../internal/bytealg/indexbyte_native.go.html#line-10" class="ident">IndexByte</a>(<label for="r91" class="ident">x</label>, <span class="lit-number">'\n'</span>)</code></span>
-<span class="codeline" id="line-285"><code>		<span class="keyword">if</span> <label for="r94" class="ident">nl</label> == -<span class="lit-number">1</span> {</code></span>
-<span class="codeline" id="line-286"><code>			<span class="keyword">return</span> <label for="r92" class="ident">fn</label>(<label for="r91" class="ident">x</label>)</code></span>
-<span class="codeline" id="line-287"><code>		}</code></span>
-<span class="codeline" id="line-288"><code>		<label for="r95" class="ident">line</label> := <label for="r91" class="ident">x</label>[:<label for="r94" class="ident">nl</label>+<span class="lit-number">1</span>]</code></span>
-<span class="codeline" id="line-289"><code>		<label for="r91" class="ident">x</label> = <label for="r91" class="ident">x</label>[<label for="r94" class="ident">nl</label>+<span class="lit-number">1</span>:]</code></span>
-<span class="codeline" id="line-290"><code>		<span class="keyword">if</span> <label for="r96" class="ident">err</label> := <label for="r92" class="ident">fn</label>(<label for="r95" class="ident">line</label>); <label for="r96" class="ident">err</label> != <a href="../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
-<span class="codeline" id="line-291"><code>			<span class="keyword">return</span> <label for="r96" class="ident">err</label></code></span>
-<span class="codeline" id="line-292"><code>		}</code></span>
-<span class="codeline" id="line-293"><code>	}</code></span>
-<span class="codeline" id="line-294"><code>	<span class="keyword">return</span> <a href="../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
-<span class="codeline" id="line-295"><code>}</code></span>
-<span class="codeline" id="line-296"><code></code></span>
-<span class="codeline" id="line-297"><code><span class="comment">// foreachField runs fn on each non-empty run of non-space bytes in x.</span></code></span>
-<span class="codeline" id="line-298"><code><span class="comment">// It returns the first non-nil error returned by fn.</span></code></span>
-<span class="codeline" id="line-299"><code><span class="keyword">func</span> <label for="r97" class="ident"><a href="../../pkg/net.html#name-foreachField" class="ident">foreachField</a></label>(<label for="r98" class="ident">x</label> []<a href="../../pkg/builtin.html#name-byte" class="ident">byte</a>, <label for="r99" class="ident">fn</label> <span class="keyword">func</span>(<label for="r100" class="ident">field</label> []<a href="../../pkg/builtin.html#name-byte" class="ident">byte</a>) <a href="../../pkg/builtin.html#name-error" class="ident">error</a>) <a href="../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
-<span class="codeline" id="line-300"><code>	<label for="r98" class="ident">x</label> = <a href="#line-255" class="ident">trimSpace</a>(<label for="r98" class="ident">x</label>)</code></span>
-<span class="codeline" id="line-301"><code>	<span class="keyword">for</span> <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r98" class="ident">x</label>) &gt; <span class="lit-number">0</span> {</code></span>
-<span class="codeline" id="line-302"><code>		<label for="r101" class="ident">sp</label> := <a href="../../pkg/internal/bytealg.html" class="ident i0">bytealg</a>.<a href="../internal/bytealg/indexbyte_native.go.html#line-10" class="ident">IndexByte</a>(<label for="r98" class="ident">x</label>, <span class="lit-number">' '</span>)</code></span>
-<span class="codeline" id="line-303"><code>		<span class="keyword">if</span> <label for="r101" class="ident">sp</label> == -<span class="lit-number">1</span> {</code></span>
-<span class="codeline" id="line-304"><code>			<span class="keyword">return</span> <label for="r99" class="ident">fn</label>(<label for="r98" class="ident">x</label>)</code></span>
-<span class="codeline" id="line-305"><code>		}</code></span>
-<span class="codeline" id="line-306"><code>		<span class="keyword">if</span> <label for="r102" class="ident">field</label> := <a href="#line-255" class="ident">trimSpace</a>(<label for="r98" class="ident">x</label>[:<label for="r101" class="ident">sp</label>]); <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r102" class="ident">field</label>) &gt; <span class="lit-number">0</span> {</code></span>
-<span class="codeline" id="line-307"><code>			<span class="keyword">if</span> <label for="r103" class="ident">err</label> := <label for="r99" class="ident">fn</label>(<label for="r102" class="ident">field</label>); <label for="r103" class="ident">err</label> != <a href="../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
-<span class="codeline" id="line-308"><code>				<span class="keyword">return</span> <label for="r103" class="ident">err</label></code></span>
-<span class="codeline" id="line-309"><code>			}</code></span>
-<span class="codeline" id="line-310"><code>		}</code></span>
-<span class="codeline" id="line-311"><code>		<label for="r98" class="ident">x</label> = <a href="#line-255" class="ident">trimSpace</a>(<label for="r98" class="ident">x</label>[<label for="r101" class="ident">sp</label>+<span class="lit-number">1</span>:])</code></span>
-<span class="codeline" id="line-312"><code>	}</code></span>
-<span class="codeline" id="line-313"><code>	<span class="keyword">return</span> <a href="../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
-<span class="codeline" id="line-314"><code>}</code></span>
-<span class="codeline" id="line-315"><code></code></span>
-<span class="codeline" id="line-316"><code><span class="comment">// stringsHasSuffix is strings.HasSuffix. It reports whether s ends in</span></code></span>
-<span class="codeline" id="line-317"><code><span class="comment">// suffix.</span></code></span>
-<span class="codeline" id="line-318"><code><span class="keyword">func</span> <label for="r104" class="ident"><a href="../../pkg/net.html#name-stringsHasSuffix" class="ident">stringsHasSuffix</a></label>(<label for="r105" class="ident">s</label>, <label for="r106" class="ident">suffix</label> <a href="../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
-<span class="codeline" id="line-319"><code>	<span class="keyword">return</span> <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r105" class="ident">s</label>) &gt;= <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r106" class="ident">suffix</label>) &amp;&amp; <label for="r105" class="ident">s</label>[<a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r105" class="ident">s</label>)-<a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r106" class="ident">suffix</label>):] == <label for="r106" class="ident">suffix</label></code></span>
-<span class="codeline" id="line-320"><code>}</code></span>
-<span class="codeline" id="line-321"><code></code></span>
-<span class="codeline" id="line-322"><code><span class="comment">// stringsHasSuffixFold reports whether s ends in suffix,</span></code></span>
-<span class="codeline" id="line-323"><code><span class="comment">// ASCII-case-insensitively.</span></code></span>
-<span class="codeline" id="line-324"><code><span class="keyword">func</span> <label for="r107" class="ident"><a href="../../pkg/net.html#name-stringsHasSuffixFold" class="ident">stringsHasSuffixFold</a></label>(<label for="r108" class="ident">s</label>, <label for="r109" class="ident">suffix</label> <a href="../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
-<span class="codeline" id="line-325"><code>	<span class="keyword">return</span> <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r108" class="ident">s</label>) &gt;= <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r109" class="ident">suffix</label>) &amp;&amp; <a href="#line-335" class="ident">stringsEqualFold</a>(<label for="r108" class="ident">s</label>[<a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r108" class="ident">s</label>)-<a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r109" class="ident">suffix</label>):], <label for="r109" class="ident">suffix</label>)</code></span>
-<span class="codeline" id="line-326"><code>}</code></span>
-<span class="codeline" id="line-327"><code></code></span>
-<span class="codeline" id="line-328"><code><span class="comment">// stringsHasPrefix is strings.HasPrefix. It reports whether s begins with prefix.</span></code></span>
-<span class="codeline" id="line-329"><code><span class="keyword">func</span> <label for="r110" class="ident"><a href="../../pkg/net.html#name-stringsHasPrefix" class="ident">stringsHasPrefix</a></label>(<label for="r111" class="ident">s</label>, <label for="r112" class="ident">prefix</label> <a href="../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
-<span class="codeline" id="line-330"><code>	<span class="keyword">return</span> <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r111" class="ident">s</label>) &gt;= <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r112" class="ident">prefix</label>) &amp;&amp; <label for="r111" class="ident">s</label>[:<a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r112" class="ident">prefix</label>)] == <label for="r112" class="ident">prefix</label></code></span>
-<span class="codeline" id="line-331"><code>}</code></span>
-<span class="codeline" id="line-332"><code></code></span>
-<span class="codeline" id="line-333"><code><span class="comment">// stringsEqualFold is strings.EqualFold, ASCII only. It reports whether s and t</span></code></span>
-<span class="codeline" id="line-334"><code><span class="comment">// are equal, ASCII-case-insensitively.</span></code></span>
-<span class="codeline" id="line-335"><code><span class="keyword">func</span> <label for="r113" class="ident"><a href="../../pkg/net.html#name-stringsEqualFold" class="ident">stringsEqualFold</a></label>(<label for="r114" class="ident">s</label>, <label for="r115" class="ident">t</label> <a href="../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
-<span class="codeline" id="line-336"><code>	<span class="keyword">if</span> <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r114" class="ident">s</label>) != <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r115" class="ident">t</label>) {</code></span>
-<span class="codeline" id="line-337"><code>		<span class="keyword">return</span> <a href="../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
-<span class="codeline" id="line-338"><code>	}</code></span>
-<span class="codeline" id="line-339"><code>	<span class="keyword">for</span> <label for="r116" class="ident">i</label> := <span class="lit-number">0</span>; <label for="r116" class="ident">i</label> &lt; <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r114" class="ident">s</label>); <label for="r116" class="ident">i</label>++ {</code></span>
-<span class="codeline" id="line-340"><code>		<span class="keyword">if</span> <a href="#line-247" class="ident">lowerASCII</a>(<label for="r114" class="ident">s</label>[<label for="r116" class="ident">i</label>]) != <a href="#line-247" class="ident">lowerASCII</a>(<label for="r115" class="ident">t</label>[<label for="r116" class="ident">i</label>]) {</code></span>
-<span class="codeline" id="line-341"><code>			<span class="keyword">return</span> <a href="../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
-<span class="codeline" id="line-342"><code>		}</code></span>
-<span class="codeline" id="line-343"><code>	}</code></span>
-<span class="codeline" id="line-344"><code>	<span class="keyword">return</span> <a href="../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
-<span class="codeline" id="line-345"><code>}</code></span>
-<span class="codeline" id="line-346"><code></code></span>
-<span class="codeline" id="line-347"><code><span class="keyword">func</span> <label for="r117" class="ident"><a href="../../pkg/net.html#name-readFull" class="ident">readFull</a></label>(<label for="r118" class="ident">r</label> <a href="../../pkg/io.html" class="ident i1">io</a>.<a href="../io/io.go.html#line-83" class="ident">Reader</a>) (<label for="r119" class="ident">all</label> []<a href="../../pkg/builtin.html#name-byte" class="ident">byte</a>, <label for="r120" class="ident">err</label> <a href="../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
-<span class="codeline" id="line-348"><code>	<label for="r121" class="ident">buf</label> := <a href="../../pkg/builtin.html#name-make" class="ident">make</a>([]<a href="../../pkg/builtin.html#name-byte" class="ident">byte</a>, <span class="lit-number">1024</span>)</code></span>
-<span class="codeline" id="line-349"><code>	<span class="keyword">for</span> {</code></span>
-<span class="codeline" id="line-350"><code>		<label for="r122" class="ident">n</label>, <label for="r123" class="ident">err</label> := <label for="r118" class="ident">r</label>.<a href="../io/io.go.html#line-84" class="ident">Read</a>(<label for="r121" class="ident">buf</label>)</code></span>
-<span class="codeline" id="line-351"><code>		<label for="r119" class="ident">all</label> = <a href="../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r119" class="ident">all</label>, <label for="r121" class="ident">buf</label>[:<label for="r122" class="ident">n</label>]...)</code></span>
-<span class="codeline" id="line-352"><code>		<span class="keyword">if</span> <label for="r123" class="ident">err</label> == <a href="../../pkg/io.html" class="ident i1">io</a>.<a href="../io/io.go.html#line-44" class="ident">EOF</a> {</code></span>
-<span class="codeline" id="line-353"><code>			<span class="keyword">return</span> <label for="r119" class="ident">all</label>, <a href="../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
-<span class="codeline" id="line-354"><code>		}</code></span>
-<span class="codeline" id="line-355"><code>		<span class="keyword">if</span> <label for="r123" class="ident">err</label> != <a href="../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
-<span class="codeline" id="line-356"><code>			<span class="keyword">return</span> <a href="../../pkg/builtin.html#name-nil" class="ident">nil</a>, <label for="r123" class="ident">err</label></code></span>
-<span class="codeline" id="line-357"><code>		}</code></span>
-<span class="codeline" id="line-358"><code>	}</code></span>
-<span class="codeline" id="line-359"><code>}</code></span>
-<span class="codeline" id="line-360"><code></code></span>
-<span class="codeline" id="line-361"><code><span class="comment">// goDebugString returns the value of the named GODEBUG key.</span></code></span>
-<span class="codeline" id="line-362"><code><span class="comment">// GODEBUG is of the form "key=val,key2=val2"</span></code></span>
-<span class="codeline" id="line-363"><code><span class="keyword">func</span> <label for="r124" class="ident"><a href="../../pkg/net.html#name-goDebugString" class="ident">goDebugString</a></label>(<label for="r125" class="ident">key</label> <a href="../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="../../pkg/builtin.html#name-string" class="ident">string</a> {</code></span>
-<span class="codeline" id="line-364"><code>	<label for="r126" class="ident">s</label> := <a href="../../pkg/os.html" class="ident i2">os</a>.<a href="../os/env.go.html#line-101" class="ident">Getenv</a>(<span class="lit-string">"GODEBUG"</span>)</code></span>
-<span class="codeline" id="line-365"><code>	<span class="keyword">for</span> <label for="r127" class="ident">i</label> := <span class="lit-number">0</span>; <label for="r127" class="ident">i</label> &lt; <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r126" class="ident">s</label>)-<a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r125" class="ident">key</label>)-<span class="lit-number">1</span>; <label for="r127" class="ident">i</label>++ {</code></span>
-<span class="codeline" id="line-366"><code>		<span class="keyword">if</span> <label for="r127" class="ident">i</label> &gt; <span class="lit-number">0</span> &amp;&amp; <label for="r126" class="ident">s</label>[<label for="r127" class="ident">i</label>-<span class="lit-number">1</span>] != <span class="lit-number">','</span> {</code></span>
-<span class="codeline" id="line-367"><code>			<span class="keyword">continue</span></code></span>
-<span class="codeline" id="line-368"><code>		}</code></span>
-<span class="codeline" id="line-369"><code>		<label for="r128" class="ident">afterKey</label> := <label for="r126" class="ident">s</label>[<label for="r127" class="ident">i</label>+<a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r125" class="ident">key</label>):]</code></span>
-<span class="codeline" id="line-370"><code>		<span class="keyword">if</span> <label for="r128" class="ident">afterKey</label>[<span class="lit-number">0</span>] != <span class="lit-number">'='</span> || <label for="r126" class="ident">s</label>[<label for="r127" class="ident">i</label>:<label for="r127" class="ident">i</label>+<a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r125" class="ident">key</label>)] != <label for="r125" class="ident">key</label> {</code></span>
-<span class="codeline" id="line-371"><code>			<span class="keyword">continue</span></code></span>
-<span class="codeline" id="line-372"><code>		}</code></span>
-<span class="codeline" id="line-373"><code>		<label for="r129" class="ident">val</label> := <label for="r128" class="ident">afterKey</label>[<span class="lit-number">1</span>:]</code></span>
-<span class="codeline" id="line-374"><code>		<span class="keyword">for</span> <label for="r130" class="ident">i</label>, <label for="r131" class="ident">b</label> := <span class="keyword">range</span> <label for="r129" class="ident">val</label> {</code></span>
-<span class="codeline" id="line-375"><code>			<span class="keyword">if</span> <label for="r131" class="ident">b</label> == <span class="lit-number">','</span> {</code></span>
-<span class="codeline" id="line-376"><code>				<span class="keyword">return</span> <label for="r129" class="ident">val</label>[:<label for="r130" class="ident">i</label>]</code></span>
-<span class="codeline" id="line-377"><code>			}</code></span>
-<span class="codeline" id="line-378"><code>		}</code></span>
-<span class="codeline" id="line-379"><code>		<span class="keyword">return</span> <label for="r129" class="ident">val</label></code></span>
-<span class="codeline" id="line-380"><code>	}</code></span>
-<span class="codeline" id="line-381"><code>	<span class="keyword">return</span> <span class="lit-string">""</span></code></span>
-<span class="codeline" id="line-382"><code>}</code></span>
+<span class="codeline" id="line-254"><code><span class="comment">// removeComment returns line, removing any '#' byte and any following</span></code></span>
+<span class="codeline" id="line-255"><code><span class="comment">// bytes.</span></code></span>
+<span class="codeline" id="line-256"><code><span class="keyword">func</span> <label for="r83" class="ident"><a href="../../pkg/net.html#name-removeComment" class="ident">removeComment</a></label>(<label for="r84" class="ident">line</label> []<a href="../../pkg/builtin.html#name-byte" class="ident">byte</a>) []<a href="../../pkg/builtin.html#name-byte" class="ident">byte</a> {</code></span>
+<span class="codeline" id="line-257"><code>	<span class="keyword">if</span> <label for="r85" class="ident">i</label> := <a href="../../pkg/internal/bytealg.html" class="ident i0">bytealg</a>.<a href="../internal/bytealg/indexbyte_native.go.html#line-10" class="ident">IndexByte</a>(<label for="r84" class="ident">line</label>, <span class="lit-number">'#'</span>); <label for="r85" class="ident">i</label> != -<span class="lit-number">1</span> {</code></span>
+<span class="codeline" id="line-258"><code>		<span class="keyword">return</span> <label for="r84" class="ident">line</label>[:<label for="r85" class="ident">i</label>]</code></span>
+<span class="codeline" id="line-259"><code>	}</code></span>
+<span class="codeline" id="line-260"><code>	<span class="keyword">return</span> <label for="r84" class="ident">line</label></code></span>
+<span class="codeline" id="line-261"><code>}</code></span>
+<span class="codeline" id="line-262"><code></code></span>
+<span class="codeline" id="line-263"><code><span class="comment">// foreachLine runs fn on each line of x.</span></code></span>
+<span class="codeline" id="line-264"><code><span class="comment">// Each line (except for possibly the last) ends in '\n'.</span></code></span>
+<span class="codeline" id="line-265"><code><span class="comment">// It returns the first non-nil error returned by fn.</span></code></span>
+<span class="codeline" id="line-266"><code><span class="keyword">func</span> <label for="r86" class="ident"><a href="../../pkg/net.html#name-foreachLine" class="ident">foreachLine</a></label>(<label for="r87" class="ident">x</label> []<a href="../../pkg/builtin.html#name-byte" class="ident">byte</a>, <label for="r88" class="ident">fn</label> <span class="keyword">func</span>(<label for="r89" class="ident">line</label> []<a href="../../pkg/builtin.html#name-byte" class="ident">byte</a>) <a href="../../pkg/builtin.html#name-error" class="ident">error</a>) <a href="../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
+<span class="codeline" id="line-267"><code>	<span class="keyword">for</span> <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r87" class="ident">x</label>) &gt; <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-268"><code>		<label for="r90" class="ident">nl</label> := <a href="../../pkg/internal/bytealg.html" class="ident i0">bytealg</a>.<a href="../internal/bytealg/indexbyte_native.go.html#line-10" class="ident">IndexByte</a>(<label for="r87" class="ident">x</label>, <span class="lit-number">'\n'</span>)</code></span>
+<span class="codeline" id="line-269"><code>		<span class="keyword">if</span> <label for="r90" class="ident">nl</label> == -<span class="lit-number">1</span> {</code></span>
+<span class="codeline" id="line-270"><code>			<span class="keyword">return</span> <label for="r88" class="ident">fn</label>(<label for="r87" class="ident">x</label>)</code></span>
+<span class="codeline" id="line-271"><code>		}</code></span>
+<span class="codeline" id="line-272"><code>		<label for="r91" class="ident">line</label> := <label for="r87" class="ident">x</label>[:<label for="r90" class="ident">nl</label>+<span class="lit-number">1</span>]</code></span>
+<span class="codeline" id="line-273"><code>		<label for="r87" class="ident">x</label> = <label for="r87" class="ident">x</label>[<label for="r90" class="ident">nl</label>+<span class="lit-number">1</span>:]</code></span>
+<span class="codeline" id="line-274"><code>		<span class="keyword">if</span> <label for="r92" class="ident">err</label> := <label for="r88" class="ident">fn</label>(<label for="r91" class="ident">line</label>); <label for="r92" class="ident">err</label> != <a href="../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-275"><code>			<span class="keyword">return</span> <label for="r92" class="ident">err</label></code></span>
+<span class="codeline" id="line-276"><code>		}</code></span>
+<span class="codeline" id="line-277"><code>	}</code></span>
+<span class="codeline" id="line-278"><code>	<span class="keyword">return</span> <a href="../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-279"><code>}</code></span>
+<span class="codeline" id="line-280"><code></code></span>
+<span class="codeline" id="line-281"><code><span class="comment">// foreachField runs fn on each non-empty run of non-space bytes in x.</span></code></span>
+<span class="codeline" id="line-282"><code><span class="comment">// It returns the first non-nil error returned by fn.</span></code></span>
+<span class="codeline" id="line-283"><code><span class="keyword">func</span> <label for="r93" class="ident"><a href="../../pkg/net.html#name-foreachField" class="ident">foreachField</a></label>(<label for="r94" class="ident">x</label> []<a href="../../pkg/builtin.html#name-byte" class="ident">byte</a>, <label for="r95" class="ident">fn</label> <span class="keyword">func</span>(<label for="r96" class="ident">field</label> []<a href="../../pkg/builtin.html#name-byte" class="ident">byte</a>) <a href="../../pkg/builtin.html#name-error" class="ident">error</a>) <a href="../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
+<span class="codeline" id="line-284"><code>	<label for="r94" class="ident">x</label> = <a href="#line-239" class="ident">trimSpace</a>(<label for="r94" class="ident">x</label>)</code></span>
+<span class="codeline" id="line-285"><code>	<span class="keyword">for</span> <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r94" class="ident">x</label>) &gt; <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-286"><code>		<label for="r97" class="ident">sp</label> := <a href="../../pkg/internal/bytealg.html" class="ident i0">bytealg</a>.<a href="../internal/bytealg/indexbyte_native.go.html#line-10" class="ident">IndexByte</a>(<label for="r94" class="ident">x</label>, <span class="lit-number">' '</span>)</code></span>
+<span class="codeline" id="line-287"><code>		<span class="keyword">if</span> <label for="r97" class="ident">sp</label> == -<span class="lit-number">1</span> {</code></span>
+<span class="codeline" id="line-288"><code>			<span class="keyword">return</span> <label for="r95" class="ident">fn</label>(<label for="r94" class="ident">x</label>)</code></span>
+<span class="codeline" id="line-289"><code>		}</code></span>
+<span class="codeline" id="line-290"><code>		<span class="keyword">if</span> <label for="r98" class="ident">field</label> := <a href="#line-239" class="ident">trimSpace</a>(<label for="r94" class="ident">x</label>[:<label for="r97" class="ident">sp</label>]); <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r98" class="ident">field</label>) &gt; <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-291"><code>			<span class="keyword">if</span> <label for="r99" class="ident">err</label> := <label for="r95" class="ident">fn</label>(<label for="r98" class="ident">field</label>); <label for="r99" class="ident">err</label> != <a href="../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-292"><code>				<span class="keyword">return</span> <label for="r99" class="ident">err</label></code></span>
+<span class="codeline" id="line-293"><code>			}</code></span>
+<span class="codeline" id="line-294"><code>		}</code></span>
+<span class="codeline" id="line-295"><code>		<label for="r94" class="ident">x</label> = <a href="#line-239" class="ident">trimSpace</a>(<label for="r94" class="ident">x</label>[<label for="r97" class="ident">sp</label>+<span class="lit-number">1</span>:])</code></span>
+<span class="codeline" id="line-296"><code>	}</code></span>
+<span class="codeline" id="line-297"><code>	<span class="keyword">return</span> <a href="../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-298"><code>}</code></span>
+<span class="codeline" id="line-299"><code></code></span>
+<span class="codeline" id="line-300"><code><span class="comment">// stringsHasSuffix is strings.HasSuffix. It reports whether s ends in</span></code></span>
+<span class="codeline" id="line-301"><code><span class="comment">// suffix.</span></code></span>
+<span class="codeline" id="line-302"><code><span class="keyword">func</span> <label for="r100" class="ident"><a href="../../pkg/net.html#name-stringsHasSuffix" class="ident">stringsHasSuffix</a></label>(<label for="r101" class="ident">s</label>, <label for="r102" class="ident">suffix</label> <a href="../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-303"><code>	<span class="keyword">return</span> <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r101" class="ident">s</label>) &gt;= <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r102" class="ident">suffix</label>) &amp;&amp; <label for="r101" class="ident">s</label>[<a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r101" class="ident">s</label>)-<a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r102" class="ident">suffix</label>):] == <label for="r102" class="ident">suffix</label></code></span>
+<span class="codeline" id="line-304"><code>}</code></span>
+<span class="codeline" id="line-305"><code></code></span>
+<span class="codeline" id="line-306"><code><span class="comment">// stringsHasSuffixFold reports whether s ends in suffix,</span></code></span>
+<span class="codeline" id="line-307"><code><span class="comment">// ASCII-case-insensitively.</span></code></span>
+<span class="codeline" id="line-308"><code><span class="keyword">func</span> <label for="r103" class="ident"><a href="../../pkg/net.html#name-stringsHasSuffixFold" class="ident">stringsHasSuffixFold</a></label>(<label for="r104" class="ident">s</label>, <label for="r105" class="ident">suffix</label> <a href="../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-309"><code>	<span class="keyword">return</span> <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r104" class="ident">s</label>) &gt;= <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r105" class="ident">suffix</label>) &amp;&amp; <a href="#line-319" class="ident">stringsEqualFold</a>(<label for="r104" class="ident">s</label>[<a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r104" class="ident">s</label>)-<a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r105" class="ident">suffix</label>):], <label for="r105" class="ident">suffix</label>)</code></span>
+<span class="codeline" id="line-310"><code>}</code></span>
+<span class="codeline" id="line-311"><code></code></span>
+<span class="codeline" id="line-312"><code><span class="comment">// stringsHasPrefix is strings.HasPrefix. It reports whether s begins with prefix.</span></code></span>
+<span class="codeline" id="line-313"><code><span class="keyword">func</span> <label for="r106" class="ident"><a href="../../pkg/net.html#name-stringsHasPrefix" class="ident">stringsHasPrefix</a></label>(<label for="r107" class="ident">s</label>, <label for="r108" class="ident">prefix</label> <a href="../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-314"><code>	<span class="keyword">return</span> <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r107" class="ident">s</label>) &gt;= <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r108" class="ident">prefix</label>) &amp;&amp; <label for="r107" class="ident">s</label>[:<a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r108" class="ident">prefix</label>)] == <label for="r108" class="ident">prefix</label></code></span>
+<span class="codeline" id="line-315"><code>}</code></span>
+<span class="codeline" id="line-316"><code></code></span>
+<span class="codeline" id="line-317"><code><span class="comment">// stringsEqualFold is strings.EqualFold, ASCII only. It reports whether s and t</span></code></span>
+<span class="codeline" id="line-318"><code><span class="comment">// are equal, ASCII-case-insensitively.</span></code></span>
+<span class="codeline" id="line-319"><code><span class="keyword">func</span> <label for="r109" class="ident"><a href="../../pkg/net.html#name-stringsEqualFold" class="ident">stringsEqualFold</a></label>(<label for="r110" class="ident">s</label>, <label for="r111" class="ident">t</label> <a href="../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
+<span class="codeline" id="line-320"><code>	<span class="keyword">if</span> <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r110" class="ident">s</label>) != <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r111" class="ident">t</label>) {</code></span>
+<span class="codeline" id="line-321"><code>		<span class="keyword">return</span> <a href="../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-322"><code>	}</code></span>
+<span class="codeline" id="line-323"><code>	<span class="keyword">for</span> <label for="r112" class="ident">i</label> := <span class="lit-number">0</span>; <label for="r112" class="ident">i</label> &lt; <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r110" class="ident">s</label>); <label for="r112" class="ident">i</label>++ {</code></span>
+<span class="codeline" id="line-324"><code>		<span class="keyword">if</span> <a href="#line-231" class="ident">lowerASCII</a>(<label for="r110" class="ident">s</label>[<label for="r112" class="ident">i</label>]) != <a href="#line-231" class="ident">lowerASCII</a>(<label for="r111" class="ident">t</label>[<label for="r112" class="ident">i</label>]) {</code></span>
+<span class="codeline" id="line-325"><code>			<span class="keyword">return</span> <a href="../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-326"><code>		}</code></span>
+<span class="codeline" id="line-327"><code>	}</code></span>
+<span class="codeline" id="line-328"><code>	<span class="keyword">return</span> <a href="../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-329"><code>}</code></span>
+<span class="codeline" id="line-330"><code></code></span>
+<span class="codeline" id="line-331"><code><span class="keyword">func</span> <label for="r113" class="ident"><a href="../../pkg/net.html#name-readFull" class="ident">readFull</a></label>(<label for="r114" class="ident">r</label> <a href="../../pkg/io.html" class="ident i1">io</a>.<a href="../io/io.go.html#line-83" class="ident">Reader</a>) (<label for="r115" class="ident">all</label> []<a href="../../pkg/builtin.html#name-byte" class="ident">byte</a>, <label for="r116" class="ident">err</label> <a href="../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
+<span class="codeline" id="line-332"><code>	<label for="r117" class="ident">buf</label> := <a href="../../pkg/builtin.html#name-make" class="ident">make</a>([]<a href="../../pkg/builtin.html#name-byte" class="ident">byte</a>, <span class="lit-number">1024</span>)</code></span>
+<span class="codeline" id="line-333"><code>	<span class="keyword">for</span> {</code></span>
+<span class="codeline" id="line-334"><code>		<label for="r118" class="ident">n</label>, <label for="r119" class="ident">err</label> := <label for="r114" class="ident">r</label>.<a href="../io/io.go.html#line-84" class="ident">Read</a>(<label for="r117" class="ident">buf</label>)</code></span>
+<span class="codeline" id="line-335"><code>		<label for="r115" class="ident">all</label> = <a href="../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r115" class="ident">all</label>, <label for="r117" class="ident">buf</label>[:<label for="r118" class="ident">n</label>]...)</code></span>
+<span class="codeline" id="line-336"><code>		<span class="keyword">if</span> <label for="r119" class="ident">err</label> == <a href="../../pkg/io.html" class="ident i1">io</a>.<a href="../io/io.go.html#line-44" class="ident">EOF</a> {</code></span>
+<span class="codeline" id="line-337"><code>			<span class="keyword">return</span> <label for="r115" class="ident">all</label>, <a href="../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-338"><code>		}</code></span>
+<span class="codeline" id="line-339"><code>		<span class="keyword">if</span> <label for="r119" class="ident">err</label> != <a href="../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-340"><code>			<span class="keyword">return</span> <a href="../../pkg/builtin.html#name-nil" class="ident">nil</a>, <label for="r119" class="ident">err</label></code></span>
+<span class="codeline" id="line-341"><code>		}</code></span>
+<span class="codeline" id="line-342"><code>	}</code></span>
+<span class="codeline" id="line-343"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

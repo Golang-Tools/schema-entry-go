@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: message.go in package net/mail</title>
-<link href="../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -450,9 +450,9 @@ input[id=i10]:checked ~pre .i10
 <span class="codeline" id="line-35"><code></code></span>
 <span class="codeline" id="line-36"><code><span class="keyword">type</span> <a href="../../../pkg/net/mail.html#name-debugT" class="ident">debugT</a> <a href="../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
 <span class="codeline" id="line-37"><code></code></span>
-<span class="codeline" id="line-38"><code><span class="keyword">func</span> (<label for="r0" class="ident">d</label> <a href="#line-36" class="ident">debugT</a>) <label for="r1" class="ident">Printf</label>(<label for="r2" class="ident">format</label> <a href="../../../pkg/builtin.html#name-string" class="ident">string</a>, <label for="r3" class="ident">args</label> ...<span class="keyword">interface</span>{}) {</code></span>
+<span class="codeline" id="line-38"><code><span class="keyword">func</span> (<label for="r0" class="ident">d</label> <a href="#line-36" class="ident">debugT</a>) <label for="r1" class="ident">Printf</label>(<label for="r2" class="ident">format</label> <a href="../../../pkg/builtin.html#name-string" class="ident">string</a>, <label for="r3" class="ident">args</label> ...<a href="../../../pkg/builtin.html#name-any" class="ident">any</a>) {</code></span>
 <span class="codeline" id="line-39"><code>	<span class="keyword">if</span> <label for="r0" class="ident">d</label> {</code></span>
-<span class="codeline" id="line-40"><code>		<a href="../../../pkg/log.html" class="ident i4">log</a>.<a href="../../log/log.go.html#line-322" class="ident">Printf</a>(<label for="r2" class="ident">format</label>, <label for="r3" class="ident">args</label>...)</code></span>
+<span class="codeline" id="line-40"><code>		<a href="../../../pkg/log.html" class="ident i4">log</a>.<a href="../../log/log.go.html#line-347" class="ident">Printf</a>(<label for="r2" class="ident">format</label>, <label for="r3" class="ident">args</label>...)</code></span>
 <span class="codeline" id="line-41"><code>	}</code></span>
 <span class="codeline" id="line-42"><code>}</code></span>
 <span class="codeline" id="line-43"><code></code></span>
@@ -468,7 +468,7 @@ input[id=i10]:checked ~pre .i10
 <span class="codeline" id="line-53"><code><span class="keyword">func</span> <label for="r4" class="ident"><a href="../../../pkg/net/mail.html#name-ReadMessage" class="ident">ReadMessage</a></label>(<label for="r5" class="ident">r</label> <a href="../../../pkg/io.html" class="ident i3">io</a>.<a href="../../io/io.go.html#line-83" class="ident">Reader</a>) (<label for="r6" class="ident">msg</label> *<a href="#line-45" class="ident">Message</a>, <label for="r7" class="ident">err</label> <a href="../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
 <span class="codeline" id="line-54"><code>	<label for="r8" class="ident">tp</label> := <a href="../../../pkg/net/textproto.html" class="ident i6">textproto</a>.<a href="../textproto/reader.go.html#line-30" class="ident">NewReader</a>(<a href="../../../pkg/bufio.html" class="ident i0">bufio</a>.<a href="../../bufio/bufio.go.html#line-62" class="ident">NewReader</a>(<label for="r5" class="ident">r</label>))</code></span>
 <span class="codeline" id="line-55"><code></code></span>
-<span class="codeline" id="line-56"><code>	<label for="r9" class="ident">hdr</label>, <label for="r7" class="ident">err</label> := <label for="r8" class="ident">tp</label>.<a href="../textproto/reader.go.html#line-483" class="ident">ReadMIMEHeader</a>()</code></span>
+<span class="codeline" id="line-56"><code>	<label for="r9" class="ident">hdr</label>, <label for="r7" class="ident">err</label> := <label for="r8" class="ident">tp</label>.<a href="../textproto/reader.go.html#line-485" class="ident">ReadMIMEHeader</a>()</code></span>
 <span class="codeline" id="line-57"><code>	<span class="keyword">if</span> <label for="r7" class="ident">err</label> != <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
 <span class="codeline" id="line-58"><code>		<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <label for="r7" class="ident">err</label></code></span>
 <span class="codeline" id="line-59"><code>	}</code></span>
@@ -514,8 +514,8 @@ input[id=i10]:checked ~pre .i10
 <span class="codeline" id="line-99"><code><span class="keyword">func</span> <label for="r27" class="ident"><a href="../../../pkg/net/mail.html#name-ParseDate" class="ident">ParseDate</a></label>(<label for="r28" class="ident">date</label> <a href="../../../pkg/builtin.html#name-string" class="ident">string</a>) (<a href="../../../pkg/time.html" class="ident i9">time</a>.<a href="../../time/time.go.html#line-127" class="ident">Time</a>, <a href="../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
 <span class="codeline" id="line-100"><code>	<a href="#line-70" class="ident">dateLayoutsBuildOnce</a>.<a href="../../sync/once.go.html#line-42" class="ident">Do</a>(<a href="#line-74" class="ident">buildDateLayouts</a>)</code></span>
 <span class="codeline" id="line-101"><code>	<span class="comment">// CR and LF must match and are tolerated anywhere in the date field.</span></code></span>
-<span class="codeline" id="line-102"><code>	<label for="r28" class="ident">date</label> = <a href="../../../pkg/strings.html" class="ident i7">strings</a>.<a href="../../strings/strings.go.html#line-963" class="ident">ReplaceAll</a>(<label for="r28" class="ident">date</label>, <span class="lit-string">"\r\n"</span>, <span class="lit-string">""</span>)</code></span>
-<span class="codeline" id="line-103"><code>	<span class="keyword">if</span> <a href="../../../pkg/strings.html" class="ident i7">strings</a>.<a href="../../strings/strings.go.html#line-1024" class="ident">Index</a>(<label for="r28" class="ident">date</label>, <span class="lit-string">"\r"</span>) != -<span class="lit-number">1</span> {</code></span>
+<span class="codeline" id="line-102"><code>	<label for="r28" class="ident">date</label> = <a href="../../../pkg/strings.html" class="ident i7">strings</a>.<a href="../../strings/strings.go.html#line-1036" class="ident">ReplaceAll</a>(<label for="r28" class="ident">date</label>, <span class="lit-string">"\r\n"</span>, <span class="lit-string">""</span>)</code></span>
+<span class="codeline" id="line-103"><code>	<span class="keyword">if</span> <a href="../../../pkg/strings.html" class="ident i7">strings</a>.<a href="../../strings/strings.go.html#line-61" class="ident">Contains</a>(<label for="r28" class="ident">date</label>, <span class="lit-string">"\r"</span>) {</code></span>
 <span class="codeline" id="line-104"><code>		<span class="keyword">return</span> <a href="../../../pkg/time.html" class="ident i9">time</a>.<a href="../../time/time.go.html#line-127" class="ident">Time</a>{}, <a href="../../../pkg/errors.html" class="ident i1">errors</a>.<a href="../../errors/errors.go.html#line-58" class="ident">New</a>(<span class="lit-string">"mail: header has a CR without LF"</span>)</code></span>
 <span class="codeline" id="line-105"><code>	}</code></span>
 <span class="codeline" id="line-106"><code>	<span class="comment">// Re-using some addrParser methods which support obsolete text, i.e. non-printable ASCII</span></code></span>
@@ -528,13 +528,13 @@ input[id=i10]:checked ~pre .i10
 <span class="codeline" id="line-113"><code>		<label for="r28" class="ident">date</label> = <label for="r29" class="ident">p</label>.<a href="#line-283" class="ident">s</a>[:<label for="r30" class="ident">ind</label>+<span class="lit-number">5</span>]</code></span>
 <span class="codeline" id="line-114"><code>		<label for="r29" class="ident">p</label>.<a href="#line-283" class="ident">s</a> = <label for="r29" class="ident">p</label>.<a href="#line-283" class="ident">s</a>[<label for="r30" class="ident">ind</label>+<span class="lit-number">5</span>:]</code></span>
 <span class="codeline" id="line-115"><code>	} <span class="keyword">else</span> {</code></span>
-<span class="codeline" id="line-116"><code>		<label for="r31" class="ident">ind</label> := <a href="../../../pkg/strings.html" class="ident i7">strings</a>.<a href="../../strings/strings.go.html#line-1024" class="ident">Index</a>(<label for="r29" class="ident">p</label>.<a href="#line-283" class="ident">s</a>, <span class="lit-string">"T"</span>)</code></span>
+<span class="codeline" id="line-116"><code>		<label for="r31" class="ident">ind</label> := <a href="../../../pkg/strings.html" class="ident i7">strings</a>.<a href="../../strings/strings.go.html#line-1097" class="ident">Index</a>(<label for="r29" class="ident">p</label>.<a href="#line-283" class="ident">s</a>, <span class="lit-string">"T"</span>)</code></span>
 <span class="codeline" id="line-117"><code>		<span class="keyword">if</span> <label for="r31" class="ident">ind</label> == <span class="lit-number">0</span> {</code></span>
 <span class="codeline" id="line-118"><code>			<span class="comment">// In this case we have the following date formats:</span></code></span>
 <span class="codeline" id="line-119"><code><span class="comment">			// * Thu, 20 Nov 1997 09:55:06 MDT</span></code></span>
 <span class="codeline" id="line-120"><code><span class="comment">			// * Thu, 20 Nov 1997 09:55:06 MDT (MDT)</span></code></span>
 <span class="codeline" id="line-121"><code><span class="comment">			// * Thu, 20 Nov 1997 09:55:06 MDT (This comment)</span></code></span>
-<span class="codeline" id="line-122"><code>			<label for="r31" class="ident">ind</label> = <a href="../../../pkg/strings.html" class="ident i7">strings</a>.<a href="../../strings/strings.go.html#line-1024" class="ident">Index</a>(<label for="r29" class="ident">p</label>.<a href="#line-283" class="ident">s</a>[<span class="lit-number">1</span>:], <span class="lit-string">"T"</span>)</code></span>
+<span class="codeline" id="line-122"><code>			<label for="r31" class="ident">ind</label> = <a href="../../../pkg/strings.html" class="ident i7">strings</a>.<a href="../../strings/strings.go.html#line-1097" class="ident">Index</a>(<label for="r29" class="ident">p</label>.<a href="#line-283" class="ident">s</a>[<span class="lit-number">1</span>:], <span class="lit-string">"T"</span>)</code></span>
 <span class="codeline" id="line-123"><code>			<span class="keyword">if</span> <label for="r31" class="ident">ind</label> != -<span class="lit-number">1</span> {</code></span>
 <span class="codeline" id="line-124"><code>				<label for="r31" class="ident">ind</label>++</code></span>
 <span class="codeline" id="line-125"><code>			}</code></span>
@@ -551,7 +551,7 @@ input[id=i10]:checked ~pre .i10
 <span class="codeline" id="line-136"><code>		<span class="keyword">return</span> <a href="../../../pkg/time.html" class="ident i9">time</a>.<a href="../../time/time.go.html#line-127" class="ident">Time</a>{}, <a href="../../../pkg/errors.html" class="ident i1">errors</a>.<a href="../../errors/errors.go.html#line-58" class="ident">New</a>(<span class="lit-string">"mail: misformatted parenthetical comment"</span>)</code></span>
 <span class="codeline" id="line-137"><code>	}</code></span>
 <span class="codeline" id="line-138"><code>	<span class="keyword">for</span> <label for="r32" class="ident">_</label>, <label for="r33" class="ident">layout</label> := <span class="keyword">range</span> <a href="#line-71" class="ident">dateLayouts</a> {</code></span>
-<span class="codeline" id="line-139"><code>		<label for="r34" class="ident">t</label>, <label for="r35" class="ident">err</label> := <a href="../../../pkg/time.html" class="ident i9">time</a>.<a href="../../time/format.go.html#line-814" class="ident">Parse</a>(<label for="r33" class="ident">layout</label>, <label for="r28" class="ident">date</label>)</code></span>
+<span class="codeline" id="line-139"><code>		<label for="r34" class="ident">t</label>, <label for="r35" class="ident">err</label> := <a href="../../../pkg/time.html" class="ident i9">time</a>.<a href="../../time/format.go.html#line-947" class="ident">Parse</a>(<label for="r33" class="ident">layout</label>, <label for="r28" class="ident">date</label>)</code></span>
 <span class="codeline" id="line-140"><code>		<span class="keyword">if</span> <label for="r35" class="ident">err</label> == <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
 <span class="codeline" id="line-141"><code>			<span class="keyword">return</span> <label for="r34" class="ident">t</label>, <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
 <span class="codeline" id="line-142"><code>		}</code></span>
@@ -968,7 +968,7 @@ input[id=i10]:checked ~pre .i10
 <span class="codeline" id="line-553"><code>		<a href="#line-34" class="ident">debug</a>.<a href="#line-38" class="ident">Printf</a>(<span class="lit-string">"consumePhrase: hit err: %v"</span>, <label for="r102" class="ident">err</label>)</code></span>
 <span class="codeline" id="line-554"><code>		<span class="keyword">return</span> <span class="lit-string">""</span>, <a href="../../../pkg/fmt.html" class="ident i2">fmt</a>.<a href="../../fmt/errors.go.html#line-17" class="ident">Errorf</a>(<span class="lit-string">"mail: missing word in phrase: %v"</span>, <label for="r102" class="ident">err</label>)</code></span>
 <span class="codeline" id="line-555"><code>	}</code></span>
-<span class="codeline" id="line-556"><code>	<label for="r101" class="ident">phrase</label> = <a href="../../../pkg/strings.html" class="ident i7">strings</a>.<a href="../../strings/strings.go.html#line-421" class="ident">Join</a>(<label for="r103" class="ident">words</label>, <span class="lit-string">" "</span>)</code></span>
+<span class="codeline" id="line-556"><code>	<label for="r101" class="ident">phrase</label> = <a href="../../../pkg/strings.html" class="ident i7">strings</a>.<a href="../../strings/strings.go.html#line-425" class="ident">Join</a>(<label for="r103" class="ident">words</label>, <span class="lit-string">" "</span>)</code></span>
 <span class="codeline" id="line-557"><code>	<span class="keyword">return</span> <label for="r101" class="ident">phrase</label>, <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
 <span class="codeline" id="line-558"><code>}</code></span>
 <span class="codeline" id="line-559"><code></code></span>
@@ -1052,13 +1052,13 @@ input[id=i10]:checked ~pre .i10
 <span class="codeline" id="line-637"><code>	}</code></span>
 <span class="codeline" id="line-638"><code>	<label for="r121" class="ident">atom</label>, <label for="r117" class="ident">p</label>.<a href="#line-283" class="ident">s</a> = <label for="r117" class="ident">p</label>.<a href="#line-283" class="ident">s</a>[:<label for="r123" class="ident">i</label>], <label for="r117" class="ident">p</label>.<a href="#line-283" class="ident">s</a>[<label for="r123" class="ident">i</label>:]</code></span>
 <span class="codeline" id="line-639"><code>	<span class="keyword">if</span> !<label for="r120" class="ident">permissive</label> {</code></span>
-<span class="codeline" id="line-640"><code>		<span class="keyword">if</span> <a href="../../../pkg/strings.html" class="ident i7">strings</a>.<a href="../../strings/strings.go.html#line-444" class="ident">HasPrefix</a>(<label for="r121" class="ident">atom</label>, <span class="lit-string">"."</span>) {</code></span>
+<span class="codeline" id="line-640"><code>		<span class="keyword">if</span> <a href="../../../pkg/strings.html" class="ident i7">strings</a>.<a href="../../strings/strings.go.html#line-448" class="ident">HasPrefix</a>(<label for="r121" class="ident">atom</label>, <span class="lit-string">"."</span>) {</code></span>
 <span class="codeline" id="line-641"><code>			<span class="keyword">return</span> <span class="lit-string">""</span>, <a href="../../../pkg/errors.html" class="ident i1">errors</a>.<a href="../../errors/errors.go.html#line-58" class="ident">New</a>(<span class="lit-string">"mail: leading dot in atom"</span>)</code></span>
 <span class="codeline" id="line-642"><code>		}</code></span>
 <span class="codeline" id="line-643"><code>		<span class="keyword">if</span> <a href="../../../pkg/strings.html" class="ident i7">strings</a>.<a href="../../strings/strings.go.html#line-61" class="ident">Contains</a>(<label for="r121" class="ident">atom</label>, <span class="lit-string">".."</span>) {</code></span>
 <span class="codeline" id="line-644"><code>			<span class="keyword">return</span> <span class="lit-string">""</span>, <a href="../../../pkg/errors.html" class="ident i1">errors</a>.<a href="../../errors/errors.go.html#line-58" class="ident">New</a>(<span class="lit-string">"mail: double dot in atom"</span>)</code></span>
 <span class="codeline" id="line-645"><code>		}</code></span>
-<span class="codeline" id="line-646"><code>		<span class="keyword">if</span> <a href="../../../pkg/strings.html" class="ident i7">strings</a>.<a href="../../strings/strings.go.html#line-449" class="ident">HasSuffix</a>(<label for="r121" class="ident">atom</label>, <span class="lit-string">"."</span>) {</code></span>
+<span class="codeline" id="line-646"><code>		<span class="keyword">if</span> <a href="../../../pkg/strings.html" class="ident i7">strings</a>.<a href="../../strings/strings.go.html#line-453" class="ident">HasSuffix</a>(<label for="r121" class="ident">atom</label>, <span class="lit-string">"."</span>) {</code></span>
 <span class="codeline" id="line-647"><code>			<span class="keyword">return</span> <span class="lit-string">""</span>, <a href="../../../pkg/errors.html" class="ident i1">errors</a>.<a href="../../errors/errors.go.html#line-58" class="ident">New</a>(<span class="lit-string">"mail: trailing dot in atom"</span>)</code></span>
 <span class="codeline" id="line-648"><code>		}</code></span>
 <span class="codeline" id="line-649"><code>	}</code></span>
@@ -1075,7 +1075,7 @@ input[id=i10]:checked ~pre .i10
 <span class="codeline" id="line-660"><code>	}</code></span>
 <span class="codeline" id="line-661"><code></code></span>
 <span class="codeline" id="line-662"><code>	<span class="comment">// TODO(stapelberg): parse quoted-string within comment</span></code></span>
-<span class="codeline" id="line-663"><code>	<label for="r131" class="ident">words</label> := <a href="../../../pkg/strings.html" class="ident i7">strings</a>.<a href="../../strings/strings.go.html#line-375" class="ident">FieldsFunc</a>(<label for="r129" class="ident">comment</label>, <span class="keyword">func</span>(<label for="r132" class="ident">r</label> <a href="../../../pkg/builtin.html#name-rune" class="ident">rune</a>) <a href="../../../pkg/builtin.html#name-bool" class="ident">bool</a> { <span class="keyword">return</span> <label for="r132" class="ident">r</label> == <span class="lit-number">' '</span> || <label for="r132" class="ident">r</label> == <span class="lit-number">'\t'</span> })</code></span>
+<span class="codeline" id="line-663"><code>	<label for="r131" class="ident">words</label> := <a href="../../../pkg/strings.html" class="ident i7">strings</a>.<a href="../../strings/strings.go.html#line-379" class="ident">FieldsFunc</a>(<label for="r129" class="ident">comment</label>, <span class="keyword">func</span>(<label for="r132" class="ident">r</label> <a href="../../../pkg/builtin.html#name-rune" class="ident">rune</a>) <a href="../../../pkg/builtin.html#name-bool" class="ident">bool</a> { <span class="keyword">return</span> <label for="r132" class="ident">r</label> == <span class="lit-number">' '</span> || <label for="r132" class="ident">r</label> == <span class="lit-number">'\t'</span> })</code></span>
 <span class="codeline" id="line-664"><code>	<span class="keyword">for</span> <label for="r133" class="ident">idx</label>, <label for="r134" class="ident">word</label> := <span class="keyword">range</span> <label for="r131" class="ident">words</label> {</code></span>
 <span class="codeline" id="line-665"><code>		<label for="r135" class="ident">decoded</label>, <label for="r136" class="ident">isEncoded</label>, <label for="r137" class="ident">err</label> := <label for="r127" class="ident">p</label>.<a href="#line-747" class="ident">decodeRFC2047Word</a>(<label for="r134" class="ident">word</label>)</code></span>
 <span class="codeline" id="line-666"><code>		<span class="keyword">if</span> <label for="r137" class="ident">err</label> != <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
@@ -1086,7 +1086,7 @@ input[id=i10]:checked ~pre .i10
 <span class="codeline" id="line-671"><code>		}</code></span>
 <span class="codeline" id="line-672"><code>	}</code></span>
 <span class="codeline" id="line-673"><code></code></span>
-<span class="codeline" id="line-674"><code>	<span class="keyword">return</span> <a href="../../../pkg/strings.html" class="ident i7">strings</a>.<a href="../../strings/strings.go.html#line-421" class="ident">Join</a>(<label for="r131" class="ident">words</label>, <span class="lit-string">" "</span>), <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-674"><code>	<span class="keyword">return</span> <a href="../../../pkg/strings.html" class="ident i7">strings</a>.<a href="../../strings/strings.go.html#line-425" class="ident">Join</a>(<label for="r131" class="ident">words</label>, <span class="lit-string">" "</span>), <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
 <span class="codeline" id="line-675"><code>}</code></span>
 <span class="codeline" id="line-676"><code></code></span>
 <span class="codeline" id="line-677"><code><span class="keyword">func</span> (<label for="r138" class="ident">p</label> *<a href="#line-282" class="ident">addrParser</a>) <label for="r139" class="ident">consume</label>(<label for="r140" class="ident">c</label> <a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>) <a href="../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
@@ -1099,7 +1099,7 @@ input[id=i10]:checked ~pre .i10
 <span class="codeline" id="line-684"><code></code></span>
 <span class="codeline" id="line-685"><code><span class="comment">// skipSpace skips the leading space and tab characters.</span></code></span>
 <span class="codeline" id="line-686"><code><span class="keyword">func</span> (<label for="r141" class="ident">p</label> *<a href="#line-282" class="ident">addrParser</a>) <label for="r142" class="ident">skipSpace</label>() {</code></span>
-<span class="codeline" id="line-687"><code>	<label for="r141" class="ident">p</label>.<a href="#line-283" class="ident">s</a> = <a href="../../../pkg/strings.html" class="ident i7">strings</a>.<a href="../../strings/strings.go.html#line-847" class="ident">TrimLeft</a>(<label for="r141" class="ident">p</label>.<a href="#line-283" class="ident">s</a>, <span class="lit-string">" \t"</span>)</code></span>
+<span class="codeline" id="line-687"><code>	<label for="r141" class="ident">p</label>.<a href="#line-283" class="ident">s</a> = <a href="../../../pkg/strings.html" class="ident i7">strings</a>.<a href="../../strings/strings.go.html#line-846" class="ident">TrimLeft</a>(<label for="r141" class="ident">p</label>.<a href="#line-283" class="ident">s</a>, <span class="lit-string">" \t"</span>)</code></span>
 <span class="codeline" id="line-688"><code>}</code></span>
 <span class="codeline" id="line-689"><code></code></span>
 <span class="codeline" id="line-690"><code><span class="keyword">func</span> (<label for="r143" class="ident">p</label> *<a href="#line-282" class="ident">addrParser</a>) <label for="r144" class="ident">peek</label>() <a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a> {</code></span>
@@ -1221,17 +1221,17 @@ input[id=i10]:checked ~pre .i10
 <span class="codeline" id="line-806"><code><span class="comment">// quoteString renders a string as an RFC 5322 quoted-string.</span></code></span>
 <span class="codeline" id="line-807"><code><span class="keyword">func</span> <label for="r175" class="ident"><a href="../../../pkg/net/mail.html#name-quoteString" class="ident">quoteString</a></label>(<label for="r176" class="ident">s</label> <a href="../../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="../../../pkg/builtin.html#name-string" class="ident">string</a> {</code></span>
 <span class="codeline" id="line-808"><code>	<span class="keyword">var</span> <label for="r177" class="ident">buf</label> <a href="../../../pkg/strings.html" class="ident i7">strings</a>.<a href="../../strings/builder.go.html#line-15" class="ident">Builder</a></code></span>
-<span class="codeline" id="line-809"><code>	<label for="r177" class="ident">buf</label>.<a href="../../strings/builder.go.html#line-96" class="ident">WriteByte</a>(<span class="lit-number">'"'</span>)</code></span>
+<span class="codeline" id="line-809"><code>	<label for="r177" class="ident">buf</label>.<a href="../../strings/builder.go.html#line-95" class="ident">WriteByte</a>(<span class="lit-number">'"'</span>)</code></span>
 <span class="codeline" id="line-810"><code>	<span class="keyword">for</span> <label for="r178" class="ident">_</label>, <label for="r179" class="ident">r</label> := <span class="keyword">range</span> <label for="r176" class="ident">s</label> {</code></span>
 <span class="codeline" id="line-811"><code>		<span class="keyword">if</span> <a href="#line-798" class="ident">isQtext</a>(<label for="r179" class="ident">r</label>) || <a href="#line-836" class="ident">isWSP</a>(<label for="r179" class="ident">r</label>) {</code></span>
-<span class="codeline" id="line-812"><code>			<label for="r177" class="ident">buf</label>.<a href="../../strings/builder.go.html#line-104" class="ident">WriteRune</a>(<label for="r179" class="ident">r</label>)</code></span>
+<span class="codeline" id="line-812"><code>			<label for="r177" class="ident">buf</label>.<a href="../../strings/builder.go.html#line-103" class="ident">WriteRune</a>(<label for="r179" class="ident">r</label>)</code></span>
 <span class="codeline" id="line-813"><code>		} <span class="keyword">else</span> <span class="keyword">if</span> <a href="#line-823" class="ident">isVchar</a>(<label for="r179" class="ident">r</label>) {</code></span>
-<span class="codeline" id="line-814"><code>			<label for="r177" class="ident">buf</label>.<a href="../../strings/builder.go.html#line-96" class="ident">WriteByte</a>(<span class="lit-number">'\\'</span>)</code></span>
-<span class="codeline" id="line-815"><code>			<label for="r177" class="ident">buf</label>.<a href="../../strings/builder.go.html#line-104" class="ident">WriteRune</a>(<label for="r179" class="ident">r</label>)</code></span>
+<span class="codeline" id="line-814"><code>			<label for="r177" class="ident">buf</label>.<a href="../../strings/builder.go.html#line-95" class="ident">WriteByte</a>(<span class="lit-number">'\\'</span>)</code></span>
+<span class="codeline" id="line-815"><code>			<label for="r177" class="ident">buf</label>.<a href="../../strings/builder.go.html#line-103" class="ident">WriteRune</a>(<label for="r179" class="ident">r</label>)</code></span>
 <span class="codeline" id="line-816"><code>		}</code></span>
 <span class="codeline" id="line-817"><code>	}</code></span>
-<span class="codeline" id="line-818"><code>	<label for="r177" class="ident">buf</label>.<a href="../../strings/builder.go.html#line-96" class="ident">WriteByte</a>(<span class="lit-number">'"'</span>)</code></span>
-<span class="codeline" id="line-819"><code>	<span class="keyword">return</span> <label for="r177" class="ident">buf</label>.<a href="../../strings/builder.go.html#line-47" class="ident">String</a>()</code></span>
+<span class="codeline" id="line-818"><code>	<label for="r177" class="ident">buf</label>.<a href="../../strings/builder.go.html#line-95" class="ident">WriteByte</a>(<span class="lit-number">'"'</span>)</code></span>
+<span class="codeline" id="line-819"><code>	<span class="keyword">return</span> <label for="r177" class="ident">buf</label>.<a href="../../strings/builder.go.html#line-46" class="ident">String</a>()</code></span>
 <span class="codeline" id="line-820"><code>}</code></span>
 <span class="codeline" id="line-821"><code></code></span>
 <span class="codeline" id="line-822"><code><span class="comment">// isVchar reports whether r is an RFC 5322 VCHAR character.</span></code></span>
@@ -1253,7 +1253,7 @@ input[id=i10]:checked ~pre .i10
 <span class="codeline" id="line-838"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

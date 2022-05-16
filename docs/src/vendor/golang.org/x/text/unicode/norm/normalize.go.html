@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: normalize.go in package vendor/golang.org/x/text/unicode/norm</title>
-<link href="../../../../../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../../../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../../../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../../../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -977,7 +977,7 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-554"><code><span class="comment">// rune in buf or the zero runeInfo and -1 if no rune was found.</span></code></span>
 <span class="codeline" id="line-555"><code><span class="keyword">func</span> <label for="r183" class="ident"><a href="../../../../../../../pkg/vendor/golang.org/x/text/unicode/norm.html#name-lastRuneStart" class="ident">lastRuneStart</a></label>(<label for="r184" class="ident">fd</label> *<a href="forminfo.go.html#line-54" class="ident">formInfo</a>, <label for="r185" class="ident">buf</label> []<a href="../../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>) (<a href="forminfo.go.html#line-40" class="ident">Properties</a>, <a href="../../../../../../../pkg/builtin.html#name-int" class="ident">int</a>) {</code></span>
 <span class="codeline" id="line-556"><code>	<label for="r186" class="ident">p</label> := <a href="../../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r185" class="ident">buf</label>) - <span class="lit-number">1</span></code></span>
-<span class="codeline" id="line-557"><code>	<span class="keyword">for</span> ; <label for="r186" class="ident">p</label> &gt;= <span class="lit-number">0</span> &amp;&amp; !<a href="../../../../../../../pkg/unicode/utf8.html" class="ident i0">utf8</a>.<a href="../../../../../../unicode/utf8/utf8.go.html#line-448" class="ident">RuneStart</a>(<label for="r185" class="ident">buf</label>[<label for="r186" class="ident">p</label>]); <label for="r186" class="ident">p</label>-- {</code></span>
+<span class="codeline" id="line-557"><code>	<span class="keyword">for</span> ; <label for="r186" class="ident">p</label> &gt;= <span class="lit-number">0</span> &amp;&amp; !<a href="../../../../../../../pkg/unicode/utf8.html" class="ident i0">utf8</a>.<a href="../../../../../../unicode/utf8/utf8.go.html#line-474" class="ident">RuneStart</a>(<label for="r185" class="ident">buf</label>[<label for="r186" class="ident">p</label>]); <label for="r186" class="ident">p</label>-- {</code></span>
 <span class="codeline" id="line-558"><code>	}</code></span>
 <span class="codeline" id="line-559"><code>	<span class="keyword">if</span> <label for="r186" class="ident">p</label> &lt; <span class="lit-number">0</span> {</code></span>
 <span class="codeline" id="line-560"><code>		<span class="keyword">return</span> <a href="forminfo.go.html#line-40" class="ident">Properties</a>{}, -<span class="lit-number">1</span></code></span>
@@ -1032,7 +1032,7 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-609"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../../../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

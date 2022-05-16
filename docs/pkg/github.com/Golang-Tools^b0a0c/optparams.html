@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: github.com/Golang-Tools/optparams</title>
+<link href="../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.4.9.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>optparams</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../index.html#pkg-github.com/Golang-Tools/optparams">github.com/Golang-Tools/optparams</a><i> (on <a href="https://pkg.go.dev/github.com/Golang-Tools/optparams" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports 0 packages, and imported by <a href="../../../dep/github.com/Golang-Tools^b0a0c/optparams.html#imported-by">2 packages</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<input type='checkbox' checked class="fold" id="file-0-fold-content"><label for="file-0-fold-content">   <a href="../../../src/github.com/Golang-Tools^b0a0c/optparams/optparams.go.html#doc">#d</a> <a href="../../../src/github.com/Golang-Tools^b0a0c/optparams/optparams.go.html">optparams.go</a></label><span id='file-0-fold-content-items' class="fold-items">
+		optparams 用于管理关键字参数的模块</span></div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 2, both are exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-FuncOption" data-popularity="125">	<input type='checkbox' class="fold" id="FuncOption-fold-content"><label for="FuncOption-fold-content"> type <a href="../../../src/github.com/Golang-Tools^b0a0c/optparams/optparams.go.html#line-12">FuncOption</a>[T] <i>(struct)</i></label><span id='FuncOption-fold-content-docs' class="fold-docs">
+
+		Type Parameters:
+			T: <a href="../../builtin.html#name-any">any</a>
+
+		FuncOption 作为关键字参数项的返回值
+		@generic T any 关键字参数对应的结构
+
+		<input type='checkbox' class="fold" id="FuncOption-fold-fields"><label for="FuncOption-fold-fields">Fields (<i>only one, which is unexported</i>)</label><span id='FuncOption-fold-fields-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="FuncOption-showhide-fields"><i><label for="FuncOption-showhide-fields" class="show-inline">/* one unexported ... */</label><label for="FuncOption-showhide-fields" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../src/github.com/Golang-Tools^b0a0c/optparams/optparams.go.html#line-13">f</a> <i>func(*T)</i></span></i></span></span>
+		<input type='checkbox' class="fold" id="FuncOption-fold-methods"><label for="FuncOption-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='FuncOption-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">(*FuncOption[T]) <a href="../../../src/github.com/Golang-Tools^b0a0c/optparams/optparams.go.html#line-16">Apply</a>(do *T)</span></span></span>
+		<input type='checkbox' class="fold" id="FuncOption-fold-results"><label for="FuncOption-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='FuncOption-fold-results-items' class="fold-items"><span>
+			func <a href="#name-NewFuncOption">NewFuncOption</a>[T](f func(*T)) *<b>FuncOption</b>[T]</span></span>
+
+</span></div><div class="anchor type-res" id="name-Option" data-popularity="1690">	<input type='checkbox' class="fold" id="Option-fold-content"><label for="Option-fold-content"> type <a href="../../../src/github.com/Golang-Tools^b0a0c/optparams/optparams.go.html#line-6">Option</a>[T] <b><i>(interface)</i></b></label><span id='Option-fold-content-docs' class="fold-docs">
+
+		Type Parameters:
+			T: <a href="../../builtin.html#name-any">any</a>
+
+		Option 作为关键字参数的形参类型
+		@generic T any 关键字参数对应的结构
+
+		<input type='checkbox' class="fold" id="Option-fold-methods"><label for="Option-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='Option-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( Option[T]) <a href="../../../src/github.com/Golang-Tools^b0a0c/optparams/optparams.go.html#line-7">Apply</a>(*T)</span></span></span>
+		<input type='checkbox' class="fold" id="Option-fold-results"><label for="Option-fold-results">As Outputs Of (<i>at least 20, all are exported</i>)</label><span id='Option-fold-results-items' class="fold-items"><span>
+			func github.com/Golang-Tools/loggerhelper/v2.<a href="loggerhelper/v2.html#name-AddExtField">AddExtField</a>(field <a href="../../builtin.html#name-string">string</a>, value interface{}) <b>Option</b>[<a href="loggerhelper/v2.html">loggerhelper</a>.<a href="loggerhelper/v2.html#name-Options">Options</a>]</span><span>
+			func github.com/Golang-Tools/loggerhelper/v2.<a href="loggerhelper/v2.html#name-AddHooks">AddHooks</a>(hooks ...<a href="../sirupsen/logrus.html">logrus</a>.<a href="../sirupsen/logrus.html#name-Hook">Hook</a>) <b>Option</b>[<a href="loggerhelper/v2.html">loggerhelper</a>.<a href="loggerhelper/v2.html#name-Options">Options</a>]</span><span>
+			func github.com/Golang-Tools/loggerhelper/v2.<a href="loggerhelper/v2.html#name-WithAddExtFields">WithAddExtFields</a>(extFields map[<a href="../../builtin.html#name-string">string</a>]interface{}) <b>Option</b>[<a href="loggerhelper/v2.html">loggerhelper</a>.<a href="loggerhelper/v2.html#name-Options">Options</a>]</span><span>
+			func github.com/Golang-Tools/loggerhelper/v2.<a href="loggerhelper/v2.html#name-WithDefaultFieldMap">WithDefaultFieldMap</a>(fm <a href="../sirupsen/logrus.html">logrus</a>.<a href="../sirupsen/logrus.html#name-FieldMap">FieldMap</a>) <b>Option</b>[<a href="loggerhelper/v2.html">loggerhelper</a>.<a href="loggerhelper/v2.html#name-Options">Options</a>]</span><span>
+			func github.com/Golang-Tools/loggerhelper/v2.<a href="loggerhelper/v2.html#name-WithDisableTimeField">WithDisableTimeField</a>() <b>Option</b>[<a href="loggerhelper/v2.html">loggerhelper</a>.<a href="loggerhelper/v2.html#name-Options">Options</a>]</span><span>
+			func github.com/Golang-Tools/loggerhelper/v2.<a href="loggerhelper/v2.html#name-WithExtFields">WithExtFields</a>(extFields map[<a href="../../builtin.html#name-string">string</a>]interface{}) <b>Option</b>[<a href="loggerhelper/v2.html">loggerhelper</a>.<a href="loggerhelper/v2.html#name-Options">Options</a>]</span><span>
+			func github.com/Golang-Tools/loggerhelper/v2.<a href="loggerhelper/v2.html#name-WithLevel">WithLevel</a>(loglevel <a href="../../builtin.html#name-string">string</a>) <b>Option</b>[<a href="loggerhelper/v2.html">loggerhelper</a>.<a href="loggerhelper/v2.html#name-Options">Options</a>]</span><span>
+			func github.com/Golang-Tools/loggerhelper/v2.<a href="loggerhelper/v2.html#name-WithOutput">WithOutput</a>(writer <a href="../../io.html">io</a>.<a href="../../io.html#name-Writer">Writer</a>) <b>Option</b>[<a href="loggerhelper/v2.html">loggerhelper</a>.<a href="loggerhelper/v2.html#name-Options">Options</a>]</span><span>
+			func github.com/Golang-Tools/loggerhelper/v2.<a href="loggerhelper/v2.html#name-WithTextFormat">WithTextFormat</a>() <b>Option</b>[<a href="loggerhelper/v2.html">loggerhelper</a>.<a href="loggerhelper/v2.html#name-Options">Options</a>]</span><span>
+			func github.com/Golang-Tools/loggerhelper/v2.<a href="loggerhelper/v2.html#name-WithTimeFormat">WithTimeFormat</a>(TimeFormat <a href="../../builtin.html#name-string">string</a>) <b>Option</b>[<a href="loggerhelper/v2.html">loggerhelper</a>.<a href="loggerhelper/v2.html#name-Options">Options</a>]</span><span>
+			func github.com/Golang-Tools/schema-entry-go/v2.<a href="schema-entry-go/v2.html#name-WithConfig">WithConfig</a>(conf *<a href="schema-entry-go/v2.html">schemaentry</a>.<a href="schema-entry-go/v2.html#name-EntryPointMeta">EntryPointMeta</a>) <b>Option</b>[<a href="schema-entry-go/v2.html">schemaentry</a>.<a href="schema-entry-go/v2.html#name-EntryPointMeta">EntryPointMeta</a>]</span><span>
+			func github.com/Golang-Tools/schema-entry-go/v2.<a href="schema-entry-go/v2.html#name-WithDefaultConfigFilePaths">WithDefaultConfigFilePaths</a>(paths ...<a href="../../builtin.html#name-string">string</a>) <b>Option</b>[<a href="schema-entry-go/v2.html">schemaentry</a>.<a href="schema-entry-go/v2.html#name-EntryPointMeta">EntryPointMeta</a>]</span><span>
+			func github.com/Golang-Tools/schema-entry-go/v2.<a href="schema-entry-go/v2.html#name-WithDescription">WithDescription</a>(desc <a href="../../builtin.html#name-string">string</a>) <b>Option</b>[<a href="schema-entry-go/v2.html">schemaentry</a>.<a href="schema-entry-go/v2.html#name-EntryPointMeta">EntryPointMeta</a>]</span><span>
+			func github.com/Golang-Tools/schema-entry-go/v2.<a href="schema-entry-go/v2.html#name-WithEnvPrefix">WithEnvPrefix</a>(prefix <a href="../../builtin.html#name-string">string</a>) <b>Option</b>[<a href="schema-entry-go/v2.html">schemaentry</a>.<a href="schema-entry-go/v2.html#name-EntryPointMeta">EntryPointMeta</a>]</span><span>
+			func github.com/Golang-Tools/schema-entry-go/v2.<a href="schema-entry-go/v2.html#name-WithLoadAllConfigFile">WithLoadAllConfigFile</a>() <b>Option</b>[<a href="schema-entry-go/v2.html">schemaentry</a>.<a href="schema-entry-go/v2.html#name-EntryPointMeta">EntryPointMeta</a>]</span><span>
+			func github.com/Golang-Tools/schema-entry-go/v2.<a href="schema-entry-go/v2.html#name-WithName">WithName</a>(name <a href="../../builtin.html#name-string">string</a>) <b>Option</b>[<a href="schema-entry-go/v2.html">schemaentry</a>.<a href="schema-entry-go/v2.html#name-EntryPointMeta">EntryPointMeta</a>]</span><span>
+			func github.com/Golang-Tools/schema-entry-go/v2.<a href="schema-entry-go/v2.html#name-WithNotParseEnv">WithNotParseEnv</a>() <b>Option</b>[<a href="schema-entry-go/v2.html">schemaentry</a>.<a href="schema-entry-go/v2.html#name-EntryPointMeta">EntryPointMeta</a>]</span><span>
+			func github.com/Golang-Tools/schema-entry-go/v2.<a href="schema-entry-go/v2.html#name-WithNotVerifySchema">WithNotVerifySchema</a>() <b>Option</b>[<a href="schema-entry-go/v2.html">schemaentry</a>.<a href="schema-entry-go/v2.html#name-EntryPointMeta">EntryPointMeta</a>]</span><span>
+			func github.com/Golang-Tools/schema-entry-go/v2.<a href="schema-entry-go/v2.html#name-WithUsage">WithUsage</a>(usage <a href="../../builtin.html#name-string">string</a>) <b>Option</b>[<a href="schema-entry-go/v2.html">schemaentry</a>.<a href="schema-entry-go/v2.html#name-EntryPointMeta">EntryPointMeta</a>]</span><span>
+			func github.com/Golang-Tools/schema-entry-go/v2.<a href="schema-entry-go/v2.html#name-WithWatchMode">WithWatchMode</a>() <b>Option</b>[<a href="schema-entry-go/v2.html">schemaentry</a>.<a href="schema-entry-go/v2.html#name-EntryPointMeta">EntryPointMeta</a>]</span></span>
+		<input type='checkbox' class="fold" id="Option-fold-params"><label for="Option-fold-params">As Inputs Of (<i>at least 4, all are exported</i>)</label><span id='Option-fold-params-items' class="fold-items"><span>
+			func <a href="#name-GetOption">GetOption</a>[T](defaultopt *T, opts ...<b>Option</b>[T]) *T</span><span>
+			func github.com/Golang-Tools/loggerhelper/v2.<a href="loggerhelper/v2.html#name-Set">Set</a>(opts ...<b>Option</b>[<a href="loggerhelper/v2.html">loggerhelper</a>.<a href="loggerhelper/v2.html#name-Options">Options</a>])</span><span>
+			func github.com/Golang-Tools/schema-entry-go/v2.<a href="schema-entry-go/v2.html#name-NewEndPoint">NewEndPoint</a>[T](config T, opts ...<b>Option</b>[<a href="schema-entry-go/v2.html">schemaentry</a>.<a href="schema-entry-go/v2.html#name-EntryPointMeta">EntryPointMeta</a>]) (*<a href="schema-entry-go/v2.html">schemaentry</a>.<a href="schema-entry-go/v2.html#name-EndPoint">EndPoint</a>[T], <a href="../../builtin.html#name-error">error</a>)</span><span>
+			func github.com/Golang-Tools/schema-entry-go/v2.<a href="schema-entry-go/v2.html#name-NewEntryPoint">NewEntryPoint</a>(opts ...<b>Option</b>[<a href="schema-entry-go/v2.html">schemaentry</a>.<a href="schema-entry-go/v2.html#name-EntryPointMeta">EntryPointMeta</a>]) (*<a href="schema-entry-go/v2.html">schemaentry</a>.<a href="schema-entry-go/v2.html#name-EntryPoint">EntryPoint</a>, <a href="../../builtin.html#name-error">error</a>)</span></span>
+
+</span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 2, both are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-GetOption">	<input type='checkbox' class="fold" id="GetOption-fold-content"><label for="GetOption-fold-content"> func <a href="../../../src/github.com/Golang-Tools^b0a0c/optparams/optparams.go.html#line-36">GetOption</a>[T](defaultopt *T, opts ...<a href="#name-Option">Option</a>[T]) *T</label><span id='GetOption-fold-content-docs' class="fold-docs">
+
+		Type Parameters:
+			T: <a href="../../builtin.html#name-any">any</a>
+
+		GetOption 用于获取一个完整的关键字参数结构实例
+
+</span></div><div class="anchor value-res" id="name-NewFuncOption">	<input type='checkbox' class="fold" id="NewFuncOption-fold-content"><label for="NewFuncOption-fold-content"> func <a href="../../../src/github.com/Golang-Tools^b0a0c/optparams/optparams.go.html#line-29">NewFuncOption</a>[T](f func(*T)) *<a href="#name-FuncOption">FuncOption</a>[T]</label><span id='NewFuncOption-fold-content-docs' class="fold-docs">
+
+		Type Parameters:
+			T: <a href="../../builtin.html#name-any">any</a>
+
+		NewFuncOption 用于构造关键字参数项目
+		@generic T any 关键字参数对应的结构
+		例子:
+		func WithName(name string) optparams.Option[NameOpt] {
+			return optparams.NewFuncOption(
+				func(o *NameOpt) {
+					o.Name = name
+				})
+		}
+
+</span></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

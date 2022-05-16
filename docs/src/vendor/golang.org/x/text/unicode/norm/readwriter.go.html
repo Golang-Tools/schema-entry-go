@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: readwriter.go in package vendor/golang.org/x/text/unicode/norm</title>
-<link href="../../../../../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../../../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../../../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../../../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -147,7 +147,7 @@ input[id=i0]:checked ~pre .i0
 <span class="codeline" id="line-63"><code><span class="comment">// by writing f(b) to w. The returned writer may use an</span></code></span>
 <span class="codeline" id="line-64"><code><span class="comment">// internal buffer to maintain state across Write calls.</span></code></span>
 <span class="codeline" id="line-65"><code><span class="comment">// Calling its Close method writes any buffered data to w.</span></code></span>
-<span class="codeline" id="line-66"><code><span class="keyword">func</span> (<label for="r13" class="ident">f</label> <a href="normalize.go.html#line-34" class="ident">Form</a>) <label for="r14" class="ident">Writer</label>(<label for="r15" class="ident">w</label> <a href="../../../../../../../pkg/io.html" class="ident i0">io</a>.<a href="../../../../../../io/io.go.html#line-96" class="ident">Writer</a>) <a href="../../../../../../../pkg/io.html" class="ident i0">io</a>.<a href="../../../../../../io/io.go.html#line-138" class="ident">WriteCloser</a> {</code></span>
+<span class="codeline" id="line-66"><code><span class="keyword">func</span> (<label for="r13" class="ident">f</label> <a href="normalize.go.html#line-34" class="ident">Form</a>) <label for="r14" class="ident">Writer</label>(<label for="r15" class="ident">w</label> <a href="../../../../../../../pkg/io.html" class="ident i0">io</a>.<a href="../../../../../../io/io.go.html#line-96" class="ident">Writer</a>) <a href="../../../../../../../pkg/io.html" class="ident i0">io</a>.<a href="../../../../../../io/io.go.html#line-139" class="ident">WriteCloser</a> {</code></span>
 <span class="codeline" id="line-67"><code>	<label for="r16" class="ident">wr</label> := &amp;<a href="#line-9" class="ident">normWriter</a>{<a href="#line-10" class="ident">rb</a>: <a href="composition.go.html#line-98" class="ident">reorderBuffer</a>{}, <a href="#line-11" class="ident">w</a>: <label for="r15" class="ident">w</label>}</code></span>
 <span class="codeline" id="line-68"><code>	<label for="r16" class="ident">wr</label>.<a href="#line-10" class="ident">rb</a>.<a href="composition.go.html#line-114" class="ident">init</a>(<label for="r13" class="ident">f</label>, <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a>)</code></span>
 <span class="codeline" id="line-69"><code>	<span class="keyword">return</span> <label for="r16" class="ident">wr</label></code></span>
@@ -209,7 +209,7 @@ input[id=i0]:checked ~pre .i0
 <span class="codeline" id="line-125"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../../../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

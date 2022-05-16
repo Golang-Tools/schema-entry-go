@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: fold.go in package encoding/json</title>
-<link href="../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -119,7 +119,7 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-35"><code>	<label for="r5" class="ident">special</label> := <a href="../../../pkg/builtin.html#name-false" class="ident">false</a> <span class="comment">// special letter</span></code></span>
 <span class="codeline" id="line-36"><code>	<span class="keyword">for</span> <label for="r6" class="ident">_</label>, <label for="r7" class="ident">b</label> := <span class="keyword">range</span> <label for="r1" class="ident">s</label> {</code></span>
 <span class="codeline" id="line-37"><code>		<span class="keyword">if</span> <label for="r7" class="ident">b</label> &gt;= <a href="../../../pkg/unicode/utf8.html" class="ident i1">utf8</a>.<a href="../../unicode/utf8/utf8.go.html#line-17" class="ident">RuneSelf</a> {</code></span>
-<span class="codeline" id="line-38"><code>			<span class="keyword">return</span> <a href="../../../pkg/bytes.html" class="ident i0">bytes</a>.<a href="../../bytes/bytes.go.html#line-1037" class="ident">EqualFold</a></code></span>
+<span class="codeline" id="line-38"><code>			<span class="keyword">return</span> <a href="../../../pkg/bytes.html" class="ident i0">bytes</a>.<a href="../../bytes/bytes.go.html#line-1124" class="ident">EqualFold</a></code></span>
 <span class="codeline" id="line-39"><code>		}</code></span>
 <span class="codeline" id="line-40"><code>		<label for="r8" class="ident">upper</label> := <label for="r7" class="ident">b</label> &amp; <a href="#line-13" class="ident">caseMask</a></code></span>
 <span class="codeline" id="line-41"><code>		<span class="keyword">if</span> <label for="r8" class="ident">upper</label> &lt; <span class="lit-number">'A'</span> || <label for="r8" class="ident">upper</label> &gt; <span class="lit-number">'Z'</span> {</code></span>
@@ -227,7 +227,7 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-143"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

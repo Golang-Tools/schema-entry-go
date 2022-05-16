@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: list.go in package container/list</title>
-<link href="../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -191,7 +191,7 @@ input[id=r72]:checked ~pre label[for=r72]
 <span class="codeline" id="line-24"><code>	list *<a href="#line-48" class="ident">List</a></code></span>
 <span class="codeline" id="line-25"><code></code></span>
 <span class="codeline" id="line-26"><code>	<span class="comment">// The value stored with this element.</span></code></span>
-<span class="codeline" id="line-27"><code>	Value <span class="keyword">interface</span>{}</code></span>
+<span class="codeline" id="line-27"><code>	Value <a href="../../../pkg/builtin.html#name-any" class="ident">any</a></code></span>
 <span class="codeline" id="line-28"><code>}</code></span>
 <span class="codeline" id="line-29"><code></code></span>
 <span class="codeline" id="line-30"><code><span class="comment">// Next returns the next list element or nil.</span></code></span>
@@ -267,145 +267,142 @@ input[id=r72]:checked ~pre label[for=r72]
 <span class="codeline" id="line-100"><code>}</code></span>
 <span class="codeline" id="line-101"><code></code></span>
 <span class="codeline" id="line-102"><code><span class="comment">// insertValue is a convenience wrapper for insert(&amp;Element{Value: v}, at).</span></code></span>
-<span class="codeline" id="line-103"><code><span class="keyword">func</span> (<label for="r21" class="ident">l</label> *<a href="#line-48" class="ident">List</a>) <label for="r22" class="ident">insertValue</label>(<label for="r23" class="ident">v</label> <span class="keyword">interface</span>{}, <label for="r24" class="ident">at</label> *<a href="#line-15" class="ident">Element</a>) *<a href="#line-15" class="ident">Element</a> {</code></span>
+<span class="codeline" id="line-103"><code><span class="keyword">func</span> (<label for="r21" class="ident">l</label> *<a href="#line-48" class="ident">List</a>) <label for="r22" class="ident">insertValue</label>(<label for="r23" class="ident">v</label> <a href="../../../pkg/builtin.html#name-any" class="ident">any</a>, <label for="r24" class="ident">at</label> *<a href="#line-15" class="ident">Element</a>) *<a href="#line-15" class="ident">Element</a> {</code></span>
 <span class="codeline" id="line-104"><code>	<span class="keyword">return</span> <label for="r21" class="ident">l</label>.<a href="#line-92" class="ident">insert</a>(&amp;<a href="#line-15" class="ident">Element</a>{<a href="#line-27" class="ident">Value</a>: <label for="r23" class="ident">v</label>}, <label for="r24" class="ident">at</label>)</code></span>
 <span class="codeline" id="line-105"><code>}</code></span>
 <span class="codeline" id="line-106"><code></code></span>
-<span class="codeline" id="line-107"><code><span class="comment">// remove removes e from its list, decrements l.len, and returns e.</span></code></span>
-<span class="codeline" id="line-108"><code><span class="keyword">func</span> (<label for="r25" class="ident">l</label> *<a href="#line-48" class="ident">List</a>) <label for="r26" class="ident">remove</label>(<label for="r27" class="ident">e</label> *<a href="#line-15" class="ident">Element</a>) *<a href="#line-15" class="ident">Element</a> {</code></span>
+<span class="codeline" id="line-107"><code><span class="comment">// remove removes e from its list, decrements l.len</span></code></span>
+<span class="codeline" id="line-108"><code><span class="keyword">func</span> (<label for="r25" class="ident">l</label> *<a href="#line-48" class="ident">List</a>) <label for="r26" class="ident">remove</label>(<label for="r27" class="ident">e</label> *<a href="#line-15" class="ident">Element</a>) {</code></span>
 <span class="codeline" id="line-109"><code>	<label for="r27" class="ident">e</label>.<a href="#line-21" class="ident">prev</a>.<a href="#line-21" class="ident">next</a> = <label for="r27" class="ident">e</label>.<a href="#line-21" class="ident">next</a></code></span>
 <span class="codeline" id="line-110"><code>	<label for="r27" class="ident">e</label>.<a href="#line-21" class="ident">next</a>.<a href="#line-21" class="ident">prev</a> = <label for="r27" class="ident">e</label>.<a href="#line-21" class="ident">prev</a></code></span>
 <span class="codeline" id="line-111"><code>	<label for="r27" class="ident">e</label>.<a href="#line-21" class="ident">next</a> = <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a> <span class="comment">// avoid memory leaks</span></code></span>
 <span class="codeline" id="line-112"><code>	<label for="r27" class="ident">e</label>.<a href="#line-21" class="ident">prev</a> = <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a> <span class="comment">// avoid memory leaks</span></code></span>
 <span class="codeline" id="line-113"><code>	<label for="r27" class="ident">e</label>.<a href="#line-24" class="ident">list</a> = <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
 <span class="codeline" id="line-114"><code>	<label for="r25" class="ident">l</label>.<a href="#line-50" class="ident">len</a>--</code></span>
-<span class="codeline" id="line-115"><code>	<span class="keyword">return</span> <label for="r27" class="ident">e</label></code></span>
-<span class="codeline" id="line-116"><code>}</code></span>
-<span class="codeline" id="line-117"><code></code></span>
-<span class="codeline" id="line-118"><code><span class="comment">// move moves e to next to at and returns e.</span></code></span>
-<span class="codeline" id="line-119"><code><span class="keyword">func</span> (<label for="r28" class="ident">l</label> *<a href="#line-48" class="ident">List</a>) <label for="r29" class="ident">move</label>(<label for="r30" class="ident">e</label>, <label for="r31" class="ident">at</label> *<a href="#line-15" class="ident">Element</a>) *<a href="#line-15" class="ident">Element</a> {</code></span>
-<span class="codeline" id="line-120"><code>	<span class="keyword">if</span> <label for="r30" class="ident">e</label> == <label for="r31" class="ident">at</label> {</code></span>
-<span class="codeline" id="line-121"><code>		<span class="keyword">return</span> <label for="r30" class="ident">e</label></code></span>
-<span class="codeline" id="line-122"><code>	}</code></span>
-<span class="codeline" id="line-123"><code>	<label for="r30" class="ident">e</label>.<a href="#line-21" class="ident">prev</a>.<a href="#line-21" class="ident">next</a> = <label for="r30" class="ident">e</label>.<a href="#line-21" class="ident">next</a></code></span>
-<span class="codeline" id="line-124"><code>	<label for="r30" class="ident">e</label>.<a href="#line-21" class="ident">next</a>.<a href="#line-21" class="ident">prev</a> = <label for="r30" class="ident">e</label>.<a href="#line-21" class="ident">prev</a></code></span>
-<span class="codeline" id="line-125"><code></code></span>
-<span class="codeline" id="line-126"><code>	<label for="r30" class="ident">e</label>.<a href="#line-21" class="ident">prev</a> = <label for="r31" class="ident">at</label></code></span>
-<span class="codeline" id="line-127"><code>	<label for="r30" class="ident">e</label>.<a href="#line-21" class="ident">next</a> = <label for="r31" class="ident">at</label>.<a href="#line-21" class="ident">next</a></code></span>
-<span class="codeline" id="line-128"><code>	<label for="r30" class="ident">e</label>.<a href="#line-21" class="ident">prev</a>.<a href="#line-21" class="ident">next</a> = <label for="r30" class="ident">e</label></code></span>
-<span class="codeline" id="line-129"><code>	<label for="r30" class="ident">e</label>.<a href="#line-21" class="ident">next</a>.<a href="#line-21" class="ident">prev</a> = <label for="r30" class="ident">e</label></code></span>
+<span class="codeline" id="line-115"><code>}</code></span>
+<span class="codeline" id="line-116"><code></code></span>
+<span class="codeline" id="line-117"><code><span class="comment">// move moves e to next to at.</span></code></span>
+<span class="codeline" id="line-118"><code><span class="keyword">func</span> (<label for="r28" class="ident">l</label> *<a href="#line-48" class="ident">List</a>) <label for="r29" class="ident">move</label>(<label for="r30" class="ident">e</label>, <label for="r31" class="ident">at</label> *<a href="#line-15" class="ident">Element</a>) {</code></span>
+<span class="codeline" id="line-119"><code>	<span class="keyword">if</span> <label for="r30" class="ident">e</label> == <label for="r31" class="ident">at</label> {</code></span>
+<span class="codeline" id="line-120"><code>		<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-121"><code>	}</code></span>
+<span class="codeline" id="line-122"><code>	<label for="r30" class="ident">e</label>.<a href="#line-21" class="ident">prev</a>.<a href="#line-21" class="ident">next</a> = <label for="r30" class="ident">e</label>.<a href="#line-21" class="ident">next</a></code></span>
+<span class="codeline" id="line-123"><code>	<label for="r30" class="ident">e</label>.<a href="#line-21" class="ident">next</a>.<a href="#line-21" class="ident">prev</a> = <label for="r30" class="ident">e</label>.<a href="#line-21" class="ident">prev</a></code></span>
+<span class="codeline" id="line-124"><code></code></span>
+<span class="codeline" id="line-125"><code>	<label for="r30" class="ident">e</label>.<a href="#line-21" class="ident">prev</a> = <label for="r31" class="ident">at</label></code></span>
+<span class="codeline" id="line-126"><code>	<label for="r30" class="ident">e</label>.<a href="#line-21" class="ident">next</a> = <label for="r31" class="ident">at</label>.<a href="#line-21" class="ident">next</a></code></span>
+<span class="codeline" id="line-127"><code>	<label for="r30" class="ident">e</label>.<a href="#line-21" class="ident">prev</a>.<a href="#line-21" class="ident">next</a> = <label for="r30" class="ident">e</label></code></span>
+<span class="codeline" id="line-128"><code>	<label for="r30" class="ident">e</label>.<a href="#line-21" class="ident">next</a>.<a href="#line-21" class="ident">prev</a> = <label for="r30" class="ident">e</label></code></span>
+<span class="codeline" id="line-129"><code>}</code></span>
 <span class="codeline" id="line-130"><code></code></span>
-<span class="codeline" id="line-131"><code>	<span class="keyword">return</span> <label for="r30" class="ident">e</label></code></span>
-<span class="codeline" id="line-132"><code>}</code></span>
-<span class="codeline" id="line-133"><code></code></span>
-<span class="codeline" id="line-134"><code><span class="comment">// Remove removes e from l if e is an element of list l.</span></code></span>
-<span class="codeline" id="line-135"><code><span class="comment">// It returns the element value e.Value.</span></code></span>
-<span class="codeline" id="line-136"><code><span class="comment">// The element must not be nil.</span></code></span>
-<span class="codeline" id="line-137"><code><span class="keyword">func</span> (<label for="r32" class="ident">l</label> *<a href="#line-48" class="ident">List</a>) <label for="r33" class="ident">Remove</label>(<label for="r34" class="ident">e</label> *<a href="#line-15" class="ident">Element</a>) <span class="keyword">interface</span>{} {</code></span>
-<span class="codeline" id="line-138"><code>	<span class="keyword">if</span> <label for="r34" class="ident">e</label>.<a href="#line-24" class="ident">list</a> == <label for="r32" class="ident">l</label> {</code></span>
-<span class="codeline" id="line-139"><code>		<span class="comment">// if e.list == l, l must have been initialized when e was inserted</span></code></span>
-<span class="codeline" id="line-140"><code><span class="comment">		// in l or l == nil (e is a zero Element) and l.remove will crash</span></code></span>
-<span class="codeline" id="line-141"><code>		<label for="r32" class="ident">l</label>.<a href="#line-108" class="ident">remove</a>(<label for="r34" class="ident">e</label>)</code></span>
-<span class="codeline" id="line-142"><code>	}</code></span>
-<span class="codeline" id="line-143"><code>	<span class="keyword">return</span> <label for="r34" class="ident">e</label>.<a href="#line-27" class="ident">Value</a></code></span>
-<span class="codeline" id="line-144"><code>}</code></span>
-<span class="codeline" id="line-145"><code></code></span>
-<span class="codeline" id="line-146"><code><span class="comment">// PushFront inserts a new element e with value v at the front of list l and returns e.</span></code></span>
-<span class="codeline" id="line-147"><code><span class="keyword">func</span> (<label for="r35" class="ident">l</label> *<a href="#line-48" class="ident">List</a>) <label for="r36" class="ident">PushFront</label>(<label for="r37" class="ident">v</label> <span class="keyword">interface</span>{}) *<a href="#line-15" class="ident">Element</a> {</code></span>
-<span class="codeline" id="line-148"><code>	<label for="r35" class="ident">l</label>.<a href="#line-85" class="ident">lazyInit</a>()</code></span>
-<span class="codeline" id="line-149"><code>	<span class="keyword">return</span> <label for="r35" class="ident">l</label>.<a href="#line-103" class="ident">insertValue</a>(<label for="r37" class="ident">v</label>, &amp;<label for="r35" class="ident">l</label>.<a href="#line-49" class="ident">root</a>)</code></span>
-<span class="codeline" id="line-150"><code>}</code></span>
-<span class="codeline" id="line-151"><code></code></span>
-<span class="codeline" id="line-152"><code><span class="comment">// PushBack inserts a new element e with value v at the back of list l and returns e.</span></code></span>
-<span class="codeline" id="line-153"><code><span class="keyword">func</span> (<label for="r38" class="ident">l</label> *<a href="#line-48" class="ident">List</a>) <label for="r39" class="ident">PushBack</label>(<label for="r40" class="ident">v</label> <span class="keyword">interface</span>{}) *<a href="#line-15" class="ident">Element</a> {</code></span>
-<span class="codeline" id="line-154"><code>	<label for="r38" class="ident">l</label>.<a href="#line-85" class="ident">lazyInit</a>()</code></span>
-<span class="codeline" id="line-155"><code>	<span class="keyword">return</span> <label for="r38" class="ident">l</label>.<a href="#line-103" class="ident">insertValue</a>(<label for="r40" class="ident">v</label>, <label for="r38" class="ident">l</label>.<a href="#line-49" class="ident">root</a>.<a href="#line-21" class="ident">prev</a>)</code></span>
-<span class="codeline" id="line-156"><code>}</code></span>
-<span class="codeline" id="line-157"><code></code></span>
-<span class="codeline" id="line-158"><code><span class="comment">// InsertBefore inserts a new element e with value v immediately before mark and returns e.</span></code></span>
-<span class="codeline" id="line-159"><code><span class="comment">// If mark is not an element of l, the list is not modified.</span></code></span>
-<span class="codeline" id="line-160"><code><span class="comment">// The mark must not be nil.</span></code></span>
-<span class="codeline" id="line-161"><code><span class="keyword">func</span> (<label for="r41" class="ident">l</label> *<a href="#line-48" class="ident">List</a>) <label for="r42" class="ident">InsertBefore</label>(<label for="r43" class="ident">v</label> <span class="keyword">interface</span>{}, <label for="r44" class="ident">mark</label> *<a href="#line-15" class="ident">Element</a>) *<a href="#line-15" class="ident">Element</a> {</code></span>
-<span class="codeline" id="line-162"><code>	<span class="keyword">if</span> <label for="r44" class="ident">mark</label>.<a href="#line-24" class="ident">list</a> != <label for="r41" class="ident">l</label> {</code></span>
-<span class="codeline" id="line-163"><code>		<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
-<span class="codeline" id="line-164"><code>	}</code></span>
-<span class="codeline" id="line-165"><code>	<span class="comment">// see comment in List.Remove about initialization of l</span></code></span>
-<span class="codeline" id="line-166"><code>	<span class="keyword">return</span> <label for="r41" class="ident">l</label>.<a href="#line-103" class="ident">insertValue</a>(<label for="r43" class="ident">v</label>, <label for="r44" class="ident">mark</label>.<a href="#line-21" class="ident">prev</a>)</code></span>
-<span class="codeline" id="line-167"><code>}</code></span>
-<span class="codeline" id="line-168"><code></code></span>
-<span class="codeline" id="line-169"><code><span class="comment">// InsertAfter inserts a new element e with value v immediately after mark and returns e.</span></code></span>
-<span class="codeline" id="line-170"><code><span class="comment">// If mark is not an element of l, the list is not modified.</span></code></span>
-<span class="codeline" id="line-171"><code><span class="comment">// The mark must not be nil.</span></code></span>
-<span class="codeline" id="line-172"><code><span class="keyword">func</span> (<label for="r45" class="ident">l</label> *<a href="#line-48" class="ident">List</a>) <label for="r46" class="ident">InsertAfter</label>(<label for="r47" class="ident">v</label> <span class="keyword">interface</span>{}, <label for="r48" class="ident">mark</label> *<a href="#line-15" class="ident">Element</a>) *<a href="#line-15" class="ident">Element</a> {</code></span>
-<span class="codeline" id="line-173"><code>	<span class="keyword">if</span> <label for="r48" class="ident">mark</label>.<a href="#line-24" class="ident">list</a> != <label for="r45" class="ident">l</label> {</code></span>
-<span class="codeline" id="line-174"><code>		<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
-<span class="codeline" id="line-175"><code>	}</code></span>
-<span class="codeline" id="line-176"><code>	<span class="comment">// see comment in List.Remove about initialization of l</span></code></span>
-<span class="codeline" id="line-177"><code>	<span class="keyword">return</span> <label for="r45" class="ident">l</label>.<a href="#line-103" class="ident">insertValue</a>(<label for="r47" class="ident">v</label>, <label for="r48" class="ident">mark</label>)</code></span>
-<span class="codeline" id="line-178"><code>}</code></span>
-<span class="codeline" id="line-179"><code></code></span>
-<span class="codeline" id="line-180"><code><span class="comment">// MoveToFront moves element e to the front of list l.</span></code></span>
-<span class="codeline" id="line-181"><code><span class="comment">// If e is not an element of l, the list is not modified.</span></code></span>
-<span class="codeline" id="line-182"><code><span class="comment">// The element must not be nil.</span></code></span>
-<span class="codeline" id="line-183"><code><span class="keyword">func</span> (<label for="r49" class="ident">l</label> *<a href="#line-48" class="ident">List</a>) <label for="r50" class="ident">MoveToFront</label>(<label for="r51" class="ident">e</label> *<a href="#line-15" class="ident">Element</a>) {</code></span>
-<span class="codeline" id="line-184"><code>	<span class="keyword">if</span> <label for="r51" class="ident">e</label>.<a href="#line-24" class="ident">list</a> != <label for="r49" class="ident">l</label> || <label for="r49" class="ident">l</label>.<a href="#line-49" class="ident">root</a>.<a href="#line-21" class="ident">next</a> == <label for="r51" class="ident">e</label> {</code></span>
-<span class="codeline" id="line-185"><code>		<span class="keyword">return</span></code></span>
-<span class="codeline" id="line-186"><code>	}</code></span>
-<span class="codeline" id="line-187"><code>	<span class="comment">// see comment in List.Remove about initialization of l</span></code></span>
-<span class="codeline" id="line-188"><code>	<label for="r49" class="ident">l</label>.<a href="#line-119" class="ident">move</a>(<label for="r51" class="ident">e</label>, &amp;<label for="r49" class="ident">l</label>.<a href="#line-49" class="ident">root</a>)</code></span>
-<span class="codeline" id="line-189"><code>}</code></span>
-<span class="codeline" id="line-190"><code></code></span>
-<span class="codeline" id="line-191"><code><span class="comment">// MoveToBack moves element e to the back of list l.</span></code></span>
-<span class="codeline" id="line-192"><code><span class="comment">// If e is not an element of l, the list is not modified.</span></code></span>
-<span class="codeline" id="line-193"><code><span class="comment">// The element must not be nil.</span></code></span>
-<span class="codeline" id="line-194"><code><span class="keyword">func</span> (<label for="r52" class="ident">l</label> *<a href="#line-48" class="ident">List</a>) <label for="r53" class="ident">MoveToBack</label>(<label for="r54" class="ident">e</label> *<a href="#line-15" class="ident">Element</a>) {</code></span>
-<span class="codeline" id="line-195"><code>	<span class="keyword">if</span> <label for="r54" class="ident">e</label>.<a href="#line-24" class="ident">list</a> != <label for="r52" class="ident">l</label> || <label for="r52" class="ident">l</label>.<a href="#line-49" class="ident">root</a>.<a href="#line-21" class="ident">prev</a> == <label for="r54" class="ident">e</label> {</code></span>
-<span class="codeline" id="line-196"><code>		<span class="keyword">return</span></code></span>
-<span class="codeline" id="line-197"><code>	}</code></span>
-<span class="codeline" id="line-198"><code>	<span class="comment">// see comment in List.Remove about initialization of l</span></code></span>
-<span class="codeline" id="line-199"><code>	<label for="r52" class="ident">l</label>.<a href="#line-119" class="ident">move</a>(<label for="r54" class="ident">e</label>, <label for="r52" class="ident">l</label>.<a href="#line-49" class="ident">root</a>.<a href="#line-21" class="ident">prev</a>)</code></span>
-<span class="codeline" id="line-200"><code>}</code></span>
-<span class="codeline" id="line-201"><code></code></span>
-<span class="codeline" id="line-202"><code><span class="comment">// MoveBefore moves element e to its new position before mark.</span></code></span>
-<span class="codeline" id="line-203"><code><span class="comment">// If e or mark is not an element of l, or e == mark, the list is not modified.</span></code></span>
-<span class="codeline" id="line-204"><code><span class="comment">// The element and mark must not be nil.</span></code></span>
-<span class="codeline" id="line-205"><code><span class="keyword">func</span> (<label for="r55" class="ident">l</label> *<a href="#line-48" class="ident">List</a>) <label for="r56" class="ident">MoveBefore</label>(<label for="r57" class="ident">e</label>, <label for="r58" class="ident">mark</label> *<a href="#line-15" class="ident">Element</a>) {</code></span>
-<span class="codeline" id="line-206"><code>	<span class="keyword">if</span> <label for="r57" class="ident">e</label>.<a href="#line-24" class="ident">list</a> != <label for="r55" class="ident">l</label> || <label for="r57" class="ident">e</label> == <label for="r58" class="ident">mark</label> || <label for="r58" class="ident">mark</label>.<a href="#line-24" class="ident">list</a> != <label for="r55" class="ident">l</label> {</code></span>
-<span class="codeline" id="line-207"><code>		<span class="keyword">return</span></code></span>
-<span class="codeline" id="line-208"><code>	}</code></span>
-<span class="codeline" id="line-209"><code>	<label for="r55" class="ident">l</label>.<a href="#line-119" class="ident">move</a>(<label for="r57" class="ident">e</label>, <label for="r58" class="ident">mark</label>.<a href="#line-21" class="ident">prev</a>)</code></span>
-<span class="codeline" id="line-210"><code>}</code></span>
-<span class="codeline" id="line-211"><code></code></span>
-<span class="codeline" id="line-212"><code><span class="comment">// MoveAfter moves element e to its new position after mark.</span></code></span>
-<span class="codeline" id="line-213"><code><span class="comment">// If e or mark is not an element of l, or e == mark, the list is not modified.</span></code></span>
-<span class="codeline" id="line-214"><code><span class="comment">// The element and mark must not be nil.</span></code></span>
-<span class="codeline" id="line-215"><code><span class="keyword">func</span> (<label for="r59" class="ident">l</label> *<a href="#line-48" class="ident">List</a>) <label for="r60" class="ident">MoveAfter</label>(<label for="r61" class="ident">e</label>, <label for="r62" class="ident">mark</label> *<a href="#line-15" class="ident">Element</a>) {</code></span>
-<span class="codeline" id="line-216"><code>	<span class="keyword">if</span> <label for="r61" class="ident">e</label>.<a href="#line-24" class="ident">list</a> != <label for="r59" class="ident">l</label> || <label for="r61" class="ident">e</label> == <label for="r62" class="ident">mark</label> || <label for="r62" class="ident">mark</label>.<a href="#line-24" class="ident">list</a> != <label for="r59" class="ident">l</label> {</code></span>
-<span class="codeline" id="line-217"><code>		<span class="keyword">return</span></code></span>
-<span class="codeline" id="line-218"><code>	}</code></span>
-<span class="codeline" id="line-219"><code>	<label for="r59" class="ident">l</label>.<a href="#line-119" class="ident">move</a>(<label for="r61" class="ident">e</label>, <label for="r62" class="ident">mark</label>)</code></span>
-<span class="codeline" id="line-220"><code>}</code></span>
-<span class="codeline" id="line-221"><code></code></span>
-<span class="codeline" id="line-222"><code><span class="comment">// PushBackList inserts a copy of another list at the back of list l.</span></code></span>
-<span class="codeline" id="line-223"><code><span class="comment">// The lists l and other may be the same. They must not be nil.</span></code></span>
-<span class="codeline" id="line-224"><code><span class="keyword">func</span> (<label for="r63" class="ident">l</label> *<a href="#line-48" class="ident">List</a>) <label for="r64" class="ident">PushBackList</label>(<label for="r65" class="ident">other</label> *<a href="#line-48" class="ident">List</a>) {</code></span>
-<span class="codeline" id="line-225"><code>	<label for="r63" class="ident">l</label>.<a href="#line-85" class="ident">lazyInit</a>()</code></span>
-<span class="codeline" id="line-226"><code>	<span class="keyword">for</span> <label for="r66" class="ident">i</label>, <label for="r67" class="ident">e</label> := <label for="r65" class="ident">other</label>.<a href="#line-66" class="ident">Len</a>(), <label for="r65" class="ident">other</label>.<a href="#line-69" class="ident">Front</a>(); <label for="r66" class="ident">i</label> &gt; <span class="lit-number">0</span>; <label for="r66" class="ident">i</label>, <label for="r67" class="ident">e</label> = <label for="r66" class="ident">i</label>-<span class="lit-number">1</span>, <label for="r67" class="ident">e</label>.<a href="#line-31" class="ident">Next</a>() {</code></span>
-<span class="codeline" id="line-227"><code>		<label for="r63" class="ident">l</label>.<a href="#line-103" class="ident">insertValue</a>(<label for="r67" class="ident">e</label>.<a href="#line-27" class="ident">Value</a>, <label for="r63" class="ident">l</label>.<a href="#line-49" class="ident">root</a>.<a href="#line-21" class="ident">prev</a>)</code></span>
-<span class="codeline" id="line-228"><code>	}</code></span>
-<span class="codeline" id="line-229"><code>}</code></span>
-<span class="codeline" id="line-230"><code></code></span>
-<span class="codeline" id="line-231"><code><span class="comment">// PushFrontList inserts a copy of another list at the front of list l.</span></code></span>
-<span class="codeline" id="line-232"><code><span class="comment">// The lists l and other may be the same. They must not be nil.</span></code></span>
-<span class="codeline" id="line-233"><code><span class="keyword">func</span> (<label for="r68" class="ident">l</label> *<a href="#line-48" class="ident">List</a>) <label for="r69" class="ident">PushFrontList</label>(<label for="r70" class="ident">other</label> *<a href="#line-48" class="ident">List</a>) {</code></span>
-<span class="codeline" id="line-234"><code>	<label for="r68" class="ident">l</label>.<a href="#line-85" class="ident">lazyInit</a>()</code></span>
-<span class="codeline" id="line-235"><code>	<span class="keyword">for</span> <label for="r71" class="ident">i</label>, <label for="r72" class="ident">e</label> := <label for="r70" class="ident">other</label>.<a href="#line-66" class="ident">Len</a>(), <label for="r70" class="ident">other</label>.<a href="#line-77" class="ident">Back</a>(); <label for="r71" class="ident">i</label> &gt; <span class="lit-number">0</span>; <label for="r71" class="ident">i</label>, <label for="r72" class="ident">e</label> = <label for="r71" class="ident">i</label>-<span class="lit-number">1</span>, <label for="r72" class="ident">e</label>.<a href="#line-39" class="ident">Prev</a>() {</code></span>
-<span class="codeline" id="line-236"><code>		<label for="r68" class="ident">l</label>.<a href="#line-103" class="ident">insertValue</a>(<label for="r72" class="ident">e</label>.<a href="#line-27" class="ident">Value</a>, &amp;<label for="r68" class="ident">l</label>.<a href="#line-49" class="ident">root</a>)</code></span>
-<span class="codeline" id="line-237"><code>	}</code></span>
-<span class="codeline" id="line-238"><code>}</code></span>
+<span class="codeline" id="line-131"><code><span class="comment">// Remove removes e from l if e is an element of list l.</span></code></span>
+<span class="codeline" id="line-132"><code><span class="comment">// It returns the element value e.Value.</span></code></span>
+<span class="codeline" id="line-133"><code><span class="comment">// The element must not be nil.</span></code></span>
+<span class="codeline" id="line-134"><code><span class="keyword">func</span> (<label for="r32" class="ident">l</label> *<a href="#line-48" class="ident">List</a>) <label for="r33" class="ident">Remove</label>(<label for="r34" class="ident">e</label> *<a href="#line-15" class="ident">Element</a>) <a href="../../../pkg/builtin.html#name-any" class="ident">any</a> {</code></span>
+<span class="codeline" id="line-135"><code>	<span class="keyword">if</span> <label for="r34" class="ident">e</label>.<a href="#line-24" class="ident">list</a> == <label for="r32" class="ident">l</label> {</code></span>
+<span class="codeline" id="line-136"><code>		<span class="comment">// if e.list == l, l must have been initialized when e was inserted</span></code></span>
+<span class="codeline" id="line-137"><code><span class="comment">		// in l or l == nil (e is a zero Element) and l.remove will crash</span></code></span>
+<span class="codeline" id="line-138"><code>		<label for="r32" class="ident">l</label>.<a href="#line-108" class="ident">remove</a>(<label for="r34" class="ident">e</label>)</code></span>
+<span class="codeline" id="line-139"><code>	}</code></span>
+<span class="codeline" id="line-140"><code>	<span class="keyword">return</span> <label for="r34" class="ident">e</label>.<a href="#line-27" class="ident">Value</a></code></span>
+<span class="codeline" id="line-141"><code>}</code></span>
+<span class="codeline" id="line-142"><code></code></span>
+<span class="codeline" id="line-143"><code><span class="comment">// PushFront inserts a new element e with value v at the front of list l and returns e.</span></code></span>
+<span class="codeline" id="line-144"><code><span class="keyword">func</span> (<label for="r35" class="ident">l</label> *<a href="#line-48" class="ident">List</a>) <label for="r36" class="ident">PushFront</label>(<label for="r37" class="ident">v</label> <a href="../../../pkg/builtin.html#name-any" class="ident">any</a>) *<a href="#line-15" class="ident">Element</a> {</code></span>
+<span class="codeline" id="line-145"><code>	<label for="r35" class="ident">l</label>.<a href="#line-85" class="ident">lazyInit</a>()</code></span>
+<span class="codeline" id="line-146"><code>	<span class="keyword">return</span> <label for="r35" class="ident">l</label>.<a href="#line-103" class="ident">insertValue</a>(<label for="r37" class="ident">v</label>, &amp;<label for="r35" class="ident">l</label>.<a href="#line-49" class="ident">root</a>)</code></span>
+<span class="codeline" id="line-147"><code>}</code></span>
+<span class="codeline" id="line-148"><code></code></span>
+<span class="codeline" id="line-149"><code><span class="comment">// PushBack inserts a new element e with value v at the back of list l and returns e.</span></code></span>
+<span class="codeline" id="line-150"><code><span class="keyword">func</span> (<label for="r38" class="ident">l</label> *<a href="#line-48" class="ident">List</a>) <label for="r39" class="ident">PushBack</label>(<label for="r40" class="ident">v</label> <a href="../../../pkg/builtin.html#name-any" class="ident">any</a>) *<a href="#line-15" class="ident">Element</a> {</code></span>
+<span class="codeline" id="line-151"><code>	<label for="r38" class="ident">l</label>.<a href="#line-85" class="ident">lazyInit</a>()</code></span>
+<span class="codeline" id="line-152"><code>	<span class="keyword">return</span> <label for="r38" class="ident">l</label>.<a href="#line-103" class="ident">insertValue</a>(<label for="r40" class="ident">v</label>, <label for="r38" class="ident">l</label>.<a href="#line-49" class="ident">root</a>.<a href="#line-21" class="ident">prev</a>)</code></span>
+<span class="codeline" id="line-153"><code>}</code></span>
+<span class="codeline" id="line-154"><code></code></span>
+<span class="codeline" id="line-155"><code><span class="comment">// InsertBefore inserts a new element e with value v immediately before mark and returns e.</span></code></span>
+<span class="codeline" id="line-156"><code><span class="comment">// If mark is not an element of l, the list is not modified.</span></code></span>
+<span class="codeline" id="line-157"><code><span class="comment">// The mark must not be nil.</span></code></span>
+<span class="codeline" id="line-158"><code><span class="keyword">func</span> (<label for="r41" class="ident">l</label> *<a href="#line-48" class="ident">List</a>) <label for="r42" class="ident">InsertBefore</label>(<label for="r43" class="ident">v</label> <a href="../../../pkg/builtin.html#name-any" class="ident">any</a>, <label for="r44" class="ident">mark</label> *<a href="#line-15" class="ident">Element</a>) *<a href="#line-15" class="ident">Element</a> {</code></span>
+<span class="codeline" id="line-159"><code>	<span class="keyword">if</span> <label for="r44" class="ident">mark</label>.<a href="#line-24" class="ident">list</a> != <label for="r41" class="ident">l</label> {</code></span>
+<span class="codeline" id="line-160"><code>		<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-161"><code>	}</code></span>
+<span class="codeline" id="line-162"><code>	<span class="comment">// see comment in List.Remove about initialization of l</span></code></span>
+<span class="codeline" id="line-163"><code>	<span class="keyword">return</span> <label for="r41" class="ident">l</label>.<a href="#line-103" class="ident">insertValue</a>(<label for="r43" class="ident">v</label>, <label for="r44" class="ident">mark</label>.<a href="#line-21" class="ident">prev</a>)</code></span>
+<span class="codeline" id="line-164"><code>}</code></span>
+<span class="codeline" id="line-165"><code></code></span>
+<span class="codeline" id="line-166"><code><span class="comment">// InsertAfter inserts a new element e with value v immediately after mark and returns e.</span></code></span>
+<span class="codeline" id="line-167"><code><span class="comment">// If mark is not an element of l, the list is not modified.</span></code></span>
+<span class="codeline" id="line-168"><code><span class="comment">// The mark must not be nil.</span></code></span>
+<span class="codeline" id="line-169"><code><span class="keyword">func</span> (<label for="r45" class="ident">l</label> *<a href="#line-48" class="ident">List</a>) <label for="r46" class="ident">InsertAfter</label>(<label for="r47" class="ident">v</label> <a href="../../../pkg/builtin.html#name-any" class="ident">any</a>, <label for="r48" class="ident">mark</label> *<a href="#line-15" class="ident">Element</a>) *<a href="#line-15" class="ident">Element</a> {</code></span>
+<span class="codeline" id="line-170"><code>	<span class="keyword">if</span> <label for="r48" class="ident">mark</label>.<a href="#line-24" class="ident">list</a> != <label for="r45" class="ident">l</label> {</code></span>
+<span class="codeline" id="line-171"><code>		<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
+<span class="codeline" id="line-172"><code>	}</code></span>
+<span class="codeline" id="line-173"><code>	<span class="comment">// see comment in List.Remove about initialization of l</span></code></span>
+<span class="codeline" id="line-174"><code>	<span class="keyword">return</span> <label for="r45" class="ident">l</label>.<a href="#line-103" class="ident">insertValue</a>(<label for="r47" class="ident">v</label>, <label for="r48" class="ident">mark</label>)</code></span>
+<span class="codeline" id="line-175"><code>}</code></span>
+<span class="codeline" id="line-176"><code></code></span>
+<span class="codeline" id="line-177"><code><span class="comment">// MoveToFront moves element e to the front of list l.</span></code></span>
+<span class="codeline" id="line-178"><code><span class="comment">// If e is not an element of l, the list is not modified.</span></code></span>
+<span class="codeline" id="line-179"><code><span class="comment">// The element must not be nil.</span></code></span>
+<span class="codeline" id="line-180"><code><span class="keyword">func</span> (<label for="r49" class="ident">l</label> *<a href="#line-48" class="ident">List</a>) <label for="r50" class="ident">MoveToFront</label>(<label for="r51" class="ident">e</label> *<a href="#line-15" class="ident">Element</a>) {</code></span>
+<span class="codeline" id="line-181"><code>	<span class="keyword">if</span> <label for="r51" class="ident">e</label>.<a href="#line-24" class="ident">list</a> != <label for="r49" class="ident">l</label> || <label for="r49" class="ident">l</label>.<a href="#line-49" class="ident">root</a>.<a href="#line-21" class="ident">next</a> == <label for="r51" class="ident">e</label> {</code></span>
+<span class="codeline" id="line-182"><code>		<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-183"><code>	}</code></span>
+<span class="codeline" id="line-184"><code>	<span class="comment">// see comment in List.Remove about initialization of l</span></code></span>
+<span class="codeline" id="line-185"><code>	<label for="r49" class="ident">l</label>.<a href="#line-118" class="ident">move</a>(<label for="r51" class="ident">e</label>, &amp;<label for="r49" class="ident">l</label>.<a href="#line-49" class="ident">root</a>)</code></span>
+<span class="codeline" id="line-186"><code>}</code></span>
+<span class="codeline" id="line-187"><code></code></span>
+<span class="codeline" id="line-188"><code><span class="comment">// MoveToBack moves element e to the back of list l.</span></code></span>
+<span class="codeline" id="line-189"><code><span class="comment">// If e is not an element of l, the list is not modified.</span></code></span>
+<span class="codeline" id="line-190"><code><span class="comment">// The element must not be nil.</span></code></span>
+<span class="codeline" id="line-191"><code><span class="keyword">func</span> (<label for="r52" class="ident">l</label> *<a href="#line-48" class="ident">List</a>) <label for="r53" class="ident">MoveToBack</label>(<label for="r54" class="ident">e</label> *<a href="#line-15" class="ident">Element</a>) {</code></span>
+<span class="codeline" id="line-192"><code>	<span class="keyword">if</span> <label for="r54" class="ident">e</label>.<a href="#line-24" class="ident">list</a> != <label for="r52" class="ident">l</label> || <label for="r52" class="ident">l</label>.<a href="#line-49" class="ident">root</a>.<a href="#line-21" class="ident">prev</a> == <label for="r54" class="ident">e</label> {</code></span>
+<span class="codeline" id="line-193"><code>		<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-194"><code>	}</code></span>
+<span class="codeline" id="line-195"><code>	<span class="comment">// see comment in List.Remove about initialization of l</span></code></span>
+<span class="codeline" id="line-196"><code>	<label for="r52" class="ident">l</label>.<a href="#line-118" class="ident">move</a>(<label for="r54" class="ident">e</label>, <label for="r52" class="ident">l</label>.<a href="#line-49" class="ident">root</a>.<a href="#line-21" class="ident">prev</a>)</code></span>
+<span class="codeline" id="line-197"><code>}</code></span>
+<span class="codeline" id="line-198"><code></code></span>
+<span class="codeline" id="line-199"><code><span class="comment">// MoveBefore moves element e to its new position before mark.</span></code></span>
+<span class="codeline" id="line-200"><code><span class="comment">// If e or mark is not an element of l, or e == mark, the list is not modified.</span></code></span>
+<span class="codeline" id="line-201"><code><span class="comment">// The element and mark must not be nil.</span></code></span>
+<span class="codeline" id="line-202"><code><span class="keyword">func</span> (<label for="r55" class="ident">l</label> *<a href="#line-48" class="ident">List</a>) <label for="r56" class="ident">MoveBefore</label>(<label for="r57" class="ident">e</label>, <label for="r58" class="ident">mark</label> *<a href="#line-15" class="ident">Element</a>) {</code></span>
+<span class="codeline" id="line-203"><code>	<span class="keyword">if</span> <label for="r57" class="ident">e</label>.<a href="#line-24" class="ident">list</a> != <label for="r55" class="ident">l</label> || <label for="r57" class="ident">e</label> == <label for="r58" class="ident">mark</label> || <label for="r58" class="ident">mark</label>.<a href="#line-24" class="ident">list</a> != <label for="r55" class="ident">l</label> {</code></span>
+<span class="codeline" id="line-204"><code>		<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-205"><code>	}</code></span>
+<span class="codeline" id="line-206"><code>	<label for="r55" class="ident">l</label>.<a href="#line-118" class="ident">move</a>(<label for="r57" class="ident">e</label>, <label for="r58" class="ident">mark</label>.<a href="#line-21" class="ident">prev</a>)</code></span>
+<span class="codeline" id="line-207"><code>}</code></span>
+<span class="codeline" id="line-208"><code></code></span>
+<span class="codeline" id="line-209"><code><span class="comment">// MoveAfter moves element e to its new position after mark.</span></code></span>
+<span class="codeline" id="line-210"><code><span class="comment">// If e or mark is not an element of l, or e == mark, the list is not modified.</span></code></span>
+<span class="codeline" id="line-211"><code><span class="comment">// The element and mark must not be nil.</span></code></span>
+<span class="codeline" id="line-212"><code><span class="keyword">func</span> (<label for="r59" class="ident">l</label> *<a href="#line-48" class="ident">List</a>) <label for="r60" class="ident">MoveAfter</label>(<label for="r61" class="ident">e</label>, <label for="r62" class="ident">mark</label> *<a href="#line-15" class="ident">Element</a>) {</code></span>
+<span class="codeline" id="line-213"><code>	<span class="keyword">if</span> <label for="r61" class="ident">e</label>.<a href="#line-24" class="ident">list</a> != <label for="r59" class="ident">l</label> || <label for="r61" class="ident">e</label> == <label for="r62" class="ident">mark</label> || <label for="r62" class="ident">mark</label>.<a href="#line-24" class="ident">list</a> != <label for="r59" class="ident">l</label> {</code></span>
+<span class="codeline" id="line-214"><code>		<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-215"><code>	}</code></span>
+<span class="codeline" id="line-216"><code>	<label for="r59" class="ident">l</label>.<a href="#line-118" class="ident">move</a>(<label for="r61" class="ident">e</label>, <label for="r62" class="ident">mark</label>)</code></span>
+<span class="codeline" id="line-217"><code>}</code></span>
+<span class="codeline" id="line-218"><code></code></span>
+<span class="codeline" id="line-219"><code><span class="comment">// PushBackList inserts a copy of another list at the back of list l.</span></code></span>
+<span class="codeline" id="line-220"><code><span class="comment">// The lists l and other may be the same. They must not be nil.</span></code></span>
+<span class="codeline" id="line-221"><code><span class="keyword">func</span> (<label for="r63" class="ident">l</label> *<a href="#line-48" class="ident">List</a>) <label for="r64" class="ident">PushBackList</label>(<label for="r65" class="ident">other</label> *<a href="#line-48" class="ident">List</a>) {</code></span>
+<span class="codeline" id="line-222"><code>	<label for="r63" class="ident">l</label>.<a href="#line-85" class="ident">lazyInit</a>()</code></span>
+<span class="codeline" id="line-223"><code>	<span class="keyword">for</span> <label for="r66" class="ident">i</label>, <label for="r67" class="ident">e</label> := <label for="r65" class="ident">other</label>.<a href="#line-66" class="ident">Len</a>(), <label for="r65" class="ident">other</label>.<a href="#line-69" class="ident">Front</a>(); <label for="r66" class="ident">i</label> &gt; <span class="lit-number">0</span>; <label for="r66" class="ident">i</label>, <label for="r67" class="ident">e</label> = <label for="r66" class="ident">i</label>-<span class="lit-number">1</span>, <label for="r67" class="ident">e</label>.<a href="#line-31" class="ident">Next</a>() {</code></span>
+<span class="codeline" id="line-224"><code>		<label for="r63" class="ident">l</label>.<a href="#line-103" class="ident">insertValue</a>(<label for="r67" class="ident">e</label>.<a href="#line-27" class="ident">Value</a>, <label for="r63" class="ident">l</label>.<a href="#line-49" class="ident">root</a>.<a href="#line-21" class="ident">prev</a>)</code></span>
+<span class="codeline" id="line-225"><code>	}</code></span>
+<span class="codeline" id="line-226"><code>}</code></span>
+<span class="codeline" id="line-227"><code></code></span>
+<span class="codeline" id="line-228"><code><span class="comment">// PushFrontList inserts a copy of another list at the front of list l.</span></code></span>
+<span class="codeline" id="line-229"><code><span class="comment">// The lists l and other may be the same. They must not be nil.</span></code></span>
+<span class="codeline" id="line-230"><code><span class="keyword">func</span> (<label for="r68" class="ident">l</label> *<a href="#line-48" class="ident">List</a>) <label for="r69" class="ident">PushFrontList</label>(<label for="r70" class="ident">other</label> *<a href="#line-48" class="ident">List</a>) {</code></span>
+<span class="codeline" id="line-231"><code>	<label for="r68" class="ident">l</label>.<a href="#line-85" class="ident">lazyInit</a>()</code></span>
+<span class="codeline" id="line-232"><code>	<span class="keyword">for</span> <label for="r71" class="ident">i</label>, <label for="r72" class="ident">e</label> := <label for="r70" class="ident">other</label>.<a href="#line-66" class="ident">Len</a>(), <label for="r70" class="ident">other</label>.<a href="#line-77" class="ident">Back</a>(); <label for="r71" class="ident">i</label> &gt; <span class="lit-number">0</span>; <label for="r71" class="ident">i</label>, <label for="r72" class="ident">e</label> = <label for="r71" class="ident">i</label>-<span class="lit-number">1</span>, <label for="r72" class="ident">e</label>.<a href="#line-39" class="ident">Prev</a>() {</code></span>
+<span class="codeline" id="line-233"><code>		<label for="r68" class="ident">l</label>.<a href="#line-103" class="ident">insertValue</a>(<label for="r72" class="ident">e</label>.<a href="#line-27" class="ident">Value</a>, &amp;<label for="r68" class="ident">l</label>.<a href="#line-49" class="ident">root</a>)</code></span>
+<span class="codeline" id="line-234"><code>	}</code></span>
+<span class="codeline" id="line-235"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

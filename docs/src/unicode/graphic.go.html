@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: graphic.go in package unicode</title>
-<link href="../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../jvs/golds-v0.3.6.js"></script>
+<link href="../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -169,13 +169,13 @@ input[id=r27]:checked ~pre label[for=r27]
 <span class="codeline" id="line-91"><code>	<span class="keyword">if</span> <a href="../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r17" class="ident">r</label>) &lt;= <a href="letter.go.html#line-13" class="ident">MaxLatin1</a> {</code></span>
 <span class="codeline" id="line-92"><code>		<span class="keyword">return</span> <a href="tables.go.html#line-7251" class="ident">properties</a>[<a href="../../pkg/builtin.html#name-uint8" class="ident">uint8</a>(<label for="r17" class="ident">r</label>)]&amp;(<a href="#line-19" class="ident">pLmask</a>) != <span class="lit-number">0</span></code></span>
 <span class="codeline" id="line-93"><code>	}</code></span>
-<span class="codeline" id="line-94"><code>	<span class="keyword">return</span> <a href="letter.go.html#line-167" class="ident">isExcludingLatin</a>(<a href="tables.go.html#line-3611" class="ident">Letter</a>, <label for="r17" class="ident">r</label>)</code></span>
+<span class="codeline" id="line-94"><code>	<span class="keyword">return</span> <a href="letter.go.html#line-168" class="ident">isExcludingLatin</a>(<a href="tables.go.html#line-3611" class="ident">Letter</a>, <label for="r17" class="ident">r</label>)</code></span>
 <span class="codeline" id="line-95"><code>}</code></span>
 <span class="codeline" id="line-96"><code></code></span>
 <span class="codeline" id="line-97"><code><span class="comment">// IsMark reports whether the rune is a mark character (category M).</span></code></span>
 <span class="codeline" id="line-98"><code><span class="keyword">func</span> <label for="r18" class="ident"><a href="../../pkg/unicode.html#name-IsMark" class="ident">IsMark</a></label>(<label for="r19" class="ident">r</label> <a href="../../pkg/builtin.html#name-rune" class="ident">rune</a>) <a href="../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
 <span class="codeline" id="line-99"><code>	<span class="comment">// There are no mark characters in Latin-1.</span></code></span>
-<span class="codeline" id="line-100"><code>	<span class="keyword">return</span> <a href="letter.go.html#line-167" class="ident">isExcludingLatin</a>(<a href="tables.go.html#line-3617" class="ident">Mark</a>, <label for="r19" class="ident">r</label>)</code></span>
+<span class="codeline" id="line-100"><code>	<span class="keyword">return</span> <a href="letter.go.html#line-168" class="ident">isExcludingLatin</a>(<a href="tables.go.html#line-3617" class="ident">Mark</a>, <label for="r19" class="ident">r</label>)</code></span>
 <span class="codeline" id="line-101"><code>}</code></span>
 <span class="codeline" id="line-102"><code></code></span>
 <span class="codeline" id="line-103"><code><span class="comment">// IsNumber reports whether the rune is a number (category N).</span></code></span>
@@ -183,7 +183,7 @@ input[id=r27]:checked ~pre label[for=r27]
 <span class="codeline" id="line-105"><code>	<span class="keyword">if</span> <a href="../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r21" class="ident">r</label>) &lt;= <a href="letter.go.html#line-13" class="ident">MaxLatin1</a> {</code></span>
 <span class="codeline" id="line-106"><code>		<span class="keyword">return</span> <a href="tables.go.html#line-7251" class="ident">properties</a>[<a href="../../pkg/builtin.html#name-uint8" class="ident">uint8</a>(<label for="r21" class="ident">r</label>)]&amp;<a href="#line-11" class="ident">pN</a> != <span class="lit-number">0</span></code></span>
 <span class="codeline" id="line-107"><code>	}</code></span>
-<span class="codeline" id="line-108"><code>	<span class="keyword">return</span> <a href="letter.go.html#line-167" class="ident">isExcludingLatin</a>(<a href="tables.go.html#line-3624" class="ident">Number</a>, <label for="r21" class="ident">r</label>)</code></span>
+<span class="codeline" id="line-108"><code>	<span class="keyword">return</span> <a href="letter.go.html#line-168" class="ident">isExcludingLatin</a>(<a href="tables.go.html#line-3624" class="ident">Number</a>, <label for="r21" class="ident">r</label>)</code></span>
 <span class="codeline" id="line-109"><code>}</code></span>
 <span class="codeline" id="line-110"><code></code></span>
 <span class="codeline" id="line-111"><code><span class="comment">// IsPunct reports whether the rune is a Unicode punctuation character</span></code></span>
@@ -210,7 +210,7 @@ input[id=r27]:checked ~pre label[for=r27]
 <span class="codeline" id="line-132"><code>		}</code></span>
 <span class="codeline" id="line-133"><code>		<span class="keyword">return</span> <a href="../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
 <span class="codeline" id="line-134"><code>	}</code></span>
-<span class="codeline" id="line-135"><code>	<span class="keyword">return</span> <a href="letter.go.html#line-167" class="ident">isExcludingLatin</a>(<a href="tables.go.html#line-6924" class="ident">White_Space</a>, <label for="r25" class="ident">r</label>)</code></span>
+<span class="codeline" id="line-135"><code>	<span class="keyword">return</span> <a href="letter.go.html#line-168" class="ident">isExcludingLatin</a>(<a href="tables.go.html#line-6924" class="ident">White_Space</a>, <label for="r25" class="ident">r</label>)</code></span>
 <span class="codeline" id="line-136"><code>}</code></span>
 <span class="codeline" id="line-137"><code></code></span>
 <span class="codeline" id="line-138"><code><span class="comment">// IsSymbol reports whether the rune is a symbolic character.</span></code></span>
@@ -218,11 +218,11 @@ input[id=r27]:checked ~pre label[for=r27]
 <span class="codeline" id="line-140"><code>	<span class="keyword">if</span> <a href="../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r27" class="ident">r</label>) &lt;= <a href="letter.go.html#line-13" class="ident">MaxLatin1</a> {</code></span>
 <span class="codeline" id="line-141"><code>		<span class="keyword">return</span> <a href="tables.go.html#line-7251" class="ident">properties</a>[<a href="../../pkg/builtin.html#name-uint8" class="ident">uint8</a>(<label for="r27" class="ident">r</label>)]&amp;<a href="#line-12" class="ident">pS</a> != <span class="lit-number">0</span></code></span>
 <span class="codeline" id="line-142"><code>	}</code></span>
-<span class="codeline" id="line-143"><code>	<span class="keyword">return</span> <a href="letter.go.html#line-167" class="ident">isExcludingLatin</a>(<a href="tables.go.html#line-3643" class="ident">Symbol</a>, <label for="r27" class="ident">r</label>)</code></span>
+<span class="codeline" id="line-143"><code>	<span class="keyword">return</span> <a href="letter.go.html#line-168" class="ident">isExcludingLatin</a>(<a href="tables.go.html#line-3643" class="ident">Symbol</a>, <label for="r27" class="ident">r</label>)</code></span>
 <span class="codeline" id="line-144"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

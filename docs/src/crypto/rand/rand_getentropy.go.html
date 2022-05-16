@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: rand_getentropy.go in package crypto/rand</title>
+<link href="../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.4.9.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	rand_getentropy.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../pkg/crypto/rand.html">crypto/rand</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="comment">// Copyright 2016 The Go Authors. All rights reserved.</span></code></span>
+<span class="codeline" id="line-2"><code><span class="comment">// Use of this source code is governed by a BSD-style</span></code></span>
+<span class="codeline" id="line-3"><code><span class="comment">// license that can be found in the LICENSE file.</span></code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<span class="codeline" id="line-5"><code><span class="comment">//go:build (darwin &amp;&amp; !ios) || openbsd</span></code></span>
+<span class="codeline" id="line-6"><code></code></span>
+<span class="codeline" id="line-7"><code><span class="keyword">package</span> rand</code></span>
+<span class="codeline" id="line-8"><code></code></span>
+<span class="codeline" id="line-9"><code><span class="keyword">import</span> (</code></span>
+<span class="codeline" id="line-10"><code>	<label for="i0"><span class="lit-string i0">"internal/syscall/unix"</span></label></code></span>
+<span class="codeline" id="line-11"><code>)</code></span>
+<span class="codeline" id="line-12"><code></code></span>
+<span class="codeline" id="line-13"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../pkg/crypto/rand.html#name-init" class="ident">init</a></label>() {</code></span>
+<span class="codeline" id="line-14"><code>	<a href="rand_unix.go.html#line-48" class="ident">altGetRandom</a> = <a href="#line-17" class="ident">getEntropy</a></code></span>
+<span class="codeline" id="line-15"><code>}</code></span>
+<span class="codeline" id="line-16"><code></code></span>
+<span class="codeline" id="line-17"><code><span class="keyword">func</span> <label for="r1" class="ident"><a href="../../../pkg/crypto/rand.html#name-getEntropy" class="ident">getEntropy</a></label>(<label for="r2" class="ident">p</label> []<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>) (<label for="r3" class="ident">ok</label> <a href="../../../pkg/builtin.html#name-bool" class="ident">bool</a>) {</code></span>
+<span class="codeline" id="line-18"><code>	<span class="comment">// getentropy(2) returns a maximum of 256 bytes per call</span></code></span>
+<span class="codeline" id="line-19"><code>	<span class="keyword">for</span> <label for="r4" class="ident">i</label> := <span class="lit-number">0</span>; <label for="r4" class="ident">i</label> &lt; <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r2" class="ident">p</label>); <label for="r4" class="ident">i</label> += <span class="lit-number">256</span> {</code></span>
+<span class="codeline" id="line-20"><code>		<label for="r5" class="ident">end</label> := <label for="r4" class="ident">i</label> + <span class="lit-number">256</span></code></span>
+<span class="codeline" id="line-21"><code>		<span class="keyword">if</span> <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r2" class="ident">p</label>) &lt; <label for="r5" class="ident">end</label> {</code></span>
+<span class="codeline" id="line-22"><code>			<label for="r5" class="ident">end</label> = <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r2" class="ident">p</label>)</code></span>
+<span class="codeline" id="line-23"><code>		}</code></span>
+<span class="codeline" id="line-24"><code>		<label for="r6" class="ident">err</label> := <a href="../../../pkg/internal/syscall/unix.html" class="ident i0">unix</a>.<a href="../../internal/syscall/unix/getentropy_darwin.go.html#line-20" class="ident">GetEntropy</a>(<label for="r2" class="ident">p</label>[<label for="r4" class="ident">i</label>:<label for="r5" class="ident">end</label>])</code></span>
+<span class="codeline" id="line-25"><code>		<span class="keyword">if</span> <label for="r6" class="ident">err</label> != <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-26"><code>			<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
+<span class="codeline" id="line-27"><code>		}</code></span>
+<span class="codeline" id="line-28"><code>	}</code></span>
+<span class="codeline" id="line-29"><code>	<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
+<span class="codeline" id="line-30"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

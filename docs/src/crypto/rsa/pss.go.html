@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: pss.go in package crypto/rsa</title>
-<link href="../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -439,13 +439,13 @@ input[id=i5]:checked ~pre .i5
 <span class="codeline" id="line-269"><code>	<label for="r53" class="ident">saltLength</label> := <label for="r52" class="ident">opts</label>.<a href="#line-252" class="ident">saltLength</a>()</code></span>
 <span class="codeline" id="line-270"><code>	<span class="keyword">switch</span> <label for="r53" class="ident">saltLength</label> {</code></span>
 <span class="codeline" id="line-271"><code>	<span class="keyword">case</span> <a href="#line-228" class="ident">PSSSaltLengthAuto</a>:</code></span>
-<span class="codeline" id="line-272"><code>		<label for="r53" class="ident">saltLength</label> = <label for="r49" class="ident">priv</label>.<a href="rsa.go.html#line-52" class="ident">Size</a>() - <span class="lit-number">2</span> - <label for="r50" class="ident">hash</label>.<a href="../crypto.go.html#line-116" class="ident">Size</a>()</code></span>
+<span class="codeline" id="line-272"><code>		<label for="r53" class="ident">saltLength</label> = (<label for="r49" class="ident">priv</label>.<a href="rsa.go.html#line-43" class="ident">N</a>.<a href="../../math/big/int.go.html#line-472" class="ident">BitLen</a>()-<span class="lit-number">1</span>+<span class="lit-number">7</span>)/<span class="lit-number">8</span> - <span class="lit-number">2</span> - <label for="r50" class="ident">hash</label>.<a href="../crypto.go.html#line-116" class="ident">Size</a>()</code></span>
 <span class="codeline" id="line-273"><code>	<span class="keyword">case</span> <a href="#line-231" class="ident">PSSSaltLengthEqualsHash</a>:</code></span>
 <span class="codeline" id="line-274"><code>		<label for="r53" class="ident">saltLength</label> = <label for="r50" class="ident">hash</label>.<a href="../crypto.go.html#line-116" class="ident">Size</a>()</code></span>
 <span class="codeline" id="line-275"><code>	}</code></span>
 <span class="codeline" id="line-276"><code></code></span>
 <span class="codeline" id="line-277"><code>	<label for="r54" class="ident">salt</label> := <a href="../../../pkg/builtin.html#name-make" class="ident">make</a>([]<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <label for="r53" class="ident">saltLength</label>)</code></span>
-<span class="codeline" id="line-278"><code>	<span class="keyword">if</span> <label for="r55" class="ident">_</label>, <label for="r56" class="ident">err</label> := <a href="../../../pkg/io.html" class="ident i4">io</a>.<a href="../../io/io.go.html#line-346" class="ident">ReadFull</a>(<label for="r48" class="ident">rand</label>, <label for="r54" class="ident">salt</label>); <label for="r56" class="ident">err</label> != <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-278"><code>	<span class="keyword">if</span> <label for="r55" class="ident">_</label>, <label for="r56" class="ident">err</label> := <a href="../../../pkg/io.html" class="ident i4">io</a>.<a href="../../io/io.go.html#line-349" class="ident">ReadFull</a>(<label for="r48" class="ident">rand</label>, <label for="r54" class="ident">salt</label>); <label for="r56" class="ident">err</label> != <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
 <span class="codeline" id="line-279"><code>		<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <label for="r56" class="ident">err</label></code></span>
 <span class="codeline" id="line-280"><code>	}</code></span>
 <span class="codeline" id="line-281"><code>	<span class="keyword">return</span> <a href="#line-210" class="ident">signPSSWithSalt</a>(<label for="r48" class="ident">rand</label>, <label for="r49" class="ident">priv</label>, <label for="r50" class="ident">hash</label>, <label for="r51" class="ident">digest</label>, <label for="r54" class="ident">salt</label>)</code></span>
@@ -473,7 +473,7 @@ input[id=i5]:checked ~pre .i5
 <span class="codeline" id="line-303"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

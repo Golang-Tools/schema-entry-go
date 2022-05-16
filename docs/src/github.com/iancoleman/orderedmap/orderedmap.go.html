@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: orderedmap.go in package github.com/iancoleman/orderedmap</title>
-<link href="../../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -406,7 +406,7 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-128"><code>	<span class="comment">// Get the order of the keys</span></code></span>
 <span class="codeline" id="line-129"><code>	<label for="r69" class="ident">orderedKeys</label> := []<a href="#line-12" class="ident">KeyIndex</a>{}</code></span>
 <span class="codeline" id="line-130"><code>	<span class="keyword">for</span> <label for="r70" class="ident">k</label>, <label for="r71" class="ident">_</label> := <span class="keyword">range</span> <label for="r67" class="ident">m</label> {</code></span>
-<span class="codeline" id="line-131"><code>		<label for="r72" class="ident">kEscaped</label> := <a href="../../../../pkg/strings.html" class="ident i3">strings</a>.<a href="../../../strings/strings.go.html#line-924" class="ident">Replace</a>(<label for="r70" class="ident">k</label>, <span class="lit-string">`"`</span>, <span class="lit-string">`\"`</span>, -<span class="lit-number">1</span>)</code></span>
+<span class="codeline" id="line-131"><code>		<label for="r72" class="ident">kEscaped</label> := <a href="../../../../pkg/strings.html" class="ident i3">strings</a>.<a href="../../../strings/strings.go.html#line-997" class="ident">Replace</a>(<label for="r70" class="ident">k</label>, <span class="lit-string">`"`</span>, <span class="lit-string">`\"`</span>, -<span class="lit-number">1</span>)</code></span>
 <span class="codeline" id="line-132"><code>		<label for="r73" class="ident">kQuoted</label> := <span class="lit-string">`"`</span> + <label for="r72" class="ident">kEscaped</label> + <span class="lit-string">`"`</span></code></span>
 <span class="codeline" id="line-133"><code>		<span class="comment">// Find how much content exists before this key.</span></code></span>
 <span class="codeline" id="line-134"><code><span class="comment">		// If all content from this key and after is replaced with a close</span></code></span>
@@ -418,7 +418,7 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-140"><code>				<span class="keyword">break</span></code></span>
 <span class="codeline" id="line-141"><code>			}</code></span>
 <span class="codeline" id="line-142"><code>			<label for="r74" class="ident">sTrimmed</label> = <label for="r74" class="ident">sTrimmed</label>[<span class="lit-number">0</span>:<label for="r75" class="ident">lastIndex</label>]</code></span>
-<span class="codeline" id="line-143"><code>			<label for="r74" class="ident">sTrimmed</label> = <a href="../../../../pkg/strings.html" class="ident i3">strings</a>.<a href="../../../strings/strings.go.html#line-867" class="ident">TrimSpace</a>(<label for="r74" class="ident">sTrimmed</label>)</code></span>
+<span class="codeline" id="line-143"><code>			<label for="r74" class="ident">sTrimmed</label> = <a href="../../../../pkg/strings.html" class="ident i3">strings</a>.<a href="../../../strings/strings.go.html#line-940" class="ident">TrimSpace</a>(<label for="r74" class="ident">sTrimmed</label>)</code></span>
 <span class="codeline" id="line-144"><code>			<span class="keyword">if</span> <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r74" class="ident">sTrimmed</label>) &gt; <span class="lit-number">0</span> &amp;&amp; <label for="r74" class="ident">sTrimmed</label>[<a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r74" class="ident">sTrimmed</label>)-<span class="lit-number">1</span>] == <span class="lit-number">','</span> {</code></span>
 <span class="codeline" id="line-145"><code>				<label for="r74" class="ident">sTrimmed</label> = <label for="r74" class="ident">sTrimmed</label>[<span class="lit-number">0</span> : <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r74" class="ident">sTrimmed</label>)-<span class="lit-number">1</span>]</code></span>
 <span class="codeline" id="line-146"><code>			}</code></span>
@@ -435,11 +435,11 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-157"><code>				<span class="comment">// shorten the string to get the next key</span></code></span>
 <span class="codeline" id="line-158"><code>				<label for="r80" class="ident">startOfValueIndex</label> := <label for="r75" class="ident">lastIndex</label> + <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r73" class="ident">kQuoted</label>)</code></span>
 <span class="codeline" id="line-159"><code>				<label for="r81" class="ident">valueStr</label> := <label for="r65" class="ident">s</label>[<label for="r80" class="ident">startOfValueIndex</label> : <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r65" class="ident">s</label>)-<span class="lit-number">1</span>]</code></span>
-<span class="codeline" id="line-160"><code>				<label for="r81" class="ident">valueStr</label> = <a href="../../../../pkg/strings.html" class="ident i3">strings</a>.<a href="../../../strings/strings.go.html#line-867" class="ident">TrimSpace</a>(<label for="r81" class="ident">valueStr</label>)</code></span>
+<span class="codeline" id="line-160"><code>				<label for="r81" class="ident">valueStr</label> = <a href="../../../../pkg/strings.html" class="ident i3">strings</a>.<a href="../../../strings/strings.go.html#line-940" class="ident">TrimSpace</a>(<label for="r81" class="ident">valueStr</label>)</code></span>
 <span class="codeline" id="line-161"><code>				<span class="keyword">if</span> <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r81" class="ident">valueStr</label>) &gt; <span class="lit-number">0</span> &amp;&amp; <label for="r81" class="ident">valueStr</label>[<span class="lit-number">0</span>] == <span class="lit-number">':'</span> {</code></span>
 <span class="codeline" id="line-162"><code>					<label for="r81" class="ident">valueStr</label> = <label for="r81" class="ident">valueStr</label>[<span class="lit-number">1</span>:<a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r81" class="ident">valueStr</label>)]</code></span>
 <span class="codeline" id="line-163"><code>				}</code></span>
-<span class="codeline" id="line-164"><code>				<label for="r81" class="ident">valueStr</label> = <a href="../../../../pkg/strings.html" class="ident i3">strings</a>.<a href="../../../strings/strings.go.html#line-867" class="ident">TrimSpace</a>(<label for="r81" class="ident">valueStr</label>)</code></span>
+<span class="codeline" id="line-164"><code>				<label for="r81" class="ident">valueStr</label> = <a href="../../../../pkg/strings.html" class="ident i3">strings</a>.<a href="../../../strings/strings.go.html#line-940" class="ident">TrimSpace</a>(<label for="r81" class="ident">valueStr</label>)</code></span>
 <span class="codeline" id="line-165"><code>				<span class="keyword">if</span> <label for="r81" class="ident">valueStr</label>[<span class="lit-number">0</span>] == <span class="lit-number">'{'</span> {</code></span>
 <span class="codeline" id="line-166"><code>					<span class="comment">// if the value for this key is a map</span></code></span>
 <span class="codeline" id="line-167"><code><span class="comment">					// find end of valueStr by removing everything after last }</span></code></span>
@@ -527,7 +527,7 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-249"><code>	<span class="comment">// if the value for this key is a []interface, convert any map items to an orderedmap.</span></code></span>
 <span class="codeline" id="line-250"><code><span class="comment">	// find end of valueStr by removing everything after last ]</span></code></span>
 <span class="codeline" id="line-251"><code><span class="comment">	// until it forms valid json</span></code></span>
-<span class="codeline" id="line-252"><code>	<label for="r100" class="ident">itemsStr</label> := <a href="../../../../pkg/strings.html" class="ident i3">strings</a>.<a href="../../../strings/strings.go.html#line-867" class="ident">TrimSpace</a>(<label for="r98" class="ident">valueStr</label>)</code></span>
+<span class="codeline" id="line-252"><code>	<label for="r100" class="ident">itemsStr</label> := <a href="../../../../pkg/strings.html" class="ident i3">strings</a>.<a href="../../../strings/strings.go.html#line-940" class="ident">TrimSpace</a>(<label for="r98" class="ident">valueStr</label>)</code></span>
 <span class="codeline" id="line-253"><code>	<label for="r100" class="ident">itemsStr</label> = <label for="r100" class="ident">itemsStr</label>[<span class="lit-number">1</span> : <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r100" class="ident">itemsStr</label>)-<span class="lit-number">1</span>]</code></span>
 <span class="codeline" id="line-254"><code>	<span class="comment">// get next item in the slice</span></code></span>
 <span class="codeline" id="line-255"><code>	<label for="r101" class="ident">itemIndex</label> := <span class="lit-number">0</span></code></span>
@@ -542,7 +542,7 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-264"><code>			<span class="keyword">continue</span></code></span>
 <span class="codeline" id="line-265"><code>		}</code></span>
 <span class="codeline" id="line-266"><code>		<span class="comment">// if this substring compiles to json, it's the next item</span></code></span>
-<span class="codeline" id="line-267"><code>		<label for="r105" class="ident">possibleItemStr</label> := <a href="../../../../pkg/strings.html" class="ident i3">strings</a>.<a href="../../../strings/strings.go.html#line-867" class="ident">TrimSpace</a>(<label for="r100" class="ident">itemsStr</label>[<label for="r102" class="ident">startItem</label>:<label for="r103" class="ident">endItem</label>])</code></span>
+<span class="codeline" id="line-267"><code>		<label for="r105" class="ident">possibleItemStr</label> := <a href="../../../../pkg/strings.html" class="ident i3">strings</a>.<a href="../../../strings/strings.go.html#line-940" class="ident">TrimSpace</a>(<label for="r100" class="ident">itemsStr</label>[<label for="r102" class="ident">startItem</label>:<label for="r103" class="ident">endItem</label>])</code></span>
 <span class="codeline" id="line-268"><code>		<span class="keyword">var</span> <label for="r106" class="ident">possibleItem</label> <span class="keyword">interface</span>{}</code></span>
 <span class="codeline" id="line-269"><code>		<label for="r107" class="ident">err</label> := <a href="../../../../pkg/encoding/json.html" class="ident i0">json</a>.<a href="../../../encoding/json/decode.go.html#line-96" class="ident">Unmarshal</a>([]<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<label for="r105" class="ident">possibleItemStr</label>), &amp;<label for="r106" class="ident">possibleItem</label>)</code></span>
 <span class="codeline" id="line-270"><code>		<span class="keyword">if</span> <label for="r107" class="ident">err</label> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
@@ -589,7 +589,7 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-311"><code>	<label for="r117" class="ident">s</label> := <span class="lit-string">"{"</span></code></span>
 <span class="codeline" id="line-312"><code>	<span class="keyword">for</span> <label for="r118" class="ident">_</label>, <label for="r119" class="ident">k</label> := <span class="keyword">range</span> <label for="r115" class="ident">o</label>.<a href="#line-45" class="ident">keys</a> {</code></span>
 <span class="codeline" id="line-313"><code>		<span class="comment">// add key</span></code></span>
-<span class="codeline" id="line-314"><code>		<label for="r120" class="ident">kEscaped</label> := <a href="../../../../pkg/strings.html" class="ident i3">strings</a>.<a href="../../../strings/strings.go.html#line-924" class="ident">Replace</a>(<label for="r119" class="ident">k</label>, <span class="lit-string">`"`</span>, <span class="lit-string">`\"`</span>, -<span class="lit-number">1</span>)</code></span>
+<span class="codeline" id="line-314"><code>		<label for="r120" class="ident">kEscaped</label> := <a href="../../../../pkg/strings.html" class="ident i3">strings</a>.<a href="../../../strings/strings.go.html#line-997" class="ident">Replace</a>(<label for="r119" class="ident">k</label>, <span class="lit-string">`"`</span>, <span class="lit-string">`\"`</span>, -<span class="lit-number">1</span>)</code></span>
 <span class="codeline" id="line-315"><code>		<label for="r117" class="ident">s</label> = <label for="r117" class="ident">s</label> + <span class="lit-string">`"`</span> + <label for="r120" class="ident">kEscaped</label> + <span class="lit-string">`":`</span></code></span>
 <span class="codeline" id="line-316"><code>		<span class="comment">// add value</span></code></span>
 <span class="codeline" id="line-317"><code>		<label for="r121" class="ident">v</label> := <label for="r115" class="ident">o</label>.<a href="#line-46" class="ident">values</a>[<label for="r119" class="ident">k</label>]</code></span>
@@ -607,7 +607,7 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-329"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

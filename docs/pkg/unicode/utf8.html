@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Package: unicode/utf8</title>
-<link href="../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../jvs/golds-v0.3.6.js"></script>
+<link href="../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="package-details"><code><span style="font-size:xx-large;">package <b>utf8</b></span>
@@ -15,7 +15,7 @@
 	<a href="../../index.html#pkg-unicode/utf8">unicode/utf8</a><i> (on <a href="https://pkg.go.dev/unicode/utf8" target="_blank">go.dev</a>)</i>
 
 <span class="title">Dependency Relation</span>
-	imports 0 packages, and imported by <a href="../../dep/unicode/utf8.html#imported-by">31 packages</a>
+	imports 0 packages, and imported by <a href="../../dep/unicode/utf8.html#imported-by">33 packages</a>
 
 <div id="files"><span class="title">Involved Source Files</span>
 
@@ -25,7 +25,22 @@
 		See https://en.wikipedia.org/wiki/UTF-8</span></div>
 <div id="examples"><span class="title">Code Examples</span>
 
-	<input type='checkbox' class="fold" id="example-0-fold-content"><label for="example-0-fold-content">DecodeLastRune</label><span id='example-0-fold-content-items' class="fold-items">
+	<input type='checkbox' class="fold" id="example-0-fold-content"><label for="example-0-fold-content">AppendRune</label><span id='example-0-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+			"unicode/utf8"
+		)
+		
+		func main() {
+			buf1 := utf8.AppendRune(nil, 0x10000)
+			buf2 := utf8.AppendRune([]byte("init"), 0x10000)
+			fmt.Println(string(buf1))
+			fmt.Println(string(buf2))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-1-fold-content"><label for="example-1-fold-content">DecodeLastRune</label><span id='example-1-fold-content-items' class="fold-items">
 		package main
 		
 		import (
@@ -36,7 +51,7 @@
 		func main() {
 			b := []byte("Hello, 世界")
 		
-			for len(b) > 0 {
+			for len(b) &gt; 0 {
 				r, size := utf8.DecodeLastRune(b)
 				fmt.Printf("%c %v\n", r, size)
 		
@@ -44,7 +59,7 @@
 			}
 		}
 </span>
-	<input type='checkbox' class="fold" id="example-1-fold-content"><label for="example-1-fold-content">DecodeLastRuneInString</label><span id='example-1-fold-content-items' class="fold-items">
+	<input type='checkbox' class="fold" id="example-2-fold-content"><label for="example-2-fold-content">DecodeLastRuneInString</label><span id='example-2-fold-content-items' class="fold-items">
 		package main
 		
 		import (
@@ -55,7 +70,7 @@
 		func main() {
 			str := "Hello, 世界"
 		
-			for len(str) > 0 {
+			for len(str) &gt; 0 {
 				r, size := utf8.DecodeLastRuneInString(str)
 				fmt.Printf("%c %v\n", r, size)
 		
@@ -63,7 +78,7 @@
 			}
 		}
 </span>
-	<input type='checkbox' class="fold" id="example-2-fold-content"><label for="example-2-fold-content">DecodeRune</label><span id='example-2-fold-content-items' class="fold-items">
+	<input type='checkbox' class="fold" id="example-3-fold-content"><label for="example-3-fold-content">DecodeRune</label><span id='example-3-fold-content-items' class="fold-items">
 		package main
 		
 		import (
@@ -74,7 +89,7 @@
 		func main() {
 			b := []byte("Hello, 世界")
 		
-			for len(b) > 0 {
+			for len(b) &gt; 0 {
 				r, size := utf8.DecodeRune(b)
 				fmt.Printf("%c %v\n", r, size)
 		
@@ -82,7 +97,7 @@
 			}
 		}
 </span>
-	<input type='checkbox' class="fold" id="example-3-fold-content"><label for="example-3-fold-content">DecodeRuneInString</label><span id='example-3-fold-content-items' class="fold-items">
+	<input type='checkbox' class="fold" id="example-4-fold-content"><label for="example-4-fold-content">DecodeRuneInString</label><span id='example-4-fold-content-items' class="fold-items">
 		package main
 		
 		import (
@@ -93,7 +108,7 @@
 		func main() {
 			str := "Hello, 世界"
 		
-			for len(str) > 0 {
+			for len(str) &gt; 0 {
 				r, size := utf8.DecodeRuneInString(str)
 				fmt.Printf("%c %v\n", r, size)
 		
@@ -101,7 +116,7 @@
 			}
 		}
 </span>
-	<input type='checkbox' class="fold" id="example-4-fold-content"><label for="example-4-fold-content">EncodeRune</label><span id='example-4-fold-content-items' class="fold-items">
+	<input type='checkbox' class="fold" id="example-5-fold-content"><label for="example-5-fold-content">EncodeRune</label><span id='example-5-fold-content-items' class="fold-items">
 		package main
 		
 		import (
@@ -119,7 +134,7 @@
 			fmt.Println(n)
 		}
 </span>
-	<input type='checkbox' class="fold" id="example-5-fold-content"><label for="example-5-fold-content">EncodeRune_outOfRange</label><span id='example-5-fold-content-items' class="fold-items">
+	<input type='checkbox' class="fold" id="example-6-fold-content"><label for="example-6-fold-content">EncodeRune_outOfRange</label><span id='example-6-fold-content-items' class="fold-items">
 		package main
 		
 		import (
@@ -143,7 +158,7 @@
 			}
 		}
 </span>
-	<input type='checkbox' class="fold" id="example-6-fold-content"><label for="example-6-fold-content">FullRune</label><span id='example-6-fold-content-items' class="fold-items">
+	<input type='checkbox' class="fold" id="example-7-fold-content"><label for="example-7-fold-content">FullRune</label><span id='example-7-fold-content-items' class="fold-items">
 		package main
 		
 		import (
@@ -157,7 +172,7 @@
 			fmt.Println(utf8.FullRune(buf[:2]))
 		}
 </span>
-	<input type='checkbox' class="fold" id="example-7-fold-content"><label for="example-7-fold-content">FullRuneInString</label><span id='example-7-fold-content-items' class="fold-items">
+	<input type='checkbox' class="fold" id="example-8-fold-content"><label for="example-8-fold-content">FullRuneInString</label><span id='example-8-fold-content-items' class="fold-items">
 		package main
 		
 		import (
@@ -171,7 +186,7 @@
 			fmt.Println(utf8.FullRuneInString(str[:2]))
 		}
 </span>
-	<input type='checkbox' class="fold" id="example-8-fold-content"><label for="example-8-fold-content">RuneCount</label><span id='example-8-fold-content-items' class="fold-items">
+	<input type='checkbox' class="fold" id="example-9-fold-content"><label for="example-9-fold-content">RuneCount</label><span id='example-9-fold-content-items' class="fold-items">
 		package main
 		
 		import (
@@ -185,7 +200,7 @@
 			fmt.Println("runes =", utf8.RuneCount(buf))
 		}
 </span>
-	<input type='checkbox' class="fold" id="example-9-fold-content"><label for="example-9-fold-content">RuneCountInString</label><span id='example-9-fold-content-items' class="fold-items">
+	<input type='checkbox' class="fold" id="example-10-fold-content"><label for="example-10-fold-content">RuneCountInString</label><span id='example-10-fold-content-items' class="fold-items">
 		package main
 		
 		import (
@@ -199,7 +214,7 @@
 			fmt.Println("runes =", utf8.RuneCountInString(str))
 		}
 </span>
-	<input type='checkbox' class="fold" id="example-10-fold-content"><label for="example-10-fold-content">RuneLen</label><span id='example-10-fold-content-items' class="fold-items">
+	<input type='checkbox' class="fold" id="example-11-fold-content"><label for="example-11-fold-content">RuneLen</label><span id='example-11-fold-content-items' class="fold-items">
 		package main
 		
 		import (
@@ -212,7 +227,7 @@
 			fmt.Println(utf8.RuneLen('界'))
 		}
 </span>
-	<input type='checkbox' class="fold" id="example-11-fold-content"><label for="example-11-fold-content">RuneStart</label><span id='example-11-fold-content-items' class="fold-items">
+	<input type='checkbox' class="fold" id="example-12-fold-content"><label for="example-12-fold-content">RuneStart</label><span id='example-12-fold-content-items' class="fold-items">
 		package main
 		
 		import (
@@ -227,7 +242,7 @@
 			fmt.Println(utf8.RuneStart(buf[2]))
 		}
 </span>
-	<input type='checkbox' class="fold" id="example-12-fold-content"><label for="example-12-fold-content">Valid</label><span id='example-12-fold-content-items' class="fold-items">
+	<input type='checkbox' class="fold" id="example-13-fold-content"><label for="example-13-fold-content">Valid</label><span id='example-13-fold-content-items' class="fold-items">
 		package main
 		
 		import (
@@ -243,7 +258,7 @@
 			fmt.Println(utf8.Valid(invalid))
 		}
 </span>
-	<input type='checkbox' class="fold" id="example-13-fold-content"><label for="example-13-fold-content">ValidRune</label><span id='example-13-fold-content-items' class="fold-items">
+	<input type='checkbox' class="fold" id="example-14-fold-content"><label for="example-14-fold-content">ValidRune</label><span id='example-14-fold-content-items' class="fold-items">
 		package main
 		
 		import (
@@ -259,7 +274,7 @@
 			fmt.Println(utf8.ValidRune(invalid))
 		}
 </span>
-	<input type='checkbox' class="fold" id="example-14-fold-content"><label for="example-14-fold-content">ValidString</label><span id='example-14-fold-content-items' class="fold-items">
+	<input type='checkbox' class="fold" id="example-15-fold-content"><label for="example-15-fold-content">ValidString</label><span id='example-15-fold-content-items' class="fold-items">
 		package main
 		
 		import (
@@ -292,9 +307,14 @@
 </span></i></span></span>
 
 </span></div></div>
-<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 14, all are exported)</i></span></span>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 16, in which 15 are exported)</i></span></span>
 
-<div class="anchor value-res" id="name-DecodeLastRune">	<input type='checkbox' class="fold" id="DecodeLastRune-fold-content"><label for="DecodeLastRune-fold-content"> func <a href="../../src/unicode/utf8/utf8.go.html#line-247">DecodeLastRune</a>(p []<a href="../builtin.html#name-byte">byte</a>) (r <a href="../builtin.html#name-rune">rune</a>, size <a href="../builtin.html#name-int">int</a>)</label><span id='DecodeLastRune-fold-content-docs' class="fold-docs">
+<div class="anchor value-res" id="name-AppendRune">	<input type='checkbox' class="fold" id="AppendRune-fold-content"><label for="AppendRune-fold-content"> func <a href="../../src/unicode/utf8/utf8.go.html#line-375">AppendRune</a>(p []<a href="../builtin.html#name-byte">byte</a>, r <a href="../builtin.html#name-rune">rune</a>) []<a href="../builtin.html#name-byte">byte</a></label><span id='AppendRune-fold-content-docs' class="fold-docs">
+		AppendRune appends the UTF-8 encoding of r to the end of p and
+		returns the extended buffer. If the rune is out of range,
+		it appends the encoding of RuneError.
+
+</span></div><div class="anchor value-res" id="name-DecodeLastRune">	<input type='checkbox' class="fold" id="DecodeLastRune-fold-content"><label for="DecodeLastRune-fold-content"> func <a href="../../src/unicode/utf8/utf8.go.html#line-247">DecodeLastRune</a>(p []<a href="../builtin.html#name-byte">byte</a>) (r <a href="../builtin.html#name-rune">rune</a>, size <a href="../builtin.html#name-int">int</a>)</label><span id='DecodeLastRune-fold-content-docs' class="fold-docs">
 		DecodeLastRune unpacks the last UTF-8 encoding in p and returns the rune and
 		its width in bytes. If p is empty it returns (RuneError, 0). Otherwise, if
 		the encoding is invalid, it returns (RuneError, 1). Both are impossible
@@ -346,33 +366,33 @@
 </span></div><div class="anchor value-res" id="name-FullRuneInString">	<input type='checkbox' class="fold" id="FullRuneInString-fold-content"><label for="FullRuneInString-fold-content"> func <a href="../../src/unicode/utf8/utf8.go.html#line-124">FullRuneInString</a>(s <a href="../builtin.html#name-string">string</a>) <a href="../builtin.html#name-bool">bool</a></label><span id='FullRuneInString-fold-content-docs' class="fold-docs">
 		FullRuneInString is like FullRune but its input is a string.
 
-</span></div><div class="anchor value-res" id="name-RuneCount">	<input type='checkbox' class="fold" id="RuneCount-fold-content"><label for="RuneCount-fold-content"> func <a href="../../src/unicode/utf8/utf8.go.html#line-374">RuneCount</a>(p []<a href="../builtin.html#name-byte">byte</a>) <a href="../builtin.html#name-int">int</a></label><span id='RuneCount-fold-content-docs' class="fold-docs">
+</span></div><div class="anchor value-res" id="name-RuneCount">	<input type='checkbox' class="fold" id="RuneCount-fold-content"><label for="RuneCount-fold-content"> func <a href="../../src/unicode/utf8/utf8.go.html#line-400">RuneCount</a>(p []<a href="../builtin.html#name-byte">byte</a>) <a href="../builtin.html#name-int">int</a></label><span id='RuneCount-fold-content-docs' class="fold-docs">
 		RuneCount returns the number of runes in p. Erroneous and short
 		encodings are treated as single runes of width 1 byte.
 
-</span></div><div class="anchor value-res" id="name-RuneCountInString">	<input type='checkbox' class="fold" id="RuneCountInString-fold-content"><label for="RuneCountInString-fold-content"> func <a href="../../src/unicode/utf8/utf8.go.html#line-411">RuneCountInString</a>(s <a href="../builtin.html#name-string">string</a>) (n <a href="../builtin.html#name-int">int</a>)</label><span id='RuneCountInString-fold-content-docs' class="fold-docs">
+</span></div><div class="anchor value-res" id="name-RuneCountInString">	<input type='checkbox' class="fold" id="RuneCountInString-fold-content"><label for="RuneCountInString-fold-content"> func <a href="../../src/unicode/utf8/utf8.go.html#line-437">RuneCountInString</a>(s <a href="../builtin.html#name-string">string</a>) (n <a href="../builtin.html#name-int">int</a>)</label><span id='RuneCountInString-fold-content-docs' class="fold-docs">
 		RuneCountInString is like RuneCount but its input is a string.
 
 </span></div><div class="anchor value-res" id="name-RuneLen">	<input type='checkbox' class="fold" id="RuneLen-fold-content"><label for="RuneLen-fold-content"> func <a href="../../src/unicode/utf8/utf8.go.html#line-321">RuneLen</a>(r <a href="../builtin.html#name-rune">rune</a>) <a href="../builtin.html#name-int">int</a></label><span id='RuneLen-fold-content-docs' class="fold-docs">
 		RuneLen returns the number of bytes required to encode the rune.
 		It returns -1 if the rune is not a valid value to encode in UTF-8.
 
-</span></div><div class="anchor value-res" id="name-RuneStart">	<input type='checkbox' class="fold" id="RuneStart-fold-content"><label for="RuneStart-fold-content"> func <a href="../../src/unicode/utf8/utf8.go.html#line-448">RuneStart</a>(b <a href="../builtin.html#name-byte">byte</a>) <a href="../builtin.html#name-bool">bool</a></label><span id='RuneStart-fold-content-docs' class="fold-docs">
+</span></div><div class="anchor value-res" id="name-RuneStart">	<input type='checkbox' class="fold" id="RuneStart-fold-content"><label for="RuneStart-fold-content"> func <a href="../../src/unicode/utf8/utf8.go.html#line-474">RuneStart</a>(b <a href="../builtin.html#name-byte">byte</a>) <a href="../builtin.html#name-bool">bool</a></label><span id='RuneStart-fold-content-docs' class="fold-docs">
 		RuneStart reports whether the byte could be the first byte of an encoded,
 		possibly invalid rune. Second and subsequent bytes always have the top two
 		bits set to 10.
 
-</span></div><div class="anchor value-res" id="name-Valid">	<input type='checkbox' class="fold" id="Valid-fold-content"><label for="Valid-fold-content"> func <a href="../../src/unicode/utf8/utf8.go.html#line-451">Valid</a>(p []<a href="../builtin.html#name-byte">byte</a>) <a href="../builtin.html#name-bool">bool</a></label><span id='Valid-fold-content-docs' class="fold-docs">
+</span></div><div class="anchor value-res" id="name-Valid">	<input type='checkbox' class="fold" id="Valid-fold-content"><label for="Valid-fold-content"> func <a href="../../src/unicode/utf8/utf8.go.html#line-477">Valid</a>(p []<a href="../builtin.html#name-byte">byte</a>) <a href="../builtin.html#name-bool">bool</a></label><span id='Valid-fold-content-docs' class="fold-docs">
 		Valid reports whether p consists entirely of valid UTF-8-encoded runes.
 
-</span></div><div class="anchor value-res" id="name-ValidRune">	<input type='checkbox' class="fold" id="ValidRune-fold-content"><label for="ValidRune-fold-content"> func <a href="../../src/unicode/utf8/utf8.go.html#line-544">ValidRune</a>(r <a href="../builtin.html#name-rune">rune</a>) <a href="../builtin.html#name-bool">bool</a></label><span id='ValidRune-fold-content-docs' class="fold-docs">
+</span></div><div class="anchor value-res" id="name-ValidRune">	<input type='checkbox' class="fold" id="ValidRune-fold-content"><label for="ValidRune-fold-content"> func <a href="../../src/unicode/utf8/utf8.go.html#line-570">ValidRune</a>(r <a href="../builtin.html#name-rune">rune</a>) <a href="../builtin.html#name-bool">bool</a></label><span id='ValidRune-fold-content-docs' class="fold-docs">
 		ValidRune reports whether r can be legally encoded as UTF-8.
 		Code points that are out of range or a surrogate half are illegal.
 
-</span></div><div class="anchor value-res" id="name-ValidString">	<input type='checkbox' class="fold" id="ValidString-fold-content"><label for="ValidString-fold-content"> func <a href="../../src/unicode/utf8/utf8.go.html#line-497">ValidString</a>(s <a href="../builtin.html#name-string">string</a>) <a href="../builtin.html#name-bool">bool</a></label><span id='ValidString-fold-content-docs' class="fold-docs">
+</span></div><div class="anchor value-res" id="name-ValidString">	<input type='checkbox' class="fold" id="ValidString-fold-content"><label for="ValidString-fold-content"> func <a href="../../src/unicode/utf8/utf8.go.html#line-523">ValidString</a>(s <a href="../builtin.html#name-string">string</a>) <a href="../builtin.html#name-bool">bool</a></label><span id='ValidString-fold-content-docs' class="fold-docs">
 		ValidString reports whether s consists entirely of valid UTF-8-encoded runes.
 
-</span></div></div>
+</span></div>	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* one unexported ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* one unexported: */</label></i><div class="anchor value-res hidden" id="name-appendRuneNonASCII"><i>	<span class="nodocs"> func <a href="../../src/unicode/utf8/utf8.go.html#line-383">appendRuneNonASCII</a>(p []<a href="../builtin.html#name-byte">byte</a>, r <a href="../builtin.html#name-rune">rune</a>) []<a href="../builtin.html#name-byte">byte</a></span></i></div></div>
 <div id="exported-variables"><span class="title">Package-Level Variables<span class="title-stat"><i> (total 2, neither is exported)</i></span></span>
 
 	<input type='checkbox' class="showhide" id="unexported-variables-showhide"><i><label for="unexported-variables-showhide" class="show-inline">/* 2 unexporteds ... */</label><label for="unexported-variables-showhide" class="hide-inline">/* 2 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-acceptRanges"><i>	<input type='checkbox' class="fold" id="acceptRanges-fold-content"><label for="acceptRanges-fold-content">  var <a href="../../src/unicode/utf8/utf8.go.html#line-94">acceptRanges</a> [16]<a href="#name-acceptRange">acceptRange</a></label><span id='acceptRanges-fold-content-docs' class="fold-docs">
@@ -413,7 +433,7 @@
 
 </span></i></div></div></code></pre><pre id="footer">
 <table><tr><td><img src="../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

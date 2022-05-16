@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Package: path/filepath</title>
-<link href="../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../jvs/golds-v0.3.6.js"></script>
+<link href="../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="package-details"><code><span style="font-size:xx-large;">package <b>filepath</b></span>
@@ -15,7 +15,7 @@
 	<a href="../../index.html#pkg-path/filepath">path/filepath</a><i> (on <a href="https://pkg.go.dev/path/filepath" target="_blank">go.dev</a>)</i>
 
 <span class="title">Dependency Relation</span>
-	imports <a href="../../dep/path/filepath.html">8 packages</a>, and imported by <a href="../../dep/path/filepath.html#imported-by">5 packages</a>
+	imports <a href="../../dep/path/filepath.html">8 packages</a>, and imported by <a href="../../dep/path/filepath.html#imported-by">9 packages</a>
 
 <div id="files"><span class="title">Involved Source Files</span>
 
@@ -207,7 +207,7 @@
 		}
 </span>
 	<input type='checkbox' class="fold" id="example-9-fold-content"><label for="example-9-fold-content">Walk</label><span id='example-9-fold-content-items' class="fold-items">
-		// +build !windows,!plan9
+		//go:build !windows &amp;&amp; !plan9
 		
 		package main
 		
@@ -250,7 +250,7 @@
 					fmt.Printf("prevent panic by handling failure accessing a path %q: %v\n", path, err)
 					return err
 				}
-				if info.IsDir() && info.Name() == subDirToSkip {
+				if info.IsDir() &amp;&amp; info.Name() == subDirToSkip {
 					fmt.Printf("skipping a dir without errors: %+v \n", info.Name())
 					return filepath.SkipDir
 				}
@@ -266,8 +266,8 @@
 </div>
 <div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 3, in which 1 are exported)</i></span></span>
 
-<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-WalkFunc" data-popularity="70">	<input type='checkbox' class="fold" id="WalkFunc-fold-content"><label for="WalkFunc-fold-content"> type <a href="../../src/path/filepath/path.go.html#line-376">WalkFunc</a> <i>(func)</i></label><span id='WalkFunc-fold-content-docs' class="fold-docs">
-		WalkFunc is the type of the function called by Walk to visit each each
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-WalkFunc" data-popularity="70">	<input type='checkbox' class="fold" id="WalkFunc-fold-content"><label for="WalkFunc-fold-content"> type <a href="../../src/path/filepath/path.go.html#line-380">WalkFunc</a> <i>(func)</i></label><span id='WalkFunc-fold-content-docs' class="fold-docs">
+		WalkFunc is the type of the function called by Walk to visit each
 		file or directory.
 
 		The path argument contains the argument to Walk as a prefix.
@@ -325,22 +325,22 @@
 			<span class="nodocs"><a href="../../src/path/filepath/path.go.html#line-29">w</a> <i><a href="../builtin.html#name-int">int</a></i></span></i></span></span>
 		<input type='checkbox' class="fold" id="lazybuf-fold-methods"><label for="lazybuf-fold-methods">Methods (<i>total 3, none are exported</i>)</label><span id='lazybuf-fold-methods-items' class="fold-items">
 			<input type='checkbox' checked class="showhide" id="lazybuf-showhide-methods"><i><label for="lazybuf-showhide-methods" class="show-inline">/* 3 unexporteds ... */</label><label for="lazybuf-showhide-methods" class="hide-inline">/* 3 unexporteds: */</label></i><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../src/path/filepath/path.go.html#line-41">append</a>(c <a href="../builtin.html#name-byte">byte</a>)</span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../src/path/filepath/path.go.html#line-34">index</a>(i <a href="../builtin.html#name-int">int</a>) <a href="../builtin.html#name-byte">byte</a></span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../src/path/filepath/path.go.html#line-54">string</a>() <a href="../builtin.html#name-string">string</a></span></i></span></span>
+			<span class="nodocs">(*lazybuf) <a href="../../src/path/filepath/path.go.html#line-41">append</a>(c <a href="../builtin.html#name-byte">byte</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*lazybuf) <a href="../../src/path/filepath/path.go.html#line-34">index</a>(i <a href="../builtin.html#name-int">int</a>) <a href="../builtin.html#name-byte">byte</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*lazybuf) <a href="../../src/path/filepath/path.go.html#line-54">string</a>() <a href="../builtin.html#name-string">string</a></span></i></span></span>
 
-</span></div><div class="anchor type-res hidden" id="name-statDirEntry" data-popularity="250">	<input type='checkbox' class="fold" id="statDirEntry-fold-content"><label for="statDirEntry-fold-content"> type <a href="../../src/path/filepath/path.go.html#line-473">statDirEntry</a> <i>(struct)</i></label><span id='statDirEntry-fold-content-docs' class="fold-docs">
+</span></div><div class="anchor type-res hidden" id="name-statDirEntry" data-popularity="250">	<input type='checkbox' class="fold" id="statDirEntry-fold-content"><label for="statDirEntry-fold-content"> type <a href="../../src/path/filepath/path.go.html#line-477">statDirEntry</a> <i>(struct)</i></label><span id='statDirEntry-fold-content-docs' class="fold-docs">
 
 		<input type='checkbox' class="fold" id="statDirEntry-fold-fields"><label for="statDirEntry-fold-fields">Fields (<i>only one, which is unexported</i>)</label><span id='statDirEntry-fold-fields-items' class="fold-items">
 			<input type='checkbox' checked class="showhide" id="statDirEntry-showhide-fields"><i><label for="statDirEntry-showhide-fields" class="show-inline">/* one unexported ... */</label><label for="statDirEntry-showhide-fields" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
-			<span class="nodocs"><a href="../../src/path/filepath/path.go.html#line-474">info</a> <i><a href="../io/fs.html">fs</a>.<a href="../io/fs.html#name-FileInfo">FileInfo</a></i></span></i></span></span>
+			<span class="nodocs"><a href="../../src/path/filepath/path.go.html#line-478">info</a> <i><a href="../io/fs.html">fs</a>.<a href="../io/fs.html#name-FileInfo">FileInfo</a></i></span></i></span></span>
 		<input type='checkbox' class="fold" id="statDirEntry-fold-methods"><label for="statDirEntry-fold-methods">Methods (<i>total 4, all are exported</i>)</label><span id='statDirEntry-fold-methods-items' class="fold-items"><span>
-			<span class="nodocs">(*T) <a href="../../src/path/filepath/path.go.html#line-480">Info</a>() (<a href="../io/fs.html">fs</a>.<a href="../io/fs.html#name-FileInfo">FileInfo</a>, <a href="../builtin.html#name-error">error</a>)</span></span><span>
-			<span class="nodocs">(*T) <a href="../../src/path/filepath/path.go.html#line-478">IsDir</a>() <a href="../builtin.html#name-bool">bool</a></span></span><span>
-			<span class="nodocs">(*T) <a href="../../src/path/filepath/path.go.html#line-477">Name</a>() <a href="../builtin.html#name-string">string</a></span></span><span>
-			<span class="nodocs">(*T) <a href="../../src/path/filepath/path.go.html#line-479">Type</a>() <a href="../io/fs.html">fs</a>.<a href="../io/fs.html#name-FileMode">FileMode</a></span></span></span>
+			<span class="nodocs">(*statDirEntry) <a href="../../src/path/filepath/path.go.html#line-484">Info</a>() (<a href="../io/fs.html">fs</a>.<a href="../io/fs.html#name-FileInfo">FileInfo</a>, <a href="../builtin.html#name-error">error</a>)</span></span><span>
+			<span class="nodocs">(*statDirEntry) <a href="../../src/path/filepath/path.go.html#line-482">IsDir</a>() <a href="../builtin.html#name-bool">bool</a></span></span><span>
+			<span class="nodocs">(*statDirEntry) <a href="../../src/path/filepath/path.go.html#line-481">Name</a>() <a href="../builtin.html#name-string">string</a></span></span><span>
+			<span class="nodocs">(*statDirEntry) <a href="../../src/path/filepath/path.go.html#line-483">Type</a>() <a href="../io/fs.html">fs</a>.<a href="../io/fs.html#name-FileMode">FileMode</a></span></span></span>
 		<input type='checkbox' class="fold" id="statDirEntry-fold-impls"><label for="statDirEntry-fold-impls">Implements (<i>at least one exported</i>)</label><span id='statDirEntry-fold-impls-items' class="fold-items"><span>
-			*T : io/fs.<a href="../io/fs.html#name-DirEntry">DirEntry</a></span></span>
+			*statDirEntry : io/fs.<a href="../io/fs.html#name-DirEntry">DirEntry</a></span></span>
 
 </span></div></div>
 <div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 38, in which 19 are exported)</i></span></span>
@@ -352,7 +352,7 @@
 		path name for a given file is not guaranteed to be unique.
 		Abs calls Clean on the result.
 
-</span></div><div class="anchor value-res" id="name-Base">	<input type='checkbox' class="fold" id="Base-fold-content"><label for="Base-fold-content"> func <a href="../../src/path/filepath/path.go.html#line-545">Base</a>(path <a href="../builtin.html#name-string">string</a>) <a href="../builtin.html#name-string">string</a></label><span id='Base-fold-content-docs' class="fold-docs">
+</span></div><div class="anchor value-res" id="name-Base">	<input type='checkbox' class="fold" id="Base-fold-content"><label for="Base-fold-content"> func <a href="../../src/path/filepath/path.go.html#line-549">Base</a>(path <a href="../builtin.html#name-string">string</a>) <a href="../builtin.html#name-string">string</a></label><span id='Base-fold-content-docs' class="fold-docs">
 		Base returns the last element of path.
 		Trailing path separators are removed before extracting the last element.
 		If the path is empty, Base returns ".".
@@ -383,7 +383,7 @@
 		Getting Dot-Dot Right,''
 		https://9p.io/sys/doc/lexnames.html
 
-</span></div><div class="anchor value-res" id="name-Dir">	<input type='checkbox' class="fold" id="Dir-fold-content"><label for="Dir-fold-content"> func <a href="../../src/path/filepath/path.go.html#line-576">Dir</a>(path <a href="../builtin.html#name-string">string</a>) <a href="../builtin.html#name-string">string</a></label><span id='Dir-fold-content-docs' class="fold-docs">
+</span></div><div class="anchor value-res" id="name-Dir">	<input type='checkbox' class="fold" id="Dir-fold-content"><label for="Dir-fold-content"> func <a href="../../src/path/filepath/path.go.html#line-580">Dir</a>(path <a href="../builtin.html#name-string">string</a>) <a href="../builtin.html#name-string">string</a></label><span id='Dir-fold-content-docs' class="fold-docs">
 		Dir returns all but the last element of path, typically the path's directory.
 		After dropping the final element, Dir calls Clean on the path and trailing
 		slashes are removed.
@@ -491,13 +491,13 @@
 		in path with a slash ('/') character. Multiple separators are
 		replaced by multiple slashes.
 
-</span></div><div class="anchor value-res" id="name-VolumeName">	<input type='checkbox' class="fold" id="VolumeName-fold-content"><label for="VolumeName-fold-content"> func <a href="../../src/path/filepath/path.go.html#line-594">VolumeName</a>(path <a href="../builtin.html#name-string">string</a>) <a href="../builtin.html#name-string">string</a></label><span id='VolumeName-fold-content-docs' class="fold-docs">
+</span></div><div class="anchor value-res" id="name-VolumeName">	<input type='checkbox' class="fold" id="VolumeName-fold-content"><label for="VolumeName-fold-content"> func <a href="../../src/path/filepath/path.go.html#line-598">VolumeName</a>(path <a href="../builtin.html#name-string">string</a>) <a href="../builtin.html#name-string">string</a></label><span id='VolumeName-fold-content-docs' class="fold-docs">
 		VolumeName returns leading volume name.
 		Given "C:\foo\bar" it returns "C:" on Windows.
 		Given "\\host\share\foo" it returns "\\host\share".
 		On other platforms it returns "".
 
-</span></div><div class="anchor value-res" id="name-Walk">	<input type='checkbox' class="fold" id="Walk-fold-content"><label for="Walk-fold-content"> func <a href="../../src/path/filepath/path.go.html#line-496">Walk</a>(root <a href="../builtin.html#name-string">string</a>, fn <a href="#name-WalkFunc">WalkFunc</a>) <a href="../builtin.html#name-error">error</a></label><span id='Walk-fold-content-docs' class="fold-docs">
+</span></div><div class="anchor value-res" id="name-Walk">	<input type='checkbox' class="fold" id="Walk-fold-content"><label for="Walk-fold-content"> func <a href="../../src/path/filepath/path.go.html#line-500">Walk</a>(root <a href="../builtin.html#name-string">string</a>, fn <a href="#name-WalkFunc">WalkFunc</a>) <a href="../builtin.html#name-error">error</a></label><span id='Walk-fold-content-docs' class="fold-docs">
 		Walk walks the file tree rooted at root, calling fn for each file or
 		directory in the tree, including root.
 
@@ -513,7 +513,7 @@
 		Walk is less efficient than WalkDir, introduced in Go 1.16,
 		which avoids calling os.Lstat on every visited file or directory.
 
-</span></div><div class="anchor value-res" id="name-WalkDir">	<input type='checkbox' class="fold" id="WalkDir-fold-content"><label for="WalkDir-fold-content"> func <a href="../../src/path/filepath/path.go.html#line-460">WalkDir</a>(root <a href="../builtin.html#name-string">string</a>, fn <a href="../io/fs.html">fs</a>.<a href="../io/fs.html#name-WalkDirFunc">WalkDirFunc</a>) <a href="../builtin.html#name-error">error</a></label><span id='WalkDir-fold-content-docs' class="fold-docs">
+</span></div><div class="anchor value-res" id="name-WalkDir">	<input type='checkbox' class="fold" id="WalkDir-fold-content"><label for="WalkDir-fold-content"> func <a href="../../src/path/filepath/path.go.html#line-464">WalkDir</a>(root <a href="../builtin.html#name-string">string</a>, fn <a href="../io/fs.html">fs</a>.<a href="../io/fs.html#name-WalkDirFunc">WalkDirFunc</a>) <a href="../builtin.html#name-error">error</a></label><span id='WalkDir-fold-content-docs' class="fold-docs">
 		WalkDir walks the file tree rooted at root, calling fn for each file or
 		directory in the tree, including root.
 
@@ -550,11 +550,11 @@
 		If so, it returns the remainder of s (after the match).
 		Chunk is all single-character operators: literals, char classes, and ?.
 
-</span></i></div><div class="anchor value-res hidden" id="name-readDir"><i>	<input type='checkbox' class="fold" id="readDir-fold-content"><label for="readDir-fold-content"> func <a href="../../src/path/filepath/path.go.html#line-511">readDir</a>(dirname <a href="../builtin.html#name-string">string</a>) ([]<a href="../io/fs.html">fs</a>.<a href="../io/fs.html#name-DirEntry">DirEntry</a>, <a href="../builtin.html#name-error">error</a>)</label><span id='readDir-fold-content-docs' class="fold-docs">
+</span></i></div><div class="anchor value-res hidden" id="name-readDir"><i>	<input type='checkbox' class="fold" id="readDir-fold-content"><label for="readDir-fold-content"> func <a href="../../src/path/filepath/path.go.html#line-515">readDir</a>(dirname <a href="../builtin.html#name-string">string</a>) ([]<a href="../io/fs.html">fs</a>.<a href="../io/fs.html#name-DirEntry">DirEntry</a>, <a href="../builtin.html#name-error">error</a>)</label><span id='readDir-fold-content-docs' class="fold-docs">
 		readDir reads the directory named by dirname and returns
 		a sorted list of directory entries.
 
-</span></i></div><div class="anchor value-res hidden" id="name-readDirNames"><i>	<input type='checkbox' class="fold" id="readDirNames-fold-content"><label for="readDirNames-fold-content"> func <a href="../../src/path/filepath/path.go.html#line-527">readDirNames</a>(dirname <a href="../builtin.html#name-string">string</a>) ([]<a href="../builtin.html#name-string">string</a>, <a href="../builtin.html#name-error">error</a>)</label><span id='readDirNames-fold-content-docs' class="fold-docs">
+</span></i></div><div class="anchor value-res hidden" id="name-readDirNames"><i>	<input type='checkbox' class="fold" id="readDirNames-fold-content"><label for="readDirNames-fold-content"> func <a href="../../src/path/filepath/path.go.html#line-531">readDirNames</a>(dirname <a href="../builtin.html#name-string">string</a>) ([]<a href="../builtin.html#name-string">string</a>, <a href="../builtin.html#name-error">error</a>)</label><span id='readDirNames-fold-content-docs' class="fold-docs">
 		readDirNames reads the directory named by dirname and returns
 		a sorted list of directory entry names.
 
@@ -566,10 +566,10 @@
 		volumeNameLen returns length of the leading volume name on Windows.
 		It returns 0 elsewhere.
 
-</span></i></div><div class="anchor value-res hidden" id="name-walk"><i>	<input type='checkbox' class="fold" id="walk-fold-content"><label for="walk-fold-content"> func <a href="../../src/path/filepath/path.go.html#line-412">walk</a>(path <a href="../builtin.html#name-string">string</a>, info <a href="../io/fs.html">fs</a>.<a href="../io/fs.html#name-FileInfo">FileInfo</a>, walkFn <a href="#name-WalkFunc">WalkFunc</a>) <a href="../builtin.html#name-error">error</a></label><span id='walk-fold-content-docs' class="fold-docs">
+</span></i></div><div class="anchor value-res hidden" id="name-walk"><i>	<input type='checkbox' class="fold" id="walk-fold-content"><label for="walk-fold-content"> func <a href="../../src/path/filepath/path.go.html#line-416">walk</a>(path <a href="../builtin.html#name-string">string</a>, info <a href="../io/fs.html">fs</a>.<a href="../io/fs.html#name-FileInfo">FileInfo</a>, walkFn <a href="#name-WalkFunc">WalkFunc</a>) <a href="../builtin.html#name-error">error</a></label><span id='walk-fold-content-docs' class="fold-docs">
 		walk recursively descends path, calling walkFn.
 
-</span></i></div><div class="anchor value-res hidden" id="name-walkDir"><i>	<input type='checkbox' class="fold" id="walkDir-fold-content"><label for="walkDir-fold-content"> func <a href="../../src/path/filepath/path.go.html#line-381">walkDir</a>(path <a href="../builtin.html#name-string">string</a>, d <a href="../io/fs.html">fs</a>.<a href="../io/fs.html#name-DirEntry">DirEntry</a>, walkDirFn <a href="../io/fs.html">fs</a>.<a href="../io/fs.html#name-WalkDirFunc">WalkDirFunc</a>) <a href="../builtin.html#name-error">error</a></label><span id='walkDir-fold-content-docs' class="fold-docs">
+</span></i></div><div class="anchor value-res hidden" id="name-walkDir"><i>	<input type='checkbox' class="fold" id="walkDir-fold-content"><label for="walkDir-fold-content"> func <a href="../../src/path/filepath/path.go.html#line-385">walkDir</a>(path <a href="../builtin.html#name-string">string</a>, d <a href="../io/fs.html">fs</a>.<a href="../io/fs.html#name-DirEntry">DirEntry</a>, walkDirFn <a href="../io/fs.html">fs</a>.<a href="../io/fs.html#name-WalkDirFunc">WalkDirFunc</a>) <a href="../builtin.html#name-error">error</a></label><span id='walkDir-fold-content-docs' class="fold-docs">
 		walkDir recursively descends path, calling walkDirFn.
 
 </span></i></div><div class="anchor value-res hidden" id="name-walkSymlinks"><i>	<span class="nodocs"> func <a href="../../src/path/filepath/symlink.go.html#line-15">walkSymlinks</a>(path <a href="../builtin.html#name-string">string</a>) (<a href="../builtin.html#name-string">string</a>, <a href="../builtin.html#name-error">error</a>)</span></i></div></div>
@@ -578,17 +578,17 @@
 <div class="anchor value-res" id="name-ErrBadPattern">	<input type='checkbox' class="fold" id="ErrBadPattern-fold-content"><label for="ErrBadPattern-fold-content">  var <a href="../../src/path/filepath/match.go.html#line-17">ErrBadPattern</a> <a href="../builtin.html#name-error">error</a></label><span id='ErrBadPattern-fold-content-docs' class="fold-docs">
 		ErrBadPattern indicates a pattern was malformed.
 
-</span></div><div class="anchor value-res" id="name-SkipDir">	<input type='checkbox' class="fold" id="SkipDir-fold-content"><label for="SkipDir-fold-content">  var <a href="../../src/path/filepath/path.go.html#line-337">SkipDir</a> <a href="../builtin.html#name-error">error</a></label><span id='SkipDir-fold-content-docs' class="fold-docs">
+</span></div><div class="anchor value-res" id="name-SkipDir">	<input type='checkbox' class="fold" id="SkipDir-fold-content"><label for="SkipDir-fold-content">  var <a href="../../src/path/filepath/path.go.html#line-341">SkipDir</a> <a href="../builtin.html#name-error">error</a></label><span id='SkipDir-fold-content-docs' class="fold-docs">
 		SkipDir is used as a return value from WalkFuncs to indicate that
 		the directory named in the call is to be skipped. It is not returned
 		as an error by any function.
 
-</span></div>	<input type='checkbox' class="showhide" id="unexported-variables-showhide"><i><label for="unexported-variables-showhide" class="show-inline">/* one unexported ... */</label><label for="unexported-variables-showhide" class="hide-inline">/* one unexported: */</label></i><div class="anchor value-res hidden" id="name-lstat"><i>	<span class="nodocs">  var <a href="../../src/path/filepath/path.go.html#line-378">lstat</a> func(name <a href="../builtin.html#name-string">string</a>) (<a href="../io/fs.html">fs</a>.<a href="../io/fs.html#name-FileInfo">FileInfo</a>, <a href="../builtin.html#name-error">error</a>) // for testing</span></i></div></div>
+</span></div>	<input type='checkbox' class="showhide" id="unexported-variables-showhide"><i><label for="unexported-variables-showhide" class="show-inline">/* one unexported ... */</label><label for="unexported-variables-showhide" class="hide-inline">/* one unexported: */</label></i><div class="anchor value-res hidden" id="name-lstat"><i>	<span class="nodocs">  var <a href="../../src/path/filepath/path.go.html#line-382">lstat</a> func(name <a href="../builtin.html#name-string">string</a>) (<a href="../io/fs.html">fs</a>.<a href="../io/fs.html#name-FileInfo">FileInfo</a>, <a href="../builtin.html#name-error">error</a>) // for testing</span></i></div></div>
 <div id="exported-constants"><span class="title">Package-Level Constants<span class="title-stat"><i> (total 2, both are exported)</i></span></span>
 
 <div class="anchor value-res" id="name-ListSeparator">	<span class="nodocs">const <a href="../../src/path/filepath/path.go.html#line-63">ListSeparator</a> = 58</span></div><div class="anchor value-res" id="name-Separator">	<span class="nodocs">const <a href="../../src/path/filepath/path.go.html#line-62">Separator</a> = 47</span></div></div></code></pre><pre id="footer">
 <table><tr><td><img src="../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

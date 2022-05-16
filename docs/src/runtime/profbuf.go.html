@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: profbuf.go in package runtime</title>
-<link href="../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../jvs/golds-v0.3.6.js"></script>
+<link href="../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -336,7 +336,7 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-100"><code>	<span class="comment">// owned by reader</span></code></span>
 <span class="codeline" id="line-101"><code>	rNext       <a href="#line-110" class="ident">profIndex</a></code></span>
 <span class="codeline" id="line-102"><code>	overflowBuf []<a href="../../pkg/builtin.html#name-uint64" class="ident">uint64</a> <span class="comment">// for use by reader to return overflow record</span></code></span>
-<span class="codeline" id="line-103"><code>	wait        <a href="runtime2.go.html#line-191" class="ident">note</a></code></span>
+<span class="codeline" id="line-103"><code>	wait        <a href="runtime2.go.html#line-190" class="ident">note</a></code></span>
 <span class="codeline" id="line-104"><code>}</code></span>
 <span class="codeline" id="line-105"><code></code></span>
 <span class="codeline" id="line-106"><code><span class="comment">// A profAtomic is the atomically-accessed word holding a profIndex.</span></code></span>
@@ -451,7 +451,7 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-215"><code><span class="comment">	// within the buffers. We store 30 bits of count; limiting to 28</span></code></span>
 <span class="codeline" id="line-216"><code><span class="comment">	// gives us some room for intermediate calculations.</span></code></span>
 <span class="codeline" id="line-217"><code>	<span class="keyword">if</span> <label for="r33" class="ident">bufwords</label> &gt;= <span class="lit-number">1</span>&lt;&lt;<span class="lit-number">28</span> || <label for="r34" class="ident">tags</label> &gt;= <span class="lit-number">1</span>&lt;&lt;<span class="lit-number">28</span> {</code></span>
-<span class="codeline" id="line-218"><code>		<a href="panic.go.html#line-1107" class="ident">throw</a>(<span class="lit-string">"newProfBuf: buffer too large"</span>)</code></span>
+<span class="codeline" id="line-218"><code>		<a href="panic.go.html#line-982" class="ident">throw</a>(<span class="lit-string">"newProfBuf: buffer too large"</span>)</code></span>
 <span class="codeline" id="line-219"><code>	}</code></span>
 <span class="codeline" id="line-220"><code>	<span class="keyword">var</span> <label for="r36" class="ident">i</label> <a href="../../pkg/builtin.html#name-int" class="ident">int</a></code></span>
 <span class="codeline" id="line-221"><code>	<span class="keyword">for</span> <label for="r36" class="ident">i</label> = <span class="lit-number">1</span>; <label for="r36" class="ident">i</label> &lt; <label for="r33" class="ident">bufwords</label>; <label for="r36" class="ident">i</label> &lt;&lt;= <span class="lit-number">1</span> {</code></span>
@@ -542,7 +542,7 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-306"><code>		<span class="keyword">return</span></code></span>
 <span class="codeline" id="line-307"><code>	}</code></span>
 <span class="codeline" id="line-308"><code>	<span class="keyword">if</span> <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r59" class="ident">hdr</label>) &gt; <a href="../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r55" class="ident">b</label>.<a href="#line-96" class="ident">hdrsize</a>) {</code></span>
-<span class="codeline" id="line-309"><code>		<a href="panic.go.html#line-1107" class="ident">throw</a>(<span class="lit-string">"misuse of profBuf.write"</span>)</code></span>
+<span class="codeline" id="line-309"><code>		<a href="panic.go.html#line-982" class="ident">throw</a>(<span class="lit-string">"misuse of profBuf.write"</span>)</code></span>
 <span class="codeline" id="line-310"><code>	}</code></span>
 <span class="codeline" id="line-311"><code></code></span>
 <span class="codeline" id="line-312"><code>	<span class="keyword">if</span> <label for="r61" class="ident">hasOverflow</label> := <label for="r55" class="ident">b</label>.<a href="#line-153" class="ident">hasOverflow</a>(); <label for="r61" class="ident">hasOverflow</label> &amp;&amp; <label for="r55" class="ident">b</label>.<a href="#line-264" class="ident">canWriteTwoRecords</a>(<span class="lit-number">1</span>, <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r60" class="ident">stk</label>)) {</code></span>
@@ -632,7 +632,7 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-396"><code><span class="comment">// Once all the data has been read from the buffer, reads will return eof=true.</span></code></span>
 <span class="codeline" id="line-397"><code><span class="keyword">func</span> (<label for="r77" class="ident">b</label> *<a href="#line-88" class="ident">profBuf</a>) <label for="r78" class="ident">close</label>() {</code></span>
 <span class="codeline" id="line-398"><code>	<span class="keyword">if</span> <a href="../../pkg/runtime/internal/atomic.html" class="ident i0">atomic</a>.<a href="internal/atomic/atomic_amd64.go.html#line-16" class="ident">Load</a>(&amp;<label for="r77" class="ident">b</label>.<a href="#line-93" class="ident">eof</a>) &gt; <span class="lit-number">0</span> {</code></span>
-<span class="codeline" id="line-399"><code>		<a href="panic.go.html#line-1107" class="ident">throw</a>(<span class="lit-string">"runtime: profBuf already closed"</span>)</code></span>
+<span class="codeline" id="line-399"><code>		<a href="panic.go.html#line-982" class="ident">throw</a>(<span class="lit-string">"runtime: profBuf already closed"</span>)</code></span>
 <span class="codeline" id="line-400"><code>	}</code></span>
 <span class="codeline" id="line-401"><code>	<a href="../../pkg/runtime/internal/atomic.html" class="ident i0">atomic</a>.<a href="internal/atomic/atomic_amd64.go.html#line-95" class="ident">Store</a>(&amp;<label for="r77" class="ident">b</label>.<a href="#line-93" class="ident">eof</a>, <span class="lit-number">1</span>)</code></span>
 <span class="codeline" id="line-402"><code>	<label for="r77" class="ident">b</label>.<a href="#line-408" class="ident">wakeupExtra</a>()</code></span>
@@ -756,7 +756,7 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-520"><code></code></span>
 <span class="codeline" id="line-521"><code>	<label for="r102" class="ident">ntag</label> := <a href="#line-142" class="ident">countSub</a>(<label for="r95" class="ident">bw</label>.<a href="#line-133" class="ident">tagCount</a>(), <label for="r89" class="ident">br</label>.<a href="#line-133" class="ident">tagCount</a>())</code></span>
 <span class="codeline" id="line-522"><code>	<span class="keyword">if</span> <label for="r102" class="ident">ntag</label> == <span class="lit-number">0</span> {</code></span>
-<span class="codeline" id="line-523"><code>		<a href="panic.go.html#line-1107" class="ident">throw</a>(<span class="lit-string">"runtime: malformed profBuf buffer - tag and data out of sync"</span>)</code></span>
+<span class="codeline" id="line-523"><code>		<a href="panic.go.html#line-982" class="ident">throw</a>(<span class="lit-string">"runtime: malformed profBuf buffer - tag and data out of sync"</span>)</code></span>
 <span class="codeline" id="line-524"><code>	}</code></span>
 <span class="codeline" id="line-525"><code>	<label for="r87" class="ident">tags</label> = <label for="r83" class="ident">b</label>.<a href="#line-98" class="ident">tags</a>[<label for="r89" class="ident">br</label>.<a href="#line-133" class="ident">tagCount</a>()%<a href="../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r83" class="ident">b</label>.<a href="#line-98" class="ident">tags</a>)):]</code></span>
 <span class="codeline" id="line-526"><code>	<span class="keyword">if</span> <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r87" class="ident">tags</label>) &gt; <label for="r102" class="ident">ntag</label> {</code></span>
@@ -771,7 +771,7 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-535"><code>	<label for="r104" class="ident">ti</label> := <span class="lit-number">0</span></code></span>
 <span class="codeline" id="line-536"><code>	<span class="keyword">for</span> <label for="r103" class="ident">di</label> &lt; <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r86" class="ident">data</label>) &amp;&amp; <label for="r86" class="ident">data</label>[<label for="r103" class="ident">di</label>] != <span class="lit-number">0</span> &amp;&amp; <label for="r104" class="ident">ti</label> &lt; <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r87" class="ident">tags</label>) {</code></span>
 <span class="codeline" id="line-537"><code>		<span class="keyword">if</span> <a href="../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a>(<label for="r103" class="ident">di</label>)+<a href="../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a>(<label for="r86" class="ident">data</label>[<label for="r103" class="ident">di</label>]) &gt; <a href="../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a>(<a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r86" class="ident">data</label>)) {</code></span>
-<span class="codeline" id="line-538"><code>			<a href="panic.go.html#line-1107" class="ident">throw</a>(<span class="lit-string">"runtime: malformed profBuf buffer - invalid size"</span>)</code></span>
+<span class="codeline" id="line-538"><code>			<a href="panic.go.html#line-982" class="ident">throw</a>(<span class="lit-string">"runtime: malformed profBuf buffer - invalid size"</span>)</code></span>
 <span class="codeline" id="line-539"><code>		}</code></span>
 <span class="codeline" id="line-540"><code>		<label for="r103" class="ident">di</label> += <a href="../../pkg/builtin.html#name-int" class="ident">int</a>(<label for="r86" class="ident">data</label>[<label for="r103" class="ident">di</label>])</code></span>
 <span class="codeline" id="line-541"><code>		<label for="r104" class="ident">ti</label>++</code></span>
@@ -797,7 +797,7 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-561"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

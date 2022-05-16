@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: reflect_dynamic.go in package github.com/json-iterator/go</title>
-<link href="../../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -104,14 +104,14 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-30"><code>		<span class="keyword">return</span></code></span>
 <span class="codeline" id="line-31"><code>	}</code></span>
 <span class="codeline" id="line-32"><code>	<label for="r14" class="ident">typ</label> := <a href="../../../../pkg/github.com/modern-go/reflect2.html" class="ident i0">reflect2</a>.<a href="../../modern-go/reflect2/reflect2.go.html#line-211" class="ident">TypeOf</a>(<label for="r13" class="ident">obj</label>)</code></span>
-<span class="codeline" id="line-33"><code>	<span class="keyword">if</span> <label for="r14" class="ident">typ</label>.<a href="../../modern-go/reflect2/reflect2.go.html#line-11" class="ident">Kind</a>() != <a href="../../../../pkg/reflect.html" class="ident i1">reflect</a>.<a href="../../../reflect/type.go.html#line-257" class="ident">Ptr</a> {</code></span>
+<span class="codeline" id="line-33"><code>	<span class="keyword">if</span> <label for="r14" class="ident">typ</label>.<a href="../../modern-go/reflect2/reflect2.go.html#line-11" class="ident">Kind</a>() != <a href="../../../../pkg/reflect.html" class="ident i1">reflect</a>.<a href="../../../reflect/type.go.html#line-272" class="ident">Ptr</a> {</code></span>
 <span class="codeline" id="line-34"><code>		*<label for="r12" class="ident">pObj</label> = <label for="r11" class="ident">iter</label>.<a href="iter.go.html#line-291" class="ident">Read</a>()</code></span>
 <span class="codeline" id="line-35"><code>		<span class="keyword">return</span></code></span>
 <span class="codeline" id="line-36"><code>	}</code></span>
 <span class="codeline" id="line-37"><code>	<label for="r15" class="ident">ptrType</label> := <label for="r14" class="ident">typ</label>.(*<a href="../../../../pkg/github.com/modern-go/reflect2.html" class="ident i0">reflect2</a>.<a href="../../modern-go/reflect2/unsafe_ptr.go.html#line-8" class="ident">UnsafePtrType</a>)</code></span>
 <span class="codeline" id="line-38"><code>	<label for="r16" class="ident">ptrElemType</label> := <label for="r15" class="ident">ptrType</label>.<a href="../../modern-go/reflect2/safe_type.go.html#line-21" class="ident">Elem</a>()</code></span>
 <span class="codeline" id="line-39"><code>	<span class="keyword">if</span> <label for="r11" class="ident">iter</label>.<a href="iter.go.html#line-150" class="ident">WhatIsNext</a>() == <a href="iter.go.html#line-20" class="ident">NilValue</a> {</code></span>
-<span class="codeline" id="line-40"><code>		<span class="keyword">if</span> <label for="r16" class="ident">ptrElemType</label>.<a href="../../modern-go/reflect2/reflect2.go.html#line-11" class="ident">Kind</a>() != <a href="../../../../pkg/reflect.html" class="ident i1">reflect</a>.<a href="../../../reflect/type.go.html#line-257" class="ident">Ptr</a> {</code></span>
+<span class="codeline" id="line-40"><code>		<span class="keyword">if</span> <label for="r16" class="ident">ptrElemType</label>.<a href="../../modern-go/reflect2/reflect2.go.html#line-11" class="ident">Kind</a>() != <a href="../../../../pkg/reflect.html" class="ident i1">reflect</a>.<a href="../../../reflect/type.go.html#line-272" class="ident">Ptr</a> {</code></span>
 <span class="codeline" id="line-41"><code>			<label for="r11" class="ident">iter</label>.<a href="iter_skip.go.html#line-98" class="ident">skipFourBytes</a>(<span class="lit-number">'n'</span>, <span class="lit-number">'u'</span>, <span class="lit-number">'l'</span>, <span class="lit-number">'l'</span>)</code></span>
 <span class="codeline" id="line-42"><code>			*<label for="r12" class="ident">pObj</label> = <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
 <span class="codeline" id="line-43"><code>			<span class="keyword">return</span></code></span>
@@ -144,7 +144,7 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-70"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

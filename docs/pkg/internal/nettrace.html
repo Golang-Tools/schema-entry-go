@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Package: internal/nettrace</title>
-<link href="../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../jvs/golds-v0.3.6.js"></script>
+<link href="../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="package-details"><code><span style="font-size:xx-large;">package <b>nettrace</b></span>
@@ -49,9 +49,9 @@
 				dialing, this may be called multiple times, from multiple
 				goroutines.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Trace-fold-field-DNSDone"><label for="Trace-fold-field-DNSDone"><a href="../../src/internal/nettrace/nettrace.go.html#line-33">DNSDone</a> <i>func(netIPs []interface{}, coalesced <a href="../builtin.html#name-bool">bool</a>, err <a href="../builtin.html#name-error">error</a>)</i></label><span id='Trace-fold-field-DNSDone-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Trace-fold-field-DNSDone"><label for="Trace-fold-field-DNSDone"><a href="../../src/internal/nettrace/nettrace.go.html#line-33">DNSDone</a> <i>func(netIPs []<a href="../builtin.html#name-any">any</a>, coalesced <a href="../builtin.html#name-bool">bool</a>, err <a href="../builtin.html#name-error">error</a>)</i></label><span id='Trace-fold-field-DNSDone-docs' class="fold-docs">
 				DNSDone is called after a DNS lookup completes (or fails).
-				The coalesced parameter is whether singleflight de-dupped
+				The coalesced parameter is whether singleflight de-duped
 				the call. The addrs are of type net.IPAddr but can't
 				actually be for circular dependency reasons.
 </span></span><span>
@@ -66,7 +66,7 @@
 
 </span></div></div></code></pre><pre id="footer">
 <table><tr><td><img src="../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: unsafe_map.go in package github.com/modern-go/reflect2</title>
-<link href="../../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -183,11 +183,11 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-11"><code>	pElemRType <a href="../../../../pkg/unsafe.html" class="ident i1">unsafe</a>.<a href="../../../../pkg/unsafe.html#name-Pointer" class="ident">Pointer</a></code></span>
 <span class="codeline" id="line-12"><code>}</code></span>
 <span class="codeline" id="line-13"><code></code></span>
-<span class="codeline" id="line-14"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../pkg/github.com/modern-go/reflect2.html#name-newUnsafeMapType" class="ident">newUnsafeMapType</a></label>(<label for="r1" class="ident">cfg</label> *<a href="reflect2.go.html#line-132" class="ident">frozenConfig</a>, <label for="r2" class="ident">type1</label> <a href="../../../../pkg/reflect.html" class="ident i0">reflect</a>.<a href="../../../reflect/type.go.html#line-38" class="ident">Type</a>) <a href="reflect2.go.html#line-90" class="ident">MapType</a> {</code></span>
+<span class="codeline" id="line-14"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../pkg/github.com/modern-go/reflect2.html#name-newUnsafeMapType" class="ident">newUnsafeMapType</a></label>(<label for="r1" class="ident">cfg</label> *<a href="reflect2.go.html#line-132" class="ident">frozenConfig</a>, <label for="r2" class="ident">type1</label> <a href="../../../../pkg/reflect.html" class="ident i0">reflect</a>.<a href="../../../reflect/type.go.html#line-39" class="ident">Type</a>) <a href="reflect2.go.html#line-90" class="ident">MapType</a> {</code></span>
 <span class="codeline" id="line-15"><code>	<span class="keyword">return</span> &amp;<a href="#line-8" class="ident">UnsafeMapType</a>{</code></span>
 <span class="codeline" id="line-16"><code>		<a href="#line-9" class="ident">unsafeType</a>: *<a href="unsafe_type.go.html#line-14" class="ident">newUnsafeType</a>(<label for="r1" class="ident">cfg</label>, <label for="r2" class="ident">type1</label>),</code></span>
-<span class="codeline" id="line-17"><code>		<a href="#line-10" class="ident">pKeyRType</a>:  <a href="unsafe_eface.go.html#line-13" class="ident">unpackEFace</a>(<a href="../../../../pkg/reflect.html" class="ident i0">reflect</a>.<a href="../../../reflect/type.go.html#line-1378" class="ident">PtrTo</a>(<label for="r2" class="ident">type1</label>.<a href="../../../reflect/type.go.html#line-189" class="ident">Key</a>())).<a href="unsafe_eface.go.html#line-10" class="ident">data</a>,</code></span>
-<span class="codeline" id="line-18"><code>		<a href="#line-11" class="ident">pElemRType</a>: <a href="unsafe_eface.go.html#line-13" class="ident">unpackEFace</a>(<a href="../../../../pkg/reflect.html" class="ident i0">reflect</a>.<a href="../../../reflect/type.go.html#line-1378" class="ident">PtrTo</a>(<label for="r2" class="ident">type1</label>.<a href="../../../reflect/type.go.html#line-151" class="ident">Elem</a>())).<a href="unsafe_eface.go.html#line-10" class="ident">data</a>,</code></span>
+<span class="codeline" id="line-17"><code>		<a href="#line-10" class="ident">pKeyRType</a>:  <a href="unsafe_eface.go.html#line-13" class="ident">unpackEFace</a>(<a href="../../../../pkg/reflect.html" class="ident i0">reflect</a>.<a href="../../../reflect/type.go.html#line-1437" class="ident">PtrTo</a>(<label for="r2" class="ident">type1</label>.<a href="../../../reflect/type.go.html#line-196" class="ident">Key</a>())).<a href="unsafe_eface.go.html#line-10" class="ident">data</a>,</code></span>
+<span class="codeline" id="line-18"><code>		<a href="#line-11" class="ident">pElemRType</a>: <a href="unsafe_eface.go.html#line-13" class="ident">unpackEFace</a>(<a href="../../../../pkg/reflect.html" class="ident i0">reflect</a>.<a href="../../../reflect/type.go.html#line-1437" class="ident">PtrTo</a>(<label for="r2" class="ident">type1</label>.<a href="../../../reflect/type.go.html#line-158" class="ident">Elem</a>())).<a href="unsafe_eface.go.html#line-10" class="ident">data</a>,</code></span>
 <span class="codeline" id="line-19"><code>	}</code></span>
 <span class="codeline" id="line-20"><code>}</code></span>
 <span class="codeline" id="line-21"><code></code></span>
@@ -222,7 +222,7 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-50"><code>}</code></span>
 <span class="codeline" id="line-51"><code></code></span>
 <span class="codeline" id="line-52"><code><span class="keyword">func</span> (<label for="r19" class="ident">type2</label> *<a href="#line-8" class="ident">UnsafeMapType</a>) <label for="r20" class="ident"><a href="../../../../imp/github.com/modern-go/reflect2.UnsafeMapType.html#name-.Key" class="ident">Key</a></label>() <a href="reflect2.go.html#line-10" class="ident">Type</a> {</code></span>
-<span class="codeline" id="line-53"><code>	<span class="keyword">return</span> <label for="r19" class="ident">type2</label>.<a href="safe_type.go.html#line-10" class="ident">cfg</a>.<a href="reflect2.go.html#line-153" class="ident">Type2</a>(<label for="r19" class="ident">type2</label>.<a href="safe_type.go.html#line-9" class="ident">Type</a>.<a href="../../../reflect/type.go.html#line-189" class="ident">Key</a>())</code></span>
+<span class="codeline" id="line-53"><code>	<span class="keyword">return</span> <label for="r19" class="ident">type2</label>.<a href="safe_type.go.html#line-10" class="ident">cfg</a>.<a href="reflect2.go.html#line-153" class="ident">Type2</a>(<label for="r19" class="ident">type2</label>.<a href="safe_type.go.html#line-9" class="ident">Type</a>.<a href="../../../reflect/type.go.html#line-196" class="ident">Key</a>())</code></span>
 <span class="codeline" id="line-54"><code>}</code></span>
 <span class="codeline" id="line-55"><code></code></span>
 <span class="codeline" id="line-56"><code><span class="keyword">func</span> (<label for="r21" class="ident">type2</label> *<a href="#line-8" class="ident">UnsafeMapType</a>) <label for="r22" class="ident"><a href="../../../../imp/github.com/modern-go/reflect2.UnsafeMapType.html#name-.MakeMap" class="ident">MakeMap</a></label>(<label for="r23" class="ident">cap</label> <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a>) <span class="keyword">interface</span>{} {</code></span>
@@ -276,7 +276,7 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-104"><code><span class="keyword">func</span> (<label for="r59" class="ident">type2</label> *<a href="#line-8" class="ident">UnsafeMapType</a>) <label for="r60" class="ident"><a href="../../../../imp/github.com/modern-go/reflect2.UnsafeMapType.html#name-.Iterate" class="ident">Iterate</a></label>(<label for="r61" class="ident">obj</label> <span class="keyword">interface</span>{}) <a href="reflect2.go.html#line-105" class="ident">MapIterator</a> {</code></span>
 <span class="codeline" id="line-105"><code>	<label for="r62" class="ident">objEFace</label> := <a href="unsafe_eface.go.html#line-13" class="ident">unpackEFace</a>(<label for="r61" class="ident">obj</label>)</code></span>
 <span class="codeline" id="line-106"><code>	<a href="unsafe_type.go.html#line-77" class="ident">assertType</a>(<span class="lit-string">"MapType.Iterate argument 1"</span>, <label for="r59" class="ident">type2</label>.<a href="unsafe_type.go.html#line-11" class="ident">ptrRType</a>, <label for="r62" class="ident">objEFace</label>.<a href="unsafe_eface.go.html#line-9" class="ident">rtype</a>)</code></span>
-<span class="codeline" id="line-107"><code>	<span class="keyword">return</span> <label for="r59" class="ident">type2</label>.<a href="go_below_118.go.html#line-15" class="ident">UnsafeIterate</a>(<label for="r62" class="ident">objEFace</label>.<a href="unsafe_eface.go.html#line-10" class="ident">data</a>)</code></span>
+<span class="codeline" id="line-107"><code>	<span class="keyword">return</span> <label for="r59" class="ident">type2</label>.<a href="go_above_118.go.html#line-15" class="ident">UnsafeIterate</a>(<label for="r62" class="ident">objEFace</label>.<a href="unsafe_eface.go.html#line-10" class="ident">data</a>)</code></span>
 <span class="codeline" id="line-108"><code>}</code></span>
 <span class="codeline" id="line-109"><code></code></span>
 <span class="codeline" id="line-110"><code><span class="keyword">type</span> <a href="../../../../pkg/github.com/modern-go/reflect2.html#name-UnsafeMapIterator" class="ident">UnsafeMapIterator</a> <span class="keyword">struct</span> {</code></span>
@@ -302,7 +302,7 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-130"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

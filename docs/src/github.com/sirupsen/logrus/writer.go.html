@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: writer.go in package github.com/sirupsen/logrus</title>
-<link href="../../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -81,7 +81,7 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-7"><code>)</code></span>
 <span class="codeline" id="line-8"><code></code></span>
 <span class="codeline" id="line-9"><code><span class="comment">// Writer at INFO level. See WriterLevel for details.</span></code></span>
-<span class="codeline" id="line-10"><code><span class="keyword">func</span> (<label for="r0" class="ident">logger</label> *<a href="logger.go.html#line-17" class="ident">Logger</a>) <label for="r1" class="ident">Writer</label>() *<a href="../../../../pkg/io.html" class="ident i1">io</a>.<a href="../../../io/pipe.go.html#line-153" class="ident">PipeWriter</a> {</code></span>
+<span class="codeline" id="line-10"><code><span class="keyword">func</span> (<label for="r0" class="ident">logger</label> *<a href="logger.go.html#line-17" class="ident">Logger</a>) <label for="r1" class="ident">Writer</label>() *<a href="../../../../pkg/io.html" class="ident i1">io</a>.<a href="../../../io/pipe.go.html#line-155" class="ident">PipeWriter</a> {</code></span>
 <span class="codeline" id="line-11"><code>	<span class="keyword">return</span> <label for="r0" class="ident">logger</label>.<a href="#line-19" class="ident">WriterLevel</a>(<a href="logrus.go.html#line-107" class="ident">InfoLevel</a>)</code></span>
 <span class="codeline" id="line-12"><code>}</code></span>
 <span class="codeline" id="line-13"><code></code></span>
@@ -90,16 +90,16 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-16"><code><span class="comment">// printed in the usual way using formatters and hooks. The writer is part of an</span></code></span>
 <span class="codeline" id="line-17"><code><span class="comment">// io.Pipe and it is the callers responsibility to close the writer when done.</span></code></span>
 <span class="codeline" id="line-18"><code><span class="comment">// This can be used to override the standard library logger easily.</span></code></span>
-<span class="codeline" id="line-19"><code><span class="keyword">func</span> (<label for="r2" class="ident">logger</label> *<a href="logger.go.html#line-17" class="ident">Logger</a>) <label for="r3" class="ident">WriterLevel</label>(<label for="r4" class="ident">level</label> <a href="logrus.go.html#line-13" class="ident">Level</a>) *<a href="../../../../pkg/io.html" class="ident i1">io</a>.<a href="../../../io/pipe.go.html#line-153" class="ident">PipeWriter</a> {</code></span>
+<span class="codeline" id="line-19"><code><span class="keyword">func</span> (<label for="r2" class="ident">logger</label> *<a href="logger.go.html#line-17" class="ident">Logger</a>) <label for="r3" class="ident">WriterLevel</label>(<label for="r4" class="ident">level</label> <a href="logrus.go.html#line-13" class="ident">Level</a>) *<a href="../../../../pkg/io.html" class="ident i1">io</a>.<a href="../../../io/pipe.go.html#line-155" class="ident">PipeWriter</a> {</code></span>
 <span class="codeline" id="line-20"><code>	<span class="keyword">return</span> <a href="entry.go.html#line-73" class="ident">NewEntry</a>(<label for="r2" class="ident">logger</label>).<a href="#line-27" class="ident">WriterLevel</a>(<label for="r4" class="ident">level</label>)</code></span>
 <span class="codeline" id="line-21"><code>}</code></span>
 <span class="codeline" id="line-22"><code></code></span>
-<span class="codeline" id="line-23"><code><span class="keyword">func</span> (<label for="r5" class="ident">entry</label> *<a href="entry.go.html#line-44" class="ident">Entry</a>) <label for="r6" class="ident">Writer</label>() *<a href="../../../../pkg/io.html" class="ident i1">io</a>.<a href="../../../io/pipe.go.html#line-153" class="ident">PipeWriter</a> {</code></span>
+<span class="codeline" id="line-23"><code><span class="keyword">func</span> (<label for="r5" class="ident">entry</label> *<a href="entry.go.html#line-44" class="ident">Entry</a>) <label for="r6" class="ident">Writer</label>() *<a href="../../../../pkg/io.html" class="ident i1">io</a>.<a href="../../../io/pipe.go.html#line-155" class="ident">PipeWriter</a> {</code></span>
 <span class="codeline" id="line-24"><code>	<span class="keyword">return</span> <label for="r5" class="ident">entry</label>.<a href="#line-27" class="ident">WriterLevel</a>(<a href="logrus.go.html#line-107" class="ident">InfoLevel</a>)</code></span>
 <span class="codeline" id="line-25"><code>}</code></span>
 <span class="codeline" id="line-26"><code></code></span>
-<span class="codeline" id="line-27"><code><span class="keyword">func</span> (<label for="r7" class="ident">entry</label> *<a href="entry.go.html#line-44" class="ident">Entry</a>) <label for="r8" class="ident">WriterLevel</label>(<label for="r9" class="ident">level</label> <a href="logrus.go.html#line-13" class="ident">Level</a>) *<a href="../../../../pkg/io.html" class="ident i1">io</a>.<a href="../../../io/pipe.go.html#line-153" class="ident">PipeWriter</a> {</code></span>
-<span class="codeline" id="line-28"><code>	<label for="r10" class="ident">reader</label>, <label for="r11" class="ident">writer</label> := <a href="../../../../pkg/io.html" class="ident i1">io</a>.<a href="../../../io/pipe.go.html#line-197" class="ident">Pipe</a>()</code></span>
+<span class="codeline" id="line-27"><code><span class="keyword">func</span> (<label for="r7" class="ident">entry</label> *<a href="entry.go.html#line-44" class="ident">Entry</a>) <label for="r8" class="ident">WriterLevel</label>(<label for="r9" class="ident">level</label> <a href="logrus.go.html#line-13" class="ident">Level</a>) *<a href="../../../../pkg/io.html" class="ident i1">io</a>.<a href="../../../io/pipe.go.html#line-155" class="ident">PipeWriter</a> {</code></span>
+<span class="codeline" id="line-28"><code>	<label for="r10" class="ident">reader</label>, <label for="r11" class="ident">writer</label> := <a href="../../../../pkg/io.html" class="ident i1">io</a>.<a href="../../../io/pipe.go.html#line-199" class="ident">Pipe</a>()</code></span>
 <span class="codeline" id="line-29"><code></code></span>
 <span class="codeline" id="line-30"><code>	<span class="keyword">var</span> <label for="r12" class="ident">printFunc</label> <span class="keyword">func</span>(<label for="r13" class="ident">args</label> ...<span class="keyword">interface</span>{})</code></span>
 <span class="codeline" id="line-31"><code></code></span>
@@ -123,28 +123,28 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-49"><code>	}</code></span>
 <span class="codeline" id="line-50"><code></code></span>
 <span class="codeline" id="line-51"><code>	<span class="keyword">go</span> <label for="r7" class="ident">entry</label>.<a href="#line-57" class="ident">writerScanner</a>(<label for="r10" class="ident">reader</label>, <label for="r12" class="ident">printFunc</label>)</code></span>
-<span class="codeline" id="line-52"><code>	<a href="../../../../pkg/runtime.html" class="ident i2">runtime</a>.<a href="../../../runtime/mfinal.go.html#line-309" class="ident">SetFinalizer</a>(<label for="r11" class="ident">writer</label>, <a href="#line-68" class="ident">writerFinalizer</a>)</code></span>
+<span class="codeline" id="line-52"><code>	<a href="../../../../pkg/runtime.html" class="ident i2">runtime</a>.<a href="../../../runtime/mfinal.go.html#line-326" class="ident">SetFinalizer</a>(<label for="r11" class="ident">writer</label>, <a href="#line-68" class="ident">writerFinalizer</a>)</code></span>
 <span class="codeline" id="line-53"><code></code></span>
 <span class="codeline" id="line-54"><code>	<span class="keyword">return</span> <label for="r11" class="ident">writer</label></code></span>
 <span class="codeline" id="line-55"><code>}</code></span>
 <span class="codeline" id="line-56"><code></code></span>
-<span class="codeline" id="line-57"><code><span class="keyword">func</span> (<label for="r14" class="ident">entry</label> *<a href="entry.go.html#line-44" class="ident">Entry</a>) <label for="r15" class="ident">writerScanner</label>(<label for="r16" class="ident">reader</label> *<a href="../../../../pkg/io.html" class="ident i1">io</a>.<a href="../../../io/pipe.go.html#line-124" class="ident">PipeReader</a>, <label for="r17" class="ident">printFunc</label> <span class="keyword">func</span>(<label for="r18" class="ident">args</label> ...<span class="keyword">interface</span>{})) {</code></span>
-<span class="codeline" id="line-58"><code>	<label for="r19" class="ident">scanner</label> := <a href="../../../../pkg/bufio.html" class="ident i0">bufio</a>.<a href="../../../bufio/scan.go.html#line-87" class="ident">NewScanner</a>(<label for="r16" class="ident">reader</label>)</code></span>
-<span class="codeline" id="line-59"><code>	<span class="keyword">for</span> <label for="r19" class="ident">scanner</label>.<a href="../../../bufio/scan.go.html#line-135" class="ident">Scan</a>() {</code></span>
-<span class="codeline" id="line-60"><code>		<label for="r17" class="ident">printFunc</label>(<label for="r19" class="ident">scanner</label>.<a href="../../../bufio/scan.go.html#line-112" class="ident">Text</a>())</code></span>
+<span class="codeline" id="line-57"><code><span class="keyword">func</span> (<label for="r14" class="ident">entry</label> *<a href="entry.go.html#line-44" class="ident">Entry</a>) <label for="r15" class="ident">writerScanner</label>(<label for="r16" class="ident">reader</label> *<a href="../../../../pkg/io.html" class="ident i1">io</a>.<a href="../../../io/pipe.go.html#line-126" class="ident">PipeReader</a>, <label for="r17" class="ident">printFunc</label> <span class="keyword">func</span>(<label for="r18" class="ident">args</label> ...<span class="keyword">interface</span>{})) {</code></span>
+<span class="codeline" id="line-58"><code>	<label for="r19" class="ident">scanner</label> := <a href="../../../../pkg/bufio.html" class="ident i0">bufio</a>.<a href="../../../bufio/scan.go.html#line-88" class="ident">NewScanner</a>(<label for="r16" class="ident">reader</label>)</code></span>
+<span class="codeline" id="line-59"><code>	<span class="keyword">for</span> <label for="r19" class="ident">scanner</label>.<a href="../../../bufio/scan.go.html#line-136" class="ident">Scan</a>() {</code></span>
+<span class="codeline" id="line-60"><code>		<label for="r17" class="ident">printFunc</label>(<label for="r19" class="ident">scanner</label>.<a href="../../../bufio/scan.go.html#line-113" class="ident">Text</a>())</code></span>
 <span class="codeline" id="line-61"><code>	}</code></span>
-<span class="codeline" id="line-62"><code>	<span class="keyword">if</span> <label for="r20" class="ident">err</label> := <label for="r19" class="ident">scanner</label>.<a href="../../../bufio/scan.go.html#line-96" class="ident">Err</a>(); <label for="r20" class="ident">err</label> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-62"><code>	<span class="keyword">if</span> <label for="r20" class="ident">err</label> := <label for="r19" class="ident">scanner</label>.<a href="../../../bufio/scan.go.html#line-97" class="ident">Err</a>(); <label for="r20" class="ident">err</label> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
 <span class="codeline" id="line-63"><code>		<label for="r14" class="ident">entry</label>.<a href="entry.go.html#line-366" class="ident">Errorf</a>(<span class="lit-string">"Error while reading from Writer: %s"</span>, <label for="r20" class="ident">err</label>)</code></span>
 <span class="codeline" id="line-64"><code>	}</code></span>
-<span class="codeline" id="line-65"><code>	<label for="r16" class="ident">reader</label>.<a href="../../../io/pipe.go.html#line-139" class="ident">Close</a>()</code></span>
+<span class="codeline" id="line-65"><code>	<label for="r16" class="ident">reader</label>.<a href="../../../io/pipe.go.html#line-141" class="ident">Close</a>()</code></span>
 <span class="codeline" id="line-66"><code>}</code></span>
 <span class="codeline" id="line-67"><code></code></span>
-<span class="codeline" id="line-68"><code><span class="keyword">func</span> <label for="r21" class="ident"><a href="../../../../pkg/github.com/sirupsen/logrus.html#name-writerFinalizer" class="ident">writerFinalizer</a></label>(<label for="r22" class="ident">writer</label> *<a href="../../../../pkg/io.html" class="ident i1">io</a>.<a href="../../../io/pipe.go.html#line-153" class="ident">PipeWriter</a>) {</code></span>
-<span class="codeline" id="line-69"><code>	<label for="r22" class="ident">writer</label>.<a href="../../../io/pipe.go.html#line-168" class="ident">Close</a>()</code></span>
+<span class="codeline" id="line-68"><code><span class="keyword">func</span> <label for="r21" class="ident"><a href="../../../../pkg/github.com/sirupsen/logrus.html#name-writerFinalizer" class="ident">writerFinalizer</a></label>(<label for="r22" class="ident">writer</label> *<a href="../../../../pkg/io.html" class="ident i1">io</a>.<a href="../../../io/pipe.go.html#line-155" class="ident">PipeWriter</a>) {</code></span>
+<span class="codeline" id="line-69"><code>	<label for="r22" class="ident">writer</label>.<a href="../../../io/pipe.go.html#line-170" class="ident">Close</a>()</code></span>
 <span class="codeline" id="line-70"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

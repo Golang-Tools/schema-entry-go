@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Package: net/http/httptrace</title>
-<link href="../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="package-details"><code><span style="font-size:xx-large;">package <b>httptrace</b></span>
@@ -36,7 +36,7 @@
 		
 		func main() {
 			req, _ := http.NewRequest("GET", "http://example.com", nil)
-			trace := &httptrace.ClientTrace{
+			trace := &amp;httptrace.ClientTrace{
 				GotConn: func(connInfo httptrace.GotConnInfo) {
 					fmt.Printf("Got Conn: %+v\n", connInfo)
 				},
@@ -70,7 +70,7 @@
 			<input type='checkbox' class="fold" id="ClientTrace-fold-field-ConnectDone"><label for="ClientTrace-fold-field-ConnectDone"><a href="../../../src/net/http/httptrace/trace.go.html#line-133">ConnectDone</a> <i>func(network, addr <a href="../../builtin.html#name-string">string</a>, err <a href="../../builtin.html#name-error">error</a>)</i></label><span id='ClientTrace-fold-field-ConnectDone-docs' class="fold-docs">
 				ConnectDone is called when a new connection's Dial
 				completes. The provided err indicates whether the
-				connection completedly successfully.
+				connection completed successfully.
 				If net.Dialer.DualStack ("Happy Eyeballs") support is
 				enabled, this may be called multiple times.
 </span></span><span>
@@ -153,11 +153,11 @@
 </span></span></span>
 		<input type='checkbox' class="fold" id="ClientTrace-fold-methods"><label for="ClientTrace-fold-methods">Methods (<i>total 2, neither is exported</i>)</label><span id='ClientTrace-fold-methods-items' class="fold-items">
 			<input type='checkbox' class="showhide" id="ClientTrace-showhide-methods"><i><label for="ClientTrace-showhide-methods" class="show-inline">/* 2 unexporteds ... */</label><label for="ClientTrace-showhide-methods" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="ClientTrace-fold-method-compose"><label for="ClientTrace-fold-method-compose">(*T) <a href="../../../src/net/http/httptrace/trace.go.html#line-175">compose</a>(old *<b>ClientTrace</b>)</label><span id='ClientTrace-fold-method-compose-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="ClientTrace-fold-method-compose"><label for="ClientTrace-fold-method-compose">(*ClientTrace) <a href="../../../src/net/http/httptrace/trace.go.html#line-175">compose</a>(old *<b>ClientTrace</b>)</label><span id='ClientTrace-fold-method-compose-docs' class="fold-docs">
 				compose modifies t such that it respects the previously-registered hooks in old,
 				subject to the composition policy requested in t.Compose.
 </span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../../src/net/http/httptrace/trace.go.html#line-229">hasNetHooks</a>() <a href="../../builtin.html#name-bool">bool</a></span></i></span></span>
+			<span class="nodocs">(*ClientTrace) <a href="../../../src/net/http/httptrace/trace.go.html#line-229">hasNetHooks</a>() <a href="../../builtin.html#name-bool">bool</a></span></i></span></span>
 		<input type='checkbox' class="fold" id="ClientTrace-fold-results"><label for="ClientTrace-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='ClientTrace-fold-results-items' class="fold-items"><span>
 			func <a href="#name-ContextClientTrace">ContextClientTrace</a>(ctx <a href="../../context.html">context</a>.<a href="../../context.html#name-Context">Context</a>) *<b>ClientTrace</b></span></span>
 		<input type='checkbox' class="fold" id="ClientTrace-fold-params"><label for="ClientTrace-fold-params">As Inputs Of (<i>at least 12, in which 1 are exported</i>)</label><span id='ClientTrace-fold-params-items' class="fold-items"><span>
@@ -172,8 +172,8 @@
 			func net/http.<a href="../http.html#name-http2traceWroteHeaderField">http2traceWroteHeaderField</a>(trace *<b>ClientTrace</b>, k, v <a href="../../builtin.html#name-string">string</a>)</i></span><span class="hidden"><i>
 			func net/http.<a href="../http.html#name-http2traceWroteHeaders">http2traceWroteHeaders</a>(trace *<b>ClientTrace</b>)</i></span><span class="hidden"><i>
 			func net/http.<a href="../http.html#name-http2traceWroteRequest">http2traceWroteRequest</a>(trace *<b>ClientTrace</b>, err <a href="../../builtin.html#name-error">error</a>)</i></span><span class="hidden"><i>
-			func net/http.<a href="../http.html#name-Header">Header</a>.<a href="../../../src/net/http/header.go.html#line-85">write</a>(w <a href="../../io.html">io</a>.<a href="../../io.html#name-Writer">Writer</a>, trace *<b>ClientTrace</b>) <a href="../../builtin.html#name-error">error</a></i></span><span class="hidden"><i>
-			func net/http.<a href="../http.html#name-Header">Header</a>.<a href="../../../src/net/http/header.go.html#line-186">writeSubset</a>(w <a href="../../io.html">io</a>.<a href="../../io.html#name-Writer">Writer</a>, exclude map[<a href="../../builtin.html#name-string">string</a>]<a href="../../builtin.html#name-bool">bool</a>, trace *<b>ClientTrace</b>) <a href="../../builtin.html#name-error">error</a></i></span></span>
+			func net/http.<a href="../http.html#name-Header">Header</a>.<a href="../../../src/net/http/header.go.html#line-88">write</a>(w <a href="../../io.html">io</a>.<a href="../../io.html#name-Writer">Writer</a>, trace *<b>ClientTrace</b>) <a href="../../builtin.html#name-error">error</a></i></span><span class="hidden"><i>
+			func net/http.<a href="../http.html#name-Header">Header</a>.<a href="../../../src/net/http/header.go.html#line-189">writeSubset</a>(w <a href="../../io.html">io</a>.<a href="../../io.html#name-Writer">Writer</a>, exclude map[<a href="../../builtin.html#name-string">string</a>]<a href="../../builtin.html#name-bool">bool</a>, trace *<b>ClientTrace</b>) <a href="../../builtin.html#name-error">error</a></i></span></span>
 
 </span></div><div class="anchor type-res" id="name-DNSDoneInfo" data-popularity="0">	<input type='checkbox' class="fold" id="DNSDoneInfo-fold-content"><label for="DNSDoneInfo-fold-content"> type <a href="../../../src/net/http/httptrace/trace.go.html#line-216">DNSDoneInfo</a> <i>(struct)</i></label><span id='DNSDoneInfo-fold-content-docs' class="fold-docs">
 		DNSDoneInfo contains information about the results of a DNS lookup.
@@ -246,7 +246,7 @@
 
 </span></div></div></code></pre><pre id="footer">
 <table><tr><td><img src="../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

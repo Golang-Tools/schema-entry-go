@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: floor_amd64.s in package math</title>
-<link href="../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../jvs/golds-v0.3.6.js"></script>
+<link href="../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -25,8 +25,8 @@
 <span class="codeline" id="line-6"><code></code></span>
 <span class="codeline" id="line-7"><code>#define Big		0x4330000000000000 // 2**52</code></span>
 <span class="codeline" id="line-8"><code></code></span>
-<span class="codeline" id="line-9"><code>// func Floor(x float64) float64</code></span>
-<span class="codeline" id="line-10"><code>TEXT ·Floor(SB),NOSPLIT,$0</code></span>
+<span class="codeline" id="line-9"><code>// func archFloor(x float64) float64</code></span>
+<span class="codeline" id="line-10"><code>TEXT ·archFloor(SB),NOSPLIT,$0</code></span>
 <span class="codeline" id="line-11"><code>	MOVQ	x+0(FP), AX</code></span>
 <span class="codeline" id="line-12"><code>	MOVQ	$~(1&lt;&lt;63), DX // sign bit mask</code></span>
 <span class="codeline" id="line-13"><code>	ANDQ	AX,DX // DX = |x|</code></span>
@@ -47,8 +47,8 @@
 <span class="codeline" id="line-28"><code>	MOVQ    AX, ret+8(FP) // return x</code></span>
 <span class="codeline" id="line-29"><code>	RET</code></span>
 <span class="codeline" id="line-30"><code></code></span>
-<span class="codeline" id="line-31"><code>// func Ceil(x float64) float64</code></span>
-<span class="codeline" id="line-32"><code>TEXT ·Ceil(SB),NOSPLIT,$0</code></span>
+<span class="codeline" id="line-31"><code>// func archCeil(x float64) float64</code></span>
+<span class="codeline" id="line-32"><code>TEXT ·archCeil(SB),NOSPLIT,$0</code></span>
 <span class="codeline" id="line-33"><code>	MOVQ	x+0(FP), AX</code></span>
 <span class="codeline" id="line-34"><code>	MOVQ	$~(1&lt;&lt;63), DX // sign bit mask</code></span>
 <span class="codeline" id="line-35"><code>	MOVQ	AX, BX // BX = copy of x</code></span>
@@ -73,8 +73,8 @@
 <span class="codeline" id="line-54"><code>	MOVQ	AX, ret+8(FP)</code></span>
 <span class="codeline" id="line-55"><code>	RET</code></span>
 <span class="codeline" id="line-56"><code></code></span>
-<span class="codeline" id="line-57"><code>// func Trunc(x float64) float64</code></span>
-<span class="codeline" id="line-58"><code>TEXT ·Trunc(SB),NOSPLIT,$0</code></span>
+<span class="codeline" id="line-57"><code>// func archTrunc(x float64) float64</code></span>
+<span class="codeline" id="line-58"><code>TEXT ·archTrunc(SB),NOSPLIT,$0</code></span>
 <span class="codeline" id="line-59"><code>	MOVQ	x+0(FP), AX</code></span>
 <span class="codeline" id="line-60"><code>	MOVQ	$~(1&lt;&lt;63), DX // sign bit mask</code></span>
 <span class="codeline" id="line-61"><code>	MOVQ	AX, BX // BX = copy of x</code></span>
@@ -95,7 +95,7 @@
 <span class="codeline" id="line-76"><code>	RET</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

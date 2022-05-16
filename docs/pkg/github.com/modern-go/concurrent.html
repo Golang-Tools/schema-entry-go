@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Package: github.com/modern-go/concurrent</title>
-<link href="../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="package-details"><code><span style="font-size:xx-large;">package <b>concurrent</b></span>
@@ -27,7 +27,7 @@
 <div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-Executor" data-popularity="200">	<input type='checkbox' class="fold" id="Executor-fold-content"><label for="Executor-fold-content"> type <a href="../../../src/github.com/modern-go/concurrent/executor.go.html#line-5">Executor</a> <b><i>(interface)</i></b></label><span id='Executor-fold-content-docs' class="fold-docs">
 
 		<input type='checkbox' class="fold" id="Executor-fold-methods"><label for="Executor-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='Executor-fold-methods-items' class="fold-items"><span>
-			<span class="nodocs">( T) <a href="../../../src/github.com/modern-go/concurrent/executor.go.html#line-6">Go</a>(handler func(ctx <a href="../../context.html">context</a>.<a href="../../context.html#name-Context">Context</a>))</span></span></span>
+			<span class="nodocs">( Executor) <a href="../../../src/github.com/modern-go/concurrent/executor.go.html#line-6">Go</a>(handler func(ctx <a href="../../context.html">context</a>.<a href="../../context.html#name-Context">Context</a>))</span></span></span>
 		<input type='checkbox' class="fold" id="Executor-fold-impledby"><label for="Executor-fold-impledby">Implemented By (<i>at least one exported</i>)</label><span id='Executor-fold-impledby-items' class="fold-items"><span>
 			*<a href="#name-UnboundedExecutor">UnboundedExecutor</a></span></span>
 
@@ -36,7 +36,7 @@
 		<input type='checkbox' class="fold" id="Map-fold-fields"><label for="Map-fold-fields">Fields (<i>total 5, in which 1 are exported</i>)</label><span id='Map-fold-fields-items' class="fold-items"><span>
 			<span class="nodocs"><a href="../../../src/github.com/modern-go/concurrent/go_above_19.go.html#line-8">Map</a> <i><a href="../../sync.html">sync</a>.<a href="../../sync.html#name-Map">Map</a></i></span></span>
 			<input type='checkbox' class="showhide" id="Map-showhide-fields"><i><label for="Map-showhide-fields" class="show-inline">/* 4 unexporteds ... */</label><label for="Map-showhide-fields" class="hide-inline">/* 4 unexporteds: */</label></i><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="Map-fold-field-dirty"><label for="Map-fold-field-dirty"><a href="../../../src/github.com/modern-go/concurrent/go_above_19.go.html#line-8" class="path-duplicate">Map</a>.<a href="../../../src/sync/map.go.html#line-51">dirty</a> <i>map[interface{}]*<a href="../../sync.html">sync</a>.<a href="../../sync.html#name-entry">entry</a></i></label><span id='Map-fold-field-dirty-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Map-fold-field-dirty"><label for="Map-fold-field-dirty"><a href="../../../src/github.com/modern-go/concurrent/go_above_19.go.html#line-8" class="path-duplicate">Map</a>.<a href="../../../src/sync/map.go.html#line-51">dirty</a> <i>map[<a href="../../builtin.html#name-any">any</a>]*<a href="../../sync.html">sync</a>.<a href="../../sync.html#name-entry">entry</a></i></label><span id='Map-fold-field-dirty-docs' class="fold-docs">
 				dirty contains the portion of the map's contents that require mu to be
 				held. To ensure that the dirty map can be promoted to the read map quickly,
 				it also includes all of the non-expunged entries in the read map.
@@ -70,41 +70,42 @@
 				// readOnly
 </span></i></span></span>
 		<input type='checkbox' class="fold" id="Map-fold-methods"><label for="Map-fold-methods">Methods (<i>total 8, in which 6 are exported</i>)</label><span id='Map-fold-methods-items' class="fold-items"><span>
-			<input type='checkbox' class="fold" id="Map-fold-method-Delete"><label for="Map-fold-method-Delete">(*T) <a href="../../../src/sync/map.go.html#line-292">Delete</a>(key interface{})</label><span id='Map-fold-method-Delete-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Map-fold-method-Delete"><label for="Map-fold-method-Delete">(*Map) <a href="../../../src/sync/map.go.html#line-293">Delete</a>(key <a href="../../builtin.html#name-any">any</a>)</label><span id='Map-fold-method-Delete-docs' class="fold-docs">
 				Delete deletes the value for a key.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Map-fold-method-Load"><label for="Map-fold-method-Load">(*T) <a href="../../../src/sync/map.go.html#line-102">Load</a>(key interface{}) (value interface{}, ok <a href="../../builtin.html#name-bool">bool</a>)</label><span id='Map-fold-method-Load-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Map-fold-method-Load"><label for="Map-fold-method-Load">(*Map) <a href="../../../src/sync/map.go.html#line-103">Load</a>(key <a href="../../builtin.html#name-any">any</a>) (value <a href="../../builtin.html#name-any">any</a>, ok <a href="../../builtin.html#name-bool">bool</a>)</label><span id='Map-fold-method-Load-docs' class="fold-docs">
 				Load returns the value stored in the map for a key, or nil if no
 				value is present.
 				The ok result indicates whether value was found in the map.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Map-fold-method-LoadAndDelete"><label for="Map-fold-method-LoadAndDelete">(*T) <a href="../../../src/sync/map.go.html#line-268">LoadAndDelete</a>(key interface{}) (value interface{}, loaded <a href="../../builtin.html#name-bool">bool</a>)</label><span id='Map-fold-method-LoadAndDelete-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Map-fold-method-LoadAndDelete"><label for="Map-fold-method-LoadAndDelete">(*Map) <a href="../../../src/sync/map.go.html#line-269">LoadAndDelete</a>(key <a href="../../builtin.html#name-any">any</a>) (value <a href="../../builtin.html#name-any">any</a>, loaded <a href="../../builtin.html#name-bool">bool</a>)</label><span id='Map-fold-method-LoadAndDelete-docs' class="fold-docs">
 				LoadAndDelete deletes the value for a key, returning the previous value if any.
 				The loaded result reports whether the key was present.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Map-fold-method-LoadOrStore"><label for="Map-fold-method-LoadOrStore">(*T) <a href="../../../src/sync/map.go.html#line-199">LoadOrStore</a>(key, value interface{}) (actual interface{}, loaded <a href="../../builtin.html#name-bool">bool</a>)</label><span id='Map-fold-method-LoadOrStore-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Map-fold-method-LoadOrStore"><label for="Map-fold-method-LoadOrStore">(*Map) <a href="../../../src/sync/map.go.html#line-200">LoadOrStore</a>(key, value <a href="../../builtin.html#name-any">any</a>) (actual <a href="../../builtin.html#name-any">any</a>, loaded <a href="../../builtin.html#name-bool">bool</a>)</label><span id='Map-fold-method-LoadOrStore-docs' class="fold-docs">
 				LoadOrStore returns the existing value for the key if present.
 				Otherwise, it stores and returns the given value.
 				The loaded result is true if the value was loaded, false if stored.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Map-fold-method-Range"><label for="Map-fold-method-Range">(*T) <a href="../../../src/sync/map.go.html#line-318">Range</a>(f func(key, value interface{}) <a href="../../builtin.html#name-bool">bool</a>)</label><span id='Map-fold-method-Range-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Map-fold-method-Range"><label for="Map-fold-method-Range">(*Map) <a href="../../../src/sync/map.go.html#line-320">Range</a>(f func(key, value <a href="../../builtin.html#name-any">any</a>) <a href="../../builtin.html#name-bool">bool</a>)</label><span id='Map-fold-method-Range-docs' class="fold-docs">
 				Range calls f sequentially for each key and value present in the map.
 				If f returns false, range stops the iteration.
 
 				Range does not necessarily correspond to any consistent snapshot of the Map's
 				contents: no key will be visited more than once, but if the value for any key
-				is stored or deleted concurrently, Range may reflect any mapping for that key
-				from any point during the Range call.
+				is stored or deleted concurrently (including by f), Range may reflect any
+				mapping for that key from any point during the Range call. Range does not
+				block other methods on the receiver; even f itself may call any method on m.
 
 				Range may be O(N) with the number of elements in the map even if f returns
 				false after a constant number of calls.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Map-fold-method-Store"><label for="Map-fold-method-Store">(*T) <a href="../../../src/sync/map.go.html#line-136">Store</a>(key, value interface{})</label><span id='Map-fold-method-Store-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Map-fold-method-Store"><label for="Map-fold-method-Store">(*Map) <a href="../../../src/sync/map.go.html#line-137">Store</a>(key, value <a href="../../builtin.html#name-any">any</a>)</label><span id='Map-fold-method-Store-docs' class="fold-docs">
 				Store sets the value for a key.
 </span></span>
 			<input type='checkbox' class="showhide" id="Map-showhide-methods"><i><label for="Map-showhide-methods" class="show-inline">/* 2 unexporteds ... */</label><label for="Map-showhide-methods" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../../src/sync/map.go.html#line-361">dirtyLocked</a>()</span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../../src/sync/map.go.html#line-351">missLocked</a>()</span></i></span></span>
+			<span class="nodocs">(*Map) <a href="../../../src/sync/map.go.html#line-363">dirtyLocked</a>()</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*Map) <a href="../../../src/sync/map.go.html#line-353">missLocked</a>()</span></i></span></span>
 		<input type='checkbox' class="fold" id="Map-fold-results"><label for="Map-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='Map-fold-results-items' class="fold-items"><span>
 			func <a href="#name-NewMap">NewMap</a>() *<b>Map</b></span></span>
 		<input type='checkbox' class="fold" id="Map-fold-values"><label for="Map-fold-values">As Types Of (<i>only one, which is unexported</i>)</label><span id='Map-fold-values-items' class="fold-items">
@@ -120,14 +121,14 @@
 			<span class="nodocs"><a href="../../../src/github.com/modern-go/concurrent/unbounded_executor.go.html#line-25">cancel</a> <i><a href="../../context.html">context</a>.<a href="../../context.html#name-CancelFunc">CancelFunc</a></i></span></i></span><span class="hidden"><i>
 			<span class="nodocs"><a href="../../../src/github.com/modern-go/concurrent/unbounded_executor.go.html#line-24">ctx</a> <i><a href="../../context.html">context</a>.<a href="../../context.html#name-Context">Context</a></i></span></i></span></span>
 		<input type='checkbox' class="fold" id="UnboundedExecutor-fold-methods"><label for="UnboundedExecutor-fold-methods">Methods (<i>total 5, in which 4 are exported</i>)</label><span id='UnboundedExecutor-fold-methods-items' class="fold-items"><span>
-			<span class="nodocs">(*T) <a href="../../../src/github.com/modern-go/concurrent/unbounded_executor.go.html#line-44">Go</a>(handler func(ctx <a href="../../context.html">context</a>.<a href="../../context.html#name-Context">Context</a>))</span></span><span>
-			<span class="nodocs">(*T) <a href="../../../src/github.com/modern-go/concurrent/unbounded_executor.go.html#line-64">Stop</a>()</span></span><span>
-			<span class="nodocs">(*T) <a href="../../../src/github.com/modern-go/concurrent/unbounded_executor.go.html#line-72">StopAndWait</a>(ctx <a href="../../context.html">context</a>.<a href="../../context.html#name-Context">Context</a>)</span></span><span>
-			<span class="nodocs">(*T) <a href="../../../src/github.com/modern-go/concurrent/unbounded_executor.go.html#line-68">StopAndWaitForever</a>()</span></span>
+			<span class="nodocs">(*UnboundedExecutor) <a href="../../../src/github.com/modern-go/concurrent/unbounded_executor.go.html#line-44">Go</a>(handler func(ctx <a href="../../context.html">context</a>.<a href="../../context.html#name-Context">Context</a>))</span></span><span>
+			<span class="nodocs">(*UnboundedExecutor) <a href="../../../src/github.com/modern-go/concurrent/unbounded_executor.go.html#line-64">Stop</a>()</span></span><span>
+			<span class="nodocs">(*UnboundedExecutor) <a href="../../../src/github.com/modern-go/concurrent/unbounded_executor.go.html#line-72">StopAndWait</a>(ctx <a href="../../context.html">context</a>.<a href="../../context.html#name-Context">Context</a>)</span></span><span>
+			<span class="nodocs">(*UnboundedExecutor) <a href="../../../src/github.com/modern-go/concurrent/unbounded_executor.go.html#line-68">StopAndWaitForever</a>()</span></span>
 			<input type='checkbox' class="showhide" id="UnboundedExecutor-showhide-methods"><i><label for="UnboundedExecutor-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="UnboundedExecutor-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../../src/github.com/modern-go/concurrent/unbounded_executor.go.html#line-87">checkGoroutines</a>() <a href="../../builtin.html#name-bool">bool</a></span></i></span></span>
+			<span class="nodocs">(*UnboundedExecutor) <a href="../../../src/github.com/modern-go/concurrent/unbounded_executor.go.html#line-87">checkGoroutines</a>() <a href="../../builtin.html#name-bool">bool</a></span></i></span></span>
 		<input type='checkbox' class="fold" id="UnboundedExecutor-fold-impls"><label for="UnboundedExecutor-fold-impls">Implements (<i>at least one exported</i>)</label><span id='UnboundedExecutor-fold-impls-items' class="fold-items"><span>
-			*T : <a href="#name-Executor">Executor</a></span></span>
+			*UnboundedExecutor : <a href="#name-Executor">Executor</a></span></span>
 		<input type='checkbox' class="fold" id="UnboundedExecutor-fold-results"><label for="UnboundedExecutor-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='UnboundedExecutor-fold-results-items' class="fold-items"><span>
 			func <a href="#name-NewUnboundedExecutor">NewUnboundedExecutor</a>() *<b>UnboundedExecutor</b></span></span>
 		<input type='checkbox' class="fold" id="UnboundedExecutor-fold-values"><label for="UnboundedExecutor-fold-values">As Types Of (<i>only one, which is exported</i>)</label><span id='UnboundedExecutor-fold-values-items' class="fold-items"><span>
@@ -148,7 +149,7 @@
 
 <div class="anchor value-res" id="name-StopSignal">	<span class="nodocs">const <a href="../../../src/github.com/modern-go/concurrent/unbounded_executor.go.html#line-21">StopSignal</a> = "STOP!"</span></div></div></code></pre><pre id="footer">
 <table><tr><td><img src="../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

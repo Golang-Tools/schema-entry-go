@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: bidirule.go in package vendor/golang.org/x/text/secure/bidirule</title>
-<link href="../../../../../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../../../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../../../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../../../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -295,7 +295,7 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-132"><code><span class="comment">// Direction reports the direction of the given label as defined by RFC 5893.</span></code></span>
 <span class="codeline" id="line-133"><code><span class="comment">// The Bidi Rule does not have to be applied to labels of the category</span></code></span>
 <span class="codeline" id="line-134"><code><span class="comment">// LeftToRight.</span></code></span>
-<span class="codeline" id="line-135"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../../../../pkg/vendor/golang.org/x/text/secure/bidirule.html#name-Direction" class="ident">Direction</a></label>(<label for="r1" class="ident">b</label> []<a href="../../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>) <a href="../../../../../../../pkg/vendor/golang.org/x/text/unicode/bidi.html" class="ident i0">bidi</a>.<a href="../../unicode/bidi/bidi.go.html#line-30" class="ident">Direction</a> {</code></span>
+<span class="codeline" id="line-135"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../../../../pkg/vendor/golang.org/x/text/secure/bidirule.html#name-Direction" class="ident">Direction</a></label>(<label for="r1" class="ident">b</label> []<a href="../../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>) <a href="../../../../../../../pkg/vendor/golang.org/x/text/unicode/bidi.html" class="ident i0">bidi</a>.<a href="../../unicode/bidi/bidi.go.html#line-29" class="ident">Direction</a> {</code></span>
 <span class="codeline" id="line-136"><code>	<span class="keyword">for</span> <label for="r2" class="ident">i</label> := <span class="lit-number">0</span>; <label for="r2" class="ident">i</label> &lt; <a href="../../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r1" class="ident">b</label>); {</code></span>
 <span class="codeline" id="line-137"><code>		<label for="r3" class="ident">e</label>, <label for="r4" class="ident">sz</label> := <a href="../../../../../../../pkg/vendor/golang.org/x/text/unicode/bidi.html" class="ident i0">bidi</a>.<a href="../../unicode/bidi/prop.go.html#line-85" class="ident">Lookup</a>(<label for="r1" class="ident">b</label>[<label for="r2" class="ident">i</label>:])</code></span>
 <span class="codeline" id="line-138"><code>		<span class="keyword">if</span> <label for="r4" class="ident">sz</label> == <span class="lit-number">0</span> {</code></span>
@@ -303,17 +303,17 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-140"><code>		}</code></span>
 <span class="codeline" id="line-141"><code>		<label for="r5" class="ident">c</label> := <label for="r3" class="ident">e</label>.<a href="../../unicode/bidi/prop.go.html#line-28" class="ident">Class</a>()</code></span>
 <span class="codeline" id="line-142"><code>		<span class="keyword">if</span> <label for="r5" class="ident">c</label> == <a href="../../../../../../../pkg/vendor/golang.org/x/text/unicode/bidi.html" class="ident i0">bidi</a>.<a href="../../unicode/bidi/trieval.go.html#line-10" class="ident">R</a> || <label for="r5" class="ident">c</label> == <a href="../../../../../../../pkg/vendor/golang.org/x/text/unicode/bidi.html" class="ident i0">bidi</a>.<a href="../../unicode/bidi/trieval.go.html#line-22" class="ident">AL</a> || <label for="r5" class="ident">c</label> == <a href="../../../../../../../pkg/vendor/golang.org/x/text/unicode/bidi.html" class="ident i0">bidi</a>.<a href="../../unicode/bidi/trieval.go.html#line-14" class="ident">AN</a> {</code></span>
-<span class="codeline" id="line-143"><code>			<span class="keyword">return</span> <a href="../../../../../../../pkg/vendor/golang.org/x/text/unicode/bidi.html" class="ident i0">bidi</a>.<a href="../../unicode/bidi/bidi.go.html#line-41" class="ident">RightToLeft</a></code></span>
+<span class="codeline" id="line-143"><code>			<span class="keyword">return</span> <a href="../../../../../../../pkg/vendor/golang.org/x/text/unicode/bidi.html" class="ident i0">bidi</a>.<a href="../../unicode/bidi/bidi.go.html#line-40" class="ident">RightToLeft</a></code></span>
 <span class="codeline" id="line-144"><code>		}</code></span>
 <span class="codeline" id="line-145"><code>		<label for="r2" class="ident">i</label> += <label for="r4" class="ident">sz</label></code></span>
 <span class="codeline" id="line-146"><code>	}</code></span>
-<span class="codeline" id="line-147"><code>	<span class="keyword">return</span> <a href="../../../../../../../pkg/vendor/golang.org/x/text/unicode/bidi.html" class="ident i0">bidi</a>.<a href="../../unicode/bidi/bidi.go.html#line-36" class="ident">LeftToRight</a></code></span>
+<span class="codeline" id="line-147"><code>	<span class="keyword">return</span> <a href="../../../../../../../pkg/vendor/golang.org/x/text/unicode/bidi.html" class="ident i0">bidi</a>.<a href="../../unicode/bidi/bidi.go.html#line-35" class="ident">LeftToRight</a></code></span>
 <span class="codeline" id="line-148"><code>}</code></span>
 <span class="codeline" id="line-149"><code></code></span>
 <span class="codeline" id="line-150"><code><span class="comment">// DirectionString reports the direction of the given label as defined by RFC</span></code></span>
 <span class="codeline" id="line-151"><code><span class="comment">// 5893. The Bidi Rule does not have to be applied to labels of the category</span></code></span>
 <span class="codeline" id="line-152"><code><span class="comment">// LeftToRight.</span></code></span>
-<span class="codeline" id="line-153"><code><span class="keyword">func</span> <label for="r6" class="ident"><a href="../../../../../../../pkg/vendor/golang.org/x/text/secure/bidirule.html#name-DirectionString" class="ident">DirectionString</a></label>(<label for="r7" class="ident">s</label> <a href="../../../../../../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="../../../../../../../pkg/vendor/golang.org/x/text/unicode/bidi.html" class="ident i0">bidi</a>.<a href="../../unicode/bidi/bidi.go.html#line-30" class="ident">Direction</a> {</code></span>
+<span class="codeline" id="line-153"><code><span class="keyword">func</span> <label for="r6" class="ident"><a href="../../../../../../../pkg/vendor/golang.org/x/text/secure/bidirule.html#name-DirectionString" class="ident">DirectionString</a></label>(<label for="r7" class="ident">s</label> <a href="../../../../../../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="../../../../../../../pkg/vendor/golang.org/x/text/unicode/bidi.html" class="ident i0">bidi</a>.<a href="../../unicode/bidi/bidi.go.html#line-29" class="ident">Direction</a> {</code></span>
 <span class="codeline" id="line-154"><code>	<span class="keyword">for</span> <label for="r8" class="ident">i</label> := <span class="lit-number">0</span>; <label for="r8" class="ident">i</label> &lt; <a href="../../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r7" class="ident">s</label>); {</code></span>
 <span class="codeline" id="line-155"><code>		<label for="r9" class="ident">e</label>, <label for="r10" class="ident">sz</label> := <a href="../../../../../../../pkg/vendor/golang.org/x/text/unicode/bidi.html" class="ident i0">bidi</a>.<a href="../../unicode/bidi/prop.go.html#line-148" class="ident">LookupString</a>(<label for="r7" class="ident">s</label>[<label for="r8" class="ident">i</label>:])</code></span>
 <span class="codeline" id="line-156"><code>		<span class="keyword">if</span> <label for="r10" class="ident">sz</label> == <span class="lit-number">0</span> {</code></span>
@@ -322,11 +322,11 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-159"><code>		}</code></span>
 <span class="codeline" id="line-160"><code>		<label for="r11" class="ident">c</label> := <label for="r9" class="ident">e</label>.<a href="../../unicode/bidi/prop.go.html#line-28" class="ident">Class</a>()</code></span>
 <span class="codeline" id="line-161"><code>		<span class="keyword">if</span> <label for="r11" class="ident">c</label> == <a href="../../../../../../../pkg/vendor/golang.org/x/text/unicode/bidi.html" class="ident i0">bidi</a>.<a href="../../unicode/bidi/trieval.go.html#line-10" class="ident">R</a> || <label for="r11" class="ident">c</label> == <a href="../../../../../../../pkg/vendor/golang.org/x/text/unicode/bidi.html" class="ident i0">bidi</a>.<a href="../../unicode/bidi/trieval.go.html#line-22" class="ident">AL</a> || <label for="r11" class="ident">c</label> == <a href="../../../../../../../pkg/vendor/golang.org/x/text/unicode/bidi.html" class="ident i0">bidi</a>.<a href="../../unicode/bidi/trieval.go.html#line-14" class="ident">AN</a> {</code></span>
-<span class="codeline" id="line-162"><code>			<span class="keyword">return</span> <a href="../../../../../../../pkg/vendor/golang.org/x/text/unicode/bidi.html" class="ident i0">bidi</a>.<a href="../../unicode/bidi/bidi.go.html#line-41" class="ident">RightToLeft</a></code></span>
+<span class="codeline" id="line-162"><code>			<span class="keyword">return</span> <a href="../../../../../../../pkg/vendor/golang.org/x/text/unicode/bidi.html" class="ident i0">bidi</a>.<a href="../../unicode/bidi/bidi.go.html#line-40" class="ident">RightToLeft</a></code></span>
 <span class="codeline" id="line-163"><code>		}</code></span>
 <span class="codeline" id="line-164"><code>		<label for="r8" class="ident">i</label> += <label for="r10" class="ident">sz</label></code></span>
 <span class="codeline" id="line-165"><code>	}</code></span>
-<span class="codeline" id="line-166"><code>	<span class="keyword">return</span> <a href="../../../../../../../pkg/vendor/golang.org/x/text/unicode/bidi.html" class="ident i0">bidi</a>.<a href="../../unicode/bidi/bidi.go.html#line-36" class="ident">LeftToRight</a></code></span>
+<span class="codeline" id="line-166"><code>	<span class="keyword">return</span> <a href="../../../../../../../pkg/vendor/golang.org/x/text/unicode/bidi.html" class="ident i0">bidi</a>.<a href="../../unicode/bidi/bidi.go.html#line-35" class="ident">LeftToRight</a></code></span>
 <span class="codeline" id="line-167"><code>}</code></span>
 <span class="codeline" id="line-168"><code></code></span>
 <span class="codeline" id="line-169"><code><span class="comment">// Valid reports whether b conforms to the BiDi rule.</span></code></span>
@@ -335,7 +335,7 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-172"><code>	<span class="keyword">if</span> <label for="r15" class="ident">n</label>, <label for="r16" class="ident">ok</label> := <label for="r14" class="ident">t</label>.<a href="#line-257" class="ident">advance</a>(<label for="r13" class="ident">b</label>); !<label for="r16" class="ident">ok</label> || <label for="r15" class="ident">n</label> &lt; <a href="../../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r13" class="ident">b</label>) {</code></span>
 <span class="codeline" id="line-173"><code>		<span class="keyword">return</span> <a href="../../../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
 <span class="codeline" id="line-174"><code>	}</code></span>
-<span class="codeline" id="line-175"><code>	<span class="keyword">return</span> <label for="r14" class="ident">t</label>.<a href="bidirule10.0.0.go.html#line-9" class="ident">isFinal</a>()</code></span>
+<span class="codeline" id="line-175"><code>	<span class="keyword">return</span> <label for="r14" class="ident">t</label>.<a href="bidirule10.0.0.go.html#line-10" class="ident">isFinal</a>()</code></span>
 <span class="codeline" id="line-176"><code>}</code></span>
 <span class="codeline" id="line-177"><code></code></span>
 <span class="codeline" id="line-178"><code><span class="comment">// ValidString reports whether s conforms to the BiDi rule.</span></code></span>
@@ -344,7 +344,7 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-181"><code>	<span class="keyword">if</span> <label for="r20" class="ident">n</label>, <label for="r21" class="ident">ok</label> := <label for="r19" class="ident">t</label>.<a href="#line-299" class="ident">advanceString</a>(<label for="r18" class="ident">s</label>); !<label for="r21" class="ident">ok</label> || <label for="r20" class="ident">n</label> &lt; <a href="../../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r18" class="ident">s</label>) {</code></span>
 <span class="codeline" id="line-182"><code>		<span class="keyword">return</span> <a href="../../../../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
 <span class="codeline" id="line-183"><code>	}</code></span>
-<span class="codeline" id="line-184"><code>	<span class="keyword">return</span> <label for="r19" class="ident">t</label>.<a href="bidirule10.0.0.go.html#line-9" class="ident">isFinal</a>()</code></span>
+<span class="codeline" id="line-184"><code>	<span class="keyword">return</span> <label for="r19" class="ident">t</label>.<a href="bidirule10.0.0.go.html#line-10" class="ident">isFinal</a>()</code></span>
 <span class="codeline" id="line-185"><code>}</code></span>
 <span class="codeline" id="line-186"><code></code></span>
 <span class="codeline" id="line-187"><code><span class="comment">// New returns a Transformer that verifies that input adheres to the Bidi Rule.</span></code></span>
@@ -400,7 +400,7 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-237"><code>			<span class="keyword">break</span></code></span>
 <span class="codeline" id="line-238"><code>		}</code></span>
 <span class="codeline" id="line-239"><code>		<label for="r43" class="ident">err</label> = <a href="#line-46" class="ident">ErrInvalid</a></code></span>
-<span class="codeline" id="line-240"><code>	<span class="keyword">case</span> !<label for="r38" class="ident">t</label>.<a href="bidirule10.0.0.go.html#line-9" class="ident">isFinal</a>():</code></span>
+<span class="codeline" id="line-240"><code>	<span class="keyword">case</span> !<label for="r38" class="ident">t</label>.<a href="bidirule10.0.0.go.html#line-10" class="ident">isFinal</a>():</code></span>
 <span class="codeline" id="line-241"><code>		<label for="r43" class="ident">err</label> = <a href="#line-46" class="ident">ErrInvalid</a></code></span>
 <span class="codeline" id="line-242"><code>	}</code></span>
 <span class="codeline" id="line-243"><code>	<span class="keyword">return</span> <label for="r42" class="ident">n</label>, <label for="r43" class="ident">err</label></code></span>
@@ -499,7 +499,7 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-336"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../../../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

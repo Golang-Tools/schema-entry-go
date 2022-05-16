@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: validation.go in package github.com/xeipuuv/gojsonschema</title>
-<link href="../../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -518,14 +518,14 @@ input[id=i6]:checked ~pre .i6
 <span class="codeline" id="line-148"><code></code></span>
 <span class="codeline" id="line-149"><code>		} <span class="keyword">else</span> {</code></span>
 <span class="codeline" id="line-150"><code></code></span>
-<span class="codeline" id="line-151"><code>			<label for="r30" class="ident">rValue</label> := <a href="../../../../pkg/reflect.html" class="ident i2">reflect</a>.<a href="../../../reflect/value.go.html#line-2351" class="ident">ValueOf</a>(<label for="r23" class="ident">currentNode</label>)</code></span>
-<span class="codeline" id="line-152"><code>			<label for="r31" class="ident">rKind</label> := <label for="r30" class="ident">rValue</label>.<a href="../../../reflect/value.go.html#line-1140" class="ident">Kind</a>()</code></span>
+<span class="codeline" id="line-151"><code>			<label for="r30" class="ident">rValue</label> := <a href="../../../../pkg/reflect.html" class="ident i2">reflect</a>.<a href="../../../reflect/value.go.html#line-2957" class="ident">ValueOf</a>(<label for="r23" class="ident">currentNode</label>)</code></span>
+<span class="codeline" id="line-152"><code>			<label for="r31" class="ident">rKind</label> := <label for="r30" class="ident">rValue</label>.<a href="../../../reflect/value.go.html#line-1560" class="ident">Kind</a>()</code></span>
 <span class="codeline" id="line-153"><code></code></span>
 <span class="codeline" id="line-154"><code>			<span class="keyword">switch</span> <label for="r31" class="ident">rKind</label> {</code></span>
 <span class="codeline" id="line-155"><code></code></span>
 <span class="codeline" id="line-156"><code>			<span class="comment">// Slice =&gt; JSON array</span></code></span>
 <span class="codeline" id="line-157"><code></code></span>
-<span class="codeline" id="line-158"><code>			<span class="keyword">case</span> <a href="../../../../pkg/reflect.html" class="ident i2">reflect</a>.<a href="../../../reflect/type.go.html#line-258" class="ident">Slice</a>:</code></span>
+<span class="codeline" id="line-158"><code>			<span class="keyword">case</span> <a href="../../../../pkg/reflect.html" class="ident i2">reflect</a>.<a href="../../../reflect/type.go.html#line-265" class="ident">Slice</a>:</code></span>
 <span class="codeline" id="line-159"><code></code></span>
 <span class="codeline" id="line-160"><code>				<span class="keyword">if</span> <label for="r22" class="ident">currentSubSchema</label>.<a href="subSchema.go^1caf7.html#line-93" class="ident">types</a>.<a href="schemaType.go^21a59.html#line-40" class="ident">IsTyped</a>() &amp;&amp; !<label for="r22" class="ident">currentSubSchema</label>.<a href="subSchema.go^1caf7.html#line-93" class="ident">types</a>.<a href="schemaType.go^21a59.html#line-59" class="ident">Contains</a>(<a href="types.go.html#line-30" class="ident">TYPE_ARRAY</a>) {</code></span>
 <span class="codeline" id="line-161"><code>					<label for="r24" class="ident">result</label>.<a href="result.go.html#line-206" class="ident">addInternalError</a>(</code></span>
@@ -549,7 +549,7 @@ input[id=i6]:checked ~pre .i6
 <span class="codeline" id="line-179"><code></code></span>
 <span class="codeline" id="line-180"><code>			<span class="comment">// Map =&gt; JSON object</span></code></span>
 <span class="codeline" id="line-181"><code></code></span>
-<span class="codeline" id="line-182"><code>			<span class="keyword">case</span> <a href="../../../../pkg/reflect.html" class="ident i2">reflect</a>.<a href="../../../reflect/type.go.html#line-256" class="ident">Map</a>:</code></span>
+<span class="codeline" id="line-182"><code>			<span class="keyword">case</span> <a href="../../../../pkg/reflect.html" class="ident i2">reflect</a>.<a href="../../../reflect/type.go.html#line-263" class="ident">Map</a>:</code></span>
 <span class="codeline" id="line-183"><code>				<span class="keyword">if</span> <label for="r22" class="ident">currentSubSchema</label>.<a href="subSchema.go^1caf7.html#line-93" class="ident">types</a>.<a href="schemaType.go^21a59.html#line-40" class="ident">IsTyped</a>() &amp;&amp; !<label for="r22" class="ident">currentSubSchema</label>.<a href="subSchema.go^1caf7.html#line-93" class="ident">types</a>.<a href="schemaType.go^21a59.html#line-59" class="ident">Contains</a>(<a href="types.go.html#line-35" class="ident">TYPE_OBJECT</a>) {</code></span>
 <span class="codeline" id="line-184"><code>					<label for="r24" class="ident">result</label>.<a href="result.go.html#line-206" class="ident">addInternalError</a>(</code></span>
 <span class="codeline" id="line-185"><code>						<a href="../../../../pkg/builtin.html#name-new" class="ident">new</a>(<a href="errors.go.html#line-33" class="ident">InvalidTypeError</a>),</code></span>
@@ -583,7 +583,7 @@ input[id=i6]:checked ~pre .i6
 <span class="codeline" id="line-213"><code></code></span>
 <span class="codeline" id="line-214"><code>			<span class="comment">// Simple JSON values : string, number, boolean</span></code></span>
 <span class="codeline" id="line-215"><code></code></span>
-<span class="codeline" id="line-216"><code>			<span class="keyword">case</span> <a href="../../../../pkg/reflect.html" class="ident i2">reflect</a>.<a href="../../../reflect/type.go.html#line-236" class="ident">Bool</a>:</code></span>
+<span class="codeline" id="line-216"><code>			<span class="keyword">case</span> <a href="../../../../pkg/reflect.html" class="ident i2">reflect</a>.<a href="../../../reflect/type.go.html#line-243" class="ident">Bool</a>:</code></span>
 <span class="codeline" id="line-217"><code></code></span>
 <span class="codeline" id="line-218"><code>				<span class="keyword">if</span> <label for="r22" class="ident">currentSubSchema</label>.<a href="subSchema.go^1caf7.html#line-93" class="ident">types</a>.<a href="schemaType.go^21a59.html#line-40" class="ident">IsTyped</a>() &amp;&amp; !<label for="r22" class="ident">currentSubSchema</label>.<a href="subSchema.go^1caf7.html#line-93" class="ident">types</a>.<a href="schemaType.go^21a59.html#line-59" class="ident">Contains</a>(<a href="types.go.html#line-31" class="ident">TYPE_BOOLEAN</a>) {</code></span>
 <span class="codeline" id="line-219"><code>					<label for="r24" class="ident">result</label>.<a href="result.go.html#line-206" class="ident">addInternalError</a>(</code></span>
@@ -605,7 +605,7 @@ input[id=i6]:checked ~pre .i6
 <span class="codeline" id="line-235"><code>				<label for="r20" class="ident">v</label>.<a href="#line-401" class="ident">validateCommon</a>(<label for="r22" class="ident">currentSubSchema</label>, <label for="r40" class="ident">value</label>, <label for="r24" class="ident">result</label>, <label for="r25" class="ident">context</label>)</code></span>
 <span class="codeline" id="line-236"><code>				<label for="r20" class="ident">v</label>.<a href="#line-695" class="ident">validateString</a>(<label for="r22" class="ident">currentSubSchema</label>, <label for="r40" class="ident">value</label>, <label for="r24" class="ident">result</label>, <label for="r25" class="ident">context</label>)</code></span>
 <span class="codeline" id="line-237"><code></code></span>
-<span class="codeline" id="line-238"><code>			<span class="keyword">case</span> <a href="../../../../pkg/reflect.html" class="ident i2">reflect</a>.<a href="../../../reflect/type.go.html#line-259" class="ident">String</a>:</code></span>
+<span class="codeline" id="line-238"><code>			<span class="keyword">case</span> <a href="../../../../pkg/reflect.html" class="ident i2">reflect</a>.<a href="../../../reflect/type.go.html#line-266" class="ident">String</a>:</code></span>
 <span class="codeline" id="line-239"><code></code></span>
 <span class="codeline" id="line-240"><code>				<span class="keyword">if</span> <label for="r22" class="ident">currentSubSchema</label>.<a href="subSchema.go^1caf7.html#line-93" class="ident">types</a>.<a href="schemaType.go^21a59.html#line-40" class="ident">IsTyped</a>() &amp;&amp; !<label for="r22" class="ident">currentSubSchema</label>.<a href="subSchema.go^1caf7.html#line-93" class="ident">types</a>.<a href="schemaType.go^21a59.html#line-59" class="ident">Contains</a>(<a href="types.go.html#line-36" class="ident">TYPE_STRING</a>) {</code></span>
 <span class="codeline" id="line-241"><code>					<label for="r24" class="ident">result</label>.<a href="result.go.html#line-206" class="ident">addInternalError</a>(</code></span>
@@ -722,7 +722,7 @@ input[id=i6]:checked ~pre .i6
 <span class="codeline" id="line-352"><code>	}</code></span>
 <span class="codeline" id="line-353"><code></code></span>
 <span class="codeline" id="line-354"><code>	<span class="keyword">if</span> <label for="r44" class="ident">currentSubSchema</label>.<a href="subSchema.go^1caf7.html#line-124" class="ident">dependencies</a> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> &amp;&amp; <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r44" class="ident">currentSubSchema</label>.<a href="subSchema.go^1caf7.html#line-124" class="ident">dependencies</a>) &gt; <span class="lit-number">0</span> {</code></span>
-<span class="codeline" id="line-355"><code>		<span class="keyword">if</span> <a href="utils.go.html#line-34" class="ident">isKind</a>(<label for="r45" class="ident">currentNode</label>, <a href="../../../../pkg/reflect.html" class="ident i2">reflect</a>.<a href="../../../reflect/type.go.html#line-256" class="ident">Map</a>) {</code></span>
+<span class="codeline" id="line-355"><code>		<span class="keyword">if</span> <a href="utils.go.html#line-34" class="ident">isKind</a>(<label for="r45" class="ident">currentNode</label>, <a href="../../../../pkg/reflect.html" class="ident i2">reflect</a>.<a href="../../../reflect/type.go.html#line-263" class="ident">Map</a>) {</code></span>
 <span class="codeline" id="line-356"><code>			<span class="keyword">for</span> <label for="r63" class="ident">elementKey</label> := <span class="keyword">range</span> <label for="r45" class="ident">currentNode</label>.(<span class="keyword">map</span>[<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>]<span class="keyword">interface</span>{}) {</code></span>
 <span class="codeline" id="line-357"><code>				<span class="keyword">if</span> <label for="r64" class="ident">dependency</label>, <label for="r65" class="ident">ok</label> := <label for="r44" class="ident">currentSubSchema</label>.<a href="subSchema.go^1caf7.html#line-124" class="ident">dependencies</a>[<label for="r63" class="ident">elementKey</label>]; <label for="r65" class="ident">ok</label> {</code></span>
 <span class="codeline" id="line-358"><code>					<span class="keyword">switch</span> dependency := <label for="r64" class="ident">dependency</label>.(<span class="keyword">type</span>) {</code></span>
@@ -804,7 +804,7 @@ input[id=i6]:checked ~pre .i6
 <span class="codeline" id="line-434"><code>				<label for="r80" class="ident">context</label>,</code></span>
 <span class="codeline" id="line-435"><code>				<label for="r78" class="ident">value</label>,</code></span>
 <span class="codeline" id="line-436"><code>				<a href="result.go.html#line-36" class="ident">ErrorDetails</a>{</code></span>
-<span class="codeline" id="line-437"><code>					<span class="lit-string">"allowed"</span>: <a href="../../../../pkg/strings.html" class="ident i5">strings</a>.<a href="../../../strings/strings.go.html#line-421" class="ident">Join</a>(<label for="r77" class="ident">currentSubSchema</label>.<a href="subSchema.go^1caf7.html#line-139" class="ident">enum</a>, <span class="lit-string">", "</span>),</code></span>
+<span class="codeline" id="line-437"><code>					<span class="lit-string">"allowed"</span>: <a href="../../../../pkg/strings.html" class="ident i5">strings</a>.<a href="../../../strings/strings.go.html#line-425" class="ident">Join</a>(<label for="r77" class="ident">currentSubSchema</label>.<a href="subSchema.go^1caf7.html#line-139" class="ident">enum</a>, <span class="lit-string">", "</span>),</code></span>
 <span class="codeline" id="line-438"><code>				},</code></span>
 <span class="codeline" id="line-439"><code>			)</code></span>
 <span class="codeline" id="line-440"><code>		}</code></span>
@@ -1046,7 +1046,7 @@ input[id=i6]:checked ~pre .i6
 <span class="codeline" id="line-676"><code>	<label for="r143" class="ident">validated</label> := <a href="../../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
 <span class="codeline" id="line-677"><code></code></span>
 <span class="codeline" id="line-678"><code>	<span class="keyword">for</span> <label for="r144" class="ident">pk</label>, <label for="r145" class="ident">pv</label> := <span class="keyword">range</span> <label for="r138" class="ident">currentSubSchema</label>.<a href="subSchema.go^1caf7.html#line-126" class="ident">patternProperties</a> {</code></span>
-<span class="codeline" id="line-679"><code>		<span class="keyword">if</span> <label for="r146" class="ident">matches</label>, <label for="r147" class="ident">_</label> := <a href="../../../../pkg/regexp.html" class="ident i3">regexp</a>.<a href="../../../regexp/regexp.go.html#line-548" class="ident">MatchString</a>(<label for="r144" class="ident">pk</label>, <label for="r139" class="ident">key</label>); <label for="r146" class="ident">matches</label> {</code></span>
+<span class="codeline" id="line-679"><code>		<span class="keyword">if</span> <label for="r146" class="ident">matches</label>, <label for="r147" class="ident">_</label> := <a href="../../../../pkg/regexp.html" class="ident i3">regexp</a>.<a href="../../../regexp/regexp.go.html#line-554" class="ident">MatchString</a>(<label for="r144" class="ident">pk</label>, <label for="r139" class="ident">key</label>); <label for="r146" class="ident">matches</label> {</code></span>
 <span class="codeline" id="line-680"><code>			<label for="r143" class="ident">validated</label> = <a href="../../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
 <span class="codeline" id="line-681"><code>			<label for="r148" class="ident">subContext</label> := <a href="jsonContext.go^c0dff.html#line-36" class="ident">NewJsonContext</a>(<label for="r139" class="ident">key</label>, <label for="r142" class="ident">context</label>)</code></span>
 <span class="codeline" id="line-682"><code>			<label for="r149" class="ident">validationResult</label> := <label for="r145" class="ident">pv</label>.<a href="#line-64" class="ident">subValidateWithContext</a>(<label for="r140" class="ident">value</label>, <label for="r148" class="ident">subContext</label>)</code></span>
@@ -1070,7 +1070,7 @@ input[id=i6]:checked ~pre .i6
 <span class="codeline" id="line-700"><code>	}</code></span>
 <span class="codeline" id="line-701"><code></code></span>
 <span class="codeline" id="line-702"><code>	<span class="comment">// Ignore non strings</span></code></span>
-<span class="codeline" id="line-703"><code>	<span class="keyword">if</span> !<a href="utils.go.html#line-34" class="ident">isKind</a>(<label for="r153" class="ident">value</label>, <a href="../../../../pkg/reflect.html" class="ident i2">reflect</a>.<a href="../../../reflect/type.go.html#line-259" class="ident">String</a>) {</code></span>
+<span class="codeline" id="line-703"><code>	<span class="keyword">if</span> !<a href="utils.go.html#line-34" class="ident">isKind</a>(<label for="r153" class="ident">value</label>, <a href="../../../../pkg/reflect.html" class="ident i2">reflect</a>.<a href="../../../reflect/type.go.html#line-266" class="ident">String</a>) {</code></span>
 <span class="codeline" id="line-704"><code>		<span class="keyword">return</span></code></span>
 <span class="codeline" id="line-705"><code>	}</code></span>
 <span class="codeline" id="line-706"><code></code></span>
@@ -1083,7 +1083,7 @@ input[id=i6]:checked ~pre .i6
 <span class="codeline" id="line-713"><code></code></span>
 <span class="codeline" id="line-714"><code>	<span class="comment">// minLength &amp; maxLength:</span></code></span>
 <span class="codeline" id="line-715"><code>	<span class="keyword">if</span> <label for="r152" class="ident">currentSubSchema</label>.<a href="subSchema.go^1caf7.html#line-114" class="ident">minLength</a> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
-<span class="codeline" id="line-716"><code>		<span class="keyword">if</span> <a href="../../../../pkg/unicode/utf8.html" class="ident i6">utf8</a>.<a href="../../../unicode/utf8/utf8.go.html#line-374" class="ident">RuneCount</a>([]<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<label for="r156" class="ident">stringValue</label>)) &lt; <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a>(*<label for="r152" class="ident">currentSubSchema</label>.<a href="subSchema.go^1caf7.html#line-114" class="ident">minLength</a>) {</code></span>
+<span class="codeline" id="line-716"><code>		<span class="keyword">if</span> <a href="../../../../pkg/unicode/utf8.html" class="ident i6">utf8</a>.<a href="../../../unicode/utf8/utf8.go.html#line-400" class="ident">RuneCount</a>([]<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<label for="r156" class="ident">stringValue</label>)) &lt; <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a>(*<label for="r152" class="ident">currentSubSchema</label>.<a href="subSchema.go^1caf7.html#line-114" class="ident">minLength</a>) {</code></span>
 <span class="codeline" id="line-717"><code>			<label for="r154" class="ident">result</label>.<a href="result.go.html#line-206" class="ident">addInternalError</a>(</code></span>
 <span class="codeline" id="line-718"><code>				<a href="../../../../pkg/builtin.html#name-new" class="ident">new</a>(<a href="errors.go.html#line-147" class="ident">StringLengthGTEError</a>),</code></span>
 <span class="codeline" id="line-719"><code>				<label for="r155" class="ident">context</label>,</code></span>
@@ -1093,7 +1093,7 @@ input[id=i6]:checked ~pre .i6
 <span class="codeline" id="line-723"><code>		}</code></span>
 <span class="codeline" id="line-724"><code>	}</code></span>
 <span class="codeline" id="line-725"><code>	<span class="keyword">if</span> <label for="r152" class="ident">currentSubSchema</label>.<a href="subSchema.go^1caf7.html#line-115" class="ident">maxLength</a> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
-<span class="codeline" id="line-726"><code>		<span class="keyword">if</span> <a href="../../../../pkg/unicode/utf8.html" class="ident i6">utf8</a>.<a href="../../../unicode/utf8/utf8.go.html#line-374" class="ident">RuneCount</a>([]<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<label for="r156" class="ident">stringValue</label>)) &gt; <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a>(*<label for="r152" class="ident">currentSubSchema</label>.<a href="subSchema.go^1caf7.html#line-115" class="ident">maxLength</a>) {</code></span>
+<span class="codeline" id="line-726"><code>		<span class="keyword">if</span> <a href="../../../../pkg/unicode/utf8.html" class="ident i6">utf8</a>.<a href="../../../unicode/utf8/utf8.go.html#line-400" class="ident">RuneCount</a>([]<a href="../../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<label for="r156" class="ident">stringValue</label>)) &gt; <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a>(*<label for="r152" class="ident">currentSubSchema</label>.<a href="subSchema.go^1caf7.html#line-115" class="ident">maxLength</a>) {</code></span>
 <span class="codeline" id="line-727"><code>			<label for="r154" class="ident">result</label>.<a href="result.go.html#line-206" class="ident">addInternalError</a>(</code></span>
 <span class="codeline" id="line-728"><code>				<a href="../../../../pkg/builtin.html#name-new" class="ident">new</a>(<a href="errors.go.html#line-153" class="ident">StringLengthLTEError</a>),</code></span>
 <span class="codeline" id="line-729"><code>				<label for="r155" class="ident">context</label>,</code></span>
@@ -1105,7 +1105,7 @@ input[id=i6]:checked ~pre .i6
 <span class="codeline" id="line-735"><code></code></span>
 <span class="codeline" id="line-736"><code>	<span class="comment">// pattern:</span></code></span>
 <span class="codeline" id="line-737"><code>	<span class="keyword">if</span> <label for="r152" class="ident">currentSubSchema</label>.<a href="subSchema.go^1caf7.html#line-116" class="ident">pattern</a> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
-<span class="codeline" id="line-738"><code>		<span class="keyword">if</span> !<label for="r152" class="ident">currentSubSchema</label>.<a href="subSchema.go^1caf7.html#line-116" class="ident">pattern</a>.<a href="../../../regexp/regexp.go.html#line-524" class="ident">MatchString</a>(<label for="r156" class="ident">stringValue</label>) {</code></span>
+<span class="codeline" id="line-738"><code>		<span class="keyword">if</span> !<label for="r152" class="ident">currentSubSchema</label>.<a href="subSchema.go^1caf7.html#line-116" class="ident">pattern</a>.<a href="../../../regexp/regexp.go.html#line-530" class="ident">MatchString</a>(<label for="r156" class="ident">stringValue</label>) {</code></span>
 <span class="codeline" id="line-739"><code>			<label for="r154" class="ident">result</label>.<a href="result.go.html#line-206" class="ident">addInternalError</a>(</code></span>
 <span class="codeline" id="line-740"><code>				<a href="../../../../pkg/builtin.html#name-new" class="ident">new</a>(<a href="errors.go.html#line-159" class="ident">DoesNotMatchPatternError</a>),</code></span>
 <span class="codeline" id="line-741"><code>				<label for="r155" class="ident">context</label>,</code></span>
@@ -1154,7 +1154,7 @@ input[id=i6]:checked ~pre .i6
 <span class="codeline" id="line-784"><code>				<label for="r162" class="ident">context</label>,</code></span>
 <span class="codeline" id="line-785"><code>				<label for="r163" class="ident">number</label>,</code></span>
 <span class="codeline" id="line-786"><code>				<a href="result.go.html#line-36" class="ident">ErrorDetails</a>{</code></span>
-<span class="codeline" id="line-787"><code>					<span class="lit-string">"multiple"</span>: <a href="../../../../pkg/builtin.html#name-new" class="ident">new</a>(<a href="../../../../pkg/math/big.html" class="ident i1">big</a>.<a href="../../../math/big/float.go.html#line-65" class="ident">Float</a>).<a href="../../../math/big/float.go.html#line-616" class="ident">SetRat</a>(<label for="r159" class="ident">currentSubSchema</label>.<a href="subSchema.go^1caf7.html#line-107" class="ident">multipleOf</a>),</code></span>
+<span class="codeline" id="line-787"><code>					<span class="lit-string">"multiple"</span>: <a href="../../../../pkg/builtin.html#name-new" class="ident">new</a>(<a href="../../../../pkg/math/big.html" class="ident i1">big</a>.<a href="../../../math/big/float.go.html#line-65" class="ident">Float</a>).<a href="../../../math/big/float.go.html#line-618" class="ident">SetRat</a>(<label for="r159" class="ident">currentSubSchema</label>.<a href="subSchema.go^1caf7.html#line-107" class="ident">multipleOf</a>),</code></span>
 <span class="codeline" id="line-788"><code>				},</code></span>
 <span class="codeline" id="line-789"><code>			)</code></span>
 <span class="codeline" id="line-790"><code>		}</code></span>
@@ -1168,7 +1168,7 @@ input[id=i6]:checked ~pre .i6
 <span class="codeline" id="line-798"><code>				<label for="r162" class="ident">context</label>,</code></span>
 <span class="codeline" id="line-799"><code>				<label for="r163" class="ident">number</label>,</code></span>
 <span class="codeline" id="line-800"><code>				<a href="result.go.html#line-36" class="ident">ErrorDetails</a>{</code></span>
-<span class="codeline" id="line-801"><code>					<span class="lit-string">"max"</span>: <a href="../../../../pkg/builtin.html#name-new" class="ident">new</a>(<a href="../../../../pkg/math/big.html" class="ident i1">big</a>.<a href="../../../math/big/float.go.html#line-65" class="ident">Float</a>).<a href="../../../math/big/float.go.html#line-616" class="ident">SetRat</a>(<label for="r159" class="ident">currentSubSchema</label>.<a href="subSchema.go^1caf7.html#line-108" class="ident">maximum</a>),</code></span>
+<span class="codeline" id="line-801"><code>					<span class="lit-string">"max"</span>: <a href="../../../../pkg/builtin.html#name-new" class="ident">new</a>(<a href="../../../../pkg/math/big.html" class="ident i1">big</a>.<a href="../../../math/big/float.go.html#line-65" class="ident">Float</a>).<a href="../../../math/big/float.go.html#line-618" class="ident">SetRat</a>(<label for="r159" class="ident">currentSubSchema</label>.<a href="subSchema.go^1caf7.html#line-108" class="ident">maximum</a>),</code></span>
 <span class="codeline" id="line-802"><code>				},</code></span>
 <span class="codeline" id="line-803"><code>			)</code></span>
 <span class="codeline" id="line-804"><code>		}</code></span>
@@ -1180,7 +1180,7 @@ input[id=i6]:checked ~pre .i6
 <span class="codeline" id="line-810"><code>				<label for="r162" class="ident">context</label>,</code></span>
 <span class="codeline" id="line-811"><code>				<label for="r163" class="ident">number</label>,</code></span>
 <span class="codeline" id="line-812"><code>				<a href="result.go.html#line-36" class="ident">ErrorDetails</a>{</code></span>
-<span class="codeline" id="line-813"><code>					<span class="lit-string">"max"</span>: <a href="../../../../pkg/builtin.html#name-new" class="ident">new</a>(<a href="../../../../pkg/math/big.html" class="ident i1">big</a>.<a href="../../../math/big/float.go.html#line-65" class="ident">Float</a>).<a href="../../../math/big/float.go.html#line-616" class="ident">SetRat</a>(<label for="r159" class="ident">currentSubSchema</label>.<a href="subSchema.go^1caf7.html#line-109" class="ident">exclusiveMaximum</a>),</code></span>
+<span class="codeline" id="line-813"><code>					<span class="lit-string">"max"</span>: <a href="../../../../pkg/builtin.html#name-new" class="ident">new</a>(<a href="../../../../pkg/math/big.html" class="ident i1">big</a>.<a href="../../../math/big/float.go.html#line-65" class="ident">Float</a>).<a href="../../../math/big/float.go.html#line-618" class="ident">SetRat</a>(<label for="r159" class="ident">currentSubSchema</label>.<a href="subSchema.go^1caf7.html#line-109" class="ident">exclusiveMaximum</a>),</code></span>
 <span class="codeline" id="line-814"><code>				},</code></span>
 <span class="codeline" id="line-815"><code>			)</code></span>
 <span class="codeline" id="line-816"><code>		}</code></span>
@@ -1194,7 +1194,7 @@ input[id=i6]:checked ~pre .i6
 <span class="codeline" id="line-824"><code>				<label for="r162" class="ident">context</label>,</code></span>
 <span class="codeline" id="line-825"><code>				<label for="r163" class="ident">number</label>,</code></span>
 <span class="codeline" id="line-826"><code>				<a href="result.go.html#line-36" class="ident">ErrorDetails</a>{</code></span>
-<span class="codeline" id="line-827"><code>					<span class="lit-string">"min"</span>: <a href="../../../../pkg/builtin.html#name-new" class="ident">new</a>(<a href="../../../../pkg/math/big.html" class="ident i1">big</a>.<a href="../../../math/big/float.go.html#line-65" class="ident">Float</a>).<a href="../../../math/big/float.go.html#line-616" class="ident">SetRat</a>(<label for="r159" class="ident">currentSubSchema</label>.<a href="subSchema.go^1caf7.html#line-110" class="ident">minimum</a>),</code></span>
+<span class="codeline" id="line-827"><code>					<span class="lit-string">"min"</span>: <a href="../../../../pkg/builtin.html#name-new" class="ident">new</a>(<a href="../../../../pkg/math/big.html" class="ident i1">big</a>.<a href="../../../math/big/float.go.html#line-65" class="ident">Float</a>).<a href="../../../math/big/float.go.html#line-618" class="ident">SetRat</a>(<label for="r159" class="ident">currentSubSchema</label>.<a href="subSchema.go^1caf7.html#line-110" class="ident">minimum</a>),</code></span>
 <span class="codeline" id="line-828"><code>				},</code></span>
 <span class="codeline" id="line-829"><code>			)</code></span>
 <span class="codeline" id="line-830"><code>		}</code></span>
@@ -1206,7 +1206,7 @@ input[id=i6]:checked ~pre .i6
 <span class="codeline" id="line-836"><code>				<label for="r162" class="ident">context</label>,</code></span>
 <span class="codeline" id="line-837"><code>				<label for="r163" class="ident">number</label>,</code></span>
 <span class="codeline" id="line-838"><code>				<a href="result.go.html#line-36" class="ident">ErrorDetails</a>{</code></span>
-<span class="codeline" id="line-839"><code>					<span class="lit-string">"min"</span>: <a href="../../../../pkg/builtin.html#name-new" class="ident">new</a>(<a href="../../../../pkg/math/big.html" class="ident i1">big</a>.<a href="../../../math/big/float.go.html#line-65" class="ident">Float</a>).<a href="../../../math/big/float.go.html#line-616" class="ident">SetRat</a>(<label for="r159" class="ident">currentSubSchema</label>.<a href="subSchema.go^1caf7.html#line-111" class="ident">exclusiveMinimum</a>),</code></span>
+<span class="codeline" id="line-839"><code>					<span class="lit-string">"min"</span>: <a href="../../../../pkg/builtin.html#name-new" class="ident">new</a>(<a href="../../../../pkg/math/big.html" class="ident i1">big</a>.<a href="../../../math/big/float.go.html#line-65" class="ident">Float</a>).<a href="../../../math/big/float.go.html#line-618" class="ident">SetRat</a>(<label for="r159" class="ident">currentSubSchema</label>.<a href="subSchema.go^1caf7.html#line-111" class="ident">exclusiveMinimum</a>),</code></span>
 <span class="codeline" id="line-840"><code>				},</code></span>
 <span class="codeline" id="line-841"><code>			)</code></span>
 <span class="codeline" id="line-842"><code>		}</code></span>
@@ -1228,7 +1228,7 @@ input[id=i6]:checked ~pre .i6
 <span class="codeline" id="line-858"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

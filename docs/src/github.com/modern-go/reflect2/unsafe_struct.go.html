@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: unsafe_struct.go in package github.com/modern-go/reflect2</title>
-<link href="../../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -92,7 +92,7 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-10"><code>	likePtr <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
 <span class="codeline" id="line-11"><code>}</code></span>
 <span class="codeline" id="line-12"><code></code></span>
-<span class="codeline" id="line-13"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../pkg/github.com/modern-go/reflect2.html#name-newUnsafeStructType" class="ident">newUnsafeStructType</a></label>(<label for="r1" class="ident">cfg</label> *<a href="reflect2.go.html#line-132" class="ident">frozenConfig</a>, <label for="r2" class="ident">type1</label> <a href="../../../../pkg/reflect.html" class="ident i0">reflect</a>.<a href="../../../reflect/type.go.html#line-38" class="ident">Type</a>) *<a href="#line-8" class="ident">UnsafeStructType</a> {</code></span>
+<span class="codeline" id="line-13"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../pkg/github.com/modern-go/reflect2.html#name-newUnsafeStructType" class="ident">newUnsafeStructType</a></label>(<label for="r1" class="ident">cfg</label> *<a href="reflect2.go.html#line-132" class="ident">frozenConfig</a>, <label for="r2" class="ident">type1</label> <a href="../../../../pkg/reflect.html" class="ident i0">reflect</a>.<a href="../../../reflect/type.go.html#line-39" class="ident">Type</a>) *<a href="#line-8" class="ident">UnsafeStructType</a> {</code></span>
 <span class="codeline" id="line-14"><code>	<span class="keyword">return</span> &amp;<a href="#line-8" class="ident">UnsafeStructType</a>{</code></span>
 <span class="codeline" id="line-15"><code>		<a href="#line-9" class="ident">unsafeType</a>: *<a href="unsafe_type.go.html#line-14" class="ident">newUnsafeType</a>(<label for="r1" class="ident">cfg</label>, <label for="r2" class="ident">type1</label>),</code></span>
 <span class="codeline" id="line-16"><code>		<a href="#line-10" class="ident">likePtr</a>:    <a href="reflect2.go.html#line-261" class="ident">likePtrType</a>(<label for="r2" class="ident">type1</label>),</code></span>
@@ -117,7 +117,7 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-35"><code>}</code></span>
 <span class="codeline" id="line-36"><code></code></span>
 <span class="codeline" id="line-37"><code><span class="keyword">func</span> (<label for="r12" class="ident">type2</label> *<a href="#line-8" class="ident">UnsafeStructType</a>) <label for="r13" class="ident"><a href="../../../../imp/github.com/modern-go/reflect2.UnsafeStructType.html#name-.FieldByName" class="ident">FieldByName</a></label>(<label for="r14" class="ident">name</label> <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="reflect2.go.html#line-76" class="ident">StructField</a> {</code></span>
-<span class="codeline" id="line-38"><code>	<label for="r15" class="ident">structField</label>, <label for="r16" class="ident">found</label> := <label for="r12" class="ident">type2</label>.<a href="safe_type.go.html#line-9" class="ident">Type</a>.<a href="../../../reflect/type.go.html#line-166" class="ident">FieldByName</a>(<label for="r14" class="ident">name</label>)</code></span>
+<span class="codeline" id="line-38"><code>	<label for="r15" class="ident">structField</label>, <label for="r16" class="ident">found</label> := <label for="r12" class="ident">type2</label>.<a href="safe_type.go.html#line-9" class="ident">Type</a>.<a href="../../../reflect/type.go.html#line-173" class="ident">FieldByName</a>(<label for="r14" class="ident">name</label>)</code></span>
 <span class="codeline" id="line-39"><code>	<span class="keyword">if</span> !<label for="r16" class="ident">found</label> {</code></span>
 <span class="codeline" id="line-40"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
 <span class="codeline" id="line-41"><code>	}</code></span>
@@ -125,23 +125,23 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-43"><code>}</code></span>
 <span class="codeline" id="line-44"><code></code></span>
 <span class="codeline" id="line-45"><code><span class="keyword">func</span> (<label for="r17" class="ident">type2</label> *<a href="#line-8" class="ident">UnsafeStructType</a>) <label for="r18" class="ident"><a href="../../../../imp/github.com/modern-go/reflect2.UnsafeStructType.html#name-.Field" class="ident">Field</a></label>(<label for="r19" class="ident">i</label> <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a>) <a href="reflect2.go.html#line-76" class="ident">StructField</a> {</code></span>
-<span class="codeline" id="line-46"><code>	<span class="keyword">return</span> <a href="unsafe_field.go.html#line-15" class="ident">newUnsafeStructField</a>(<label for="r17" class="ident">type2</label>, <label for="r17" class="ident">type2</label>.<a href="safe_type.go.html#line-9" class="ident">Type</a>.<a href="../../../reflect/type.go.html#line-156" class="ident">Field</a>(<label for="r19" class="ident">i</label>))</code></span>
+<span class="codeline" id="line-46"><code>	<span class="keyword">return</span> <a href="unsafe_field.go.html#line-15" class="ident">newUnsafeStructField</a>(<label for="r17" class="ident">type2</label>, <label for="r17" class="ident">type2</label>.<a href="safe_type.go.html#line-9" class="ident">Type</a>.<a href="../../../reflect/type.go.html#line-163" class="ident">Field</a>(<label for="r19" class="ident">i</label>))</code></span>
 <span class="codeline" id="line-47"><code>}</code></span>
 <span class="codeline" id="line-48"><code></code></span>
 <span class="codeline" id="line-49"><code><span class="keyword">func</span> (<label for="r20" class="ident">type2</label> *<a href="#line-8" class="ident">UnsafeStructType</a>) <label for="r21" class="ident"><a href="../../../../imp/github.com/modern-go/reflect2.UnsafeStructType.html#name-.FieldByIndex" class="ident">FieldByIndex</a></label>(<label for="r22" class="ident">index</label> []<a href="../../../../pkg/builtin.html#name-int" class="ident">int</a>) <a href="reflect2.go.html#line-76" class="ident">StructField</a> {</code></span>
-<span class="codeline" id="line-50"><code>	<span class="keyword">return</span> <a href="unsafe_field.go.html#line-15" class="ident">newUnsafeStructField</a>(<label for="r20" class="ident">type2</label>, <label for="r20" class="ident">type2</label>.<a href="safe_type.go.html#line-9" class="ident">Type</a>.<a href="../../../reflect/type.go.html#line-162" class="ident">FieldByIndex</a>(<label for="r22" class="ident">index</label>))</code></span>
+<span class="codeline" id="line-50"><code>	<span class="keyword">return</span> <a href="unsafe_field.go.html#line-15" class="ident">newUnsafeStructField</a>(<label for="r20" class="ident">type2</label>, <label for="r20" class="ident">type2</label>.<a href="safe_type.go.html#line-9" class="ident">Type</a>.<a href="../../../reflect/type.go.html#line-169" class="ident">FieldByIndex</a>(<label for="r22" class="ident">index</label>))</code></span>
 <span class="codeline" id="line-51"><code>}</code></span>
 <span class="codeline" id="line-52"><code></code></span>
 <span class="codeline" id="line-53"><code><span class="keyword">func</span> (<label for="r23" class="ident">type2</label> *<a href="#line-8" class="ident">UnsafeStructType</a>) <label for="r24" class="ident"><a href="../../../../imp/github.com/modern-go/reflect2.UnsafeStructType.html#name-.FieldByNameFunc" class="ident">FieldByNameFunc</a></label>(<label for="r25" class="ident">match</label> <span class="keyword">func</span>(<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a>) <a href="reflect2.go.html#line-76" class="ident">StructField</a> {</code></span>
-<span class="codeline" id="line-54"><code>	<label for="r26" class="ident">structField</label>, <label for="r27" class="ident">found</label> := <label for="r23" class="ident">type2</label>.<a href="safe_type.go.html#line-9" class="ident">Type</a>.<a href="../../../reflect/type.go.html#line-180" class="ident">FieldByNameFunc</a>(<label for="r25" class="ident">match</label>)</code></span>
+<span class="codeline" id="line-54"><code>	<label for="r26" class="ident">structField</label>, <label for="r27" class="ident">found</label> := <label for="r23" class="ident">type2</label>.<a href="safe_type.go.html#line-9" class="ident">Type</a>.<a href="../../../reflect/type.go.html#line-187" class="ident">FieldByNameFunc</a>(<label for="r25" class="ident">match</label>)</code></span>
 <span class="codeline" id="line-55"><code>	<span class="keyword">if</span> !<label for="r27" class="ident">found</label> {</code></span>
-<span class="codeline" id="line-56"><code>		<a href="../../../../pkg/builtin.html#name-panic" class="ident">panic</a>(<span class="lit-string">"field match condition not found in "</span> + <label for="r23" class="ident">type2</label>.<a href="safe_type.go.html#line-9" class="ident">Type</a>.<a href="../../../reflect/type.go.html#line-97" class="ident">String</a>())</code></span>
+<span class="codeline" id="line-56"><code>		<a href="../../../../pkg/builtin.html#name-panic" class="ident">panic</a>(<span class="lit-string">"field match condition not found in "</span> + <label for="r23" class="ident">type2</label>.<a href="safe_type.go.html#line-9" class="ident">Type</a>.<a href="../../../reflect/type.go.html#line-98" class="ident">String</a>())</code></span>
 <span class="codeline" id="line-57"><code>	}</code></span>
 <span class="codeline" id="line-58"><code>	<span class="keyword">return</span> <a href="unsafe_field.go.html#line-15" class="ident">newUnsafeStructField</a>(<label for="r23" class="ident">type2</label>, <label for="r26" class="ident">structField</label>)</code></span>
 <span class="codeline" id="line-59"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

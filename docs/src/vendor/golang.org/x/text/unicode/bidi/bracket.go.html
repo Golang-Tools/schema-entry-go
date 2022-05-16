@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: bracket.go in package vendor/golang.org/x/text/unicode/bidi</title>
-<link href="../../../../../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../../../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../../../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../../../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -232,19 +232,19 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-72"><code><span class="comment">//</span></code></span>
 <span class="codeline" id="line-73"><code><span class="comment">// The identifiers for bracket types are the rune of the canonicalized opening</span></code></span>
 <span class="codeline" id="line-74"><code><span class="comment">// bracket for brackets (open or close) or 0 for runes that are not brackets.</span></code></span>
-<span class="codeline" id="line-75"><code><span class="keyword">func</span> <label for="r12" class="ident"><a href="../../../../../../../pkg/vendor/golang.org/x/text/unicode/bidi.html#name-resolvePairedBrackets" class="ident">resolvePairedBrackets</a></label>(<label for="r13" class="ident">s</label> *<a href="core.go.html#line-407" class="ident">isolatingRunSequence</a>) {</code></span>
+<span class="codeline" id="line-75"><code><span class="keyword">func</span> <label for="r12" class="ident"><a href="../../../../../../../pkg/vendor/golang.org/x/text/unicode/bidi.html#name-resolvePairedBrackets" class="ident">resolvePairedBrackets</a></label>(<label for="r13" class="ident">s</label> *<a href="core.go.html#line-417" class="ident">isolatingRunSequence</a>) {</code></span>
 <span class="codeline" id="line-76"><code>	<label for="r14" class="ident">p</label> := <a href="#line-90" class="ident">bracketPairer</a>{</code></span>
-<span class="codeline" id="line-77"><code>		<a href="#line-91" class="ident">sos</a>:              <label for="r13" class="ident">s</label>.<a href="core.go.html#line-415" class="ident">sos</a>,</code></span>
+<span class="codeline" id="line-77"><code>		<a href="#line-91" class="ident">sos</a>:              <label for="r13" class="ident">s</label>.<a href="core.go.html#line-425" class="ident">sos</a>,</code></span>
 <span class="codeline" id="line-78"><code>		<a href="#line-112" class="ident">openers</a>:          <a href="../../../../../../../pkg/container/list.html" class="ident i0">list</a>.<a href="../../../../../../container/list/list.go.html#line-62" class="ident">New</a>(),</code></span>
-<span class="codeline" id="line-79"><code>		<a href="#line-117" class="ident">codesIsolatedRun</a>: <label for="r13" class="ident">s</label>.<a href="core.go.html#line-412" class="ident">types</a>,</code></span>
-<span class="codeline" id="line-80"><code>		<a href="#line-118" class="ident">indexes</a>:          <label for="r13" class="ident">s</label>.<a href="core.go.html#line-410" class="ident">indexes</a>,</code></span>
+<span class="codeline" id="line-79"><code>		<a href="#line-117" class="ident">codesIsolatedRun</a>: <label for="r13" class="ident">s</label>.<a href="core.go.html#line-422" class="ident">types</a>,</code></span>
+<span class="codeline" id="line-80"><code>		<a href="#line-118" class="ident">indexes</a>:          <label for="r13" class="ident">s</label>.<a href="core.go.html#line-420" class="ident">indexes</a>,</code></span>
 <span class="codeline" id="line-81"><code>	}</code></span>
 <span class="codeline" id="line-82"><code>	<label for="r15" class="ident">dirEmbed</label> := <a href="trieval.go.html#line-9" class="ident">L</a></code></span>
-<span class="codeline" id="line-83"><code>	<span class="keyword">if</span> <label for="r13" class="ident">s</label>.<a href="core.go.html#line-414" class="ident">level</a>&amp;<span class="lit-number">1</span> != <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-83"><code>	<span class="keyword">if</span> <label for="r13" class="ident">s</label>.<a href="core.go.html#line-424" class="ident">level</a>&amp;<span class="lit-number">1</span> != <span class="lit-number">0</span> {</code></span>
 <span class="codeline" id="line-84"><code>		<label for="r15" class="ident">dirEmbed</label> = <a href="trieval.go.html#line-10" class="ident">R</a></code></span>
 <span class="codeline" id="line-85"><code>	}</code></span>
-<span class="codeline" id="line-86"><code>	<label for="r14" class="ident">p</label>.<a href="#line-135" class="ident">locateBrackets</a>(<label for="r13" class="ident">s</label>.<a href="core.go.html#line-408" class="ident">p</a>.<a href="core.go.html#line-72" class="ident">pairTypes</a>, <label for="r13" class="ident">s</label>.<a href="core.go.html#line-408" class="ident">p</a>.<a href="core.go.html#line-73" class="ident">pairValues</a>)</code></span>
-<span class="codeline" id="line-87"><code>	<label for="r14" class="ident">p</label>.<a href="#line-331" class="ident">resolveBrackets</a>(<label for="r15" class="ident">dirEmbed</label>, <label for="r13" class="ident">s</label>.<a href="core.go.html#line-408" class="ident">p</a>.<a href="core.go.html#line-69" class="ident">initialTypes</a>)</code></span>
+<span class="codeline" id="line-86"><code>	<label for="r14" class="ident">p</label>.<a href="#line-135" class="ident">locateBrackets</a>(<label for="r13" class="ident">s</label>.<a href="core.go.html#line-418" class="ident">p</a>.<a href="core.go.html#line-75" class="ident">pairTypes</a>, <label for="r13" class="ident">s</label>.<a href="core.go.html#line-418" class="ident">p</a>.<a href="core.go.html#line-76" class="ident">pairValues</a>)</code></span>
+<span class="codeline" id="line-87"><code>	<label for="r14" class="ident">p</label>.<a href="#line-331" class="ident">resolveBrackets</a>(<label for="r15" class="ident">dirEmbed</label>, <label for="r13" class="ident">s</label>.<a href="core.go.html#line-418" class="ident">p</a>.<a href="core.go.html#line-72" class="ident">initialTypes</a>)</code></span>
 <span class="codeline" id="line-88"><code>}</code></span>
 <span class="codeline" id="line-89"><code></code></span>
 <span class="codeline" id="line-90"><code><span class="keyword">type</span> <a href="../../../../../../../pkg/vendor/golang.org/x/text/unicode/bidi.html#name-bracketPairer" class="ident">bracketPairer</a> <span class="keyword">struct</span> {</code></span>
@@ -310,7 +310,7 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-150"><code>				<span class="keyword">return</span></code></span>
 <span class="codeline" id="line-151"><code>			}</code></span>
 <span class="codeline" id="line-152"><code>			<span class="comment">// remember opener location, most recent first</span></code></span>
-<span class="codeline" id="line-153"><code>			<label for="r21" class="ident">p</label>.<a href="#line-112" class="ident">openers</a>.<a href="../../../../../../container/list/list.go.html#line-147" class="ident">PushFront</a>(<label for="r25" class="ident">i</label>)</code></span>
+<span class="codeline" id="line-153"><code>			<label for="r21" class="ident">p</label>.<a href="#line-112" class="ident">openers</a>.<a href="../../../../../../container/list/list.go.html#line-144" class="ident">PushFront</a>(<label for="r25" class="ident">i</label>)</code></span>
 <span class="codeline" id="line-154"><code></code></span>
 <span class="codeline" id="line-155"><code>		<span class="keyword">case</span> <a href="#line-46" class="ident">bpClose</a>:</code></span>
 <span class="codeline" id="line-156"><code>			<span class="comment">// see if there is a match</span></code></span>
@@ -323,7 +323,7 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-163"><code>					<label for="r21" class="ident">p</label>.<a href="#line-115" class="ident">pairPositions</a> = <a href="../../../../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r21" class="ident">p</label>.<a href="#line-115" class="ident">pairPositions</a>, <a href="#line-51" class="ident">bracketPair</a>{<label for="r29" class="ident">opener</label>, <label for="r25" class="ident">i</label>})</code></span>
 <span class="codeline" id="line-164"><code>					<span class="comment">// remove up to and including matched opener</span></code></span>
 <span class="codeline" id="line-165"><code>					<span class="keyword">for</span> ; <label for="r27" class="ident">count</label> &gt; <span class="lit-number">0</span>; <label for="r27" class="ident">count</label>-- {</code></span>
-<span class="codeline" id="line-166"><code>						<label for="r21" class="ident">p</label>.<a href="#line-112" class="ident">openers</a>.<a href="../../../../../../container/list/list.go.html#line-137" class="ident">Remove</a>(<label for="r21" class="ident">p</label>.<a href="#line-112" class="ident">openers</a>.<a href="../../../../../../container/list/list.go.html#line-69" class="ident">Front</a>())</code></span>
+<span class="codeline" id="line-166"><code>						<label for="r21" class="ident">p</label>.<a href="#line-112" class="ident">openers</a>.<a href="../../../../../../container/list/list.go.html#line-134" class="ident">Remove</a>(<label for="r21" class="ident">p</label>.<a href="#line-112" class="ident">openers</a>.<a href="../../../../../../container/list/list.go.html#line-69" class="ident">Front</a>())</code></span>
 <span class="codeline" id="line-167"><code>					}</code></span>
 <span class="codeline" id="line-168"><code>					<span class="keyword">break</span></code></span>
 <span class="codeline" id="line-169"><code>				}</code></span>
@@ -495,7 +495,7 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-335"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../../../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

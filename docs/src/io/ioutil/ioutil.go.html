@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: ioutil.go in package io/ioutil</title>
-<link href="../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -87,7 +87,7 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-24"><code><span class="comment">//</span></code></span>
 <span class="codeline" id="line-25"><code><span class="comment">// As of Go 1.16, this function simply calls io.ReadAll.</span></code></span>
 <span class="codeline" id="line-26"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../pkg/io/ioutil.html#name-ReadAll" class="ident">ReadAll</a></label>(<label for="r1" class="ident">r</label> <a href="../../../pkg/io.html" class="ident i0">io</a>.<a href="../io.go.html#line-83" class="ident">Reader</a>) ([]<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <a href="../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
-<span class="codeline" id="line-27"><code>	<span class="keyword">return</span> <a href="../../../pkg/io.html" class="ident i0">io</a>.<a href="../io.go.html#line-626" class="ident">ReadAll</a>(<label for="r1" class="ident">r</label>)</code></span>
+<span class="codeline" id="line-27"><code>	<span class="keyword">return</span> <a href="../../../pkg/io.html" class="ident i0">io</a>.<a href="../io.go.html#line-638" class="ident">ReadAll</a>(<label for="r1" class="ident">r</label>)</code></span>
 <span class="codeline" id="line-28"><code>}</code></span>
 <span class="codeline" id="line-29"><code></code></span>
 <span class="codeline" id="line-30"><code><span class="comment">// ReadFile reads the file named by filename and returns the contents.</span></code></span>
@@ -97,7 +97,7 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-34"><code><span class="comment">//</span></code></span>
 <span class="codeline" id="line-35"><code><span class="comment">// As of Go 1.16, this function simply calls os.ReadFile.</span></code></span>
 <span class="codeline" id="line-36"><code><span class="keyword">func</span> <label for="r2" class="ident"><a href="../../../pkg/io/ioutil.html#name-ReadFile" class="ident">ReadFile</a></label>(<label for="r3" class="ident">filename</label> <a href="../../../pkg/builtin.html#name-string" class="ident">string</a>) ([]<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <a href="../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
-<span class="codeline" id="line-37"><code>	<span class="keyword">return</span> <a href="../../../pkg/os.html" class="ident i2">os</a>.<a href="../../os/file.go.html#line-651" class="ident">ReadFile</a>(<label for="r3" class="ident">filename</label>)</code></span>
+<span class="codeline" id="line-37"><code>	<span class="keyword">return</span> <a href="../../../pkg/os.html" class="ident i2">os</a>.<a href="../../os/file.go.html#line-669" class="ident">ReadFile</a>(<label for="r3" class="ident">filename</label>)</code></span>
 <span class="codeline" id="line-38"><code>}</code></span>
 <span class="codeline" id="line-39"><code></code></span>
 <span class="codeline" id="line-40"><code><span class="comment">// WriteFile writes data to a file named by filename.</span></code></span>
@@ -106,7 +106,7 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-43"><code><span class="comment">//</span></code></span>
 <span class="codeline" id="line-44"><code><span class="comment">// As of Go 1.16, this function simply calls os.WriteFile.</span></code></span>
 <span class="codeline" id="line-45"><code><span class="keyword">func</span> <label for="r4" class="ident"><a href="../../../pkg/io/ioutil.html#name-WriteFile" class="ident">WriteFile</a></label>(<label for="r5" class="ident">filename</label> <a href="../../../pkg/builtin.html#name-string" class="ident">string</a>, <label for="r6" class="ident">data</label> []<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <label for="r7" class="ident">perm</label> <a href="../../../pkg/io/fs.html" class="ident i1">fs</a>.<a href="../fs/fs.go.html#line-164" class="ident">FileMode</a>) <a href="../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
-<span class="codeline" id="line-46"><code>	<span class="keyword">return</span> <a href="../../../pkg/os.html" class="ident i2">os</a>.<a href="../../os/file.go.html#line-695" class="ident">WriteFile</a>(<label for="r5" class="ident">filename</label>, <label for="r6" class="ident">data</label>, <label for="r7" class="ident">perm</label>)</code></span>
+<span class="codeline" id="line-46"><code>	<span class="keyword">return</span> <a href="../../../pkg/os.html" class="ident i2">os</a>.<a href="../../os/file.go.html#line-713" class="ident">WriteFile</a>(<label for="r5" class="ident">filename</label>, <label for="r6" class="ident">data</label>, <label for="r7" class="ident">perm</label>)</code></span>
 <span class="codeline" id="line-47"><code>}</code></span>
 <span class="codeline" id="line-48"><code></code></span>
 <span class="codeline" id="line-49"><code><span class="comment">// ReadDir reads the directory named by dirname and returns</span></code></span>
@@ -119,7 +119,7 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-56"><code><span class="comment">// and it returns partial results in the case of an error</span></code></span>
 <span class="codeline" id="line-57"><code><span class="comment">// midway through reading a directory.</span></code></span>
 <span class="codeline" id="line-58"><code><span class="keyword">func</span> <label for="r8" class="ident"><a href="../../../pkg/io/ioutil.html#name-ReadDir" class="ident">ReadDir</a></label>(<label for="r9" class="ident">dirname</label> <a href="../../../pkg/builtin.html#name-string" class="ident">string</a>) ([]<a href="../../../pkg/io/fs.html" class="ident i1">fs</a>.<a href="../fs/fs.go.html#line-150" class="ident">FileInfo</a>, <a href="../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
-<span class="codeline" id="line-59"><code>	<label for="r10" class="ident">f</label>, <label for="r11" class="ident">err</label> := <a href="../../../pkg/os.html" class="ident i2">os</a>.<a href="../../os/file.go.html#line-310" class="ident">Open</a>(<label for="r9" class="ident">dirname</label>)</code></span>
+<span class="codeline" id="line-59"><code>	<label for="r10" class="ident">f</label>, <label for="r11" class="ident">err</label> := <a href="../../../pkg/os.html" class="ident i2">os</a>.<a href="../../os/file.go.html#line-317" class="ident">Open</a>(<label for="r9" class="ident">dirname</label>)</code></span>
 <span class="codeline" id="line-60"><code>	<span class="keyword">if</span> <label for="r11" class="ident">err</label> != <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
 <span class="codeline" id="line-61"><code>		<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <label for="r11" class="ident">err</label></code></span>
 <span class="codeline" id="line-62"><code>	}</code></span>
@@ -136,18 +136,18 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-73"><code><span class="comment">// the provided Reader r.</span></code></span>
 <span class="codeline" id="line-74"><code><span class="comment">//</span></code></span>
 <span class="codeline" id="line-75"><code><span class="comment">// As of Go 1.16, this function simply calls io.NopCloser.</span></code></span>
-<span class="codeline" id="line-76"><code><span class="keyword">func</span> <label for="r15" class="ident"><a href="../../../pkg/io/ioutil.html#name-NopCloser" class="ident">NopCloser</a></label>(<label for="r16" class="ident">r</label> <a href="../../../pkg/io.html" class="ident i0">io</a>.<a href="../io.go.html#line-83" class="ident">Reader</a>) <a href="../../../pkg/io.html" class="ident i0">io</a>.<a href="../io.go.html#line-132" class="ident">ReadCloser</a> {</code></span>
-<span class="codeline" id="line-77"><code>	<span class="keyword">return</span> <a href="../../../pkg/io.html" class="ident i0">io</a>.<a href="../io.go.html#line-612" class="ident">NopCloser</a>(<label for="r16" class="ident">r</label>)</code></span>
+<span class="codeline" id="line-76"><code><span class="keyword">func</span> <label for="r15" class="ident"><a href="../../../pkg/io/ioutil.html#name-NopCloser" class="ident">NopCloser</a></label>(<label for="r16" class="ident">r</label> <a href="../../../pkg/io.html" class="ident i0">io</a>.<a href="../io.go.html#line-83" class="ident">Reader</a>) <a href="../../../pkg/io.html" class="ident i0">io</a>.<a href="../io.go.html#line-133" class="ident">ReadCloser</a> {</code></span>
+<span class="codeline" id="line-77"><code>	<span class="keyword">return</span> <a href="../../../pkg/io.html" class="ident i0">io</a>.<a href="../io.go.html#line-624" class="ident">NopCloser</a>(<label for="r16" class="ident">r</label>)</code></span>
 <span class="codeline" id="line-78"><code>}</code></span>
 <span class="codeline" id="line-79"><code></code></span>
 <span class="codeline" id="line-80"><code><span class="comment">// Discard is an io.Writer on which all Write calls succeed</span></code></span>
 <span class="codeline" id="line-81"><code><span class="comment">// without doing anything.</span></code></span>
 <span class="codeline" id="line-82"><code><span class="comment">//</span></code></span>
 <span class="codeline" id="line-83"><code><span class="comment">// As of Go 1.16, this value is simply io.Discard.</span></code></span>
-<span class="codeline" id="line-84"><code><span class="keyword">var</span> <a href="../../../pkg/io/ioutil.html#name-Discard" class="ident">Discard</a> <a href="../../../pkg/io.html" class="ident i0">io</a>.<a href="../io.go.html#line-96" class="ident">Writer</a> = <a href="../../../pkg/io.html" class="ident i0">io</a>.<a href="../io.go.html#line-571" class="ident">Discard</a></code></span>
+<span class="codeline" id="line-84"><code><span class="keyword">var</span> <a href="../../../pkg/io/ioutil.html#name-Discard" class="ident">Discard</a> <a href="../../../pkg/io.html" class="ident i0">io</a>.<a href="../io.go.html#line-96" class="ident">Writer</a> = <a href="../../../pkg/io.html" class="ident i0">io</a>.<a href="../io.go.html#line-583" class="ident">Discard</a></code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

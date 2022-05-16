@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: sha512.go in package crypto/sha512</title>
-<link href="../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -492,37 +492,37 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-337"><code>}</code></span>
 <span class="codeline" id="line-338"><code></code></span>
 <span class="codeline" id="line-339"><code><span class="comment">// Sum384 returns the SHA384 checksum of the data.</span></code></span>
-<span class="codeline" id="line-340"><code><span class="keyword">func</span> <label for="r48" class="ident"><a href="../../../pkg/crypto/sha512.html#name-Sum384" class="ident">Sum384</a></label>(<label for="r49" class="ident">data</label> []<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>) (<label for="r50" class="ident">sum384</label> [<a href="#line-38" class="ident">Size384</a>]<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>) {</code></span>
-<span class="codeline" id="line-341"><code>	<label for="r51" class="ident">d</label> := <a href="#line-82" class="ident">digest</a>{<a href="#line-87" class="ident">function</a>: <a href="../../../pkg/crypto.html" class="ident i0">crypto</a>.<a href="../crypto.go.html#line-74" class="ident">SHA384</a>}</code></span>
-<span class="codeline" id="line-342"><code>	<label for="r51" class="ident">d</label>.<a href="#line-90" class="ident">Reset</a>()</code></span>
-<span class="codeline" id="line-343"><code>	<label for="r51" class="ident">d</label>.<a href="#line-255" class="ident">Write</a>(<label for="r49" class="ident">data</label>)</code></span>
-<span class="codeline" id="line-344"><code>	<label for="r52" class="ident">sum</label> := <label for="r51" class="ident">d</label>.<a href="#line-295" class="ident">checkSum</a>()</code></span>
-<span class="codeline" id="line-345"><code>	<a href="../../../pkg/builtin.html#name-copy" class="ident">copy</a>(<label for="r50" class="ident">sum384</label>[:], <label for="r52" class="ident">sum</label>[:<a href="#line-38" class="ident">Size384</a>])</code></span>
-<span class="codeline" id="line-346"><code>	<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-340"><code><span class="keyword">func</span> <label for="r48" class="ident"><a href="../../../pkg/crypto/sha512.html#name-Sum384" class="ident">Sum384</a></label>(<label for="r49" class="ident">data</label> []<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>) [<a href="#line-38" class="ident">Size384</a>]<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a> {</code></span>
+<span class="codeline" id="line-341"><code>	<label for="r50" class="ident">d</label> := <a href="#line-82" class="ident">digest</a>{<a href="#line-87" class="ident">function</a>: <a href="../../../pkg/crypto.html" class="ident i0">crypto</a>.<a href="../crypto.go.html#line-74" class="ident">SHA384</a>}</code></span>
+<span class="codeline" id="line-342"><code>	<label for="r50" class="ident">d</label>.<a href="#line-90" class="ident">Reset</a>()</code></span>
+<span class="codeline" id="line-343"><code>	<label for="r50" class="ident">d</label>.<a href="#line-255" class="ident">Write</a>(<label for="r49" class="ident">data</label>)</code></span>
+<span class="codeline" id="line-344"><code>	<label for="r51" class="ident">sum</label> := <label for="r50" class="ident">d</label>.<a href="#line-295" class="ident">checkSum</a>()</code></span>
+<span class="codeline" id="line-345"><code>	<label for="r52" class="ident">ap</label> := (*[<a href="#line-38" class="ident">Size384</a>]<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>)(<label for="r51" class="ident">sum</label>[:])</code></span>
+<span class="codeline" id="line-346"><code>	<span class="keyword">return</span> *<label for="r52" class="ident">ap</label></code></span>
 <span class="codeline" id="line-347"><code>}</code></span>
 <span class="codeline" id="line-348"><code></code></span>
 <span class="codeline" id="line-349"><code><span class="comment">// Sum512_224 returns the Sum512/224 checksum of the data.</span></code></span>
-<span class="codeline" id="line-350"><code><span class="keyword">func</span> <label for="r53" class="ident"><a href="../../../pkg/crypto/sha512.html#name-Sum512_224" class="ident">Sum512_224</a></label>(<label for="r54" class="ident">data</label> []<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>) (<label for="r55" class="ident">sum224</label> [<a href="#line-32" class="ident">Size224</a>]<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>) {</code></span>
-<span class="codeline" id="line-351"><code>	<label for="r56" class="ident">d</label> := <a href="#line-82" class="ident">digest</a>{<a href="#line-87" class="ident">function</a>: <a href="../../../pkg/crypto.html" class="ident i0">crypto</a>.<a href="../crypto.go.html#line-82" class="ident">SHA512_224</a>}</code></span>
-<span class="codeline" id="line-352"><code>	<label for="r56" class="ident">d</label>.<a href="#line-90" class="ident">Reset</a>()</code></span>
-<span class="codeline" id="line-353"><code>	<label for="r56" class="ident">d</label>.<a href="#line-255" class="ident">Write</a>(<label for="r54" class="ident">data</label>)</code></span>
-<span class="codeline" id="line-354"><code>	<label for="r57" class="ident">sum</label> := <label for="r56" class="ident">d</label>.<a href="#line-295" class="ident">checkSum</a>()</code></span>
-<span class="codeline" id="line-355"><code>	<a href="../../../pkg/builtin.html#name-copy" class="ident">copy</a>(<label for="r55" class="ident">sum224</label>[:], <label for="r57" class="ident">sum</label>[:<a href="#line-32" class="ident">Size224</a>])</code></span>
-<span class="codeline" id="line-356"><code>	<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-350"><code><span class="keyword">func</span> <label for="r53" class="ident"><a href="../../../pkg/crypto/sha512.html#name-Sum512_224" class="ident">Sum512_224</a></label>(<label for="r54" class="ident">data</label> []<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>) [<a href="#line-32" class="ident">Size224</a>]<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a> {</code></span>
+<span class="codeline" id="line-351"><code>	<label for="r55" class="ident">d</label> := <a href="#line-82" class="ident">digest</a>{<a href="#line-87" class="ident">function</a>: <a href="../../../pkg/crypto.html" class="ident i0">crypto</a>.<a href="../crypto.go.html#line-82" class="ident">SHA512_224</a>}</code></span>
+<span class="codeline" id="line-352"><code>	<label for="r55" class="ident">d</label>.<a href="#line-90" class="ident">Reset</a>()</code></span>
+<span class="codeline" id="line-353"><code>	<label for="r55" class="ident">d</label>.<a href="#line-255" class="ident">Write</a>(<label for="r54" class="ident">data</label>)</code></span>
+<span class="codeline" id="line-354"><code>	<label for="r56" class="ident">sum</label> := <label for="r55" class="ident">d</label>.<a href="#line-295" class="ident">checkSum</a>()</code></span>
+<span class="codeline" id="line-355"><code>	<label for="r57" class="ident">ap</label> := (*[<a href="#line-32" class="ident">Size224</a>]<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>)(<label for="r56" class="ident">sum</label>[:])</code></span>
+<span class="codeline" id="line-356"><code>	<span class="keyword">return</span> *<label for="r57" class="ident">ap</label></code></span>
 <span class="codeline" id="line-357"><code>}</code></span>
 <span class="codeline" id="line-358"><code></code></span>
 <span class="codeline" id="line-359"><code><span class="comment">// Sum512_256 returns the Sum512/256 checksum of the data.</span></code></span>
-<span class="codeline" id="line-360"><code><span class="keyword">func</span> <label for="r58" class="ident"><a href="../../../pkg/crypto/sha512.html#name-Sum512_256" class="ident">Sum512_256</a></label>(<label for="r59" class="ident">data</label> []<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>) (<label for="r60" class="ident">sum256</label> [<a href="#line-35" class="ident">Size256</a>]<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>) {</code></span>
-<span class="codeline" id="line-361"><code>	<label for="r61" class="ident">d</label> := <a href="#line-82" class="ident">digest</a>{<a href="#line-87" class="ident">function</a>: <a href="../../../pkg/crypto.html" class="ident i0">crypto</a>.<a href="../crypto.go.html#line-83" class="ident">SHA512_256</a>}</code></span>
-<span class="codeline" id="line-362"><code>	<label for="r61" class="ident">d</label>.<a href="#line-90" class="ident">Reset</a>()</code></span>
-<span class="codeline" id="line-363"><code>	<label for="r61" class="ident">d</label>.<a href="#line-255" class="ident">Write</a>(<label for="r59" class="ident">data</label>)</code></span>
-<span class="codeline" id="line-364"><code>	<label for="r62" class="ident">sum</label> := <label for="r61" class="ident">d</label>.<a href="#line-295" class="ident">checkSum</a>()</code></span>
-<span class="codeline" id="line-365"><code>	<a href="../../../pkg/builtin.html#name-copy" class="ident">copy</a>(<label for="r60" class="ident">sum256</label>[:], <label for="r62" class="ident">sum</label>[:<a href="#line-35" class="ident">Size256</a>])</code></span>
-<span class="codeline" id="line-366"><code>	<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-360"><code><span class="keyword">func</span> <label for="r58" class="ident"><a href="../../../pkg/crypto/sha512.html#name-Sum512_256" class="ident">Sum512_256</a></label>(<label for="r59" class="ident">data</label> []<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>) [<a href="#line-35" class="ident">Size256</a>]<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a> {</code></span>
+<span class="codeline" id="line-361"><code>	<label for="r60" class="ident">d</label> := <a href="#line-82" class="ident">digest</a>{<a href="#line-87" class="ident">function</a>: <a href="../../../pkg/crypto.html" class="ident i0">crypto</a>.<a href="../crypto.go.html#line-83" class="ident">SHA512_256</a>}</code></span>
+<span class="codeline" id="line-362"><code>	<label for="r60" class="ident">d</label>.<a href="#line-90" class="ident">Reset</a>()</code></span>
+<span class="codeline" id="line-363"><code>	<label for="r60" class="ident">d</label>.<a href="#line-255" class="ident">Write</a>(<label for="r59" class="ident">data</label>)</code></span>
+<span class="codeline" id="line-364"><code>	<label for="r61" class="ident">sum</label> := <label for="r60" class="ident">d</label>.<a href="#line-295" class="ident">checkSum</a>()</code></span>
+<span class="codeline" id="line-365"><code>	<label for="r62" class="ident">ap</label> := (*[<a href="#line-35" class="ident">Size256</a>]<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>)(<label for="r61" class="ident">sum</label>[:])</code></span>
+<span class="codeline" id="line-366"><code>	<span class="keyword">return</span> *<label for="r62" class="ident">ap</label></code></span>
 <span class="codeline" id="line-367"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

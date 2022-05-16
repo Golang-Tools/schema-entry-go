@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: arith.go in package math/big</title>
-<link href="../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -139,17 +139,7 @@ input[id=r119]:checked ~pre label[for=r119],
 input[id=r120]:checked ~pre label[for=r120],
 input[id=r121]:checked ~pre label[for=r121],
 input[id=r122]:checked ~pre label[for=r122],
-input[id=r123]:checked ~pre label[for=r123],
-input[id=r124]:checked ~pre label[for=r124],
-input[id=r125]:checked ~pre label[for=r125],
-input[id=r126]:checked ~pre label[for=r126],
-input[id=r127]:checked ~pre label[for=r127],
-input[id=r128]:checked ~pre label[for=r128],
-input[id=r129]:checked ~pre label[for=r129],
-input[id=r130]:checked ~pre label[for=r130],
-input[id=r131]:checked ~pre label[for=r131],
-input[id=r132]:checked ~pre label[for=r132],
-input[id=r133]:checked ~pre label[for=r133]
+input[id=r123]:checked ~pre label[for=r123]
 {background: #226; color: #ff8;}
 input[id=i0]:checked ~pre .i0
 {background: brown; color: #eed;}
@@ -277,16 +267,6 @@ input[id=i0]:checked ~pre .i0
 <input id="r121" type="radio" name="g"/>
 <input id="r122" type="radio" name="g"/>
 <input id="r123" type="radio" name="g"/>
-<input id="r124" type="radio" name="g"/>
-<input id="r125" type="radio" name="g"/>
-<input id="r126" type="radio" name="g"/>
-<input id="r127" type="radio" name="g"/>
-<input id="r128" type="radio" name="g"/>
-<input id="r129" type="radio" name="g"/>
-<input id="r130" type="radio" name="g"/>
-<input id="r131" type="radio" name="g"/>
-<input id="r132" type="radio" name="g"/>
-<input id="r133" type="radio" name="g"/>
 <input id="i0" type="radio" name="i"/>
 
 <pre class="line-numbers">
@@ -462,124 +442,114 @@ input[id=i0]:checked ~pre .i0
 <span class="codeline" id="line-170"><code>	<span class="keyword">if</span> <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r74" class="ident">z</label>) == <span class="lit-number">0</span> {</code></span>
 <span class="codeline" id="line-171"><code>		<span class="keyword">return</span></code></span>
 <span class="codeline" id="line-172"><code>	}</code></span>
-<span class="codeline" id="line-173"><code>	<label for="r76" class="ident">s</label> &amp;= <a href="#line-21" class="ident">_W</a> - <span class="lit-number">1</span> <span class="comment">// hint to the compiler that shifts by s don't need guard code</span></code></span>
-<span class="codeline" id="line-174"><code>	<label for="r78" class="ident">ŝ</label> := <a href="#line-21" class="ident">_W</a> - <label for="r76" class="ident">s</label></code></span>
-<span class="codeline" id="line-175"><code>	<label for="r78" class="ident">ŝ</label> &amp;= <a href="#line-21" class="ident">_W</a> - <span class="lit-number">1</span> <span class="comment">// ditto</span></code></span>
-<span class="codeline" id="line-176"><code>	<label for="r77" class="ident">c</label> = <label for="r75" class="ident">x</label>[<span class="lit-number">0</span>] &lt;&lt; <label for="r78" class="ident">ŝ</label></code></span>
-<span class="codeline" id="line-177"><code>	<span class="keyword">for</span> <label for="r79" class="ident">i</label> := <span class="lit-number">0</span>; <label for="r79" class="ident">i</label> &lt; <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r74" class="ident">z</label>)-<span class="lit-number">1</span>; <label for="r79" class="ident">i</label>++ {</code></span>
-<span class="codeline" id="line-178"><code>		<label for="r74" class="ident">z</label>[<label for="r79" class="ident">i</label>] = <label for="r75" class="ident">x</label>[<label for="r79" class="ident">i</label>]&gt;&gt;<label for="r76" class="ident">s</label> | <label for="r75" class="ident">x</label>[<label for="r79" class="ident">i</label>+<span class="lit-number">1</span>]&lt;&lt;<label for="r78" class="ident">ŝ</label></code></span>
-<span class="codeline" id="line-179"><code>	}</code></span>
-<span class="codeline" id="line-180"><code>	<label for="r74" class="ident">z</label>[<a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r74" class="ident">z</label>)-<span class="lit-number">1</span>] = <label for="r75" class="ident">x</label>[<a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r74" class="ident">z</label>)-<span class="lit-number">1</span>] &gt;&gt; <label for="r76" class="ident">s</label></code></span>
-<span class="codeline" id="line-181"><code>	<span class="keyword">return</span></code></span>
-<span class="codeline" id="line-182"><code>}</code></span>
-<span class="codeline" id="line-183"><code></code></span>
-<span class="codeline" id="line-184"><code><span class="keyword">func</span> <label for="r80" class="ident"><a href="../../../pkg/math/big.html#name-mulAddVWW_g" class="ident">mulAddVWW_g</a></label>(<label for="r81" class="ident">z</label>, <label for="r82" class="ident">x</label> []<a href="#line-16" class="ident">Word</a>, <label for="r83" class="ident">y</label>, <label for="r84" class="ident">r</label> <a href="#line-16" class="ident">Word</a>) (<label for="r85" class="ident">c</label> <a href="#line-16" class="ident">Word</a>) {</code></span>
-<span class="codeline" id="line-185"><code>	<label for="r85" class="ident">c</label> = <label for="r84" class="ident">r</label></code></span>
-<span class="codeline" id="line-186"><code>	<span class="comment">// The comment near the top of this file discusses this for loop condition.</span></code></span>
-<span class="codeline" id="line-187"><code>	<span class="keyword">for</span> <label for="r86" class="ident">i</label> := <span class="lit-number">0</span>; <label for="r86" class="ident">i</label> &lt; <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r81" class="ident">z</label>) &amp;&amp; <label for="r86" class="ident">i</label> &lt; <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r82" class="ident">x</label>); <label for="r86" class="ident">i</label>++ {</code></span>
-<span class="codeline" id="line-188"><code>		<label for="r85" class="ident">c</label>, <label for="r81" class="ident">z</label>[<label for="r86" class="ident">i</label>] = <a href="#line-50" class="ident">mulAddWWW_g</a>(<label for="r82" class="ident">x</label>[<label for="r86" class="ident">i</label>], <label for="r83" class="ident">y</label>, <label for="r85" class="ident">c</label>)</code></span>
-<span class="codeline" id="line-189"><code>	}</code></span>
-<span class="codeline" id="line-190"><code>	<span class="keyword">return</span></code></span>
-<span class="codeline" id="line-191"><code>}</code></span>
-<span class="codeline" id="line-192"><code></code></span>
-<span class="codeline" id="line-193"><code><span class="keyword">func</span> <label for="r87" class="ident"><a href="../../../pkg/math/big.html#name-addMulVVW_g" class="ident">addMulVVW_g</a></label>(<label for="r88" class="ident">z</label>, <label for="r89" class="ident">x</label> []<a href="#line-16" class="ident">Word</a>, <label for="r90" class="ident">y</label> <a href="#line-16" class="ident">Word</a>) (<label for="r91" class="ident">c</label> <a href="#line-16" class="ident">Word</a>) {</code></span>
-<span class="codeline" id="line-194"><code>	<span class="comment">// The comment near the top of this file discusses this for loop condition.</span></code></span>
-<span class="codeline" id="line-195"><code>	<span class="keyword">for</span> <label for="r92" class="ident">i</label> := <span class="lit-number">0</span>; <label for="r92" class="ident">i</label> &lt; <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r88" class="ident">z</label>) &amp;&amp; <label for="r92" class="ident">i</label> &lt; <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r89" class="ident">x</label>); <label for="r92" class="ident">i</label>++ {</code></span>
-<span class="codeline" id="line-196"><code>		<label for="r93" class="ident">z1</label>, <label for="r94" class="ident">z0</label> := <a href="#line-50" class="ident">mulAddWWW_g</a>(<label for="r89" class="ident">x</label>[<label for="r92" class="ident">i</label>], <label for="r90" class="ident">y</label>, <label for="r88" class="ident">z</label>[<label for="r92" class="ident">i</label>])</code></span>
-<span class="codeline" id="line-197"><code>		<label for="r95" class="ident">lo</label>, <label for="r96" class="ident">cc</label> := <a href="../../../pkg/math/bits.html" class="ident i0">bits</a>.<a href="../bits/bits.go.html#line-354" class="ident">Add</a>(<a href="../../../pkg/builtin.html#name-uint" class="ident">uint</a>(<label for="r94" class="ident">z0</label>), <a href="../../../pkg/builtin.html#name-uint" class="ident">uint</a>(<label for="r91" class="ident">c</label>), <span class="lit-number">0</span>)</code></span>
-<span class="codeline" id="line-198"><code>		<label for="r91" class="ident">c</label>, <label for="r88" class="ident">z</label>[<label for="r92" class="ident">i</label>] = <a href="#line-16" class="ident">Word</a>(<label for="r96" class="ident">cc</label>), <a href="#line-16" class="ident">Word</a>(<label for="r95" class="ident">lo</label>)</code></span>
-<span class="codeline" id="line-199"><code>		<label for="r91" class="ident">c</label> += <label for="r93" class="ident">z1</label></code></span>
-<span class="codeline" id="line-200"><code>	}</code></span>
-<span class="codeline" id="line-201"><code>	<span class="keyword">return</span></code></span>
-<span class="codeline" id="line-202"><code>}</code></span>
-<span class="codeline" id="line-203"><code></code></span>
-<span class="codeline" id="line-204"><code><span class="comment">// q = ( x1 &lt;&lt; _W + x0 - r)/y. m = floor(( _B^2 - 1 ) / d - _B). Requiring x1&lt;y.</span></code></span>
-<span class="codeline" id="line-205"><code><span class="comment">// An approximate reciprocal with a reference to "Improved Division by Invariant Integers</span></code></span>
-<span class="codeline" id="line-206"><code><span class="comment">// (IEEE Transactions on Computers, 11 Jun. 2010)"</span></code></span>
-<span class="codeline" id="line-207"><code><span class="keyword">func</span> <label for="r97" class="ident"><a href="../../../pkg/math/big.html#name-divWW" class="ident">divWW</a></label>(<label for="r98" class="ident">x1</label>, <label for="r99" class="ident">x0</label>, <label for="r100" class="ident">y</label>, <label for="r101" class="ident">m</label> <a href="#line-16" class="ident">Word</a>) (<label for="r102" class="ident">q</label>, <label for="r103" class="ident">r</label> <a href="#line-16" class="ident">Word</a>) {</code></span>
-<span class="codeline" id="line-208"><code>	<label for="r104" class="ident">s</label> := <a href="#line-59" class="ident">nlz</a>(<label for="r100" class="ident">y</label>)</code></span>
-<span class="codeline" id="line-209"><code>	<span class="keyword">if</span> <label for="r104" class="ident">s</label> != <span class="lit-number">0</span> {</code></span>
-<span class="codeline" id="line-210"><code>		<label for="r98" class="ident">x1</label> = <label for="r98" class="ident">x1</label>&lt;&lt;<label for="r104" class="ident">s</label> | <label for="r99" class="ident">x0</label>&gt;&gt;(<a href="#line-21" class="ident">_W</a>-<label for="r104" class="ident">s</label>)</code></span>
-<span class="codeline" id="line-211"><code>		<label for="r99" class="ident">x0</label> &lt;&lt;= <label for="r104" class="ident">s</label></code></span>
-<span class="codeline" id="line-212"><code>		<label for="r100" class="ident">y</label> &lt;&lt;= <label for="r104" class="ident">s</label></code></span>
-<span class="codeline" id="line-213"><code>	}</code></span>
-<span class="codeline" id="line-214"><code>	<label for="r105" class="ident">d</label> := <a href="../../../pkg/builtin.html#name-uint" class="ident">uint</a>(<label for="r100" class="ident">y</label>)</code></span>
-<span class="codeline" id="line-215"><code>	<span class="comment">// We know that</span></code></span>
-<span class="codeline" id="line-216"><code><span class="comment">	//   m = ⎣(B^2-1)/d⎦-B</span></code></span>
-<span class="codeline" id="line-217"><code><span class="comment">	//   ⎣(B^2-1)/d⎦ = m+B</span></code></span>
-<span class="codeline" id="line-218"><code><span class="comment">	//   (B^2-1)/d = m+B+delta1    0 &lt;= delta1 &lt;= (d-1)/d</span></code></span>
-<span class="codeline" id="line-219"><code><span class="comment">	//   B^2/d = m+B+delta2        0 &lt;= delta2 &lt;= 1</span></code></span>
-<span class="codeline" id="line-220"><code><span class="comment">	// The quotient we're trying to compute is</span></code></span>
-<span class="codeline" id="line-221"><code><span class="comment">	//   quotient = ⎣(x1*B+x0)/d⎦</span></code></span>
-<span class="codeline" id="line-222"><code><span class="comment">	//            = ⎣(x1*B*(B^2/d)+x0*(B^2/d))/B^2⎦</span></code></span>
-<span class="codeline" id="line-223"><code><span class="comment">	//            = ⎣(x1*B*(m+B+delta2)+x0*(m+B+delta2))/B^2⎦</span></code></span>
-<span class="codeline" id="line-224"><code><span class="comment">	//            = ⎣(x1*m+x1*B+x0)/B + x0*m/B^2 + delta2*(x1*B+x0)/B^2⎦</span></code></span>
-<span class="codeline" id="line-225"><code><span class="comment">	// The latter two terms of this three-term sum are between 0 and 1.</span></code></span>
-<span class="codeline" id="line-226"><code><span class="comment">	// So we can compute just the first term, and we will be low by at most 2.</span></code></span>
-<span class="codeline" id="line-227"><code>	<label for="r106" class="ident">t1</label>, <label for="r107" class="ident">t0</label> := <a href="../../../pkg/math/bits.html" class="ident i0">bits</a>.<a href="../bits/bits.go.html#line-439" class="ident">Mul</a>(<a href="../../../pkg/builtin.html#name-uint" class="ident">uint</a>(<label for="r101" class="ident">m</label>), <a href="../../../pkg/builtin.html#name-uint" class="ident">uint</a>(<label for="r98" class="ident">x1</label>))</code></span>
-<span class="codeline" id="line-228"><code>	<label for="r108" class="ident">_</label>, <label for="r109" class="ident">c</label> := <a href="../../../pkg/math/bits.html" class="ident i0">bits</a>.<a href="../bits/bits.go.html#line-354" class="ident">Add</a>(<label for="r107" class="ident">t0</label>, <a href="../../../pkg/builtin.html#name-uint" class="ident">uint</a>(<label for="r99" class="ident">x0</label>), <span class="lit-number">0</span>)</code></span>
-<span class="codeline" id="line-229"><code>	<label for="r106" class="ident">t1</label>, _ = <a href="../../../pkg/math/bits.html" class="ident i0">bits</a>.<a href="../bits/bits.go.html#line-354" class="ident">Add</a>(<label for="r106" class="ident">t1</label>, <a href="../../../pkg/builtin.html#name-uint" class="ident">uint</a>(<label for="r98" class="ident">x1</label>), <label for="r109" class="ident">c</label>)</code></span>
-<span class="codeline" id="line-230"><code>	<span class="comment">// The quotient is either t1, t1+1, or t1+2.</span></code></span>
-<span class="codeline" id="line-231"><code><span class="comment">	// We'll try t1 and adjust if needed.</span></code></span>
-<span class="codeline" id="line-232"><code>	<label for="r110" class="ident">qq</label> := <label for="r106" class="ident">t1</label></code></span>
-<span class="codeline" id="line-233"><code>	<span class="comment">// compute remainder r=x-d*q.</span></code></span>
-<span class="codeline" id="line-234"><code>	<label for="r111" class="ident">dq1</label>, <label for="r112" class="ident">dq0</label> := <a href="../../../pkg/math/bits.html" class="ident i0">bits</a>.<a href="../bits/bits.go.html#line-439" class="ident">Mul</a>(<label for="r105" class="ident">d</label>, <label for="r110" class="ident">qq</label>)</code></span>
-<span class="codeline" id="line-235"><code>	<label for="r113" class="ident">r0</label>, <label for="r114" class="ident">b</label> := <a href="../../../pkg/math/bits.html" class="ident i0">bits</a>.<a href="../bits/bits.go.html#line-396" class="ident">Sub</a>(<a href="../../../pkg/builtin.html#name-uint" class="ident">uint</a>(<label for="r99" class="ident">x0</label>), <label for="r112" class="ident">dq0</label>, <span class="lit-number">0</span>)</code></span>
-<span class="codeline" id="line-236"><code>	<label for="r115" class="ident">r1</label>, <label for="r116" class="ident">_</label> := <a href="../../../pkg/math/bits.html" class="ident i0">bits</a>.<a href="../bits/bits.go.html#line-396" class="ident">Sub</a>(<a href="../../../pkg/builtin.html#name-uint" class="ident">uint</a>(<label for="r98" class="ident">x1</label>), <label for="r111" class="ident">dq1</label>, <label for="r114" class="ident">b</label>)</code></span>
-<span class="codeline" id="line-237"><code>	<span class="comment">// The remainder we just computed is bounded above by B+d:</span></code></span>
-<span class="codeline" id="line-238"><code><span class="comment">	// r = x1*B + x0 - d*q.</span></code></span>
-<span class="codeline" id="line-239"><code><span class="comment">	//   = x1*B + x0 - d*⎣(x1*m+x1*B+x0)/B⎦</span></code></span>
-<span class="codeline" id="line-240"><code><span class="comment">	//   = x1*B + x0 - d*((x1*m+x1*B+x0)/B-alpha)                                   0 &lt;= alpha &lt; 1</span></code></span>
-<span class="codeline" id="line-241"><code><span class="comment">	//   = x1*B + x0 - x1*d/B*m                         - x1*d - x0*d/B + d*alpha</span></code></span>
-<span class="codeline" id="line-242"><code><span class="comment">	//   = x1*B + x0 - x1*d/B*⎣(B^2-1)/d-B⎦             - x1*d - x0*d/B + d*alpha</span></code></span>
-<span class="codeline" id="line-243"><code><span class="comment">	//   = x1*B + x0 - x1*d/B*⎣(B^2-1)/d-B⎦             - x1*d - x0*d/B + d*alpha</span></code></span>
-<span class="codeline" id="line-244"><code><span class="comment">	//   = x1*B + x0 - x1*d/B*((B^2-1)/d-B-beta)        - x1*d - x0*d/B + d*alpha   0 &lt;= beta &lt; 1</span></code></span>
-<span class="codeline" id="line-245"><code><span class="comment">	//   = x1*B + x0 - x1*B + x1/B + x1*d + x1*d/B*beta - x1*d - x0*d/B + d*alpha</span></code></span>
-<span class="codeline" id="line-246"><code><span class="comment">	//   =        x0        + x1/B        + x1*d/B*beta        - x0*d/B + d*alpha</span></code></span>
-<span class="codeline" id="line-247"><code><span class="comment">	//   = x0*(1-d/B) + x1*(1+d*beta)/B + d*alpha</span></code></span>
-<span class="codeline" id="line-248"><code><span class="comment">	//   &lt;  B*(1-d/B) +  d*B/B          + d          because x0&lt;B (and 1-d/B&gt;0), x1&lt;d, 1+d*beta&lt;=B, alpha&lt;1</span></code></span>
-<span class="codeline" id="line-249"><code><span class="comment">	//   =  B - d     +  d              + d</span></code></span>
-<span class="codeline" id="line-250"><code><span class="comment">	//   = B+d</span></code></span>
-<span class="codeline" id="line-251"><code><span class="comment">	// So r1 can only be 0 or 1. If r1 is 1, then we know q was too small.</span></code></span>
-<span class="codeline" id="line-252"><code><span class="comment">	// Add 1 to q and subtract d from r. That guarantees that r is &lt;B, so</span></code></span>
-<span class="codeline" id="line-253"><code><span class="comment">	// we no longer need to keep track of r1.</span></code></span>
-<span class="codeline" id="line-254"><code>	<span class="keyword">if</span> <label for="r115" class="ident">r1</label> != <span class="lit-number">0</span> {</code></span>
-<span class="codeline" id="line-255"><code>		<label for="r110" class="ident">qq</label>++</code></span>
-<span class="codeline" id="line-256"><code>		<label for="r113" class="ident">r0</label> -= <label for="r105" class="ident">d</label></code></span>
-<span class="codeline" id="line-257"><code>	}</code></span>
-<span class="codeline" id="line-258"><code>	<span class="comment">// If the remainder is still too large, increment q one more time.</span></code></span>
-<span class="codeline" id="line-259"><code>	<span class="keyword">if</span> <label for="r113" class="ident">r0</label> &gt;= <label for="r105" class="ident">d</label> {</code></span>
-<span class="codeline" id="line-260"><code>		<label for="r110" class="ident">qq</label>++</code></span>
-<span class="codeline" id="line-261"><code>		<label for="r113" class="ident">r0</label> -= <label for="r105" class="ident">d</label></code></span>
-<span class="codeline" id="line-262"><code>	}</code></span>
-<span class="codeline" id="line-263"><code>	<span class="keyword">return</span> <a href="#line-16" class="ident">Word</a>(<label for="r110" class="ident">qq</label>), <a href="#line-16" class="ident">Word</a>(<label for="r113" class="ident">r0</label> &gt;&gt; <label for="r104" class="ident">s</label>)</code></span>
-<span class="codeline" id="line-264"><code>}</code></span>
-<span class="codeline" id="line-265"><code></code></span>
-<span class="codeline" id="line-266"><code><span class="keyword">func</span> <label for="r117" class="ident"><a href="../../../pkg/math/big.html#name-divWVW" class="ident">divWVW</a></label>(<label for="r118" class="ident">z</label> []<a href="#line-16" class="ident">Word</a>, <label for="r119" class="ident">xn</label> <a href="#line-16" class="ident">Word</a>, <label for="r120" class="ident">x</label> []<a href="#line-16" class="ident">Word</a>, <label for="r121" class="ident">y</label> <a href="#line-16" class="ident">Word</a>) (<label for="r122" class="ident">r</label> <a href="#line-16" class="ident">Word</a>) {</code></span>
-<span class="codeline" id="line-267"><code>	<label for="r122" class="ident">r</label> = <label for="r119" class="ident">xn</label></code></span>
-<span class="codeline" id="line-268"><code>	<span class="keyword">if</span> <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r120" class="ident">x</label>) == <span class="lit-number">1</span> {</code></span>
-<span class="codeline" id="line-269"><code>		<label for="r123" class="ident">qq</label>, <label for="r124" class="ident">rr</label> := <a href="../../../pkg/math/bits.html" class="ident i0">bits</a>.<a href="../bits/bits.go.html#line-486" class="ident">Div</a>(<a href="../../../pkg/builtin.html#name-uint" class="ident">uint</a>(<label for="r122" class="ident">r</label>), <a href="../../../pkg/builtin.html#name-uint" class="ident">uint</a>(<label for="r120" class="ident">x</label>[<span class="lit-number">0</span>]), <a href="../../../pkg/builtin.html#name-uint" class="ident">uint</a>(<label for="r121" class="ident">y</label>))</code></span>
-<span class="codeline" id="line-270"><code>		<label for="r118" class="ident">z</label>[<span class="lit-number">0</span>] = <a href="#line-16" class="ident">Word</a>(<label for="r123" class="ident">qq</label>)</code></span>
-<span class="codeline" id="line-271"><code>		<span class="keyword">return</span> <a href="#line-16" class="ident">Word</a>(<label for="r124" class="ident">rr</label>)</code></span>
-<span class="codeline" id="line-272"><code>	}</code></span>
-<span class="codeline" id="line-273"><code>	<label for="r125" class="ident">rec</label> := <a href="#line-281" class="ident">reciprocalWord</a>(<label for="r121" class="ident">y</label>)</code></span>
-<span class="codeline" id="line-274"><code>	<span class="keyword">for</span> <label for="r126" class="ident">i</label> := <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r118" class="ident">z</label>) - <span class="lit-number">1</span>; <label for="r126" class="ident">i</label> &gt;= <span class="lit-number">0</span>; <label for="r126" class="ident">i</label>-- {</code></span>
-<span class="codeline" id="line-275"><code>		<label for="r118" class="ident">z</label>[<label for="r126" class="ident">i</label>], <label for="r122" class="ident">r</label> = <a href="#line-207" class="ident">divWW</a>(<label for="r122" class="ident">r</label>, <label for="r120" class="ident">x</label>[<label for="r126" class="ident">i</label>], <label for="r121" class="ident">y</label>, <label for="r125" class="ident">rec</label>)</code></span>
-<span class="codeline" id="line-276"><code>	}</code></span>
-<span class="codeline" id="line-277"><code>	<span class="keyword">return</span> <label for="r122" class="ident">r</label></code></span>
-<span class="codeline" id="line-278"><code>}</code></span>
-<span class="codeline" id="line-279"><code></code></span>
-<span class="codeline" id="line-280"><code><span class="comment">// reciprocalWord return the reciprocal of the divisor. rec = floor(( _B^2 - 1 ) / u - _B). u = d1 &lt;&lt; nlz(d1).</span></code></span>
-<span class="codeline" id="line-281"><code><span class="keyword">func</span> <label for="r127" class="ident"><a href="../../../pkg/math/big.html#name-reciprocalWord" class="ident">reciprocalWord</a></label>(<label for="r128" class="ident">d1</label> <a href="#line-16" class="ident">Word</a>) <a href="#line-16" class="ident">Word</a> {</code></span>
-<span class="codeline" id="line-282"><code>	<label for="r129" class="ident">u</label> := <a href="../../../pkg/builtin.html#name-uint" class="ident">uint</a>(<label for="r128" class="ident">d1</label> &lt;&lt; <a href="#line-59" class="ident">nlz</a>(<label for="r128" class="ident">d1</label>))</code></span>
-<span class="codeline" id="line-283"><code>	<label for="r130" class="ident">x1</label> := ^<label for="r129" class="ident">u</label></code></span>
-<span class="codeline" id="line-284"><code>	<label for="r131" class="ident">x0</label> := <a href="../../../pkg/builtin.html#name-uint" class="ident">uint</a>(<a href="#line-23" class="ident">_M</a>)</code></span>
-<span class="codeline" id="line-285"><code>	<label for="r132" class="ident">rec</label>, <label for="r133" class="ident">_</label> := <a href="../../../pkg/math/bits.html" class="ident i0">bits</a>.<a href="../bits/bits.go.html#line-486" class="ident">Div</a>(<label for="r130" class="ident">x1</label>, <label for="r131" class="ident">x0</label>, <label for="r129" class="ident">u</label>) <span class="comment">// (_B^2-1)/U-_B = (_B*(_M-C)+_M)/U</span></code></span>
-<span class="codeline" id="line-286"><code>	<span class="keyword">return</span> <a href="#line-16" class="ident">Word</a>(<label for="r132" class="ident">rec</label>)</code></span>
-<span class="codeline" id="line-287"><code>}</code></span>
+<span class="codeline" id="line-173"><code>	<span class="keyword">if</span> <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r75" class="ident">x</label>) != <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r74" class="ident">z</label>) {</code></span>
+<span class="codeline" id="line-174"><code>		<span class="comment">// This is an invariant guaranteed by the caller.</span></code></span>
+<span class="codeline" id="line-175"><code>		<a href="../../../pkg/builtin.html#name-panic" class="ident">panic</a>(<span class="lit-string">"len(x) != len(z)"</span>)</code></span>
+<span class="codeline" id="line-176"><code>	}</code></span>
+<span class="codeline" id="line-177"><code>	<label for="r76" class="ident">s</label> &amp;= <a href="#line-21" class="ident">_W</a> - <span class="lit-number">1</span> <span class="comment">// hint to the compiler that shifts by s don't need guard code</span></code></span>
+<span class="codeline" id="line-178"><code>	<label for="r78" class="ident">ŝ</label> := <a href="#line-21" class="ident">_W</a> - <label for="r76" class="ident">s</label></code></span>
+<span class="codeline" id="line-179"><code>	<label for="r78" class="ident">ŝ</label> &amp;= <a href="#line-21" class="ident">_W</a> - <span class="lit-number">1</span> <span class="comment">// ditto</span></code></span>
+<span class="codeline" id="line-180"><code>	<label for="r77" class="ident">c</label> = <label for="r75" class="ident">x</label>[<span class="lit-number">0</span>] &lt;&lt; <label for="r78" class="ident">ŝ</label></code></span>
+<span class="codeline" id="line-181"><code>	<span class="keyword">for</span> <label for="r79" class="ident">i</label> := <span class="lit-number">1</span>; <label for="r79" class="ident">i</label> &lt; <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r74" class="ident">z</label>); <label for="r79" class="ident">i</label>++ {</code></span>
+<span class="codeline" id="line-182"><code>		<label for="r74" class="ident">z</label>[<label for="r79" class="ident">i</label>-<span class="lit-number">1</span>] = <label for="r75" class="ident">x</label>[<label for="r79" class="ident">i</label>-<span class="lit-number">1</span>]&gt;&gt;<label for="r76" class="ident">s</label> | <label for="r75" class="ident">x</label>[<label for="r79" class="ident">i</label>]&lt;&lt;<label for="r78" class="ident">ŝ</label></code></span>
+<span class="codeline" id="line-183"><code>	}</code></span>
+<span class="codeline" id="line-184"><code>	<label for="r74" class="ident">z</label>[<a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r74" class="ident">z</label>)-<span class="lit-number">1</span>] = <label for="r75" class="ident">x</label>[<a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r74" class="ident">z</label>)-<span class="lit-number">1</span>] &gt;&gt; <label for="r76" class="ident">s</label></code></span>
+<span class="codeline" id="line-185"><code>	<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-186"><code>}</code></span>
+<span class="codeline" id="line-187"><code></code></span>
+<span class="codeline" id="line-188"><code><span class="keyword">func</span> <label for="r80" class="ident"><a href="../../../pkg/math/big.html#name-mulAddVWW_g" class="ident">mulAddVWW_g</a></label>(<label for="r81" class="ident">z</label>, <label for="r82" class="ident">x</label> []<a href="#line-16" class="ident">Word</a>, <label for="r83" class="ident">y</label>, <label for="r84" class="ident">r</label> <a href="#line-16" class="ident">Word</a>) (<label for="r85" class="ident">c</label> <a href="#line-16" class="ident">Word</a>) {</code></span>
+<span class="codeline" id="line-189"><code>	<label for="r85" class="ident">c</label> = <label for="r84" class="ident">r</label></code></span>
+<span class="codeline" id="line-190"><code>	<span class="comment">// The comment near the top of this file discusses this for loop condition.</span></code></span>
+<span class="codeline" id="line-191"><code>	<span class="keyword">for</span> <label for="r86" class="ident">i</label> := <span class="lit-number">0</span>; <label for="r86" class="ident">i</label> &lt; <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r81" class="ident">z</label>) &amp;&amp; <label for="r86" class="ident">i</label> &lt; <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r82" class="ident">x</label>); <label for="r86" class="ident">i</label>++ {</code></span>
+<span class="codeline" id="line-192"><code>		<label for="r85" class="ident">c</label>, <label for="r81" class="ident">z</label>[<label for="r86" class="ident">i</label>] = <a href="#line-50" class="ident">mulAddWWW_g</a>(<label for="r82" class="ident">x</label>[<label for="r86" class="ident">i</label>], <label for="r83" class="ident">y</label>, <label for="r85" class="ident">c</label>)</code></span>
+<span class="codeline" id="line-193"><code>	}</code></span>
+<span class="codeline" id="line-194"><code>	<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-195"><code>}</code></span>
+<span class="codeline" id="line-196"><code></code></span>
+<span class="codeline" id="line-197"><code><span class="keyword">func</span> <label for="r87" class="ident"><a href="../../../pkg/math/big.html#name-addMulVVW_g" class="ident">addMulVVW_g</a></label>(<label for="r88" class="ident">z</label>, <label for="r89" class="ident">x</label> []<a href="#line-16" class="ident">Word</a>, <label for="r90" class="ident">y</label> <a href="#line-16" class="ident">Word</a>) (<label for="r91" class="ident">c</label> <a href="#line-16" class="ident">Word</a>) {</code></span>
+<span class="codeline" id="line-198"><code>	<span class="comment">// The comment near the top of this file discusses this for loop condition.</span></code></span>
+<span class="codeline" id="line-199"><code>	<span class="keyword">for</span> <label for="r92" class="ident">i</label> := <span class="lit-number">0</span>; <label for="r92" class="ident">i</label> &lt; <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r88" class="ident">z</label>) &amp;&amp; <label for="r92" class="ident">i</label> &lt; <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r89" class="ident">x</label>); <label for="r92" class="ident">i</label>++ {</code></span>
+<span class="codeline" id="line-200"><code>		<label for="r93" class="ident">z1</label>, <label for="r94" class="ident">z0</label> := <a href="#line-50" class="ident">mulAddWWW_g</a>(<label for="r89" class="ident">x</label>[<label for="r92" class="ident">i</label>], <label for="r90" class="ident">y</label>, <label for="r88" class="ident">z</label>[<label for="r92" class="ident">i</label>])</code></span>
+<span class="codeline" id="line-201"><code>		<label for="r95" class="ident">lo</label>, <label for="r96" class="ident">cc</label> := <a href="../../../pkg/math/bits.html" class="ident i0">bits</a>.<a href="../bits/bits.go.html#line-354" class="ident">Add</a>(<a href="../../../pkg/builtin.html#name-uint" class="ident">uint</a>(<label for="r94" class="ident">z0</label>), <a href="../../../pkg/builtin.html#name-uint" class="ident">uint</a>(<label for="r91" class="ident">c</label>), <span class="lit-number">0</span>)</code></span>
+<span class="codeline" id="line-202"><code>		<label for="r91" class="ident">c</label>, <label for="r88" class="ident">z</label>[<label for="r92" class="ident">i</label>] = <a href="#line-16" class="ident">Word</a>(<label for="r96" class="ident">cc</label>), <a href="#line-16" class="ident">Word</a>(<label for="r95" class="ident">lo</label>)</code></span>
+<span class="codeline" id="line-203"><code>		<label for="r91" class="ident">c</label> += <label for="r93" class="ident">z1</label></code></span>
+<span class="codeline" id="line-204"><code>	}</code></span>
+<span class="codeline" id="line-205"><code>	<span class="keyword">return</span></code></span>
+<span class="codeline" id="line-206"><code>}</code></span>
+<span class="codeline" id="line-207"><code></code></span>
+<span class="codeline" id="line-208"><code><span class="comment">// q = ( x1 &lt;&lt; _W + x0 - r)/y. m = floor(( _B^2 - 1 ) / d - _B). Requiring x1&lt;y.</span></code></span>
+<span class="codeline" id="line-209"><code><span class="comment">// An approximate reciprocal with a reference to "Improved Division by Invariant Integers</span></code></span>
+<span class="codeline" id="line-210"><code><span class="comment">// (IEEE Transactions on Computers, 11 Jun. 2010)"</span></code></span>
+<span class="codeline" id="line-211"><code><span class="keyword">func</span> <label for="r97" class="ident"><a href="../../../pkg/math/big.html#name-divWW" class="ident">divWW</a></label>(<label for="r98" class="ident">x1</label>, <label for="r99" class="ident">x0</label>, <label for="r100" class="ident">y</label>, <label for="r101" class="ident">m</label> <a href="#line-16" class="ident">Word</a>) (<label for="r102" class="ident">q</label>, <label for="r103" class="ident">r</label> <a href="#line-16" class="ident">Word</a>) {</code></span>
+<span class="codeline" id="line-212"><code>	<label for="r104" class="ident">s</label> := <a href="#line-59" class="ident">nlz</a>(<label for="r100" class="ident">y</label>)</code></span>
+<span class="codeline" id="line-213"><code>	<span class="keyword">if</span> <label for="r104" class="ident">s</label> != <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-214"><code>		<label for="r98" class="ident">x1</label> = <label for="r98" class="ident">x1</label>&lt;&lt;<label for="r104" class="ident">s</label> | <label for="r99" class="ident">x0</label>&gt;&gt;(<a href="#line-21" class="ident">_W</a>-<label for="r104" class="ident">s</label>)</code></span>
+<span class="codeline" id="line-215"><code>		<label for="r99" class="ident">x0</label> &lt;&lt;= <label for="r104" class="ident">s</label></code></span>
+<span class="codeline" id="line-216"><code>		<label for="r100" class="ident">y</label> &lt;&lt;= <label for="r104" class="ident">s</label></code></span>
+<span class="codeline" id="line-217"><code>	}</code></span>
+<span class="codeline" id="line-218"><code>	<label for="r105" class="ident">d</label> := <a href="../../../pkg/builtin.html#name-uint" class="ident">uint</a>(<label for="r100" class="ident">y</label>)</code></span>
+<span class="codeline" id="line-219"><code>	<span class="comment">// We know that</span></code></span>
+<span class="codeline" id="line-220"><code><span class="comment">	//   m = ⎣(B^2-1)/d⎦-B</span></code></span>
+<span class="codeline" id="line-221"><code><span class="comment">	//   ⎣(B^2-1)/d⎦ = m+B</span></code></span>
+<span class="codeline" id="line-222"><code><span class="comment">	//   (B^2-1)/d = m+B+delta1    0 &lt;= delta1 &lt;= (d-1)/d</span></code></span>
+<span class="codeline" id="line-223"><code><span class="comment">	//   B^2/d = m+B+delta2        0 &lt;= delta2 &lt;= 1</span></code></span>
+<span class="codeline" id="line-224"><code><span class="comment">	// The quotient we're trying to compute is</span></code></span>
+<span class="codeline" id="line-225"><code><span class="comment">	//   quotient = ⎣(x1*B+x0)/d⎦</span></code></span>
+<span class="codeline" id="line-226"><code><span class="comment">	//            = ⎣(x1*B*(B^2/d)+x0*(B^2/d))/B^2⎦</span></code></span>
+<span class="codeline" id="line-227"><code><span class="comment">	//            = ⎣(x1*B*(m+B+delta2)+x0*(m+B+delta2))/B^2⎦</span></code></span>
+<span class="codeline" id="line-228"><code><span class="comment">	//            = ⎣(x1*m+x1*B+x0)/B + x0*m/B^2 + delta2*(x1*B+x0)/B^2⎦</span></code></span>
+<span class="codeline" id="line-229"><code><span class="comment">	// The latter two terms of this three-term sum are between 0 and 1.</span></code></span>
+<span class="codeline" id="line-230"><code><span class="comment">	// So we can compute just the first term, and we will be low by at most 2.</span></code></span>
+<span class="codeline" id="line-231"><code>	<label for="r106" class="ident">t1</label>, <label for="r107" class="ident">t0</label> := <a href="../../../pkg/math/bits.html" class="ident i0">bits</a>.<a href="../bits/bits.go.html#line-439" class="ident">Mul</a>(<a href="../../../pkg/builtin.html#name-uint" class="ident">uint</a>(<label for="r101" class="ident">m</label>), <a href="../../../pkg/builtin.html#name-uint" class="ident">uint</a>(<label for="r98" class="ident">x1</label>))</code></span>
+<span class="codeline" id="line-232"><code>	<label for="r108" class="ident">_</label>, <label for="r109" class="ident">c</label> := <a href="../../../pkg/math/bits.html" class="ident i0">bits</a>.<a href="../bits/bits.go.html#line-354" class="ident">Add</a>(<label for="r107" class="ident">t0</label>, <a href="../../../pkg/builtin.html#name-uint" class="ident">uint</a>(<label for="r99" class="ident">x0</label>), <span class="lit-number">0</span>)</code></span>
+<span class="codeline" id="line-233"><code>	<label for="r106" class="ident">t1</label>, _ = <a href="../../../pkg/math/bits.html" class="ident i0">bits</a>.<a href="../bits/bits.go.html#line-354" class="ident">Add</a>(<label for="r106" class="ident">t1</label>, <a href="../../../pkg/builtin.html#name-uint" class="ident">uint</a>(<label for="r98" class="ident">x1</label>), <label for="r109" class="ident">c</label>)</code></span>
+<span class="codeline" id="line-234"><code>	<span class="comment">// The quotient is either t1, t1+1, or t1+2.</span></code></span>
+<span class="codeline" id="line-235"><code><span class="comment">	// We'll try t1 and adjust if needed.</span></code></span>
+<span class="codeline" id="line-236"><code>	<label for="r110" class="ident">qq</label> := <label for="r106" class="ident">t1</label></code></span>
+<span class="codeline" id="line-237"><code>	<span class="comment">// compute remainder r=x-d*q.</span></code></span>
+<span class="codeline" id="line-238"><code>	<label for="r111" class="ident">dq1</label>, <label for="r112" class="ident">dq0</label> := <a href="../../../pkg/math/bits.html" class="ident i0">bits</a>.<a href="../bits/bits.go.html#line-439" class="ident">Mul</a>(<label for="r105" class="ident">d</label>, <label for="r110" class="ident">qq</label>)</code></span>
+<span class="codeline" id="line-239"><code>	<label for="r113" class="ident">r0</label>, <label for="r114" class="ident">b</label> := <a href="../../../pkg/math/bits.html" class="ident i0">bits</a>.<a href="../bits/bits.go.html#line-396" class="ident">Sub</a>(<a href="../../../pkg/builtin.html#name-uint" class="ident">uint</a>(<label for="r99" class="ident">x0</label>), <label for="r112" class="ident">dq0</label>, <span class="lit-number">0</span>)</code></span>
+<span class="codeline" id="line-240"><code>	<label for="r115" class="ident">r1</label>, <label for="r116" class="ident">_</label> := <a href="../../../pkg/math/bits.html" class="ident i0">bits</a>.<a href="../bits/bits.go.html#line-396" class="ident">Sub</a>(<a href="../../../pkg/builtin.html#name-uint" class="ident">uint</a>(<label for="r98" class="ident">x1</label>), <label for="r111" class="ident">dq1</label>, <label for="r114" class="ident">b</label>)</code></span>
+<span class="codeline" id="line-241"><code>	<span class="comment">// The remainder we just computed is bounded above by B+d:</span></code></span>
+<span class="codeline" id="line-242"><code><span class="comment">	// r = x1*B + x0 - d*q.</span></code></span>
+<span class="codeline" id="line-243"><code><span class="comment">	//   = x1*B + x0 - d*⎣(x1*m+x1*B+x0)/B⎦</span></code></span>
+<span class="codeline" id="line-244"><code><span class="comment">	//   = x1*B + x0 - d*((x1*m+x1*B+x0)/B-alpha)                                   0 &lt;= alpha &lt; 1</span></code></span>
+<span class="codeline" id="line-245"><code><span class="comment">	//   = x1*B + x0 - x1*d/B*m                         - x1*d - x0*d/B + d*alpha</span></code></span>
+<span class="codeline" id="line-246"><code><span class="comment">	//   = x1*B + x0 - x1*d/B*⎣(B^2-1)/d-B⎦             - x1*d - x0*d/B + d*alpha</span></code></span>
+<span class="codeline" id="line-247"><code><span class="comment">	//   = x1*B + x0 - x1*d/B*⎣(B^2-1)/d-B⎦             - x1*d - x0*d/B + d*alpha</span></code></span>
+<span class="codeline" id="line-248"><code><span class="comment">	//   = x1*B + x0 - x1*d/B*((B^2-1)/d-B-beta)        - x1*d - x0*d/B + d*alpha   0 &lt;= beta &lt; 1</span></code></span>
+<span class="codeline" id="line-249"><code><span class="comment">	//   = x1*B + x0 - x1*B + x1/B + x1*d + x1*d/B*beta - x1*d - x0*d/B + d*alpha</span></code></span>
+<span class="codeline" id="line-250"><code><span class="comment">	//   =        x0        + x1/B        + x1*d/B*beta        - x0*d/B + d*alpha</span></code></span>
+<span class="codeline" id="line-251"><code><span class="comment">	//   = x0*(1-d/B) + x1*(1+d*beta)/B + d*alpha</span></code></span>
+<span class="codeline" id="line-252"><code><span class="comment">	//   &lt;  B*(1-d/B) +  d*B/B          + d          because x0&lt;B (and 1-d/B&gt;0), x1&lt;d, 1+d*beta&lt;=B, alpha&lt;1</span></code></span>
+<span class="codeline" id="line-253"><code><span class="comment">	//   =  B - d     +  d              + d</span></code></span>
+<span class="codeline" id="line-254"><code><span class="comment">	//   = B+d</span></code></span>
+<span class="codeline" id="line-255"><code><span class="comment">	// So r1 can only be 0 or 1. If r1 is 1, then we know q was too small.</span></code></span>
+<span class="codeline" id="line-256"><code><span class="comment">	// Add 1 to q and subtract d from r. That guarantees that r is &lt;B, so</span></code></span>
+<span class="codeline" id="line-257"><code><span class="comment">	// we no longer need to keep track of r1.</span></code></span>
+<span class="codeline" id="line-258"><code>	<span class="keyword">if</span> <label for="r115" class="ident">r1</label> != <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-259"><code>		<label for="r110" class="ident">qq</label>++</code></span>
+<span class="codeline" id="line-260"><code>		<label for="r113" class="ident">r0</label> -= <label for="r105" class="ident">d</label></code></span>
+<span class="codeline" id="line-261"><code>	}</code></span>
+<span class="codeline" id="line-262"><code>	<span class="comment">// If the remainder is still too large, increment q one more time.</span></code></span>
+<span class="codeline" id="line-263"><code>	<span class="keyword">if</span> <label for="r113" class="ident">r0</label> &gt;= <label for="r105" class="ident">d</label> {</code></span>
+<span class="codeline" id="line-264"><code>		<label for="r110" class="ident">qq</label>++</code></span>
+<span class="codeline" id="line-265"><code>		<label for="r113" class="ident">r0</label> -= <label for="r105" class="ident">d</label></code></span>
+<span class="codeline" id="line-266"><code>	}</code></span>
+<span class="codeline" id="line-267"><code>	<span class="keyword">return</span> <a href="#line-16" class="ident">Word</a>(<label for="r110" class="ident">qq</label>), <a href="#line-16" class="ident">Word</a>(<label for="r113" class="ident">r0</label> &gt;&gt; <label for="r104" class="ident">s</label>)</code></span>
+<span class="codeline" id="line-268"><code>}</code></span>
+<span class="codeline" id="line-269"><code></code></span>
+<span class="codeline" id="line-270"><code><span class="comment">// reciprocalWord return the reciprocal of the divisor. rec = floor(( _B^2 - 1 ) / u - _B). u = d1 &lt;&lt; nlz(d1).</span></code></span>
+<span class="codeline" id="line-271"><code><span class="keyword">func</span> <label for="r117" class="ident"><a href="../../../pkg/math/big.html#name-reciprocalWord" class="ident">reciprocalWord</a></label>(<label for="r118" class="ident">d1</label> <a href="#line-16" class="ident">Word</a>) <a href="#line-16" class="ident">Word</a> {</code></span>
+<span class="codeline" id="line-272"><code>	<label for="r119" class="ident">u</label> := <a href="../../../pkg/builtin.html#name-uint" class="ident">uint</a>(<label for="r118" class="ident">d1</label> &lt;&lt; <a href="#line-59" class="ident">nlz</a>(<label for="r118" class="ident">d1</label>))</code></span>
+<span class="codeline" id="line-273"><code>	<label for="r120" class="ident">x1</label> := ^<label for="r119" class="ident">u</label></code></span>
+<span class="codeline" id="line-274"><code>	<label for="r121" class="ident">x0</label> := <a href="../../../pkg/builtin.html#name-uint" class="ident">uint</a>(<a href="#line-23" class="ident">_M</a>)</code></span>
+<span class="codeline" id="line-275"><code>	<label for="r122" class="ident">rec</label>, <label for="r123" class="ident">_</label> := <a href="../../../pkg/math/bits.html" class="ident i0">bits</a>.<a href="../bits/bits.go.html#line-486" class="ident">Div</a>(<label for="r120" class="ident">x1</label>, <label for="r121" class="ident">x0</label>, <label for="r119" class="ident">u</label>) <span class="comment">// (_B^2-1)/U-_B = (_B*(_M-C)+_M)/U</span></code></span>
+<span class="codeline" id="line-276"><code>	<span class="keyword">return</span> <a href="#line-16" class="ident">Word</a>(<label for="r122" class="ident">rec</label>)</code></span>
+<span class="codeline" id="line-277"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: intrinsics_common.go in package runtime/internal/sys</title>
-<link href="../../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -31,7 +31,11 @@ input[id=r11]:checked ~pre label[for=r11],
 input[id=r12]:checked ~pre label[for=r12],
 input[id=r13]:checked ~pre label[for=r13],
 input[id=r14]:checked ~pre label[for=r14],
-input[id=r15]:checked ~pre label[for=r15]
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19]
 {background: #226; color: #ff8;}
 {background: brown; color: #eed;}
 </style><input id="r0" type="radio" name="g"/>
@@ -50,6 +54,10 @@ input[id=r15]:checked ~pre label[for=r15]
 <input id="r13" type="radio" name="g"/>
 <input id="r14" type="radio" name="g"/>
 <input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
 
 <pre class="line-numbers">
 <span class="codeline" id="line-1"><code><span class="comment">// Copyright 2019 The Go Authors. All rights reserved.</span></code></span>
@@ -195,9 +203,24 @@ input[id=r15]:checked ~pre label[for=r15]
 <span class="codeline" id="line-141"><code><span class="keyword">func</span> <label for="r14" class="ident"><a href="../../../../pkg/runtime/internal/sys.html#name-Len8" class="ident">Len8</a></label>(<label for="r15" class="ident">x</label> <a href="../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>) <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a> {</code></span>
 <span class="codeline" id="line-142"><code>	<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-int" class="ident">int</a>(<a href="#line-9" class="ident">len8tab</a>[<label for="r15" class="ident">x</label>])</code></span>
 <span class="codeline" id="line-143"><code>}</code></span>
+<span class="codeline" id="line-144"><code></code></span>
+<span class="codeline" id="line-145"><code><span class="comment">// Prefetch prefetches data from memory addr to cache</span></code></span>
+<span class="codeline" id="line-146"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-147"><code><span class="comment">// AMD64: Produce PREFETCHT0 instruction</span></code></span>
+<span class="codeline" id="line-148"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-149"><code><span class="comment">// ARM64: Produce PRFM instruction with PLDL1KEEP option</span></code></span>
+<span class="codeline" id="line-150"><code><span class="keyword">func</span> <label for="r16" class="ident"><a href="../../../../pkg/runtime/internal/sys.html#name-Prefetch" class="ident">Prefetch</a></label>(<label for="r17" class="ident">addr</label> <a href="../../../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a>) {}</code></span>
+<span class="codeline" id="line-151"><code></code></span>
+<span class="codeline" id="line-152"><code><span class="comment">// PrefetchStreamed prefetches data from memory addr, with a hint that this data is being streamed.</span></code></span>
+<span class="codeline" id="line-153"><code><span class="comment">// That is, it is likely to be accessed very soon, but only once. If possible, this will avoid polluting the cache.</span></code></span>
+<span class="codeline" id="line-154"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-155"><code><span class="comment">// AMD64: Produce PREFETCHNTA instruction</span></code></span>
+<span class="codeline" id="line-156"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-157"><code><span class="comment">// ARM64: Produce PRFM instruction with PLDL1STRM option</span></code></span>
+<span class="codeline" id="line-158"><code><span class="keyword">func</span> <label for="r18" class="ident"><a href="../../../../pkg/runtime/internal/sys.html#name-PrefetchStreamed" class="ident">PrefetchStreamed</a></label>(<label for="r19" class="ident">addr</label> <a href="../../../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a>) {}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

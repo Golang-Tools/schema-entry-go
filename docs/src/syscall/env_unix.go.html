@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: env_unix.go in package syscall</title>
-<link href="../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../jvs/golds-v0.3.6.js"></script>
+<link href="../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -106,7 +106,7 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-2"><code><span class="comment">// Use of this source code is governed by a BSD-style</span></code></span>
 <span class="codeline" id="line-3"><code><span class="comment">// license that can be found in the LICENSE file.</span></code></span>
 <span class="codeline" id="line-4"><code></code></span>
-<span class="codeline" id="line-5"><code><span class="comment">// +build aix darwin dragonfly freebsd js,wasm linux netbsd openbsd solaris plan9</span></code></span>
+<span class="codeline" id="line-5"><code><span class="comment">//go:build aix || darwin || dragonfly || freebsd || (js &amp;&amp; wasm) || linux || netbsd || openbsd || solaris || plan9</span></code></span>
 <span class="codeline" id="line-6"><code></code></span>
 <span class="codeline" id="line-7"><code><span class="comment">// Unix environment variables.</span></code></span>
 <span class="codeline" id="line-8"><code></code></span>
@@ -164,8 +164,8 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-60"><code><span class="keyword">func</span> <label for="r13" class="ident"><a href="../../pkg/syscall.html#name-Unsetenv" class="ident">Unsetenv</a></label>(<label for="r14" class="ident">key</label> <a href="../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
 <span class="codeline" id="line-61"><code>	<a href="#line-18" class="ident">envOnce</a>.<a href="../sync/once.go.html#line-42" class="ident">Do</a>(<a href="#line-39" class="ident">copyenv</a>)</code></span>
 <span class="codeline" id="line-62"><code></code></span>
-<span class="codeline" id="line-63"><code>	<a href="#line-21" class="ident">envLock</a>.<a href="../sync/rwmutex.go.html#line-105" class="ident">Lock</a>()</code></span>
-<span class="codeline" id="line-64"><code>	<span class="keyword">defer</span> <a href="#line-21" class="ident">envLock</a>.<a href="../sync/rwmutex.go.html#line-131" class="ident">Unlock</a>()</code></span>
+<span class="codeline" id="line-63"><code>	<a href="#line-21" class="ident">envLock</a>.<a href="../sync/rwmutex.go.html#line-133" class="ident">Lock</a>()</code></span>
+<span class="codeline" id="line-64"><code>	<span class="keyword">defer</span> <a href="#line-21" class="ident">envLock</a>.<a href="../sync/rwmutex.go.html#line-190" class="ident">Unlock</a>()</code></span>
 <span class="codeline" id="line-65"><code></code></span>
 <span class="codeline" id="line-66"><code>	<span class="keyword">if</span> <label for="r15" class="ident">i</label>, <label for="r16" class="ident">ok</label> := <a href="#line-24" class="ident">env</a>[<label for="r14" class="ident">key</label>]; <label for="r16" class="ident">ok</label> {</code></span>
 <span class="codeline" id="line-67"><code>		<a href="#line-29" class="ident">envs</a>[<label for="r15" class="ident">i</label>] = <span class="lit-string">""</span></code></span>
@@ -182,7 +182,7 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-78"><code>	}</code></span>
 <span class="codeline" id="line-79"><code></code></span>
 <span class="codeline" id="line-80"><code>	<a href="#line-21" class="ident">envLock</a>.<a href="../sync/rwmutex.go.html#line-56" class="ident">RLock</a>()</code></span>
-<span class="codeline" id="line-81"><code>	<span class="keyword">defer</span> <a href="#line-21" class="ident">envLock</a>.<a href="../sync/rwmutex.go.html#line-75" class="ident">RUnlock</a>()</code></span>
+<span class="codeline" id="line-81"><code>	<span class="keyword">defer</span> <a href="#line-21" class="ident">envLock</a>.<a href="../sync/rwmutex.go.html#line-103" class="ident">RUnlock</a>()</code></span>
 <span class="codeline" id="line-82"><code></code></span>
 <span class="codeline" id="line-83"><code>	<label for="r21" class="ident">i</label>, <label for="r22" class="ident">ok</label> := <a href="#line-24" class="ident">env</a>[<label for="r18" class="ident">key</label>]</code></span>
 <span class="codeline" id="line-84"><code>	<span class="keyword">if</span> !<label for="r22" class="ident">ok</label> {</code></span>
@@ -208,7 +208,7 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-104"><code>		}</code></span>
 <span class="codeline" id="line-105"><code>	}</code></span>
 <span class="codeline" id="line-106"><code>	<span class="comment">// On Plan 9, null is used as a separator, eg in $path.</span></code></span>
-<span class="codeline" id="line-107"><code>	<span class="keyword">if</span> <a href="../../pkg/runtime.html" class="ident i0">runtime</a>.<a href="../runtime/extern.go.html#line-253" class="ident">GOOS</a> != <span class="lit-string">"plan9"</span> {</code></span>
+<span class="codeline" id="line-107"><code>	<span class="keyword">if</span> <a href="../../pkg/runtime.html" class="ident i0">runtime</a>.<a href="../runtime/extern.go.html#line-271" class="ident">GOOS</a> != <span class="lit-string">"plan9"</span> {</code></span>
 <span class="codeline" id="line-108"><code>		<span class="keyword">for</span> <label for="r29" class="ident">i</label> := <span class="lit-number">0</span>; <label for="r29" class="ident">i</label> &lt; <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r27" class="ident">value</label>); <label for="r29" class="ident">i</label>++ {</code></span>
 <span class="codeline" id="line-109"><code>			<span class="keyword">if</span> <label for="r27" class="ident">value</label>[<label for="r29" class="ident">i</label>] == <span class="lit-number">0</span> {</code></span>
 <span class="codeline" id="line-110"><code>				<span class="keyword">return</span> <a href="zerrors_darwin_amd64.go.html#line-1171" class="ident">EINVAL</a></code></span>
@@ -216,8 +216,8 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-112"><code>		}</code></span>
 <span class="codeline" id="line-113"><code>	}</code></span>
 <span class="codeline" id="line-114"><code></code></span>
-<span class="codeline" id="line-115"><code>	<a href="#line-21" class="ident">envLock</a>.<a href="../sync/rwmutex.go.html#line-105" class="ident">Lock</a>()</code></span>
-<span class="codeline" id="line-116"><code>	<span class="keyword">defer</span> <a href="#line-21" class="ident">envLock</a>.<a href="../sync/rwmutex.go.html#line-131" class="ident">Unlock</a>()</code></span>
+<span class="codeline" id="line-115"><code>	<a href="#line-21" class="ident">envLock</a>.<a href="../sync/rwmutex.go.html#line-133" class="ident">Lock</a>()</code></span>
+<span class="codeline" id="line-116"><code>	<span class="keyword">defer</span> <a href="#line-21" class="ident">envLock</a>.<a href="../sync/rwmutex.go.html#line-190" class="ident">Unlock</a>()</code></span>
 <span class="codeline" id="line-117"><code></code></span>
 <span class="codeline" id="line-118"><code>	<label for="r30" class="ident">i</label>, <label for="r31" class="ident">ok</label> := <a href="#line-24" class="ident">env</a>[<label for="r26" class="ident">key</label>]</code></span>
 <span class="codeline" id="line-119"><code>	<label for="r32" class="ident">kv</label> := <label for="r26" class="ident">key</label> + <span class="lit-string">"="</span> + <label for="r27" class="ident">value</label></code></span>
@@ -235,8 +235,8 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-131"><code><span class="keyword">func</span> <label for="r33" class="ident"><a href="../../pkg/syscall.html#name-Clearenv" class="ident">Clearenv</a></label>() {</code></span>
 <span class="codeline" id="line-132"><code>	<a href="#line-18" class="ident">envOnce</a>.<a href="../sync/once.go.html#line-42" class="ident">Do</a>(<a href="#line-39" class="ident">copyenv</a>) <span class="comment">// prevent copyenv in Getenv/Setenv</span></code></span>
 <span class="codeline" id="line-133"><code></code></span>
-<span class="codeline" id="line-134"><code>	<a href="#line-21" class="ident">envLock</a>.<a href="../sync/rwmutex.go.html#line-105" class="ident">Lock</a>()</code></span>
-<span class="codeline" id="line-135"><code>	<span class="keyword">defer</span> <a href="#line-21" class="ident">envLock</a>.<a href="../sync/rwmutex.go.html#line-131" class="ident">Unlock</a>()</code></span>
+<span class="codeline" id="line-134"><code>	<a href="#line-21" class="ident">envLock</a>.<a href="../sync/rwmutex.go.html#line-133" class="ident">Lock</a>()</code></span>
+<span class="codeline" id="line-135"><code>	<span class="keyword">defer</span> <a href="#line-21" class="ident">envLock</a>.<a href="../sync/rwmutex.go.html#line-190" class="ident">Unlock</a>()</code></span>
 <span class="codeline" id="line-136"><code></code></span>
 <span class="codeline" id="line-137"><code>	<span class="keyword">for</span> <label for="r34" class="ident">k</label> := <span class="keyword">range</span> <a href="#line-24" class="ident">env</a> {</code></span>
 <span class="codeline" id="line-138"><code>		<a href="#line-37" class="ident">unsetenv_c</a>(<label for="r34" class="ident">k</label>)</code></span>
@@ -248,7 +248,7 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-144"><code><span class="keyword">func</span> <label for="r35" class="ident"><a href="../../pkg/syscall.html#name-Environ" class="ident">Environ</a></label>() []<a href="../../pkg/builtin.html#name-string" class="ident">string</a> {</code></span>
 <span class="codeline" id="line-145"><code>	<a href="#line-18" class="ident">envOnce</a>.<a href="../sync/once.go.html#line-42" class="ident">Do</a>(<a href="#line-39" class="ident">copyenv</a>)</code></span>
 <span class="codeline" id="line-146"><code>	<a href="#line-21" class="ident">envLock</a>.<a href="../sync/rwmutex.go.html#line-56" class="ident">RLock</a>()</code></span>
-<span class="codeline" id="line-147"><code>	<span class="keyword">defer</span> <a href="#line-21" class="ident">envLock</a>.<a href="../sync/rwmutex.go.html#line-75" class="ident">RUnlock</a>()</code></span>
+<span class="codeline" id="line-147"><code>	<span class="keyword">defer</span> <a href="#line-21" class="ident">envLock</a>.<a href="../sync/rwmutex.go.html#line-103" class="ident">RUnlock</a>()</code></span>
 <span class="codeline" id="line-148"><code>	<label for="r36" class="ident">a</label> := <a href="../../pkg/builtin.html#name-make" class="ident">make</a>([]<a href="../../pkg/builtin.html#name-string" class="ident">string</a>, <span class="lit-number">0</span>, <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<a href="#line-29" class="ident">envs</a>))</code></span>
 <span class="codeline" id="line-149"><code>	<span class="keyword">for</span> <label for="r37" class="ident">_</label>, <label for="r38" class="ident">env</label> := <span class="keyword">range</span> <a href="#line-29" class="ident">envs</a> {</code></span>
 <span class="codeline" id="line-150"><code>		<span class="keyword">if</span> <label for="r38" class="ident">env</label> != <span class="lit-string">""</span> {</code></span>
@@ -259,7 +259,7 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-155"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

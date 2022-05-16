@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Package: net/mail</title>
-<link href="../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../jvs/golds-v0.3.6.js"></script>
+<link href="../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="package-details"><code><span style="font-size:xx-large;">package <b>mail</b></span>
@@ -25,12 +25,12 @@
 		For the most part, this package follows the syntax as specified by RFC 5322 and
 		extended by RFC 6532.
 		Notable divergences:
-			* Obsolete address formats are not parsed, including addresses with
-			  embedded route information.
-			* The full range of spacing (the CFWS syntax element) is not supported,
-			  such as breaking addresses across lines.
-			* No unicode normalization is performed.
-			* The special characters ()[]:;@\, are allowed to appear unquoted in names.</span></div>
+		* Obsolete address formats are not parsed, including addresses with
+		  embedded route information.
+		* The full range of spacing (the CFWS syntax element) is not supported,
+		  such as breaking addresses across lines.
+		* No unicode normalization is performed.
+		* The special characters ()[]:;@\, are allowed to appear unquoted in names.</span></div>
 <div id="examples"><span class="title">Code Examples</span>
 
 	<input type='checkbox' class="fold" id="example-0-fold-content"><label for="example-0-fold-content">ParseAddress</label><span id='example-0-fold-content-items' class="fold-items">
@@ -43,7 +43,7 @@
 		)
 		
 		func main() {
-			e, err := mail.ParseAddress("Alice <alice@example.com>")
+			e, err := mail.ParseAddress("Alice &lt;alice@example.com&gt;")
 			if err != nil {
 				log.Fatal(err)
 			}
@@ -62,7 +62,7 @@
 		)
 		
 		func main() {
-			const list = "Alice <alice@example.com>, Bob <bob@example.com>, Eve <eve@example.com>"
+			const list = "Alice &lt;alice@example.com&gt;, Bob &lt;bob@example.com&gt;, Eve &lt;eve@example.com&gt;"
 			emails, err := mail.ParseAddressList(list)
 			if err != nil {
 				log.Fatal(err)
@@ -87,8 +87,8 @@
 		
 		func main() {
 			msg := `Date: Mon, 23 Jun 2015 11:40:36 -0400
-		From: Gopher <from@example.com>
-		To: Another Gopher <to@example.com>
+		From: Gopher &lt;from@example.com&gt;
+		To: Another Gopher &lt;to@example.com&gt;
 		Subject: Gophers at Gophercon
 		
 		Message body
@@ -130,16 +130,16 @@
 				// Proper name; may be empty.
 </span></span></span>
 		<input type='checkbox' class="fold" id="Address-fold-methods"><label for="Address-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='Address-fold-methods-items' class="fold-items"><span>
-			<input type='checkbox' class="fold" id="Address-fold-method-String"><label for="Address-fold-method-String">(*T) <a href="../../src/net/mail/message.go.html#line-219">String</a>() <a href="../builtin.html#name-string">string</a></label><span id='Address-fold-method-String-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Address-fold-method-String"><label for="Address-fold-method-String">(*Address) <a href="../../src/net/mail/message.go.html#line-219">String</a>() <a href="../builtin.html#name-string">string</a></label><span id='Address-fold-method-String-docs' class="fold-docs">
 				String formats the address as a valid RFC 5322 address.
 				If the address's name contains non-ASCII characters
 				the name will be rendered according to RFC 2047.
 </span></span></span>
 		<input type='checkbox' class="fold" id="Address-fold-impls"><label for="Address-fold-impls">Implements (<i>at least 3, in which 1 are exported</i>)</label><span id='Address-fold-impls-items' class="fold-items"><span>
-			*T : fmt.<a href="../fmt.html#name-Stringer">Stringer</a></span>
+			*Address : fmt.<a href="../fmt.html#name-Stringer">Stringer</a></span>
 			<input type='checkbox' class="showhide" id="Address-showhide-impls"><i><label for="Address-showhide-impls" class="show-inline">/* 2+ unexporteds ... */</label><label for="Address-showhide-impls" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
-			*T : context.<a href="../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
-			*T : runtime.<a href="../runtime.html#name-stringer">stringer</a></i></span></span>
+			*Address : context.<a href="../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			*Address : runtime.<a href="../runtime.html#name-stringer">stringer</a></i></span></span>
 		<input type='checkbox' class="fold" id="Address-fold-results"><label for="Address-fold-results">As Outputs Of (<i>at least 5, all are exported</i>)</label><span id='Address-fold-results-items' class="fold-items"><span>
 			func <a href="#name-ParseAddress">ParseAddress</a>(address <a href="../builtin.html#name-string">string</a>) (*<b>Address</b>, <a href="../builtin.html#name-error">error</a>)</span><span>
 			func <a href="#name-ParseAddressList">ParseAddressList</a>(list <a href="../builtin.html#name-string">string</a>) ([]*<b>Address</b>, <a href="../builtin.html#name-error">error</a>)</span><span>
@@ -155,11 +155,11 @@
 				WordDecoder optionally specifies a decoder for RFC 2047 encoded-words.
 </span></span></span>
 		<input type='checkbox' class="fold" id="AddressParser-fold-methods"><label for="AddressParser-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='AddressParser-fold-methods-items' class="fold-items"><span>
-			<input type='checkbox' class="fold" id="AddressParser-fold-method-Parse"><label for="AddressParser-fold-method-Parse">(*T) <a href="../../src/net/mail/message.go.html#line-206">Parse</a>(address <a href="../builtin.html#name-string">string</a>) (*<a href="#name-Address">Address</a>, <a href="../builtin.html#name-error">error</a>)</label><span id='AddressParser-fold-method-Parse-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="AddressParser-fold-method-Parse"><label for="AddressParser-fold-method-Parse">(*AddressParser) <a href="../../src/net/mail/message.go.html#line-206">Parse</a>(address <a href="../builtin.html#name-string">string</a>) (*<a href="#name-Address">Address</a>, <a href="../builtin.html#name-error">error</a>)</label><span id='AddressParser-fold-method-Parse-docs' class="fold-docs">
 				Parse parses a single RFC 5322 address of the
 				form "Gogh Fir &lt;gf@example.com&gt;" or "foo@example.com".
 </span></span><span>
-			<input type='checkbox' class="fold" id="AddressParser-fold-method-ParseList"><label for="AddressParser-fold-method-ParseList">(*T) <a href="../../src/net/mail/message.go.html#line-212">ParseList</a>(list <a href="../builtin.html#name-string">string</a>) ([]*<a href="#name-Address">Address</a>, <a href="../builtin.html#name-error">error</a>)</label><span id='AddressParser-fold-method-ParseList-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="AddressParser-fold-method-ParseList"><label for="AddressParser-fold-method-ParseList">(*AddressParser) <a href="../../src/net/mail/message.go.html#line-212">ParseList</a>(list <a href="../builtin.html#name-string">string</a>) ([]*<a href="#name-Address">Address</a>, <a href="../builtin.html#name-error">error</a>)</label><span id='AddressParser-fold-method-ParseList-docs' class="fold-docs">
 				ParseList parses the given string as a list of comma-separated addresses
 				of the form "Gogh Fir &lt;gf@example.com&gt;" or "foo@example.com".
 </span></span></span>
@@ -168,13 +168,13 @@
 		A Header represents the key-value pairs in a mail message header.
 
 		<input type='checkbox' class="fold" id="Header-fold-methods"><label for="Header-fold-methods">Methods (<i>total 3, all are exported</i>)</label><span id='Header-fold-methods-items' class="fold-items"><span>
-			<input type='checkbox' class="fold" id="Header-fold-method-AddressList"><label for="Header-fold-method-AddressList">( T) <a href="../../src/net/mail/message.go.html#line-172">AddressList</a>(key <a href="../builtin.html#name-string">string</a>) ([]*<a href="#name-Address">Address</a>, <a href="../builtin.html#name-error">error</a>)</label><span id='Header-fold-method-AddressList-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Header-fold-method-AddressList"><label for="Header-fold-method-AddressList">( Header) <a href="../../src/net/mail/message.go.html#line-172">AddressList</a>(key <a href="../builtin.html#name-string">string</a>) ([]*<a href="#name-Address">Address</a>, <a href="../builtin.html#name-error">error</a>)</label><span id='Header-fold-method-AddressList-docs' class="fold-docs">
 				AddressList parses the named header field as a list of addresses.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Header-fold-method-Date"><label for="Header-fold-method-Date">( T) <a href="../../src/net/mail/message.go.html#line-163">Date</a>() (<a href="../time.html">time</a>.<a href="../time.html#name-Time">Time</a>, <a href="../builtin.html#name-error">error</a>)</label><span id='Header-fold-method-Date-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Header-fold-method-Date"><label for="Header-fold-method-Date">( Header) <a href="../../src/net/mail/message.go.html#line-163">Date</a>() (<a href="../time.html">time</a>.<a href="../time.html#name-Time">Time</a>, <a href="../builtin.html#name-error">error</a>)</label><span id='Header-fold-method-Date-docs' class="fold-docs">
 				Date parses the Date header field.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Header-fold-method-Get"><label for="Header-fold-method-Get">( T) <a href="../../src/net/mail/message.go.html#line-156">Get</a>(key <a href="../builtin.html#name-string">string</a>) <a href="../builtin.html#name-string">string</a></label><span id='Header-fold-method-Get-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Header-fold-method-Get"><label for="Header-fold-method-Get">( Header) <a href="../../src/net/mail/message.go.html#line-156">Get</a>(key <a href="../builtin.html#name-string">string</a>) <a href="../builtin.html#name-string">string</a></label><span id='Header-fold-method-Get-docs' class="fold-docs">
 				Get gets the first value associated with the given key.
 				It is case insensitive; CanonicalMIMEHeaderKey is used
 				to canonicalize the provided key.
@@ -202,53 +202,53 @@
 			<span class="nodocs"><a href="../../src/net/mail/message.go.html#line-283">s</a> <i><a href="../builtin.html#name-string">string</a></i></span></i></span></span>
 		<input type='checkbox' class="fold" id="addrParser-fold-methods"><label for="addrParser-fold-methods">Methods (<i>total 17, none are exported</i>)</label><span id='addrParser-fold-methods-items' class="fold-items">
 			<input type='checkbox' checked class="showhide" id="addrParser-showhide-methods"><i><label for="addrParser-showhide-methods" class="show-inline">/* 17 unexporteds ... */</label><label for="addrParser-showhide-methods" class="hide-inline">/* 17 unexporteds: */</label></i><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../src/net/mail/message.go.html#line-677">consume</a>(c <a href="../builtin.html#name-byte">byte</a>) <a href="../builtin.html#name-bool">bool</a></span></i></span><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="addrParser-fold-method-consumeAddrSpec"><label for="addrParser-fold-method-consumeAddrSpec">(*T) <a href="../../src/net/mail/message.go.html#line-461">consumeAddrSpec</a>() (spec <a href="../builtin.html#name-string">string</a>, err <a href="../builtin.html#name-error">error</a>)</label><span id='addrParser-fold-method-consumeAddrSpec-docs' class="fold-docs">
+			<span class="nodocs">(*addrParser) <a href="../../src/net/mail/message.go.html#line-677">consume</a>(c <a href="../builtin.html#name-byte">byte</a>) <a href="../builtin.html#name-bool">bool</a></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="addrParser-fold-method-consumeAddrSpec"><label for="addrParser-fold-method-consumeAddrSpec">(*addrParser) <a href="../../src/net/mail/message.go.html#line-461">consumeAddrSpec</a>() (spec <a href="../builtin.html#name-string">string</a>, err <a href="../builtin.html#name-error">error</a>)</label><span id='addrParser-fold-method-consumeAddrSpec-docs' class="fold-docs">
 				consumeAddrSpec parses a single RFC 5322 addr-spec at the start of p.
 </span></i></span><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="addrParser-fold-method-consumeAtom"><label for="addrParser-fold-method-consumeAtom">(*T) <a href="../../src/net/mail/message.go.html#line-616">consumeAtom</a>(dot <a href="../builtin.html#name-bool">bool</a>, permissive <a href="../builtin.html#name-bool">bool</a>) (atom <a href="../builtin.html#name-string">string</a>, err <a href="../builtin.html#name-error">error</a>)</label><span id='addrParser-fold-method-consumeAtom-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="addrParser-fold-method-consumeAtom"><label for="addrParser-fold-method-consumeAtom">(*addrParser) <a href="../../src/net/mail/message.go.html#line-616">consumeAtom</a>(dot <a href="../builtin.html#name-bool">bool</a>, permissive <a href="../builtin.html#name-bool">bool</a>) (atom <a href="../builtin.html#name-string">string</a>, err <a href="../builtin.html#name-error">error</a>)</label><span id='addrParser-fold-method-consumeAtom-docs' class="fold-docs">
 				consumeAtom parses an RFC 5322 atom at the start of p.
 				If dot is true, consumeAtom parses an RFC 5322 dot-atom instead.
 				If permissive is true, consumeAtom will not fail on:
 				- leading/trailing/double dots in the atom (see golang.org/issue/4938)
 				- special characters (RFC 5322 3.2.3) except '&lt;', '&gt;', ':' and '"' (see golang.org/issue/21018)
 </span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../src/net/mail/message.go.html#line-721">consumeComment</a>() (<a href="../builtin.html#name-string">string</a>, <a href="../builtin.html#name-bool">bool</a>)</span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../src/net/mail/message.go.html#line-653">consumeDisplayNameComment</a>() (<a href="../builtin.html#name-string">string</a>, <a href="../builtin.html#name-error">error</a>)</span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../src/net/mail/message.go.html#line-428">consumeGroupList</a>() ([]*<a href="#name-Address">Address</a>, <a href="../builtin.html#name-error">error</a>)</span></i></span><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="addrParser-fold-method-consumePhrase"><label for="addrParser-fold-method-consumePhrase">(*T) <a href="../../src/net/mail/message.go.html#line-514">consumePhrase</a>() (phrase <a href="../builtin.html#name-string">string</a>, err <a href="../builtin.html#name-error">error</a>)</label><span id='addrParser-fold-method-consumePhrase-docs' class="fold-docs">
+			<span class="nodocs">(*addrParser) <a href="../../src/net/mail/message.go.html#line-721">consumeComment</a>() (<a href="../builtin.html#name-string">string</a>, <a href="../builtin.html#name-bool">bool</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*addrParser) <a href="../../src/net/mail/message.go.html#line-653">consumeDisplayNameComment</a>() (<a href="../builtin.html#name-string">string</a>, <a href="../builtin.html#name-error">error</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*addrParser) <a href="../../src/net/mail/message.go.html#line-428">consumeGroupList</a>() ([]*<a href="#name-Address">Address</a>, <a href="../builtin.html#name-error">error</a>)</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="addrParser-fold-method-consumePhrase"><label for="addrParser-fold-method-consumePhrase">(*addrParser) <a href="../../src/net/mail/message.go.html#line-514">consumePhrase</a>() (phrase <a href="../builtin.html#name-string">string</a>, err <a href="../builtin.html#name-error">error</a>)</label><span id='addrParser-fold-method-consumePhrase-docs' class="fold-docs">
 				consumePhrase parses the RFC 5322 phrase at the start of p.
 </span></i></span><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="addrParser-fold-method-consumeQuotedString"><label for="addrParser-fold-method-consumeQuotedString">(*T) <a href="../../src/net/mail/message.go.html#line-561">consumeQuotedString</a>() (qs <a href="../builtin.html#name-string">string</a>, err <a href="../builtin.html#name-error">error</a>)</label><span id='addrParser-fold-method-consumeQuotedString-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="addrParser-fold-method-consumeQuotedString"><label for="addrParser-fold-method-consumeQuotedString">(*addrParser) <a href="../../src/net/mail/message.go.html#line-561">consumeQuotedString</a>() (qs <a href="../builtin.html#name-string">string</a>, err <a href="../builtin.html#name-error">error</a>)</label><span id='addrParser-fold-method-consumeQuotedString-docs' class="fold-docs">
 				consumeQuotedString parses the quoted string at the start of p.
 </span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../src/net/mail/message.go.html#line-747">decodeRFC2047Word</a>(s <a href="../builtin.html#name-string">string</a>) (word <a href="../builtin.html#name-string">string</a>, isEncoded <a href="../builtin.html#name-bool">bool</a>, err <a href="../builtin.html#name-error">error</a>)</span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../src/net/mail/message.go.html#line-694">empty</a>() <a href="../builtin.html#name-bool">bool</a></span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../src/net/mail/message.go.html#line-698">len</a>() <a href="../builtin.html#name-int">int</a></span></i></span><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="addrParser-fold-method-parseAddress"><label for="addrParser-fold-method-parseAddress">(*T) <a href="../../src/net/mail/message.go.html#line-345">parseAddress</a>(handleGroup <a href="../builtin.html#name-bool">bool</a>) ([]*<a href="#name-Address">Address</a>, <a href="../builtin.html#name-error">error</a>)</label><span id='addrParser-fold-method-parseAddress-docs' class="fold-docs">
+			<span class="nodocs">(*addrParser) <a href="../../src/net/mail/message.go.html#line-747">decodeRFC2047Word</a>(s <a href="../builtin.html#name-string">string</a>) (word <a href="../builtin.html#name-string">string</a>, isEncoded <a href="../builtin.html#name-bool">bool</a>, err <a href="../builtin.html#name-error">error</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*addrParser) <a href="../../src/net/mail/message.go.html#line-694">empty</a>() <a href="../builtin.html#name-bool">bool</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*addrParser) <a href="../../src/net/mail/message.go.html#line-698">len</a>() <a href="../builtin.html#name-int">int</a></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="addrParser-fold-method-parseAddress"><label for="addrParser-fold-method-parseAddress">(*addrParser) <a href="../../src/net/mail/message.go.html#line-345">parseAddress</a>(handleGroup <a href="../builtin.html#name-bool">bool</a>) ([]*<a href="#name-Address">Address</a>, <a href="../builtin.html#name-error">error</a>)</label><span id='addrParser-fold-method-parseAddress-docs' class="fold-docs">
 				parseAddress parses a single RFC 5322 address at the start of p.
 </span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../src/net/mail/message.go.html#line-287">parseAddressList</a>() ([]*<a href="#name-Address">Address</a>, <a href="../builtin.html#name-error">error</a>)</span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../src/net/mail/message.go.html#line-324">parseSingleAddress</a>() (*<a href="#name-Address">Address</a>, <a href="../builtin.html#name-error">error</a>)</span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../src/net/mail/message.go.html#line-690">peek</a>() <a href="../builtin.html#name-byte">byte</a></span></i></span><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="addrParser-fold-method-skipCFWS"><label for="addrParser-fold-method-skipCFWS">(*T) <a href="../../src/net/mail/message.go.html#line-703">skipCFWS</a>() <a href="../builtin.html#name-bool">bool</a></label><span id='addrParser-fold-method-skipCFWS-docs' class="fold-docs">
+			<span class="nodocs">(*addrParser) <a href="../../src/net/mail/message.go.html#line-287">parseAddressList</a>() ([]*<a href="#name-Address">Address</a>, <a href="../builtin.html#name-error">error</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*addrParser) <a href="../../src/net/mail/message.go.html#line-324">parseSingleAddress</a>() (*<a href="#name-Address">Address</a>, <a href="../builtin.html#name-error">error</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*addrParser) <a href="../../src/net/mail/message.go.html#line-690">peek</a>() <a href="../builtin.html#name-byte">byte</a></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="addrParser-fold-method-skipCFWS"><label for="addrParser-fold-method-skipCFWS">(*addrParser) <a href="../../src/net/mail/message.go.html#line-703">skipCFWS</a>() <a href="../builtin.html#name-bool">bool</a></label><span id='addrParser-fold-method-skipCFWS-docs' class="fold-docs">
 				skipCFWS skips CFWS as defined in RFC5322.
 </span></i></span><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="addrParser-fold-method-skipSpace"><label for="addrParser-fold-method-skipSpace">(*T) <a href="../../src/net/mail/message.go.html#line-686">skipSpace</a>()</label><span id='addrParser-fold-method-skipSpace-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="addrParser-fold-method-skipSpace"><label for="addrParser-fold-method-skipSpace">(*addrParser) <a href="../../src/net/mail/message.go.html#line-686">skipSpace</a>()</label><span id='addrParser-fold-method-skipSpace-docs' class="fold-docs">
 				skipSpace skips the leading space and tab characters.
 </span></i></span></span>
 
 </span></div><div class="anchor type-res hidden" id="name-charsetError" data-popularity="100">	<input type='checkbox' class="fold" id="charsetError-fold-content"><label for="charsetError-fold-content"> type <a href="../../src/net/mail/message.go.html#line-772">charsetError</a> <a href="../builtin.html#name-string">string</a> <i>(basic type)</i></label><span id='charsetError-fold-content-docs' class="fold-docs">
 
 		<input type='checkbox' class="fold" id="charsetError-fold-methods"><label for="charsetError-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='charsetError-fold-methods-items' class="fold-items"><span>
-			<span class="nodocs">( T) <a href="../../src/net/mail/message.go.html#line-774">Error</a>() <a href="../builtin.html#name-string">string</a></span></span></span>
+			<span class="nodocs">( charsetError) <a href="../../src/net/mail/message.go.html#line-774">Error</a>() <a href="../builtin.html#name-string">string</a></span></span></span>
 		<input type='checkbox' class="fold" id="charsetError-fold-impls"><label for="charsetError-fold-impls">Implements (<i>at least one exported</i>)</label><span id='charsetError-fold-impls-items' class="fold-items"><span>
-			 T : <a href="../builtin.html#name-error">error</a></span></span>
+			 charsetError : <a href="../builtin.html#name-error">error</a></span></span>
 
 </span></div><div class="anchor type-res hidden" id="name-debugT" data-popularity="55">	<input type='checkbox' class="fold" id="debugT-fold-content"><label for="debugT-fold-content"> type <a href="../../src/net/mail/message.go.html#line-36">debugT</a> <a href="../builtin.html#name-bool">bool</a> <i>(basic type)</i></label><span id='debugT-fold-content-docs' class="fold-docs">
 
 		<input type='checkbox' class="fold" id="debugT-fold-methods"><label for="debugT-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='debugT-fold-methods-items' class="fold-items"><span>
-			<span class="nodocs">( T) <a href="../../src/net/mail/message.go.html#line-38">Printf</a>(format <a href="../builtin.html#name-string">string</a>, args ...interface{})</span></span></span>
+			<span class="nodocs">( debugT) <a href="../../src/net/mail/message.go.html#line-38">Printf</a>(format <a href="../builtin.html#name-string">string</a>, args ...<a href="../builtin.html#name-any">any</a>)</span></span></span>
 		<input type='checkbox' class="fold" id="debugT-fold-values"><label for="debugT-fold-values">As Types Of (<i>only one, which is unexported</i>)</label><span id='debugT-fold-values-items' class="fold-items">
 			<input type='checkbox' checked class="showhide" id="debugT-showhide-values"><i><label for="debugT-showhide-values" class="show-inline">/* one unexported ... */</label><label for="debugT-showhide-values" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
 			  var <a href="#name-debug">debug</a></i></span></span>
@@ -306,7 +306,7 @@
 
 </span></i></div><div class="anchor value-res hidden" id="name-debug"><i>	<span class="nodocs">  var <a href="../../src/net/mail/message.go.html#line-34">debug</a> <a href="#name-debugT">debugT</a></span></i></div><div class="anchor value-res hidden" id="name-rfc2047Decoder"><i>	<span class="nodocs">  var <a href="../../src/net/mail/message.go.html#line-766">rfc2047Decoder</a> <a href="../mime.html">mime</a>.<a href="../mime.html#name-WordDecoder">WordDecoder</a></span></i></div></div></code></pre><pre id="footer">
 <table><tr><td><img src="../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Package: crypto/des</title>
-<link href="../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../jvs/golds-v0.3.6.js"></script>
+<link href="../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="package-details"><code><span style="font-size:xx-large;">package <b>des</b></span>
@@ -61,9 +61,9 @@
 <div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-KeySizeError" data-popularity="100">	<input type='checkbox' class="fold" id="KeySizeError-fold-content"><label for="KeySizeError-fold-content"> type <a href="../../src/crypto/des/cipher.go.html#line-17">KeySizeError</a> <a href="../builtin.html#name-int">int</a> <i>(basic type)</i></label><span id='KeySizeError-fold-content-docs' class="fold-docs">
 
 		<input type='checkbox' class="fold" id="KeySizeError-fold-methods"><label for="KeySizeError-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='KeySizeError-fold-methods-items' class="fold-items"><span>
-			<span class="nodocs">( T) <a href="../../src/crypto/des/cipher.go.html#line-19">Error</a>() <a href="../builtin.html#name-string">string</a></span></span></span>
+			<span class="nodocs">( KeySizeError) <a href="../../src/crypto/des/cipher.go.html#line-19">Error</a>() <a href="../builtin.html#name-string">string</a></span></span></span>
 		<input type='checkbox' class="fold" id="KeySizeError-fold-impls"><label for="KeySizeError-fold-impls">Implements (<i>at least one exported</i>)</label><span id='KeySizeError-fold-impls-items' class="fold-items"><span>
-			 T : <a href="../builtin.html#name-error">error</a></span></span>
+			 KeySizeError : <a href="../builtin.html#name-error">error</a></span></span>
 
 </span></div></div><div>	<input type='checkbox' class="showhide" id="unexported-typenames-showhide"><i><label for="unexported-typenames-showhide" class="show-inline">/* 2 unexporteds ... */</label><label for="unexported-typenames-showhide" class="hide-inline">/* 2 unexporteds: */</label></i><div class="anchor type-res hidden" id="name-desCipher" data-popularity="250">	<input type='checkbox' class="fold" id="desCipher-fold-content"><label for="desCipher-fold-content"> type <a href="../../src/crypto/des/cipher.go.html#line-24">desCipher</a> <i>(struct)</i></label><span id='desCipher-fold-content-docs' class="fold-docs">
 		desCipher is an instance of DES encryption.
@@ -72,15 +72,15 @@
 			<input type='checkbox' checked class="showhide" id="desCipher-showhide-fields"><i><label for="desCipher-showhide-fields" class="show-inline">/* one unexported ... */</label><label for="desCipher-showhide-fields" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
 			<span class="nodocs"><a href="../../src/crypto/des/cipher.go.html#line-25">subkeys</a> <i>[16]<a href="../builtin.html#name-uint64">uint64</a></i></span></i></span></span>
 		<input type='checkbox' class="fold" id="desCipher-fold-methods"><label for="desCipher-fold-methods">Methods (<i>total 4, in which 3 are exported</i>)</label><span id='desCipher-fold-methods-items' class="fold-items"><span>
-			<span class="nodocs">(*T) <a href="../../src/crypto/des/cipher.go.html#line-39">BlockSize</a>() <a href="../builtin.html#name-int">int</a></span></span><span>
-			<span class="nodocs">(*T) <a href="../../src/crypto/des/cipher.go.html#line-54">Decrypt</a>(dst, src []<a href="../builtin.html#name-byte">byte</a>)</span></span><span>
-			<span class="nodocs">(*T) <a href="../../src/crypto/des/cipher.go.html#line-41">Encrypt</a>(dst, src []<a href="../builtin.html#name-byte">byte</a>)</span></span>
+			<span class="nodocs">(*desCipher) <a href="../../src/crypto/des/cipher.go.html#line-39">BlockSize</a>() <a href="../builtin.html#name-int">int</a></span></span><span>
+			<span class="nodocs">(*desCipher) <a href="../../src/crypto/des/cipher.go.html#line-54">Decrypt</a>(dst, src []<a href="../builtin.html#name-byte">byte</a>)</span></span><span>
+			<span class="nodocs">(*desCipher) <a href="../../src/crypto/des/cipher.go.html#line-41">Encrypt</a>(dst, src []<a href="../builtin.html#name-byte">byte</a>)</span></span>
 			<input type='checkbox' checked class="showhide" id="desCipher-showhide-methods"><i><label for="desCipher-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="desCipher-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="desCipher-fold-method-generateSubkeys"><label for="desCipher-fold-method-generateSubkeys">(*T) <a href="../../src/crypto/des/block.go.html#line-227">generateSubkeys</a>(keyBytes []<a href="../builtin.html#name-byte">byte</a>)</label><span id='desCipher-fold-method-generateSubkeys-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="desCipher-fold-method-generateSubkeys"><label for="desCipher-fold-method-generateSubkeys">(*desCipher) <a href="../../src/crypto/des/block.go.html#line-227">generateSubkeys</a>(keyBytes []<a href="../builtin.html#name-byte">byte</a>)</label><span id='desCipher-fold-method-generateSubkeys-docs' class="fold-docs">
 				creates 16 56-bit subkeys from the original key
 </span></i></span></span>
 		<input type='checkbox' class="fold" id="desCipher-fold-impls"><label for="desCipher-fold-impls">Implements (<i>at least one exported</i>)</label><span id='desCipher-fold-impls-items' class="fold-items"><span>
-			*T : crypto/cipher.<a href="cipher.html#name-Block">Block</a></span></span>
+			*desCipher : crypto/cipher.<a href="cipher.html#name-Block">Block</a></span></span>
 
 </span></div><div class="anchor type-res hidden" id="name-tripleDESCipher" data-popularity="200">	<input type='checkbox' class="fold" id="tripleDESCipher-fold-content"><label for="tripleDESCipher-fold-content"> type <a href="../../src/crypto/des/cipher.go.html#line-68">tripleDESCipher</a> <i>(struct)</i></label><span id='tripleDESCipher-fold-content-docs' class="fold-docs">
 		A tripleDESCipher is an instance of TripleDES encryption.
@@ -91,11 +91,11 @@
 			<span class="nodocs"><a href="../../src/crypto/des/cipher.go.html#line-69">cipher2</a> <i><a href="#name-desCipher">desCipher</a></i></span></i></span><span class="hidden"><i>
 			<span class="nodocs"><a href="../../src/crypto/des/cipher.go.html#line-69">cipher3</a> <i><a href="#name-desCipher">desCipher</a></i></span></i></span></span>
 		<input type='checkbox' class="fold" id="tripleDESCipher-fold-methods"><label for="tripleDESCipher-fold-methods">Methods (<i>total 3, all are exported</i>)</label><span id='tripleDESCipher-fold-methods-items' class="fold-items"><span>
-			<span class="nodocs">(*T) <a href="../../src/crypto/des/cipher.go.html#line-85">BlockSize</a>() <a href="../builtin.html#name-int">int</a></span></span><span>
-			<span class="nodocs">(*T) <a href="../../src/crypto/des/cipher.go.html#line-122">Decrypt</a>(dst, src []<a href="../builtin.html#name-byte">byte</a>)</span></span><span>
-			<span class="nodocs">(*T) <a href="../../src/crypto/des/cipher.go.html#line-87">Encrypt</a>(dst, src []<a href="../builtin.html#name-byte">byte</a>)</span></span></span>
+			<span class="nodocs">(*tripleDESCipher) <a href="../../src/crypto/des/cipher.go.html#line-85">BlockSize</a>() <a href="../builtin.html#name-int">int</a></span></span><span>
+			<span class="nodocs">(*tripleDESCipher) <a href="../../src/crypto/des/cipher.go.html#line-122">Decrypt</a>(dst, src []<a href="../builtin.html#name-byte">byte</a>)</span></span><span>
+			<span class="nodocs">(*tripleDESCipher) <a href="../../src/crypto/des/cipher.go.html#line-87">Encrypt</a>(dst, src []<a href="../builtin.html#name-byte">byte</a>)</span></span></span>
 		<input type='checkbox' class="fold" id="tripleDESCipher-fold-impls"><label for="tripleDESCipher-fold-impls">Implements (<i>at least one exported</i>)</label><span id='tripleDESCipher-fold-impls-items' class="fold-items"><span>
-			*T : crypto/cipher.<a href="cipher.html#name-Block">Block</a></span></span>
+			*tripleDESCipher : crypto/cipher.<a href="cipher.html#name-Block">Block</a></span></span>
 
 </span></div></div>
 <div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 12, in which 2 are exported)</i></span></span>
@@ -180,7 +180,7 @@
 
 </span></div></div></code></pre><pre id="footer">
 <table><tr><td><img src="../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: zoneinfo_read.go in package time</title>
-<link href="../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../jvs/golds-v0.3.6.js"></script>
+<link href="../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -593,7 +593,7 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-267"><code>			<span class="keyword">return</span> <a href="../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="#line-110" class="ident">badData</a></code></span>
 <span class="codeline" id="line-268"><code>		}</code></span>
 <span class="codeline" id="line-269"><code>		<label for="r64" class="ident">zones</label>[<label for="r65" class="ident">i</label>].<a href="zoneinfo.go.html#line-47" class="ident">name</a> = <a href="#line-101" class="ident">byteString</a>(<label for="r58" class="ident">abbrev</label>[<label for="r68" class="ident">b</label>:])</code></span>
-<span class="codeline" id="line-270"><code>		<span class="keyword">if</span> <a href="../../pkg/runtime.html" class="ident i1">runtime</a>.<a href="../runtime/extern.go.html#line-253" class="ident">GOOS</a> == <span class="lit-string">"aix"</span> &amp;&amp; <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r33" class="ident">name</label>) &gt; <span class="lit-number">8</span> &amp;&amp; (<label for="r33" class="ident">name</label>[:<span class="lit-number">8</span>] == <span class="lit-string">"Etc/GMT+"</span> || <label for="r33" class="ident">name</label>[:<span class="lit-number">8</span>] == <span class="lit-string">"Etc/GMT-"</span>) {</code></span>
+<span class="codeline" id="line-270"><code>		<span class="keyword">if</span> <a href="../../pkg/runtime.html" class="ident i1">runtime</a>.<a href="../runtime/extern.go.html#line-271" class="ident">GOOS</a> == <span class="lit-string">"aix"</span> &amp;&amp; <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r33" class="ident">name</label>) &gt; <span class="lit-number">8</span> &amp;&amp; (<label for="r33" class="ident">name</label>[:<span class="lit-number">8</span>] == <span class="lit-string">"Etc/GMT+"</span> || <label for="r33" class="ident">name</label>[:<span class="lit-number">8</span>] == <span class="lit-string">"Etc/GMT-"</span>) {</code></span>
 <span class="codeline" id="line-271"><code>			<span class="comment">// There is a bug with AIX 7.2 TL 0 with files in Etc,</span></code></span>
 <span class="codeline" id="line-272"><code><span class="comment">			// GMT+1 will return GMT-1 instead of GMT+1 or -01.</span></code></span>
 <span class="codeline" id="line-273"><code>			<span class="keyword">if</span> <label for="r33" class="ident">name</label> != <span class="lit-string">"Etc/GMT+0"</span> {</code></span>
@@ -644,7 +644,7 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-318"><code></code></span>
 <span class="codeline" id="line-319"><code>	<span class="comment">// Fill in the cache with information about right now,</span></code></span>
 <span class="codeline" id="line-320"><code><span class="comment">	// since that will be the most common lookup.</span></code></span>
-<span class="codeline" id="line-321"><code>	<label for="r77" class="ident">sec</label>, <label for="r78" class="ident">_</label>, <label for="r79" class="ident">_</label> := <a href="time.go.html#line-1051" class="ident">now</a>()</code></span>
+<span class="codeline" id="line-321"><code>	<label for="r77" class="ident">sec</label>, <label for="r78" class="ident">_</label>, <label for="r79" class="ident">_</label> := <a href="time.go.html#line-1057" class="ident">now</a>()</code></span>
 <span class="codeline" id="line-322"><code>	<span class="keyword">for</span> <label for="r80" class="ident">i</label> := <span class="keyword">range</span> <label for="r69" class="ident">tx</label> {</code></span>
 <span class="codeline" id="line-323"><code>		<span class="keyword">if</span> <label for="r69" class="ident">tx</label>[<label for="r80" class="ident">i</label>].<a href="zoneinfo.go.html#line-54" class="ident">when</a> &lt;= <label for="r77" class="ident">sec</label> &amp;&amp; (<label for="r80" class="ident">i</label>+<span class="lit-number">1</span> == <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r69" class="ident">tx</label>) || <label for="r77" class="ident">sec</label> &lt; <label for="r69" class="ident">tx</label>[<label for="r80" class="ident">i</label>+<span class="lit-number">1</span>].<a href="zoneinfo.go.html#line-54" class="ident">when</a>) {</code></span>
 <span class="codeline" id="line-324"><code>			<label for="r76" class="ident">l</label>.<a href="zoneinfo.go.html#line-40" class="ident">cacheStart</a> = <label for="r69" class="ident">tx</label>[<label for="r80" class="ident">i</label>].<a href="zoneinfo.go.html#line-54" class="ident">when</a></code></span>
@@ -655,7 +655,7 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-329"><code>			} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r76" class="ident">l</label>.<a href="zoneinfo.go.html#line-29" class="ident">extend</a> != <span class="lit-string">""</span> {</code></span>
 <span class="codeline" id="line-330"><code>				<span class="comment">// If we're at the end of the known zone transitions,</span></code></span>
 <span class="codeline" id="line-331"><code><span class="comment">				// try the extend string.</span></code></span>
-<span class="codeline" id="line-332"><code>				<span class="keyword">if</span> <label for="r81" class="ident">name</label>, <label for="r82" class="ident">offset</label>, <label for="r83" class="ident">estart</label>, <label for="r84" class="ident">eend</label>, <label for="r85" class="ident">isDST</label>, <label for="r86" class="ident">ok</label> := <a href="zoneinfo.go.html#line-247" class="ident">tzset</a>(<label for="r76" class="ident">l</label>.<a href="zoneinfo.go.html#line-29" class="ident">extend</a>, <label for="r76" class="ident">l</label>.<a href="zoneinfo.go.html#line-41" class="ident">cacheEnd</a>, <label for="r77" class="ident">sec</label>); <label for="r86" class="ident">ok</label> {</code></span>
+<span class="codeline" id="line-332"><code>				<span class="keyword">if</span> <label for="r81" class="ident">name</label>, <label for="r82" class="ident">offset</label>, <label for="r83" class="ident">estart</label>, <label for="r84" class="ident">eend</label>, <label for="r85" class="ident">isDST</label>, <label for="r86" class="ident">ok</label> := <a href="zoneinfo.go.html#line-251" class="ident">tzset</a>(<label for="r76" class="ident">l</label>.<a href="zoneinfo.go.html#line-29" class="ident">extend</a>, <label for="r76" class="ident">l</label>.<a href="zoneinfo.go.html#line-41" class="ident">cacheEnd</a>, <label for="r77" class="ident">sec</label>); <label for="r86" class="ident">ok</label> {</code></span>
 <span class="codeline" id="line-333"><code>					<label for="r76" class="ident">l</label>.<a href="zoneinfo.go.html#line-40" class="ident">cacheStart</a> = <label for="r83" class="ident">estart</label></code></span>
 <span class="codeline" id="line-334"><code>					<label for="r76" class="ident">l</label>.<a href="zoneinfo.go.html#line-41" class="ident">cacheEnd</a> = <label for="r84" class="ident">eend</label></code></span>
 <span class="codeline" id="line-335"><code>					<span class="comment">// Find the zone that is returned by tzset to avoid allocation if possible.</span></code></span>
@@ -912,7 +912,7 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-586"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Package: unicode</title>
-<link href="../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../jvs/golds-v0.3.6.js"></script>
+<link href="../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="package-details"><code><span style="font-size:xx-large;">package <b>unicode</b></span>
@@ -15,7 +15,7 @@
 	<a href="../index.html#pkg-unicode">unicode</a><i> (on <a href="https://pkg.go.dev/unicode" target="_blank">go.dev</a>)</i>
 
 <span class="title">Dependency Relation</span>
-	imports 0 packages, and imported by <a href="../dep/unicode.html#imported-by">14 packages</a>
+	imports 0 packages, and imported by <a href="../dep/unicode.html#imported-by">18 packages</a>
 
 <div id="files"><span class="title">Involved Source Files</span>
 
@@ -29,7 +29,100 @@
 	<span class="nodocs">      <a href="../src/unicode/tables.go.html">tables.go</a></span></div>
 <div id="examples"><span class="title">Code Examples</span>
 
-	<input type='checkbox' class="fold" id="example-0-fold-content"><label for="example-0-fold-content">SimpleFold</label><span id='example-0-fold-content-items' class="fold-items">
+	<input type='checkbox' class="fold" id="example-0-fold-content"><label for="example-0-fold-content">IsDigit</label><span id='example-0-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+			"unicode"
+		)
+		
+		func main() {
+			fmt.Printf("%t\n", unicode.IsDigit('৩'))
+			fmt.Printf("%t\n", unicode.IsDigit('A'))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-1-fold-content"><label for="example-1-fold-content">IsLetter</label><span id='example-1-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+			"unicode"
+		)
+		
+		func main() {
+			fmt.Printf("%t\n", unicode.IsLetter('A'))
+			fmt.Printf("%t\n", unicode.IsLetter('7'))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-2-fold-content"><label for="example-2-fold-content">IsLower</label><span id='example-2-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+			"unicode"
+		)
+		
+		func main() {
+			fmt.Printf("%t\n", unicode.IsLower('a'))
+			fmt.Printf("%t\n", unicode.IsLower('A'))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-3-fold-content"><label for="example-3-fold-content">IsNumber</label><span id='example-3-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+			"unicode"
+		)
+		
+		func main() {
+			fmt.Printf("%t\n", unicode.IsNumber('Ⅷ'))
+			fmt.Printf("%t\n", unicode.IsNumber('A'))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-4-fold-content"><label for="example-4-fold-content">IsSpace</label><span id='example-4-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+			"unicode"
+		)
+		
+		func main() {
+			fmt.Printf("%t\n", unicode.IsSpace(' '))
+			fmt.Printf("%t\n", unicode.IsSpace('\n'))
+			fmt.Printf("%t\n", unicode.IsSpace('\t'))
+			fmt.Printf("%t\n", unicode.IsSpace('a'))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-5-fold-content"><label for="example-5-fold-content">IsTitle</label><span id='example-5-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+			"unicode"
+		)
+		
+		func main() {
+			fmt.Printf("%t\n", unicode.IsTitle('ǅ'))
+			fmt.Printf("%t\n", unicode.IsTitle('a'))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-6-fold-content"><label for="example-6-fold-content">IsUpper</label><span id='example-6-fold-content-items' class="fold-items">
+		package main
+		
+		import (
+			"fmt"
+			"unicode"
+		)
+		
+		func main() {
+			fmt.Printf("%t\n", unicode.IsUpper('A'))
+			fmt.Printf("%t\n", unicode.IsUpper('a'))
+		}
+</span>
+	<input type='checkbox' class="fold" id="example-7-fold-content"><label for="example-7-fold-content">SimpleFold</label><span id='example-7-fold-content-items' class="fold-items">
 		package main
 		
 		import (
@@ -47,7 +140,7 @@
 		
 		}
 </span>
-	<input type='checkbox' class="fold" id="example-1-fold-content"><label for="example-1-fold-content">SpecialCase</label><span id='example-1-fold-content-items' class="fold-items">
+	<input type='checkbox' class="fold" id="example-8-fold-content"><label for="example-8-fold-content">SpecialCase</label><span id='example-8-fold-content-items' class="fold-items">
 		package main
 		
 		import (
@@ -70,7 +163,7 @@
 		
 		}
 </span>
-	<input type='checkbox' class="fold" id="example-2-fold-content"><label for="example-2-fold-content">To</label><span id='example-2-fold-content-items' class="fold-items">
+	<input type='checkbox' class="fold" id="example-9-fold-content"><label for="example-9-fold-content">To</label><span id='example-9-fold-content-items' class="fold-items">
 		package main
 		
 		import (
@@ -91,7 +184,7 @@
 		
 		}
 </span>
-	<input type='checkbox' class="fold" id="example-3-fold-content"><label for="example-3-fold-content">ToLower</label><span id='example-3-fold-content-items' class="fold-items">
+	<input type='checkbox' class="fold" id="example-10-fold-content"><label for="example-10-fold-content">ToLower</label><span id='example-10-fold-content-items' class="fold-items">
 		package main
 		
 		import (
@@ -105,7 +198,7 @@
 		
 		}
 </span>
-	<input type='checkbox' class="fold" id="example-4-fold-content"><label for="example-4-fold-content">ToTitle</label><span id='example-4-fold-content-items' class="fold-items">
+	<input type='checkbox' class="fold" id="example-11-fold-content"><label for="example-11-fold-content">ToTitle</label><span id='example-11-fold-content-items' class="fold-items">
 		package main
 		
 		import (
@@ -119,7 +212,7 @@
 		
 		}
 </span>
-	<input type='checkbox' class="fold" id="example-5-fold-content"><label for="example-5-fold-content">ToUpper</label><span id='example-5-fold-content-items' class="fold-items">
+	<input type='checkbox' class="fold" id="example-12-fold-content"><label for="example-12-fold-content">ToUpper</label><span id='example-12-fold-content-items' class="fold-items">
 		package main
 		
 		import (
@@ -133,7 +226,7 @@
 		
 		}
 </span>
-	<input type='checkbox' class="fold" id="example-6-fold-content"><label for="example-6-fold-content">_is</label><span id='example-6-fold-content-items' class="fold-items">
+	<input type='checkbox' class="fold" id="example-13-fold-content"><label for="example-13-fold-content">_is</label><span id='example-13-fold-content-items' class="fold-items">
 		package main
 		
 		import (
@@ -743,18 +836,18 @@
 			  var <a href="#name-foldMn">foldMn</a> *RangeTable</i></span><span class="hidden"><i>
 			  var regexp/syntax.<a href="regexp/syntax.html#name-anyTable">anyTable</a> *RangeTable</i></span></span>
 
-</span></div><div class="anchor type-res" id="name-SpecialCase" data-popularity="375">	<input type='checkbox' class="fold" id="SpecialCase-fold-content"><label for="SpecialCase-fold-content"> type <a href="../src/unicode/letter.go.html#line-62">SpecialCase</a> <i>([]T)</i></label><span id='SpecialCase-fold-content-docs' class="fold-docs">
+</span></div><div class="anchor type-res" id="name-SpecialCase" data-popularity="375">	<input type='checkbox' class="fold" id="SpecialCase-fold-content"><label for="SpecialCase-fold-content"> type <a href="../src/unicode/letter.go.html#line-62">SpecialCase</a> <i>([])</i></label><span id='SpecialCase-fold-content-docs' class="fold-docs">
 		SpecialCase represents language-specific case mappings such as Turkish.
 		Methods of SpecialCase customize (by overriding) the standard mappings.
 
 		<input type='checkbox' class="fold" id="SpecialCase-fold-methods"><label for="SpecialCase-fold-methods">Methods (<i>total 3, all are exported</i>)</label><span id='SpecialCase-fold-methods-items' class="fold-items"><span>
-			<input type='checkbox' class="fold" id="SpecialCase-fold-method-ToLower"><label for="SpecialCase-fold-method-ToLower">( T) <a href="../src/unicode/letter.go.html#line-301">ToLower</a>(r <a href="builtin.html#name-rune">rune</a>) <a href="builtin.html#name-rune">rune</a></label><span id='SpecialCase-fold-method-ToLower-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="SpecialCase-fold-method-ToLower"><label for="SpecialCase-fold-method-ToLower">( SpecialCase) <a href="../src/unicode/letter.go.html#line-303">ToLower</a>(r <a href="builtin.html#name-rune">rune</a>) <a href="builtin.html#name-rune">rune</a></label><span id='SpecialCase-fold-method-ToLower-docs' class="fold-docs">
 				ToLower maps the rune to lower case giving priority to the special mapping.
 </span></span><span>
-			<input type='checkbox' class="fold" id="SpecialCase-fold-method-ToTitle"><label for="SpecialCase-fold-method-ToTitle">( T) <a href="../src/unicode/letter.go.html#line-292">ToTitle</a>(r <a href="builtin.html#name-rune">rune</a>) <a href="builtin.html#name-rune">rune</a></label><span id='SpecialCase-fold-method-ToTitle-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="SpecialCase-fold-method-ToTitle"><label for="SpecialCase-fold-method-ToTitle">( SpecialCase) <a href="../src/unicode/letter.go.html#line-294">ToTitle</a>(r <a href="builtin.html#name-rune">rune</a>) <a href="builtin.html#name-rune">rune</a></label><span id='SpecialCase-fold-method-ToTitle-docs' class="fold-docs">
 				ToTitle maps the rune to title case giving priority to the special mapping.
 </span></span><span>
-			<input type='checkbox' class="fold" id="SpecialCase-fold-method-ToUpper"><label for="SpecialCase-fold-method-ToUpper">( T) <a href="../src/unicode/letter.go.html#line-283">ToUpper</a>(r <a href="builtin.html#name-rune">rune</a>) <a href="builtin.html#name-rune">rune</a></label><span id='SpecialCase-fold-method-ToUpper-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="SpecialCase-fold-method-ToUpper"><label for="SpecialCase-fold-method-ToUpper">( SpecialCase) <a href="../src/unicode/letter.go.html#line-285">ToUpper</a>(r <a href="builtin.html#name-rune">rune</a>) <a href="builtin.html#name-rune">rune</a></label><span id='SpecialCase-fold-method-ToUpper-docs' class="fold-docs">
 				ToUpper maps the rune to upper case giving priority to the special mapping.
 </span></span></span>
 		<input type='checkbox' class="fold" id="SpecialCase-fold-params"><label for="SpecialCase-fold-params">As Inputs Of (<i>at least 6, all are exported</i>)</label><span id='SpecialCase-fold-params-items' class="fold-items"><span>
@@ -770,15 +863,15 @@
 			<input type='checkbox' class="showhide" id="SpecialCase-showhide-values"><i><label for="SpecialCase-showhide-values" class="show-inline">/* one unexported ... */</label><label for="SpecialCase-showhide-values" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
 			  var <a href="#name-_TurkishCase">_TurkishCase</a></i></span></span>
 
-</span></div></div><div>	<input type='checkbox' class="showhide" id="unexported-typenames-showhide"><i><label for="unexported-typenames-showhide" class="show-inline">/* 2 unexporteds ... */</label><label for="unexported-typenames-showhide" class="hide-inline">/* 2 unexporteds: */</label></i><div class="anchor type-res hidden" id="name-d" data-popularity="0">	<span class="nodocs"> type <a href="../src/unicode/letter.go.html#line-75">d</a> <i>([...]T)</i></span></div><div class="anchor type-res hidden" id="name-foldPair" data-popularity="0">	<input type='checkbox' class="fold" id="foldPair-fold-content"><label for="foldPair-fold-content"> type <a href="../src/unicode/letter.go.html#line-313">foldPair</a> <i>(struct)</i></label><span id='foldPair-fold-content-docs' class="fold-docs">
+</span></div></div><div>	<input type='checkbox' class="showhide" id="unexported-typenames-showhide"><i><label for="unexported-typenames-showhide" class="show-inline">/* 2 unexporteds ... */</label><label for="unexported-typenames-showhide" class="hide-inline">/* 2 unexporteds: */</label></i><div class="anchor type-res hidden" id="name-d" data-popularity="0">	<span class="nodocs"> type <a href="../src/unicode/letter.go.html#line-75">d</a> <i>([...])</i></span></div><div class="anchor type-res hidden" id="name-foldPair" data-popularity="0">	<input type='checkbox' class="fold" id="foldPair-fold-content"><label for="foldPair-fold-content"> type <a href="../src/unicode/letter.go.html#line-315">foldPair</a> <i>(struct)</i></label><span id='foldPair-fold-content-docs' class="fold-docs">
 		caseOrbit is defined in tables.go as []foldPair. Right now all the
 		entries fit in uint16, so use uint16. If that changes, compilation
 		will fail (the constants in the composite literal will not fit in uint16)
 		and the types here can change to uint32.
 
 		<input type='checkbox' class="fold" id="foldPair-fold-fields"><label for="foldPair-fold-fields">Fields (<i>total 2, both are exported</i>)</label><span id='foldPair-fold-fields-items' class="fold-items"><span>
-			<span class="nodocs"><a href="../src/unicode/letter.go.html#line-314">From</a> <i><a href="builtin.html#name-uint16">uint16</a></i></span></span><span>
-			<span class="nodocs"><a href="../src/unicode/letter.go.html#line-315">To</a> <i><a href="builtin.html#name-uint16">uint16</a></i></span></span></span>
+			<span class="nodocs"><a href="../src/unicode/letter.go.html#line-316">From</a> <i><a href="builtin.html#name-uint16">uint16</a></i></span></span><span>
+			<span class="nodocs"><a href="../src/unicode/letter.go.html#line-317">To</a> <i><a href="builtin.html#name-uint16">uint16</a></i></span></span></span>
 
 </span></div></div>
 <div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 25, in which 21 are exported)</i></span></span>
@@ -805,7 +898,7 @@
 </span></div><div class="anchor value-res" id="name-IsLetter">	<input type='checkbox' class="fold" id="IsLetter-fold-content"><label for="IsLetter-fold-content"> func <a href="../src/unicode/graphic.go.html#line-90">IsLetter</a>(r <a href="builtin.html#name-rune">rune</a>) <a href="builtin.html#name-bool">bool</a></label><span id='IsLetter-fold-content-docs' class="fold-docs">
 		IsLetter reports whether the rune is a letter (category L).
 
-</span></div><div class="anchor value-res" id="name-IsLower">	<input type='checkbox' class="fold" id="IsLower-fold-content"><label for="IsLower-fold-content"> func <a href="../src/unicode/letter.go.html#line-189">IsLower</a>(r <a href="builtin.html#name-rune">rune</a>) <a href="builtin.html#name-bool">bool</a></label><span id='IsLower-fold-content-docs' class="fold-docs">
+</span></div><div class="anchor value-res" id="name-IsLower">	<input type='checkbox' class="fold" id="IsLower-fold-content"><label for="IsLower-fold-content"> func <a href="../src/unicode/letter.go.html#line-191">IsLower</a>(r <a href="builtin.html#name-rune">rune</a>) <a href="builtin.html#name-bool">bool</a></label><span id='IsLower-fold-content-docs' class="fold-docs">
 		IsLower reports whether the rune is a lower case letter.
 
 </span></div><div class="anchor value-res" id="name-IsMark">	<input type='checkbox' class="fold" id="IsMark-fold-content"><label for="IsMark-fold-content"> func <a href="../src/unicode/graphic.go.html#line-98">IsMark</a>(r <a href="builtin.html#name-rune">rune</a>) <a href="builtin.html#name-bool">bool</a></label><span id='IsMark-fold-content-docs' class="fold-docs">
@@ -840,13 +933,13 @@
 </span></div><div class="anchor value-res" id="name-IsSymbol">	<input type='checkbox' class="fold" id="IsSymbol-fold-content"><label for="IsSymbol-fold-content"> func <a href="../src/unicode/graphic.go.html#line-139">IsSymbol</a>(r <a href="builtin.html#name-rune">rune</a>) <a href="builtin.html#name-bool">bool</a></label><span id='IsSymbol-fold-content-docs' class="fold-docs">
 		IsSymbol reports whether the rune is a symbolic character.
 
-</span></div><div class="anchor value-res" id="name-IsTitle">	<input type='checkbox' class="fold" id="IsTitle-fold-content"><label for="IsTitle-fold-content"> func <a href="../src/unicode/letter.go.html#line-198">IsTitle</a>(r <a href="builtin.html#name-rune">rune</a>) <a href="builtin.html#name-bool">bool</a></label><span id='IsTitle-fold-content-docs' class="fold-docs">
+</span></div><div class="anchor value-res" id="name-IsTitle">	<input type='checkbox' class="fold" id="IsTitle-fold-content"><label for="IsTitle-fold-content"> func <a href="../src/unicode/letter.go.html#line-200">IsTitle</a>(r <a href="builtin.html#name-rune">rune</a>) <a href="builtin.html#name-bool">bool</a></label><span id='IsTitle-fold-content-docs' class="fold-docs">
 		IsTitle reports whether the rune is a title case letter.
 
-</span></div><div class="anchor value-res" id="name-IsUpper">	<input type='checkbox' class="fold" id="IsUpper-fold-content"><label for="IsUpper-fold-content"> func <a href="../src/unicode/letter.go.html#line-180">IsUpper</a>(r <a href="builtin.html#name-rune">rune</a>) <a href="builtin.html#name-bool">bool</a></label><span id='IsUpper-fold-content-docs' class="fold-docs">
+</span></div><div class="anchor value-res" id="name-IsUpper">	<input type='checkbox' class="fold" id="IsUpper-fold-content"><label for="IsUpper-fold-content"> func <a href="../src/unicode/letter.go.html#line-182">IsUpper</a>(r <a href="builtin.html#name-rune">rune</a>) <a href="builtin.html#name-bool">bool</a></label><span id='IsUpper-fold-content-docs' class="fold-docs">
 		IsUpper reports whether the rune is an upper case letter.
 
-</span></div><div class="anchor value-res" id="name-SimpleFold">	<input type='checkbox' class="fold" id="SimpleFold-fold-content"><label for="SimpleFold-fold-content"> func <a href="../src/unicode/letter.go.html#line-336">SimpleFold</a>(r <a href="builtin.html#name-rune">rune</a>) <a href="builtin.html#name-rune">rune</a></label><span id='SimpleFold-fold-content-docs' class="fold-docs">
+</span></div><div class="anchor value-res" id="name-SimpleFold">	<input type='checkbox' class="fold" id="SimpleFold-fold-content"><label for="SimpleFold-fold-content"> func <a href="../src/unicode/letter.go.html#line-338">SimpleFold</a>(r <a href="builtin.html#name-rune">rune</a>) <a href="builtin.html#name-rune">rune</a></label><span id='SimpleFold-fold-content-docs' class="fold-docs">
 		SimpleFold iterates over Unicode code points equivalent under
 		the Unicode-defined simple case folding. Among the code points
 		equivalent to rune (including rune itself), SimpleFold returns the
@@ -865,16 +958,16 @@
 
 			SimpleFold(-2) = -2
 
-</span></div><div class="anchor value-res" id="name-To">	<input type='checkbox' class="fold" id="To-fold-content"><label for="To-fold-content"> func <a href="../src/unicode/letter.go.html#line-244">To</a>(_case <a href="builtin.html#name-int">int</a>, r <a href="builtin.html#name-rune">rune</a>) <a href="builtin.html#name-rune">rune</a></label><span id='To-fold-content-docs' class="fold-docs">
+</span></div><div class="anchor value-res" id="name-To">	<input type='checkbox' class="fold" id="To-fold-content"><label for="To-fold-content"> func <a href="../src/unicode/letter.go.html#line-246">To</a>(_case <a href="builtin.html#name-int">int</a>, r <a href="builtin.html#name-rune">rune</a>) <a href="builtin.html#name-rune">rune</a></label><span id='To-fold-content-docs' class="fold-docs">
 		To maps the rune to the specified case: UpperCase, LowerCase, or TitleCase.
 
-</span></div><div class="anchor value-res" id="name-ToLower">	<input type='checkbox' class="fold" id="ToLower-fold-content"><label for="ToLower-fold-content"> func <a href="../src/unicode/letter.go.html#line-261">ToLower</a>(r <a href="builtin.html#name-rune">rune</a>) <a href="builtin.html#name-rune">rune</a></label><span id='ToLower-fold-content-docs' class="fold-docs">
+</span></div><div class="anchor value-res" id="name-ToLower">	<input type='checkbox' class="fold" id="ToLower-fold-content"><label for="ToLower-fold-content"> func <a href="../src/unicode/letter.go.html#line-263">ToLower</a>(r <a href="builtin.html#name-rune">rune</a>) <a href="builtin.html#name-rune">rune</a></label><span id='ToLower-fold-content-docs' class="fold-docs">
 		ToLower maps the rune to lower case.
 
-</span></div><div class="anchor value-res" id="name-ToTitle">	<input type='checkbox' class="fold" id="ToTitle-fold-content"><label for="ToTitle-fold-content"> func <a href="../src/unicode/letter.go.html#line-272">ToTitle</a>(r <a href="builtin.html#name-rune">rune</a>) <a href="builtin.html#name-rune">rune</a></label><span id='ToTitle-fold-content-docs' class="fold-docs">
+</span></div><div class="anchor value-res" id="name-ToTitle">	<input type='checkbox' class="fold" id="ToTitle-fold-content"><label for="ToTitle-fold-content"> func <a href="../src/unicode/letter.go.html#line-274">ToTitle</a>(r <a href="builtin.html#name-rune">rune</a>) <a href="builtin.html#name-rune">rune</a></label><span id='ToTitle-fold-content-docs' class="fold-docs">
 		ToTitle maps the rune to title case.
 
-</span></div><div class="anchor value-res" id="name-ToUpper">	<input type='checkbox' class="fold" id="ToUpper-fold-content"><label for="ToUpper-fold-content"> func <a href="../src/unicode/letter.go.html#line-250">ToUpper</a>(r <a href="builtin.html#name-rune">rune</a>) <a href="builtin.html#name-rune">rune</a></label><span id='ToUpper-fold-content-docs' class="fold-docs">
+</span></div><div class="anchor value-res" id="name-ToUpper">	<input type='checkbox' class="fold" id="ToUpper-fold-content"><label for="ToUpper-fold-content"> func <a href="../src/unicode/letter.go.html#line-252">ToUpper</a>(r <a href="builtin.html#name-rune">rune</a>) <a href="builtin.html#name-rune">rune</a></label><span id='ToUpper-fold-content-docs' class="fold-docs">
 		ToUpper maps the rune to upper case.
 
 </span></div>	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* 4 unexporteds ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* 4 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-is16"><i>	<input type='checkbox' class="fold" id="is16-fold-content"><label for="is16-fold-content"> func <a href="../src/unicode/letter.go.html#line-89">is16</a>(ranges []<a href="#name-Range16">Range16</a>, r <a href="builtin.html#name-uint16">uint16</a>) <a href="builtin.html#name-bool">bool</a></label><span id='is16-fold-content-docs' class="fold-docs">
@@ -883,7 +976,7 @@
 </span></i></div><div class="anchor value-res hidden" id="name-is32"><i>	<input type='checkbox' class="fold" id="is32-fold-content"><label for="is32-fold-content"> func <a href="../src/unicode/letter.go.html#line-122">is32</a>(ranges []<a href="#name-Range32">Range32</a>, r <a href="builtin.html#name-uint32">uint32</a>) <a href="builtin.html#name-bool">bool</a></label><span id='is32-fold-content-docs' class="fold-docs">
 		is32 reports whether r is in the sorted slice of 32-bit ranges.
 
-</span></i></div><div class="anchor value-res hidden" id="name-isExcludingLatin"><i>	<span class="nodocs"> func <a href="../src/unicode/letter.go.html#line-167">isExcludingLatin</a>(rangeTab *<a href="#name-RangeTable">RangeTable</a>, r <a href="builtin.html#name-rune">rune</a>) <a href="builtin.html#name-bool">bool</a></span></i></div><div class="anchor value-res hidden" id="name-to"><i>	<input type='checkbox' class="fold" id="to-fold-content"><label for="to-fold-content"> func <a href="../src/unicode/letter.go.html#line-207">to</a>(_case <a href="builtin.html#name-int">int</a>, r <a href="builtin.html#name-rune">rune</a>, caseRange []<a href="#name-CaseRange">CaseRange</a>) (mappedRune <a href="builtin.html#name-rune">rune</a>, foundMapping <a href="builtin.html#name-bool">bool</a>)</label><span id='to-fold-content-docs' class="fold-docs">
+</span></i></div><div class="anchor value-res hidden" id="name-isExcludingLatin"><i>	<span class="nodocs"> func <a href="../src/unicode/letter.go.html#line-168">isExcludingLatin</a>(rangeTab *<a href="#name-RangeTable">RangeTable</a>, r <a href="builtin.html#name-rune">rune</a>) <a href="builtin.html#name-bool">bool</a></span></i></div><div class="anchor value-res hidden" id="name-to"><i>	<input type='checkbox' class="fold" id="to-fold-content"><label for="to-fold-content"> func <a href="../src/unicode/letter.go.html#line-209">to</a>(_case <a href="builtin.html#name-int">int</a>, r <a href="builtin.html#name-rune">rune</a>, caseRange []<a href="#name-CaseRange">CaseRange</a>) (mappedRune <a href="builtin.html#name-rune">rune</a>, foundMapping <a href="builtin.html#name-bool">bool</a>)</label><span id='to-fold-content-docs' class="fold-docs">
 		to maps the rune using the specified case mapping.
 		It additionally reports whether caseRange contained a mapping for r.
 
@@ -1698,7 +1791,7 @@
 
 </span></i></div></div></code></pre><pre id="footer">
 <table><tr><td><img src="../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

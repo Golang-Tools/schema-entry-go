@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: unsafe_array.go in package github.com/modern-go/reflect2</title>
-<link href="../../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -109,12 +109,12 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-13"><code>	likePtr    <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
 <span class="codeline" id="line-14"><code>}</code></span>
 <span class="codeline" id="line-15"><code></code></span>
-<span class="codeline" id="line-16"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../pkg/github.com/modern-go/reflect2.html#name-newUnsafeArrayType" class="ident">newUnsafeArrayType</a></label>(<label for="r1" class="ident">cfg</label> *<a href="reflect2.go.html#line-132" class="ident">frozenConfig</a>, <label for="r2" class="ident">type1</label> <a href="../../../../pkg/reflect.html" class="ident i0">reflect</a>.<a href="../../../reflect/type.go.html#line-38" class="ident">Type</a>) *<a href="#line-8" class="ident">UnsafeArrayType</a> {</code></span>
+<span class="codeline" id="line-16"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../pkg/github.com/modern-go/reflect2.html#name-newUnsafeArrayType" class="ident">newUnsafeArrayType</a></label>(<label for="r1" class="ident">cfg</label> *<a href="reflect2.go.html#line-132" class="ident">frozenConfig</a>, <label for="r2" class="ident">type1</label> <a href="../../../../pkg/reflect.html" class="ident i0">reflect</a>.<a href="../../../reflect/type.go.html#line-39" class="ident">Type</a>) *<a href="#line-8" class="ident">UnsafeArrayType</a> {</code></span>
 <span class="codeline" id="line-17"><code>	<span class="keyword">return</span> &amp;<a href="#line-8" class="ident">UnsafeArrayType</a>{</code></span>
 <span class="codeline" id="line-18"><code>		<a href="#line-9" class="ident">unsafeType</a>: *<a href="unsafe_type.go.html#line-14" class="ident">newUnsafeType</a>(<label for="r1" class="ident">cfg</label>, <label for="r2" class="ident">type1</label>),</code></span>
-<span class="codeline" id="line-19"><code>		<a href="#line-10" class="ident">elemRType</a>:  <a href="unsafe_eface.go.html#line-13" class="ident">unpackEFace</a>(<label for="r2" class="ident">type1</label>.<a href="../../../reflect/type.go.html#line-151" class="ident">Elem</a>()).<a href="unsafe_eface.go.html#line-10" class="ident">data</a>,</code></span>
-<span class="codeline" id="line-20"><code>		<a href="#line-11" class="ident">pElemRType</a>: <a href="unsafe_eface.go.html#line-13" class="ident">unpackEFace</a>(<a href="../../../../pkg/reflect.html" class="ident i0">reflect</a>.<a href="../../../reflect/type.go.html#line-1378" class="ident">PtrTo</a>(<label for="r2" class="ident">type1</label>.<a href="../../../reflect/type.go.html#line-151" class="ident">Elem</a>())).<a href="unsafe_eface.go.html#line-10" class="ident">data</a>,</code></span>
-<span class="codeline" id="line-21"><code>		<a href="#line-12" class="ident">elemSize</a>:   <label for="r2" class="ident">type1</label>.<a href="../../../reflect/type.go.html#line-151" class="ident">Elem</a>().<a href="../../../reflect/type.go.html#line-90" class="ident">Size</a>(),</code></span>
+<span class="codeline" id="line-19"><code>		<a href="#line-10" class="ident">elemRType</a>:  <a href="unsafe_eface.go.html#line-13" class="ident">unpackEFace</a>(<label for="r2" class="ident">type1</label>.<a href="../../../reflect/type.go.html#line-158" class="ident">Elem</a>()).<a href="unsafe_eface.go.html#line-10" class="ident">data</a>,</code></span>
+<span class="codeline" id="line-20"><code>		<a href="#line-11" class="ident">pElemRType</a>: <a href="unsafe_eface.go.html#line-13" class="ident">unpackEFace</a>(<a href="../../../../pkg/reflect.html" class="ident i0">reflect</a>.<a href="../../../reflect/type.go.html#line-1437" class="ident">PtrTo</a>(<label for="r2" class="ident">type1</label>.<a href="../../../reflect/type.go.html#line-158" class="ident">Elem</a>())).<a href="unsafe_eface.go.html#line-10" class="ident">data</a>,</code></span>
+<span class="codeline" id="line-21"><code>		<a href="#line-12" class="ident">elemSize</a>:   <label for="r2" class="ident">type1</label>.<a href="../../../reflect/type.go.html#line-158" class="ident">Elem</a>().<a href="../../../reflect/type.go.html#line-91" class="ident">Size</a>(),</code></span>
 <span class="codeline" id="line-22"><code>		<a href="#line-13" class="ident">likePtr</a>:    <a href="reflect2.go.html#line-261" class="ident">likePtrType</a>(<label for="r2" class="ident">type1</label>),</code></span>
 <span class="codeline" id="line-23"><code>	}</code></span>
 <span class="codeline" id="line-24"><code>}</code></span>
@@ -161,7 +161,7 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-65"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

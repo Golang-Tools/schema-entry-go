@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: dnsconfig_unix.go in package net</title>
-<link href="../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../jvs/golds-v0.3.6.js"></script>
+<link href="../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -102,7 +102,7 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-2"><code><span class="comment">// Use of this source code is governed by a BSD-style</span></code></span>
 <span class="codeline" id="line-3"><code><span class="comment">// license that can be found in the LICENSE file.</span></code></span>
 <span class="codeline" id="line-4"><code></code></span>
-<span class="codeline" id="line-5"><code><span class="comment">// +build aix darwin dragonfly freebsd linux netbsd openbsd solaris</span></code></span>
+<span class="codeline" id="line-5"><code><span class="comment">//go:build aix || darwin || dragonfly || freebsd || linux || netbsd || openbsd || solaris</span></code></span>
 <span class="codeline" id="line-6"><code></code></span>
 <span class="codeline" id="line-7"><code><span class="comment">// Read system DNS config from /etc/resolv.conf</span></code></span>
 <span class="codeline" id="line-8"><code></code></span>
@@ -124,7 +124,7 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-24"><code>	servers       []<a href="../../pkg/builtin.html#name-string" class="ident">string</a>      <span class="comment">// server addresses (in host:port form) to use</span></code></span>
 <span class="codeline" id="line-25"><code>	search        []<a href="../../pkg/builtin.html#name-string" class="ident">string</a>      <span class="comment">// rooted suffixes to append to local name</span></code></span>
 <span class="codeline" id="line-26"><code>	ndots         <a href="../../pkg/builtin.html#name-int" class="ident">int</a>           <span class="comment">// number of dots in name to trigger absolute lookup</span></code></span>
-<span class="codeline" id="line-27"><code>	timeout       <a href="../../pkg/time.html" class="ident i3">time</a>.<a href="../time/time.go.html#line-583" class="ident">Duration</a> <span class="comment">// wait before giving up on a query, including retries</span></code></span>
+<span class="codeline" id="line-27"><code>	timeout       <a href="../../pkg/time.html" class="ident i3">time</a>.<a href="../time/time.go.html#line-589" class="ident">Duration</a> <span class="comment">// wait before giving up on a query, including retries</span></code></span>
 <span class="codeline" id="line-28"><code>	attempts      <a href="../../pkg/builtin.html#name-int" class="ident">int</a>           <span class="comment">// lost packets before giving up on server</span></code></span>
 <span class="codeline" id="line-29"><code>	rotate        <a href="../../pkg/builtin.html#name-bool" class="ident">bool</a>          <span class="comment">// round robin among servers</span></code></span>
 <span class="codeline" id="line-30"><code>	unknownOpt    <a href="../../pkg/builtin.html#name-bool" class="ident">bool</a>          <span class="comment">// anything unknown was encountered</span></code></span>
@@ -140,7 +140,7 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-40"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../pkg/net.html#name-dnsReadConfig" class="ident">dnsReadConfig</a></label>(<label for="r1" class="ident">filename</label> <a href="../../pkg/builtin.html#name-string" class="ident">string</a>) *<a href="#line-23" class="ident">dnsConfig</a> {</code></span>
 <span class="codeline" id="line-41"><code>	<label for="r2" class="ident">conf</label> := &amp;<a href="#line-23" class="ident">dnsConfig</a>{</code></span>
 <span class="codeline" id="line-42"><code>		<a href="#line-26" class="ident">ndots</a>:    <span class="lit-number">1</span>,</code></span>
-<span class="codeline" id="line-43"><code>		<a href="#line-27" class="ident">timeout</a>:  <span class="lit-number">5</span> * <a href="../../pkg/time.html" class="ident i3">time</a>.<a href="../time/time.go.html#line-605" class="ident">Second</a>,</code></span>
+<span class="codeline" id="line-43"><code>		<a href="#line-27" class="ident">timeout</a>:  <span class="lit-number">5</span> * <a href="../../pkg/time.html" class="ident i3">time</a>.<a href="../time/time.go.html#line-611" class="ident">Second</a>,</code></span>
 <span class="codeline" id="line-44"><code>		<a href="#line-28" class="ident">attempts</a>: <span class="lit-number">2</span>,</code></span>
 <span class="codeline" id="line-45"><code>	}</code></span>
 <span class="codeline" id="line-46"><code>	<label for="r3" class="ident">file</label>, <label for="r4" class="ident">err</label> := <a href="parse.go.html#line-67" class="ident">open</a>(<label for="r1" class="ident">filename</label>)</code></span>
@@ -174,10 +174,10 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-74"><code>				<span class="comment">// One more check: make sure server name is</span></code></span>
 <span class="codeline" id="line-75"><code><span class="comment">				// just an IP address. Otherwise we need DNS</span></code></span>
 <span class="codeline" id="line-76"><code><span class="comment">				// to look it up.</span></code></span>
-<span class="codeline" id="line-77"><code>				<span class="keyword">if</span> <a href="ip.go.html#line-538" class="ident">parseIPv4</a>(<label for="r9" class="ident">f</label>[<span class="lit-number">1</span>]) != <a href="../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
-<span class="codeline" id="line-78"><code>					<label for="r2" class="ident">conf</label>.<a href="#line-24" class="ident">servers</a> = <a href="../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r2" class="ident">conf</label>.<a href="#line-24" class="ident">servers</a>, <a href="ipsock.go.html#line-227" class="ident">JoinHostPort</a>(<label for="r9" class="ident">f</label>[<span class="lit-number">1</span>], <span class="lit-string">"53"</span>))</code></span>
-<span class="codeline" id="line-79"><code>				} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r10" class="ident">ip</label>, <label for="r11" class="ident">_</label> := <a href="ip.go.html#line-566" class="ident">parseIPv6Zone</a>(<label for="r9" class="ident">f</label>[<span class="lit-number">1</span>]); <label for="r10" class="ident">ip</label> != <a href="../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
-<span class="codeline" id="line-80"><code>					<label for="r2" class="ident">conf</label>.<a href="#line-24" class="ident">servers</a> = <a href="../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r2" class="ident">conf</label>.<a href="#line-24" class="ident">servers</a>, <a href="ipsock.go.html#line-227" class="ident">JoinHostPort</a>(<label for="r9" class="ident">f</label>[<span class="lit-number">1</span>], <span class="lit-string">"53"</span>))</code></span>
+<span class="codeline" id="line-77"><code>				<span class="keyword">if</span> <a href="ip.go.html#line-563" class="ident">parseIPv4</a>(<label for="r9" class="ident">f</label>[<span class="lit-number">1</span>]) != <a href="../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-78"><code>					<label for="r2" class="ident">conf</label>.<a href="#line-24" class="ident">servers</a> = <a href="../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r2" class="ident">conf</label>.<a href="#line-24" class="ident">servers</a>, <a href="ipsock.go.html#line-235" class="ident">JoinHostPort</a>(<label for="r9" class="ident">f</label>[<span class="lit-number">1</span>], <span class="lit-string">"53"</span>))</code></span>
+<span class="codeline" id="line-79"><code>				} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r10" class="ident">ip</label>, <label for="r11" class="ident">_</label> := <a href="ip.go.html#line-595" class="ident">parseIPv6Zone</a>(<label for="r9" class="ident">f</label>[<span class="lit-number">1</span>]); <label for="r10" class="ident">ip</label> != <a href="../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-80"><code>					<label for="r2" class="ident">conf</label>.<a href="#line-24" class="ident">servers</a> = <a href="../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r2" class="ident">conf</label>.<a href="#line-24" class="ident">servers</a>, <a href="ipsock.go.html#line-235" class="ident">JoinHostPort</a>(<label for="r9" class="ident">f</label>[<span class="lit-number">1</span>], <span class="lit-string">"53"</span>))</code></span>
 <span class="codeline" id="line-81"><code>				}</code></span>
 <span class="codeline" id="line-82"><code>			}</code></span>
 <span class="codeline" id="line-83"><code></code></span>
@@ -208,7 +208,7 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-108"><code>					<span class="keyword">if</span> <label for="r18" class="ident">n</label> &lt; <span class="lit-number">1</span> {</code></span>
 <span class="codeline" id="line-109"><code>						<label for="r18" class="ident">n</label> = <span class="lit-number">1</span></code></span>
 <span class="codeline" id="line-110"><code>					}</code></span>
-<span class="codeline" id="line-111"><code>					<label for="r2" class="ident">conf</label>.<a href="#line-27" class="ident">timeout</a> = <a href="../../pkg/time.html" class="ident i3">time</a>.<a href="../time/time.go.html#line-583" class="ident">Duration</a>(<label for="r18" class="ident">n</label>) * <a href="../../pkg/time.html" class="ident i3">time</a>.<a href="../time/time.go.html#line-605" class="ident">Second</a></code></span>
+<span class="codeline" id="line-111"><code>					<label for="r2" class="ident">conf</label>.<a href="#line-27" class="ident">timeout</a> = <a href="../../pkg/time.html" class="ident i3">time</a>.<a href="../time/time.go.html#line-589" class="ident">Duration</a>(<label for="r18" class="ident">n</label>) * <a href="../../pkg/time.html" class="ident i3">time</a>.<a href="../time/time.go.html#line-611" class="ident">Second</a></code></span>
 <span class="codeline" id="line-112"><code>				<span class="keyword">case</span> <a href="#line-182" class="ident">hasPrefix</a>(<label for="r14" class="ident">s</label>, <span class="lit-string">"attempts:"</span>):</code></span>
 <span class="codeline" id="line-113"><code>					<label for="r21" class="ident">n</label>, <label for="r22" class="ident">_</label>, <label for="r23" class="ident">_</label> := <a href="parse.go.html#line-122" class="ident">dtoi</a>(<label for="r14" class="ident">s</label>[<span class="lit-number">9</span>:])</code></span>
 <span class="codeline" id="line-114"><code>					<span class="keyword">if</span> <label for="r21" class="ident">n</label> &lt; <span class="lit-number">1</span> {</code></span>
@@ -291,7 +291,7 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-191"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

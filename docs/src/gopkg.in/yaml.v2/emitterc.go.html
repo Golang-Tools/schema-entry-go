@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: emitterc.go in package gopkg.in/yaml.v2</title>
-<link href="../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -1488,7 +1488,7 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-970"><code>	}</code></span>
 <span class="codeline" id="line-971"><code>	<span class="keyword">for</span> <label for="r149" class="ident">i</label> := <span class="lit-number">0</span>; <label for="r149" class="ident">i</label> &lt; <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r147" class="ident">emitter</label>.<a href="yamlh.go.html#line-684" class="ident">tag_directives</a>); <label for="r149" class="ident">i</label>++ {</code></span>
 <span class="codeline" id="line-972"><code>		<label for="r150" class="ident">tag_directive</label> := &amp;<label for="r147" class="ident">emitter</label>.<a href="yamlh.go.html#line-684" class="ident">tag_directives</a>[<label for="r149" class="ident">i</label>]</code></span>
-<span class="codeline" id="line-973"><code>		<span class="keyword">if</span> <a href="../../../pkg/bytes.html" class="ident i0">bytes</a>.<a href="../../bytes/bytes.go.html#line-537" class="ident">HasPrefix</a>(<label for="r148" class="ident">tag</label>, <label for="r150" class="ident">tag_directive</label>.<a href="yamlh.go.html#line-17" class="ident">prefix</a>) {</code></span>
+<span class="codeline" id="line-973"><code>		<span class="keyword">if</span> <a href="../../../pkg/bytes.html" class="ident i0">bytes</a>.<a href="../../bytes/bytes.go.html#line-541" class="ident">HasPrefix</a>(<label for="r148" class="ident">tag</label>, <label for="r150" class="ident">tag_directive</label>.<a href="yamlh.go.html#line-17" class="ident">prefix</a>) {</code></span>
 <span class="codeline" id="line-974"><code>			<label for="r147" class="ident">emitter</label>.<a href="yamlh.go.html#line-708" class="ident">tag_data</a>.<a href="yamlh.go.html#line-709" class="ident">handle</a> = <label for="r150" class="ident">tag_directive</label>.<a href="yamlh.go.html#line-16" class="ident">handle</a></code></span>
 <span class="codeline" id="line-975"><code>			<label for="r147" class="ident">emitter</label>.<a href="yamlh.go.html#line-708" class="ident">tag_data</a>.<a href="yamlh.go.html#line-710" class="ident">suffix</a> = <label for="r148" class="ident">tag</label>[<a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r150" class="ident">tag_directive</label>.<a href="yamlh.go.html#line-17" class="ident">prefix</a>):]</code></span>
 <span class="codeline" id="line-976"><code>			<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
@@ -2203,7 +2203,7 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-1685"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

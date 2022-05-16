@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: github.com/Golang-Tools/schema-entry-go/v2</title>
+<link href="../../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.4.9.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>schemaentry</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../../index.html#pkg-github.com/Golang-Tools/schema-entry-go/v2">github.com/Golang-Tools/schema-entry-go/v2</a><i> (on <a href="https://pkg.go.dev/github.com/Golang-Tools/schema-entry-go/v2" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../../../dep/github.com/Golang-Tools^b0a0c/schema-entry-go/v2.html">18 packages</a>, and imported by <a href="../../../../dep/github.com/Golang-Tools^b0a0c/schema-entry-go/v2.html#imported-by">one package</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<span class="nodocs">      <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/endpoint.go.html">endpoint.go</a></span>
+	<span class="nodocs">      <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypoint.go.html">entrypoint.go</a></span>
+	<span class="nodocs">      <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypointMeta.go^fde83.html">entrypointMeta.go</a></span>
+	<span class="nodocs">      <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/exceptions.go.html">exceptions.go</a></span>
+	<span class="nodocs">      <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/schemaentry.go.html">schemaentry.go</a></span>
+	<span class="nodocs">      <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/utils.go.html">utils.go</a></span></div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 8, in which 7 are exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-EndPoint" data-popularity="1175">	<input type='checkbox' class="fold" id="EndPoint-fold-content"><label for="EndPoint-fold-content"> type <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/endpoint.go.html#line-32">EndPoint</a>[T] <i>(struct)</i></label><span id='EndPoint-fold-content-docs' class="fold-docs">
+
+		Type Parameters:
+			T: <a href="#name-EndPointConfigInterface">EndPointConfigInterface</a>
+
+		EntryPoint 节点类
+		@generics T EndPointConfigInterface 内部`config`字段的类型
+
+		<input type='checkbox' class="fold" id="EndPoint-fold-fields"><label for="EndPoint-fold-fields">Fields (<i>total 7, none are exported</i>)</label><span id='EndPoint-fold-fields-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="EndPoint-showhide-fields"><i><label for="EndPoint-showhide-fields" class="show-inline">/* 7 unexporteds ... */</label><label for="EndPoint-showhide-fields" class="hide-inline">/* 7 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="EndPoint-fold-field-beforeRefresh"><label for="EndPoint-fold-field-beforeRefresh"><a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/endpoint.go.html#line-39">beforeRefresh</a> <i>func([]<a href="../../../builtin.html#name-byte">byte</a>, <a href="#name-SupportedSerialization">SupportedSerialization</a>) <a href="../../../builtin.html#name-bool">bool</a></i></label><span id='EndPoint-fold-field-beforeRefresh-docs' class="fold-docs">
+				// 刷新前执行,返回false则不会进行刷新
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/endpoint.go.html#line-35">config</a> <i>T</i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/endpoint.go.html#line-36">locker</a> <i>*<a href="../../../sync.html">sync</a>.<a href="../../../sync.html#name-RWMutex">RWMutex</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/endpoint.go.html#line-33">meta</a> <i>*<a href="#name-EntryPointMeta">EntryPointMeta</a></i></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="EndPoint-fold-field-onRefresh"><label for="EndPoint-fold-field-onRefresh"><a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/endpoint.go.html#line-40">onRefresh</a> <i>func(T)</i></label><span id='EndPoint-fold-field-onRefresh-docs' class="fold-docs">
+				// 刷新后执行的回调
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="EndPoint-fold-field-onRefreshError"><label for="EndPoint-fold-field-onRefreshError"><a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/endpoint.go.html#line-41">onRefreshError</a> <i>func(<a href="../../../builtin.html#name-error">error</a>)</i></label><span id='EndPoint-fold-field-onRefreshError-docs' class="fold-docs">
+				// 刷新失败后执行的回调
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/endpoint.go.html#line-38">watchpath</a> <i><a href="../../../builtin.html#name-string">string</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="EndPoint-fold-methods"><label for="EndPoint-fold-methods">Methods (<i>total 21, in which 10 are exported</i>)</label><span id='EndPoint-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="EndPoint-fold-method-BeforeRefresh"><label for="EndPoint-fold-method-BeforeRefresh">(*EndPoint[T]) <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/endpoint.go.html#line-97">BeforeRefresh</a>(callback func([]<a href="../../../builtin.html#name-byte">byte</a>, <a href="#name-SupportedSerialization">SupportedSerialization</a>) <a href="../../../builtin.html#name-bool">bool</a>) <a href="../../../builtin.html#name-error">error</a></label><span id='EndPoint-fold-method-BeforeRefresh-docs' class="fold-docs">
+				BeforeRefresh  注册刷新前执行
+				@generics T EndPointConfigInterface 内部`config`字段的类型
+				@params callback func([]byte, SupportedSerialization) bool 刷新前执行的函数,返回false则不会进行刷新
+</span></span><span>
+			<span class="nodocs">(*EndPoint[T]) <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/endpoint.go.html#line-80">IsEndpoint</a>() <a href="../../../builtin.html#name-bool">bool</a></span></span><span>
+			<span class="nodocs">(*EndPoint[T]) <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/endpoint.go.html#line-76">IsRoot</a>() <a href="../../../builtin.html#name-bool">bool</a></span></span><span>
+			<span class="nodocs">(*EndPoint[T]) <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/endpoint.go.html#line-72">Meta</a>() *<a href="#name-EntryPointMeta">EntryPointMeta</a></span></span><span>
+			<input type='checkbox' class="fold" id="EndPoint-fold-method-OnRefresh"><label for="EndPoint-fold-method-OnRefresh">(*EndPoint[T]) <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/endpoint.go.html#line-108">OnRefresh</a>(callback func(T)) <a href="../../../builtin.html#name-error">error</a></label><span id='EndPoint-fold-method-OnRefresh-docs' class="fold-docs">
+				BeforeRefresh  注册刷新前执行
+				@generics T EndPointConfigInterface 内部`config`字段的类型
+				@params callback func(T) bool 注册刷新后执行的操作
+</span></span><span>
+			<input type='checkbox' class="fold" id="EndPoint-fold-method-OnRefreshError"><label for="EndPoint-fold-method-OnRefreshError">(*EndPoint[T]) <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/endpoint.go.html#line-119">OnRefreshError</a>(callback func(<a href="../../../builtin.html#name-error">error</a>)) <a href="../../../builtin.html#name-error">error</a></label><span id='EndPoint-fold-method-OnRefreshError-docs' class="fold-docs">
+				OnRefreshError 注册刷新失败后执行的回调
+				@generics T EndPointConfigInterface 内部`config`字段的类型
+				@params callback func(T) bool 注册刷新失败后执行的回调
+</span></span><span>
+			<input type='checkbox' class="fold" id="EndPoint-fold-method-Parse"><label for="EndPoint-fold-method-Parse">(*EndPoint[T]) <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/endpoint.go.html#line-128">Parse</a>(argv []<a href="../../../builtin.html#name-string">string</a>)</label><span id='EndPoint-fold-method-Parse-docs' class="fold-docs">
+				Parse 解析节点并加载配置,配置加载顺序为
+</span></span><span>
+			<span class="nodocs">(*EndPoint[T]) <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/endpoint.go.html#line-62">Schema</a>() []<a href="../../../builtin.html#name-byte">byte</a></span></span><span>
+			<span class="nodocs">(*EndPoint[T]) <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/endpoint.go.html#line-84">SetChild</a>(child <a href="#name-EntryPointInterface">EntryPointInterface</a>) <a href="../../../builtin.html#name-error">error</a></span></span><span>
+			<span class="nodocs">(*EndPoint[T]) <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/endpoint.go.html#line-88">SetParent</a>(parent <a href="#name-EntryPointInterface">EntryPointInterface</a>) <a href="#name-EntryPointInterface">EntryPointInterface</a></span></span>
+			<input type='checkbox' class="showhide" id="EndPoint-showhide-methods"><i><label for="EndPoint-showhide-methods" class="show-inline">/* 11 unexporteds ... */</label><label for="EndPoint-showhide-methods" class="hide-inline">/* 11 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="EndPoint-fold-method-configPtrFromArgparse"><label for="EndPoint-fold-method-configPtrFromArgparse">(*EndPoint[T]) <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/endpoint.go.html#line-350">configPtrFromArgparse</a>(parser *<a href="../../akamensky/argparse.html">argparse</a>.<a href="../../akamensky/argparse.html#name-Parser">Parser</a>, argv []<a href="../../../builtin.html#name-string">string</a>) (*<a href="../../../builtin.html#name-string">string</a>, map[<a href="../../../builtin.html#name-string">string</a>]interface{}, <a href="../../../builtin.html#name-error">error</a>)</label><span id='EndPoint-fold-method-configPtrFromArgparse-docs' class="fold-docs">
+				configPtrFromArgparse 构造命令行参数解析,并获取flag的ptr
+				@generics T EndPointConfigInterface 内部`config`字段的类型
+				@params parser *argparse.Parser flag解析器
+				@params argv []string 待解析的命令行参数
+				@returns *string 指定configfile位置字符串
+				@returns map[string]interface{} flag的ptr位置
+				@returns error 错误信息
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="EndPoint-fold-method-fsWatchHandler"><label for="EndPoint-fold-method-fsWatchHandler">(*EndPoint[T]) <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/endpoint.go.html#line-823">fsWatchHandler</a>(filepath <a href="../../../builtin.html#name-string">string</a>, watcher <a href="../../docker/docker/pkg/filenotify.html">filenotify</a>.<a href="../../docker/docker/pkg/filenotify.html#name-FileWatcher">FileWatcher</a>)</label><span id='EndPoint-fold-method-fsWatchHandler-docs' class="fold-docs">
+				fsWatchHandler 监听文件系统执行操作
+				@generics T EndPointConfigInterface 内部`config`字段的类型
+				@params filepath string 文件路径
+				@params watcher filenotify.FileWatcher 文件系统监听器
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="EndPoint-fold-method-getConfigFromConfigFile"><label for="EndPoint-fold-method-getConfigFromConfigFile">(*EndPoint[T]) <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/endpoint.go.html#line-239">getConfigFromConfigFile</a>() <a href="../../../builtin.html#name-error">error</a></label><span id='EndPoint-fold-method-getConfigFromConfigFile-docs' class="fold-docs">
+				getConfigFromConfigFile 从设置的或者默认配置文件中获取配置
+				@generics T EndPointConfigInterface 内部`config`字段的类型
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="EndPoint-fold-method-getEnvPrefix"><label for="EndPoint-fold-method-getEnvPrefix">(*EndPoint[T]) <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/endpoint.go.html#line-781">getEnvPrefix</a>() <a href="../../../builtin.html#name-string">string</a></label><span id='EndPoint-fold-method-getEnvPrefix-docs' class="fold-docs">
+				getEnvPrefix 获取实际的EnvPrefix
+				@generics T EndPointConfigInterface 内部`config`字段的类型
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="EndPoint-fold-method-loadConfigFileContentFromFS"><label for="EndPoint-fold-method-loadConfigFileContentFromFS">(*EndPoint[T]) <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/endpoint.go.html#line-286">loadConfigFileContentFromFS</a>(filename <a href="../../../builtin.html#name-string">string</a>) ([]<a href="../../../builtin.html#name-byte">byte</a>, <a href="../../../builtin.html#name-error">error</a>)</label><span id='EndPoint-fold-method-loadConfigFileContentFromFS-docs' class="fold-docs">
+				loadConfigFileFromFS 加载文件系统中的文件到配置
+				@generics T EndPointConfigInterface 内部`config`字段的类型
+				@params filename 文件路径
+				@returns []byte 文件内容
+				@returns error 错误信息
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="EndPoint-fold-method-loadConfigFileFromFS"><label for="EndPoint-fold-method-loadConfigFileFromFS">(*EndPoint[T]) <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/endpoint.go.html#line-322">loadConfigFileFromFS</a>(filename <a href="../../../builtin.html#name-string">string</a>) (<a href="../../../builtin.html#name-bool">bool</a>, <a href="../../../builtin.html#name-error">error</a>)</label><span id='EndPoint-fold-method-loadConfigFileFromFS-docs' class="fold-docs">
+				loadConfigFileFromFS 加载文件系统中的文件到配置
+				@generics T EndPointConfigInterface 内部`config`字段的类型
+				@params filename 文件路径
+				@returns bool 是否有有含义的配置以结束查找
+				@returns error 错误信息
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="EndPoint-fold-method-parseStruct"><label for="EndPoint-fold-method-parseStruct">(*EndPoint[T]) <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/endpoint.go.html#line-494">parseStruct</a>(flagConfptr map[<a href="../../../builtin.html#name-string">string</a>]interface{}) <a href="../../../builtin.html#name-error">error</a></label><span id='EndPoint-fold-method-parseStruct-docs' class="fold-docs">
+				parseStruct 解析结构体,构造命令行参数解析和环境变量解析,并设置到对象的Config值中
+				@generics T EndPointConfigInterface 内部`config`字段的类型
+				@Params flagConfptr map[string]interface{} 命令行参数除了指定的配置文件位置外的参数-&gt;值的指针的映射
+				@Returns error 解析过程中的错误
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="EndPoint-fold-method-passArgs"><label for="EndPoint-fold-method-passArgs">(*EndPoint[T]) <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/endpoint.go.html#line-158">passArgs</a>(parser *<a href="../../akamensky/argparse.html">argparse</a>.<a href="../../akamensky/argparse.html#name-Parser">Parser</a>, argv []<a href="../../../builtin.html#name-string">string</a>) <a href="../../../builtin.html#name-bool">bool</a></label><span id='EndPoint-fold-method-passArgs-docs' class="fold-docs">
+				passArgs 解析叶子节点获取启动时的配置
+				@generics T EndPointConfigInterface 内部`config`字段的类型
+				@Params parser *argparse.Parser 命令行参数解析器对象
+				@Params argv []string 待解析的命令行参数
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="EndPoint-fold-method-refreshFSProcess"><label for="EndPoint-fold-method-refreshFSProcess">(*EndPoint[T]) <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/endpoint.go.html#line-863">refreshFSProcess</a>(filepath <a href="../../../builtin.html#name-string">string</a>) <a href="../../../builtin.html#name-bool">bool</a></label><span id='EndPoint-fold-method-refreshFSProcess-docs' class="fold-docs">
+				refreshFSProcess 文件系统刷新配置流程
+				@params filepath string 配置文件路径
+				@returns bool 是否跳过更新
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="EndPoint-fold-method-startConfigfileWatch"><label for="EndPoint-fold-method-startConfigfileWatch">(*EndPoint[T]) <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/endpoint.go.html#line-944">startConfigfileWatch</a>() (<a href="#name-StopWatchFunc">StopWatchFunc</a>, <a href="../../../builtin.html#name-error">error</a>)</label><span id='EndPoint-fold-method-startConfigfileWatch-docs' class="fold-docs">
+				startConfigfileWatch 开始监听配置文件
+				@generics T EndPointConfigInterface 内部`config`字段的类型
+				@returns StopWatchFunc 停止监听函数
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="EndPoint-fold-method-verifyConfig"><label for="EndPoint-fold-method-verifyConfig">(*EndPoint[T]) <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/endpoint.go.html#line-793">verifyConfig</a>() <a href="../../../builtin.html#name-bool">bool</a></label><span id='EndPoint-fold-method-verifyConfig-docs' class="fold-docs">
+				VerifyConfig 验证config是否符合要求
+				@generics T EndPointConfigInterface 内部`config`字段的类型
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="EndPoint-fold-impls"><label for="EndPoint-fold-impls">Implements (<i>at least one exported</i>)</label><span id='EndPoint-fold-impls-items' class="fold-items"><span>
+			*EndPoint : <a href="#name-EntryPointInterface">EntryPointInterface</a></span></span>
+		<input type='checkbox' class="fold" id="EndPoint-fold-results"><label for="EndPoint-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='EndPoint-fold-results-items' class="fold-items"><span>
+			func <a href="#name-NewEndPoint">NewEndPoint</a>[T](config T, opts ...<a href="../optparams.html">optparams</a>.<a href="../optparams.html#name-Option">Option</a>[<a href="#name-EntryPointMeta">EntryPointMeta</a>]) (*<b>EndPoint</b>[T], <a href="../../../builtin.html#name-error">error</a>)</span></span>
+
+</span></div><div class="anchor type-res" id="name-EndPointConfigInterface" data-popularity="200">	<input type='checkbox' class="fold" id="EndPointConfigInterface-fold-content"><label for="EndPointConfigInterface-fold-content"> type <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/schemaentry.go.html#line-18">EndPointConfigInterface</a> <b><i>(interface)</i></b></label><span id='EndPointConfigInterface-fold-content-docs' class="fold-docs">
+		EndPointConfigInterface 叶子节点配置接口
+
+		<input type='checkbox' class="fold" id="EndPointConfigInterface-fold-methods"><label for="EndPointConfigInterface-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='EndPointConfigInterface-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="EndPointConfigInterface-fold-method-Main"><label for="EndPointConfigInterface-fold-method-Main">( EndPointConfigInterface) <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/schemaentry.go.html#line-19">Main</a>()</label><span id='EndPointConfigInterface-fold-method-Main-docs' class="fold-docs">
+				// 进入时执行的程序
+</span></span></span>
+		<input type='checkbox' class="fold" id="EndPointConfigInterface-fold-impledby"><label for="EndPointConfigInterface-fold-impledby">Implemented By (<i>at least one exported</i>)</label><span id='EndPointConfigInterface-fold-impledby-items' class="fold-items"><span>
+			*github.com/Golang-Tools/schema-entry-go/v2/functest.<a href="v2/functest.html#name-C">C</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-EntryPoint" data-popularity="525">	<input type='checkbox' class="fold" id="EntryPoint-fold-content"><label for="EntryPoint-fold-content"> type <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypoint.go.html#line-13">EntryPoint</a> <i>(struct)</i></label><span id='EntryPoint-fold-content-docs' class="fold-docs">
+		EntryPoint 节点类
+
+		<input type='checkbox' class="fold" id="EntryPoint-fold-fields"><label for="EntryPoint-fold-fields">Fields (<i>only one, which is unexported</i>)</label><span id='EntryPoint-fold-fields-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="EntryPoint-showhide-fields"><i><label for="EntryPoint-showhide-fields" class="show-inline">/* one unexported ... */</label><label for="EntryPoint-showhide-fields" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypoint.go.html#line-14">meta</a> <i>*<a href="#name-EntryPointMeta">EntryPointMeta</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="EntryPoint-fold-methods"><label for="EntryPoint-fold-methods">Methods (<i>total 8, in which 7 are exported</i>)</label><span id='EntryPoint-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">(*EntryPoint) <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypoint.go.html#line-41">IsEndpoint</a>() <a href="../../../builtin.html#name-bool">bool</a></span></span><span>
+			<span class="nodocs">(*EntryPoint) <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypoint.go.html#line-37">IsRoot</a>() <a href="../../../builtin.html#name-bool">bool</a></span></span><span>
+			<span class="nodocs">(*EntryPoint) <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypoint.go.html#line-33">Meta</a>() *<a href="#name-EntryPointMeta">EntryPointMeta</a></span></span><span>
+			<input type='checkbox' class="fold" id="EntryPoint-fold-method-Parse"><label for="EntryPoint-fold-method-Parse">(*EntryPoint) <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypoint.go.html#line-58">Parse</a>(argv []<a href="../../../builtin.html#name-string">string</a>)</label><span id='EntryPoint-fold-method-Parse-docs' class="fold-docs">
+				Parse 解析节点生成命令行说明文档
+</span></span><span>
+			<span class="nodocs">(*EntryPoint) <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypoint.go.html#line-29">Schema</a>() []<a href="../../../builtin.html#name-byte">byte</a></span></span><span>
+			<span class="nodocs">(*EntryPoint) <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypoint.go.html#line-45">SetChild</a>(child <a href="#name-EntryPointInterface">EntryPointInterface</a>) <a href="../../../builtin.html#name-error">error</a></span></span><span>
+			<span class="nodocs">(*EntryPoint) <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypoint.go.html#line-51">SetParent</a>(parent <a href="#name-EntryPointInterface">EntryPointInterface</a>) <a href="#name-EntryPointInterface">EntryPointInterface</a></span></span>
+			<input type='checkbox' class="showhide" id="EntryPoint-showhide-methods"><i><label for="EntryPoint-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="EntryPoint-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="EntryPoint-fold-method-passArgsTosub"><label for="EntryPoint-fold-method-passArgsTosub">( EntryPoint) <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypoint.go.html#line-65">passArgsTosub</a>(parser *<a href="../../akamensky/argparse.html">argparse</a>.<a href="../../akamensky/argparse.html#name-Parser">Parser</a>, argv []<a href="../../../builtin.html#name-string">string</a>)</label><span id='EntryPoint-fold-method-passArgsTosub-docs' class="fold-docs">
+				passArgsTosub 将解析传导给子节点
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="EntryPoint-fold-impls"><label for="EntryPoint-fold-impls">Implements (<i>at least one exported</i>)</label><span id='EntryPoint-fold-impls-items' class="fold-items"><span>
+			*EntryPoint : <a href="#name-EntryPointInterface">EntryPointInterface</a></span></span>
+		<input type='checkbox' class="fold" id="EntryPoint-fold-results"><label for="EntryPoint-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='EntryPoint-fold-results-items' class="fold-items"><span>
+			func <a href="#name-NewEntryPoint">NewEntryPoint</a>(opts ...<a href="../optparams.html">optparams</a>.<a href="../optparams.html#name-Option">Option</a>[<a href="#name-EntryPointMeta">EntryPointMeta</a>]) (*<b>EntryPoint</b>, <a href="../../../builtin.html#name-error">error</a>)</span></span>
+
+</span></div><div class="anchor type-res" id="name-EntryPointInterface" data-popularity="1445">	<input type='checkbox' class="fold" id="EntryPointInterface-fold-content"><label for="EntryPointInterface-fold-content"> type <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/schemaentry.go.html#line-22">EntryPointInterface</a> <b><i>(interface)</i></b></label><span id='EntryPointInterface-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="EntryPointInterface-fold-methods"><label for="EntryPointInterface-fold-methods">Methods (<i>total 7, all are exported</i>)</label><span id='EntryPointInterface-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( EntryPointInterface) <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/schemaentry.go.html#line-26">IsEndpoint</a>() <a href="../../../builtin.html#name-bool">bool</a></span></span><span>
+			<span class="nodocs">( EntryPointInterface) <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/schemaentry.go.html#line-25">IsRoot</a>() <a href="../../../builtin.html#name-bool">bool</a></span></span><span>
+			<span class="nodocs">( EntryPointInterface) <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/schemaentry.go.html#line-23">Meta</a>() *<a href="#name-EntryPointMeta">EntryPointMeta</a></span></span><span>
+			<span class="nodocs">( EntryPointInterface) <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/schemaentry.go.html#line-29">Parse</a>([]<a href="../../../builtin.html#name-string">string</a>)</span></span><span>
+			<span class="nodocs">( EntryPointInterface) <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/schemaentry.go.html#line-24">Schema</a>() []<a href="../../../builtin.html#name-byte">byte</a></span></span><span>
+			<span class="nodocs">( EntryPointInterface) <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/schemaentry.go.html#line-27">SetChild</a>(<b>EntryPointInterface</b>) <a href="../../../builtin.html#name-error">error</a></span></span><span>
+			<span class="nodocs">( EntryPointInterface) <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/schemaentry.go.html#line-28">SetParent</a>(<b>EntryPointInterface</b>) <b>EntryPointInterface</b></span></span></span>
+		<input type='checkbox' class="fold" id="EntryPointInterface-fold-impledby"><label for="EntryPointInterface-fold-impledby">Implemented By (<i>at least 2, both are exported</i>)</label><span id='EntryPointInterface-fold-impledby-items' class="fold-items"><span>
+			*<a href="#name-EndPoint">EndPoint</a></span><span>
+			*<a href="#name-EntryPoint">EntryPoint</a></span></span>
+		<input type='checkbox' class="fold" id="EntryPointInterface-fold-results"><label for="EntryPointInterface-fold-results">As Outputs Of (<i>at least 5, all are exported</i>)</label><span id='EntryPointInterface-fold-results-items' class="fold-items"><span>
+			func (*<a href="#name-EndPoint">EndPoint</a>)[T].<a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/endpoint.go.html#line-88">SetParent</a>(parent <b>EntryPointInterface</b>) <b>EntryPointInterface</b></span><span>
+			func (*<a href="#name-EntryPoint">EntryPoint</a>).<a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypoint.go.html#line-51">SetParent</a>(parent <b>EntryPointInterface</b>) <b>EntryPointInterface</b></span><span>
+			func EntryPointInterface.<a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/schemaentry.go.html#line-28">SetParent</a>(<b>EntryPointInterface</b>) <b>EntryPointInterface</b></span><span>
+			func (*<a href="#name-EntryPointMeta">EntryPointMeta</a>).<a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypointMeta.go^fde83.html#line-24">Parent</a>() <b>EntryPointInterface</b></span><span>
+			func (*<a href="#name-EntryPointMeta">EntryPointMeta</a>).<a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypointMeta.go^fde83.html#line-28">Subcmds</a>() map[<a href="../../../builtin.html#name-string">string</a>]<b>EntryPointInterface</b></span></span>
+		<input type='checkbox' class="fold" id="EntryPointInterface-fold-params"><label for="EntryPointInterface-fold-params">As Inputs Of (<i>at least 12, all are exported</i>)</label><span id='EntryPointInterface-fold-params-items' class="fold-items"><span>
+			func <a href="#name-GetNodeEnvPrefix">GetNodeEnvPrefix</a>(node <b>EntryPointInterface</b>) <a href="../../../builtin.html#name-string">string</a></span><span>
+			func <a href="#name-GetNodeProg">GetNodeProg</a>(node <b>EntryPointInterface</b>) <a href="../../../builtin.html#name-string">string</a></span><span>
+			func <a href="#name-GetNodeProgList">GetNodeProgList</a>(node <b>EntryPointInterface</b>) []<a href="../../../builtin.html#name-string">string</a></span><span>
+			func <a href="#name-RegistSubNode">RegistSubNode</a>(parent, child <b>EntryPointInterface</b>)</span><span>
+			func (*<a href="#name-EndPoint">EndPoint</a>)[T].<a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/endpoint.go.html#line-84">SetChild</a>(child <b>EntryPointInterface</b>) <a href="../../../builtin.html#name-error">error</a></span><span>
+			func (*<a href="#name-EndPoint">EndPoint</a>)[T].<a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/endpoint.go.html#line-88">SetParent</a>(parent <b>EntryPointInterface</b>) <b>EntryPointInterface</b></span><span>
+			func (*<a href="#name-EntryPoint">EntryPoint</a>).<a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypoint.go.html#line-45">SetChild</a>(child <b>EntryPointInterface</b>) <a href="../../../builtin.html#name-error">error</a></span><span>
+			func (*<a href="#name-EntryPoint">EntryPoint</a>).<a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypoint.go.html#line-51">SetParent</a>(parent <b>EntryPointInterface</b>) <b>EntryPointInterface</b></span><span>
+			func EntryPointInterface.<a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/schemaentry.go.html#line-27">SetChild</a>(<b>EntryPointInterface</b>) <a href="../../../builtin.html#name-error">error</a></span><span>
+			func EntryPointInterface.<a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/schemaentry.go.html#line-28">SetParent</a>(<b>EntryPointInterface</b>) <b>EntryPointInterface</b></span><span>
+			func (*<a href="#name-EntryPointMeta">EntryPointMeta</a>).<a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypointMeta.go^fde83.html#line-39">SetChild</a>(child <b>EntryPointInterface</b>)</span><span>
+			func (*<a href="#name-EntryPointMeta">EntryPointMeta</a>).<a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypointMeta.go^fde83.html#line-52">SetParent</a>(parent <b>EntryPointInterface</b>)</span></span>
+
+</span></div><div class="anchor type-res" id="name-EntryPointMeta" data-popularity="685">	<input type='checkbox' class="fold" id="EntryPointMeta-fold-content"><label for="EntryPointMeta-fold-content"> type <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypointMeta.go^fde83.html#line-9">EntryPointMeta</a> <i>(struct)</i></label><span id='EntryPointMeta-fold-content-docs' class="fold-docs">
+		EntryPointMeta 节点的元数据类
+
+		<input type='checkbox' class="fold" id="EntryPointMeta-fold-fields"><label for="EntryPointMeta-fold-fields">Fields (<i>total 11, in which 9 are exported</i>)</label><span id='EntryPointMeta-fold-fields-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="EntryPointMeta-fold-field-DefaultConfigFilePaths"><label for="EntryPointMeta-fold-field-DefaultConfigFilePaths"><a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypointMeta.go^fde83.html#line-13">DefaultConfigFilePaths</a> <i>[]<a href="../../../builtin.html#name-string">string</a></i></label><span id='EntryPointMeta-fold-field-DefaultConfigFilePaths-docs' class="fold-docs">
+				// 节点执行的默认配置文件路径列表
+</span></span><span>
+			<input type='checkbox' class="fold" id="EntryPointMeta-fold-field-Description"><label for="EntryPointMeta-fold-field-Description"><a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypointMeta.go^fde83.html#line-11">Description</a> <i><a href="../../../builtin.html#name-string">string</a></i></label><span id='EntryPointMeta-fold-field-Description-docs' class="fold-docs">
+				// 节点简介
+</span></span><span>
+			<input type='checkbox' class="fold" id="EntryPointMeta-fold-field-EnvPrefix"><label for="EntryPointMeta-fold-field-EnvPrefix"><a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypointMeta.go^fde83.html#line-16">EnvPrefix</a> <i><a href="../../../builtin.html#name-string">string</a></i></label><span id='EntryPointMeta-fold-field-EnvPrefix-docs' class="fold-docs">
+				// 解析环境变量时的前缀
+</span></span><span>
+			<input type='checkbox' class="fold" id="EntryPointMeta-fold-field-LoadAllConfigFile"><label for="EntryPointMeta-fold-field-LoadAllConfigFile"><a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypointMeta.go^fde83.html#line-14">LoadAllConfigFile</a> <i><a href="../../../builtin.html#name-bool">bool</a></i></label><span id='EntryPointMeta-fold-field-LoadAllConfigFile-docs' class="fold-docs">
+				// 是否加载全部配置文件,否则找到第一个后就停止搜索
+</span></span><span>
+			<input type='checkbox' class="fold" id="EntryPointMeta-fold-field-Name"><label for="EntryPointMeta-fold-field-Name"><a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypointMeta.go^fde83.html#line-10">Name</a> <i><a href="../../../builtin.html#name-string">string</a></i></label><span id='EntryPointMeta-fold-field-Name-docs' class="fold-docs">
+				// 节点名
+</span></span><span>
+			<input type='checkbox' class="fold" id="EntryPointMeta-fold-field-NotParseEnv"><label for="EntryPointMeta-fold-field-NotParseEnv"><a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypointMeta.go^fde83.html#line-15">NotParseEnv</a> <i><a href="../../../builtin.html#name-bool">bool</a></i></label><span id='EntryPointMeta-fold-field-NotParseEnv-docs' class="fold-docs">
+				// 是否不解析环境变量
+</span></span><span>
+			<input type='checkbox' class="fold" id="EntryPointMeta-fold-field-NotVerifySchema"><label for="EntryPointMeta-fold-field-NotVerifySchema"><a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypointMeta.go^fde83.html#line-17">NotVerifySchema</a> <i><a href="../../../builtin.html#name-bool">bool</a></i></label><span id='EntryPointMeta-fold-field-NotVerifySchema-docs' class="fold-docs">
+				// 是否不校验配置的schema
+</span></span><span>
+			<input type='checkbox' class="fold" id="EntryPointMeta-fold-field-Usage"><label for="EntryPointMeta-fold-field-Usage"><a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypointMeta.go^fde83.html#line-12">Usage</a> <i><a href="../../../builtin.html#name-string">string</a></i></label><span id='EntryPointMeta-fold-field-Usage-docs' class="fold-docs">
+				// 节点用法介绍
+</span></span><span>
+			<input type='checkbox' class="fold" id="EntryPointMeta-fold-field-WatchMode"><label for="EntryPointMeta-fold-field-WatchMode"><a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypointMeta.go^fde83.html#line-19">WatchMode</a> <i><a href="../../../builtin.html#name-bool">bool</a></i></label><span id='EntryPointMeta-fold-field-WatchMode-docs' class="fold-docs">
+				DebugMode              bool     //当设置为debugmode时才会打印中间过程的log
+				// 启用配置监听模式,
+</span></span>
+			<input type='checkbox' class="showhide" id="EntryPointMeta-showhide-fields"><i><label for="EntryPointMeta-showhide-fields" class="show-inline">/* 2 unexporteds ... */</label><label for="EntryPointMeta-showhide-fields" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypointMeta.go^fde83.html#line-20">parent</a> <i><a href="#name-EntryPointInterface">EntryPointInterface</a></i></span></i></span><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypointMeta.go^fde83.html#line-21">subcmds</a> <i>map[<a href="../../../builtin.html#name-string">string</a>]<a href="#name-EntryPointInterface">EntryPointInterface</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="EntryPointMeta-fold-methods"><label for="EntryPointMeta-fold-methods">Methods (<i>total 7, all are exported</i>)</label><span id='EntryPointMeta-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="EntryPointMeta-fold-method-IsEndpoint"><label for="EntryPointMeta-fold-method-IsEndpoint">(*EntryPointMeta) <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypointMeta.go^fde83.html#line-67">IsEndpoint</a>() <a href="../../../builtin.html#name-bool">bool</a></label><span id='EntryPointMeta-fold-method-IsEndpoint-docs' class="fold-docs">
+				IsEndpoint 判断节点是否为叶子节点
+</span></span><span>
+			<input type='checkbox' class="fold" id="EntryPointMeta-fold-method-IsRoot"><label for="EntryPointMeta-fold-method-IsRoot">(*EntryPointMeta) <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypointMeta.go^fde83.html#line-61">IsRoot</a>() <a href="../../../builtin.html#name-bool">bool</a></label><span id='EntryPointMeta-fold-method-IsRoot-docs' class="fold-docs">
+				IsRoot 判断节点的是否为根节点
+</span></span><span>
+			<input type='checkbox' class="fold" id="EntryPointMeta-fold-method-Meta"><label for="EntryPointMeta-fold-method-Meta">(*EntryPointMeta) <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypointMeta.go^fde83.html#line-33">Meta</a>() *<b>EntryPointMeta</b></label><span id='EntryPointMeta-fold-method-Meta-docs' class="fold-docs">
+				Meta 获取节点的元数据
+</span></span><span>
+			<span class="nodocs">(*EntryPointMeta) <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypointMeta.go^fde83.html#line-24">Parent</a>() <a href="#name-EntryPointInterface">EntryPointInterface</a></span></span><span>
+			<input type='checkbox' class="fold" id="EntryPointMeta-fold-method-SetChild"><label for="EntryPointMeta-fold-method-SetChild">(*EntryPointMeta) <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypointMeta.go^fde83.html#line-39">SetChild</a>(child <a href="#name-EntryPointInterface">EntryPointInterface</a>)</label><span id='EntryPointMeta-fold-method-SetChild-docs' class="fold-docs">
+				SetChild 为节点设置子节点
+				@Params child EntryPointInterface  要作为子节点的节点
+</span></span><span>
+			<input type='checkbox' class="fold" id="EntryPointMeta-fold-method-SetParent"><label for="EntryPointMeta-fold-method-SetParent">(*EntryPointMeta) <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypointMeta.go^fde83.html#line-52">SetParent</a>(parent <a href="#name-EntryPointInterface">EntryPointInterface</a>)</label><span id='EntryPointMeta-fold-method-SetParent-docs' class="fold-docs">
+				SetParent 为节点设置父节点
+				@Params parent EntryPointInterface  要作为父节点的节点
+</span></span><span>
+			<span class="nodocs">(*EntryPointMeta) <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypointMeta.go^fde83.html#line-28">Subcmds</a>() map[<a href="../../../builtin.html#name-string">string</a>]<a href="#name-EntryPointInterface">EntryPointInterface</a></span></span></span>
+		<input type='checkbox' class="fold" id="EntryPointMeta-fold-results"><label for="EntryPointMeta-fold-results">As Outputs Of (<i>at least 4, all are exported</i>)</label><span id='EntryPointMeta-fold-results-items' class="fold-items"><span>
+			func (*<a href="#name-EndPoint">EndPoint</a>)[T].<a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/endpoint.go.html#line-72">Meta</a>() *<b>EntryPointMeta</b></span><span>
+			func (*<a href="#name-EntryPoint">EntryPoint</a>).<a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypoint.go.html#line-33">Meta</a>() *<b>EntryPointMeta</b></span><span>
+			func <a href="#name-EntryPointInterface">EntryPointInterface</a>.<a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/schemaentry.go.html#line-23">Meta</a>() *<b>EntryPointMeta</b></span><span>
+			func (*EntryPointMeta).<a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypointMeta.go^fde83.html#line-33">Meta</a>() *<b>EntryPointMeta</b></span></span>
+		<input type='checkbox' class="fold" id="EntryPointMeta-fold-params"><label for="EntryPointMeta-fold-params">As Inputs Of (<i>at least one exported</i>)</label><span id='EntryPointMeta-fold-params-items' class="fold-items"><span>
+			func <a href="#name-WithConfig">WithConfig</a>(conf *<b>EntryPointMeta</b>) <a href="../optparams.html">optparams</a>.<a href="../optparams.html#name-Option">Option</a>[<b>EntryPointMeta</b>]</span></span>
+
+</span></div><div class="anchor type-res" id="name-StopWatchFunc" data-popularity="75">	<input type='checkbox' class="fold" id="StopWatchFunc-fold-content"><label for="StopWatchFunc-fold-content"> type <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/endpoint.go.html#line-817">StopWatchFunc</a> <i>(func)</i></label><span id='StopWatchFunc-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="StopWatchFunc-fold-results"><label for="StopWatchFunc-fold-results">As Outputs Of (<i>at least one unexported</i>)</label><span id='StopWatchFunc-fold-results-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="StopWatchFunc-showhide-inputofs"><i><label for="StopWatchFunc-showhide-inputofs" class="show-inline">/* at least one unexported ... */</label><label for="StopWatchFunc-showhide-inputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func (*<a href="#name-EndPoint">EndPoint</a>)[T].<a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/endpoint.go.html#line-944">startConfigfileWatch</a>() (<b>StopWatchFunc</b>, <a href="../../../builtin.html#name-error">error</a>)</i></span></span>
+
+</span></div><div class="anchor type-res" id="name-SupportedSerialization" data-popularity="10">	<input type='checkbox' class="fold" id="SupportedSerialization-fold-content"><label for="SupportedSerialization-fold-content"> type <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/endpoint.go.html#line-23">SupportedSerialization</a> <a href="../../../builtin.html#name-int8">int8</a> <i>(basic type)</i></label><span id='SupportedSerialization-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="SupportedSerialization-fold-values"><label for="SupportedSerialization-fold-values">As Types Of (<i>total 2, both are exported</i>)</label><span id='SupportedSerialization-fold-values-items' class="fold-items"><span>
+			const <a href="#name-SerializationJSON">SerializationJSON</a></span><span>
+			const <a href="#name-SerializationYAML">SerializationYAML</a></span></span>
+
+</span></div></div><div>	<input type='checkbox' class="showhide" id="unexported-typenames-showhide"><i><label for="unexported-typenames-showhide" class="show-inline">/* one unexported ... */</label><label for="unexported-typenames-showhide" class="hide-inline">/* one unexported: */</label></i><div class="anchor type-res hidden" id="name-prog" data-popularity="50">	<input type='checkbox' class="fold" id="prog-fold-content"><label for="prog-fold-content"> type <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/utils.go.html#line-8">prog</a> <i>(struct)</i></label><span id='prog-fold-content-docs' class="fold-docs">
+
+		<input type='checkbox' class="fold" id="prog-fold-fields"><label for="prog-fold-fields">Fields (<i>only one, which is unexported</i>)</label><span id='prog-fold-fields-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="prog-showhide-fields"><i><label for="prog-showhide-fields" class="show-inline">/* one unexported ... */</label><label for="prog-showhide-fields" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs"><a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/utils.go.html#line-9">result</a> <i>[]<a href="../../../builtin.html#name-string">string</a></i></span></i></span></span>
+		<input type='checkbox' class="fold" id="prog-fold-methods"><label for="prog-fold-methods">Methods (<i>only one, which is unexported</i>)</label><span id='prog-fold-methods-items' class="fold-items">
+			<input type='checkbox' checked class="showhide" id="prog-showhide-methods"><i><label for="prog-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="prog-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<span class="nodocs">(*prog) <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/utils.go.html#line-12">getNodeProgIter</a>(node <a href="#name-EntryPointInterface">EntryPointInterface</a>)</span></i></span></span>
+
+</span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 19, in which 17 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-GetNodeEnvPrefix">	<input type='checkbox' class="fold" id="GetNodeEnvPrefix-fold-content"><label for="GetNodeEnvPrefix-fold-content"> func <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/utils.go.html#line-49">GetNodeEnvPrefix</a>(node <a href="#name-EntryPointInterface">EntryPointInterface</a>) <a href="../../../builtin.html#name-string">string</a></label><span id='GetNodeEnvPrefix-fold-content-docs' class="fold-docs">
+		GetNodeEnvPrefix 获取实际的EnvPrefix
+
+</span></div><div class="anchor value-res" id="name-GetNodeProg">	<input type='checkbox' class="fold" id="GetNodeProg-fold-content"><label for="GetNodeProg-fold-content"> func <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/utils.go.html#line-29">GetNodeProg</a>(node <a href="#name-EntryPointInterface">EntryPointInterface</a>) <a href="../../../builtin.html#name-string">string</a></label><span id='GetNodeProg-fold-content-docs' class="fold-docs">
+		GetNodeProg 获取节点的prog值
+
+</span></div><div class="anchor value-res" id="name-GetNodeProgList">	<input type='checkbox' class="fold" id="GetNodeProgList-fold-content"><label for="GetNodeProgList-fold-content"> func <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/utils.go.html#line-39">GetNodeProgList</a>(node <a href="#name-EntryPointInterface">EntryPointInterface</a>) []<a href="../../../builtin.html#name-string">string</a></label><span id='GetNodeProgList-fold-content-docs' class="fold-docs">
+		GetNodeProgList 获取节点的prog值
+
+</span></div><div class="anchor value-res" id="name-NewEndPoint">	<input type='checkbox' class="fold" id="NewEndPoint-fold-content"><label for="NewEndPoint-fold-content"> func <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/endpoint.go.html#line-47">NewEndPoint</a>[T](config T, opts ...<a href="../optparams.html">optparams</a>.<a href="../optparams.html#name-Option">Option</a>[<a href="#name-EntryPointMeta">EntryPointMeta</a>]) (*<a href="#name-EndPoint">EndPoint</a>[T], <a href="../../../builtin.html#name-error">error</a>)</label><span id='NewEndPoint-fold-content-docs' class="fold-docs">
+
+		Type Parameters:
+			T: <a href="#name-EndPointConfigInterface">EndPointConfigInterface</a>
+
+		NewEndPoint创建一个节点对象
+		@generics T EndPointConfigInterface EntryPoint泛型的实例化参数
+		@params meta *EntryPointMeta 为节点的元信息
+
+</span></div><div class="anchor value-res" id="name-NewEntryPoint">	<input type='checkbox' class="fold" id="NewEntryPoint-fold-content"><label for="NewEntryPoint-fold-content"> func <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypoint.go.html#line-19">NewEntryPoint</a>(opts ...<a href="../optparams.html">optparams</a>.<a href="../optparams.html#name-Option">Option</a>[<a href="#name-EntryPointMeta">EntryPointMeta</a>]) (*<a href="#name-EntryPoint">EntryPoint</a>, <a href="../../../builtin.html#name-error">error</a>)</label><span id='NewEntryPoint-fold-content-docs' class="fold-docs">
+		New 创建一个节点对象
+		@params meta *EntryPointMeta 为节点的元信息
+
+</span></div><div class="anchor value-res" id="name-ReflectFieldName">	<input type='checkbox' class="fold" id="ReflectFieldName-fold-content"><label for="ReflectFieldName-fold-content"> func <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/utils.go.html#line-61">ReflectFieldName</a>(f <a href="../../../reflect.html">reflect</a>.<a href="../../../reflect.html#name-StructField">StructField</a>) <a href="../../../builtin.html#name-string">string</a></label><span id='ReflectFieldName-fold-content-docs' class="fold-docs">
+		ReflectFieldInfo 返回字段的基础信息
+		@returns string 对应名字
+
+</span></div><div class="anchor value-res" id="name-RegistSubNode">	<input type='checkbox' class="fold" id="RegistSubNode-fold-content"><label for="RegistSubNode-fold-content"> func <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/schemaentry.go.html#line-35">RegistSubNode</a>(parent, child <a href="#name-EntryPointInterface">EntryPointInterface</a>)</label><span id='RegistSubNode-fold-content-docs' class="fold-docs">
+		RegistSubNode 将一对节点互设为父子节点
+		@params parent EntryPointInterface 父节点
+		@params child EntryPointInterface 子节点
+
+</span></div><div class="anchor value-res" id="name-WithConfig">	<input type='checkbox' class="fold" id="WithConfig-fold-content"><label for="WithConfig-fold-content"> func <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypointMeta.go^fde83.html#line-72">WithConfig</a>(conf *<a href="#name-EntryPointMeta">EntryPointMeta</a>) <a href="../optparams.html">optparams</a>.<a href="../optparams.html#name-Option">Option</a>[<a href="#name-EntryPointMeta">EntryPointMeta</a>]</label><span id='WithConfig-fold-content-docs' class="fold-docs">
+		WithConfig 使用EntryPointMeta实例设置配置
+
+</span></div><div class="anchor value-res" id="name-WithDefaultConfigFilePaths">	<input type='checkbox' class="fold" id="WithDefaultConfigFilePaths-fold-content"><label for="WithDefaultConfigFilePaths-fold-content"> func <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypointMeta.go^fde83.html#line-108">WithDefaultConfigFilePaths</a>(paths ...<a href="../../../builtin.html#name-string">string</a>) <a href="../optparams.html">optparams</a>.<a href="../optparams.html#name-Option">Option</a>[<a href="#name-EntryPointMeta">EntryPointMeta</a>]</label><span id='WithDefaultConfigFilePaths-fold-content-docs' class="fold-docs">
+		WithDefaultConfigFilePaths 设置节点用法说明
+
+</span></div><div class="anchor value-res" id="name-WithDescription">	<input type='checkbox' class="fold" id="WithDescription-fold-content"><label for="WithDescription-fold-content"> func <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypointMeta.go^fde83.html#line-94">WithDescription</a>(desc <a href="../../../builtin.html#name-string">string</a>) <a href="../optparams.html">optparams</a>.<a href="../optparams.html#name-Option">Option</a>[<a href="#name-EntryPointMeta">EntryPointMeta</a>]</label><span id='WithDescription-fold-content-docs' class="fold-docs">
+		WithDescription 设置节点说明文本
+
+</span></div><div class="anchor value-res" id="name-WithEnvPrefix">	<input type='checkbox' class="fold" id="WithEnvPrefix-fold-content"><label for="WithEnvPrefix-fold-content"> func <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypointMeta.go^fde83.html#line-115">WithEnvPrefix</a>(prefix <a href="../../../builtin.html#name-string">string</a>) <a href="../optparams.html">optparams</a>.<a href="../optparams.html#name-Option">Option</a>[<a href="#name-EntryPointMeta">EntryPointMeta</a>]</label><span id='WithEnvPrefix-fold-content-docs' class="fold-docs">
+		WithEnvPrefix 设置节点用法说明
+
+</span></div><div class="anchor value-res" id="name-WithLoadAllConfigFile">	<input type='checkbox' class="fold" id="WithLoadAllConfigFile-fold-content"><label for="WithLoadAllConfigFile-fold-content"> func <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypointMeta.go^fde83.html#line-122">WithLoadAllConfigFile</a>() <a href="../optparams.html">optparams</a>.<a href="../optparams.html#name-Option">Option</a>[<a href="#name-EntryPointMeta">EntryPointMeta</a>]</label><span id='WithLoadAllConfigFile-fold-content-docs' class="fold-docs">
+		WithLoadAllConfigFile 设置节点是加载全部配置文件,否则找到第一个后就停止搜索
+
+</span></div><div class="anchor value-res" id="name-WithName">	<input type='checkbox' class="fold" id="WithName-fold-content"><label for="WithName-fold-content"> func <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypointMeta.go^fde83.html#line-87">WithName</a>(name <a href="../../../builtin.html#name-string">string</a>) <a href="../optparams.html">optparams</a>.<a href="../optparams.html#name-Option">Option</a>[<a href="#name-EntryPointMeta">EntryPointMeta</a>]</label><span id='WithName-fold-content-docs' class="fold-docs">
+		WithName 设置节点名
+
+</span></div><div class="anchor value-res" id="name-WithNotParseEnv">	<input type='checkbox' class="fold" id="WithNotParseEnv-fold-content"><label for="WithNotParseEnv-fold-content"> func <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypointMeta.go^fde83.html#line-129">WithNotParseEnv</a>() <a href="../optparams.html">optparams</a>.<a href="../optparams.html#name-Option">Option</a>[<a href="#name-EntryPointMeta">EntryPointMeta</a>]</label><span id='WithNotParseEnv-fold-content-docs' class="fold-docs">
+		WithNotParseEnv 设置节点不解析环境变量
+
+</span></div><div class="anchor value-res" id="name-WithNotVerifySchema">	<input type='checkbox' class="fold" id="WithNotVerifySchema-fold-content"><label for="WithNotVerifySchema-fold-content"> func <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypointMeta.go^fde83.html#line-136">WithNotVerifySchema</a>() <a href="../optparams.html">optparams</a>.<a href="../optparams.html#name-Option">Option</a>[<a href="#name-EntryPointMeta">EntryPointMeta</a>]</label><span id='WithNotVerifySchema-fold-content-docs' class="fold-docs">
+		WithNotVerifySchema 设置节点不校验配置的schema
+
+</span></div><div class="anchor value-res" id="name-WithUsage">	<input type='checkbox' class="fold" id="WithUsage-fold-content"><label for="WithUsage-fold-content"> func <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypointMeta.go^fde83.html#line-101">WithUsage</a>(usage <a href="../../../builtin.html#name-string">string</a>) <a href="../optparams.html">optparams</a>.<a href="../optparams.html#name-Option">Option</a>[<a href="#name-EntryPointMeta">EntryPointMeta</a>]</label><span id='WithUsage-fold-content-docs' class="fold-docs">
+		WithUsage 设置节点用法说明
+
+</span></div><div class="anchor value-res" id="name-WithWatchMode">	<input type='checkbox' class="fold" id="WithWatchMode-fold-content"><label for="WithWatchMode-fold-content"> func <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/entrypointMeta.go^fde83.html#line-145">WithWatchMode</a>() <a href="../optparams.html">optparams</a>.<a href="../optparams.html#name-Option">Option</a>[<a href="#name-EntryPointMeta">EntryPointMeta</a>]</label><span id='WithWatchMode-fold-content-docs' class="fold-docs">
+		WithWatchMode 设置监听模式
+		在程序执行过程中监听`-c`(或`--config`)指定的配置文件url内容变更.
+		当出现变更时更新`EndPoint[T]`对象中的config对象,并根据其中的回调函数设置执行相应回调
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* 2 unexporteds ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* 2 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-init"><i>	<span class="nodocs"> func <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/schemaentry.go.html#line-11">init</a>()</span></i></div><div class="anchor value-res hidden" id="name-reverse"><i>	<span class="nodocs"> func <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/utils.go.html#line-21">reverse</a>(s []<a href="../../../builtin.html#name-string">string</a>) []<a href="../../../builtin.html#name-string">string</a></span></i></div></div>
+<div id="exported-variables"><span class="title">Package-Level Variables<span class="title-stat"><i> (total 6, in which 4 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-ErrNotAllowSetChildToEndPoint">	<input type='checkbox' class="fold" id="ErrNotAllowSetChildToEndPoint-fold-content"><label for="ErrNotAllowSetChildToEndPoint-fold-content">  var <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/exceptions.go.html#line-7">ErrNotAllowSetChildToEndPoint</a> <a href="../../../builtin.html#name-error">error</a></label><span id='ErrNotAllowSetChildToEndPoint-fold-content-docs' class="fold-docs">
+		ErrNotAllowSetChildToEndPoint 叶子节点无法设置子节点
+
+</span></div><div class="anchor value-res" id="name-ErrReregistCallBack">	<input type='checkbox' class="fold" id="ErrReregistCallBack-fold-content"><label for="ErrReregistCallBack-fold-content">  var <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/exceptions.go.html#line-12">ErrReregistCallBack</a> <a href="../../../builtin.html#name-error">error</a></label><span id='ErrReregistCallBack-fold-content-docs' class="fold-docs">
+		ErrReregistCallBack 重复注册回调函数
+
+</span></div><div class="anchor value-res" id="name-ErrUnsupportedSchema">	<input type='checkbox' class="fold" id="ErrUnsupportedSchema-fold-content"><label for="ErrUnsupportedSchema-fold-content">  var <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/exceptions.go.html#line-9">ErrUnsupportedSchema</a> <a href="../../../builtin.html#name-error">error</a></label><span id='ErrUnsupportedSchema-fold-content-docs' class="fold-docs">
+		ErrUnsupportedSchema 不支持的的schema类型
+
+</span></div><div class="anchor value-res" id="name-ErrUnsupportedSerialization">	<input type='checkbox' class="fold" id="ErrUnsupportedSerialization-fold-content"><label for="ErrUnsupportedSerialization-fold-content">  var <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/exceptions.go.html#line-15">ErrUnsupportedSerialization</a> <a href="../../../builtin.html#name-error">error</a></label><span id='ErrUnsupportedSerialization-fold-content-docs' class="fold-docs">
+		ErrUnsupportedSerialization 不支持的序列化协议
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-variables-showhide"><i><label for="unexported-variables-showhide" class="show-inline">/* 2 unexporteds ... */</label><label for="unexported-variables-showhide" class="hide-inline">/* 2 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-json"><i>	<span class="nodocs">  var <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/schemaentry.go.html#line-8">json</a> <a href="../../json-iterator/go.html">jsoniter</a>.<a href="../../json-iterator/go.html#name-API">API</a></span></i></div><div class="anchor value-res hidden" id="name-logger"><i>	<span class="nodocs">  var <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/schemaentry.go.html#line-9">logger</a> *<a href="../loggerhelper/v2.html">log</a>.<a href="../loggerhelper/v2.html#name-Log">Log</a></span></i></div></div>
+<div id="exported-constants"><span class="title">Package-Level Constants<span class="title-stat"><i> (total 2, both are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-SerializationJSON">	<span class="nodocs">const <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/endpoint.go.html#line-26">SerializationJSON</a> <a href="#name-SupportedSerialization">SupportedSerialization</a> = 0</span></div><div class="anchor value-res" id="name-SerializationYAML">	<span class="nodocs">const <a href="../../../../src/github.com/Golang-Tools^b0a0c/schema-entry-go/v2/endpoint.go.html#line-27">SerializationYAML</a> <a href="#name-SupportedSerialization">SupportedSerialization</a> = 1</span></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: zsyscall_darwin_amd64.s in package syscall</title>
-<link href="../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../jvs/golds-v0.3.6.js"></script>
+<link href="../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -22,56 +22,56 @@
 <span class="codeline" id="line-3"><code>#include "textflag.h"</code></span>
 <span class="codeline" id="line-4"><code>TEXT ·libc_getfsstat_trampoline(SB),NOSPLIT,$0-0</code></span>
 <span class="codeline" id="line-5"><code>	JMP	libc_getfsstat(SB)</code></span>
-<span class="codeline" id="line-6"><code>TEXT ·libc_setattrlist_trampoline(SB),NOSPLIT,$0-0</code></span>
-<span class="codeline" id="line-7"><code>	JMP	libc_setattrlist(SB)</code></span>
-<span class="codeline" id="line-8"><code>TEXT ·libc_fdopendir_trampoline(SB),NOSPLIT,$0-0</code></span>
-<span class="codeline" id="line-9"><code>	JMP	libc_fdopendir(SB)</code></span>
-<span class="codeline" id="line-10"><code>TEXT ·libc_sendfile_trampoline(SB),NOSPLIT,$0-0</code></span>
-<span class="codeline" id="line-11"><code>	JMP	libc_sendfile(SB)</code></span>
-<span class="codeline" id="line-12"><code>TEXT ·libc_getgroups_trampoline(SB),NOSPLIT,$0-0</code></span>
-<span class="codeline" id="line-13"><code>	JMP	libc_getgroups(SB)</code></span>
-<span class="codeline" id="line-14"><code>TEXT ·libc_setgroups_trampoline(SB),NOSPLIT,$0-0</code></span>
-<span class="codeline" id="line-15"><code>	JMP	libc_setgroups(SB)</code></span>
-<span class="codeline" id="line-16"><code>TEXT ·libc_wait4_trampoline(SB),NOSPLIT,$0-0</code></span>
-<span class="codeline" id="line-17"><code>	JMP	libc_wait4(SB)</code></span>
-<span class="codeline" id="line-18"><code>TEXT ·libc_accept_trampoline(SB),NOSPLIT,$0-0</code></span>
-<span class="codeline" id="line-19"><code>	JMP	libc_accept(SB)</code></span>
-<span class="codeline" id="line-20"><code>TEXT ·libc_bind_trampoline(SB),NOSPLIT,$0-0</code></span>
-<span class="codeline" id="line-21"><code>	JMP	libc_bind(SB)</code></span>
-<span class="codeline" id="line-22"><code>TEXT ·libc_connect_trampoline(SB),NOSPLIT,$0-0</code></span>
-<span class="codeline" id="line-23"><code>	JMP	libc_connect(SB)</code></span>
-<span class="codeline" id="line-24"><code>TEXT ·libc_socket_trampoline(SB),NOSPLIT,$0-0</code></span>
-<span class="codeline" id="line-25"><code>	JMP	libc_socket(SB)</code></span>
-<span class="codeline" id="line-26"><code>TEXT ·libc_getsockopt_trampoline(SB),NOSPLIT,$0-0</code></span>
-<span class="codeline" id="line-27"><code>	JMP	libc_getsockopt(SB)</code></span>
-<span class="codeline" id="line-28"><code>TEXT ·libc_setsockopt_trampoline(SB),NOSPLIT,$0-0</code></span>
-<span class="codeline" id="line-29"><code>	JMP	libc_setsockopt(SB)</code></span>
-<span class="codeline" id="line-30"><code>TEXT ·libc_getpeername_trampoline(SB),NOSPLIT,$0-0</code></span>
-<span class="codeline" id="line-31"><code>	JMP	libc_getpeername(SB)</code></span>
-<span class="codeline" id="line-32"><code>TEXT ·libc_getsockname_trampoline(SB),NOSPLIT,$0-0</code></span>
-<span class="codeline" id="line-33"><code>	JMP	libc_getsockname(SB)</code></span>
-<span class="codeline" id="line-34"><code>TEXT ·libc_shutdown_trampoline(SB),NOSPLIT,$0-0</code></span>
-<span class="codeline" id="line-35"><code>	JMP	libc_shutdown(SB)</code></span>
-<span class="codeline" id="line-36"><code>TEXT ·libc_socketpair_trampoline(SB),NOSPLIT,$0-0</code></span>
-<span class="codeline" id="line-37"><code>	JMP	libc_socketpair(SB)</code></span>
-<span class="codeline" id="line-38"><code>TEXT ·libc_recvfrom_trampoline(SB),NOSPLIT,$0-0</code></span>
-<span class="codeline" id="line-39"><code>	JMP	libc_recvfrom(SB)</code></span>
-<span class="codeline" id="line-40"><code>TEXT ·libc_sendto_trampoline(SB),NOSPLIT,$0-0</code></span>
-<span class="codeline" id="line-41"><code>	JMP	libc_sendto(SB)</code></span>
-<span class="codeline" id="line-42"><code>TEXT ·libc_recvmsg_trampoline(SB),NOSPLIT,$0-0</code></span>
-<span class="codeline" id="line-43"><code>	JMP	libc_recvmsg(SB)</code></span>
-<span class="codeline" id="line-44"><code>TEXT ·libc_sendmsg_trampoline(SB),NOSPLIT,$0-0</code></span>
-<span class="codeline" id="line-45"><code>	JMP	libc_sendmsg(SB)</code></span>
-<span class="codeline" id="line-46"><code>TEXT ·libc_kevent_trampoline(SB),NOSPLIT,$0-0</code></span>
-<span class="codeline" id="line-47"><code>	JMP	libc_kevent(SB)</code></span>
-<span class="codeline" id="line-48"><code>TEXT ·libc_utimes_trampoline(SB),NOSPLIT,$0-0</code></span>
-<span class="codeline" id="line-49"><code>	JMP	libc_utimes(SB)</code></span>
-<span class="codeline" id="line-50"><code>TEXT ·libc_futimes_trampoline(SB),NOSPLIT,$0-0</code></span>
-<span class="codeline" id="line-51"><code>	JMP	libc_futimes(SB)</code></span>
-<span class="codeline" id="line-52"><code>TEXT ·libc_fcntl_trampoline(SB),NOSPLIT,$0-0</code></span>
-<span class="codeline" id="line-53"><code>	JMP	libc_fcntl(SB)</code></span>
-<span class="codeline" id="line-54"><code>TEXT ·libc_pipe_trampoline(SB),NOSPLIT,$0-0</code></span>
-<span class="codeline" id="line-55"><code>	JMP	libc_pipe(SB)</code></span>
+<span class="codeline" id="line-6"><code>TEXT ·libc_fdopendir_trampoline(SB),NOSPLIT,$0-0</code></span>
+<span class="codeline" id="line-7"><code>	JMP	libc_fdopendir(SB)</code></span>
+<span class="codeline" id="line-8"><code>TEXT ·libc_sendfile_trampoline(SB),NOSPLIT,$0-0</code></span>
+<span class="codeline" id="line-9"><code>	JMP	libc_sendfile(SB)</code></span>
+<span class="codeline" id="line-10"><code>TEXT ·libc_getgroups_trampoline(SB),NOSPLIT,$0-0</code></span>
+<span class="codeline" id="line-11"><code>	JMP	libc_getgroups(SB)</code></span>
+<span class="codeline" id="line-12"><code>TEXT ·libc_setgroups_trampoline(SB),NOSPLIT,$0-0</code></span>
+<span class="codeline" id="line-13"><code>	JMP	libc_setgroups(SB)</code></span>
+<span class="codeline" id="line-14"><code>TEXT ·libc_wait4_trampoline(SB),NOSPLIT,$0-0</code></span>
+<span class="codeline" id="line-15"><code>	JMP	libc_wait4(SB)</code></span>
+<span class="codeline" id="line-16"><code>TEXT ·libc_accept_trampoline(SB),NOSPLIT,$0-0</code></span>
+<span class="codeline" id="line-17"><code>	JMP	libc_accept(SB)</code></span>
+<span class="codeline" id="line-18"><code>TEXT ·libc_bind_trampoline(SB),NOSPLIT,$0-0</code></span>
+<span class="codeline" id="line-19"><code>	JMP	libc_bind(SB)</code></span>
+<span class="codeline" id="line-20"><code>TEXT ·libc_connect_trampoline(SB),NOSPLIT,$0-0</code></span>
+<span class="codeline" id="line-21"><code>	JMP	libc_connect(SB)</code></span>
+<span class="codeline" id="line-22"><code>TEXT ·libc_socket_trampoline(SB),NOSPLIT,$0-0</code></span>
+<span class="codeline" id="line-23"><code>	JMP	libc_socket(SB)</code></span>
+<span class="codeline" id="line-24"><code>TEXT ·libc_getsockopt_trampoline(SB),NOSPLIT,$0-0</code></span>
+<span class="codeline" id="line-25"><code>	JMP	libc_getsockopt(SB)</code></span>
+<span class="codeline" id="line-26"><code>TEXT ·libc_setsockopt_trampoline(SB),NOSPLIT,$0-0</code></span>
+<span class="codeline" id="line-27"><code>	JMP	libc_setsockopt(SB)</code></span>
+<span class="codeline" id="line-28"><code>TEXT ·libc_getpeername_trampoline(SB),NOSPLIT,$0-0</code></span>
+<span class="codeline" id="line-29"><code>	JMP	libc_getpeername(SB)</code></span>
+<span class="codeline" id="line-30"><code>TEXT ·libc_getsockname_trampoline(SB),NOSPLIT,$0-0</code></span>
+<span class="codeline" id="line-31"><code>	JMP	libc_getsockname(SB)</code></span>
+<span class="codeline" id="line-32"><code>TEXT ·libc_shutdown_trampoline(SB),NOSPLIT,$0-0</code></span>
+<span class="codeline" id="line-33"><code>	JMP	libc_shutdown(SB)</code></span>
+<span class="codeline" id="line-34"><code>TEXT ·libc_socketpair_trampoline(SB),NOSPLIT,$0-0</code></span>
+<span class="codeline" id="line-35"><code>	JMP	libc_socketpair(SB)</code></span>
+<span class="codeline" id="line-36"><code>TEXT ·libc_recvfrom_trampoline(SB),NOSPLIT,$0-0</code></span>
+<span class="codeline" id="line-37"><code>	JMP	libc_recvfrom(SB)</code></span>
+<span class="codeline" id="line-38"><code>TEXT ·libc_sendto_trampoline(SB),NOSPLIT,$0-0</code></span>
+<span class="codeline" id="line-39"><code>	JMP	libc_sendto(SB)</code></span>
+<span class="codeline" id="line-40"><code>TEXT ·libc_recvmsg_trampoline(SB),NOSPLIT,$0-0</code></span>
+<span class="codeline" id="line-41"><code>	JMP	libc_recvmsg(SB)</code></span>
+<span class="codeline" id="line-42"><code>TEXT ·libc_sendmsg_trampoline(SB),NOSPLIT,$0-0</code></span>
+<span class="codeline" id="line-43"><code>	JMP	libc_sendmsg(SB)</code></span>
+<span class="codeline" id="line-44"><code>TEXT ·libc_kevent_trampoline(SB),NOSPLIT,$0-0</code></span>
+<span class="codeline" id="line-45"><code>	JMP	libc_kevent(SB)</code></span>
+<span class="codeline" id="line-46"><code>TEXT ·libc_utimes_trampoline(SB),NOSPLIT,$0-0</code></span>
+<span class="codeline" id="line-47"><code>	JMP	libc_utimes(SB)</code></span>
+<span class="codeline" id="line-48"><code>TEXT ·libc_futimes_trampoline(SB),NOSPLIT,$0-0</code></span>
+<span class="codeline" id="line-49"><code>	JMP	libc_futimes(SB)</code></span>
+<span class="codeline" id="line-50"><code>TEXT ·libc_fcntl_trampoline(SB),NOSPLIT,$0-0</code></span>
+<span class="codeline" id="line-51"><code>	JMP	libc_fcntl(SB)</code></span>
+<span class="codeline" id="line-52"><code>TEXT ·libc_pipe_trampoline(SB),NOSPLIT,$0-0</code></span>
+<span class="codeline" id="line-53"><code>	JMP	libc_pipe(SB)</code></span>
+<span class="codeline" id="line-54"><code>TEXT ·libc_utimensat_trampoline(SB),NOSPLIT,$0-0</code></span>
+<span class="codeline" id="line-55"><code>	JMP	libc_utimensat(SB)</code></span>
 <span class="codeline" id="line-56"><code>TEXT ·libc_kill_trampoline(SB),NOSPLIT,$0-0</code></span>
 <span class="codeline" id="line-57"><code>	JMP	libc_kill(SB)</code></span>
 <span class="codeline" id="line-58"><code>TEXT ·libc_access_trampoline(SB),NOSPLIT,$0-0</code></span>
@@ -272,7 +272,7 @@
 <span class="codeline" id="line-253"><code>	JMP	libc_ptrace(SB)</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

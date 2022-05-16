@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Package: mime/quotedprintable</title>
-<link href="../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../jvs/golds-v0.3.6.js"></script>
+<link href="../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="package-details"><code><span style="font-size:xx-large;">package <b>quotedprintable</b></span>
@@ -39,7 +39,7 @@
 		func main() {
 			for _, s := range []string{
 				`=48=65=6C=6C=6F=2C=20=47=6F=70=68=65=72=73=21`,
-				`invalid escape: <b style="font-size: 200%">hello</b>`,
+				`invalid escape: &lt;b style="font-size: 200%"&gt;hello&lt;/b&gt;`,
 				"Hello, Gophers! This symbol will be unescaped: =3D and this will be written in =\r\none line.",
 			} {
 				b, err := io.ReadAll(quotedprintable.NewReader(strings.NewReader(s)))
@@ -78,11 +78,11 @@
 				// last read error
 </span></i></span></span>
 		<input type='checkbox' class="fold" id="Reader-fold-methods"><label for="Reader-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='Reader-fold-methods-items' class="fold-items"><span>
-			<input type='checkbox' class="fold" id="Reader-fold-method-Read"><label for="Reader-fold-method-Read">(*T) <a href="../../src/mime/quotedprintable/reader.go.html#line-72">Read</a>(p []<a href="../builtin.html#name-byte">byte</a>) (n <a href="../builtin.html#name-int">int</a>, err <a href="../builtin.html#name-error">error</a>)</label><span id='Reader-fold-method-Read-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Reader-fold-method-Read"><label for="Reader-fold-method-Read">(*Reader) <a href="../../src/mime/quotedprintable/reader.go.html#line-72">Read</a>(p []<a href="../builtin.html#name-byte">byte</a>) (n <a href="../builtin.html#name-int">int</a>, err <a href="../builtin.html#name-error">error</a>)</label><span id='Reader-fold-method-Read-docs' class="fold-docs">
 				Read reads and decodes quoted-printable data from the underlying reader.
 </span></span></span>
 		<input type='checkbox' class="fold" id="Reader-fold-impls"><label for="Reader-fold-impls">Implements (<i>at least one exported</i>)</label><span id='Reader-fold-impls-items' class="fold-items"><span>
-			*T : io.<a href="../io.html#name-Reader">Reader</a></span></span>
+			*Reader : io.<a href="../io.html#name-Reader">Reader</a></span></span>
 		<input type='checkbox' class="fold" id="Reader-fold-results"><label for="Reader-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='Reader-fold-results-items' class="fold-items"><span>
 			func <a href="#name-NewReader">NewReader</a>(r <a href="../io.html">io</a>.<a href="../io.html#name-Reader">Reader</a>) *<b>Reader</b></span></span>
 
@@ -100,30 +100,30 @@
 			<span class="nodocs"><a href="../../src/mime/quotedprintable/writer.go.html#line-19">line</a> <i>[78]<a href="../builtin.html#name-byte">byte</a></i></span></i></span><span class="hidden"><i>
 			<span class="nodocs"><a href="../../src/mime/quotedprintable/writer.go.html#line-17">w</a> <i><a href="../io.html">io</a>.<a href="../io.html#name-Writer">Writer</a></i></span></i></span></span>
 		<input type='checkbox' class="fold" id="Writer-fold-methods"><label for="Writer-fold-methods">Methods (<i>total 8, in which 2 are exported</i>)</label><span id='Writer-fold-methods-items' class="fold-items"><span>
-			<input type='checkbox' class="fold" id="Writer-fold-method-Close"><label for="Writer-fold-method-Close">(*T) <a href="../../src/mime/quotedprintable/writer.go.html#line-67">Close</a>() <a href="../builtin.html#name-error">error</a></label><span id='Writer-fold-method-Close-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Writer-fold-method-Close"><label for="Writer-fold-method-Close">(*Writer) <a href="../../src/mime/quotedprintable/writer.go.html#line-67">Close</a>() <a href="../builtin.html#name-error">error</a></label><span id='Writer-fold-method-Close-docs' class="fold-docs">
 				Close closes the Writer, flushing any unwritten data to the underlying
 				io.Writer, but does not close the underlying io.Writer.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Writer-fold-method-Write"><label for="Writer-fold-method-Write">(*T) <a href="../../src/mime/quotedprintable/writer.go.html#line-31">Write</a>(p []<a href="../builtin.html#name-byte">byte</a>) (n <a href="../builtin.html#name-int">int</a>, err <a href="../builtin.html#name-error">error</a>)</label><span id='Writer-fold-method-Write-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Writer-fold-method-Write"><label for="Writer-fold-method-Write">(*Writer) <a href="../../src/mime/quotedprintable/writer.go.html#line-31">Write</a>(p []<a href="../builtin.html#name-byte">byte</a>) (n <a href="../builtin.html#name-int">int</a>, err <a href="../builtin.html#name-error">error</a>)</label><span id='Writer-fold-method-Write-docs' class="fold-docs">
 				Write encodes p using quoted-printable encoding and writes it to the
 				underlying io.Writer. It limits line length to 76 characters. The encoded
 				bytes are not necessarily flushed until the Writer is closed.
 </span></span>
 			<input type='checkbox' class="showhide" id="Writer-showhide-methods"><i><label for="Writer-showhide-methods" class="show-inline">/* 6 unexporteds ... */</label><label for="Writer-showhide-methods" class="hide-inline">/* 6 unexporteds: */</label></i><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="Writer-fold-method-checkLastByte"><label for="Writer-fold-method-checkLastByte">(*T) <a href="../../src/mime/quotedprintable/writer.go.html#line-130">checkLastByte</a>() <a href="../builtin.html#name-error">error</a></label><span id='Writer-fold-method-checkLastByte-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Writer-fold-method-checkLastByte"><label for="Writer-fold-method-checkLastByte">(*Writer) <a href="../../src/mime/quotedprintable/writer.go.html#line-130">checkLastByte</a>() <a href="../builtin.html#name-error">error</a></label><span id='Writer-fold-method-checkLastByte-docs' class="fold-docs">
 				checkLastByte encodes the last buffered byte if it is a space or a tab.
 </span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../src/mime/quotedprintable/writer.go.html#line-112">encode</a>(b <a href="../builtin.html#name-byte">byte</a>) <a href="../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../src/mime/quotedprintable/writer.go.html#line-161">flush</a>() <a href="../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../src/mime/quotedprintable/writer.go.html#line-153">insertCRLF</a>() <a href="../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../src/mime/quotedprintable/writer.go.html#line-146">insertSoftLineBreak</a>() <a href="../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="Writer-fold-method-write"><label for="Writer-fold-method-write">(*T) <a href="../../src/mime/quotedprintable/writer.go.html#line-76">write</a>(p []<a href="../builtin.html#name-byte">byte</a>) <a href="../builtin.html#name-error">error</a></label><span id='Writer-fold-method-write-docs' class="fold-docs">
+			<span class="nodocs">(*Writer) <a href="../../src/mime/quotedprintable/writer.go.html#line-112">encode</a>(b <a href="../builtin.html#name-byte">byte</a>) <a href="../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*Writer) <a href="../../src/mime/quotedprintable/writer.go.html#line-161">flush</a>() <a href="../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*Writer) <a href="../../src/mime/quotedprintable/writer.go.html#line-153">insertCRLF</a>() <a href="../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*Writer) <a href="../../src/mime/quotedprintable/writer.go.html#line-146">insertSoftLineBreak</a>() <a href="../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Writer-fold-method-write"><label for="Writer-fold-method-write">(*Writer) <a href="../../src/mime/quotedprintable/writer.go.html#line-76">write</a>(p []<a href="../builtin.html#name-byte">byte</a>) <a href="../builtin.html#name-error">error</a></label><span id='Writer-fold-method-write-docs' class="fold-docs">
 				write limits text encoded in quoted-printable to 76 characters per line.
 </span></i></span></span>
 		<input type='checkbox' class="fold" id="Writer-fold-impls"><label for="Writer-fold-impls">Implements (<i>at least 3, all are exported</i>)</label><span id='Writer-fold-impls-items' class="fold-items"><span>
-			*T : io.<a href="../io.html#name-Closer">Closer</a></span><span>
-			*T : io.<a href="../io.html#name-WriteCloser">WriteCloser</a></span><span>
-			*T : io.<a href="../io.html#name-Writer">Writer</a></span></span>
+			*Writer : io.<a href="../io.html#name-Closer">Closer</a></span><span>
+			*Writer : io.<a href="../io.html#name-WriteCloser">WriteCloser</a></span><span>
+			*Writer : io.<a href="../io.html#name-Writer">Writer</a></span></span>
 		<input type='checkbox' class="fold" id="Writer-fold-results"><label for="Writer-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='Writer-fold-results-items' class="fold-items"><span>
 			func <a href="#name-NewWriter">NewWriter</a>(w <a href="../io.html">io</a>.<a href="../io.html#name-Writer">Writer</a>) *<b>Writer</b></span></span>
 
@@ -144,7 +144,7 @@
 
 	<input type='checkbox' class="showhide" id="unexported-constants-showhide"><i><label for="unexported-constants-showhide" class="show-inline">/* 2 unexporteds ... */</label><label for="unexported-constants-showhide" class="hide-inline">/* 2 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-lineMaxLen"><i>	<span class="nodocs">const <a href="../../src/mime/quotedprintable/writer.go.html#line-9">lineMaxLen</a> = 76</span></i></div><div class="anchor value-res hidden" id="name-upperhex"><i>	<span class="nodocs">const <a href="../../src/mime/quotedprintable/writer.go.html#line-127">upperhex</a> = "0123456789ABCDEF"</span></i></div></div></code></pre><pre id="footer">
 <table><tr><td><img src="../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

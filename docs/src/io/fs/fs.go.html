@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: fs.go in package io/fs</title>
-<link href="../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -144,7 +144,7 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-45"><code><span class="comment">// are accepted as valid, but those characters must never be</span></code></span>
 <span class="codeline" id="line-46"><code><span class="comment">// interpreted by an FS implementation as path element separators.</span></code></span>
 <span class="codeline" id="line-47"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../pkg/io/fs.html#name-ValidPath" class="ident">ValidPath</a></label>(<label for="r1" class="ident">name</label> <a href="../../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="../../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
-<span class="codeline" id="line-48"><code>	<span class="keyword">if</span> !<a href="../../../pkg/unicode/utf8.html" class="ident i2">utf8</a>.<a href="../../unicode/utf8/utf8.go.html#line-497" class="ident">ValidString</a>(<label for="r1" class="ident">name</label>) {</code></span>
+<span class="codeline" id="line-48"><code>	<span class="keyword">if</span> !<a href="../../../pkg/unicode/utf8.html" class="ident i2">utf8</a>.<a href="../../unicode/utf8/utf8.go.html#line-523" class="ident">ValidString</a>(<label for="r1" class="ident">name</label>) {</code></span>
 <span class="codeline" id="line-49"><code>		<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
 <span class="codeline" id="line-50"><code>	}</code></span>
 <span class="codeline" id="line-51"><code></code></span>
@@ -172,8 +172,8 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-73"><code></code></span>
 <span class="codeline" id="line-74"><code><span class="comment">// A File provides access to a single file.</span></code></span>
 <span class="codeline" id="line-75"><code><span class="comment">// The File interface is the minimum implementation required of the file.</span></code></span>
-<span class="codeline" id="line-76"><code><span class="comment">// A file may implement additional interfaces, such as</span></code></span>
-<span class="codeline" id="line-77"><code><span class="comment">// ReadDirFile, ReaderAt, or Seeker, to provide additional or optimized functionality.</span></code></span>
+<span class="codeline" id="line-76"><code><span class="comment">// Directory files should also implement ReadDirFile.</span></code></span>
+<span class="codeline" id="line-77"><code><span class="comment">// A file may implement io.ReaderAt or io.Seeker as optimizations.</span></code></span>
 <span class="codeline" id="line-78"><code><span class="keyword">type</span> <a href="../../../pkg/io/fs.html#name-File" class="ident">File</a> <span class="keyword">interface</span> {</code></span>
 <span class="codeline" id="line-79"><code>	<a href="../../../imp/io/fs.File.html#name-Stat" class="ident">Stat</a>() (<a href="#line-150" class="ident">FileInfo</a>, <a href="../../../pkg/builtin.html#name-error" class="ident">error</a>)</code></span>
 <span class="codeline" id="line-80"><code>	<a href="../../../imp/io/fs.File.html#name-Read" class="ident">Read</a>([]<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>) (<a href="../../../pkg/builtin.html#name-int" class="ident">int</a>, <a href="../../../pkg/builtin.html#name-error" class="ident">error</a>)</code></span>
@@ -185,7 +185,7 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-86"><code><span class="keyword">type</span> <a href="../../../pkg/io/fs.html#name-DirEntry" class="ident">DirEntry</a> <span class="keyword">interface</span> {</code></span>
 <span class="codeline" id="line-87"><code>	<span class="comment">// Name returns the name of the file (or subdirectory) described by the entry.</span></code></span>
 <span class="codeline" id="line-88"><code><span class="comment">	// This name is only the final element of the path (the base name), not the entire path.</span></code></span>
-<span class="codeline" id="line-89"><code><span class="comment">	// For example, Name would return "hello.go" not "/home/gopher/hello.go".</span></code></span>
+<span class="codeline" id="line-89"><code><span class="comment">	// For example, Name would return "hello.go" not "home/gopher/hello.go".</span></code></span>
 <span class="codeline" id="line-90"><code>	<a href="../../../imp/io/fs.DirEntry.html#name-Name" class="ident">Name</a>() <a href="../../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
 <span class="codeline" id="line-91"><code></code></span>
 <span class="codeline" id="line-92"><code>	<span class="comment">// IsDir reports whether the entry describes a directory.</span></code></span>
@@ -252,7 +252,7 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-153"><code>	<a href="../../../imp/io/fs.FileInfo.html#name-Mode" class="ident">Mode</a>() <a href="#line-164" class="ident">FileMode</a>     <span class="comment">// file mode bits</span></code></span>
 <span class="codeline" id="line-154"><code>	<a href="../../../imp/io/fs.FileInfo.html#name-ModTime" class="ident">ModTime</a>() <a href="../../../pkg/time.html" class="ident i1">time</a>.<a href="../../time/time.go.html#line-127" class="ident">Time</a> <span class="comment">// modification time</span></code></span>
 <span class="codeline" id="line-155"><code>	<a href="../../../imp/io/fs.FileInfo.html#name-IsDir" class="ident">IsDir</a>() <a href="../../../pkg/builtin.html#name-bool" class="ident">bool</a>        <span class="comment">// abbreviation for Mode().IsDir()</span></code></span>
-<span class="codeline" id="line-156"><code>	<a href="../../../imp/io/fs.FileInfo.html#name-Sys" class="ident">Sys</a>() <span class="keyword">interface</span>{}   <span class="comment">// underlying data source (can return nil)</span></code></span>
+<span class="codeline" id="line-156"><code>	<a href="../../../imp/io/fs.FileInfo.html#name-Sys" class="ident">Sys</a>() <a href="../../../pkg/builtin.html#name-any" class="ident">any</a>           <span class="comment">// underlying data source (can return nil)</span></code></span>
 <span class="codeline" id="line-157"><code>}</code></span>
 <span class="codeline" id="line-158"><code></code></span>
 <span class="codeline" id="line-159"><code><span class="comment">// A FileMode represents a file's mode and permission bits.</span></code></span>
@@ -356,7 +356,7 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-257"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

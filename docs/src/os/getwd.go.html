@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: getwd.go in package os</title>
-<link href="../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../jvs/golds-v0.3.6.js"></script>
+<link href="../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -92,7 +92,7 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-20"><code><span class="comment">// reached via multiple paths (due to symbolic links),</span></code></span>
 <span class="codeline" id="line-21"><code><span class="comment">// Getwd may return any one of them.</span></code></span>
 <span class="codeline" id="line-22"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../pkg/os.html#name-Getwd" class="ident">Getwd</a></label>() (<label for="r1" class="ident">dir</label> <a href="../../pkg/builtin.html#name-string" class="ident">string</a>, <label for="r2" class="ident">err</label> <a href="../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
-<span class="codeline" id="line-23"><code>	<span class="keyword">if</span> <a href="../../pkg/runtime.html" class="ident i0">runtime</a>.<a href="../runtime/extern.go.html#line-253" class="ident">GOOS</a> == <span class="lit-string">"windows"</span> || <a href="../../pkg/runtime.html" class="ident i0">runtime</a>.<a href="../runtime/extern.go.html#line-253" class="ident">GOOS</a> == <span class="lit-string">"plan9"</span> {</code></span>
+<span class="codeline" id="line-23"><code>	<span class="keyword">if</span> <a href="../../pkg/runtime.html" class="ident i0">runtime</a>.<a href="../runtime/extern.go.html#line-271" class="ident">GOOS</a> == <span class="lit-string">"windows"</span> || <a href="../../pkg/runtime.html" class="ident i0">runtime</a>.<a href="../runtime/extern.go.html#line-271" class="ident">GOOS</a> == <span class="lit-string">"plan9"</span> {</code></span>
 <span class="codeline" id="line-24"><code>		<span class="keyword">return</span> <a href="../../pkg/syscall.html" class="ident i2">syscall</a>.<a href="../syscall/syscall_bsd.go.html#line-22" class="ident">Getwd</a>()</code></span>
 <span class="codeline" id="line-25"><code>	}</code></span>
 <span class="codeline" id="line-26"><code></code></span>
@@ -129,7 +129,7 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-57"><code>	<span class="comment">// Apply same kludge but to cached dir instead of $PWD.</span></code></span>
 <span class="codeline" id="line-58"><code>	<a href="#line-13" class="ident">getwdCache</a>.<a href="../sync/mutex.go.html#line-72" class="ident">Lock</a>()</code></span>
 <span class="codeline" id="line-59"><code>	<label for="r1" class="ident">dir</label> = <a href="#line-13" class="ident">getwdCache</a>.<a href="#line-15" class="ident">dir</a></code></span>
-<span class="codeline" id="line-60"><code>	<a href="#line-13" class="ident">getwdCache</a>.<a href="../sync/mutex.go.html#line-179" class="ident">Unlock</a>()</code></span>
+<span class="codeline" id="line-60"><code>	<a href="#line-13" class="ident">getwdCache</a>.<a href="../sync/mutex.go.html#line-203" class="ident">Unlock</a>()</code></span>
 <span class="codeline" id="line-61"><code>	<span class="keyword">if</span> <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r1" class="ident">dir</label>) &gt; <span class="lit-number">0</span> {</code></span>
 <span class="codeline" id="line-62"><code>		<label for="r8" class="ident">d</label>, <label for="r9" class="ident">err</label> := <a href="stat_unix.go.html#line-29" class="ident">statNolog</a>(<label for="r1" class="ident">dir</label>)</code></span>
 <span class="codeline" id="line-63"><code>		<span class="keyword">if</span> <label for="r9" class="ident">err</label> == <a href="../../pkg/builtin.html#name-nil" class="ident">nil</a> &amp;&amp; <a href="types.go.html#line-67" class="ident">SameFile</a>(<label for="r3" class="ident">dot</label>, <label for="r8" class="ident">d</label>) {</code></span>
@@ -156,7 +156,7 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-84"><code>		<span class="keyword">if</span> <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r11" class="ident">parent</label>) &gt;= <span class="lit-number">1024</span> { <span class="comment">// Sanity check</span></code></span>
 <span class="codeline" id="line-85"><code>			<span class="keyword">return</span> <span class="lit-string">""</span>, <a href="../../pkg/syscall.html" class="ident i2">syscall</a>.<a href="../syscall/zerrors_darwin_amd64.go.html#line-1181" class="ident">ENAMETOOLONG</a></code></span>
 <span class="codeline" id="line-86"><code>		}</code></span>
-<span class="codeline" id="line-87"><code>		<label for="r12" class="ident">fd</label>, <label for="r13" class="ident">err</label> := <a href="file_unix.go.html#line-205" class="ident">openFileNolog</a>(<label for="r11" class="ident">parent</label>, <a href="file.go.html#line-73" class="ident">O_RDONLY</a>, <span class="lit-number">0</span>)</code></span>
+<span class="codeline" id="line-87"><code>		<label for="r12" class="ident">fd</label>, <label for="r13" class="ident">err</label> := <a href="file_unix.go.html#line-205" class="ident">openFileNolog</a>(<label for="r11" class="ident">parent</label>, <a href="file.go.html#line-75" class="ident">O_RDONLY</a>, <span class="lit-number">0</span>)</code></span>
 <span class="codeline" id="line-88"><code>		<span class="keyword">if</span> <label for="r13" class="ident">err</label> != <a href="../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
 <span class="codeline" id="line-89"><code>			<span class="keyword">return</span> <span class="lit-string">""</span>, <label for="r13" class="ident">err</label></code></span>
 <span class="codeline" id="line-90"><code>		}</code></span>
@@ -192,13 +192,13 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-120"><code>	<span class="comment">// Save answer as hint to avoid the expensive path next time.</span></code></span>
 <span class="codeline" id="line-121"><code>	<a href="#line-13" class="ident">getwdCache</a>.<a href="../sync/mutex.go.html#line-72" class="ident">Lock</a>()</code></span>
 <span class="codeline" id="line-122"><code>	<a href="#line-13" class="ident">getwdCache</a>.<a href="#line-15" class="ident">dir</a> = <label for="r1" class="ident">dir</label></code></span>
-<span class="codeline" id="line-123"><code>	<a href="#line-13" class="ident">getwdCache</a>.<a href="../sync/mutex.go.html#line-179" class="ident">Unlock</a>()</code></span>
+<span class="codeline" id="line-123"><code>	<a href="#line-13" class="ident">getwdCache</a>.<a href="../sync/mutex.go.html#line-203" class="ident">Unlock</a>()</code></span>
 <span class="codeline" id="line-124"><code></code></span>
 <span class="codeline" id="line-125"><code>	<span class="keyword">return</span> <label for="r1" class="ident">dir</label>, <a href="../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
 <span class="codeline" id="line-126"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

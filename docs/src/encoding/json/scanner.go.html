@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: scanner.go in package encoding/json</title>
-<link href="../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -371,7 +371,7 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-83"><code>}</code></span>
 <span class="codeline" id="line-84"><code></code></span>
 <span class="codeline" id="line-85"><code><span class="keyword">var</span> <a href="../../../pkg/encoding/json.html#name-scannerPool" class="ident">scannerPool</a> = <a href="../../../pkg/sync.html" class="ident i1">sync</a>.<a href="../../sync/pool.go.html#line-44" class="ident">Pool</a>{</code></span>
-<span class="codeline" id="line-86"><code>	<a href="../../sync/pool.go.html#line-56" class="ident">New</a>: <span class="keyword">func</span>() <span class="keyword">interface</span>{} {</code></span>
+<span class="codeline" id="line-86"><code>	<a href="../../sync/pool.go.html#line-56" class="ident">New</a>: <span class="keyword">func</span>() <a href="../../../pkg/builtin.html#name-any" class="ident">any</a> {</code></span>
 <span class="codeline" id="line-87"><code>		<span class="keyword">return</span> &amp;<a href="#line-64" class="ident">scanner</a>{}</code></span>
 <span class="codeline" id="line-88"><code>	},</code></span>
 <span class="codeline" id="line-89"><code>}</code></span>
@@ -891,12 +891,12 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-603"><code>	}</code></span>
 <span class="codeline" id="line-604"><code></code></span>
 <span class="codeline" id="line-605"><code>	<span class="comment">// use quoted string with different quotation marks</span></code></span>
-<span class="codeline" id="line-606"><code>	<label for="r130" class="ident">s</label> := <a href="../../../pkg/strconv.html" class="ident i0">strconv</a>.<a href="../../strconv/quote.go.html#line-124" class="ident">Quote</a>(<a href="../../../pkg/builtin.html#name-string" class="ident">string</a>(<label for="r129" class="ident">c</label>))</code></span>
+<span class="codeline" id="line-606"><code>	<label for="r130" class="ident">s</label> := <a href="../../../pkg/strconv.html" class="ident i0">strconv</a>.<a href="../../strconv/quote.go.html#line-128" class="ident">Quote</a>(<a href="../../../pkg/builtin.html#name-string" class="ident">string</a>(<label for="r129" class="ident">c</label>))</code></span>
 <span class="codeline" id="line-607"><code>	<span class="keyword">return</span> <span class="lit-string">"'"</span> + <label for="r130" class="ident">s</label>[<span class="lit-number">1</span>:<a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r130" class="ident">s</label>)-<span class="lit-number">1</span>] + <span class="lit-string">"'"</span></code></span>
 <span class="codeline" id="line-608"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

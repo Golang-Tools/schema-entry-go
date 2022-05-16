@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: format.go in package fmt</title>
-<link href="../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../jvs/golds-v0.3.6.js"></script>
+<link href="../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -342,7 +342,7 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-92"><code>		<label for="r14" class="ident">f</label>.<a href="#line-42" class="ident">buf</a>.<a href="print.go.html#line-77" class="ident">write</a>(<label for="r16" class="ident">b</label>)</code></span>
 <span class="codeline" id="line-93"><code>		<span class="keyword">return</span></code></span>
 <span class="codeline" id="line-94"><code>	}</code></span>
-<span class="codeline" id="line-95"><code>	<label for="r17" class="ident">width</label> := <label for="r14" class="ident">f</label>.<a href="#line-46" class="ident">wid</a> - <a href="../../pkg/unicode/utf8.html" class="ident i1">utf8</a>.<a href="../unicode/utf8/utf8.go.html#line-374" class="ident">RuneCount</a>(<label for="r16" class="ident">b</label>)</code></span>
+<span class="codeline" id="line-95"><code>	<label for="r17" class="ident">width</label> := <label for="r14" class="ident">f</label>.<a href="#line-46" class="ident">wid</a> - <a href="../../pkg/unicode/utf8.html" class="ident i1">utf8</a>.<a href="../unicode/utf8/utf8.go.html#line-400" class="ident">RuneCount</a>(<label for="r16" class="ident">b</label>)</code></span>
 <span class="codeline" id="line-96"><code>	<span class="keyword">if</span> !<label for="r14" class="ident">f</label>.<a href="#line-26" class="ident">minus</a> {</code></span>
 <span class="codeline" id="line-97"><code>		<span class="comment">// left padding</span></code></span>
 <span class="codeline" id="line-98"><code>		<label for="r14" class="ident">f</label>.<a href="#line-64" class="ident">writePadding</a>(<label for="r17" class="ident">width</label>)</code></span>
@@ -360,7 +360,7 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-110"><code>		<label for="r18" class="ident">f</label>.<a href="#line-42" class="ident">buf</a>.<a href="print.go.html#line-81" class="ident">writeString</a>(<label for="r20" class="ident">s</label>)</code></span>
 <span class="codeline" id="line-111"><code>		<span class="keyword">return</span></code></span>
 <span class="codeline" id="line-112"><code>	}</code></span>
-<span class="codeline" id="line-113"><code>	<label for="r21" class="ident">width</label> := <label for="r18" class="ident">f</label>.<a href="#line-46" class="ident">wid</a> - <a href="../../pkg/unicode/utf8.html" class="ident i1">utf8</a>.<a href="../unicode/utf8/utf8.go.html#line-411" class="ident">RuneCountInString</a>(<label for="r20" class="ident">s</label>)</code></span>
+<span class="codeline" id="line-113"><code>	<label for="r21" class="ident">width</label> := <label for="r18" class="ident">f</label>.<a href="#line-46" class="ident">wid</a> - <a href="../../pkg/unicode/utf8.html" class="ident i1">utf8</a>.<a href="../unicode/utf8/utf8.go.html#line-437" class="ident">RuneCountInString</a>(<label for="r20" class="ident">s</label>)</code></span>
 <span class="codeline" id="line-114"><code>	<span class="keyword">if</span> !<label for="r18" class="ident">f</label>.<a href="#line-26" class="ident">minus</a> {</code></span>
 <span class="codeline" id="line-115"><code>		<span class="comment">// left padding</span></code></span>
 <span class="codeline" id="line-116"><code>		<label for="r18" class="ident">f</label>.<a href="#line-64" class="ident">writePadding</a>(<label for="r21" class="ident">width</label>)</code></span>
@@ -402,7 +402,7 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-152"><code>	<label for="r31" class="ident">i</label> := <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r28" class="ident">buf</label>)</code></span>
 <span class="codeline" id="line-153"><code></code></span>
 <span class="codeline" id="line-154"><code>	<span class="comment">// For %#U we want to add a space and a quoted character at the end of the buffer.</span></code></span>
-<span class="codeline" id="line-155"><code>	<span class="keyword">if</span> <label for="r25" class="ident">f</label>.<a href="#line-28" class="ident">sharp</a> &amp;&amp; <label for="r27" class="ident">u</label> &lt;= <a href="../../pkg/unicode/utf8.html" class="ident i1">utf8</a>.<a href="../unicode/utf8/utf8.go.html#line-18" class="ident">MaxRune</a> &amp;&amp; <a href="../../pkg/strconv.html" class="ident i0">strconv</a>.<a href="../strconv/quote.go.html#line-483" class="ident">IsPrint</a>(<a href="../../pkg/builtin.html#name-rune" class="ident">rune</a>(<label for="r27" class="ident">u</label>)) {</code></span>
+<span class="codeline" id="line-155"><code>	<span class="keyword">if</span> <label for="r25" class="ident">f</label>.<a href="#line-28" class="ident">sharp</a> &amp;&amp; <label for="r27" class="ident">u</label> &lt;= <a href="../../pkg/unicode/utf8.html" class="ident i1">utf8</a>.<a href="../unicode/utf8/utf8.go.html#line-18" class="ident">MaxRune</a> &amp;&amp; <a href="../../pkg/strconv.html" class="ident i0">strconv</a>.<a href="../strconv/quote.go.html#line-534" class="ident">IsPrint</a>(<a href="../../pkg/builtin.html#name-rune" class="ident">rune</a>(<label for="r27" class="ident">u</label>)) {</code></span>
 <span class="codeline" id="line-156"><code>		<label for="r31" class="ident">i</label>--</code></span>
 <span class="codeline" id="line-157"><code>		<label for="r28" class="ident">buf</label>[<label for="r31" class="ident">i</label>] = <span class="lit-number">'\''</span></code></span>
 <span class="codeline" id="line-158"><code>		<label for="r31" class="ident">i</label> -= <a href="../../pkg/unicode/utf8.html" class="ident i1">utf8</a>.<a href="../unicode/utf8/utf8.go.html#line-321" class="ident">RuneLen</a>(<a href="../../pkg/builtin.html#name-rune" class="ident">rune</a>(<label for="r27" class="ident">u</label>))</code></span>
@@ -570,7 +570,7 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-320"><code>	<label for="r33" class="ident">f</label>.<a href="#line-30" class="ident">zero</a> = <label for="r47" class="ident">oldZero</label></code></span>
 <span class="codeline" id="line-321"><code>}</code></span>
 <span class="codeline" id="line-322"><code></code></span>
-<span class="codeline" id="line-323"><code><span class="comment">// truncate truncates the string s to the specified precision, if present.</span></code></span>
+<span class="codeline" id="line-323"><code><span class="comment">// truncateString truncates the string s to the specified precision, if present.</span></code></span>
 <span class="codeline" id="line-324"><code><span class="keyword">func</span> (<label for="r48" class="ident">f</label> *<a href="#line-41" class="ident">fmt</a>) <label for="r49" class="ident">truncateString</label>(<label for="r50" class="ident">s</label> <a href="../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="../../pkg/builtin.html#name-string" class="ident">string</a> {</code></span>
 <span class="codeline" id="line-325"><code>	<span class="keyword">if</span> <label for="r48" class="ident">f</label>.<a href="#line-25" class="ident">precPresent</a> {</code></span>
 <span class="codeline" id="line-326"><code>		<label for="r51" class="ident">n</label> := <label for="r48" class="ident">f</label>.<a href="#line-47" class="ident">prec</a></code></span>
@@ -696,15 +696,15 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-446"><code><span class="comment">// if the string does not contain any control characters other than tab.</span></code></span>
 <span class="codeline" id="line-447"><code><span class="keyword">func</span> (<label for="r83" class="ident">f</label> *<a href="#line-41" class="ident">fmt</a>) <label for="r84" class="ident">fmtQ</label>(<label for="r85" class="ident">s</label> <a href="../../pkg/builtin.html#name-string" class="ident">string</a>) {</code></span>
 <span class="codeline" id="line-448"><code>	<label for="r85" class="ident">s</label> = <label for="r83" class="ident">f</label>.<a href="#line-324" class="ident">truncateString</a>(<label for="r85" class="ident">s</label>)</code></span>
-<span class="codeline" id="line-449"><code>	<span class="keyword">if</span> <label for="r83" class="ident">f</label>.<a href="#line-28" class="ident">sharp</a> &amp;&amp; <a href="../../pkg/strconv.html" class="ident i0">strconv</a>.<a href="../strconv/quote.go.html#line-205" class="ident">CanBackquote</a>(<label for="r85" class="ident">s</label>) {</code></span>
+<span class="codeline" id="line-449"><code>	<span class="keyword">if</span> <label for="r83" class="ident">f</label>.<a href="#line-28" class="ident">sharp</a> &amp;&amp; <a href="../../pkg/strconv.html" class="ident i0">strconv</a>.<a href="../strconv/quote.go.html#line-209" class="ident">CanBackquote</a>(<label for="r85" class="ident">s</label>) {</code></span>
 <span class="codeline" id="line-450"><code>		<label for="r83" class="ident">f</label>.<a href="#line-108" class="ident">padString</a>(<span class="lit-string">"`"</span> + <label for="r85" class="ident">s</label> + <span class="lit-string">"`"</span>)</code></span>
 <span class="codeline" id="line-451"><code>		<span class="keyword">return</span></code></span>
 <span class="codeline" id="line-452"><code>	}</code></span>
 <span class="codeline" id="line-453"><code>	<label for="r86" class="ident">buf</label> := <label for="r83" class="ident">f</label>.<a href="#line-51" class="ident">intbuf</a>[:<span class="lit-number">0</span>]</code></span>
 <span class="codeline" id="line-454"><code>	<span class="keyword">if</span> <label for="r83" class="ident">f</label>.<a href="#line-27" class="ident">plus</a> {</code></span>
-<span class="codeline" id="line-455"><code>		<label for="r83" class="ident">f</label>.<a href="#line-90" class="ident">pad</a>(<a href="../../pkg/strconv.html" class="ident i0">strconv</a>.<a href="../strconv/quote.go.html#line-143" class="ident">AppendQuoteToASCII</a>(<label for="r86" class="ident">buf</label>, <label for="r85" class="ident">s</label>))</code></span>
+<span class="codeline" id="line-455"><code>		<label for="r83" class="ident">f</label>.<a href="#line-90" class="ident">pad</a>(<a href="../../pkg/strconv.html" class="ident i0">strconv</a>.<a href="../strconv/quote.go.html#line-147" class="ident">AppendQuoteToASCII</a>(<label for="r86" class="ident">buf</label>, <label for="r85" class="ident">s</label>))</code></span>
 <span class="codeline" id="line-456"><code>	} <span class="keyword">else</span> {</code></span>
-<span class="codeline" id="line-457"><code>		<label for="r83" class="ident">f</label>.<a href="#line-90" class="ident">pad</a>(<a href="../../pkg/strconv.html" class="ident i0">strconv</a>.<a href="../strconv/quote.go.html#line-130" class="ident">AppendQuote</a>(<label for="r86" class="ident">buf</label>, <label for="r85" class="ident">s</label>))</code></span>
+<span class="codeline" id="line-457"><code>		<label for="r83" class="ident">f</label>.<a href="#line-90" class="ident">pad</a>(<a href="../../pkg/strconv.html" class="ident i0">strconv</a>.<a href="../strconv/quote.go.html#line-134" class="ident">AppendQuote</a>(<label for="r86" class="ident">buf</label>, <label for="r85" class="ident">s</label>))</code></span>
 <span class="codeline" id="line-458"><code>	}</code></span>
 <span class="codeline" id="line-459"><code>}</code></span>
 <span class="codeline" id="line-460"><code></code></span>
@@ -729,9 +729,9 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-479"><code>	}</code></span>
 <span class="codeline" id="line-480"><code>	<label for="r97" class="ident">buf</label> := <label for="r93" class="ident">f</label>.<a href="#line-51" class="ident">intbuf</a>[:<span class="lit-number">0</span>]</code></span>
 <span class="codeline" id="line-481"><code>	<span class="keyword">if</span> <label for="r93" class="ident">f</label>.<a href="#line-27" class="ident">plus</a> {</code></span>
-<span class="codeline" id="line-482"><code>		<label for="r93" class="ident">f</label>.<a href="#line-90" class="ident">pad</a>(<a href="../../pkg/strconv.html" class="ident i0">strconv</a>.<a href="../strconv/quote.go.html#line-184" class="ident">AppendQuoteRuneToASCII</a>(<label for="r97" class="ident">buf</label>, <label for="r96" class="ident">r</label>))</code></span>
+<span class="codeline" id="line-482"><code>		<label for="r93" class="ident">f</label>.<a href="#line-90" class="ident">pad</a>(<a href="../../pkg/strconv.html" class="ident i0">strconv</a>.<a href="../strconv/quote.go.html#line-188" class="ident">AppendQuoteRuneToASCII</a>(<label for="r97" class="ident">buf</label>, <label for="r96" class="ident">r</label>))</code></span>
 <span class="codeline" id="line-483"><code>	} <span class="keyword">else</span> {</code></span>
-<span class="codeline" id="line-484"><code>		<label for="r93" class="ident">f</label>.<a href="#line-90" class="ident">pad</a>(<a href="../../pkg/strconv.html" class="ident i0">strconv</a>.<a href="../strconv/quote.go.html#line-170" class="ident">AppendQuoteRune</a>(<label for="r97" class="ident">buf</label>, <label for="r96" class="ident">r</label>))</code></span>
+<span class="codeline" id="line-484"><code>		<label for="r93" class="ident">f</label>.<a href="#line-90" class="ident">pad</a>(<a href="../../pkg/strconv.html" class="ident i0">strconv</a>.<a href="../strconv/quote.go.html#line-174" class="ident">AppendQuoteRune</a>(<label for="r97" class="ident">buf</label>, <label for="r96" class="ident">r</label>))</code></span>
 <span class="codeline" id="line-485"><code>	}</code></span>
 <span class="codeline" id="line-486"><code>}</code></span>
 <span class="codeline" id="line-487"><code></code></span>
@@ -843,7 +843,7 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-593"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source: log.go in package github.com/Golang-Tools/loggerhelper/v2</title>
+<link href="../../../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.4.9.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="header"><code><span class="title">Source File</span>
+	log.go
+
+<span class="title">Belonging Package</span>
+	<a href="../../../../../pkg/github.com/Golang-Tools^b0a0c/loggerhelper/v2.html">github.com/Golang-Tools/loggerhelper/v2</a>
+</code></pre>
+<style>input[type=radio] {display: none;}
+input[id=r0]:checked ~pre label[for=r0],
+input[id=r1]:checked ~pre label[for=r1],
+input[id=r2]:checked ~pre label[for=r2],
+input[id=r3]:checked ~pre label[for=r3],
+input[id=r4]:checked ~pre label[for=r4],
+input[id=r5]:checked ~pre label[for=r5],
+input[id=r6]:checked ~pre label[for=r6],
+input[id=r7]:checked ~pre label[for=r7],
+input[id=r8]:checked ~pre label[for=r8],
+input[id=r9]:checked ~pre label[for=r9],
+input[id=r10]:checked ~pre label[for=r10],
+input[id=r11]:checked ~pre label[for=r11],
+input[id=r12]:checked ~pre label[for=r12],
+input[id=r13]:checked ~pre label[for=r13],
+input[id=r14]:checked ~pre label[for=r14],
+input[id=r15]:checked ~pre label[for=r15],
+input[id=r16]:checked ~pre label[for=r16],
+input[id=r17]:checked ~pre label[for=r17],
+input[id=r18]:checked ~pre label[for=r18],
+input[id=r19]:checked ~pre label[for=r19],
+input[id=r20]:checked ~pre label[for=r20],
+input[id=r21]:checked ~pre label[for=r21],
+input[id=r22]:checked ~pre label[for=r22],
+input[id=r23]:checked ~pre label[for=r23],
+input[id=r24]:checked ~pre label[for=r24],
+input[id=r25]:checked ~pre label[for=r25],
+input[id=r26]:checked ~pre label[for=r26],
+input[id=r27]:checked ~pre label[for=r27],
+input[id=r28]:checked ~pre label[for=r28],
+input[id=r29]:checked ~pre label[for=r29],
+input[id=r30]:checked ~pre label[for=r30],
+input[id=r31]:checked ~pre label[for=r31],
+input[id=r32]:checked ~pre label[for=r32],
+input[id=r33]:checked ~pre label[for=r33],
+input[id=r34]:checked ~pre label[for=r34],
+input[id=r35]:checked ~pre label[for=r35],
+input[id=r36]:checked ~pre label[for=r36],
+input[id=r37]:checked ~pre label[for=r37],
+input[id=r38]:checked ~pre label[for=r38],
+input[id=r39]:checked ~pre label[for=r39],
+input[id=r40]:checked ~pre label[for=r40],
+input[id=r41]:checked ~pre label[for=r41],
+input[id=r42]:checked ~pre label[for=r42],
+input[id=r43]:checked ~pre label[for=r43],
+input[id=r44]:checked ~pre label[for=r44],
+input[id=r45]:checked ~pre label[for=r45],
+input[id=r46]:checked ~pre label[for=r46],
+input[id=r47]:checked ~pre label[for=r47],
+input[id=r48]:checked ~pre label[for=r48],
+input[id=r49]:checked ~pre label[for=r49],
+input[id=r50]:checked ~pre label[for=r50],
+input[id=r51]:checked ~pre label[for=r51],
+input[id=r52]:checked ~pre label[for=r52],
+input[id=r53]:checked ~pre label[for=r53],
+input[id=r54]:checked ~pre label[for=r54],
+input[id=r55]:checked ~pre label[for=r55]
+{background: #226; color: #ff8;}
+input[id=i0]:checked ~pre .i0
+{background: brown; color: #eed;}
+</style><input id="r0" type="radio" name="g"/>
+<input id="r1" type="radio" name="g"/>
+<input id="r2" type="radio" name="g"/>
+<input id="r3" type="radio" name="g"/>
+<input id="r4" type="radio" name="g"/>
+<input id="r5" type="radio" name="g"/>
+<input id="r6" type="radio" name="g"/>
+<input id="r7" type="radio" name="g"/>
+<input id="r8" type="radio" name="g"/>
+<input id="r9" type="radio" name="g"/>
+<input id="r10" type="radio" name="g"/>
+<input id="r11" type="radio" name="g"/>
+<input id="r12" type="radio" name="g"/>
+<input id="r13" type="radio" name="g"/>
+<input id="r14" type="radio" name="g"/>
+<input id="r15" type="radio" name="g"/>
+<input id="r16" type="radio" name="g"/>
+<input id="r17" type="radio" name="g"/>
+<input id="r18" type="radio" name="g"/>
+<input id="r19" type="radio" name="g"/>
+<input id="r20" type="radio" name="g"/>
+<input id="r21" type="radio" name="g"/>
+<input id="r22" type="radio" name="g"/>
+<input id="r23" type="radio" name="g"/>
+<input id="r24" type="radio" name="g"/>
+<input id="r25" type="radio" name="g"/>
+<input id="r26" type="radio" name="g"/>
+<input id="r27" type="radio" name="g"/>
+<input id="r28" type="radio" name="g"/>
+<input id="r29" type="radio" name="g"/>
+<input id="r30" type="radio" name="g"/>
+<input id="r31" type="radio" name="g"/>
+<input id="r32" type="radio" name="g"/>
+<input id="r33" type="radio" name="g"/>
+<input id="r34" type="radio" name="g"/>
+<input id="r35" type="radio" name="g"/>
+<input id="r36" type="radio" name="g"/>
+<input id="r37" type="radio" name="g"/>
+<input id="r38" type="radio" name="g"/>
+<input id="r39" type="radio" name="g"/>
+<input id="r40" type="radio" name="g"/>
+<input id="r41" type="radio" name="g"/>
+<input id="r42" type="radio" name="g"/>
+<input id="r43" type="radio" name="g"/>
+<input id="r44" type="radio" name="g"/>
+<input id="r45" type="radio" name="g"/>
+<input id="r46" type="radio" name="g"/>
+<input id="r47" type="radio" name="g"/>
+<input id="r48" type="radio" name="g"/>
+<input id="r49" type="radio" name="g"/>
+<input id="r50" type="radio" name="g"/>
+<input id="r51" type="radio" name="g"/>
+<input id="r52" type="radio" name="g"/>
+<input id="r53" type="radio" name="g"/>
+<input id="r54" type="radio" name="g"/>
+<input id="r55" type="radio" name="g"/>
+<input id="i0" type="radio" name="i"/>
+
+<pre class="line-numbers">
+<span class="codeline" id="line-1"><code><span class="keyword">package</span> loggerhelper</code></span>
+<span class="codeline" id="line-2"><code></code></span>
+<span class="codeline" id="line-3"><code><span class="keyword">import</span> <a href="../../../../../pkg/github.com/sirupsen/logrus.html" class="ident i0">logrus</a> <label for="i0"><span class="lit-string i0">"github.com/sirupsen/logrus"</span></label></code></span>
+<span class="codeline" id="line-4"><code></code></span>
+<span class="codeline" id="line-5"><code><span class="comment">//针对不同业务可以设置不同的Log对象</span></code></span>
+<span class="codeline" id="line-6"><code><span class="comment">//它是固定了一些字段的logger</span></code></span>
+<span class="codeline" id="line-7"><code><span class="keyword">type</span> <a href="../../../../../pkg/github.com/Golang-Tools^b0a0c/loggerhelper/v2.html#name-Log" class="ident">Log</a> <span class="keyword">struct</span> {</code></span>
+<span class="codeline" id="line-8"><code>	log *<a href="../../../../../pkg/github.com/sirupsen/logrus.html" class="ident i0">logrus</a>.<a href="../../../sirupsen/logrus/entry.go.html#line-44" class="ident">Entry</a></code></span>
+<span class="codeline" id="line-9"><code>}</code></span>
+<span class="codeline" id="line-10"><code></code></span>
+<span class="codeline" id="line-11"><code><span class="comment">//Trace 打印Trace级别信息</span></code></span>
+<span class="codeline" id="line-12"><code><span class="comment">//@params message string 事件消息</span></code></span>
+<span class="codeline" id="line-13"><code><span class="comment">//@params fields ...map[string]interface{} 信息字段</span></code></span>
+<span class="codeline" id="line-14"><code><span class="keyword">func</span> (<label for="r0" class="ident">lg</label> *<a href="#line-7" class="ident">Log</a>) <label for="r1" class="ident">Trace</label>(<label for="r2" class="ident">message</label> <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>, <label for="r3" class="ident">fields</label> ...<span class="keyword">map</span>[<a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>]<span class="keyword">interface</span>{}) {</code></span>
+<span class="codeline" id="line-15"><code>	<label for="r4" class="ident">fieldlen</label> := <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r3" class="ident">fields</label>)</code></span>
+<span class="codeline" id="line-16"><code>	<span class="keyword">switch</span> <label for="r4" class="ident">fieldlen</label> {</code></span>
+<span class="codeline" id="line-17"><code>	<span class="keyword">case</span> <span class="lit-number">0</span>:</code></span>
+<span class="codeline" id="line-18"><code>		{</code></span>
+<span class="codeline" id="line-19"><code>			<label for="r0" class="ident">lg</label>.<a href="#line-8" class="ident">log</a>.<a href="../../../sirupsen/logrus/entry.go.html#line-297" class="ident">Trace</a>(<label for="r2" class="ident">message</label>)</code></span>
+<span class="codeline" id="line-20"><code>		}</code></span>
+<span class="codeline" id="line-21"><code>	<span class="keyword">default</span>:</code></span>
+<span class="codeline" id="line-22"><code>		{</code></span>
+<span class="codeline" id="line-23"><code>			<label for="r5" class="ident">l</label> := <label for="r0" class="ident">lg</label>.<a href="#line-8" class="ident">log</a></code></span>
+<span class="codeline" id="line-24"><code>			<span class="keyword">for</span> <label for="r6" class="ident">_</label>, <label for="r7" class="ident">field</label> := <span class="keyword">range</span> <label for="r3" class="ident">fields</label> {</code></span>
+<span class="codeline" id="line-25"><code>				<label for="r5" class="ident">l</label> = <label for="r5" class="ident">l</label>.<a href="../../../sirupsen/logrus/entry.go.html#line-125" class="ident">WithFields</a>(<label for="r7" class="ident">field</label>)</code></span>
+<span class="codeline" id="line-26"><code>			}</code></span>
+<span class="codeline" id="line-27"><code>			<label for="r5" class="ident">l</label>.<a href="../../../sirupsen/logrus/entry.go.html#line-297" class="ident">Trace</a>(<label for="r2" class="ident">message</label>)</code></span>
+<span class="codeline" id="line-28"><code>		}</code></span>
+<span class="codeline" id="line-29"><code>	}</code></span>
+<span class="codeline" id="line-30"><code></code></span>
+<span class="codeline" id="line-31"><code>}</code></span>
+<span class="codeline" id="line-32"><code></code></span>
+<span class="codeline" id="line-33"><code><span class="comment">//Debug 打印Debug级别信息</span></code></span>
+<span class="codeline" id="line-34"><code><span class="comment">//@params message string 事件消息</span></code></span>
+<span class="codeline" id="line-35"><code><span class="comment">//@params fields ...map[string]interface{} 信息字段</span></code></span>
+<span class="codeline" id="line-36"><code><span class="keyword">func</span> (<label for="r8" class="ident">lg</label> *<a href="#line-7" class="ident">Log</a>) <label for="r9" class="ident">Debug</label>(<label for="r10" class="ident">message</label> <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>, <label for="r11" class="ident">fields</label> ...<span class="keyword">map</span>[<a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>]<span class="keyword">interface</span>{}) {</code></span>
+<span class="codeline" id="line-37"><code>	<label for="r12" class="ident">fieldlen</label> := <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r11" class="ident">fields</label>)</code></span>
+<span class="codeline" id="line-38"><code>	<span class="keyword">switch</span> <label for="r12" class="ident">fieldlen</label> {</code></span>
+<span class="codeline" id="line-39"><code>	<span class="keyword">case</span> <span class="lit-number">0</span>:</code></span>
+<span class="codeline" id="line-40"><code>		{</code></span>
+<span class="codeline" id="line-41"><code>			<label for="r8" class="ident">lg</label>.<a href="#line-8" class="ident">log</a>.<a href="../../../sirupsen/logrus/entry.go.html#line-301" class="ident">Debug</a>(<label for="r10" class="ident">message</label>)</code></span>
+<span class="codeline" id="line-42"><code>		}</code></span>
+<span class="codeline" id="line-43"><code>	<span class="keyword">default</span>:</code></span>
+<span class="codeline" id="line-44"><code>		{</code></span>
+<span class="codeline" id="line-45"><code>			<label for="r13" class="ident">l</label> := <label for="r8" class="ident">lg</label>.<a href="#line-8" class="ident">log</a></code></span>
+<span class="codeline" id="line-46"><code>			<span class="keyword">for</span> <label for="r14" class="ident">_</label>, <label for="r15" class="ident">field</label> := <span class="keyword">range</span> <label for="r11" class="ident">fields</label> {</code></span>
+<span class="codeline" id="line-47"><code>				<label for="r13" class="ident">l</label> = <label for="r13" class="ident">l</label>.<a href="../../../sirupsen/logrus/entry.go.html#line-125" class="ident">WithFields</a>(<label for="r15" class="ident">field</label>)</code></span>
+<span class="codeline" id="line-48"><code>			}</code></span>
+<span class="codeline" id="line-49"><code>			<label for="r13" class="ident">l</label>.<a href="../../../sirupsen/logrus/entry.go.html#line-301" class="ident">Debug</a>(<label for="r10" class="ident">message</label>)</code></span>
+<span class="codeline" id="line-50"><code>		}</code></span>
+<span class="codeline" id="line-51"><code>	}</code></span>
+<span class="codeline" id="line-52"><code></code></span>
+<span class="codeline" id="line-53"><code>}</code></span>
+<span class="codeline" id="line-54"><code></code></span>
+<span class="codeline" id="line-55"><code><span class="comment">//Info 打印Info级别信息</span></code></span>
+<span class="codeline" id="line-56"><code><span class="comment">//@params message string 事件消息</span></code></span>
+<span class="codeline" id="line-57"><code><span class="comment">//@params fields ...map[string]interface{} 信息字段</span></code></span>
+<span class="codeline" id="line-58"><code><span class="keyword">func</span> (<label for="r16" class="ident">lg</label> *<a href="#line-7" class="ident">Log</a>) <label for="r17" class="ident">Info</label>(<label for="r18" class="ident">message</label> <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>, <label for="r19" class="ident">fields</label> ...<span class="keyword">map</span>[<a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>]<span class="keyword">interface</span>{}) {</code></span>
+<span class="codeline" id="line-59"><code>	<label for="r20" class="ident">fieldlen</label> := <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r19" class="ident">fields</label>)</code></span>
+<span class="codeline" id="line-60"><code>	<span class="keyword">switch</span> <label for="r20" class="ident">fieldlen</label> {</code></span>
+<span class="codeline" id="line-61"><code>	<span class="keyword">case</span> <span class="lit-number">0</span>:</code></span>
+<span class="codeline" id="line-62"><code>		{</code></span>
+<span class="codeline" id="line-63"><code>			<label for="r16" class="ident">lg</label>.<a href="#line-8" class="ident">log</a>.<a href="../../../sirupsen/logrus/entry.go.html#line-309" class="ident">Info</a>(<label for="r18" class="ident">message</label>)</code></span>
+<span class="codeline" id="line-64"><code>		}</code></span>
+<span class="codeline" id="line-65"><code>	<span class="keyword">default</span>:</code></span>
+<span class="codeline" id="line-66"><code>		{</code></span>
+<span class="codeline" id="line-67"><code>			<label for="r21" class="ident">l</label> := <label for="r16" class="ident">lg</label>.<a href="#line-8" class="ident">log</a></code></span>
+<span class="codeline" id="line-68"><code>			<span class="keyword">for</span> <label for="r22" class="ident">_</label>, <label for="r23" class="ident">field</label> := <span class="keyword">range</span> <label for="r19" class="ident">fields</label> {</code></span>
+<span class="codeline" id="line-69"><code>				<label for="r21" class="ident">l</label> = <label for="r21" class="ident">l</label>.<a href="../../../sirupsen/logrus/entry.go.html#line-125" class="ident">WithFields</a>(<label for="r23" class="ident">field</label>)</code></span>
+<span class="codeline" id="line-70"><code>			}</code></span>
+<span class="codeline" id="line-71"><code>			<label for="r21" class="ident">l</label>.<a href="../../../sirupsen/logrus/entry.go.html#line-309" class="ident">Info</a>(<label for="r18" class="ident">message</label>)</code></span>
+<span class="codeline" id="line-72"><code>		}</code></span>
+<span class="codeline" id="line-73"><code>	}</code></span>
+<span class="codeline" id="line-74"><code></code></span>
+<span class="codeline" id="line-75"><code>}</code></span>
+<span class="codeline" id="line-76"><code></code></span>
+<span class="codeline" id="line-77"><code><span class="comment">//Warn 打印Warn级别信息</span></code></span>
+<span class="codeline" id="line-78"><code><span class="comment">//@params message string 事件消息</span></code></span>
+<span class="codeline" id="line-79"><code><span class="comment">//@params fields ...map[string]interface{} 信息字段</span></code></span>
+<span class="codeline" id="line-80"><code><span class="keyword">func</span> (<label for="r24" class="ident">lg</label> *<a href="#line-7" class="ident">Log</a>) <label for="r25" class="ident">Warn</label>(<label for="r26" class="ident">message</label> <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>, <label for="r27" class="ident">fields</label> ...<span class="keyword">map</span>[<a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>]<span class="keyword">interface</span>{}) {</code></span>
+<span class="codeline" id="line-81"><code>	<label for="r28" class="ident">fieldlen</label> := <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r27" class="ident">fields</label>)</code></span>
+<span class="codeline" id="line-82"><code>	<span class="keyword">switch</span> <label for="r28" class="ident">fieldlen</label> {</code></span>
+<span class="codeline" id="line-83"><code>	<span class="keyword">case</span> <span class="lit-number">0</span>:</code></span>
+<span class="codeline" id="line-84"><code>		{</code></span>
+<span class="codeline" id="line-85"><code>			<label for="r24" class="ident">lg</label>.<a href="#line-8" class="ident">log</a>.<a href="../../../sirupsen/logrus/entry.go.html#line-313" class="ident">Warn</a>(<label for="r26" class="ident">message</label>)</code></span>
+<span class="codeline" id="line-86"><code>		}</code></span>
+<span class="codeline" id="line-87"><code>	<span class="keyword">default</span>:</code></span>
+<span class="codeline" id="line-88"><code>		{</code></span>
+<span class="codeline" id="line-89"><code>			<label for="r29" class="ident">l</label> := <label for="r24" class="ident">lg</label>.<a href="#line-8" class="ident">log</a></code></span>
+<span class="codeline" id="line-90"><code>			<span class="keyword">for</span> <label for="r30" class="ident">_</label>, <label for="r31" class="ident">field</label> := <span class="keyword">range</span> <label for="r27" class="ident">fields</label> {</code></span>
+<span class="codeline" id="line-91"><code>				<label for="r29" class="ident">l</label> = <label for="r29" class="ident">l</label>.<a href="../../../sirupsen/logrus/entry.go.html#line-125" class="ident">WithFields</a>(<label for="r31" class="ident">field</label>)</code></span>
+<span class="codeline" id="line-92"><code>			}</code></span>
+<span class="codeline" id="line-93"><code>			<label for="r29" class="ident">l</label>.<a href="../../../sirupsen/logrus/entry.go.html#line-313" class="ident">Warn</a>(<label for="r26" class="ident">message</label>)</code></span>
+<span class="codeline" id="line-94"><code>		}</code></span>
+<span class="codeline" id="line-95"><code>	}</code></span>
+<span class="codeline" id="line-96"><code></code></span>
+<span class="codeline" id="line-97"><code>}</code></span>
+<span class="codeline" id="line-98"><code></code></span>
+<span class="codeline" id="line-99"><code><span class="comment">//Error 打印Error级别信息</span></code></span>
+<span class="codeline" id="line-100"><code><span class="comment">//@params message string 事件消息</span></code></span>
+<span class="codeline" id="line-101"><code><span class="comment">//@params fields ...map[string]interface{} 信息字段</span></code></span>
+<span class="codeline" id="line-102"><code><span class="keyword">func</span> (<label for="r32" class="ident">lg</label> *<a href="#line-7" class="ident">Log</a>) <label for="r33" class="ident">Error</label>(<label for="r34" class="ident">message</label> <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>, <label for="r35" class="ident">fields</label> ...<span class="keyword">map</span>[<a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>]<span class="keyword">interface</span>{}) {</code></span>
+<span class="codeline" id="line-103"><code>	<label for="r36" class="ident">fieldlen</label> := <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r35" class="ident">fields</label>)</code></span>
+<span class="codeline" id="line-104"><code>	<span class="keyword">switch</span> <label for="r36" class="ident">fieldlen</label> {</code></span>
+<span class="codeline" id="line-105"><code>	<span class="keyword">case</span> <span class="lit-number">0</span>:</code></span>
+<span class="codeline" id="line-106"><code>		{</code></span>
+<span class="codeline" id="line-107"><code>			<label for="r32" class="ident">lg</label>.<a href="#line-8" class="ident">log</a>.<a href="../../../sirupsen/logrus/entry.go.html#line-321" class="ident">Error</a>(<label for="r34" class="ident">message</label>)</code></span>
+<span class="codeline" id="line-108"><code>		}</code></span>
+<span class="codeline" id="line-109"><code>	<span class="keyword">default</span>:</code></span>
+<span class="codeline" id="line-110"><code>		{</code></span>
+<span class="codeline" id="line-111"><code>			<label for="r37" class="ident">l</label> := <label for="r32" class="ident">lg</label>.<a href="#line-8" class="ident">log</a></code></span>
+<span class="codeline" id="line-112"><code>			<span class="keyword">for</span> <label for="r38" class="ident">_</label>, <label for="r39" class="ident">field</label> := <span class="keyword">range</span> <label for="r35" class="ident">fields</label> {</code></span>
+<span class="codeline" id="line-113"><code>				<label for="r37" class="ident">l</label> = <label for="r37" class="ident">l</label>.<a href="../../../sirupsen/logrus/entry.go.html#line-125" class="ident">WithFields</a>(<label for="r39" class="ident">field</label>)</code></span>
+<span class="codeline" id="line-114"><code>			}</code></span>
+<span class="codeline" id="line-115"><code>			<label for="r37" class="ident">l</label>.<a href="../../../sirupsen/logrus/entry.go.html#line-321" class="ident">Error</a>(<label for="r34" class="ident">message</label>)</code></span>
+<span class="codeline" id="line-116"><code>		}</code></span>
+<span class="codeline" id="line-117"><code>	}</code></span>
+<span class="codeline" id="line-118"><code></code></span>
+<span class="codeline" id="line-119"><code>}</code></span>
+<span class="codeline" id="line-120"><code></code></span>
+<span class="codeline" id="line-121"><code><span class="comment">//Fatal 打印Fatal级别信息</span></code></span>
+<span class="codeline" id="line-122"><code><span class="comment">//@params message string 事件消息</span></code></span>
+<span class="codeline" id="line-123"><code><span class="comment">//@params fields ...map[string]interface{} 信息字段</span></code></span>
+<span class="codeline" id="line-124"><code><span class="keyword">func</span> (<label for="r40" class="ident">lg</label> *<a href="#line-7" class="ident">Log</a>) <label for="r41" class="ident">Fatal</label>(<label for="r42" class="ident">message</label> <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>, <label for="r43" class="ident">fields</label> ...<span class="keyword">map</span>[<a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>]<span class="keyword">interface</span>{}) {</code></span>
+<span class="codeline" id="line-125"><code>	<label for="r44" class="ident">fieldlen</label> := <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r43" class="ident">fields</label>)</code></span>
+<span class="codeline" id="line-126"><code>	<span class="keyword">switch</span> <label for="r44" class="ident">fieldlen</label> {</code></span>
+<span class="codeline" id="line-127"><code>	<span class="keyword">case</span> <span class="lit-number">0</span>:</code></span>
+<span class="codeline" id="line-128"><code>		{</code></span>
+<span class="codeline" id="line-129"><code>			<label for="r40" class="ident">lg</label>.<a href="#line-8" class="ident">log</a>.<a href="../../../sirupsen/logrus/entry.go.html#line-325" class="ident">Fatal</a>(<label for="r42" class="ident">message</label>)</code></span>
+<span class="codeline" id="line-130"><code>		}</code></span>
+<span class="codeline" id="line-131"><code>	<span class="keyword">default</span>:</code></span>
+<span class="codeline" id="line-132"><code>		{</code></span>
+<span class="codeline" id="line-133"><code>			<label for="r45" class="ident">l</label> := <label for="r40" class="ident">lg</label>.<a href="#line-8" class="ident">log</a></code></span>
+<span class="codeline" id="line-134"><code>			<span class="keyword">for</span> <label for="r46" class="ident">_</label>, <label for="r47" class="ident">field</label> := <span class="keyword">range</span> <label for="r43" class="ident">fields</label> {</code></span>
+<span class="codeline" id="line-135"><code>				<label for="r45" class="ident">l</label> = <label for="r45" class="ident">l</label>.<a href="../../../sirupsen/logrus/entry.go.html#line-125" class="ident">WithFields</a>(<label for="r47" class="ident">field</label>)</code></span>
+<span class="codeline" id="line-136"><code>			}</code></span>
+<span class="codeline" id="line-137"><code>			<label for="r45" class="ident">l</label>.<a href="../../../sirupsen/logrus/entry.go.html#line-325" class="ident">Fatal</a>(<label for="r42" class="ident">message</label>)</code></span>
+<span class="codeline" id="line-138"><code>		}</code></span>
+<span class="codeline" id="line-139"><code>	}</code></span>
+<span class="codeline" id="line-140"><code>}</code></span>
+<span class="codeline" id="line-141"><code></code></span>
+<span class="codeline" id="line-142"><code><span class="comment">//Panic 打印Panic级别信息</span></code></span>
+<span class="codeline" id="line-143"><code><span class="comment">//@params message string 事件消息</span></code></span>
+<span class="codeline" id="line-144"><code><span class="comment">//@params fields ...map[string]interface{} 信息字段</span></code></span>
+<span class="codeline" id="line-145"><code><span class="keyword">func</span> (<label for="r48" class="ident">lg</label> *<a href="#line-7" class="ident">Log</a>) <label for="r49" class="ident">Panic</label>(<label for="r50" class="ident">message</label> <a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>, <label for="r51" class="ident">fields</label> ...<span class="keyword">map</span>[<a href="../../../../../pkg/builtin.html#name-string" class="ident">string</a>]<span class="keyword">interface</span>{}) {</code></span>
+<span class="codeline" id="line-146"><code>	<label for="r52" class="ident">fieldlen</label> := <a href="../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r51" class="ident">fields</label>)</code></span>
+<span class="codeline" id="line-147"><code>	<span class="keyword">switch</span> <label for="r52" class="ident">fieldlen</label> {</code></span>
+<span class="codeline" id="line-148"><code>	<span class="keyword">case</span> <span class="lit-number">0</span>:</code></span>
+<span class="codeline" id="line-149"><code>		{</code></span>
+<span class="codeline" id="line-150"><code>			<label for="r48" class="ident">lg</label>.<a href="#line-8" class="ident">log</a>.<a href="../../../sirupsen/logrus/entry.go.html#line-330" class="ident">Panic</a>(<label for="r50" class="ident">message</label>)</code></span>
+<span class="codeline" id="line-151"><code>		}</code></span>
+<span class="codeline" id="line-152"><code>	<span class="keyword">default</span>:</code></span>
+<span class="codeline" id="line-153"><code>		{</code></span>
+<span class="codeline" id="line-154"><code>			<label for="r53" class="ident">l</label> := <label for="r48" class="ident">lg</label>.<a href="#line-8" class="ident">log</a></code></span>
+<span class="codeline" id="line-155"><code>			<span class="keyword">for</span> <label for="r54" class="ident">_</label>, <label for="r55" class="ident">field</label> := <span class="keyword">range</span> <label for="r51" class="ident">fields</label> {</code></span>
+<span class="codeline" id="line-156"><code>				<label for="r53" class="ident">l</label> = <label for="r53" class="ident">l</label>.<a href="../../../sirupsen/logrus/entry.go.html#line-125" class="ident">WithFields</a>(<label for="r55" class="ident">field</label>)</code></span>
+<span class="codeline" id="line-157"><code>			}</code></span>
+<span class="codeline" id="line-158"><code>			<label for="r53" class="ident">l</label>.<a href="../../../sirupsen/logrus/entry.go.html#line-330" class="ident">Panic</a>(<label for="r50" class="ident">message</label>)</code></span>
+<span class="codeline" id="line-159"><code>		}</code></span>
+<span class="codeline" id="line-160"><code>	}</code></span>
+<span class="codeline" id="line-161"><code></code></span>
+<span class="codeline" id="line-162"><code>}</code></span>
+</pre><pre id="footer">
+<table><tr><td><img src="../../../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

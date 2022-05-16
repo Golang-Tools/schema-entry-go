@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package: github.com/invopop/jsonschema</title>
+<link href="../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.4.9.js"></script>
+<body onload="onPageLoad()"><div>
+
+<pre id="package-details"><code><span style="font-size:xx-large;">package <b>jsonschema</b></span>
+
+<span class="title">Import Path</span>
+	<a href="../../../index.html#pkg-github.com/invopop/jsonschema">github.com/invopop/jsonschema</a><i> (on <a href="https://pkg.go.dev/github.com/invopop/jsonschema" target="_blank">go.dev</a>)</i>
+
+<span class="title">Dependency Relation</span>
+	imports <a href="../../../dep/github.com/invopop/jsonschema.html">19 packages</a>, and imported by <a href="../../../dep/github.com/invopop/jsonschema.html#imported-by">one package</a>
+
+<div id="files"><span class="title">Involved Source Files</span>
+
+	<span class="nodocs">      <a href="../../../src/github.com/invopop/jsonschema/comment_extractor.go.html">comment_extractor.go</a></span>
+	<span class="nodocs">      <a href="../../../src/github.com/invopop/jsonschema/id.go.html">id.go</a></span>
+	<input type='checkbox' checked class="fold" id="file-2-fold-content"><label for="file-2-fold-content">   <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#doc">#d</a> <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html">reflect.go</a></label><span id='file-2-fold-content-items' class="fold-items">
+		Package jsonschema uses reflection to generate JSON Schemas from Go types [1].
+
+		If json tags are present on struct fields, they will be used to infer
+		property names and if a property is required (omitempty is present).
+
+		[1] http://json-schema.org/latest/json-schema-validation.html
+</span>
+	<span class="nodocs">      <a href="../../../src/github.com/invopop/jsonschema/utils.go.html">utils.go</a></span></div>
+<div id="exported-types"><span class="title">Package-Level Type Names<span class="title-stat"><i> (total 8, in which 4 are exported)</i></span></span>
+
+<div id="exported-types-buttons" class="js-on">	/* sort exporteds by: <label id="sort-types-by-alphabet" class="button">alphabet</label> | <label id="sort-types-by-popularity" class="button">popularity</label> */</div><div class="anchor type-res" id="name-Definitions" data-popularity="315">	<input type='checkbox' class="fold" id="Definitions-fold-content"><label for="Definitions-fold-content"> type <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-282">Definitions</a> <i>(map)</i></label><span id='Definitions-fold-content-docs' class="fold-docs">
+		Definitions hold schema definitions.
+		http://json-schema.org/latest/json-schema-validation.html#rfc.section.5.26
+		RFC draft-wright-json-schema-validation-00, section 5.26
+
+		<input type='checkbox' class="fold" id="Definitions-fold-params"><label for="Definitions-fold-params">As Inputs Of (<i>at least 9, none are exported</i>)</label><span id='Definitions-fold-params-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Definitions-showhide-outputofs"><i><label for="Definitions-showhide-outputofs" class="show-inline">/* 9+ unexporteds ... */</label><label for="Definitions-showhide-outputofs" class="hide-inline">/* 9+ unexporteds: */</label></i><span class="hidden"><i>
+			func (*<a href="#name-Reflector">Reflector</a>).<a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-582">addDefinition</a>(definitions <b>Definitions</b>, t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>, s *<a href="#name-Schema">Schema</a>)</i></span><span class="hidden"><i>
+			func (*<a href="#name-Reflector">Reflector</a>).<a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-588">refDefinition</a>(_ <b>Definitions</b>, t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>) *<a href="#name-Schema">Schema</a></i></span><span class="hidden"><i>
+			func (*<a href="#name-Reflector">Reflector</a>).<a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-448">reflectCustomSchema</a>(definitions <b>Definitions</b>, t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>) *<a href="#name-Schema">Schema</a></i></span><span class="hidden"><i>
+			func (*<a href="#name-Reflector">Reflector</a>).<a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-468">reflectOrRefStruct</a>(definitions <b>Definitions</b>, t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>) *<a href="#name-Schema">Schema</a></i></span><span class="hidden"><i>
+			func (*<a href="#name-Reflector">Reflector</a>).<a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-480">reflectStruct</a>(definitions <b>Definitions</b>, t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>, s *<a href="#name-Schema">Schema</a>)</i></span><span class="hidden"><i>
+			func (*<a href="#name-Reflector">Reflector</a>).<a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-503">reflectStructFields</a>(st *<a href="#name-Schema">Schema</a>, definitions <b>Definitions</b>, t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>)</i></span><span class="hidden"><i>
+			func (*<a href="#name-Reflector">Reflector</a>).<a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-340">reflectTypeToSchema</a>(definitions <b>Definitions</b>, t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>) *<a href="#name-Schema">Schema</a></i></span><span class="hidden"><i>
+			func (*<a href="#name-Reflector">Reflector</a>).<a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-327">reflectTypeToSchemaWithID</a>(defs <b>Definitions</b>, t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>) *<a href="#name-Schema">Schema</a></i></span><span class="hidden"><i>
+			func (*<a href="#name-Reflector">Reflector</a>).<a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-311">refOrReflectTypeToSchema</a>(definitions <b>Definitions</b>, t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>) *<a href="#name-Schema">Schema</a></i></span></span>
+
+</span></div><div class="anchor type-res" id="name-ID" data-popularity="830">	<input type='checkbox' class="fold" id="ID-fold-content"><label for="ID-fold-content"> type <a href="../../../src/github.com/invopop/jsonschema/id.go.html#line-12">ID</a> <a href="../../builtin.html#name-string">string</a> <i>(basic type)</i></label><span id='ID-fold-content-docs' class="fold-docs">
+		ID represents a Schema ID type which should always be a URI.
+		See draft-bhutton-json-schema-00 section 8.2.1
+
+		<input type='checkbox' class="fold" id="ID-fold-methods"><label for="ID-fold-methods">Methods (<i>total 6, all are exported</i>)</label><span id='ID-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="ID-fold-method-Add"><label for="ID-fold-method-Add">( ID) <a href="../../../src/github.com/invopop/jsonschema/id.go.html#line-54">Add</a>(path <a href="../../builtin.html#name-string">string</a>) <b>ID</b></label><span id='ID-fold-method-Add-docs' class="fold-docs">
+				Add appends the provided path to the id, and removes any
+				anchor data that might be there.
+</span></span><span>
+			<input type='checkbox' class="fold" id="ID-fold-method-Anchor"><label for="ID-fold-method-Anchor">( ID) <a href="../../../src/github.com/invopop/jsonschema/id.go.html#line-41">Anchor</a>(name <a href="../../builtin.html#name-string">string</a>) <b>ID</b></label><span id='ID-fold-method-Anchor-docs' class="fold-docs">
+				Anchor sets the anchor part of the schema URI.
+</span></span><span>
+			<input type='checkbox' class="fold" id="ID-fold-method-Base"><label for="ID-fold-method-Base">( ID) <a href="../../../src/github.com/invopop/jsonschema/id.go.html#line-63">Base</a>() <b>ID</b></label><span id='ID-fold-method-Base-docs' class="fold-docs">
+				Base removes any anchor information from the schema
+</span></span><span>
+			<input type='checkbox' class="fold" id="ID-fold-method-Def"><label for="ID-fold-method-Def">( ID) <a href="../../../src/github.com/invopop/jsonschema/id.go.html#line-47">Def</a>(name <a href="../../builtin.html#name-string">string</a>) <b>ID</b></label><span id='ID-fold-method-Def-docs' class="fold-docs">
+				Def adds or replaces a definition identifier.
+</span></span><span>
+			<input type='checkbox' class="fold" id="ID-fold-method-String"><label for="ID-fold-method-String">( ID) <a href="../../../src/github.com/invopop/jsonschema/id.go.html#line-74">String</a>() <a href="../../builtin.html#name-string">string</a></label><span id='ID-fold-method-String-docs' class="fold-docs">
+				String provides string version of ID
+</span></span><span>
+			<input type='checkbox' class="fold" id="ID-fold-method-Validate"><label for="ID-fold-method-Validate">( ID) <a href="../../../src/github.com/invopop/jsonschema/id.go.html#line-20">Validate</a>() <a href="../../builtin.html#name-error">error</a></label><span id='ID-fold-method-Validate-docs' class="fold-docs">
+				Validate is used to check if the ID looks like a proper schema.
+				This is done by parsing the ID as a URL and checking it has all the
+				relevant parts.
+</span></span></span>
+		<input type='checkbox' class="fold" id="ID-fold-impls"><label for="ID-fold-impls">Implements (<i>at least 3, in which 1 are exported</i>)</label><span id='ID-fold-impls-items' class="fold-items"><span>
+			 ID : fmt.<a href="../../fmt.html#name-Stringer">Stringer</a></span>
+			<input type='checkbox' class="showhide" id="ID-showhide-impls"><i><label for="ID-showhide-impls" class="show-inline">/* 2+ unexporteds ... */</label><label for="ID-showhide-impls" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
+			 ID : context.<a href="../../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 ID : runtime.<a href="../../runtime.html#name-stringer">stringer</a></i></span></span>
+		<input type='checkbox' class="fold" id="ID-fold-results"><label for="ID-fold-results">As Outputs Of (<i>at least 5, in which 4 are exported</i>)</label><span id='ID-fold-results-items' class="fold-items"><span>
+			func ID.<a href="../../../src/github.com/invopop/jsonschema/id.go.html#line-54">Add</a>(path <a href="../../builtin.html#name-string">string</a>) <b>ID</b></span><span>
+			func ID.<a href="../../../src/github.com/invopop/jsonschema/id.go.html#line-41">Anchor</a>(name <a href="../../builtin.html#name-string">string</a>) <b>ID</b></span><span>
+			func ID.<a href="../../../src/github.com/invopop/jsonschema/id.go.html#line-63">Base</a>() <b>ID</b></span><span>
+			func ID.<a href="../../../src/github.com/invopop/jsonschema/id.go.html#line-47">Def</a>(name <a href="../../builtin.html#name-string">string</a>) <b>ID</b></span>
+			<input type='checkbox' class="showhide" id="ID-showhide-inputofs"><i><label for="ID-showhide-inputofs" class="show-inline">/* at least one unexported ... */</label><label for="ID-showhide-inputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
+			func (*<a href="#name-Reflector">Reflector</a>).<a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-595">lookupID</a>(t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>) <b>ID</b></i></span></span>
+		<input type='checkbox' class="fold" id="ID-fold-values"><label for="ID-fold-values">As Types Of (<i>only one, which is exported</i>)</label><span id='ID-fold-values-items' class="fold-items"><span>
+			const <a href="#name-EmptyID">EmptyID</a></span></span>
+
+</span></div><div class="anchor type-res" id="name-Reflector" data-popularity="850">	<input type='checkbox' class="fold" id="Reflector-fold-content"><label for="Reflector-fold-content"> type <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-134">Reflector</a> <i>(struct)</i></label><span id='Reflector-fold-content-docs' class="fold-docs">
+		A Reflector reflects values into a Schema.
+
+		<input type='checkbox' class="fold" id="Reflector-fold-fields"><label for="Reflector-fold-fields">Fields (<i>total 16, all are exported</i>)</label><span id='Reflector-fold-fields-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Reflector-fold-field-AdditionalFields"><label for="Reflector-fold-field-AdditionalFields"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-213">AdditionalFields</a> <i>func(<a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>) []<a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-StructField">StructField</a></i></label><span id='Reflector-fold-field-AdditionalFields-docs' class="fold-docs">
+				AdditionalFields allows adding structfields for a given type
+</span></span><span>
+			<input type='checkbox' class="fold" id="Reflector-fold-field-AllowAdditionalProperties"><label for="Reflector-fold-field-AllowAdditionalProperties"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-163">AllowAdditionalProperties</a> <i><a href="../../builtin.html#name-bool">bool</a></i></label><span id='Reflector-fold-field-AllowAdditionalProperties-docs' class="fold-docs">
+				AllowAdditionalProperties will cause the Reflector to generate a schema
+				without additionalProperties set to 'false' for all struct types. This means
+				the presence of additional keys in JSON objects will not cause validation
+				to fail. Note said additional keys will simply be dropped when the
+				validated JSON is unmarshaled.
+</span></span><span>
+			<input type='checkbox' class="fold" id="Reflector-fold-field-Anonymous"><label for="Reflector-fold-field-Anonymous"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-147">Anonymous</a> <i><a href="../../builtin.html#name-bool">bool</a></i></label><span id='Reflector-fold-field-Anonymous-docs' class="fold-docs">
+				Anonymous when true will hide the auto-generated Schema ID and provide what is
+				known as an "anonymous schema". As a rule, this is not recommended.
+</span></span><span>
+			<input type='checkbox' class="fold" id="Reflector-fold-field-AssignAnchor"><label for="Reflector-fold-field-AssignAnchor"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-156">AssignAnchor</a> <i><a href="../../builtin.html#name-bool">bool</a></i></label><span id='Reflector-fold-field-AssignAnchor-docs' class="fold-docs">
+				AssignAnchor when true will use the original struct's name as an anchor inside
+				every definition, including the root schema. These can be useful for having a
+				reference to the original struct's name in CamelCase instead of the snake-case used
+				by default for URI compatibility.
+
+				Anchors do not appear to be widely used out in the wild, so at this time the
+				anchors themselves will not be used inside generated schema.
+</span></span><span>
+			<input type='checkbox' class="fold" id="Reflector-fold-field-BaseSchemaID"><label for="Reflector-fold-field-BaseSchemaID"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-143">BaseSchemaID</a> <i><a href="#name-ID">ID</a></i></label><span id='Reflector-fold-field-BaseSchemaID-docs' class="fold-docs">
+				BaseSchemaID defines the URI that will be used as a base to determine Schema
+				IDs for models. For example, a base Schema ID of `https://invopop.com/schemas`
+				when defined with a struct called `User{}`, will result in a schema with an
+				ID set to `https://invopop.com/schemas/user`.
+
+				If no `BaseSchemaID` is provided, we'll take the type's complete package path
+				and use that as a base instead. Set `Anonymous` to try if you do not want to
+				include a schema ID.
+</span></span><span>
+			<input type='checkbox' class="fold" id="Reflector-fold-field-CommentMap"><label for="Reflector-fold-field-CommentMap"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-229">CommentMap</a> <i>map[<a href="../../builtin.html#name-string">string</a>]<a href="../../builtin.html#name-string">string</a></i></label><span id='Reflector-fold-field-CommentMap-docs' class="fold-docs">
+				CommentMap is a dictionary of fully qualified go types and fields to comment
+				strings that will be used if a description has not already been provided in
+				the tags. Types and fields are added to the package path using "." as a
+				separator.
+
+				Type descriptions should be defined like:
+
+				  map[string]string{"github.com/invopop/jsonschema.Reflector": "A Reflector reflects values into a Schema."}
+
+				And Fields defined as:
+
+				  map[string]string{"github.com/invopop/jsonschema.Reflector.DoNotReference": "Do not reference definitions."}
+
+				See also: AddGoComments
+</span></span><span>
+			<input type='checkbox' class="fold" id="Reflector-fold-field-DoNotReference"><label for="Reflector-fold-field-DoNotReference"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-182">DoNotReference</a> <i><a href="../../builtin.html#name-bool">bool</a></i></label><span id='Reflector-fold-field-DoNotReference-docs' class="fold-docs">
+				Do not reference definitions. This will remove the top-level $defs map and
+				instead cause the entire structure of types to be output in one tree. The
+				list of type definitions (`$defs`) will not be included.
+</span></span><span>
+			<input type='checkbox' class="fold" id="Reflector-fold-field-ExpandedStruct"><label for="Reflector-fold-field-ExpandedStruct"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-188">ExpandedStruct</a> <i><a href="../../builtin.html#name-bool">bool</a></i></label><span id='Reflector-fold-field-ExpandedStruct-docs' class="fold-docs">
+				ExpandedStruct when true will include the reflected type's definition in the
+				root as opposed to a definition with a reference. Using a reference in the root
+				is useful as it allows us to maintain the struct's original name, but it is
+				not common practice.
+</span></span><span>
+			<input type='checkbox' class="fold" id="Reflector-fold-field-IgnoredTypes"><label for="Reflector-fold-field-IgnoredTypes"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-192">IgnoredTypes</a> <i>[]interface{}</i></label><span id='Reflector-fold-field-IgnoredTypes-docs' class="fold-docs">
+				IgnoredTypes defines a slice of types that should be ignored in the schema,
+				switching to just allowing additional properties instead.
+</span></span><span>
+			<input type='checkbox' class="fold" id="Reflector-fold-field-KeyNamer"><label for="Reflector-fold-field-KeyNamer"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-210">KeyNamer</a> <i>func(<a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-string">string</a></i></label><span id='Reflector-fold-field-KeyNamer-docs' class="fold-docs">
+				KeyNamer allows customizing of key names.
+				The default is to use the key's name as is, or the json (or yaml) tag if present.
+				If a json or yaml tag is present, KeyNamer will receive the tag's name as an argument, not the original key name.
+</span></span><span>
+			<input type='checkbox' class="fold" id="Reflector-fold-field-Lookup"><label for="Reflector-fold-field-Lookup"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-198">Lookup</a> <i>func(<a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>) <a href="#name-ID">ID</a></i></label><span id='Reflector-fold-field-Lookup-docs' class="fold-docs">
+				Lookup allows a function to be defined that will provide a custom mapping of
+				types to Schema IDs. This allows existing schema documents to be referenced
+				by their ID instead of being embedded into the current schema definitions.
+				Reflected types will never be pointers, only underlying elements.
+</span></span><span>
+			<input type='checkbox' class="fold" id="Reflector-fold-field-Mapper"><label for="Reflector-fold-field-Mapper"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-201">Mapper</a> <i>func(<a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>) *<a href="#name-Schema">Schema</a></i></label><span id='Reflector-fold-field-Mapper-docs' class="fold-docs">
+				Mapper is a function that can be used to map custom Go types to jsonschema schemas.
+</span></span><span>
+			<input type='checkbox' class="fold" id="Reflector-fold-field-Namer"><label for="Reflector-fold-field-Namer"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-205">Namer</a> <i>func(<a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>) <a href="../../builtin.html#name-string">string</a></i></label><span id='Reflector-fold-field-Namer-docs' class="fold-docs">
+				Namer allows customizing of type names. The default is to use the type's name
+				provided by the reflect package.
+</span></span><span>
+			<input type='checkbox' class="fold" id="Reflector-fold-field-PreferYAMLSchema"><label for="Reflector-fold-field-PreferYAMLSchema"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-177">PreferYAMLSchema</a> <i><a href="../../builtin.html#name-bool">bool</a></i></label><span id='Reflector-fold-field-PreferYAMLSchema-docs' class="fold-docs">
+				Prefer yaml: tags over json: tags to generate the schema even if json: tags
+				are present
+</span></span><span>
+			<input type='checkbox' class="fold" id="Reflector-fold-field-RequiredFromJSONSchemaTags"><label for="Reflector-fold-field-RequiredFromJSONSchemaTags"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-168">RequiredFromJSONSchemaTags</a> <i><a href="../../builtin.html#name-bool">bool</a></i></label><span id='Reflector-fold-field-RequiredFromJSONSchemaTags-docs' class="fold-docs">
+				RequiredFromJSONSchemaTags will cause the Reflector to generate a schema
+				that requires any key tagged with `jsonschema:required`, overriding the
+				default of requiring any key *not* tagged with `json:,omitempty`.
+</span></span><span>
+			<input type='checkbox' class="fold" id="Reflector-fold-field-YAMLEmbeddedStructs"><label for="Reflector-fold-field-YAMLEmbeddedStructs"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-173">YAMLEmbeddedStructs</a> <i><a href="../../builtin.html#name-bool">bool</a></i></label><span id='Reflector-fold-field-YAMLEmbeddedStructs-docs' class="fold-docs">
+				YAMLEmbeddedStructs will cause the Reflector to generate a schema that does
+				not inline embedded structs. This should be enabled if the JSON schemas are
+				used with yaml.Marshal/Unmarshal.
+</span></span></span>
+		<input type='checkbox' class="fold" id="Reflector-fold-methods"><label for="Reflector-fold-methods">Methods (<i>total 17, in which 4 are exported</i>)</label><span id='Reflector-fold-methods-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Reflector-fold-method-AddGoComments"><label for="Reflector-fold-method-AddGoComments">(*Reflector) <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-1064">AddGoComments</a>(base, path <a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-error">error</a></label><span id='Reflector-fold-method-AddGoComments-docs' class="fold-docs">
+				AddGoComments will update the reflectors comment map with all the comments
+				found in the provided source directories. See the #ExtractGoComments method
+				for more details.
+</span></span><span>
+			<input type='checkbox' class="fold" id="Reflector-fold-method-Reflect"><label for="Reflector-fold-method-Reflect">(*Reflector) <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-233">Reflect</a>(v interface{}) *<a href="#name-Schema">Schema</a></label><span id='Reflector-fold-method-Reflect-docs' class="fold-docs">
+				Reflect reflects to Schema from a value.
+</span></span><span>
+			<input type='checkbox' class="fold" id="Reflector-fold-method-ReflectFromType"><label for="Reflector-fold-method-ReflectFromType">(*Reflector) <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-238">ReflectFromType</a>(t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>) *<a href="#name-Schema">Schema</a></label><span id='Reflector-fold-method-ReflectFromType-docs' class="fold-docs">
+				ReflectFromType generates root schema
+</span></span><span>
+			<input type='checkbox' class="fold" id="Reflector-fold-method-SetBaseSchemaID"><label for="Reflector-fold-method-SetBaseSchemaID">(*Reflector) <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-307">SetBaseSchemaID</a>(id <a href="../../builtin.html#name-string">string</a>)</label><span id='Reflector-fold-method-SetBaseSchemaID-docs' class="fold-docs">
+				SetBaseSchemaID is a helper use to be able to set the reflectors base
+				schema ID from a string as opposed to then ID instance.
+</span></span>
+			<input type='checkbox' class="showhide" id="Reflector-showhide-methods"><i><label for="Reflector-showhide-methods" class="show-inline">/* 13 unexporteds ... */</label><label for="Reflector-showhide-methods" class="hide-inline">/* 13 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Reflector-fold-method-addDefinition"><label for="Reflector-fold-method-addDefinition">(*Reflector) <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-582">addDefinition</a>(definitions <a href="#name-Definitions">Definitions</a>, t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>, s *<a href="#name-Schema">Schema</a>)</label><span id='Reflector-fold-method-addDefinition-docs' class="fold-docs">
+				addDefinition will append the provided schema. If needed, an ID and anchor will also be added.
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*Reflector) <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-568">lookupComment</a>(t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>, name <a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-string">string</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*Reflector) <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-595">lookupID</a>(t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>) <a href="#name-ID">ID</a></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Reflector-fold-method-refDefinition"><label for="Reflector-fold-method-refDefinition">(*Reflector) <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-588">refDefinition</a>(_ <a href="#name-Definitions">Definitions</a>, t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>) *<a href="#name-Schema">Schema</a></label><span id='Reflector-fold-method-refDefinition-docs' class="fold-docs">
+				refDefinition will provide a schema with a reference to an existing definition.
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*Reflector) <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-311">refOrReflectTypeToSchema</a>(definitions <a href="#name-Definitions">Definitions</a>, t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>) *<a href="#name-Schema">Schema</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*Reflector) <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-448">reflectCustomSchema</a>(definitions <a href="#name-Definitions">Definitions</a>, t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>) *<a href="#name-Schema">Schema</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*Reflector) <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-912">reflectFieldName</a>(f <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-StructField">StructField</a>) (<a href="../../builtin.html#name-string">string</a>, <a href="../../builtin.html#name-bool">bool</a>, <a href="../../builtin.html#name-bool">bool</a>, <a href="../../builtin.html#name-bool">bool</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*Reflector) <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-468">reflectOrRefStruct</a>(definitions <a href="#name-Definitions">Definitions</a>, t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>) *<a href="#name-Schema">Schema</a></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Reflector-fold-method-reflectStruct"><label for="Reflector-fold-method-reflectStruct">(*Reflector) <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-480">reflectStruct</a>(definitions <a href="#name-Definitions">Definitions</a>, t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>, s *<a href="#name-Schema">Schema</a>)</label><span id='Reflector-fold-method-reflectStruct-docs' class="fold-docs">
+				Reflects a struct to a JSON Schema type.
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*Reflector) <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-503">reflectStructFields</a>(st *<a href="#name-Schema">Schema</a>, definitions <a href="#name-Definitions">Definitions</a>, t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*Reflector) <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-340">reflectTypeToSchema</a>(definitions <a href="#name-Definitions">Definitions</a>, t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>) *<a href="#name-Schema">Schema</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*Reflector) <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-327">reflectTypeToSchemaWithID</a>(defs <a href="#name-Definitions">Definitions</a>, t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>) *<a href="#name-Schema">Schema</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*Reflector) <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-1023">typeName</a>(t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>) <a href="../../builtin.html#name-string">string</a></span></i></span></span>
+
+</span></div><div class="anchor type-res" id="name-Schema" data-popularity="1535">	<input type='checkbox' class="fold" id="Schema-fold-content"><label for="Schema-fold-content"> type <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-27">Schema</a> <i>(struct)</i></label><span id='Schema-fold-content-docs' class="fold-docs">
+		Schema represents a JSON Schema object type.
+		RFC draft-bhutton-json-schema-00 section 4.3
+
+		<input type='checkbox' class="fold" id="Schema-fold-fields"><label for="Schema-fold-fields">Fields (<i>total 55, in which 54 are exported</i>)</label><span id='Schema-fold-fields-items' class="fold-items"><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-AdditionalProperties"><label for="Schema-fold-field-AdditionalProperties"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-53">AdditionalProperties</a> <i>*<b>Schema</b></i></label><span id='Schema-fold-field-AdditionalProperties-docs' class="fold-docs">
+				// section 10.3.2.3
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-AllOf"><label for="Schema-fold-field-AllOf"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-37">AllOf</a> <i>[]*<b>Schema</b></i></label><span id='Schema-fold-field-AllOf-docs' class="fold-docs">
+				RFC draft-bhutton-json-schema-00 section 10.2.1 (Sub-schemas with logic)
+				// section 10.2.1.1
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-Anchor"><label for="Schema-fold-field-Anchor"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-31">Anchor</a> <i><a href="../../builtin.html#name-string">string</a></i></label><span id='Schema-fold-field-Anchor-docs' class="fold-docs">
+				// section 8.2.2
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-AnyOf"><label for="Schema-fold-field-AnyOf"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-38">AnyOf</a> <i>[]*<b>Schema</b></i></label><span id='Schema-fold-field-AnyOf-docs' class="fold-docs">
+				// section 10.2.1.2
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-Comments"><label for="Schema-fold-field-Comments"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-35">Comments</a> <i><a href="../../builtin.html#name-string">string</a></i></label><span id='Schema-fold-field-Comments-docs' class="fold-docs">
+				// section 8.3
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-Const"><label for="Schema-fold-field-Const"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-58">Const</a> <i>interface{}</i></label><span id='Schema-fold-field-Const-docs' class="fold-docs">
+				// section 6.1.3
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-Contains"><label for="Schema-fold-field-Contains"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-49">Contains</a> <i>*<b>Schema</b></i></label><span id='Schema-fold-field-Contains-docs' class="fold-docs">
+				// section 10.3.1.3
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-ContentEncoding"><label for="Schema-fold-field-ContentEncoding"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-79">ContentEncoding</a> <i><a href="../../builtin.html#name-string">string</a></i></label><span id='Schema-fold-field-ContentEncoding-docs' class="fold-docs">
+				RFC draft-bhutton-json-schema-validation-00, section 8
+				// section 8.3
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-ContentMediaType"><label for="Schema-fold-field-ContentMediaType"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-80">ContentMediaType</a> <i><a href="../../builtin.html#name-string">string</a></i></label><span id='Schema-fold-field-ContentMediaType-docs' class="fold-docs">
+				// section 8.4
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-ContentSchema"><label for="Schema-fold-field-ContentSchema"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-81">ContentSchema</a> <i>*<b>Schema</b></i></label><span id='Schema-fold-field-ContentSchema-docs' class="fold-docs">
+				// section 8.5
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-Default"><label for="Schema-fold-field-Default"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-85">Default</a> <i>interface{}</i></label><span id='Schema-fold-field-Default-docs' class="fold-docs">
+				// section 9.2
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-Definitions"><label for="Schema-fold-field-Definitions"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-34">Definitions</a> <i><a href="#name-Definitions">Definitions</a></i></label><span id='Schema-fold-field-Definitions-docs' class="fold-docs">
+				// section 8.2.4
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-DependentRequired"><label for="Schema-fold-field-DependentRequired"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-75">DependentRequired</a> <i>map[<a href="../../builtin.html#name-string">string</a>][]<a href="../../builtin.html#name-string">string</a></i></label><span id='Schema-fold-field-DependentRequired-docs' class="fold-docs">
+				// section 6.5.4
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-DependentSchemas"><label for="Schema-fold-field-DependentSchemas"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-45">DependentSchemas</a> <i>map[<a href="../../builtin.html#name-string">string</a>]*<b>Schema</b></i></label><span id='Schema-fold-field-DependentSchemas-docs' class="fold-docs">
+				// section 10.2.2.4
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-Deprecated"><label for="Schema-fold-field-Deprecated"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-86">Deprecated</a> <i><a href="../../builtin.html#name-bool">bool</a></i></label><span id='Schema-fold-field-Deprecated-docs' class="fold-docs">
+				// section 9.3
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-Description"><label for="Schema-fold-field-Description"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-84">Description</a> <i><a href="../../builtin.html#name-string">string</a></i></label><span id='Schema-fold-field-Description-docs' class="fold-docs">
+				// section 9.1
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-DynamicRef"><label for="Schema-fold-field-DynamicRef"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-33">DynamicRef</a> <i><a href="../../builtin.html#name-string">string</a></i></label><span id='Schema-fold-field-DynamicRef-docs' class="fold-docs">
+				// section 8.2.3.2
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-Else"><label for="Schema-fold-field-Else"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-44">Else</a> <i>*<b>Schema</b></i></label><span id='Schema-fold-field-Else-docs' class="fold-docs">
+				// section 10.2.2.3
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-Enum"><label for="Schema-fold-field-Enum"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-57">Enum</a> <i>[]interface{}</i></label><span id='Schema-fold-field-Enum-docs' class="fold-docs">
+				// section 6.1.2
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-Examples"><label for="Schema-fold-field-Examples"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-89">Examples</a> <i>[]interface{}</i></label><span id='Schema-fold-field-Examples-docs' class="fold-docs">
+				// section 9.5
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-ExclusiveMaximum"><label for="Schema-fold-field-ExclusiveMaximum"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-61">ExclusiveMaximum</a> <i><a href="../../builtin.html#name-bool">bool</a></i></label><span id='Schema-fold-field-ExclusiveMaximum-docs' class="fold-docs">
+				// section 6.2.3
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-ExclusiveMinimum"><label for="Schema-fold-field-ExclusiveMinimum"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-63">ExclusiveMinimum</a> <i><a href="../../builtin.html#name-bool">bool</a></i></label><span id='Schema-fold-field-ExclusiveMinimum-docs' class="fold-docs">
+				// section 6.2.5
+</span></span><span>
+			<span class="nodocs"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-91">Extras</a> <i>map[<a href="../../builtin.html#name-string">string</a>]interface{}</i></span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-Format"><label for="Schema-fold-field-Format"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-77">Format</a> <i><a href="../../builtin.html#name-string">string</a></i></label><span id='Schema-fold-field-Format-docs' class="fold-docs">
+				RFC draft-bhutton-json-schema-validation-00, section 7
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-ID"><label for="Schema-fold-field-ID"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-30">ID</a> <i><a href="#name-ID">ID</a></i></label><span id='Schema-fold-field-ID-docs' class="fold-docs">
+				// section 8.2.1
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-If"><label for="Schema-fold-field-If"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-42">If</a> <i>*<b>Schema</b></i></label><span id='Schema-fold-field-If-docs' class="fold-docs">
+				RFC draft-bhutton-json-schema-00 section 10.2.2 (Apply sub-schemas conditionally)
+				// section 10.2.2.1
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-Items"><label for="Schema-fold-field-Items"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-48">Items</a> <i>*<b>Schema</b></i></label><span id='Schema-fold-field-Items-docs' class="fold-docs">
+				// section 10.3.1.2  (replaces additionalItems)
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-MaxContains"><label for="Schema-fold-field-MaxContains"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-70">MaxContains</a> <i><a href="../../builtin.html#name-uint">uint</a></i></label><span id='Schema-fold-field-MaxContains-docs' class="fold-docs">
+				// section 6.4.4
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-MaxItems"><label for="Schema-fold-field-MaxItems"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-67">MaxItems</a> <i><a href="../../builtin.html#name-int">int</a></i></label><span id='Schema-fold-field-MaxItems-docs' class="fold-docs">
+				// section 6.4.1
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-MaxLength"><label for="Schema-fold-field-MaxLength"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-64">MaxLength</a> <i><a href="../../builtin.html#name-int">int</a></i></label><span id='Schema-fold-field-MaxLength-docs' class="fold-docs">
+				// section 6.3.1
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-MaxProperties"><label for="Schema-fold-field-MaxProperties"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-72">MaxProperties</a> <i><a href="../../builtin.html#name-int">int</a></i></label><span id='Schema-fold-field-MaxProperties-docs' class="fold-docs">
+				// section 6.5.1
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-Maximum"><label for="Schema-fold-field-Maximum"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-60">Maximum</a> <i><a href="../../builtin.html#name-int">int</a></i></label><span id='Schema-fold-field-Maximum-docs' class="fold-docs">
+				// section 6.2.2
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-MinContains"><label for="Schema-fold-field-MinContains"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-71">MinContains</a> <i><a href="../../builtin.html#name-uint">uint</a></i></label><span id='Schema-fold-field-MinContains-docs' class="fold-docs">
+				// section 6.4.5
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-MinItems"><label for="Schema-fold-field-MinItems"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-68">MinItems</a> <i><a href="../../builtin.html#name-int">int</a></i></label><span id='Schema-fold-field-MinItems-docs' class="fold-docs">
+				// section 6.4.2
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-MinLength"><label for="Schema-fold-field-MinLength"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-65">MinLength</a> <i><a href="../../builtin.html#name-int">int</a></i></label><span id='Schema-fold-field-MinLength-docs' class="fold-docs">
+				// section 6.3.2
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-MinProperties"><label for="Schema-fold-field-MinProperties"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-73">MinProperties</a> <i><a href="../../builtin.html#name-int">int</a></i></label><span id='Schema-fold-field-MinProperties-docs' class="fold-docs">
+				// section 6.5.2
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-Minimum"><label for="Schema-fold-field-Minimum"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-62">Minimum</a> <i><a href="../../builtin.html#name-int">int</a></i></label><span id='Schema-fold-field-Minimum-docs' class="fold-docs">
+				// section 6.2.4
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-MultipleOf"><label for="Schema-fold-field-MultipleOf"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-59">MultipleOf</a> <i><a href="../../builtin.html#name-int">int</a></i></label><span id='Schema-fold-field-MultipleOf-docs' class="fold-docs">
+				// section 6.2.1
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-Not"><label for="Schema-fold-field-Not"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-40">Not</a> <i>*<b>Schema</b></i></label><span id='Schema-fold-field-Not-docs' class="fold-docs">
+				// section 10.2.1.4
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-OneOf"><label for="Schema-fold-field-OneOf"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-39">OneOf</a> <i>[]*<b>Schema</b></i></label><span id='Schema-fold-field-OneOf-docs' class="fold-docs">
+				// section 10.2.1.3
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-Pattern"><label for="Schema-fold-field-Pattern"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-66">Pattern</a> <i><a href="../../builtin.html#name-string">string</a></i></label><span id='Schema-fold-field-Pattern-docs' class="fold-docs">
+				// section 6.3.3
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-PatternProperties"><label for="Schema-fold-field-PatternProperties"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-52">PatternProperties</a> <i>map[<a href="../../builtin.html#name-string">string</a>]*<b>Schema</b></i></label><span id='Schema-fold-field-PatternProperties-docs' class="fold-docs">
+				// section 10.3.2.2
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-PrefixItems"><label for="Schema-fold-field-PrefixItems"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-47">PrefixItems</a> <i>[]*<b>Schema</b></i></label><span id='Schema-fold-field-PrefixItems-docs' class="fold-docs">
+				RFC draft-bhutton-json-schema-00 section 10.3.1 (arrays)
+				// section 10.3.1.1
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-Properties"><label for="Schema-fold-field-Properties"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-51">Properties</a> <i>*<a href="../iancoleman/orderedmap.html">orderedmap</a>.<a href="../iancoleman/orderedmap.html#name-OrderedMap">OrderedMap</a></i></label><span id='Schema-fold-field-Properties-docs' class="fold-docs">
+				RFC draft-bhutton-json-schema-00 section 10.3.2 (sub-schemas)
+				// section 10.3.2.1
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-PropertyNames"><label for="Schema-fold-field-PropertyNames"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-54">PropertyNames</a> <i>*<b>Schema</b></i></label><span id='Schema-fold-field-PropertyNames-docs' class="fold-docs">
+				// section 10.3.2.4
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-ReadOnly"><label for="Schema-fold-field-ReadOnly"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-87">ReadOnly</a> <i><a href="../../builtin.html#name-bool">bool</a></i></label><span id='Schema-fold-field-ReadOnly-docs' class="fold-docs">
+				// section 9.4
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-Ref"><label for="Schema-fold-field-Ref"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-32">Ref</a> <i><a href="../../builtin.html#name-string">string</a></i></label><span id='Schema-fold-field-Ref-docs' class="fold-docs">
+				// section 8.2.3.1
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-Required"><label for="Schema-fold-field-Required"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-74">Required</a> <i>[]<a href="../../builtin.html#name-string">string</a></i></label><span id='Schema-fold-field-Required-docs' class="fold-docs">
+				// section 6.5.3
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-Then"><label for="Schema-fold-field-Then"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-43">Then</a> <i>*<b>Schema</b></i></label><span id='Schema-fold-field-Then-docs' class="fold-docs">
+				// section 10.2.2.2
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-Title"><label for="Schema-fold-field-Title"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-83">Title</a> <i><a href="../../builtin.html#name-string">string</a></i></label><span id='Schema-fold-field-Title-docs' class="fold-docs">
+				RFC draft-bhutton-json-schema-validation-00, section 9
+				// section 9.1
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-Type"><label for="Schema-fold-field-Type"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-56">Type</a> <i><a href="../../builtin.html#name-string">string</a></i></label><span id='Schema-fold-field-Type-docs' class="fold-docs">
+				RFC draft-bhutton-json-schema-validation-00, section 6
+				// section 6.1.1
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-UniqueItems"><label for="Schema-fold-field-UniqueItems"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-69">UniqueItems</a> <i><a href="../../builtin.html#name-bool">bool</a></i></label><span id='Schema-fold-field-UniqueItems-docs' class="fold-docs">
+				// section 6.4.3
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-Version"><label for="Schema-fold-field-Version"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-29">Version</a> <i><a href="../../builtin.html#name-string">string</a></i></label><span id='Schema-fold-field-Version-docs' class="fold-docs">
+				RFC draft-bhutton-json-schema-00
+				// section 8.1.1
+</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-field-WriteOnly"><label for="Schema-fold-field-WriteOnly"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-88">WriteOnly</a> <i><a href="../../builtin.html#name-bool">bool</a></i></label><span id='Schema-fold-field-WriteOnly-docs' class="fold-docs">
+				// section 9.4
+</span></span>
+			<input type='checkbox' class="showhide" id="Schema-showhide-fields"><i><label for="Schema-showhide-fields" class="show-inline">/* one unexported ... */</label><label for="Schema-showhide-fields" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Schema-fold-field-boolean"><label for="Schema-fold-field-boolean"><a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-94">boolean</a> <i>*<a href="../../builtin.html#name-bool">bool</a></i></label><span id='Schema-fold-field-boolean-docs' class="fold-docs">
+				Special boolean representation of the Schema - section 4.3.2
+</span></i></span></span>
+		<input type='checkbox' class="fold" id="Schema-fold-methods"><label for="Schema-fold-methods">Methods (<i>total 10, in which 2 are exported</i>)</label><span id='Schema-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">(*Schema) <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-992">MarshalJSON</a>() ([]<a href="../../builtin.html#name-byte">byte</a>, <a href="../../builtin.html#name-error">error</a>)</span></span><span>
+			<input type='checkbox' class="fold" id="Schema-fold-method-UnmarshalJSON"><label for="Schema-fold-method-UnmarshalJSON">(*Schema) <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-975">UnmarshalJSON</a>(data []<a href="../../builtin.html#name-byte">byte</a>) <a href="../../builtin.html#name-error">error</a></label><span id='Schema-fold-method-UnmarshalJSON-docs' class="fold-docs">
+				UnmarshalJSON is used to parse a schema object or boolean.
+</span></span>
+			<input type='checkbox' class="showhide" id="Schema-showhide-methods"><i><label for="Schema-showhide-methods" class="show-inline">/* 8 unexporteds ... */</label><label for="Schema-showhide-methods" class="hide-inline">/* 8 unexporteds: */</label></i><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Schema-fold-method-arrayKeywords"><label for="Schema-fold-method-arrayKeywords">(*Schema) <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-790">arrayKeywords</a>(tags []<a href="../../builtin.html#name-string">string</a>)</label><span id='Schema-fold-method-arrayKeywords-docs' class="fold-docs">
+				read struct tags for array type keyworks
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Schema-fold-method-booleanKeywords"><label for="Schema-fold-method-booleanKeywords">(*Schema) <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-686">booleanKeywords</a>(tags []<a href="../../builtin.html#name-string">string</a>)</label><span id='Schema-fold-method-booleanKeywords-docs' class="fold-docs">
+				read struct tags for boolean type keyworks
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*Schema) <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-826">extraKeywords</a>(tags []<a href="../../builtin.html#name-string">string</a>)</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Schema-fold-method-genericKeywords"><label for="Schema-fold-method-genericKeywords">(*Schema) <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-629">genericKeywords</a>(tags []<a href="../../builtin.html#name-string">string</a>, parent *<b>Schema</b>, propertyName <a href="../../builtin.html#name-string">string</a>)</label><span id='Schema-fold-method-genericKeywords-docs' class="fold-docs">
+				read struct tags for generic keyworks
+</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Schema-fold-method-numbericKeywords"><label for="Schema-fold-method-numbericKeywords">(*Schema) <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-740">numbericKeywords</a>(tags []<a href="../../builtin.html#name-string">string</a>)</label><span id='Schema-fold-method-numbericKeywords-docs' class="fold-docs">
+				read struct tags for numberic type keyworks
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*Schema) <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-835">setExtra</a>(key, val <a href="../../builtin.html#name-string">string</a>)</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Schema-fold-method-stringKeywords"><label for="Schema-fold-method-stringKeywords">(*Schema) <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-704">stringKeywords</a>(tags []<a href="../../builtin.html#name-string">string</a>)</label><span id='Schema-fold-method-stringKeywords-docs' class="fold-docs">
+				read struct tags for string type keyworks
+</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*Schema) <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-606">structKeywordsFromTags</a>(f <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-StructField">StructField</a>, parent *<b>Schema</b>, propertyName <a href="../../builtin.html#name-string">string</a>)</span></i></span></span>
+		<input type='checkbox' class="fold" id="Schema-fold-impls"><label for="Schema-fold-impls">Implements (<i>at least 2, both are exported</i>)</label><span id='Schema-fold-impls-items' class="fold-items"><span>
+			*Schema : encoding/json.<a href="../../encoding/json.html#name-Marshaler">Marshaler</a></span><span>
+			*Schema : encoding/json.<a href="../../encoding/json.html#name-Unmarshaler">Unmarshaler</a></span></span>
+		<input type='checkbox' class="fold" id="Schema-fold-results"><label for="Schema-fold-results">As Outputs Of (<i>at least 10, in which 4 are exported</i>)</label><span id='Schema-fold-results-items' class="fold-items"><span>
+			func <a href="#name-Reflect">Reflect</a>(v interface{}) *<b>Schema</b></span><span>
+			func <a href="#name-ReflectFromType">ReflectFromType</a>(t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>) *<b>Schema</b></span><span>
+			func (*<a href="#name-Reflector">Reflector</a>).<a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-233">Reflect</a>(v interface{}) *<b>Schema</b></span><span>
+			func (*<a href="#name-Reflector">Reflector</a>).<a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-238">ReflectFromType</a>(t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>) *<b>Schema</b></span>
+			<input type='checkbox' class="showhide" id="Schema-showhide-inputofs"><i><label for="Schema-showhide-inputofs" class="show-inline">/* 6+ unexporteds ... */</label><label for="Schema-showhide-inputofs" class="hide-inline">/* 6+ unexporteds: */</label></i><span class="hidden"><i>
+			func (*<a href="#name-Reflector">Reflector</a>).<a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-588">refDefinition</a>(_ <a href="#name-Definitions">Definitions</a>, t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>) *<b>Schema</b></i></span><span class="hidden"><i>
+			func (*<a href="#name-Reflector">Reflector</a>).<a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-448">reflectCustomSchema</a>(definitions <a href="#name-Definitions">Definitions</a>, t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>) *<b>Schema</b></i></span><span class="hidden"><i>
+			func (*<a href="#name-Reflector">Reflector</a>).<a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-468">reflectOrRefStruct</a>(definitions <a href="#name-Definitions">Definitions</a>, t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>) *<b>Schema</b></i></span><span class="hidden"><i>
+			func (*<a href="#name-Reflector">Reflector</a>).<a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-340">reflectTypeToSchema</a>(definitions <a href="#name-Definitions">Definitions</a>, t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>) *<b>Schema</b></i></span><span class="hidden"><i>
+			func (*<a href="#name-Reflector">Reflector</a>).<a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-327">reflectTypeToSchemaWithID</a>(defs <a href="#name-Definitions">Definitions</a>, t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>) *<b>Schema</b></i></span><span class="hidden"><i>
+			func (*<a href="#name-Reflector">Reflector</a>).<a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-311">refOrReflectTypeToSchema</a>(definitions <a href="#name-Definitions">Definitions</a>, t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>) *<b>Schema</b></i></span></span>
+		<input type='checkbox' class="fold" id="Schema-fold-params"><label for="Schema-fold-params">As Inputs Of (<i>at least 5, none are exported</i>)</label><span id='Schema-fold-params-items' class="fold-items">
+			<input type='checkbox' class="showhide" id="Schema-showhide-outputofs"><i><label for="Schema-showhide-outputofs" class="show-inline">/* 5+ unexporteds ... */</label><label for="Schema-showhide-outputofs" class="hide-inline">/* 5+ unexporteds: */</label></i><span class="hidden"><i>
+			func (*<a href="#name-Reflector">Reflector</a>).<a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-582">addDefinition</a>(definitions <a href="#name-Definitions">Definitions</a>, t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>, s *<b>Schema</b>)</i></span><span class="hidden"><i>
+			func (*<a href="#name-Reflector">Reflector</a>).<a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-480">reflectStruct</a>(definitions <a href="#name-Definitions">Definitions</a>, t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>, s *<b>Schema</b>)</i></span><span class="hidden"><i>
+			func (*<a href="#name-Reflector">Reflector</a>).<a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-503">reflectStructFields</a>(st *<b>Schema</b>, definitions <a href="#name-Definitions">Definitions</a>, t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>)</i></span><span class="hidden"><i>
+			func (*Schema).<a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-629">genericKeywords</a>(tags []<a href="../../builtin.html#name-string">string</a>, parent *<b>Schema</b>, propertyName <a href="../../builtin.html#name-string">string</a>)</i></span><span class="hidden"><i>
+			func (*Schema).<a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-606">structKeywordsFromTags</a>(f <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-StructField">StructField</a>, parent *<b>Schema</b>, propertyName <a href="../../builtin.html#name-string">string</a>)</i></span></span>
+		<input type='checkbox' class="fold" id="Schema-fold-values"><label for="Schema-fold-values">As Types Of (<i>total 2, both are exported</i>)</label><span id='Schema-fold-values-items' class="fold-items"><span>
+			  var <a href="#name-FalseSchema">FalseSchema</a> *Schema</span><span>
+			  var <a href="#name-TrueSchema">TrueSchema</a> *Schema</span></span>
+
+</span></div></div><div>	<input type='checkbox' class="showhide" id="unexported-typenames-showhide"><i><label for="unexported-typenames-showhide" class="show-inline">/* 4 unexporteds ... */</label><label for="unexported-typenames-showhide" class="hide-inline">/* 4 unexporteds: */</label></i><div class="anchor type-res hidden" id="name-customGetFieldDocString" data-popularity="0">	<span class="nodocs"> type <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-118">customGetFieldDocString</a> <i>(func)</i></span></div><div class="anchor type-res hidden" id="name-customSchemaGetFieldDocString" data-popularity="50">	<input type='checkbox' class="fold" id="customSchemaGetFieldDocString-fold-content"><label for="customSchemaGetFieldDocString-fold-content"> type <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-114">customSchemaGetFieldDocString</a> <b><i>(interface)</i></b></label><span id='customSchemaGetFieldDocString-fold-content-docs' class="fold-docs">
+		customSchemaGetFieldDocString
+
+		<input type='checkbox' class="fold" id="customSchemaGetFieldDocString-fold-methods"><label for="customSchemaGetFieldDocString-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='customSchemaGetFieldDocString-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( customSchemaGetFieldDocString) <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-115">GetFieldDocString</a>(fieldName <a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-string">string</a></span></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-customSchemaImpl" data-popularity="50">	<input type='checkbox' class="fold" id="customSchemaImpl-fold-content"><label for="customSchemaImpl-fold-content"> type <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-107">customSchemaImpl</a> <b><i>(interface)</i></b></label><span id='customSchemaImpl-fold-content-docs' class="fold-docs">
+		customSchemaImpl is used to detect if the type provides it's own
+		custom Schema Type definition to use instead. Very useful for situations
+		where there are custom JSON Marshal and Unmarshal methods.
+
+		<input type='checkbox' class="fold" id="customSchemaImpl-fold-methods"><label for="customSchemaImpl-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='customSchemaImpl-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( customSchemaImpl) <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-108">JSONSchema</a>() *<a href="#name-Schema">Schema</a></span></span></span>
+
+</span></div><div class="anchor type-res hidden" id="name-protoEnum" data-popularity="50">	<input type='checkbox' class="fold" id="protoEnum-fold-content"><label for="protoEnum-fold-content"> type <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-299">protoEnum</a> <b><i>(interface)</i></b></label><span id='protoEnum-fold-content-docs' class="fold-docs">
+		Go code generated from protobuf enum types should fulfil this interface.
+
+		<input type='checkbox' class="fold" id="protoEnum-fold-methods"><label for="protoEnum-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='protoEnum-fold-methods-items' class="fold-items"><span>
+			<span class="nodocs">( protoEnum) <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-300">EnumDescriptor</a>() ([]<a href="../../builtin.html#name-byte">byte</a>, []<a href="../../builtin.html#name-int">int</a>)</span></span></span>
+
+</span></div></div>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 12, in which 4 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-ExtractGoComments">	<input type='checkbox' class="fold" id="ExtractGoComments-fold-content"><label for="ExtractGoComments-fold-content"> func <a href="../../../src/github.com/invopop/jsonschema/comment_extractor.go.html#line-27">ExtractGoComments</a>(base, path <a href="../../builtin.html#name-string">string</a>, commentMap map[<a href="../../builtin.html#name-string">string</a>]<a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-error">error</a></label><span id='ExtractGoComments-fold-content-docs' class="fold-docs">
+		ExtractGoComments will read all the go files contained in the provided path,
+		including sub-directories, in order to generate a dictionary of comments
+		associated with Types and Fields. The results will be added to the `commentsMap`
+		provided in the parameters and expected to be used for Schema "description" fields.
+
+		The `go/parser` library is used to extract all the comments and unfortunately doesn't
+		have a built-in way to determine the fully qualified name of a package. The `base` paremeter,
+		the URL used to import that package, is thus required to be able to match reflected types.
+
+		When parsing type comments, we use the `go/doc`'s Synopsis method to extract the first phrase
+		only. Field comments, which tend to be much shorter, will include everything.
+
+</span></div><div class="anchor value-res" id="name-Reflect">	<input type='checkbox' class="fold" id="Reflect-fold-content"><label for="Reflect-fold-content"> func <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-123">Reflect</a>(v interface{}) *<a href="#name-Schema">Schema</a></label><span id='Reflect-fold-content-docs' class="fold-docs">
+		Reflect reflects to Schema from a value using the default Reflector
+
+</span></div><div class="anchor value-res" id="name-ReflectFromType">	<input type='checkbox' class="fold" id="ReflectFromType-fold-content"><label for="ReflectFromType-fold-content"> func <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-128">ReflectFromType</a>(t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>) *<a href="#name-Schema">Schema</a></label><span id='ReflectFromType-fold-content-docs' class="fold-docs">
+		ReflectFromType generates root schema using the default Reflector
+
+</span></div><div class="anchor value-res" id="name-ToSnakeCase">	<input type='checkbox' class="fold" id="ToSnakeCase-fold-content"><label for="ToSnakeCase-fold-content"> func <a href="../../../src/github.com/invopop/jsonschema/utils.go.html#line-14">ToSnakeCase</a>(str <a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-string">string</a></label><span id='ToSnakeCase-fold-content-docs' class="fold-docs">
+		ToSnakeCase converts the provided string into snake case using dashes.
+		This is useful for Schema IDs and definitions to be coherent with
+		common JSON Schema examples.
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* 8 unexporteds ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* 8 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-fullyQualifiedTypeName"><i>	<span class="nodocs"> func <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-1057">fullyQualifiedTypeName</a>(t <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a>) <a href="../../builtin.html#name-string">string</a></span></i></div><div class="anchor value-res hidden" id="name-ignoredByJSONSchemaTags"><i>	<span class="nodocs"> func <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-908">ignoredByJSONSchemaTags</a>(tags []<a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-bool">bool</a></span></i></div><div class="anchor value-res hidden" id="name-ignoredByJSONTags"><i>	<span class="nodocs"> func <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-904">ignoredByJSONTags</a>(tags []<a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-bool">bool</a></span></i></div><div class="anchor value-res hidden" id="name-inlineYAMLTags"><i>	<span class="nodocs"> func <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-895">inlineYAMLTags</a>(tags []<a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-bool">bool</a></span></i></div><div class="anchor value-res hidden" id="name-nullableFromJSONSchemaTags"><i>	<span class="nodocs"> func <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-883">nullableFromJSONSchemaTags</a>(tags []<a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-bool">bool</a></span></i></div><div class="anchor value-res hidden" id="name-requiredFromJSONSchemaTags"><i>	<span class="nodocs"> func <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-871">requiredFromJSONSchemaTags</a>(tags []<a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-bool">bool</a></span></i></div><div class="anchor value-res hidden" id="name-requiredFromJSONTags"><i>	<span class="nodocs"> func <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-858">requiredFromJSONTags</a>(tags []<a href="../../builtin.html#name-string">string</a>) <a href="../../builtin.html#name-bool">bool</a></span></i></div><div class="anchor value-res hidden" id="name-splitOnUnescapedCommas"><i>	<input type='checkbox' class="fold" id="splitOnUnescapedCommas-fold-content"><label for="splitOnUnescapedCommas-fold-content"> func <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-1034">splitOnUnescapedCommas</a>(tagString <a href="../../builtin.html#name-string">string</a>) []<a href="../../builtin.html#name-string">string</a></label><span id='splitOnUnescapedCommas-fold-content-docs' class="fold-docs">
+		Split on commas that are not preceded by `\`.
+		This way, we prevent splitting regexes
+
+</span></i></div></div>
+<div id="exported-variables"><span class="title">Package-Level Variables<span class="title-stat"><i> (total 13, in which 3 are exported)</i></span></span>
+
+<div class="anchor value-res" id="name-FalseSchema">	<input type='checkbox' class="fold" id="FalseSchema-fold-content"><label for="FalseSchema-fold-content">  var <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-101">FalseSchema</a> *<a href="#name-Schema">Schema</a></label><span id='FalseSchema-fold-content-docs' class="fold-docs">
+		FalseSchema defines a schema with a false value
+
+</span></div><div class="anchor value-res" id="name-TrueSchema">	<input type='checkbox' class="fold" id="TrueSchema-fold-content"><label for="TrueSchema-fold-content">  var <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-99">TrueSchema</a> *<a href="#name-Schema">Schema</a></label><span id='TrueSchema-fold-content-docs' class="fold-docs">
+		TrueSchema defines a schema with a true value
+
+</span></div><div class="anchor value-res" id="name-Version">	<input type='checkbox' class="fold" id="Version-fold-content"><label for="Version-fold-content">  var <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-23">Version</a> <a href="../../builtin.html#name-string">string</a></label><span id='Version-fold-content-docs' class="fold-docs">
+		Version is the JSON Schema version.
+
+</span></div>	<input type='checkbox' class="showhide" id="unexported-variables-showhide"><i><label for="unexported-variables-showhide" class="show-inline">/* 10 unexporteds ... */</label><label for="unexported-variables-showhide" class="hide-inline">/* 10 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-byteSliceType"><i>	<input type='checkbox' class="fold" id="byteSliceType-fold-content"><label for="byteSliceType-fold-content">  var <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-293">byteSliceType</a> <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a></label><span id='byteSliceType-fold-content-docs' class="fold-docs">
+		Byte slices will be encoded as base64
+
+</span></i></div><div class="anchor value-res hidden" id="name-customStructGetFieldDocString"><i>	<span class="nodocs">  var <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-120">customStructGetFieldDocString</a> <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a></span></i></div><div class="anchor value-res hidden" id="name-customType"><i>	<span class="nodocs">  var <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-111">customType</a> <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a></span></i></div><div class="anchor value-res hidden" id="name-ipType"><i>	<input type='checkbox' class="fold" id="ipType-fold-content"><label for="ipType-fold-content">  var <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-288">ipType</a> <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a> // ipv4 and ipv6 RFC section 7.3.4, 7.3.5</label><span id='ipType-fold-content-docs' class="fold-docs">
+		Available Go defined types for JSON Schema Validation.
+		RFC draft-wright-json-schema-validation-00, section 7.3
+
+</span></i></div><div class="anchor value-res hidden" id="name-matchAllCap"><i>	<span class="nodocs">  var <a href="../../../src/github.com/invopop/jsonschema/utils.go.html#line-9">matchAllCap</a> *<a href="../../regexp.html">regexp</a>.<a href="../../regexp.html#name-Regexp">Regexp</a></span></i></div><div class="anchor value-res hidden" id="name-matchFirstCap"><i>	<span class="nodocs">  var <a href="../../../src/github.com/invopop/jsonschema/utils.go.html#line-8">matchFirstCap</a> *<a href="../../regexp.html">regexp</a>.<a href="../../regexp.html#name-Regexp">Regexp</a></span></i></div><div class="anchor value-res hidden" id="name-protoEnumType"><i>	<span class="nodocs">  var <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-303">protoEnumType</a> <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a></span></i></div><div class="anchor value-res hidden" id="name-rawMessageType"><i>	<input type='checkbox' class="fold" id="rawMessageType-fold-content"><label for="rawMessageType-fold-content">  var <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-296">rawMessageType</a> <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a></label><span id='rawMessageType-fold-content-docs' class="fold-docs">
+		Except for json.RawMessage
+
+</span></i></div><div class="anchor value-res hidden" id="name-timeType"><i>	<input type='checkbox' class="fold" id="timeType-fold-content"><label for="timeType-fold-content">  var <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-287">timeType</a> <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a> // date-time RFC section 7.3.1</label><span id='timeType-fold-content-docs' class="fold-docs">
+		Available Go defined types for JSON Schema Validation.
+		RFC draft-wright-json-schema-validation-00, section 7.3
+
+</span></i></div><div class="anchor value-res hidden" id="name-uriType"><i>	<input type='checkbox' class="fold" id="uriType-fold-content"><label for="uriType-fold-content">  var <a href="../../../src/github.com/invopop/jsonschema/reflect.go.html#line-289">uriType</a> <a href="../../reflect.html">reflect</a>.<a href="../../reflect.html#name-Type">Type</a> // uri RFC section 7.3.6</label><span id='uriType-fold-content-docs' class="fold-docs">
+		Available Go defined types for JSON Schema Validation.
+		RFC draft-wright-json-schema-validation-00, section 7.3
+
+</span></i></div></div>
+<div id="exported-constants"><span class="title">Package-Level Constants<span class="title-stat"><i> (only one, which is exported)</i></span></span>
+
+<div class="anchor value-res" id="name-EmptyID">	<input type='checkbox' class="fold" id="EmptyID-fold-content"><label for="EmptyID-fold-content">const <a href="../../../src/github.com/invopop/jsonschema/id.go.html#line-15">EmptyID</a> <a href="#name-ID">ID</a> = ""</label><span id='EmptyID-fold-content-docs' class="fold-docs">
+		EmptyID is used to explicitly define an ID with no value.
+
+</span></div></div></code></pre><pre id="footer">
+<table><tr><td><img src="../../../png/go101-twitter.png"></td>
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
+<b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
+PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
+Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

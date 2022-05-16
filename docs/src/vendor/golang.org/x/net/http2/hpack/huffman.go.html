@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: huffman.go in package vendor/golang.org/x/net/http2/hpack</title>
-<link href="../../../../../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../../../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../../../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../../../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -70,9 +70,7 @@ input[id=r50]:checked ~pre label[for=r50],
 input[id=r51]:checked ~pre label[for=r51],
 input[id=r52]:checked ~pre label[for=r52],
 input[id=r53]:checked ~pre label[for=r53],
-input[id=r54]:checked ~pre label[for=r54],
-input[id=r55]:checked ~pre label[for=r55],
-input[id=r56]:checked ~pre label[for=r56]
+input[id=r54]:checked ~pre label[for=r54]
 {background: #226; color: #ff8;}
 input[id=i0]:checked ~pre .i0,
 input[id=i1]:checked ~pre .i1,
@@ -134,8 +132,6 @@ input[id=i3]:checked ~pre .i3
 <input id="r52" type="radio" name="g"/>
 <input id="r53" type="radio" name="g"/>
 <input id="r54" type="radio" name="g"/>
-<input id="r55" type="radio" name="g"/>
-<input id="r56" type="radio" name="g"/>
 <input id="i0" type="radio" name="i"/>
 <input id="i1" type="radio" name="i"/>
 <input id="i2" type="radio" name="i"/>
@@ -284,96 +280,100 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-140"><code>		<a href="../../../../../../../pkg/builtin.html#name-panic" class="ident">panic</a>(<span class="lit-string">"unexpected size"</span>)</code></span>
 <span class="codeline" id="line-141"><code>	}</code></span>
 <span class="codeline" id="line-142"><code>	<a href="#line-130" class="ident">lazyRootHuffmanNode</a> = <a href="#line-124" class="ident">newInternalNode</a>()</code></span>
-<span class="codeline" id="line-143"><code>	<span class="keyword">for</span> <label for="r25" class="ident">i</label>, <label for="r26" class="ident">code</label> := <span class="keyword">range</span> <a href="tables.go.html#line-203" class="ident">huffmanCodes</a> {</code></span>
-<span class="codeline" id="line-144"><code>		<a href="#line-148" class="ident">addDecoderNode</a>(<a href="../../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<label for="r25" class="ident">i</label>), <label for="r26" class="ident">code</label>, <a href="tables.go.html#line-462" class="ident">huffmanCodeLen</a>[<label for="r25" class="ident">i</label>])</code></span>
-<span class="codeline" id="line-145"><code>	}</code></span>
-<span class="codeline" id="line-146"><code>}</code></span>
-<span class="codeline" id="line-147"><code></code></span>
-<span class="codeline" id="line-148"><code><span class="keyword">func</span> <label for="r27" class="ident"><a href="../../../../../../../pkg/vendor/golang.org/x/net/http2/hpack.html#name-addDecoderNode" class="ident">addDecoderNode</a></label>(<label for="r28" class="ident">sym</label> <a href="../../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <label for="r29" class="ident">code</label> <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>, <label for="r30" class="ident">codeLen</label> <a href="../../../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>) {</code></span>
-<span class="codeline" id="line-149"><code>	<label for="r31" class="ident">cur</label> := <a href="#line-130" class="ident">lazyRootHuffmanNode</a></code></span>
-<span class="codeline" id="line-150"><code>	<span class="keyword">for</span> <label for="r30" class="ident">codeLen</label> &gt; <span class="lit-number">8</span> {</code></span>
-<span class="codeline" id="line-151"><code>		<label for="r30" class="ident">codeLen</label> -= <span class="lit-number">8</span></code></span>
-<span class="codeline" id="line-152"><code>		<label for="r32" class="ident">i</label> := <a href="../../../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>(<label for="r29" class="ident">code</label> &gt;&gt; <label for="r30" class="ident">codeLen</label>)</code></span>
-<span class="codeline" id="line-153"><code>		<span class="keyword">if</span> <label for="r31" class="ident">cur</label>.<a href="#line-117" class="ident">children</a>[<label for="r32" class="ident">i</label>] == <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
-<span class="codeline" id="line-154"><code>			<label for="r31" class="ident">cur</label>.<a href="#line-117" class="ident">children</a>[<label for="r32" class="ident">i</label>] = <a href="#line-124" class="ident">newInternalNode</a>()</code></span>
-<span class="codeline" id="line-155"><code>		}</code></span>
-<span class="codeline" id="line-156"><code>		<label for="r31" class="ident">cur</label> = <label for="r31" class="ident">cur</label>.<a href="#line-117" class="ident">children</a>[<label for="r32" class="ident">i</label>]</code></span>
-<span class="codeline" id="line-157"><code>	}</code></span>
-<span class="codeline" id="line-158"><code>	<label for="r33" class="ident">shift</label> := <span class="lit-number">8</span> - <label for="r30" class="ident">codeLen</label></code></span>
-<span class="codeline" id="line-159"><code>	<label for="r34" class="ident">start</label>, <label for="r35" class="ident">end</label> := <a href="../../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<a href="../../../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>(<label for="r29" class="ident">code</label>&lt;&lt;<label for="r33" class="ident">shift</label>)), <a href="../../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<span class="lit-number">1</span>&lt;&lt;<label for="r33" class="ident">shift</label>)</code></span>
-<span class="codeline" id="line-160"><code>	<span class="keyword">for</span> <label for="r36" class="ident">i</label> := <label for="r34" class="ident">start</label>; <label for="r36" class="ident">i</label> &lt; <label for="r34" class="ident">start</label>+<label for="r35" class="ident">end</label>; <label for="r36" class="ident">i</label>++ {</code></span>
-<span class="codeline" id="line-161"><code>		<label for="r31" class="ident">cur</label>.<a href="#line-117" class="ident">children</a>[<label for="r36" class="ident">i</label>] = &amp;<a href="#line-113" class="ident">node</a>{<a href="#line-121" class="ident">sym</a>: <label for="r28" class="ident">sym</label>, <a href="#line-120" class="ident">codeLen</a>: <label for="r30" class="ident">codeLen</label>}</code></span>
-<span class="codeline" id="line-162"><code>	}</code></span>
-<span class="codeline" id="line-163"><code>}</code></span>
-<span class="codeline" id="line-164"><code></code></span>
-<span class="codeline" id="line-165"><code><span class="comment">// AppendHuffmanString appends s, as encoded in Huffman codes, to dst</span></code></span>
-<span class="codeline" id="line-166"><code><span class="comment">// and returns the extended buffer.</span></code></span>
-<span class="codeline" id="line-167"><code><span class="keyword">func</span> <label for="r37" class="ident"><a href="../../../../../../../pkg/vendor/golang.org/x/net/http2/hpack.html#name-AppendHuffmanString" class="ident">AppendHuffmanString</a></label>(<label for="r38" class="ident">dst</label> []<a href="../../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <label for="r39" class="ident">s</label> <a href="../../../../../../../pkg/builtin.html#name-string" class="ident">string</a>) []<a href="../../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a> {</code></span>
-<span class="codeline" id="line-168"><code>	<label for="r40" class="ident">rembits</label> := <a href="../../../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>(<span class="lit-number">8</span>)</code></span>
-<span class="codeline" id="line-169"><code></code></span>
-<span class="codeline" id="line-170"><code>	<span class="keyword">for</span> <label for="r41" class="ident">i</label> := <span class="lit-number">0</span>; <label for="r41" class="ident">i</label> &lt; <a href="../../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r39" class="ident">s</label>); <label for="r41" class="ident">i</label>++ {</code></span>
-<span class="codeline" id="line-171"><code>		<span class="keyword">if</span> <label for="r40" class="ident">rembits</label> == <span class="lit-number">8</span> {</code></span>
-<span class="codeline" id="line-172"><code>			<label for="r38" class="ident">dst</label> = <a href="../../../../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r38" class="ident">dst</label>, <span class="lit-number">0</span>)</code></span>
-<span class="codeline" id="line-173"><code>		}</code></span>
-<span class="codeline" id="line-174"><code>		<label for="r38" class="ident">dst</label>, <label for="r40" class="ident">rembits</label> = <a href="#line-203" class="ident">appendByteToHuffmanCode</a>(<label for="r38" class="ident">dst</label>, <label for="r40" class="ident">rembits</label>, <label for="r39" class="ident">s</label>[<label for="r41" class="ident">i</label>])</code></span>
-<span class="codeline" id="line-175"><code>	}</code></span>
-<span class="codeline" id="line-176"><code></code></span>
-<span class="codeline" id="line-177"><code>	<span class="keyword">if</span> <label for="r40" class="ident">rembits</label> &lt; <span class="lit-number">8</span> {</code></span>
-<span class="codeline" id="line-178"><code>		<span class="comment">// special EOS symbol</span></code></span>
-<span class="codeline" id="line-179"><code>		<label for="r42" class="ident">code</label> := <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<span class="lit-number">0x3fffffff</span>)</code></span>
-<span class="codeline" id="line-180"><code>		<label for="r43" class="ident">nbits</label> := <a href="../../../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>(<span class="lit-number">30</span>)</code></span>
-<span class="codeline" id="line-181"><code></code></span>
-<span class="codeline" id="line-182"><code>		<label for="r44" class="ident">t</label> := <a href="../../../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>(<label for="r42" class="ident">code</label> &gt;&gt; (<label for="r43" class="ident">nbits</label> - <label for="r40" class="ident">rembits</label>))</code></span>
-<span class="codeline" id="line-183"><code>		<label for="r38" class="ident">dst</label>[<a href="../../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r38" class="ident">dst</label>)-<span class="lit-number">1</span>] |= <label for="r44" class="ident">t</label></code></span>
-<span class="codeline" id="line-184"><code>	}</code></span>
+<span class="codeline" id="line-143"><code>	<span class="comment">// allocate a leaf node for each of the 256 symbols</span></code></span>
+<span class="codeline" id="line-144"><code>	<label for="r25" class="ident">leaves</label> := <a href="../../../../../../../pkg/builtin.html#name-new" class="ident">new</a>([<span class="lit-number">256</span>]<a href="#line-113" class="ident">node</a>)</code></span>
+<span class="codeline" id="line-145"><code></code></span>
+<span class="codeline" id="line-146"><code>	<span class="keyword">for</span> <label for="r26" class="ident">sym</label>, <label for="r27" class="ident">code</label> := <span class="keyword">range</span> <a href="tables.go.html#line-203" class="ident">huffmanCodes</a> {</code></span>
+<span class="codeline" id="line-147"><code>		<label for="r28" class="ident">codeLen</label> := <a href="tables.go.html#line-462" class="ident">huffmanCodeLen</a>[<label for="r26" class="ident">sym</label>]</code></span>
+<span class="codeline" id="line-148"><code></code></span>
+<span class="codeline" id="line-149"><code>		<label for="r29" class="ident">cur</label> := <a href="#line-130" class="ident">lazyRootHuffmanNode</a></code></span>
+<span class="codeline" id="line-150"><code>		<span class="keyword">for</span> <label for="r28" class="ident">codeLen</label> &gt; <span class="lit-number">8</span> {</code></span>
+<span class="codeline" id="line-151"><code>			<label for="r28" class="ident">codeLen</label> -= <span class="lit-number">8</span></code></span>
+<span class="codeline" id="line-152"><code>			<label for="r30" class="ident">i</label> := <a href="../../../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>(<label for="r27" class="ident">code</label> &gt;&gt; <label for="r28" class="ident">codeLen</label>)</code></span>
+<span class="codeline" id="line-153"><code>			<span class="keyword">if</span> <label for="r29" class="ident">cur</label>.<a href="#line-117" class="ident">children</a>[<label for="r30" class="ident">i</label>] == <a href="../../../../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
+<span class="codeline" id="line-154"><code>				<label for="r29" class="ident">cur</label>.<a href="#line-117" class="ident">children</a>[<label for="r30" class="ident">i</label>] = <a href="#line-124" class="ident">newInternalNode</a>()</code></span>
+<span class="codeline" id="line-155"><code>			}</code></span>
+<span class="codeline" id="line-156"><code>			<label for="r29" class="ident">cur</label> = <label for="r29" class="ident">cur</label>.<a href="#line-117" class="ident">children</a>[<label for="r30" class="ident">i</label>]</code></span>
+<span class="codeline" id="line-157"><code>		}</code></span>
+<span class="codeline" id="line-158"><code>		<label for="r31" class="ident">shift</label> := <span class="lit-number">8</span> - <label for="r28" class="ident">codeLen</label></code></span>
+<span class="codeline" id="line-159"><code>		<label for="r32" class="ident">start</label>, <label for="r33" class="ident">end</label> := <a href="../../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<a href="../../../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>(<label for="r27" class="ident">code</label>&lt;&lt;<label for="r31" class="ident">shift</label>)), <a href="../../../../../../../pkg/builtin.html#name-int" class="ident">int</a>(<span class="lit-number">1</span>&lt;&lt;<label for="r31" class="ident">shift</label>)</code></span>
+<span class="codeline" id="line-160"><code></code></span>
+<span class="codeline" id="line-161"><code>		<label for="r25" class="ident">leaves</label>[<label for="r26" class="ident">sym</label>].<a href="#line-121" class="ident">sym</a> = <a href="../../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>(<label for="r26" class="ident">sym</label>)</code></span>
+<span class="codeline" id="line-162"><code>		<label for="r25" class="ident">leaves</label>[<label for="r26" class="ident">sym</label>].<a href="#line-120" class="ident">codeLen</a> = <label for="r28" class="ident">codeLen</label></code></span>
+<span class="codeline" id="line-163"><code>		<span class="keyword">for</span> <label for="r34" class="ident">i</label> := <label for="r32" class="ident">start</label>; <label for="r34" class="ident">i</label> &lt; <label for="r32" class="ident">start</label>+<label for="r33" class="ident">end</label>; <label for="r34" class="ident">i</label>++ {</code></span>
+<span class="codeline" id="line-164"><code>			<label for="r29" class="ident">cur</label>.<a href="#line-117" class="ident">children</a>[<label for="r34" class="ident">i</label>] = &amp;<label for="r25" class="ident">leaves</label>[<label for="r26" class="ident">sym</label>]</code></span>
+<span class="codeline" id="line-165"><code>		}</code></span>
+<span class="codeline" id="line-166"><code>	}</code></span>
+<span class="codeline" id="line-167"><code>}</code></span>
+<span class="codeline" id="line-168"><code></code></span>
+<span class="codeline" id="line-169"><code><span class="comment">// AppendHuffmanString appends s, as encoded in Huffman codes, to dst</span></code></span>
+<span class="codeline" id="line-170"><code><span class="comment">// and returns the extended buffer.</span></code></span>
+<span class="codeline" id="line-171"><code><span class="keyword">func</span> <label for="r35" class="ident"><a href="../../../../../../../pkg/vendor/golang.org/x/net/http2/hpack.html#name-AppendHuffmanString" class="ident">AppendHuffmanString</a></label>(<label for="r36" class="ident">dst</label> []<a href="../../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <label for="r37" class="ident">s</label> <a href="../../../../../../../pkg/builtin.html#name-string" class="ident">string</a>) []<a href="../../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a> {</code></span>
+<span class="codeline" id="line-172"><code>	<label for="r38" class="ident">rembits</label> := <a href="../../../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>(<span class="lit-number">8</span>)</code></span>
+<span class="codeline" id="line-173"><code></code></span>
+<span class="codeline" id="line-174"><code>	<span class="keyword">for</span> <label for="r39" class="ident">i</label> := <span class="lit-number">0</span>; <label for="r39" class="ident">i</label> &lt; <a href="../../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r37" class="ident">s</label>); <label for="r39" class="ident">i</label>++ {</code></span>
+<span class="codeline" id="line-175"><code>		<span class="keyword">if</span> <label for="r38" class="ident">rembits</label> == <span class="lit-number">8</span> {</code></span>
+<span class="codeline" id="line-176"><code>			<label for="r36" class="ident">dst</label> = <a href="../../../../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r36" class="ident">dst</label>, <span class="lit-number">0</span>)</code></span>
+<span class="codeline" id="line-177"><code>		}</code></span>
+<span class="codeline" id="line-178"><code>		<label for="r36" class="ident">dst</label>, <label for="r38" class="ident">rembits</label> = <a href="#line-207" class="ident">appendByteToHuffmanCode</a>(<label for="r36" class="ident">dst</label>, <label for="r38" class="ident">rembits</label>, <label for="r37" class="ident">s</label>[<label for="r39" class="ident">i</label>])</code></span>
+<span class="codeline" id="line-179"><code>	}</code></span>
+<span class="codeline" id="line-180"><code></code></span>
+<span class="codeline" id="line-181"><code>	<span class="keyword">if</span> <label for="r38" class="ident">rembits</label> &lt; <span class="lit-number">8</span> {</code></span>
+<span class="codeline" id="line-182"><code>		<span class="comment">// special EOS symbol</span></code></span>
+<span class="codeline" id="line-183"><code>		<label for="r40" class="ident">code</label> := <a href="../../../../../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<span class="lit-number">0x3fffffff</span>)</code></span>
+<span class="codeline" id="line-184"><code>		<label for="r41" class="ident">nbits</label> := <a href="../../../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>(<span class="lit-number">30</span>)</code></span>
 <span class="codeline" id="line-185"><code></code></span>
-<span class="codeline" id="line-186"><code>	<span class="keyword">return</span> <label for="r38" class="ident">dst</label></code></span>
-<span class="codeline" id="line-187"><code>}</code></span>
-<span class="codeline" id="line-188"><code></code></span>
-<span class="codeline" id="line-189"><code><span class="comment">// HuffmanEncodeLength returns the number of bytes required to encode</span></code></span>
-<span class="codeline" id="line-190"><code><span class="comment">// s in Huffman codes. The result is round up to byte boundary.</span></code></span>
-<span class="codeline" id="line-191"><code><span class="keyword">func</span> <label for="r45" class="ident"><a href="../../../../../../../pkg/vendor/golang.org/x/net/http2/hpack.html#name-HuffmanEncodeLength" class="ident">HuffmanEncodeLength</a></label>(<label for="r46" class="ident">s</label> <a href="../../../../../../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="../../../../../../../pkg/builtin.html#name-uint64" class="ident">uint64</a> {</code></span>
-<span class="codeline" id="line-192"><code>	<label for="r47" class="ident">n</label> := <a href="../../../../../../../pkg/builtin.html#name-uint64" class="ident">uint64</a>(<span class="lit-number">0</span>)</code></span>
-<span class="codeline" id="line-193"><code>	<span class="keyword">for</span> <label for="r48" class="ident">i</label> := <span class="lit-number">0</span>; <label for="r48" class="ident">i</label> &lt; <a href="../../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r46" class="ident">s</label>); <label for="r48" class="ident">i</label>++ {</code></span>
-<span class="codeline" id="line-194"><code>		<label for="r47" class="ident">n</label> += <a href="../../../../../../../pkg/builtin.html#name-uint64" class="ident">uint64</a>(<a href="tables.go.html#line-462" class="ident">huffmanCodeLen</a>[<label for="r46" class="ident">s</label>[<label for="r48" class="ident">i</label>]])</code></span>
-<span class="codeline" id="line-195"><code>	}</code></span>
-<span class="codeline" id="line-196"><code>	<span class="keyword">return</span> (<label for="r47" class="ident">n</label> + <span class="lit-number">7</span>) / <span class="lit-number">8</span></code></span>
-<span class="codeline" id="line-197"><code>}</code></span>
-<span class="codeline" id="line-198"><code></code></span>
-<span class="codeline" id="line-199"><code><span class="comment">// appendByteToHuffmanCode appends Huffman code for c to dst and</span></code></span>
-<span class="codeline" id="line-200"><code><span class="comment">// returns the extended buffer and the remaining bits in the last</span></code></span>
-<span class="codeline" id="line-201"><code><span class="comment">// element. The appending is not byte aligned and the remaining bits</span></code></span>
-<span class="codeline" id="line-202"><code><span class="comment">// in the last element of dst is given in rembits.</span></code></span>
-<span class="codeline" id="line-203"><code><span class="keyword">func</span> <label for="r49" class="ident"><a href="../../../../../../../pkg/vendor/golang.org/x/net/http2/hpack.html#name-appendByteToHuffmanCode" class="ident">appendByteToHuffmanCode</a></label>(<label for="r50" class="ident">dst</label> []<a href="../../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <label for="r51" class="ident">rembits</label> <a href="../../../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>, <label for="r52" class="ident">c</label> <a href="../../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>) ([]<a href="../../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <a href="../../../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>) {</code></span>
-<span class="codeline" id="line-204"><code>	<label for="r53" class="ident">code</label> := <a href="tables.go.html#line-203" class="ident">huffmanCodes</a>[<label for="r52" class="ident">c</label>]</code></span>
-<span class="codeline" id="line-205"><code>	<label for="r54" class="ident">nbits</label> := <a href="tables.go.html#line-462" class="ident">huffmanCodeLen</a>[<label for="r52" class="ident">c</label>]</code></span>
-<span class="codeline" id="line-206"><code></code></span>
-<span class="codeline" id="line-207"><code>	<span class="keyword">for</span> {</code></span>
-<span class="codeline" id="line-208"><code>		<span class="keyword">if</span> <label for="r51" class="ident">rembits</label> &gt; <label for="r54" class="ident">nbits</label> {</code></span>
-<span class="codeline" id="line-209"><code>			<label for="r55" class="ident">t</label> := <a href="../../../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>(<label for="r53" class="ident">code</label> &lt;&lt; (<label for="r51" class="ident">rembits</label> - <label for="r54" class="ident">nbits</label>))</code></span>
-<span class="codeline" id="line-210"><code>			<label for="r50" class="ident">dst</label>[<a href="../../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r50" class="ident">dst</label>)-<span class="lit-number">1</span>] |= <label for="r55" class="ident">t</label></code></span>
-<span class="codeline" id="line-211"><code>			<label for="r51" class="ident">rembits</label> -= <label for="r54" class="ident">nbits</label></code></span>
-<span class="codeline" id="line-212"><code>			<span class="keyword">break</span></code></span>
-<span class="codeline" id="line-213"><code>		}</code></span>
-<span class="codeline" id="line-214"><code></code></span>
-<span class="codeline" id="line-215"><code>		<label for="r56" class="ident">t</label> := <a href="../../../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>(<label for="r53" class="ident">code</label> &gt;&gt; (<label for="r54" class="ident">nbits</label> - <label for="r51" class="ident">rembits</label>))</code></span>
-<span class="codeline" id="line-216"><code>		<label for="r50" class="ident">dst</label>[<a href="../../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r50" class="ident">dst</label>)-<span class="lit-number">1</span>] |= <label for="r56" class="ident">t</label></code></span>
-<span class="codeline" id="line-217"><code></code></span>
-<span class="codeline" id="line-218"><code>		<label for="r54" class="ident">nbits</label> -= <label for="r51" class="ident">rembits</label></code></span>
-<span class="codeline" id="line-219"><code>		<label for="r51" class="ident">rembits</label> = <span class="lit-number">8</span></code></span>
-<span class="codeline" id="line-220"><code></code></span>
-<span class="codeline" id="line-221"><code>		<span class="keyword">if</span> <label for="r54" class="ident">nbits</label> == <span class="lit-number">0</span> {</code></span>
-<span class="codeline" id="line-222"><code>			<span class="keyword">break</span></code></span>
-<span class="codeline" id="line-223"><code>		}</code></span>
+<span class="codeline" id="line-186"><code>		<label for="r42" class="ident">t</label> := <a href="../../../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>(<label for="r40" class="ident">code</label> &gt;&gt; (<label for="r41" class="ident">nbits</label> - <label for="r38" class="ident">rembits</label>))</code></span>
+<span class="codeline" id="line-187"><code>		<label for="r36" class="ident">dst</label>[<a href="../../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r36" class="ident">dst</label>)-<span class="lit-number">1</span>] |= <label for="r42" class="ident">t</label></code></span>
+<span class="codeline" id="line-188"><code>	}</code></span>
+<span class="codeline" id="line-189"><code></code></span>
+<span class="codeline" id="line-190"><code>	<span class="keyword">return</span> <label for="r36" class="ident">dst</label></code></span>
+<span class="codeline" id="line-191"><code>}</code></span>
+<span class="codeline" id="line-192"><code></code></span>
+<span class="codeline" id="line-193"><code><span class="comment">// HuffmanEncodeLength returns the number of bytes required to encode</span></code></span>
+<span class="codeline" id="line-194"><code><span class="comment">// s in Huffman codes. The result is round up to byte boundary.</span></code></span>
+<span class="codeline" id="line-195"><code><span class="keyword">func</span> <label for="r43" class="ident"><a href="../../../../../../../pkg/vendor/golang.org/x/net/http2/hpack.html#name-HuffmanEncodeLength" class="ident">HuffmanEncodeLength</a></label>(<label for="r44" class="ident">s</label> <a href="../../../../../../../pkg/builtin.html#name-string" class="ident">string</a>) <a href="../../../../../../../pkg/builtin.html#name-uint64" class="ident">uint64</a> {</code></span>
+<span class="codeline" id="line-196"><code>	<label for="r45" class="ident">n</label> := <a href="../../../../../../../pkg/builtin.html#name-uint64" class="ident">uint64</a>(<span class="lit-number">0</span>)</code></span>
+<span class="codeline" id="line-197"><code>	<span class="keyword">for</span> <label for="r46" class="ident">i</label> := <span class="lit-number">0</span>; <label for="r46" class="ident">i</label> &lt; <a href="../../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r44" class="ident">s</label>); <label for="r46" class="ident">i</label>++ {</code></span>
+<span class="codeline" id="line-198"><code>		<label for="r45" class="ident">n</label> += <a href="../../../../../../../pkg/builtin.html#name-uint64" class="ident">uint64</a>(<a href="tables.go.html#line-462" class="ident">huffmanCodeLen</a>[<label for="r44" class="ident">s</label>[<label for="r46" class="ident">i</label>]])</code></span>
+<span class="codeline" id="line-199"><code>	}</code></span>
+<span class="codeline" id="line-200"><code>	<span class="keyword">return</span> (<label for="r45" class="ident">n</label> + <span class="lit-number">7</span>) / <span class="lit-number">8</span></code></span>
+<span class="codeline" id="line-201"><code>}</code></span>
+<span class="codeline" id="line-202"><code></code></span>
+<span class="codeline" id="line-203"><code><span class="comment">// appendByteToHuffmanCode appends Huffman code for c to dst and</span></code></span>
+<span class="codeline" id="line-204"><code><span class="comment">// returns the extended buffer and the remaining bits in the last</span></code></span>
+<span class="codeline" id="line-205"><code><span class="comment">// element. The appending is not byte aligned and the remaining bits</span></code></span>
+<span class="codeline" id="line-206"><code><span class="comment">// in the last element of dst is given in rembits.</span></code></span>
+<span class="codeline" id="line-207"><code><span class="keyword">func</span> <label for="r47" class="ident"><a href="../../../../../../../pkg/vendor/golang.org/x/net/http2/hpack.html#name-appendByteToHuffmanCode" class="ident">appendByteToHuffmanCode</a></label>(<label for="r48" class="ident">dst</label> []<a href="../../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <label for="r49" class="ident">rembits</label> <a href="../../../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>, <label for="r50" class="ident">c</label> <a href="../../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>) ([]<a href="../../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <a href="../../../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>) {</code></span>
+<span class="codeline" id="line-208"><code>	<label for="r51" class="ident">code</label> := <a href="tables.go.html#line-203" class="ident">huffmanCodes</a>[<label for="r50" class="ident">c</label>]</code></span>
+<span class="codeline" id="line-209"><code>	<label for="r52" class="ident">nbits</label> := <a href="tables.go.html#line-462" class="ident">huffmanCodeLen</a>[<label for="r50" class="ident">c</label>]</code></span>
+<span class="codeline" id="line-210"><code></code></span>
+<span class="codeline" id="line-211"><code>	<span class="keyword">for</span> {</code></span>
+<span class="codeline" id="line-212"><code>		<span class="keyword">if</span> <label for="r49" class="ident">rembits</label> &gt; <label for="r52" class="ident">nbits</label> {</code></span>
+<span class="codeline" id="line-213"><code>			<label for="r53" class="ident">t</label> := <a href="../../../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>(<label for="r51" class="ident">code</label> &lt;&lt; (<label for="r49" class="ident">rembits</label> - <label for="r52" class="ident">nbits</label>))</code></span>
+<span class="codeline" id="line-214"><code>			<label for="r48" class="ident">dst</label>[<a href="../../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r48" class="ident">dst</label>)-<span class="lit-number">1</span>] |= <label for="r53" class="ident">t</label></code></span>
+<span class="codeline" id="line-215"><code>			<label for="r49" class="ident">rembits</label> -= <label for="r52" class="ident">nbits</label></code></span>
+<span class="codeline" id="line-216"><code>			<span class="keyword">break</span></code></span>
+<span class="codeline" id="line-217"><code>		}</code></span>
+<span class="codeline" id="line-218"><code></code></span>
+<span class="codeline" id="line-219"><code>		<label for="r54" class="ident">t</label> := <a href="../../../../../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>(<label for="r51" class="ident">code</label> &gt;&gt; (<label for="r52" class="ident">nbits</label> - <label for="r49" class="ident">rembits</label>))</code></span>
+<span class="codeline" id="line-220"><code>		<label for="r48" class="ident">dst</label>[<a href="../../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r48" class="ident">dst</label>)-<span class="lit-number">1</span>] |= <label for="r54" class="ident">t</label></code></span>
+<span class="codeline" id="line-221"><code></code></span>
+<span class="codeline" id="line-222"><code>		<label for="r52" class="ident">nbits</label> -= <label for="r49" class="ident">rembits</label></code></span>
+<span class="codeline" id="line-223"><code>		<label for="r49" class="ident">rembits</label> = <span class="lit-number">8</span></code></span>
 <span class="codeline" id="line-224"><code></code></span>
-<span class="codeline" id="line-225"><code>		<label for="r50" class="ident">dst</label> = <a href="../../../../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r50" class="ident">dst</label>, <span class="lit-number">0</span>)</code></span>
-<span class="codeline" id="line-226"><code>	}</code></span>
-<span class="codeline" id="line-227"><code></code></span>
-<span class="codeline" id="line-228"><code>	<span class="keyword">return</span> <label for="r50" class="ident">dst</label>, <label for="r51" class="ident">rembits</label></code></span>
-<span class="codeline" id="line-229"><code>}</code></span>
+<span class="codeline" id="line-225"><code>		<span class="keyword">if</span> <label for="r52" class="ident">nbits</label> == <span class="lit-number">0</span> {</code></span>
+<span class="codeline" id="line-226"><code>			<span class="keyword">break</span></code></span>
+<span class="codeline" id="line-227"><code>		}</code></span>
+<span class="codeline" id="line-228"><code></code></span>
+<span class="codeline" id="line-229"><code>		<label for="r48" class="ident">dst</label> = <a href="../../../../../../../pkg/builtin.html#name-append" class="ident">append</a>(<label for="r48" class="ident">dst</label>, <span class="lit-number">0</span>)</code></span>
+<span class="codeline" id="line-230"><code>	}</code></span>
+<span class="codeline" id="line-231"><code></code></span>
+<span class="codeline" id="line-232"><code>	<span class="keyword">return</span> <label for="r48" class="ident">dst</label>, <label for="r49" class="ident">rembits</label></code></span>
+<span class="codeline" id="line-233"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../../../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

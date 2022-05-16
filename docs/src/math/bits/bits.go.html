@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: bits.go in package math/bits</title>
-<link href="../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -455,7 +455,7 @@ input[id=r212]:checked ~pre label[for=r212]
 <div class="anchor" id="doc"><span class="codeline" id="line-7"><code><span class="comment">// Package bits implements bit counting and manipulation</span></code></span>
 <span class="codeline" id="line-8"><code><span class="comment">// functions for the predeclared unsigned integer types.</span></code></span></div><span class="codeline" id="line-9"><code><span class="keyword">package</span> bits</code></span>
 <span class="codeline" id="line-10"><code></code></span>
-<span class="codeline" id="line-11"><code><span class="keyword">const</span> <a href="../../../pkg/math/bits.html#name-uintSize" class="ident">uintSize</a> = <span class="lit-number">32</span> &lt;&lt; (^<a href="../../../pkg/builtin.html#name-uint" class="ident">uint</a>(<span class="lit-number">0</span>) &gt;&gt; <span class="lit-number">32</span> &amp; <span class="lit-number">1</span>) <span class="comment">// 32 or 64</span></code></span>
+<span class="codeline" id="line-11"><code><span class="keyword">const</span> <a href="../../../pkg/math/bits.html#name-uintSize" class="ident">uintSize</a> = <span class="lit-number">32</span> &lt;&lt; (^<a href="../../../pkg/builtin.html#name-uint" class="ident">uint</a>(<span class="lit-number">0</span>) &gt;&gt; <span class="lit-number">63</span>) <span class="comment">// 32 or 64</span></code></span>
 <span class="codeline" id="line-12"><code></code></span>
 <span class="codeline" id="line-13"><code><span class="comment">// UintSize is the size of a uint in bits.</span></code></span>
 <span class="codeline" id="line-14"><code><span class="keyword">const</span> <a href="../../../pkg/math/bits.html#name-UintSize" class="ident">UintSize</a> = <a href="#line-11" class="ident">uintSize</a></code></span>
@@ -564,17 +564,17 @@ input[id=r212]:checked ~pre label[for=r212]
 <span class="codeline" id="line-117"><code></code></span>
 <span class="codeline" id="line-118"><code><span class="comment">// OnesCount8 returns the number of one bits ("population count") in x.</span></code></span>
 <span class="codeline" id="line-119"><code><span class="keyword">func</span> <label for="r22" class="ident"><a href="../../../pkg/math/bits.html#name-OnesCount8" class="ident">OnesCount8</a></label>(<label for="r23" class="ident">x</label> <a href="../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>) <a href="../../../pkg/builtin.html#name-int" class="ident">int</a> {</code></span>
-<span class="codeline" id="line-120"><code>	<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-int" class="ident">int</a>(<a href="bits_tables.go.html#line-28" class="ident">pop8tab</a>[<label for="r23" class="ident">x</label>])</code></span>
+<span class="codeline" id="line-120"><code>	<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-int" class="ident">int</a>(<a href="bits_tables.go.html#line-27" class="ident">pop8tab</a>[<label for="r23" class="ident">x</label>])</code></span>
 <span class="codeline" id="line-121"><code>}</code></span>
 <span class="codeline" id="line-122"><code></code></span>
 <span class="codeline" id="line-123"><code><span class="comment">// OnesCount16 returns the number of one bits ("population count") in x.</span></code></span>
 <span class="codeline" id="line-124"><code><span class="keyword">func</span> <label for="r24" class="ident"><a href="../../../pkg/math/bits.html#name-OnesCount16" class="ident">OnesCount16</a></label>(<label for="r25" class="ident">x</label> <a href="../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>) <a href="../../../pkg/builtin.html#name-int" class="ident">int</a> {</code></span>
-<span class="codeline" id="line-125"><code>	<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-int" class="ident">int</a>(<a href="bits_tables.go.html#line-28" class="ident">pop8tab</a>[<label for="r25" class="ident">x</label>&gt;&gt;<span class="lit-number">8</span>] + <a href="bits_tables.go.html#line-28" class="ident">pop8tab</a>[<label for="r25" class="ident">x</label>&amp;<span class="lit-number">0xff</span>])</code></span>
+<span class="codeline" id="line-125"><code>	<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-int" class="ident">int</a>(<a href="bits_tables.go.html#line-27" class="ident">pop8tab</a>[<label for="r25" class="ident">x</label>&gt;&gt;<span class="lit-number">8</span>] + <a href="bits_tables.go.html#line-27" class="ident">pop8tab</a>[<label for="r25" class="ident">x</label>&amp;<span class="lit-number">0xff</span>])</code></span>
 <span class="codeline" id="line-126"><code>}</code></span>
 <span class="codeline" id="line-127"><code></code></span>
 <span class="codeline" id="line-128"><code><span class="comment">// OnesCount32 returns the number of one bits ("population count") in x.</span></code></span>
 <span class="codeline" id="line-129"><code><span class="keyword">func</span> <label for="r26" class="ident"><a href="../../../pkg/math/bits.html#name-OnesCount32" class="ident">OnesCount32</a></label>(<label for="r27" class="ident">x</label> <a href="../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>) <a href="../../../pkg/builtin.html#name-int" class="ident">int</a> {</code></span>
-<span class="codeline" id="line-130"><code>	<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-int" class="ident">int</a>(<a href="bits_tables.go.html#line-28" class="ident">pop8tab</a>[<label for="r27" class="ident">x</label>&gt;&gt;<span class="lit-number">24</span>] + <a href="bits_tables.go.html#line-28" class="ident">pop8tab</a>[<label for="r27" class="ident">x</label>&gt;&gt;<span class="lit-number">16</span>&amp;<span class="lit-number">0xff</span>] + <a href="bits_tables.go.html#line-28" class="ident">pop8tab</a>[<label for="r27" class="ident">x</label>&gt;&gt;<span class="lit-number">8</span>&amp;<span class="lit-number">0xff</span>] + <a href="bits_tables.go.html#line-28" class="ident">pop8tab</a>[<label for="r27" class="ident">x</label>&amp;<span class="lit-number">0xff</span>])</code></span>
+<span class="codeline" id="line-130"><code>	<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-int" class="ident">int</a>(<a href="bits_tables.go.html#line-27" class="ident">pop8tab</a>[<label for="r27" class="ident">x</label>&gt;&gt;<span class="lit-number">24</span>] + <a href="bits_tables.go.html#line-27" class="ident">pop8tab</a>[<label for="r27" class="ident">x</label>&gt;&gt;<span class="lit-number">16</span>&amp;<span class="lit-number">0xff</span>] + <a href="bits_tables.go.html#line-27" class="ident">pop8tab</a>[<label for="r27" class="ident">x</label>&gt;&gt;<span class="lit-number">8</span>&amp;<span class="lit-number">0xff</span>] + <a href="bits_tables.go.html#line-27" class="ident">pop8tab</a>[<label for="r27" class="ident">x</label>&amp;<span class="lit-number">0xff</span>])</code></span>
 <span class="codeline" id="line-131"><code>}</code></span>
 <span class="codeline" id="line-132"><code></code></span>
 <span class="codeline" id="line-133"><code><span class="comment">// OnesCount64 returns the number of one bits ("population count") in x.</span></code></span>
@@ -673,12 +673,12 @@ input[id=r212]:checked ~pre label[for=r212]
 <span class="codeline" id="line-226"><code></code></span>
 <span class="codeline" id="line-227"><code><span class="comment">// Reverse8 returns the value of x with its bits in reversed order.</span></code></span>
 <span class="codeline" id="line-228"><code><span class="keyword">func</span> <label for="r56" class="ident"><a href="../../../pkg/math/bits.html#name-Reverse8" class="ident">Reverse8</a></label>(<label for="r57" class="ident">x</label> <a href="../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>) <a href="../../../pkg/builtin.html#name-uint8" class="ident">uint8</a> {</code></span>
-<span class="codeline" id="line-229"><code>	<span class="keyword">return</span> <a href="bits_tables.go.html#line-47" class="ident">rev8tab</a>[<label for="r57" class="ident">x</label>]</code></span>
+<span class="codeline" id="line-229"><code>	<span class="keyword">return</span> <a href="bits_tables.go.html#line-45" class="ident">rev8tab</a>[<label for="r57" class="ident">x</label>]</code></span>
 <span class="codeline" id="line-230"><code>}</code></span>
 <span class="codeline" id="line-231"><code></code></span>
 <span class="codeline" id="line-232"><code><span class="comment">// Reverse16 returns the value of x with its bits in reversed order.</span></code></span>
 <span class="codeline" id="line-233"><code><span class="keyword">func</span> <label for="r58" class="ident"><a href="../../../pkg/math/bits.html#name-Reverse16" class="ident">Reverse16</a></label>(<label for="r59" class="ident">x</label> <a href="../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>) <a href="../../../pkg/builtin.html#name-uint16" class="ident">uint16</a> {</code></span>
-<span class="codeline" id="line-234"><code>	<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>(<a href="bits_tables.go.html#line-47" class="ident">rev8tab</a>[<label for="r59" class="ident">x</label>&gt;&gt;<span class="lit-number">8</span>]) | <a href="../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>(<a href="bits_tables.go.html#line-47" class="ident">rev8tab</a>[<label for="r59" class="ident">x</label>&amp;<span class="lit-number">0xff</span>])&lt;&lt;<span class="lit-number">8</span></code></span>
+<span class="codeline" id="line-234"><code>	<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>(<a href="bits_tables.go.html#line-45" class="ident">rev8tab</a>[<label for="r59" class="ident">x</label>&gt;&gt;<span class="lit-number">8</span>]) | <a href="../../../pkg/builtin.html#name-uint16" class="ident">uint16</a>(<a href="bits_tables.go.html#line-45" class="ident">rev8tab</a>[<label for="r59" class="ident">x</label>&amp;<span class="lit-number">0xff</span>])&lt;&lt;<span class="lit-number">8</span></code></span>
 <span class="codeline" id="line-235"><code>}</code></span>
 <span class="codeline" id="line-236"><code></code></span>
 <span class="codeline" id="line-237"><code><span class="comment">// Reverse32 returns the value of x with its bits in reversed order.</span></code></span>
@@ -749,7 +749,7 @@ input[id=r212]:checked ~pre label[for=r212]
 <span class="codeline" id="line-302"><code></code></span>
 <span class="codeline" id="line-303"><code><span class="comment">// Len8 returns the minimum number of bits required to represent x; the result is 0 for x == 0.</span></code></span>
 <span class="codeline" id="line-304"><code><span class="keyword">func</span> <label for="r78" class="ident"><a href="../../../pkg/math/bits.html#name-Len8" class="ident">Len8</a></label>(<label for="r79" class="ident">x</label> <a href="../../../pkg/builtin.html#name-uint8" class="ident">uint8</a>) <a href="../../../pkg/builtin.html#name-int" class="ident">int</a> {</code></span>
-<span class="codeline" id="line-305"><code>	<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-int" class="ident">int</a>(<a href="bits_tables.go.html#line-66" class="ident">len8tab</a>[<label for="r79" class="ident">x</label>])</code></span>
+<span class="codeline" id="line-305"><code>	<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-int" class="ident">int</a>(<a href="bits_tables.go.html#line-63" class="ident">len8tab</a>[<label for="r79" class="ident">x</label>])</code></span>
 <span class="codeline" id="line-306"><code>}</code></span>
 <span class="codeline" id="line-307"><code></code></span>
 <span class="codeline" id="line-308"><code><span class="comment">// Len16 returns the minimum number of bits required to represent x; the result is 0 for x == 0.</span></code></span>
@@ -758,7 +758,7 @@ input[id=r212]:checked ~pre label[for=r212]
 <span class="codeline" id="line-311"><code>		<label for="r81" class="ident">x</label> &gt;&gt;= <span class="lit-number">8</span></code></span>
 <span class="codeline" id="line-312"><code>		<label for="r82" class="ident">n</label> = <span class="lit-number">8</span></code></span>
 <span class="codeline" id="line-313"><code>	}</code></span>
-<span class="codeline" id="line-314"><code>	<span class="keyword">return</span> <label for="r82" class="ident">n</label> + <a href="../../../pkg/builtin.html#name-int" class="ident">int</a>(<a href="bits_tables.go.html#line-66" class="ident">len8tab</a>[<label for="r81" class="ident">x</label>])</code></span>
+<span class="codeline" id="line-314"><code>	<span class="keyword">return</span> <label for="r82" class="ident">n</label> + <a href="../../../pkg/builtin.html#name-int" class="ident">int</a>(<a href="bits_tables.go.html#line-63" class="ident">len8tab</a>[<label for="r81" class="ident">x</label>])</code></span>
 <span class="codeline" id="line-315"><code>}</code></span>
 <span class="codeline" id="line-316"><code></code></span>
 <span class="codeline" id="line-317"><code><span class="comment">// Len32 returns the minimum number of bits required to represent x; the result is 0 for x == 0.</span></code></span>
@@ -771,7 +771,7 @@ input[id=r212]:checked ~pre label[for=r212]
 <span class="codeline" id="line-324"><code>		<label for="r84" class="ident">x</label> &gt;&gt;= <span class="lit-number">8</span></code></span>
 <span class="codeline" id="line-325"><code>		<label for="r85" class="ident">n</label> += <span class="lit-number">8</span></code></span>
 <span class="codeline" id="line-326"><code>	}</code></span>
-<span class="codeline" id="line-327"><code>	<span class="keyword">return</span> <label for="r85" class="ident">n</label> + <a href="../../../pkg/builtin.html#name-int" class="ident">int</a>(<a href="bits_tables.go.html#line-66" class="ident">len8tab</a>[<label for="r84" class="ident">x</label>])</code></span>
+<span class="codeline" id="line-327"><code>	<span class="keyword">return</span> <label for="r85" class="ident">n</label> + <a href="../../../pkg/builtin.html#name-int" class="ident">int</a>(<a href="bits_tables.go.html#line-63" class="ident">len8tab</a>[<label for="r84" class="ident">x</label>])</code></span>
 <span class="codeline" id="line-328"><code>}</code></span>
 <span class="codeline" id="line-329"><code></code></span>
 <span class="codeline" id="line-330"><code><span class="comment">// Len64 returns the minimum number of bits required to represent x; the result is 0 for x == 0.</span></code></span>
@@ -788,7 +788,7 @@ input[id=r212]:checked ~pre label[for=r212]
 <span class="codeline" id="line-341"><code>		<label for="r87" class="ident">x</label> &gt;&gt;= <span class="lit-number">8</span></code></span>
 <span class="codeline" id="line-342"><code>		<label for="r88" class="ident">n</label> += <span class="lit-number">8</span></code></span>
 <span class="codeline" id="line-343"><code>	}</code></span>
-<span class="codeline" id="line-344"><code>	<span class="keyword">return</span> <label for="r88" class="ident">n</label> + <a href="../../../pkg/builtin.html#name-int" class="ident">int</a>(<a href="bits_tables.go.html#line-66" class="ident">len8tab</a>[<label for="r87" class="ident">x</label>])</code></span>
+<span class="codeline" id="line-344"><code>	<span class="keyword">return</span> <label for="r88" class="ident">n</label> + <a href="../../../pkg/builtin.html#name-int" class="ident">int</a>(<a href="bits_tables.go.html#line-63" class="ident">len8tab</a>[<label for="r87" class="ident">x</label>])</code></span>
 <span class="codeline" id="line-345"><code>}</code></span>
 <span class="codeline" id="line-346"><code></code></span>
 <span class="codeline" id="line-347"><code><span class="comment">// --- Add with carry ---</span></code></span>
@@ -945,7 +945,7 @@ input[id=r212]:checked ~pre label[for=r212]
 <span class="codeline" id="line-498"><code><span class="comment">// Div32 panics for y == 0 (division by zero) or y &lt;= hi (quotient overflow).</span></code></span>
 <span class="codeline" id="line-499"><code><span class="keyword">func</span> <label for="r173" class="ident"><a href="../../../pkg/math/bits.html#name-Div32" class="ident">Div32</a></label>(<label for="r174" class="ident">hi</label>, <label for="r175" class="ident">lo</label>, <label for="r176" class="ident">y</label> <a href="../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>) (<label for="r177" class="ident">quo</label>, <label for="r178" class="ident">rem</label> <a href="../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>) {</code></span>
 <span class="codeline" id="line-500"><code>	<span class="keyword">if</span> <label for="r176" class="ident">y</label> != <span class="lit-number">0</span> &amp;&amp; <label for="r176" class="ident">y</label> &lt;= <label for="r174" class="ident">hi</label> {</code></span>
-<span class="codeline" id="line-501"><code>		<a href="../../../pkg/builtin.html#name-panic" class="ident">panic</a>(<a href="bits_errors.go.html#line-12" class="ident">overflowError</a>)</code></span>
+<span class="codeline" id="line-501"><code>		<a href="../../../pkg/builtin.html#name-panic" class="ident">panic</a>(<a href="bits_errors.go.html#line-13" class="ident">overflowError</a>)</code></span>
 <span class="codeline" id="line-502"><code>	}</code></span>
 <span class="codeline" id="line-503"><code>	<label for="r179" class="ident">z</label> := <a href="../../../pkg/builtin.html#name-uint64" class="ident">uint64</a>(<label for="r174" class="ident">hi</label>)&lt;&lt;<span class="lit-number">32</span> | <a href="../../../pkg/builtin.html#name-uint64" class="ident">uint64</a>(<label for="r175" class="ident">lo</label>)</code></span>
 <span class="codeline" id="line-504"><code>	<label for="r177" class="ident">quo</label>, <label for="r178" class="ident">rem</label> = <a href="../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r179" class="ident">z</label>/<a href="../../../pkg/builtin.html#name-uint64" class="ident">uint64</a>(<label for="r176" class="ident">y</label>)), <a href="../../../pkg/builtin.html#name-uint32" class="ident">uint32</a>(<label for="r179" class="ident">z</label>%<a href="../../../pkg/builtin.html#name-uint64" class="ident">uint64</a>(<label for="r176" class="ident">y</label>))</code></span>
@@ -962,10 +962,10 @@ input[id=r212]:checked ~pre label[for=r212]
 <span class="codeline" id="line-515"><code>		<label for="r187" class="ident">mask32</label> = <label for="r186" class="ident">two32</label> - <span class="lit-number">1</span></code></span>
 <span class="codeline" id="line-516"><code>	)</code></span>
 <span class="codeline" id="line-517"><code>	<span class="keyword">if</span> <label for="r183" class="ident">y</label> == <span class="lit-number">0</span> {</code></span>
-<span class="codeline" id="line-518"><code>		<a href="../../../pkg/builtin.html#name-panic" class="ident">panic</a>(<a href="bits_errors.go.html#line-15" class="ident">divideError</a>)</code></span>
+<span class="codeline" id="line-518"><code>		<a href="../../../pkg/builtin.html#name-panic" class="ident">panic</a>(<a href="bits_errors.go.html#line-16" class="ident">divideError</a>)</code></span>
 <span class="codeline" id="line-519"><code>	}</code></span>
 <span class="codeline" id="line-520"><code>	<span class="keyword">if</span> <label for="r183" class="ident">y</label> &lt;= <label for="r181" class="ident">hi</label> {</code></span>
-<span class="codeline" id="line-521"><code>		<a href="../../../pkg/builtin.html#name-panic" class="ident">panic</a>(<a href="bits_errors.go.html#line-12" class="ident">overflowError</a>)</code></span>
+<span class="codeline" id="line-521"><code>		<a href="../../../pkg/builtin.html#name-panic" class="ident">panic</a>(<a href="bits_errors.go.html#line-13" class="ident">overflowError</a>)</code></span>
 <span class="codeline" id="line-522"><code>	}</code></span>
 <span class="codeline" id="line-523"><code></code></span>
 <span class="codeline" id="line-524"><code>	<label for="r188" class="ident">s</label> := <a href="../../../pkg/builtin.html#name-uint" class="ident">uint</a>(<a href="#line-31" class="ident">LeadingZeros64</a>(<label for="r183" class="ident">y</label>))</code></span>
@@ -1035,7 +1035,7 @@ input[id=r212]:checked ~pre label[for=r212]
 <span class="codeline" id="line-588"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

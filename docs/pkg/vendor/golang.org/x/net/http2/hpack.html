@@ -5,14 +5,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Package: vendor/golang.org/x/net/http2/hpack</title>
-<link href="../../../../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="package-details"><code><span style="font-size:xx-large;">package <b>hpack</b></span>
 
 <span class="title">Import Path</span>
-	<a href="../../../../../../index.html#pkg-vendor/golang.org/x/net/http2/hpack">vendor/golang.org/x/net/http2/hpack</a><i> (on <a href="https://pkg.go.dev/vendor/golang.org/x/net/http2/hpack" target="_blank">go.dev</a>)</i>
+	<a href="../../../../../../index.html#pkg-vendor/golang.org/x/net/http2/hpack">vendor/golang.org/x/net/http2/hpack</a><i> (on <a href="https://pkg.go.dev/golang.org/x/net/http2/hpack" target="_blank">go.dev</a>)</i>
 
 <span class="title">Dependency Relation</span>
 	imports <a href="../../../../../../dep/vendor/golang.org/x/net/http2/hpack.html">5 packages</a>, and imported by <a href="../../../../../../dep/vendor/golang.org/x/net/http2/hpack.html#imported-by">one package</a>
@@ -59,27 +59,27 @@
 				to fully parse before. Unlike buf, we own this data.
 </span></i></span></span>
 		<input type='checkbox' class="fold" id="Decoder-fold-methods"><label for="Decoder-fold-methods">Methods (<i>total 17, in which 9 are exported</i>)</label><span id='Decoder-fold-methods-items' class="fold-items"><span>
-			<input type='checkbox' class="fold" id="Decoder-fold-method-Close"><label for="Decoder-fold-method-Close">(*T) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-235">Close</a>() <a href="../../../../../builtin.html#name-error">error</a></label><span id='Decoder-fold-method-Close-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Decoder-fold-method-Close"><label for="Decoder-fold-method-Close">(*Decoder) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-235">Close</a>() <a href="../../../../../builtin.html#name-error">error</a></label><span id='Decoder-fold-method-Close-docs' class="fold-docs">
 				Close declares that the decoding is complete and resets the Decoder
 				to be reused again for a new header block. If there is any remaining
 				data in the decoder's buffer, Close returns an error.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Decoder-fold-method-DecodeFull"><label for="Decoder-fold-method-DecodeFull">(*T) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-218">DecodeFull</a>(p []<a href="../../../../../builtin.html#name-byte">byte</a>) ([]<a href="#name-HeaderField">HeaderField</a>, <a href="../../../../../builtin.html#name-error">error</a>)</label><span id='Decoder-fold-method-DecodeFull-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Decoder-fold-method-DecodeFull"><label for="Decoder-fold-method-DecodeFull">(*Decoder) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-218">DecodeFull</a>(p []<a href="../../../../../builtin.html#name-byte">byte</a>) ([]<a href="#name-HeaderField">HeaderField</a>, <a href="../../../../../builtin.html#name-error">error</a>)</label><span id='Decoder-fold-method-DecodeFull-docs' class="fold-docs">
 				Decode decodes an entire block.
 
 				TODO: remove this method and make it incremental later? This is
 				easier for debugging now.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Decoder-fold-method-EmitEnabled"><label for="Decoder-fold-method-EmitEnabled">(*T) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-144">EmitEnabled</a>() <a href="../../../../../builtin.html#name-bool">bool</a></label><span id='Decoder-fold-method-EmitEnabled-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Decoder-fold-method-EmitEnabled"><label for="Decoder-fold-method-EmitEnabled">(*Decoder) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-144">EmitEnabled</a>() <a href="../../../../../builtin.html#name-bool">bool</a></label><span id='Decoder-fold-method-EmitEnabled-docs' class="fold-docs">
 				EmitEnabled reports whether calls to the emitFunc provided to NewDecoder
 				are currently enabled. The default is true.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Decoder-fold-method-SetAllowedMaxDynamicTableSize"><label for="Decoder-fold-method-SetAllowedMaxDynamicTableSize">(*T) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-156">SetAllowedMaxDynamicTableSize</a>(v <a href="../../../../../builtin.html#name-uint32">uint32</a>)</label><span id='Decoder-fold-method-SetAllowedMaxDynamicTableSize-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Decoder-fold-method-SetAllowedMaxDynamicTableSize"><label for="Decoder-fold-method-SetAllowedMaxDynamicTableSize">(*Decoder) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-156">SetAllowedMaxDynamicTableSize</a>(v <a href="../../../../../builtin.html#name-uint32">uint32</a>)</label><span id='Decoder-fold-method-SetAllowedMaxDynamicTableSize-docs' class="fold-docs">
 				SetAllowedMaxDynamicTableSize sets the upper bound that the encoded
 				stream (via dynamic table size updates) may set the maximum size
 				to.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Decoder-fold-method-SetEmitEnabled"><label for="Decoder-fold-method-SetEmitEnabled">(*T) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-140">SetEmitEnabled</a>(v <a href="../../../../../builtin.html#name-bool">bool</a>)</label><span id='Decoder-fold-method-SetEmitEnabled-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Decoder-fold-method-SetEmitEnabled"><label for="Decoder-fold-method-SetEmitEnabled">(*Decoder) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-140">SetEmitEnabled</a>(v <a href="../../../../../builtin.html#name-bool">bool</a>)</label><span id='Decoder-fold-method-SetEmitEnabled-docs' class="fold-docs">
 				SetEmitEnabled controls whether the emitFunc provided to NewDecoder
 				should be called. The default is true.
 
@@ -88,39 +88,39 @@
 				without doing unnecessary decompression or generating unnecessary
 				garbage for header fields past the limit.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Decoder-fold-method-SetEmitFunc"><label for="Decoder-fold-method-SetEmitFunc">(*T) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-129">SetEmitFunc</a>(emitFunc func(f <a href="#name-HeaderField">HeaderField</a>))</label><span id='Decoder-fold-method-SetEmitFunc-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Decoder-fold-method-SetEmitFunc"><label for="Decoder-fold-method-SetEmitFunc">(*Decoder) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-129">SetEmitFunc</a>(emitFunc func(f <a href="#name-HeaderField">HeaderField</a>))</label><span id='Decoder-fold-method-SetEmitFunc-docs' class="fold-docs">
 				SetEmitFunc changes the callback used when new header fields
 				are decoded.
 				It must be non-nil. It does not affect EmitEnabled.
 </span></span><span>
-			<span class="nodocs">(*T) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-149">SetMaxDynamicTableSize</a>(v <a href="../../../../../builtin.html#name-uint32">uint32</a>)</span></span><span>
-			<input type='checkbox' class="fold" id="Decoder-fold-method-SetMaxStringLength"><label for="Decoder-fold-method-SetMaxStringLength">(*T) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-122">SetMaxStringLength</a>(n <a href="../../../../../builtin.html#name-int">int</a>)</label><span id='Decoder-fold-method-SetMaxStringLength-docs' class="fold-docs">
+			<span class="nodocs">(*Decoder) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-149">SetMaxDynamicTableSize</a>(v <a href="../../../../../builtin.html#name-uint32">uint32</a>)</span></span><span>
+			<input type='checkbox' class="fold" id="Decoder-fold-method-SetMaxStringLength"><label for="Decoder-fold-method-SetMaxStringLength">(*Decoder) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-122">SetMaxStringLength</a>(n <a href="../../../../../builtin.html#name-int">int</a>)</label><span id='Decoder-fold-method-SetMaxStringLength-docs' class="fold-docs">
 				SetMaxStringLength sets the maximum size of a HeaderField name or
 				value string. If a string exceeds this length (even after any
 				decompression), Write will return ErrStringLength.
 				A value of 0 means unlimited and is the default from NewDecoder.
 </span></span><span>
-			<span class="nodocs">(*T) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-244">Write</a>(p []<a href="../../../../../builtin.html#name-byte">byte</a>) (n <a href="../../../../../builtin.html#name-int">int</a>, err <a href="../../../../../builtin.html#name-error">error</a>)</span></span>
+			<span class="nodocs">(*Decoder) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-244">Write</a>(p []<a href="../../../../../builtin.html#name-byte">byte</a>) (n <a href="../../../../../builtin.html#name-int">int</a>, err <a href="../../../../../builtin.html#name-error">error</a>)</span></span>
 			<input type='checkbox' class="showhide" id="Decoder-showhide-methods"><i><label for="Decoder-showhide-methods" class="show-inline">/* 8 unexporteds ... */</label><label for="Decoder-showhide-methods" class="hide-inline">/* 8 unexporteds: */</label></i><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-196">at</a>(i <a href="../../../../../builtin.html#name-uint64">uint64</a>) (hf <a href="#name-HeaderField">HeaderField</a>, ok <a href="../../../../../builtin.html#name-bool">bool</a>)</span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-386">callEmit</a>(hf <a href="#name-HeaderField">HeaderField</a>) <a href="../../../../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-189">maxTableIndex</a>() <a href="../../../../../builtin.html#name-int">int</a></span></i></span><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="Decoder-fold-method-parseDynamicTableSizeUpdate"><label for="Decoder-fold-method-parseDynamicTableSizeUpdate">(*T) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-399">parseDynamicTableSizeUpdate</a>() <a href="../../../../../builtin.html#name-error">error</a></label><span id='Decoder-fold-method-parseDynamicTableSizeUpdate-docs' class="fold-docs">
+			<span class="nodocs">(*Decoder) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-196">at</a>(i <a href="../../../../../builtin.html#name-uint64">uint64</a>) (hf <a href="#name-HeaderField">HeaderField</a>, ok <a href="../../../../../builtin.html#name-bool">bool</a>)</span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*Decoder) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-386">callEmit</a>(hf <a href="#name-HeaderField">HeaderField</a>) <a href="../../../../../builtin.html#name-error">error</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*Decoder) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-189">maxTableIndex</a>() <a href="../../../../../builtin.html#name-int">int</a></span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="Decoder-fold-method-parseDynamicTableSizeUpdate"><label for="Decoder-fold-method-parseDynamicTableSizeUpdate">(*Decoder) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-399">parseDynamicTableSizeUpdate</a>() <a href="../../../../../builtin.html#name-error">error</a></label><span id='Decoder-fold-method-parseDynamicTableSizeUpdate-docs' class="fold-docs">
 				(same invariants and behavior as parseHeaderFieldRepr)
 </span></i></span><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="Decoder-fold-method-parseFieldIndexed"><label for="Decoder-fold-method-parseFieldIndexed">(*T) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-338">parseFieldIndexed</a>() <a href="../../../../../builtin.html#name-error">error</a></label><span id='Decoder-fold-method-parseFieldIndexed-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Decoder-fold-method-parseFieldIndexed"><label for="Decoder-fold-method-parseFieldIndexed">(*Decoder) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-338">parseFieldIndexed</a>() <a href="../../../../../builtin.html#name-error">error</a></label><span id='Decoder-fold-method-parseFieldIndexed-docs' class="fold-docs">
 				(same invariants and behavior as parseHeaderFieldRepr)
 </span></i></span><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="Decoder-fold-method-parseFieldLiteral"><label for="Decoder-fold-method-parseFieldLiteral">(*T) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-353">parseFieldLiteral</a>(n <a href="../../../../../builtin.html#name-uint8">uint8</a>, it <a href="#name-indexType">indexType</a>) <a href="../../../../../builtin.html#name-error">error</a></label><span id='Decoder-fold-method-parseFieldLiteral-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Decoder-fold-method-parseFieldLiteral"><label for="Decoder-fold-method-parseFieldLiteral">(*Decoder) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-353">parseFieldLiteral</a>(n <a href="../../../../../builtin.html#name-uint8">uint8</a>, it <a href="#name-indexType">indexType</a>) <a href="../../../../../builtin.html#name-error">error</a></label><span id='Decoder-fold-method-parseFieldLiteral-docs' class="fold-docs">
 				(same invariants and behavior as parseHeaderFieldRepr)
 </span></i></span><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="Decoder-fold-method-parseHeaderFieldRepr"><label for="Decoder-fold-method-parseHeaderFieldRepr">(*T) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-304">parseHeaderFieldRepr</a>() <a href="../../../../../builtin.html#name-error">error</a></label><span id='Decoder-fold-method-parseHeaderFieldRepr-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Decoder-fold-method-parseHeaderFieldRepr"><label for="Decoder-fold-method-parseHeaderFieldRepr">(*Decoder) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-304">parseHeaderFieldRepr</a>() <a href="../../../../../builtin.html#name-error">error</a></label><span id='Decoder-fold-method-parseHeaderFieldRepr-docs' class="fold-docs">
 				returns errNeedMore if there isn't enough data available.
 				any other error is fatal.
 				consumes d.buf iff it returns nil.
 				precondition: must be called with len(d.buf) &gt; 0
 </span></i></span><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="Decoder-fold-method-readString"><label for="Decoder-fold-method-readString">(*T) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-470">readString</a>(p []<a href="../../../../../builtin.html#name-byte">byte</a>, wantStr <a href="../../../../../builtin.html#name-bool">bool</a>) (s <a href="../../../../../builtin.html#name-string">string</a>, remain []<a href="../../../../../builtin.html#name-byte">byte</a>, err <a href="../../../../../builtin.html#name-error">error</a>)</label><span id='Decoder-fold-method-readString-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Decoder-fold-method-readString"><label for="Decoder-fold-method-readString">(*Decoder) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-470">readString</a>(p []<a href="../../../../../builtin.html#name-byte">byte</a>, wantStr <a href="../../../../../builtin.html#name-bool">bool</a>) (s <a href="../../../../../builtin.html#name-string">string</a>, remain []<a href="../../../../../builtin.html#name-byte">byte</a>, err <a href="../../../../../builtin.html#name-error">error</a>)</label><span id='Decoder-fold-method-readString-docs' class="fold-docs">
 				readString decodes an hpack string from p.
 
 				wantStr is whether s will be used. If false, decompression and
@@ -131,9 +131,9 @@
 				won't affect the decoding state.
 </span></i></span></span>
 		<input type='checkbox' class="fold" id="Decoder-fold-impls"><label for="Decoder-fold-impls">Implements (<i>at least 3, all are exported</i>)</label><span id='Decoder-fold-impls-items' class="fold-items"><span>
-			*T : io.<a href="../../../../../io.html#name-Closer">Closer</a></span><span>
-			*T : io.<a href="../../../../../io.html#name-WriteCloser">WriteCloser</a></span><span>
-			*T : io.<a href="../../../../../io.html#name-Writer">Writer</a></span></span>
+			*Decoder : io.<a href="../../../../../io.html#name-Closer">Closer</a></span><span>
+			*Decoder : io.<a href="../../../../../io.html#name-WriteCloser">WriteCloser</a></span><span>
+			*Decoder : io.<a href="../../../../../io.html#name-Writer">Writer</a></span></span>
 		<input type='checkbox' class="fold" id="Decoder-fold-results"><label for="Decoder-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='Decoder-fold-results-items' class="fold-items"><span>
 			func <a href="#name-NewDecoder">NewDecoder</a>(maxDynamicTableSize <a href="../../../../../builtin.html#name-uint32">uint32</a>, emitFunc func(f <a href="#name-HeaderField">HeaderField</a>)) *<b>Decoder</b></span></span>
 
@@ -143,9 +143,9 @@
 		<input type='checkbox' class="fold" id="DecodingError-fold-fields"><label for="DecodingError-fold-fields">Fields (<i>only one, which is exported</i>)</label><span id='DecodingError-fold-fields-items' class="fold-items"><span>
 			<span class="nodocs"><a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-19">Err</a> <i><a href="../../../../../builtin.html#name-error">error</a></i></span></span></span>
 		<input type='checkbox' class="fold" id="DecodingError-fold-methods"><label for="DecodingError-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='DecodingError-fold-methods-items' class="fold-items"><span>
-			<span class="nodocs">( T) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-22">Error</a>() <a href="../../../../../builtin.html#name-string">string</a></span></span></span>
+			<span class="nodocs">( DecodingError) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-22">Error</a>() <a href="../../../../../builtin.html#name-string">string</a></span></span></span>
 		<input type='checkbox' class="fold" id="DecodingError-fold-impls"><label for="DecodingError-fold-impls">Implements (<i>at least one exported</i>)</label><span id='DecodingError-fold-impls-items' class="fold-items"><span>
-			 T : <a href="../../../../../builtin.html#name-error">error</a></span></span>
+			 DecodingError : <a href="../../../../../builtin.html#name-error">error</a></span></span>
 		<input type='checkbox' class="fold" id="DecodingError-fold-values"><label for="DecodingError-fold-values">As Types Of (<i>only one, which is unexported</i>)</label><span id='DecodingError-fold-values-items' class="fold-items">
 			<input type='checkbox' class="showhide" id="DecodingError-showhide-values"><i><label for="DecodingError-showhide-values" class="show-inline">/* one unexported ... */</label><label for="DecodingError-showhide-values" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
 			  var <a href="#name-errVarintOverflow">errVarintOverflow</a></i></span></span>
@@ -172,12 +172,12 @@
 </span></i></span><span class="hidden"><i>
 			<span class="nodocs"><a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/encode.go.html#line-29">w</a> <i><a href="../../../../../io.html">io</a>.<a href="../../../../../io.html#name-Writer">Writer</a></i></span></i></span></span>
 		<input type='checkbox' class="fold" id="Encoder-fold-methods"><label for="Encoder-fold-methods">Methods (<i>total 5, in which 3 are exported</i>)</label><span id='Encoder-fold-methods-items' class="fold-items"><span>
-			<input type='checkbox' class="fold" id="Encoder-fold-method-SetMaxDynamicTableSize"><label for="Encoder-fold-method-SetMaxDynamicTableSize">(*T) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/encode.go.html#line-108">SetMaxDynamicTableSize</a>(v <a href="../../../../../builtin.html#name-uint32">uint32</a>)</label><span id='Encoder-fold-method-SetMaxDynamicTableSize-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Encoder-fold-method-SetMaxDynamicTableSize"><label for="Encoder-fold-method-SetMaxDynamicTableSize">(*Encoder) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/encode.go.html#line-108">SetMaxDynamicTableSize</a>(v <a href="../../../../../builtin.html#name-uint32">uint32</a>)</label><span id='Encoder-fold-method-SetMaxDynamicTableSize-docs' class="fold-docs">
 				SetMaxDynamicTableSize changes the dynamic header table size to v.
 				The actual size is bounded by the value passed to
 				SetMaxDynamicTableSizeLimit.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Encoder-fold-method-SetMaxDynamicTableSizeLimit"><label for="Encoder-fold-method-SetMaxDynamicTableSizeLimit">(*T) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/encode.go.html#line-126">SetMaxDynamicTableSizeLimit</a>(v <a href="../../../../../builtin.html#name-uint32">uint32</a>)</label><span id='Encoder-fold-method-SetMaxDynamicTableSizeLimit-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Encoder-fold-method-SetMaxDynamicTableSizeLimit"><label for="Encoder-fold-method-SetMaxDynamicTableSizeLimit">(*Encoder) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/encode.go.html#line-126">SetMaxDynamicTableSizeLimit</a>(v <a href="../../../../../builtin.html#name-uint32">uint32</a>)</label><span id='Encoder-fold-method-SetMaxDynamicTableSizeLimit-docs' class="fold-docs">
 				SetMaxDynamicTableSizeLimit changes the maximum value that can be
 				specified in SetMaxDynamicTableSize to v. By default, it is set to
 				4096, which is the same size of the default dynamic header table
@@ -186,13 +186,13 @@
 				Size Update" will be done in the next WriteField call and the
 				maximum dynamic header table size is truncated to v.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Encoder-fold-method-WriteField"><label for="Encoder-fold-method-WriteField">(*T) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/encode.go.html#line-50">WriteField</a>(f <a href="#name-HeaderField">HeaderField</a>) <a href="../../../../../builtin.html#name-error">error</a></label><span id='Encoder-fold-method-WriteField-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Encoder-fold-method-WriteField"><label for="Encoder-fold-method-WriteField">(*Encoder) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/encode.go.html#line-50">WriteField</a>(f <a href="#name-HeaderField">HeaderField</a>) <a href="../../../../../builtin.html#name-error">error</a></label><span id='Encoder-fold-method-WriteField-docs' class="fold-docs">
 				WriteField encodes f into a single Write to e's underlying Writer.
 				This function may also produce bytes for "Header Table Size Update"
 				if necessary. If produced, it is done before encoding f.
 </span></span>
 			<input type='checkbox' class="showhide" id="Encoder-showhide-methods"><i><label for="Encoder-showhide-methods" class="show-inline">/* 2 unexporteds ... */</label><label for="Encoder-showhide-methods" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="Encoder-fold-method-searchTable"><label for="Encoder-fold-method-searchTable">(*T) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/encode.go.html#line-91">searchTable</a>(f <a href="#name-HeaderField">HeaderField</a>) (i <a href="../../../../../builtin.html#name-uint64">uint64</a>, nameValueMatch <a href="../../../../../builtin.html#name-bool">bool</a>)</label><span id='Encoder-fold-method-searchTable-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Encoder-fold-method-searchTable"><label for="Encoder-fold-method-searchTable">(*Encoder) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/encode.go.html#line-91">searchTable</a>(f <a href="#name-HeaderField">HeaderField</a>) (i <a href="../../../../../builtin.html#name-uint64">uint64</a>, nameValueMatch <a href="../../../../../builtin.html#name-bool">bool</a>)</label><span id='Encoder-fold-method-searchTable-docs' class="fold-docs">
 				searchTable searches f in both stable and dynamic header tables.
 				The static header table is searched first. Only when there is no
 				exact match for both name and value, the dynamic header table is
@@ -201,7 +201,7 @@
 				only name matches, i points to that index and nameValueMatch
 				becomes false.
 </span></i></span><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="Encoder-fold-method-shouldIndex"><label for="Encoder-fold-method-shouldIndex">(*T) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/encode.go.html#line-135">shouldIndex</a>(f <a href="#name-HeaderField">HeaderField</a>) <a href="../../../../../builtin.html#name-bool">bool</a></label><span id='Encoder-fold-method-shouldIndex-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Encoder-fold-method-shouldIndex"><label for="Encoder-fold-method-shouldIndex">(*Encoder) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/encode.go.html#line-135">shouldIndex</a>(f <a href="#name-HeaderField">HeaderField</a>) <a href="../../../../../builtin.html#name-bool">bool</a></label><span id='Encoder-fold-method-shouldIndex-docs' class="fold-docs">
 				shouldIndex reports whether f should be indexed.
 </span></i></span></span>
 		<input type='checkbox' class="fold" id="Encoder-fold-results"><label for="Encoder-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='Encoder-fold-results-items' class="fold-items"><span>
@@ -223,21 +223,21 @@
 </span></span><span>
 			<span class="nodocs"><a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-37">Value</a> <i><a href="../../../../../builtin.html#name-string">string</a></i></span></span></span>
 		<input type='checkbox' class="fold" id="HeaderField-fold-methods"><label for="HeaderField-fold-methods">Methods (<i>total 3, all are exported</i>)</label><span id='HeaderField-fold-methods-items' class="fold-items"><span>
-			<input type='checkbox' class="fold" id="HeaderField-fold-method-IsPseudo"><label for="HeaderField-fold-method-IsPseudo">( T) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-48">IsPseudo</a>() <a href="../../../../../builtin.html#name-bool">bool</a></label><span id='HeaderField-fold-method-IsPseudo-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="HeaderField-fold-method-IsPseudo"><label for="HeaderField-fold-method-IsPseudo">( HeaderField) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-48">IsPseudo</a>() <a href="../../../../../builtin.html#name-bool">bool</a></label><span id='HeaderField-fold-method-IsPseudo-docs' class="fold-docs">
 				IsPseudo reports whether the header field is an http2 pseudo header.
 				That is, it reports whether it starts with a colon.
 				It is not otherwise guaranteed to be a valid pseudo header field,
 				though.
 </span></span><span>
-			<input type='checkbox' class="fold" id="HeaderField-fold-method-Size"><label for="HeaderField-fold-method-Size">( T) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-61">Size</a>() <a href="../../../../../builtin.html#name-uint32">uint32</a></label><span id='HeaderField-fold-method-Size-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="HeaderField-fold-method-Size"><label for="HeaderField-fold-method-Size">( HeaderField) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-61">Size</a>() <a href="../../../../../builtin.html#name-uint32">uint32</a></label><span id='HeaderField-fold-method-Size-docs' class="fold-docs">
 				Size returns the size of an entry per RFC 7541 section 4.1.
 </span></span><span>
-			<span class="nodocs">( T) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-52">String</a>() <a href="../../../../../builtin.html#name-string">string</a></span></span></span>
+			<span class="nodocs">( HeaderField) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-52">String</a>() <a href="../../../../../builtin.html#name-string">string</a></span></span></span>
 		<input type='checkbox' class="fold" id="HeaderField-fold-impls"><label for="HeaderField-fold-impls">Implements (<i>at least 3, in which 1 are exported</i>)</label><span id='HeaderField-fold-impls-items' class="fold-items"><span>
-			 T : fmt.<a href="../../../../../fmt.html#name-Stringer">Stringer</a></span>
+			 HeaderField : fmt.<a href="../../../../../fmt.html#name-Stringer">Stringer</a></span>
 			<input type='checkbox' class="showhide" id="HeaderField-showhide-impls"><i><label for="HeaderField-showhide-impls" class="show-inline">/* 2+ unexporteds ... */</label><label for="HeaderField-showhide-impls" class="hide-inline">/* 2+ unexporteds: */</label></i><span class="hidden"><i>
-			 T : context.<a href="../../../../../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
-			 T : runtime.<a href="../../../../../runtime.html#name-stringer">stringer</a></i></span></span>
+			 HeaderField : context.<a href="../../../../../context.html#name-stringer">stringer</a></i></span><span class="hidden"><i>
+			 HeaderField : runtime.<a href="../../../../../runtime.html#name-stringer">stringer</a></i></span></span>
 		<input type='checkbox' class="fold" id="HeaderField-fold-results"><label for="HeaderField-fold-results">As Outputs Of (<i>at least 2, in which 1 are exported</i>)</label><span id='HeaderField-fold-results-items' class="fold-items"><span>
 			func (*<a href="#name-Decoder">Decoder</a>).<a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-218">DecodeFull</a>(p []<a href="../../../../../builtin.html#name-byte">byte</a>) ([]<b>HeaderField</b>, <a href="../../../../../builtin.html#name-error">error</a>)</span>
 			<input type='checkbox' class="showhide" id="HeaderField-showhide-inputofs"><i><label for="HeaderField-showhide-inputofs" class="show-inline">/* at least one unexported ... */</label><label for="HeaderField-showhide-inputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
@@ -256,9 +256,9 @@
 		entry before the static table or after the end of the dynamic table.
 
 		<input type='checkbox' class="fold" id="InvalidIndexError-fold-methods"><label for="InvalidIndexError-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='InvalidIndexError-fold-methods-items' class="fold-items"><span>
-			<span class="nodocs">( T) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-30">Error</a>() <a href="../../../../../builtin.html#name-string">string</a></span></span></span>
+			<span class="nodocs">( InvalidIndexError) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-30">Error</a>() <a href="../../../../../builtin.html#name-string">string</a></span></span></span>
 		<input type='checkbox' class="fold" id="InvalidIndexError-fold-impls"><label for="InvalidIndexError-fold-impls">Implements (<i>at least one exported</i>)</label><span id='InvalidIndexError-fold-impls-items' class="fold-items"><span>
-			 T : <a href="../../../../../builtin.html#name-error">error</a></span></span>
+			 InvalidIndexError : <a href="../../../../../builtin.html#name-error">error</a></span></span>
 
 </span></div></div><div>	<input type='checkbox' class="showhide" id="unexported-typenames-showhide"><i><label for="unexported-typenames-showhide" class="show-inline">/* 6 unexporteds ... */</label><label for="unexported-typenames-showhide" class="hide-inline">/* 6 unexporteds: */</label></i><div class="anchor type-res hidden" id="name-dynamicTable" data-popularity="150">	<input type='checkbox' class="fold" id="dynamicTable-fold-content"><label for="dynamicTable-fold-content"> type <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-160">dynamicTable</a> <i>(struct)</i></label><span id='dynamicTable-fold-content-docs' class="fold-docs">
 
@@ -278,11 +278,11 @@
 </span></i></span></span>
 		<input type='checkbox' class="fold" id="dynamicTable-fold-methods"><label for="dynamicTable-fold-methods">Methods (<i>total 3, none are exported</i>)</label><span id='dynamicTable-fold-methods-items' class="fold-items">
 			<input type='checkbox' checked class="showhide" id="dynamicTable-showhide-methods"><i><label for="dynamicTable-showhide-methods" class="show-inline">/* 3 unexporteds ... */</label><label for="dynamicTable-showhide-methods" class="hide-inline">/* 3 unexporteds: */</label></i><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-173">add</a>(f <a href="#name-HeaderField">HeaderField</a>)</span></i></span><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="dynamicTable-fold-method-evict"><label for="dynamicTable-fold-method-evict">(*T) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-180">evict</a>()</label><span id='dynamicTable-fold-method-evict-docs' class="fold-docs">
+			<span class="nodocs">(*dynamicTable) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-173">add</a>(f <a href="#name-HeaderField">HeaderField</a>)</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="dynamicTable-fold-method-evict"><label for="dynamicTable-fold-method-evict">(*dynamicTable) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-180">evict</a>()</label><span id='dynamicTable-fold-method-evict-docs' class="fold-docs">
 				If we're too big, evict old stuff.
 </span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-168">setMaxSize</a>(v <a href="../../../../../builtin.html#name-uint32">uint32</a>)</span></i></span></span>
+			<span class="nodocs">(*dynamicTable) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-168">setMaxSize</a>(v <a href="../../../../../builtin.html#name-uint32">uint32</a>)</span></i></span></span>
 
 </span></div><div class="anchor type-res hidden" id="name-headerFieldTable" data-popularity="380">	<input type='checkbox' class="fold" id="headerFieldTable-fold-content"><label for="headerFieldTable-fold-content"> type <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/tables.go.html#line-13">headerFieldTable</a> <i>(struct)</i></label><span id='headerFieldTable-fold-content-docs' class="fold-docs">
 		headerFieldTable implements a list of HeaderFields.
@@ -318,21 +318,21 @@
 			<span class="nodocs"><a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/tables.go.html#line-30">evictCount</a> <i><a href="../../../../../builtin.html#name-uint64">uint64</a></i></span></i></span></span>
 		<input type='checkbox' class="fold" id="headerFieldTable-fold-methods"><label for="headerFieldTable-fold-methods">Methods (<i>total 6, none are exported</i>)</label><span id='headerFieldTable-fold-methods-items' class="fold-items">
 			<input type='checkbox' checked class="showhide" id="headerFieldTable-showhide-methods"><i><label for="headerFieldTable-showhide-methods" class="show-inline">/* 6 unexporteds ... */</label><label for="headerFieldTable-showhide-methods" class="hide-inline">/* 6 unexporteds: */</label></i><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="headerFieldTable-fold-method-addEntry"><label for="headerFieldTable-fold-method-addEntry">(*T) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/tables.go.html#line-56">addEntry</a>(f <a href="#name-HeaderField">HeaderField</a>)</label><span id='headerFieldTable-fold-method-addEntry-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="headerFieldTable-fold-method-addEntry"><label for="headerFieldTable-fold-method-addEntry">(*headerFieldTable) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/tables.go.html#line-56">addEntry</a>(f <a href="#name-HeaderField">HeaderField</a>)</label><span id='headerFieldTable-fold-method-addEntry-docs' class="fold-docs">
 				addEntry adds a new entry.
 </span></i></span><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="headerFieldTable-fold-method-evictOldest"><label for="headerFieldTable-fold-method-evictOldest">(*T) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/tables.go.html#line-64">evictOldest</a>(n <a href="../../../../../builtin.html#name-int">int</a>)</label><span id='headerFieldTable-fold-method-evictOldest-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="headerFieldTable-fold-method-evictOldest"><label for="headerFieldTable-fold-method-evictOldest">(*headerFieldTable) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/tables.go.html#line-64">evictOldest</a>(n <a href="../../../../../builtin.html#name-int">int</a>)</label><span id='headerFieldTable-fold-method-evictOldest-docs' class="fold-docs">
 				evictOldest evicts the n oldest entries in the table.
 </span></i></span><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="headerFieldTable-fold-method-idToIndex"><label for="headerFieldTable-fold-method-idToIndex">(*T) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/tables.go.html#line-117">idToIndex</a>(id <a href="../../../../../builtin.html#name-uint64">uint64</a>) <a href="../../../../../builtin.html#name-uint64">uint64</a></label><span id='headerFieldTable-fold-method-idToIndex-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="headerFieldTable-fold-method-idToIndex"><label for="headerFieldTable-fold-method-idToIndex">(*headerFieldTable) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/tables.go.html#line-117">idToIndex</a>(id <a href="../../../../../builtin.html#name-uint64">uint64</a>) <a href="../../../../../builtin.html#name-uint64">uint64</a></label><span id='headerFieldTable-fold-method-idToIndex-docs' class="fold-docs">
 				idToIndex converts a unique id to an HPACK index.
 				See Section 2.3.3.
 </span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/tables.go.html#line-45">init</a>()</span></i></span><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="headerFieldTable-fold-method-len"><label for="headerFieldTable-fold-method-len">(*T) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/tables.go.html#line-51">len</a>() <a href="../../../../../builtin.html#name-int">int</a></label><span id='headerFieldTable-fold-method-len-docs' class="fold-docs">
+			<span class="nodocs">(*headerFieldTable) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/tables.go.html#line-45">init</a>()</span></i></span><span class="hidden"><i>
+			<input type='checkbox' class="fold" id="headerFieldTable-fold-method-len"><label for="headerFieldTable-fold-method-len">(*headerFieldTable) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/tables.go.html#line-51">len</a>() <a href="../../../../../builtin.html#name-int">int</a></label><span id='headerFieldTable-fold-method-len-docs' class="fold-docs">
 				len reports the number of entries in the table.
 </span></i></span><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="headerFieldTable-fold-method-search"><label for="headerFieldTable-fold-method-search">(*T) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/tables.go.html#line-103">search</a>(f <a href="#name-HeaderField">HeaderField</a>) (i <a href="../../../../../builtin.html#name-uint64">uint64</a>, nameValueMatch <a href="../../../../../builtin.html#name-bool">bool</a>)</label><span id='headerFieldTable-fold-method-search-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="headerFieldTable-fold-method-search"><label for="headerFieldTable-fold-method-search">(*headerFieldTable) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/tables.go.html#line-103">search</a>(f <a href="#name-HeaderField">HeaderField</a>) (i <a href="../../../../../builtin.html#name-uint64">uint64</a>, nameValueMatch <a href="../../../../../builtin.html#name-bool">bool</a>)</label><span id='headerFieldTable-fold-method-search-docs' class="fold-docs">
 				search finds f in the table. If there is no match, i is 0.
 				If both name and value match, i is the matched index and nameValueMatch
 				becomes true. If only name matches, i points to that index and
@@ -355,7 +355,7 @@
 			<input type='checkbox' checked class="showhide" id="headerFieldTable-showhide-values"><i><label for="headerFieldTable-showhide-values" class="show-inline">/* one unexported ... */</label><label for="headerFieldTable-showhide-values" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
 			  var <a href="#name-staticTable">staticTable</a> *headerFieldTable</i></span></span>
 
-</span></div><div class="anchor type-res hidden" id="name-incomparable" data-popularity="0">	<input type='checkbox' class="fold" id="incomparable-fold-content"><label for="incomparable-fold-content"> type <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/huffman.go.html#line-111">incomparable</a> <i>([...]T)</i></label><span id='incomparable-fold-content-docs' class="fold-docs">
+</span></div><div class="anchor type-res hidden" id="name-incomparable" data-popularity="0">	<input type='checkbox' class="fold" id="incomparable-fold-content"><label for="incomparable-fold-content"> type <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/huffman.go.html#line-111">incomparable</a> <i>([...])</i></label><span id='incomparable-fold-content-docs' class="fold-docs">
 		incomparable is a zero-width, non-comparable type. Adding it to a struct
 		makes that struct also non-comparable, and generally doesn't add
 		any size (as long as it's first).
@@ -364,8 +364,8 @@
 
 		<input type='checkbox' class="fold" id="indexType-fold-methods"><label for="indexType-fold-methods">Methods (<i>total 2, neither is exported</i>)</label><span id='indexType-fold-methods-items' class="fold-items">
 			<input type='checkbox' checked class="showhide" id="indexType-showhide-methods"><i><label for="indexType-showhide-methods" class="show-inline">/* 2 unexporteds ... */</label><label for="indexType-showhide-methods" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
-			<span class="nodocs">( T) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-297">indexed</a>() <a href="../../../../../builtin.html#name-bool">bool</a></span></i></span><span class="hidden"><i>
-			<span class="nodocs">( T) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-298">sensitive</a>() <a href="../../../../../builtin.html#name-bool">bool</a></span></i></span></span>
+			<span class="nodocs">( indexType) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-297">indexed</a>() <a href="../../../../../builtin.html#name-bool">bool</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">( indexType) <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-298">sensitive</a>() <a href="../../../../../builtin.html#name-bool">bool</a></span></i></span></span>
 		<input type='checkbox' class="fold" id="indexType-fold-params"><label for="indexType-fold-params">As Inputs Of (<i>at least one unexported</i>)</label><span id='indexType-fold-params-items' class="fold-items">
 			<input type='checkbox' checked class="showhide" id="indexType-showhide-outputofs"><i><label for="indexType-showhide-outputofs" class="show-inline">/* at least one unexported ... */</label><label for="indexType-showhide-outputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
 			func (*<a href="#name-Decoder">Decoder</a>).<a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-353">parseFieldLiteral</a>(n <a href="../../../../../builtin.html#name-uint8">uint8</a>, it <b>indexType</b>) <a href="../../../../../builtin.html#name-error">error</a></i></span></span>
@@ -405,9 +405,9 @@
 			<span class="nodocs"><a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/tables.go.html#line-42">value</a> <i><a href="../../../../../builtin.html#name-string">string</a></i></span></i></span></span>
 
 </span></div></div>
-<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 21, in which 6 are exported)</i></span></span>
+<div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 20, in which 6 are exported)</i></span></span>
 
-<div class="anchor value-res" id="name-AppendHuffmanString">	<input type='checkbox' class="fold" id="AppendHuffmanString-fold-content"><label for="AppendHuffmanString-fold-content"> func <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/huffman.go.html#line-167">AppendHuffmanString</a>(dst []<a href="../../../../../builtin.html#name-byte">byte</a>, s <a href="../../../../../builtin.html#name-string">string</a>) []<a href="../../../../../builtin.html#name-byte">byte</a></label><span id='AppendHuffmanString-fold-content-docs' class="fold-docs">
+<div class="anchor value-res" id="name-AppendHuffmanString">	<input type='checkbox' class="fold" id="AppendHuffmanString-fold-content"><label for="AppendHuffmanString-fold-content"> func <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/huffman.go.html#line-171">AppendHuffmanString</a>(dst []<a href="../../../../../builtin.html#name-byte">byte</a>, s <a href="../../../../../builtin.html#name-string">string</a>) []<a href="../../../../../builtin.html#name-byte">byte</a></label><span id='AppendHuffmanString-fold-content-docs' class="fold-docs">
 		AppendHuffmanString appends s, as encoded in Huffman codes, to dst
 		and returns the extended buffer.
 
@@ -419,7 +419,7 @@
 </span></div><div class="anchor value-res" id="name-HuffmanDecodeToString">	<input type='checkbox' class="fold" id="HuffmanDecodeToString-fold-content"><label for="HuffmanDecodeToString-fold-content"> func <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/huffman.go.html#line-32">HuffmanDecodeToString</a>(v []<a href="../../../../../builtin.html#name-byte">byte</a>) (<a href="../../../../../builtin.html#name-string">string</a>, <a href="../../../../../builtin.html#name-error">error</a>)</label><span id='HuffmanDecodeToString-fold-content-docs' class="fold-docs">
 		HuffmanDecodeToString decodes the string in v.
 
-</span></div><div class="anchor value-res" id="name-HuffmanEncodeLength">	<input type='checkbox' class="fold" id="HuffmanEncodeLength-fold-content"><label for="HuffmanEncodeLength-fold-content"> func <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/huffman.go.html#line-191">HuffmanEncodeLength</a>(s <a href="../../../../../builtin.html#name-string">string</a>) <a href="../../../../../builtin.html#name-uint64">uint64</a></label><span id='HuffmanEncodeLength-fold-content-docs' class="fold-docs">
+</span></div><div class="anchor value-res" id="name-HuffmanEncodeLength">	<input type='checkbox' class="fold" id="HuffmanEncodeLength-fold-content"><label for="HuffmanEncodeLength-fold-content"> func <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/huffman.go.html#line-195">HuffmanEncodeLength</a>(s <a href="../../../../../builtin.html#name-string">string</a>) <a href="../../../../../builtin.html#name-uint64">uint64</a></label><span id='HuffmanEncodeLength-fold-content-docs' class="fold-docs">
 		HuffmanEncodeLength returns the number of bytes required to encode
 		s in Huffman codes. The result is round up to byte boundary.
 
@@ -432,7 +432,7 @@
 		NewEncoder returns a new Encoder which performs HPACK encoding. An
 		encoded data is written to w.
 
-</span></div>	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* 15 unexporteds ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* 15 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-addDecoderNode"><i>	<span class="nodocs"> func <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/huffman.go.html#line-148">addDecoderNode</a>(sym <a href="../../../../../builtin.html#name-byte">byte</a>, code <a href="../../../../../builtin.html#name-uint32">uint32</a>, codeLen <a href="../../../../../builtin.html#name-uint8">uint8</a>)</span></i></div><div class="anchor value-res hidden" id="name-appendByteToHuffmanCode"><i>	<input type='checkbox' class="fold" id="appendByteToHuffmanCode-fold-content"><label for="appendByteToHuffmanCode-fold-content"> func <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/huffman.go.html#line-203">appendByteToHuffmanCode</a>(dst []<a href="../../../../../builtin.html#name-byte">byte</a>, rembits <a href="../../../../../builtin.html#name-uint8">uint8</a>, c <a href="../../../../../builtin.html#name-byte">byte</a>) ([]<a href="../../../../../builtin.html#name-byte">byte</a>, <a href="../../../../../builtin.html#name-uint8">uint8</a>)</label><span id='appendByteToHuffmanCode-fold-content-docs' class="fold-docs">
+</span></div>	<input type='checkbox' class="showhide" id="unexported-functions-showhide"><i><label for="unexported-functions-showhide" class="show-inline">/* 14 unexporteds ... */</label><label for="unexported-functions-showhide" class="hide-inline">/* 14 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-appendByteToHuffmanCode"><i>	<input type='checkbox' class="fold" id="appendByteToHuffmanCode-fold-content"><label for="appendByteToHuffmanCode-fold-content"> func <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/huffman.go.html#line-207">appendByteToHuffmanCode</a>(dst []<a href="../../../../../builtin.html#name-byte">byte</a>, rembits <a href="../../../../../builtin.html#name-uint8">uint8</a>, c <a href="../../../../../builtin.html#name-byte">byte</a>) ([]<a href="../../../../../builtin.html#name-byte">byte</a>, <a href="../../../../../builtin.html#name-uint8">uint8</a>)</label><span id='appendByteToHuffmanCode-fold-content-docs' class="fold-docs">
 		appendByteToHuffmanCode appends Huffman code for c to dst and
 		returns the extended buffer and the remaining bits in the last
 		element. The appending is not byte aligned and the remaining bits
@@ -524,7 +524,7 @@
 
 	<input type='checkbox' class="showhide" id="unexported-constants-showhide"><i><label for="unexported-constants-showhide" class="show-inline">/* 5 unexporteds ... */</label><label for="unexported-constants-showhide" class="hide-inline">/* 5 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-indexedFalse"><i>	<span class="nodocs">const <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-293">indexedFalse</a> <a href="#name-indexType">indexType</a> = 1</span></i></div><div class="anchor value-res hidden" id="name-indexedNever"><i>	<span class="nodocs">const <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-294">indexedNever</a> <a href="#name-indexType">indexType</a> = 2</span></i></div><div class="anchor value-res hidden" id="name-indexedTrue"><i>	<span class="nodocs">const <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/hpack.go.html#line-292">indexedTrue</a> <a href="#name-indexType">indexType</a> = 0</span></i></div><div class="anchor value-res hidden" id="name-initialHeaderTableSize"><i>	<span class="nodocs">const <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/encode.go.html#line-13">initialHeaderTableSize</a> = 4096</span></i></div><div class="anchor value-res hidden" id="name-uint32Max"><i>	<span class="nodocs">const <a href="../../../../../../src/vendor/golang.org/x/net/http2/hpack/encode.go.html#line-12">uint32Max</a> <a href="../../../../../builtin.html#name-uint32">uint32</a> = 4294967295</span></i></div></div></code></pre><pre id="footer">
 <table><tr><td><img src="../../../../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

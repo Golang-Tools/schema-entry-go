@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: crypto.go in package crypto</title>
-<link href="../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../jvs/golds-v0.3.6.js"></script>
+<link href="../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -205,60 +205,80 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-150"><code>}</code></span>
 <span class="codeline" id="line-151"><code></code></span>
 <span class="codeline" id="line-152"><code><span class="comment">// PublicKey represents a public key using an unspecified algorithm.</span></code></span>
-<span class="codeline" id="line-153"><code><span class="keyword">type</span> <a href="../../pkg/crypto.html#name-PublicKey" class="ident">PublicKey</a> <span class="keyword">interface</span>{}</code></span>
-<span class="codeline" id="line-154"><code></code></span>
-<span class="codeline" id="line-155"><code><span class="comment">// PrivateKey represents a private key using an unspecified algorithm.</span></code></span>
-<span class="codeline" id="line-156"><code><span class="keyword">type</span> <a href="../../pkg/crypto.html#name-PrivateKey" class="ident">PrivateKey</a> <span class="keyword">interface</span>{}</code></span>
-<span class="codeline" id="line-157"><code></code></span>
-<span class="codeline" id="line-158"><code><span class="comment">// Signer is an interface for an opaque private key that can be used for</span></code></span>
-<span class="codeline" id="line-159"><code><span class="comment">// signing operations. For example, an RSA key kept in a hardware module.</span></code></span>
-<span class="codeline" id="line-160"><code><span class="keyword">type</span> <a href="../../pkg/crypto.html#name-Signer" class="ident">Signer</a> <span class="keyword">interface</span> {</code></span>
-<span class="codeline" id="line-161"><code>	<span class="comment">// Public returns the public key corresponding to the opaque,</span></code></span>
-<span class="codeline" id="line-162"><code><span class="comment">	// private key.</span></code></span>
-<span class="codeline" id="line-163"><code>	<a href="../../imp/crypto.Signer.html#name-Public" class="ident">Public</a>() <a href="#line-153" class="ident">PublicKey</a></code></span>
-<span class="codeline" id="line-164"><code></code></span>
-<span class="codeline" id="line-165"><code>	<span class="comment">// Sign signs digest with the private key, possibly using entropy from</span></code></span>
-<span class="codeline" id="line-166"><code><span class="comment">	// rand. For an RSA key, the resulting signature should be either a</span></code></span>
-<span class="codeline" id="line-167"><code><span class="comment">	// PKCS #1 v1.5 or PSS signature (as indicated by opts). For an (EC)DSA</span></code></span>
-<span class="codeline" id="line-168"><code><span class="comment">	// key, it should be a DER-serialised, ASN.1 signature structure.</span></code></span>
-<span class="codeline" id="line-169"><code><span class="comment">	//</span></code></span>
-<span class="codeline" id="line-170"><code><span class="comment">	// Hash implements the SignerOpts interface and, in most cases, one can</span></code></span>
-<span class="codeline" id="line-171"><code><span class="comment">	// simply pass in the hash function used as opts. Sign may also attempt</span></code></span>
-<span class="codeline" id="line-172"><code><span class="comment">	// to type assert opts to other types in order to obtain algorithm</span></code></span>
-<span class="codeline" id="line-173"><code><span class="comment">	// specific values. See the documentation in each package for details.</span></code></span>
-<span class="codeline" id="line-174"><code><span class="comment">	//</span></code></span>
-<span class="codeline" id="line-175"><code><span class="comment">	// Note that when a signature of a hash of a larger message is needed,</span></code></span>
-<span class="codeline" id="line-176"><code><span class="comment">	// the caller is responsible for hashing the larger message and passing</span></code></span>
-<span class="codeline" id="line-177"><code><span class="comment">	// the hash (as digest) and the hash function (as opts) to Sign.</span></code></span>
-<span class="codeline" id="line-178"><code>	<a href="../../imp/crypto.Signer.html#name-Sign" class="ident">Sign</a>(rand <a href="../../pkg/io.html" class="ident i1">io</a>.<a href="../io/io.go.html#line-83" class="ident">Reader</a>, digest []<a href="../../pkg/builtin.html#name-byte" class="ident">byte</a>, opts <a href="#line-182" class="ident">SignerOpts</a>) (signature []<a href="../../pkg/builtin.html#name-byte" class="ident">byte</a>, err <a href="../../pkg/builtin.html#name-error" class="ident">error</a>)</code></span>
-<span class="codeline" id="line-179"><code>}</code></span>
-<span class="codeline" id="line-180"><code></code></span>
-<span class="codeline" id="line-181"><code><span class="comment">// SignerOpts contains options for signing with a Signer.</span></code></span>
-<span class="codeline" id="line-182"><code><span class="keyword">type</span> <a href="../../pkg/crypto.html#name-SignerOpts" class="ident">SignerOpts</a> <span class="keyword">interface</span> {</code></span>
-<span class="codeline" id="line-183"><code>	<span class="comment">// HashFunc returns an identifier for the hash function used to produce</span></code></span>
-<span class="codeline" id="line-184"><code><span class="comment">	// the message passed to Signer.Sign, or else zero to indicate that no</span></code></span>
-<span class="codeline" id="line-185"><code><span class="comment">	// hashing was done.</span></code></span>
-<span class="codeline" id="line-186"><code>	<a href="../../imp/crypto.SignerOpts.html#name-HashFunc" class="ident">HashFunc</a>() <a href="#line-16" class="ident">Hash</a></code></span>
-<span class="codeline" id="line-187"><code>}</code></span>
-<span class="codeline" id="line-188"><code></code></span>
-<span class="codeline" id="line-189"><code><span class="comment">// Decrypter is an interface for an opaque private key that can be used for</span></code></span>
-<span class="codeline" id="line-190"><code><span class="comment">// asymmetric decryption operations. An example would be an RSA key</span></code></span>
-<span class="codeline" id="line-191"><code><span class="comment">// kept in a hardware module.</span></code></span>
-<span class="codeline" id="line-192"><code><span class="keyword">type</span> <a href="../../pkg/crypto.html#name-Decrypter" class="ident">Decrypter</a> <span class="keyword">interface</span> {</code></span>
-<span class="codeline" id="line-193"><code>	<span class="comment">// Public returns the public key corresponding to the opaque,</span></code></span>
-<span class="codeline" id="line-194"><code><span class="comment">	// private key.</span></code></span>
-<span class="codeline" id="line-195"><code>	<a href="../../imp/crypto.Decrypter.html#name-Public" class="ident">Public</a>() <a href="#line-153" class="ident">PublicKey</a></code></span>
-<span class="codeline" id="line-196"><code></code></span>
-<span class="codeline" id="line-197"><code>	<span class="comment">// Decrypt decrypts msg. The opts argument should be appropriate for</span></code></span>
-<span class="codeline" id="line-198"><code><span class="comment">	// the primitive used. See the documentation in each implementation for</span></code></span>
-<span class="codeline" id="line-199"><code><span class="comment">	// details.</span></code></span>
-<span class="codeline" id="line-200"><code>	<a href="../../imp/crypto.Decrypter.html#name-Decrypt" class="ident">Decrypt</a>(rand <a href="../../pkg/io.html" class="ident i1">io</a>.<a href="../io/io.go.html#line-83" class="ident">Reader</a>, msg []<a href="../../pkg/builtin.html#name-byte" class="ident">byte</a>, opts <a href="#line-203" class="ident">DecrypterOpts</a>) (plaintext []<a href="../../pkg/builtin.html#name-byte" class="ident">byte</a>, err <a href="../../pkg/builtin.html#name-error" class="ident">error</a>)</code></span>
-<span class="codeline" id="line-201"><code>}</code></span>
-<span class="codeline" id="line-202"><code></code></span>
-<span class="codeline" id="line-203"><code><span class="keyword">type</span> <a href="../../pkg/crypto.html#name-DecrypterOpts" class="ident">DecrypterOpts</a> <span class="keyword">interface</span>{}</code></span>
+<span class="codeline" id="line-153"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-154"><code><span class="comment">// Although this type is an empty interface for backwards compatibility reasons,</span></code></span>
+<span class="codeline" id="line-155"><code><span class="comment">// all public key types in the standard library implement the following interface</span></code></span>
+<span class="codeline" id="line-156"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-157"><code><span class="comment">//     interface{</span></code></span>
+<span class="codeline" id="line-158"><code><span class="comment">//         Equal(x crypto.PublicKey) bool</span></code></span>
+<span class="codeline" id="line-159"><code><span class="comment">//     }</span></code></span>
+<span class="codeline" id="line-160"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-161"><code><span class="comment">// which can be used for increased type safety within applications.</span></code></span>
+<span class="codeline" id="line-162"><code><span class="keyword">type</span> <a href="../../pkg/crypto.html#name-PublicKey" class="ident">PublicKey</a> <a href="../../pkg/builtin.html#name-any" class="ident">any</a></code></span>
+<span class="codeline" id="line-163"><code></code></span>
+<span class="codeline" id="line-164"><code><span class="comment">// PrivateKey represents a private key using an unspecified algorithm.</span></code></span>
+<span class="codeline" id="line-165"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-166"><code><span class="comment">// Although this type is an empty interface for backwards compatibility reasons,</span></code></span>
+<span class="codeline" id="line-167"><code><span class="comment">// all private key types in the standard library implement the following interface</span></code></span>
+<span class="codeline" id="line-168"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-169"><code><span class="comment">//     interface{</span></code></span>
+<span class="codeline" id="line-170"><code><span class="comment">//         Public() crypto.PublicKey</span></code></span>
+<span class="codeline" id="line-171"><code><span class="comment">//         Equal(x crypto.PrivateKey) bool</span></code></span>
+<span class="codeline" id="line-172"><code><span class="comment">//     }</span></code></span>
+<span class="codeline" id="line-173"><code><span class="comment">//</span></code></span>
+<span class="codeline" id="line-174"><code><span class="comment">// as well as purpose-specific interfaces such as Signer and Decrypter, which</span></code></span>
+<span class="codeline" id="line-175"><code><span class="comment">// can be used for increased type safety within applications.</span></code></span>
+<span class="codeline" id="line-176"><code><span class="keyword">type</span> <a href="../../pkg/crypto.html#name-PrivateKey" class="ident">PrivateKey</a> <a href="../../pkg/builtin.html#name-any" class="ident">any</a></code></span>
+<span class="codeline" id="line-177"><code></code></span>
+<span class="codeline" id="line-178"><code><span class="comment">// Signer is an interface for an opaque private key that can be used for</span></code></span>
+<span class="codeline" id="line-179"><code><span class="comment">// signing operations. For example, an RSA key kept in a hardware module.</span></code></span>
+<span class="codeline" id="line-180"><code><span class="keyword">type</span> <a href="../../pkg/crypto.html#name-Signer" class="ident">Signer</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-181"><code>	<span class="comment">// Public returns the public key corresponding to the opaque,</span></code></span>
+<span class="codeline" id="line-182"><code><span class="comment">	// private key.</span></code></span>
+<span class="codeline" id="line-183"><code>	<a href="../../imp/crypto.Signer.html#name-Public" class="ident">Public</a>() <a href="#line-162" class="ident">PublicKey</a></code></span>
+<span class="codeline" id="line-184"><code></code></span>
+<span class="codeline" id="line-185"><code>	<span class="comment">// Sign signs digest with the private key, possibly using entropy from</span></code></span>
+<span class="codeline" id="line-186"><code><span class="comment">	// rand. For an RSA key, the resulting signature should be either a</span></code></span>
+<span class="codeline" id="line-187"><code><span class="comment">	// PKCS #1 v1.5 or PSS signature (as indicated by opts). For an (EC)DSA</span></code></span>
+<span class="codeline" id="line-188"><code><span class="comment">	// key, it should be a DER-serialised, ASN.1 signature structure.</span></code></span>
+<span class="codeline" id="line-189"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-190"><code><span class="comment">	// Hash implements the SignerOpts interface and, in most cases, one can</span></code></span>
+<span class="codeline" id="line-191"><code><span class="comment">	// simply pass in the hash function used as opts. Sign may also attempt</span></code></span>
+<span class="codeline" id="line-192"><code><span class="comment">	// to type assert opts to other types in order to obtain algorithm</span></code></span>
+<span class="codeline" id="line-193"><code><span class="comment">	// specific values. See the documentation in each package for details.</span></code></span>
+<span class="codeline" id="line-194"><code><span class="comment">	//</span></code></span>
+<span class="codeline" id="line-195"><code><span class="comment">	// Note that when a signature of a hash of a larger message is needed,</span></code></span>
+<span class="codeline" id="line-196"><code><span class="comment">	// the caller is responsible for hashing the larger message and passing</span></code></span>
+<span class="codeline" id="line-197"><code><span class="comment">	// the hash (as digest) and the hash function (as opts) to Sign.</span></code></span>
+<span class="codeline" id="line-198"><code>	<a href="../../imp/crypto.Signer.html#name-Sign" class="ident">Sign</a>(rand <a href="../../pkg/io.html" class="ident i1">io</a>.<a href="../io/io.go.html#line-83" class="ident">Reader</a>, digest []<a href="../../pkg/builtin.html#name-byte" class="ident">byte</a>, opts <a href="#line-202" class="ident">SignerOpts</a>) (signature []<a href="../../pkg/builtin.html#name-byte" class="ident">byte</a>, err <a href="../../pkg/builtin.html#name-error" class="ident">error</a>)</code></span>
+<span class="codeline" id="line-199"><code>}</code></span>
+<span class="codeline" id="line-200"><code></code></span>
+<span class="codeline" id="line-201"><code><span class="comment">// SignerOpts contains options for signing with a Signer.</span></code></span>
+<span class="codeline" id="line-202"><code><span class="keyword">type</span> <a href="../../pkg/crypto.html#name-SignerOpts" class="ident">SignerOpts</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-203"><code>	<span class="comment">// HashFunc returns an identifier for the hash function used to produce</span></code></span>
+<span class="codeline" id="line-204"><code><span class="comment">	// the message passed to Signer.Sign, or else zero to indicate that no</span></code></span>
+<span class="codeline" id="line-205"><code><span class="comment">	// hashing was done.</span></code></span>
+<span class="codeline" id="line-206"><code>	<a href="../../imp/crypto.SignerOpts.html#name-HashFunc" class="ident">HashFunc</a>() <a href="#line-16" class="ident">Hash</a></code></span>
+<span class="codeline" id="line-207"><code>}</code></span>
+<span class="codeline" id="line-208"><code></code></span>
+<span class="codeline" id="line-209"><code><span class="comment">// Decrypter is an interface for an opaque private key that can be used for</span></code></span>
+<span class="codeline" id="line-210"><code><span class="comment">// asymmetric decryption operations. An example would be an RSA key</span></code></span>
+<span class="codeline" id="line-211"><code><span class="comment">// kept in a hardware module.</span></code></span>
+<span class="codeline" id="line-212"><code><span class="keyword">type</span> <a href="../../pkg/crypto.html#name-Decrypter" class="ident">Decrypter</a> <span class="keyword">interface</span> {</code></span>
+<span class="codeline" id="line-213"><code>	<span class="comment">// Public returns the public key corresponding to the opaque,</span></code></span>
+<span class="codeline" id="line-214"><code><span class="comment">	// private key.</span></code></span>
+<span class="codeline" id="line-215"><code>	<a href="../../imp/crypto.Decrypter.html#name-Public" class="ident">Public</a>() <a href="#line-162" class="ident">PublicKey</a></code></span>
+<span class="codeline" id="line-216"><code></code></span>
+<span class="codeline" id="line-217"><code>	<span class="comment">// Decrypt decrypts msg. The opts argument should be appropriate for</span></code></span>
+<span class="codeline" id="line-218"><code><span class="comment">	// the primitive used. See the documentation in each implementation for</span></code></span>
+<span class="codeline" id="line-219"><code><span class="comment">	// details.</span></code></span>
+<span class="codeline" id="line-220"><code>	<a href="../../imp/crypto.Decrypter.html#name-Decrypt" class="ident">Decrypt</a>(rand <a href="../../pkg/io.html" class="ident i1">io</a>.<a href="../io/io.go.html#line-83" class="ident">Reader</a>, msg []<a href="../../pkg/builtin.html#name-byte" class="ident">byte</a>, opts <a href="#line-223" class="ident">DecrypterOpts</a>) (plaintext []<a href="../../pkg/builtin.html#name-byte" class="ident">byte</a>, err <a href="../../pkg/builtin.html#name-error" class="ident">error</a>)</code></span>
+<span class="codeline" id="line-221"><code>}</code></span>
+<span class="codeline" id="line-222"><code></code></span>
+<span class="codeline" id="line-223"><code><span class="keyword">type</span> <a href="../../pkg/crypto.html#name-DecrypterOpts" class="ident">DecrypterOpts</a> <a href="../../pkg/builtin.html#name-any" class="ident">any</a></code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: pkcs1v15.go in package crypto/rsa</title>
-<link href="../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -390,14 +390,14 @@ input[id=i5]:checked ~pre .i5
 <span class="codeline" id="line-176"><code></code></span>
 <span class="codeline" id="line-177"><code><span class="comment">// nonZeroRandomBytes fills the given slice with non-zero random octets.</span></code></span>
 <span class="codeline" id="line-178"><code><span class="keyword">func</span> <label for="r49" class="ident"><a href="../../../pkg/crypto/rsa.html#name-nonZeroRandomBytes" class="ident">nonZeroRandomBytes</a></label>(<label for="r50" class="ident">s</label> []<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <label for="r51" class="ident">rand</label> <a href="../../../pkg/io.html" class="ident i3">io</a>.<a href="../../io/io.go.html#line-83" class="ident">Reader</a>) (<label for="r52" class="ident">err</label> <a href="../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
-<span class="codeline" id="line-179"><code>	_, <label for="r52" class="ident">err</label> = <a href="../../../pkg/io.html" class="ident i3">io</a>.<a href="../../io/io.go.html#line-346" class="ident">ReadFull</a>(<label for="r51" class="ident">rand</label>, <label for="r50" class="ident">s</label>)</code></span>
+<span class="codeline" id="line-179"><code>	_, <label for="r52" class="ident">err</label> = <a href="../../../pkg/io.html" class="ident i3">io</a>.<a href="../../io/io.go.html#line-349" class="ident">ReadFull</a>(<label for="r51" class="ident">rand</label>, <label for="r50" class="ident">s</label>)</code></span>
 <span class="codeline" id="line-180"><code>	<span class="keyword">if</span> <label for="r52" class="ident">err</label> != <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
 <span class="codeline" id="line-181"><code>		<span class="keyword">return</span></code></span>
 <span class="codeline" id="line-182"><code>	}</code></span>
 <span class="codeline" id="line-183"><code></code></span>
 <span class="codeline" id="line-184"><code>	<span class="keyword">for</span> <label for="r53" class="ident">i</label> := <span class="lit-number">0</span>; <label for="r53" class="ident">i</label> &lt; <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r50" class="ident">s</label>); <label for="r53" class="ident">i</label>++ {</code></span>
 <span class="codeline" id="line-185"><code>		<span class="keyword">for</span> <label for="r50" class="ident">s</label>[<label for="r53" class="ident">i</label>] == <span class="lit-number">0</span> {</code></span>
-<span class="codeline" id="line-186"><code>			_, <label for="r52" class="ident">err</label> = <a href="../../../pkg/io.html" class="ident i3">io</a>.<a href="../../io/io.go.html#line-346" class="ident">ReadFull</a>(<label for="r51" class="ident">rand</label>, <label for="r50" class="ident">s</label>[<label for="r53" class="ident">i</label>:<label for="r53" class="ident">i</label>+<span class="lit-number">1</span>])</code></span>
+<span class="codeline" id="line-186"><code>			_, <label for="r52" class="ident">err</label> = <a href="../../../pkg/io.html" class="ident i3">io</a>.<a href="../../io/io.go.html#line-349" class="ident">ReadFull</a>(<label for="r51" class="ident">rand</label>, <label for="r50" class="ident">s</label>[<label for="r53" class="ident">i</label>:<label for="r53" class="ident">i</label>+<span class="lit-number">1</span>])</code></span>
 <span class="codeline" id="line-187"><code>			<span class="keyword">if</span> <label for="r52" class="ident">err</label> != <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
 <span class="codeline" id="line-188"><code>				<span class="keyword">return</span></code></span>
 <span class="codeline" id="line-189"><code>			}</code></span>
@@ -537,7 +537,7 @@ input[id=i5]:checked ~pre .i5
 <span class="codeline" id="line-323"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

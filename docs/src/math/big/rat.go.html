@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: rat.go in package math/big</title>
-<link href="../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -414,11 +414,11 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-92"><code>	)</code></span>
 <span class="codeline" id="line-93"><code></code></span>
 <span class="codeline" id="line-94"><code>	<span class="comment">// TODO(adonovan): specialize common degenerate cases: 1.0, integers.</span></code></span>
-<span class="codeline" id="line-95"><code>	<label for="r24" class="ident">alen</label> := <label for="r12" class="ident">a</label>.<a href="nat.go.html#line-967" class="ident">bitLen</a>()</code></span>
+<span class="codeline" id="line-95"><code>	<label for="r24" class="ident">alen</label> := <label for="r12" class="ident">a</label>.<a href="nat.go.html#line-655" class="ident">bitLen</a>()</code></span>
 <span class="codeline" id="line-96"><code>	<span class="keyword">if</span> <label for="r24" class="ident">alen</label> == <span class="lit-number">0</span> {</code></span>
 <span class="codeline" id="line-97"><code>		<span class="keyword">return</span> <span class="lit-number">0</span>, <a href="../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
 <span class="codeline" id="line-98"><code>	}</code></span>
-<span class="codeline" id="line-99"><code>	<label for="r25" class="ident">blen</label> := <label for="r13" class="ident">b</label>.<a href="nat.go.html#line-967" class="ident">bitLen</a>()</code></span>
+<span class="codeline" id="line-99"><code>	<label for="r25" class="ident">blen</label> := <label for="r13" class="ident">b</label>.<a href="nat.go.html#line-655" class="ident">bitLen</a>()</code></span>
 <span class="codeline" id="line-100"><code>	<span class="keyword">if</span> <label for="r25" class="ident">blen</label> == <span class="lit-number">0</span> {</code></span>
 <span class="codeline" id="line-101"><code>		<a href="../../../pkg/builtin.html#name-panic" class="ident">panic</a>(<span class="lit-string">"division by zero"</span>)</code></span>
 <span class="codeline" id="line-102"><code>	}</code></span>
@@ -434,16 +434,16 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-112"><code>	<label for="r27" class="ident">a2</label> = <label for="r27" class="ident">a2</label>.<a href="nat.go.html#line-93" class="ident">set</a>(<label for="r12" class="ident">a</label>)</code></span>
 <span class="codeline" id="line-113"><code>	<label for="r28" class="ident">b2</label> = <label for="r28" class="ident">b2</label>.<a href="nat.go.html#line-93" class="ident">set</a>(<label for="r13" class="ident">b</label>)</code></span>
 <span class="codeline" id="line-114"><code>	<span class="keyword">if</span> <label for="r29" class="ident">shift</label> := <label for="r19" class="ident">Msize2</label> - <label for="r26" class="ident">exp</label>; <label for="r29" class="ident">shift</label> &gt; <span class="lit-number">0</span> {</code></span>
-<span class="codeline" id="line-115"><code>		<label for="r27" class="ident">a2</label> = <label for="r27" class="ident">a2</label>.<a href="nat.go.html#line-993" class="ident">shl</a>(<label for="r27" class="ident">a2</label>, <a href="../../../pkg/builtin.html#name-uint" class="ident">uint</a>(<label for="r29" class="ident">shift</label>))</code></span>
+<span class="codeline" id="line-115"><code>		<label for="r27" class="ident">a2</label> = <label for="r27" class="ident">a2</label>.<a href="nat.go.html#line-681" class="ident">shl</a>(<label for="r27" class="ident">a2</label>, <a href="../../../pkg/builtin.html#name-uint" class="ident">uint</a>(<label for="r29" class="ident">shift</label>))</code></span>
 <span class="codeline" id="line-116"><code>	} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r29" class="ident">shift</label> &lt; <span class="lit-number">0</span> {</code></span>
-<span class="codeline" id="line-117"><code>		<label for="r28" class="ident">b2</label> = <label for="r28" class="ident">b2</label>.<a href="nat.go.html#line-993" class="ident">shl</a>(<label for="r28" class="ident">b2</label>, <a href="../../../pkg/builtin.html#name-uint" class="ident">uint</a>(-<label for="r29" class="ident">shift</label>))</code></span>
+<span class="codeline" id="line-117"><code>		<label for="r28" class="ident">b2</label> = <label for="r28" class="ident">b2</label>.<a href="nat.go.html#line-681" class="ident">shl</a>(<label for="r28" class="ident">b2</label>, <a href="../../../pkg/builtin.html#name-uint" class="ident">uint</a>(-<label for="r29" class="ident">shift</label>))</code></span>
 <span class="codeline" id="line-118"><code>	}</code></span>
 <span class="codeline" id="line-119"><code></code></span>
 <span class="codeline" id="line-120"><code>	<span class="comment">// 2. Compute quotient and remainder (q, r).  NB: due to the</span></code></span>
 <span class="codeline" id="line-121"><code><span class="comment">	// extra shift, the low-order bit of q is logically the</span></code></span>
 <span class="codeline" id="line-122"><code><span class="comment">	// high-order bit of r.</span></code></span>
 <span class="codeline" id="line-123"><code>	<span class="keyword">var</span> <label for="r30" class="ident">q</label> <a href="nat.go.html#line-35" class="ident">nat</a></code></span>
-<span class="codeline" id="line-124"><code>	<label for="r30" class="ident">q</label>, <label for="r31" class="ident">r</label> := <label for="r30" class="ident">q</label>.<a href="nat.go.html#line-654" class="ident">div</a>(<label for="r27" class="ident">a2</label>, <label for="r27" class="ident">a2</label>, <label for="r28" class="ident">b2</label>) <span class="comment">// (recycle a2)</span></code></span>
+<span class="codeline" id="line-124"><code>	<label for="r30" class="ident">q</label>, <label for="r31" class="ident">r</label> := <label for="r30" class="ident">q</label>.<a href="natdiv.go.html#line-505" class="ident">div</a>(<label for="r27" class="ident">a2</label>, <label for="r27" class="ident">a2</label>, <label for="r28" class="ident">b2</label>) <span class="comment">// (recycle a2)</span></code></span>
 <span class="codeline" id="line-125"><code>	<label for="r32" class="ident">mantissa</label> := <a href="int.go.html#line-352" class="ident">low32</a>(<label for="r30" class="ident">q</label>)</code></span>
 <span class="codeline" id="line-126"><code>	<label for="r33" class="ident">haveRem</label> := <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r31" class="ident">r</label>) &gt; <span class="lit-number">0</span> <span class="comment">// mantissa&amp;1 &amp;&amp; !haveRem =&gt; remainder is exactly half</span></code></span>
 <span class="codeline" id="line-127"><code></code></span>
@@ -512,11 +512,11 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-190"><code>	)</code></span>
 <span class="codeline" id="line-191"><code></code></span>
 <span class="codeline" id="line-192"><code>	<span class="comment">// TODO(adonovan): specialize common degenerate cases: 1.0, integers.</span></code></span>
-<span class="codeline" id="line-193"><code>	<label for="r49" class="ident">alen</label> := <label for="r37" class="ident">a</label>.<a href="nat.go.html#line-967" class="ident">bitLen</a>()</code></span>
+<span class="codeline" id="line-193"><code>	<label for="r49" class="ident">alen</label> := <label for="r37" class="ident">a</label>.<a href="nat.go.html#line-655" class="ident">bitLen</a>()</code></span>
 <span class="codeline" id="line-194"><code>	<span class="keyword">if</span> <label for="r49" class="ident">alen</label> == <span class="lit-number">0</span> {</code></span>
 <span class="codeline" id="line-195"><code>		<span class="keyword">return</span> <span class="lit-number">0</span>, <a href="../../../pkg/builtin.html#name-true" class="ident">true</a></code></span>
 <span class="codeline" id="line-196"><code>	}</code></span>
-<span class="codeline" id="line-197"><code>	<label for="r50" class="ident">blen</label> := <label for="r38" class="ident">b</label>.<a href="nat.go.html#line-967" class="ident">bitLen</a>()</code></span>
+<span class="codeline" id="line-197"><code>	<label for="r50" class="ident">blen</label> := <label for="r38" class="ident">b</label>.<a href="nat.go.html#line-655" class="ident">bitLen</a>()</code></span>
 <span class="codeline" id="line-198"><code>	<span class="keyword">if</span> <label for="r50" class="ident">blen</label> == <span class="lit-number">0</span> {</code></span>
 <span class="codeline" id="line-199"><code>		<a href="../../../pkg/builtin.html#name-panic" class="ident">panic</a>(<span class="lit-string">"division by zero"</span>)</code></span>
 <span class="codeline" id="line-200"><code>	}</code></span>
@@ -532,16 +532,16 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-210"><code>	<label for="r52" class="ident">a2</label> = <label for="r52" class="ident">a2</label>.<a href="nat.go.html#line-93" class="ident">set</a>(<label for="r37" class="ident">a</label>)</code></span>
 <span class="codeline" id="line-211"><code>	<label for="r53" class="ident">b2</label> = <label for="r53" class="ident">b2</label>.<a href="nat.go.html#line-93" class="ident">set</a>(<label for="r38" class="ident">b</label>)</code></span>
 <span class="codeline" id="line-212"><code>	<span class="keyword">if</span> <label for="r54" class="ident">shift</label> := <label for="r44" class="ident">Msize2</label> - <label for="r51" class="ident">exp</label>; <label for="r54" class="ident">shift</label> &gt; <span class="lit-number">0</span> {</code></span>
-<span class="codeline" id="line-213"><code>		<label for="r52" class="ident">a2</label> = <label for="r52" class="ident">a2</label>.<a href="nat.go.html#line-993" class="ident">shl</a>(<label for="r52" class="ident">a2</label>, <a href="../../../pkg/builtin.html#name-uint" class="ident">uint</a>(<label for="r54" class="ident">shift</label>))</code></span>
+<span class="codeline" id="line-213"><code>		<label for="r52" class="ident">a2</label> = <label for="r52" class="ident">a2</label>.<a href="nat.go.html#line-681" class="ident">shl</a>(<label for="r52" class="ident">a2</label>, <a href="../../../pkg/builtin.html#name-uint" class="ident">uint</a>(<label for="r54" class="ident">shift</label>))</code></span>
 <span class="codeline" id="line-214"><code>	} <span class="keyword">else</span> <span class="keyword">if</span> <label for="r54" class="ident">shift</label> &lt; <span class="lit-number">0</span> {</code></span>
-<span class="codeline" id="line-215"><code>		<label for="r53" class="ident">b2</label> = <label for="r53" class="ident">b2</label>.<a href="nat.go.html#line-993" class="ident">shl</a>(<label for="r53" class="ident">b2</label>, <a href="../../../pkg/builtin.html#name-uint" class="ident">uint</a>(-<label for="r54" class="ident">shift</label>))</code></span>
+<span class="codeline" id="line-215"><code>		<label for="r53" class="ident">b2</label> = <label for="r53" class="ident">b2</label>.<a href="nat.go.html#line-681" class="ident">shl</a>(<label for="r53" class="ident">b2</label>, <a href="../../../pkg/builtin.html#name-uint" class="ident">uint</a>(-<label for="r54" class="ident">shift</label>))</code></span>
 <span class="codeline" id="line-216"><code>	}</code></span>
 <span class="codeline" id="line-217"><code></code></span>
 <span class="codeline" id="line-218"><code>	<span class="comment">// 2. Compute quotient and remainder (q, r).  NB: due to the</span></code></span>
 <span class="codeline" id="line-219"><code><span class="comment">	// extra shift, the low-order bit of q is logically the</span></code></span>
 <span class="codeline" id="line-220"><code><span class="comment">	// high-order bit of r.</span></code></span>
 <span class="codeline" id="line-221"><code>	<span class="keyword">var</span> <label for="r55" class="ident">q</label> <a href="nat.go.html#line-35" class="ident">nat</a></code></span>
-<span class="codeline" id="line-222"><code>	<label for="r55" class="ident">q</label>, <label for="r56" class="ident">r</label> := <label for="r55" class="ident">q</label>.<a href="nat.go.html#line-654" class="ident">div</a>(<label for="r52" class="ident">a2</label>, <label for="r52" class="ident">a2</label>, <label for="r53" class="ident">b2</label>) <span class="comment">// (recycle a2)</span></code></span>
+<span class="codeline" id="line-222"><code>	<label for="r55" class="ident">q</label>, <label for="r56" class="ident">r</label> := <label for="r55" class="ident">q</label>.<a href="natdiv.go.html#line-505" class="ident">div</a>(<label for="r52" class="ident">a2</label>, <label for="r52" class="ident">a2</label>, <label for="r53" class="ident">b2</label>) <span class="comment">// (recycle a2)</span></code></span>
 <span class="codeline" id="line-223"><code>	<label for="r57" class="ident">mantissa</label> := <a href="int.go.html#line-360" class="ident">low64</a>(<label for="r55" class="ident">q</label>)</code></span>
 <span class="codeline" id="line-224"><code>	<label for="r58" class="ident">haveRem</label> := <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r56" class="ident">r</label>) &gt; <span class="lit-number">0</span> <span class="comment">// mantissa&amp;1 &amp;&amp; !haveRem =&gt; remainder is exactly half</span></code></span>
 <span class="codeline" id="line-225"><code></code></span>
@@ -740,7 +740,7 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-418"><code><span class="comment">// If the result is a reference to x's denominator it</span></code></span>
 <span class="codeline" id="line-419"><code><span class="comment">// may change if a new value is assigned to x, and vice versa.</span></code></span>
 <span class="codeline" id="line-420"><code><span class="keyword">func</span> (<label for="r107" class="ident">x</label> *<a href="#line-23" class="ident">Rat</a>) <label for="r108" class="ident">Denom</label>() *<a href="int.go.html#line-25" class="ident">Int</a> {</code></span>
-<span class="codeline" id="line-421"><code>	<label for="r107" class="ident">x</label>.<a href="#line-29" class="ident">b</a>.<a href="int.go.html#line-26" class="ident">neg</a> = <a href="../../../pkg/builtin.html#name-false" class="ident">false</a> <span class="comment">// the result is always &gt;= 0</span></code></span>
+<span class="codeline" id="line-421"><code>	<span class="comment">// Note that x.b.neg is guaranteed false.</span></code></span>
 <span class="codeline" id="line-422"><code>	<span class="keyword">if</span> <a href="../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r107" class="ident">x</label>.<a href="#line-29" class="ident">b</a>.<a href="int.go.html#line-27" class="ident">abs</a>) == <span class="lit-number">0</span> {</code></span>
 <span class="codeline" id="line-423"><code>		<span class="comment">// Note: If this proves problematic, we could</span></code></span>
 <span class="codeline" id="line-424"><code><span class="comment">		//       panic instead and require the Rat to</span></code></span>
@@ -765,8 +765,8 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-443"><code>		<label for="r109" class="ident">z</label>.<a href="#line-29" class="ident">a</a>.<a href="int.go.html#line-26" class="ident">neg</a> = <a href="../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
 <span class="codeline" id="line-444"><code>		<label for="r109" class="ident">z</label>.<a href="#line-29" class="ident">b</a>.<a href="int.go.html#line-26" class="ident">neg</a> = <a href="../../../pkg/builtin.html#name-false" class="ident">false</a></code></span>
 <span class="codeline" id="line-445"><code>		<span class="keyword">if</span> <label for="r112" class="ident">f</label> := <a href="int.go.html#line-68" class="ident">NewInt</a>(<span class="lit-number">0</span>).<a href="int.go.html#line-671" class="ident">lehmerGCD</a>(<a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a>, &amp;<label for="r109" class="ident">z</label>.<a href="#line-29" class="ident">a</a>, &amp;<label for="r109" class="ident">z</label>.<a href="#line-29" class="ident">b</a>); <label for="r112" class="ident">f</label>.<a href="int.go.html#line-320" class="ident">Cmp</a>(<a href="int.go.html#line-30" class="ident">intOne</a>) != <span class="lit-number">0</span> {</code></span>
-<span class="codeline" id="line-446"><code>			<label for="r109" class="ident">z</label>.<a href="#line-29" class="ident">a</a>.<a href="int.go.html#line-27" class="ident">abs</a>, _ = <label for="r109" class="ident">z</label>.<a href="#line-29" class="ident">a</a>.<a href="int.go.html#line-27" class="ident">abs</a>.<a href="nat.go.html#line-654" class="ident">div</a>(<a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <label for="r109" class="ident">z</label>.<a href="#line-29" class="ident">a</a>.<a href="int.go.html#line-27" class="ident">abs</a>, <label for="r112" class="ident">f</label>.<a href="int.go.html#line-27" class="ident">abs</a>)</code></span>
-<span class="codeline" id="line-447"><code>			<label for="r109" class="ident">z</label>.<a href="#line-29" class="ident">b</a>.<a href="int.go.html#line-27" class="ident">abs</a>, _ = <label for="r109" class="ident">z</label>.<a href="#line-29" class="ident">b</a>.<a href="int.go.html#line-27" class="ident">abs</a>.<a href="nat.go.html#line-654" class="ident">div</a>(<a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <label for="r109" class="ident">z</label>.<a href="#line-29" class="ident">b</a>.<a href="int.go.html#line-27" class="ident">abs</a>, <label for="r112" class="ident">f</label>.<a href="int.go.html#line-27" class="ident">abs</a>)</code></span>
+<span class="codeline" id="line-446"><code>			<label for="r109" class="ident">z</label>.<a href="#line-29" class="ident">a</a>.<a href="int.go.html#line-27" class="ident">abs</a>, _ = <label for="r109" class="ident">z</label>.<a href="#line-29" class="ident">a</a>.<a href="int.go.html#line-27" class="ident">abs</a>.<a href="natdiv.go.html#line-505" class="ident">div</a>(<a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <label for="r109" class="ident">z</label>.<a href="#line-29" class="ident">a</a>.<a href="int.go.html#line-27" class="ident">abs</a>, <label for="r112" class="ident">f</label>.<a href="int.go.html#line-27" class="ident">abs</a>)</code></span>
+<span class="codeline" id="line-447"><code>			<label for="r109" class="ident">z</label>.<a href="#line-29" class="ident">b</a>.<a href="int.go.html#line-27" class="ident">abs</a>, _ = <label for="r109" class="ident">z</label>.<a href="#line-29" class="ident">b</a>.<a href="int.go.html#line-27" class="ident">abs</a>.<a href="natdiv.go.html#line-505" class="ident">div</a>(<a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <label for="r109" class="ident">z</label>.<a href="#line-29" class="ident">b</a>.<a href="int.go.html#line-27" class="ident">abs</a>, <label for="r112" class="ident">f</label>.<a href="int.go.html#line-27" class="ident">abs</a>)</code></span>
 <span class="codeline" id="line-448"><code>		}</code></span>
 <span class="codeline" id="line-449"><code>		<label for="r109" class="ident">z</label>.<a href="#line-29" class="ident">a</a>.<a href="int.go.html#line-26" class="ident">neg</a> = <label for="r111" class="ident">neg</label></code></span>
 <span class="codeline" id="line-450"><code>	}</code></span>
@@ -866,7 +866,7 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-544"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

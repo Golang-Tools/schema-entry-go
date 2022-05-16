@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: encode.go in package vendor/golang.org/x/net/http2/hpack</title>
-<link href="../../../../../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../../../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../../../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../../../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -351,11 +351,11 @@ input[id=i0]:checked ~pre .i0
 <span class="codeline" id="line-211"><code><span class="comment">// s will be encoded in Huffman codes only when it produces strictly</span></code></span>
 <span class="codeline" id="line-212"><code><span class="comment">// shorter byte string.</span></code></span>
 <span class="codeline" id="line-213"><code><span class="keyword">func</span> <label for="r50" class="ident"><a href="../../../../../../../pkg/vendor/golang.org/x/net/http2/hpack.html#name-appendHpackString" class="ident">appendHpackString</a></label>(<label for="r51" class="ident">dst</label> []<a href="../../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <label for="r52" class="ident">s</label> <a href="../../../../../../../pkg/builtin.html#name-string" class="ident">string</a>) []<a href="../../../../../../../pkg/builtin.html#name-byte" class="ident">byte</a> {</code></span>
-<span class="codeline" id="line-214"><code>	<label for="r53" class="ident">huffmanLength</label> := <a href="huffman.go.html#line-191" class="ident">HuffmanEncodeLength</a>(<label for="r52" class="ident">s</label>)</code></span>
+<span class="codeline" id="line-214"><code>	<label for="r53" class="ident">huffmanLength</label> := <a href="huffman.go.html#line-195" class="ident">HuffmanEncodeLength</a>(<label for="r52" class="ident">s</label>)</code></span>
 <span class="codeline" id="line-215"><code>	<span class="keyword">if</span> <label for="r53" class="ident">huffmanLength</label> &lt; <a href="../../../../../../../pkg/builtin.html#name-uint64" class="ident">uint64</a>(<a href="../../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r52" class="ident">s</label>)) {</code></span>
 <span class="codeline" id="line-216"><code>		<label for="r54" class="ident">first</label> := <a href="../../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r51" class="ident">dst</label>)</code></span>
 <span class="codeline" id="line-217"><code>		<label for="r51" class="ident">dst</label> = <a href="#line-195" class="ident">appendVarInt</a>(<label for="r51" class="ident">dst</label>, <span class="lit-number">7</span>, <label for="r53" class="ident">huffmanLength</label>)</code></span>
-<span class="codeline" id="line-218"><code>		<label for="r51" class="ident">dst</label> = <a href="huffman.go.html#line-167" class="ident">AppendHuffmanString</a>(<label for="r51" class="ident">dst</label>, <label for="r52" class="ident">s</label>)</code></span>
+<span class="codeline" id="line-218"><code>		<label for="r51" class="ident">dst</label> = <a href="huffman.go.html#line-171" class="ident">AppendHuffmanString</a>(<label for="r51" class="ident">dst</label>, <label for="r52" class="ident">s</label>)</code></span>
 <span class="codeline" id="line-219"><code>		<label for="r51" class="ident">dst</label>[<label for="r54" class="ident">first</label>] |= <span class="lit-number">0x80</span></code></span>
 <span class="codeline" id="line-220"><code>	} <span class="keyword">else</span> {</code></span>
 <span class="codeline" id="line-221"><code>		<label for="r51" class="ident">dst</label> = <a href="#line-195" class="ident">appendVarInt</a>(<label for="r51" class="ident">dst</label>, <span class="lit-number">7</span>, <a href="../../../../../../../pkg/builtin.html#name-uint64" class="ident">uint64</a>(<a href="../../../../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r52" class="ident">s</label>)))</code></span>
@@ -380,7 +380,7 @@ input[id=i0]:checked ~pre .i0
 <span class="codeline" id="line-240"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../../../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

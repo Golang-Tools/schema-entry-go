@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: jsonLoader.go in package github.com/xeipuuv/gojsonschema</title>
-<link href="../../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -290,7 +290,7 @@ input[id=i11]:checked ~pre .i11
 <span class="codeline" id="line-42"><code>	<label for="i11"><span class="lit-string i11">"github.com/xeipuuv/gojsonreference"</span></label></code></span>
 <span class="codeline" id="line-43"><code>)</code></span>
 <span class="codeline" id="line-44"><code></code></span>
-<span class="codeline" id="line-45"><code><span class="keyword">var</span> <a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-osFS" class="ident">osFS</a> = <a href="#line-87" class="ident">osFileSystem</a>(<a href="../../../../pkg/os.html" class="ident i7">os</a>.<a href="../../../os/file.go.html#line-310" class="ident">Open</a>)</code></span>
+<span class="codeline" id="line-45"><code><span class="keyword">var</span> <a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-osFS" class="ident">osFS</a> = <a href="#line-87" class="ident">osFileSystem</a>(<a href="../../../../pkg/os.html" class="ident i7">os</a>.<a href="../../../os/file.go.html#line-317" class="ident">Open</a>)</code></span>
 <span class="codeline" id="line-46"><code></code></span>
 <span class="codeline" id="line-47"><code><span class="comment">// JSONLoader defines the JSON loader interface</span></code></span>
 <span class="codeline" id="line-48"><code><span class="keyword">type</span> <a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-JSONLoader" class="ident">JSONLoader</a> <span class="keyword">interface</span> {</code></span>
@@ -393,17 +393,17 @@ input[id=i11]:checked ~pre .i11
 <span class="codeline" id="line-145"><code></code></span>
 <span class="codeline" id="line-146"><code>	<span class="keyword">if</span> <label for="r23" class="ident">reference</label>.<a href="../gojsonreference/reference.go.html#line-57" class="ident">HasFileScheme</a> {</code></span>
 <span class="codeline" id="line-147"><code></code></span>
-<span class="codeline" id="line-148"><code>		<label for="r26" class="ident">filename</label> := <a href="../../../../pkg/strings.html" class="ident i10">strings</a>.<a href="../../../strings/strings.go.html#line-902" class="ident">TrimPrefix</a>(<label for="r24" class="ident">refToURL</label>.<a href="../gojsonreference/reference.go.html#line-69" class="ident">String</a>(), <span class="lit-string">"file://"</span>)</code></span>
+<span class="codeline" id="line-148"><code>		<label for="r26" class="ident">filename</label> := <a href="../../../../pkg/strings.html" class="ident i10">strings</a>.<a href="../../../strings/strings.go.html#line-975" class="ident">TrimPrefix</a>(<label for="r24" class="ident">refToURL</label>.<a href="../gojsonreference/reference.go.html#line-69" class="ident">String</a>(), <span class="lit-string">"file://"</span>)</code></span>
 <span class="codeline" id="line-149"><code>		<label for="r26" class="ident">filename</label>, <label for="r22" class="ident">err</label> = <a href="../../../../pkg/net/url.html" class="ident i6">url</a>.<a href="../../../net/url/url.go.html#line-182" class="ident">QueryUnescape</a>(<label for="r26" class="ident">filename</label>)</code></span>
 <span class="codeline" id="line-150"><code></code></span>
 <span class="codeline" id="line-151"><code>		<span class="keyword">if</span> <label for="r22" class="ident">err</label> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
 <span class="codeline" id="line-152"><code>			<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <label for="r22" class="ident">err</label></code></span>
 <span class="codeline" id="line-153"><code>		}</code></span>
 <span class="codeline" id="line-154"><code></code></span>
-<span class="codeline" id="line-155"><code>		<span class="keyword">if</span> <a href="../../../../pkg/runtime.html" class="ident i9">runtime</a>.<a href="../../../runtime/extern.go.html#line-253" class="ident">GOOS</a> == <span class="lit-string">"windows"</span> {</code></span>
+<span class="codeline" id="line-155"><code>		<span class="keyword">if</span> <a href="../../../../pkg/runtime.html" class="ident i9">runtime</a>.<a href="../../../runtime/extern.go.html#line-271" class="ident">GOOS</a> == <span class="lit-string">"windows"</span> {</code></span>
 <span class="codeline" id="line-156"><code>			<span class="comment">// on Windows, a file URL may have an extra leading slash, use slashes</span></code></span>
 <span class="codeline" id="line-157"><code><span class="comment">			// instead of backslashes, and have spaces escaped</span></code></span>
-<span class="codeline" id="line-158"><code>			<label for="r26" class="ident">filename</label> = <a href="../../../../pkg/strings.html" class="ident i10">strings</a>.<a href="../../../strings/strings.go.html#line-902" class="ident">TrimPrefix</a>(<label for="r26" class="ident">filename</label>, <span class="lit-string">"/"</span>)</code></span>
+<span class="codeline" id="line-158"><code>			<label for="r26" class="ident">filename</label> = <a href="../../../../pkg/strings.html" class="ident i10">strings</a>.<a href="../../../strings/strings.go.html#line-975" class="ident">TrimPrefix</a>(<label for="r26" class="ident">filename</label>, <span class="lit-string">"/"</span>)</code></span>
 <span class="codeline" id="line-159"><code>			<label for="r26" class="ident">filename</label> = <a href="../../../../pkg/path/filepath.html" class="ident i8">filepath</a>.<a href="../../../path/filepath/path.go.html#line-176" class="ident">FromSlash</a>(<label for="r26" class="ident">filename</label>)</code></span>
 <span class="codeline" id="line-160"><code>		}</code></span>
 <span class="codeline" id="line-161"><code></code></span>
@@ -433,7 +433,7 @@ input[id=i11]:checked ~pre .i11
 <span class="codeline" id="line-185"><code>		<span class="keyword">return</span> <a href="#line-372" class="ident">decodeJSONUsingNumber</a>(<a href="../../../../pkg/strings.html" class="ident i10">strings</a>.<a href="../../../strings/reader.go.html#line-160" class="ident">NewReader</a>(<label for="r30" class="ident">metaSchema</label>))</code></span>
 <span class="codeline" id="line-186"><code>	}</code></span>
 <span class="codeline" id="line-187"><code></code></span>
-<span class="codeline" id="line-188"><code>	<label for="r31" class="ident">resp</label>, <label for="r32" class="ident">err</label> := <a href="../../../../pkg/net/http.html" class="ident i5">http</a>.<a href="../../../net/http/client.go.html#line-445" class="ident">Get</a>(<label for="r29" class="ident">address</label>)</code></span>
+<span class="codeline" id="line-188"><code>	<label for="r31" class="ident">resp</label>, <label for="r32" class="ident">err</label> := <a href="../../../../pkg/net/http.html" class="ident i5">http</a>.<a href="../../../net/http/client.go.html#line-448" class="ident">Get</a>(<label for="r29" class="ident">address</label>)</code></span>
 <span class="codeline" id="line-189"><code>	<span class="keyword">if</span> <label for="r32" class="ident">err</label> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
 <span class="codeline" id="line-190"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <label for="r32" class="ident">err</label></code></span>
 <span class="codeline" id="line-191"><code>	}</code></span>
@@ -567,7 +567,7 @@ input[id=i11]:checked ~pre .i11
 <span class="codeline" id="line-319"><code><span class="comment">// NewReaderLoader creates a new JSON loader using the provided io.Reader</span></code></span>
 <span class="codeline" id="line-320"><code><span class="keyword">func</span> <label for="r72" class="ident"><a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-NewReaderLoader" class="ident">NewReaderLoader</a></label>(<label for="r73" class="ident">source</label> <a href="../../../../pkg/io.html" class="ident i3">io</a>.<a href="../../../io/io.go.html#line-83" class="ident">Reader</a>) (<a href="#line-48" class="ident">JSONLoader</a>, <a href="../../../../pkg/io.html" class="ident i3">io</a>.<a href="../../../io/io.go.html#line-83" class="ident">Reader</a>) {</code></span>
 <span class="codeline" id="line-321"><code>	<label for="r74" class="ident">buf</label> := &amp;<a href="../../../../pkg/bytes.html" class="ident i0">bytes</a>.<a href="../../../bytes/buffer.go.html#line-20" class="ident">Buffer</a>{}</code></span>
-<span class="codeline" id="line-322"><code>	<span class="keyword">return</span> &amp;<a href="#line-315" class="ident">jsonIOLoader</a>{<a href="#line-316" class="ident">buf</a>: <label for="r74" class="ident">buf</label>}, <a href="../../../../pkg/io.html" class="ident i3">io</a>.<a href="../../../io/io.go.html#line-550" class="ident">TeeReader</a>(<label for="r73" class="ident">source</label>, <label for="r74" class="ident">buf</label>)</code></span>
+<span class="codeline" id="line-322"><code>	<span class="keyword">return</span> &amp;<a href="#line-315" class="ident">jsonIOLoader</a>{<a href="#line-316" class="ident">buf</a>: <label for="r74" class="ident">buf</label>}, <a href="../../../../pkg/io.html" class="ident i3">io</a>.<a href="../../../io/io.go.html#line-562" class="ident">TeeReader</a>(<label for="r73" class="ident">source</label>, <label for="r74" class="ident">buf</label>)</code></span>
 <span class="codeline" id="line-323"><code>}</code></span>
 <span class="codeline" id="line-324"><code></code></span>
 <span class="codeline" id="line-325"><code><span class="comment">// NewWriterLoader creates a new JSON loader using the provided io.Writer</span></code></span>
@@ -634,7 +634,7 @@ input[id=i11]:checked ~pre .i11
 <span class="codeline" id="line-386"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

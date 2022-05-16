@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: proc.go in package os</title>
-<link href="../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../jvs/golds-v0.3.6.js"></script>
+<link href="../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -68,7 +68,7 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-16"><code><span class="keyword">var</span> <a href="../../pkg/os.html#name-Args" class="ident">Args</a> []<a href="../../pkg/builtin.html#name-string" class="ident">string</a></code></span>
 <span class="codeline" id="line-17"><code></code></span>
 <span class="codeline" id="line-18"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../pkg/os.html#name-init" class="ident">init</a></label>() {</code></span>
-<span class="codeline" id="line-19"><code>	<span class="keyword">if</span> <a href="../../pkg/runtime.html" class="ident i1">runtime</a>.<a href="../runtime/extern.go.html#line-253" class="ident">GOOS</a> == <span class="lit-string">"windows"</span> {</code></span>
+<span class="codeline" id="line-19"><code>	<span class="keyword">if</span> <a href="../../pkg/runtime.html" class="ident i1">runtime</a>.<a href="../runtime/extern.go.html#line-271" class="ident">GOOS</a> == <span class="lit-string">"windows"</span> {</code></span>
 <span class="codeline" id="line-20"><code>		<span class="comment">// Initialized in exec_windows.go.</span></code></span>
 <span class="codeline" id="line-21"><code>		<span class="keyword">return</span></code></span>
 <span class="codeline" id="line-22"><code>	}</code></span>
@@ -80,22 +80,22 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-28"><code><span class="comment">// Getuid returns the numeric user id of the caller.</span></code></span>
 <span class="codeline" id="line-29"><code><span class="comment">//</span></code></span>
 <span class="codeline" id="line-30"><code><span class="comment">// On Windows, it returns -1.</span></code></span>
-<span class="codeline" id="line-31"><code><span class="keyword">func</span> <label for="r2" class="ident"><a href="../../pkg/os.html#name-Getuid" class="ident">Getuid</a></label>() <a href="../../pkg/builtin.html#name-int" class="ident">int</a> { <span class="keyword">return</span> <a href="../../pkg/syscall.html" class="ident i2">syscall</a>.<a href="../syscall/zsyscall_darwin_amd64.go.html#line-894" class="ident">Getuid</a>() }</code></span>
+<span class="codeline" id="line-31"><code><span class="keyword">func</span> <label for="r2" class="ident"><a href="../../pkg/os.html#name-Getuid" class="ident">Getuid</a></label>() <a href="../../pkg/builtin.html#name-int" class="ident">int</a> { <span class="keyword">return</span> <a href="../../pkg/syscall.html" class="ident i2">syscall</a>.<a href="../syscall/zsyscall_darwin_amd64.go.html#line-859" class="ident">Getuid</a>() }</code></span>
 <span class="codeline" id="line-32"><code></code></span>
 <span class="codeline" id="line-33"><code><span class="comment">// Geteuid returns the numeric effective user id of the caller.</span></code></span>
 <span class="codeline" id="line-34"><code><span class="comment">//</span></code></span>
 <span class="codeline" id="line-35"><code><span class="comment">// On Windows, it returns -1.</span></code></span>
-<span class="codeline" id="line-36"><code><span class="keyword">func</span> <label for="r3" class="ident"><a href="../../pkg/os.html#name-Geteuid" class="ident">Geteuid</a></label>() <a href="../../pkg/builtin.html#name-int" class="ident">int</a> { <span class="keyword">return</span> <a href="../../pkg/syscall.html" class="ident i2">syscall</a>.<a href="../syscall/zsyscall_darwin_amd64.go.html#line-751" class="ident">Geteuid</a>() }</code></span>
+<span class="codeline" id="line-36"><code><span class="keyword">func</span> <label for="r3" class="ident"><a href="../../pkg/os.html#name-Geteuid" class="ident">Geteuid</a></label>() <a href="../../pkg/builtin.html#name-int" class="ident">int</a> { <span class="keyword">return</span> <a href="../../pkg/syscall.html" class="ident i2">syscall</a>.<a href="../syscall/zsyscall_darwin_amd64.go.html#line-726" class="ident">Geteuid</a>() }</code></span>
 <span class="codeline" id="line-37"><code></code></span>
 <span class="codeline" id="line-38"><code><span class="comment">// Getgid returns the numeric group id of the caller.</span></code></span>
 <span class="codeline" id="line-39"><code><span class="comment">//</span></code></span>
 <span class="codeline" id="line-40"><code><span class="comment">// On Windows, it returns -1.</span></code></span>
-<span class="codeline" id="line-41"><code><span class="keyword">func</span> <label for="r4" class="ident"><a href="../../pkg/os.html#name-Getgid" class="ident">Getgid</a></label>() <a href="../../pkg/builtin.html#name-int" class="ident">int</a> { <span class="keyword">return</span> <a href="../../pkg/syscall.html" class="ident i2">syscall</a>.<a href="../syscall/zsyscall_darwin_amd64.go.html#line-764" class="ident">Getgid</a>() }</code></span>
+<span class="codeline" id="line-41"><code><span class="keyword">func</span> <label for="r4" class="ident"><a href="../../pkg/os.html#name-Getgid" class="ident">Getgid</a></label>() <a href="../../pkg/builtin.html#name-int" class="ident">int</a> { <span class="keyword">return</span> <a href="../../pkg/syscall.html" class="ident i2">syscall</a>.<a href="../syscall/zsyscall_darwin_amd64.go.html#line-738" class="ident">Getgid</a>() }</code></span>
 <span class="codeline" id="line-42"><code></code></span>
 <span class="codeline" id="line-43"><code><span class="comment">// Getegid returns the numeric effective group id of the caller.</span></code></span>
 <span class="codeline" id="line-44"><code><span class="comment">//</span></code></span>
 <span class="codeline" id="line-45"><code><span class="comment">// On Windows, it returns -1.</span></code></span>
-<span class="codeline" id="line-46"><code><span class="keyword">func</span> <label for="r5" class="ident"><a href="../../pkg/os.html#name-Getegid" class="ident">Getegid</a></label>() <a href="../../pkg/builtin.html#name-int" class="ident">int</a> { <span class="keyword">return</span> <a href="../../pkg/syscall.html" class="ident i2">syscall</a>.<a href="../syscall/zsyscall_darwin_amd64.go.html#line-738" class="ident">Getegid</a>() }</code></span>
+<span class="codeline" id="line-46"><code><span class="keyword">func</span> <label for="r5" class="ident"><a href="../../pkg/os.html#name-Getegid" class="ident">Getegid</a></label>() <a href="../../pkg/builtin.html#name-int" class="ident">int</a> { <span class="keyword">return</span> <a href="../../pkg/syscall.html" class="ident i2">syscall</a>.<a href="../syscall/zsyscall_darwin_amd64.go.html#line-714" class="ident">Getegid</a>() }</code></span>
 <span class="codeline" id="line-47"><code></code></span>
 <span class="codeline" id="line-48"><code><span class="comment">// Getgroups returns a list of the numeric ids of groups that the caller belongs to.</span></code></span>
 <span class="codeline" id="line-49"><code><span class="comment">//</span></code></span>
@@ -130,7 +130,7 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-78"><code><span class="keyword">func</span> <label for="r11" class="ident"><a href="../../pkg/os.html#name-runtime_beforeExit" class="ident">runtime_beforeExit</a></label>() <span class="comment">// implemented in runtime</span></code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

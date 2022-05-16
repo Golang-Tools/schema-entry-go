@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: error.go in package os</title>
-<link href="../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../jvs/golds-v0.3.6.js"></script>
+<link href="../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -125,7 +125,7 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-29"><code>)</code></span>
 <span class="codeline" id="line-30"><code></code></span>
 <span class="codeline" id="line-31"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../pkg/os.html#name-errClosed" class="ident">errClosed</a></label>() <a href="../../pkg/builtin.html#name-error" class="ident">error</a>     { <span class="keyword">return</span> <a href="../../pkg/internal/oserror.html" class="ident i0">oserror</a>.<a href="../internal/oserror/errors.go.html#line-17" class="ident">ErrClosed</a> }</code></span>
-<span class="codeline" id="line-32"><code><span class="keyword">func</span> <label for="r1" class="ident"><a href="../../pkg/os.html#name-errNoDeadline" class="ident">errNoDeadline</a></label>() <a href="../../pkg/builtin.html#name-error" class="ident">error</a> { <span class="keyword">return</span> <a href="../../pkg/internal/poll.html" class="ident i1">poll</a>.<a href="../internal/poll/fd.go.html#line-28" class="ident">ErrNoDeadline</a> }</code></span>
+<span class="codeline" id="line-32"><code><span class="keyword">func</span> <label for="r1" class="ident"><a href="../../pkg/os.html#name-errNoDeadline" class="ident">errNoDeadline</a></label>() <a href="../../pkg/builtin.html#name-error" class="ident">error</a> { <span class="keyword">return</span> <a href="../../pkg/internal/poll.html" class="ident i1">poll</a>.<a href="../internal/poll/fd.go.html#line-39" class="ident">ErrNoDeadline</a> }</code></span>
 <span class="codeline" id="line-33"><code></code></span>
 <span class="codeline" id="line-34"><code><span class="comment">// errDeadlineExceeded returns the value for os.ErrDeadlineExceeded.</span></code></span>
 <span class="codeline" id="line-35"><code><span class="comment">// This error comes from the internal/poll package, which is also</span></code></span>
@@ -134,7 +134,7 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-38"><code><span class="comment">// as documented by net.Conn.SetDeadline, without requiring any extra</span></code></span>
 <span class="codeline" id="line-39"><code><span class="comment">// work in the net package and without requiring the internal/poll</span></code></span>
 <span class="codeline" id="line-40"><code><span class="comment">// package to import os (which it can't, because that would be circular).</span></code></span>
-<span class="codeline" id="line-41"><code><span class="keyword">func</span> <label for="r2" class="ident"><a href="../../pkg/os.html#name-errDeadlineExceeded" class="ident">errDeadlineExceeded</a></label>() <a href="../../pkg/builtin.html#name-error" class="ident">error</a> { <span class="keyword">return</span> <a href="../../pkg/internal/poll.html" class="ident i1">poll</a>.<a href="../internal/poll/fd.go.html#line-40" class="ident">ErrDeadlineExceeded</a> }</code></span>
+<span class="codeline" id="line-41"><code><span class="keyword">func</span> <label for="r2" class="ident"><a href="../../pkg/os.html#name-errDeadlineExceeded" class="ident">errDeadlineExceeded</a></label>() <a href="../../pkg/builtin.html#name-error" class="ident">error</a> { <span class="keyword">return</span> <a href="../../pkg/internal/poll.html" class="ident i1">poll</a>.<a href="../internal/poll/fd.go.html#line-51" class="ident">ErrDeadlineExceeded</a> }</code></span>
 <span class="codeline" id="line-42"><code></code></span>
 <span class="codeline" id="line-43"><code><span class="keyword">type</span> <a href="../../pkg/os.html#name-timeout" class="ident">timeout</a> <span class="keyword">interface</span> {</code></span>
 <span class="codeline" id="line-44"><code>	<a href="../../imp/os.timeout^f77d1.html#name-Timeout" class="ident">Timeout</a>() <a href="../../pkg/builtin.html#name-bool" class="ident">bool</a></code></span>
@@ -174,7 +174,7 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-78"><code><span class="comment">// well as some syscall errors.</span></code></span>
 <span class="codeline" id="line-79"><code><span class="comment">//</span></code></span>
 <span class="codeline" id="line-80"><code><span class="comment">// This function predates errors.Is. It only supports errors returned by</span></code></span>
-<span class="codeline" id="line-81"><code><span class="comment">// the os package. New code should use errors.Is(err, os.ErrExist).</span></code></span>
+<span class="codeline" id="line-81"><code><span class="comment">// the os package. New code should use errors.Is(err, fs.ErrExist).</span></code></span>
 <span class="codeline" id="line-82"><code><span class="keyword">func</span> <label for="r14" class="ident"><a href="../../pkg/os.html#name-IsExist" class="ident">IsExist</a></label>(<label for="r15" class="ident">err</label> <a href="../../pkg/builtin.html#name-error" class="ident">error</a>) <a href="../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
 <span class="codeline" id="line-83"><code>	<span class="keyword">return</span> <a href="#line-119" class="ident">underlyingErrorIs</a>(<label for="r15" class="ident">err</label>, <a href="#line-23" class="ident">ErrExist</a>)</code></span>
 <span class="codeline" id="line-84"><code>}</code></span>
@@ -184,7 +184,7 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-88"><code><span class="comment">// ErrNotExist as well as some syscall errors.</span></code></span>
 <span class="codeline" id="line-89"><code><span class="comment">//</span></code></span>
 <span class="codeline" id="line-90"><code><span class="comment">// This function predates errors.Is. It only supports errors returned by</span></code></span>
-<span class="codeline" id="line-91"><code><span class="comment">// the os package. New code should use errors.Is(err, os.ErrNotExist).</span></code></span>
+<span class="codeline" id="line-91"><code><span class="comment">// the os package. New code should use errors.Is(err, fs.ErrNotExist).</span></code></span>
 <span class="codeline" id="line-92"><code><span class="keyword">func</span> <label for="r16" class="ident"><a href="../../pkg/os.html#name-IsNotExist" class="ident">IsNotExist</a></label>(<label for="r17" class="ident">err</label> <a href="../../pkg/builtin.html#name-error" class="ident">error</a>) <a href="../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
 <span class="codeline" id="line-93"><code>	<span class="keyword">return</span> <a href="#line-119" class="ident">underlyingErrorIs</a>(<label for="r17" class="ident">err</label>, <a href="#line-24" class="ident">ErrNotExist</a>)</code></span>
 <span class="codeline" id="line-94"><code>}</code></span>
@@ -194,7 +194,7 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-98"><code><span class="comment">// as some syscall errors.</span></code></span>
 <span class="codeline" id="line-99"><code><span class="comment">//</span></code></span>
 <span class="codeline" id="line-100"><code><span class="comment">// This function predates errors.Is. It only supports errors returned by</span></code></span>
-<span class="codeline" id="line-101"><code><span class="comment">// the os package. New code should use errors.Is(err, os.ErrPermission).</span></code></span>
+<span class="codeline" id="line-101"><code><span class="comment">// the os package. New code should use errors.Is(err, fs.ErrPermission).</span></code></span>
 <span class="codeline" id="line-102"><code><span class="keyword">func</span> <label for="r18" class="ident"><a href="../../pkg/os.html#name-IsPermission" class="ident">IsPermission</a></label>(<label for="r19" class="ident">err</label> <a href="../../pkg/builtin.html#name-error" class="ident">error</a>) <a href="../../pkg/builtin.html#name-bool" class="ident">bool</a> {</code></span>
 <span class="codeline" id="line-103"><code>	<span class="keyword">return</span> <a href="#line-119" class="ident">underlyingErrorIs</a>(<label for="r19" class="ident">err</label>, <a href="#line-22" class="ident">ErrPermission</a>)</code></span>
 <span class="codeline" id="line-104"><code>}</code></span>
@@ -222,7 +222,7 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-126"><code>	}</code></span>
 <span class="codeline" id="line-127"><code>	<span class="comment">// To preserve prior behavior, only examine syscall errors.</span></code></span>
 <span class="codeline" id="line-128"><code>	<label for="r27" class="ident">e</label>, <label for="r28" class="ident">ok</label> := <label for="r25" class="ident">err</label>.(<a href="error_errno.go.html#line-11" class="ident">syscallErrorType</a>)</code></span>
-<span class="codeline" id="line-129"><code>	<span class="keyword">return</span> <label for="r28" class="ident">ok</label> &amp;&amp; <label for="r27" class="ident">e</label>.<a href="../syscall/syscall_unix.go.html#line-126" class="ident">Is</a>(<label for="r26" class="ident">target</label>)</code></span>
+<span class="codeline" id="line-129"><code>	<span class="keyword">return</span> <label for="r28" class="ident">ok</label> &amp;&amp; <label for="r27" class="ident">e</label>.<a href="../syscall/syscall_unix.go.html#line-127" class="ident">Is</a>(<label for="r26" class="ident">target</label>)</code></span>
 <span class="codeline" id="line-130"><code>}</code></span>
 <span class="codeline" id="line-131"><code></code></span>
 <span class="codeline" id="line-132"><code><span class="comment">// underlyingError returns the underlying error for known os error types.</span></code></span>
@@ -230,8 +230,8 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-134"><code>	<span class="keyword">switch</span> err := <label for="r30" class="ident">err</label>.(<span class="keyword">type</span>) {</code></span>
 <span class="codeline" id="line-135"><code>	<span class="keyword">case</span> *<a href="#line-48" class="ident">PathError</a>:</code></span>
 <span class="codeline" id="line-136"><code>		<span class="keyword">return</span> <label for="r31" class="ident">err</label>.<a href="../io/fs/fs.go.html#line-246" class="ident">Err</a></code></span>
-<span class="codeline" id="line-137"><code>	<span class="keyword">case</span> *<a href="file.go.html#line-95" class="ident">LinkError</a>:</code></span>
-<span class="codeline" id="line-138"><code>		<span class="keyword">return</span> <label for="r32" class="ident">err</label>.<a href="file.go.html#line-99" class="ident">Err</a></code></span>
+<span class="codeline" id="line-137"><code>	<span class="keyword">case</span> *<a href="file.go.html#line-97" class="ident">LinkError</a>:</code></span>
+<span class="codeline" id="line-138"><code>		<span class="keyword">return</span> <label for="r32" class="ident">err</label>.<a href="file.go.html#line-101" class="ident">Err</a></code></span>
 <span class="codeline" id="line-139"><code>	<span class="keyword">case</span> *<a href="#line-51" class="ident">SyscallError</a>:</code></span>
 <span class="codeline" id="line-140"><code>		<span class="keyword">return</span> <label for="r33" class="ident">err</label>.<a href="#line-53" class="ident">Err</a></code></span>
 <span class="codeline" id="line-141"><code>	}</code></span>
@@ -239,7 +239,7 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-143"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

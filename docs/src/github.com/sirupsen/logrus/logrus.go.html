@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: logrus.go in package github.com/sirupsen/logrus</title>
-<link href="../../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -79,7 +79,7 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-23"><code></code></span>
 <span class="codeline" id="line-24"><code><span class="comment">// ParseLevel takes a string level and returns the Logrus log level constant.</span></code></span>
 <span class="codeline" id="line-25"><code><span class="keyword">func</span> <label for="r4" class="ident"><a href="../../../../pkg/github.com/sirupsen/logrus.html#name-ParseLevel" class="ident">ParseLevel</a></label>(<label for="r5" class="ident">lvl</label> <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>) (<a href="#line-13" class="ident">Level</a>, <a href="../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
-<span class="codeline" id="line-26"><code>	<span class="keyword">switch</span> <a href="../../../../pkg/strings.html" class="ident i2">strings</a>.<a href="../../../strings/strings.go.html#line-580" class="ident">ToLower</a>(<label for="r5" class="ident">lvl</label>) {</code></span>
+<span class="codeline" id="line-26"><code>	<span class="keyword">switch</span> <a href="../../../../pkg/strings.html" class="ident i2">strings</a>.<a href="../../../strings/strings.go.html#line-584" class="ident">ToLower</a>(<label for="r5" class="ident">lvl</label>) {</code></span>
 <span class="codeline" id="line-27"><code>	<span class="keyword">case</span> <span class="lit-string">"panic"</span>:</code></span>
 <span class="codeline" id="line-28"><code>		<span class="keyword">return</span> <a href="#line-96" class="ident">PanicLevel</a>, <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
 <span class="codeline" id="line-29"><code>	<span class="keyword">case</span> <span class="lit-string">"fatal"</span>:</code></span>
@@ -169,7 +169,7 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-113"><code></code></span>
 <span class="codeline" id="line-114"><code><span class="comment">// Won't compile if StdLogger can't be realized by a log.Logger</span></code></span>
 <span class="codeline" id="line-115"><code><span class="keyword">var</span> (</code></span>
-<span class="codeline" id="line-116"><code>	_ <a href="#line-124" class="ident">StdLogger</a> = &amp;<a href="../../../../pkg/log.html" class="ident i1">log</a>.<a href="../../../log/log.go.html#line-52" class="ident">Logger</a>{}</code></span>
+<span class="codeline" id="line-116"><code>	_ <a href="#line-124" class="ident">StdLogger</a> = &amp;<a href="../../../../pkg/log.html" class="ident i1">log</a>.<a href="../../../log/log.go.html#line-53" class="ident">Logger</a>{}</code></span>
 <span class="codeline" id="line-117"><code>	_ <a href="#line-124" class="ident">StdLogger</a> = &amp;<a href="entry.go.html#line-44" class="ident">Entry</a>{}</code></span>
 <span class="codeline" id="line-118"><code>	_ <a href="#line-124" class="ident">StdLogger</a> = &amp;<a href="logger.go.html#line-17" class="ident">Logger</a>{}</code></span>
 <span class="codeline" id="line-119"><code>)</code></span>
@@ -242,7 +242,7 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-186"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: reflect_struct_encoder.go in package github.com/json-iterator/go</title>
-<link href="../../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -243,17 +243,17 @@ input[id=i4]:checked ~pre .i4
 <span class="codeline" id="line-53"><code>	}</code></span>
 <span class="codeline" id="line-54"><code>	<label for="r23" class="ident">kind</label> := <label for="r21" class="ident">typ</label>.<a href="../../modern-go/reflect2/reflect2.go.html#line-11" class="ident">Kind</a>()</code></span>
 <span class="codeline" id="line-55"><code>	<span class="keyword">switch</span> <label for="r23" class="ident">kind</label> {</code></span>
-<span class="codeline" id="line-56"><code>	<span class="keyword">case</span> <a href="../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../reflect/type.go.html#line-255" class="ident">Interface</a>:</code></span>
+<span class="codeline" id="line-56"><code>	<span class="keyword">case</span> <a href="../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../reflect/type.go.html#line-262" class="ident">Interface</a>:</code></span>
 <span class="codeline" id="line-57"><code>		<span class="keyword">return</span> &amp;<a href="reflect_dynamic.go.html#line-9" class="ident">dynamicEncoder</a>{<label for="r21" class="ident">typ</label>}</code></span>
-<span class="codeline" id="line-58"><code>	<span class="keyword">case</span> <a href="../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../reflect/type.go.html#line-260" class="ident">Struct</a>:</code></span>
+<span class="codeline" id="line-58"><code>	<span class="keyword">case</span> <a href="../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../reflect/type.go.html#line-267" class="ident">Struct</a>:</code></span>
 <span class="codeline" id="line-59"><code>		<span class="keyword">return</span> &amp;<a href="#line-134" class="ident">structEncoder</a>{<a href="#line-135" class="ident">typ</a>: <label for="r21" class="ident">typ</label>}</code></span>
-<span class="codeline" id="line-60"><code>	<span class="keyword">case</span> <a href="../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../reflect/type.go.html#line-252" class="ident">Array</a>:</code></span>
+<span class="codeline" id="line-60"><code>	<span class="keyword">case</span> <a href="../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../reflect/type.go.html#line-259" class="ident">Array</a>:</code></span>
 <span class="codeline" id="line-61"><code>		<span class="keyword">return</span> &amp;<a href="reflect_array.go.html#line-35" class="ident">arrayEncoder</a>{}</code></span>
-<span class="codeline" id="line-62"><code>	<span class="keyword">case</span> <a href="../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../reflect/type.go.html#line-258" class="ident">Slice</a>:</code></span>
+<span class="codeline" id="line-62"><code>	<span class="keyword">case</span> <a href="../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../reflect/type.go.html#line-265" class="ident">Slice</a>:</code></span>
 <span class="codeline" id="line-63"><code>		<span class="keyword">return</span> &amp;<a href="reflect_slice.go.html#line-22" class="ident">sliceEncoder</a>{}</code></span>
-<span class="codeline" id="line-64"><code>	<span class="keyword">case</span> <a href="../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../reflect/type.go.html#line-256" class="ident">Map</a>:</code></span>
+<span class="codeline" id="line-64"><code>	<span class="keyword">case</span> <a href="../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../reflect/type.go.html#line-263" class="ident">Map</a>:</code></span>
 <span class="codeline" id="line-65"><code>		<span class="keyword">return</span> <a href="reflect_map.go.html#line-25" class="ident">encoderOfMap</a>(<label for="r20" class="ident">ctx</label>, <label for="r21" class="ident">typ</label>)</code></span>
-<span class="codeline" id="line-66"><code>	<span class="keyword">case</span> <a href="../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../reflect/type.go.html#line-257" class="ident">Ptr</a>:</code></span>
+<span class="codeline" id="line-66"><code>	<span class="keyword">case</span> <a href="../../../../pkg/reflect.html" class="ident i3">reflect</a>.<a href="../../../reflect/type.go.html#line-272" class="ident">Ptr</a>:</code></span>
 <span class="codeline" id="line-67"><code>		<span class="keyword">return</span> &amp;<a href="reflect_optional.go.html#line-62" class="ident">OptionalEncoder</a>{}</code></span>
 <span class="codeline" id="line-68"><code>	<span class="keyword">default</span>:</code></span>
 <span class="codeline" id="line-69"><code>		<span class="keyword">return</span> &amp;<a href="reflect.go.html#line-303" class="ident">lazyErrorEncoder</a>{<a href="reflect.go.html#line-304" class="ident">err</a>: <a href="../../../../pkg/fmt.html" class="ident i0">fmt</a>.<a href="../../../fmt/errors.go.html#line-17" class="ident">Errorf</a>(<span class="lit-string">"unsupported type: %v"</span>, <label for="r21" class="ident">typ</label>)}</code></span>
@@ -261,8 +261,8 @@ input[id=i4]:checked ~pre .i4
 <span class="codeline" id="line-71"><code>}</code></span>
 <span class="codeline" id="line-72"><code></code></span>
 <span class="codeline" id="line-73"><code><span class="keyword">func</span> <label for="r24" class="ident"><a href="../../../../pkg/github.com/json-iterator/go.html#name-resolveConflictBinding" class="ident">resolveConflictBinding</a></label>(<label for="r25" class="ident">cfg</label> *<a href="config.go.html#line-68" class="ident">frozenConfig</a>, <label for="r26" class="ident">old</label>, <label for="r27" class="ident">new</label> *<a href="reflect_extension.go.html#line-37" class="ident">Binding</a>) (<label for="r28" class="ident">ignoreOld</label>, <label for="r29" class="ident">ignoreNew</label> <a href="../../../../pkg/builtin.html#name-bool" class="ident">bool</a>) {</code></span>
-<span class="codeline" id="line-74"><code>	<label for="r30" class="ident">newTagged</label> := <label for="r27" class="ident">new</label>.<a href="reflect_extension.go.html#line-39" class="ident">Field</a>.<a href="../../modern-go/reflect2/reflect2.go.html#line-81" class="ident">Tag</a>().<a href="../../../reflect/type.go.html#line-1120" class="ident">Get</a>(<label for="r25" class="ident">cfg</label>.<a href="config.go.html#line-214" class="ident">getTagKey</a>()) != <span class="lit-string">""</span></code></span>
-<span class="codeline" id="line-75"><code>	<label for="r31" class="ident">oldTagged</label> := <label for="r26" class="ident">old</label>.<a href="reflect_extension.go.html#line-39" class="ident">Field</a>.<a href="../../modern-go/reflect2/reflect2.go.html#line-81" class="ident">Tag</a>().<a href="../../../reflect/type.go.html#line-1120" class="ident">Get</a>(<label for="r25" class="ident">cfg</label>.<a href="config.go.html#line-214" class="ident">getTagKey</a>()) != <span class="lit-string">""</span></code></span>
+<span class="codeline" id="line-74"><code>	<label for="r30" class="ident">newTagged</label> := <label for="r27" class="ident">new</label>.<a href="reflect_extension.go.html#line-39" class="ident">Field</a>.<a href="../../modern-go/reflect2/reflect2.go.html#line-81" class="ident">Tag</a>().<a href="../../../reflect/type.go.html#line-1176" class="ident">Get</a>(<label for="r25" class="ident">cfg</label>.<a href="config.go.html#line-214" class="ident">getTagKey</a>()) != <span class="lit-string">""</span></code></span>
+<span class="codeline" id="line-75"><code>	<label for="r31" class="ident">oldTagged</label> := <label for="r26" class="ident">old</label>.<a href="reflect_extension.go.html#line-39" class="ident">Field</a>.<a href="../../modern-go/reflect2/reflect2.go.html#line-81" class="ident">Tag</a>().<a href="../../../reflect/type.go.html#line-1176" class="ident">Get</a>(<label for="r25" class="ident">cfg</label>.<a href="config.go.html#line-214" class="ident">getTagKey</a>()) != <span class="lit-string">""</span></code></span>
 <span class="codeline" id="line-76"><code>	<span class="keyword">if</span> <label for="r30" class="ident">newTagged</label> {</code></span>
 <span class="codeline" id="line-77"><code>		<span class="keyword">if</span> <label for="r31" class="ident">oldTagged</label> {</code></span>
 <span class="codeline" id="line-78"><code>			<span class="keyword">if</span> <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r26" class="ident">old</label>.<a href="reflect_extension.go.html#line-38" class="ident">levels</a>) &gt; <a href="../../../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r27" class="ident">new</label>.<a href="reflect_extension.go.html#line-38" class="ident">levels</a>) {</code></span>
@@ -401,7 +401,7 @@ input[id=i4]:checked ~pre .i4
 <span class="codeline" id="line-211"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

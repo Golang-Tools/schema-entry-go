@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: const.go in package math</title>
-<link href="../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../jvs/golds-v0.3.6.js"></script>
+<link href="../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -46,31 +46,36 @@
 <span class="codeline" id="line-28"><code><span class="comment">// Max is the largest finite value representable by the type.</span></code></span>
 <span class="codeline" id="line-29"><code><span class="comment">// SmallestNonzero is the smallest positive, non-zero value representable by the type.</span></code></span>
 <span class="codeline" id="line-30"><code><span class="keyword">const</span> (</code></span>
-<span class="codeline" id="line-31"><code>	<a href="../../pkg/math.html#name-MaxFloat32" class="ident">MaxFloat32</a>             = <span class="lit-number">3.40282346638528859811704183484516925440e+38</span>  <span class="comment">// 2**127 * (2**24 - 1) / 2**23</span></code></span>
-<span class="codeline" id="line-32"><code>	<a href="../../pkg/math.html#name-SmallestNonzeroFloat32" class="ident">SmallestNonzeroFloat32</a> = <span class="lit-number">1.401298464324817070923729583289916131280e-45</span> <span class="comment">// 1 / 2**(127 - 1 + 23)</span></code></span>
+<span class="codeline" id="line-31"><code>	<a href="../../pkg/math.html#name-MaxFloat32" class="ident">MaxFloat32</a>             = <span class="lit-number">0x1p127</span> * (<span class="lit-number">1</span> + (<span class="lit-number">1</span> - <span class="lit-number">0x1p-23</span>)) <span class="comment">// 3.40282346638528859811704183484516925440e+38</span></code></span>
+<span class="codeline" id="line-32"><code>	<a href="../../pkg/math.html#name-SmallestNonzeroFloat32" class="ident">SmallestNonzeroFloat32</a> = <span class="lit-number">0x1p-126</span> * <span class="lit-number">0x1p-23</span>            <span class="comment">// 1.401298464324817070923729583289916131280e-45</span></code></span>
 <span class="codeline" id="line-33"><code></code></span>
-<span class="codeline" id="line-34"><code>	<a href="../../pkg/math.html#name-MaxFloat64" class="ident">MaxFloat64</a>             = <span class="lit-number">1.797693134862315708145274237317043567981e+308</span> <span class="comment">// 2**1023 * (2**53 - 1) / 2**52</span></code></span>
-<span class="codeline" id="line-35"><code>	<a href="../../pkg/math.html#name-SmallestNonzeroFloat64" class="ident">SmallestNonzeroFloat64</a> = <span class="lit-number">4.940656458412465441765687928682213723651e-324</span> <span class="comment">// 1 / 2**(1023 - 1 + 52)</span></code></span>
+<span class="codeline" id="line-34"><code>	<a href="../../pkg/math.html#name-MaxFloat64" class="ident">MaxFloat64</a>             = <span class="lit-number">0x1p1023</span> * (<span class="lit-number">1</span> + (<span class="lit-number">1</span> - <span class="lit-number">0x1p-52</span>)) <span class="comment">// 1.79769313486231570814527423731704356798070e+308</span></code></span>
+<span class="codeline" id="line-35"><code>	<a href="../../pkg/math.html#name-SmallestNonzeroFloat64" class="ident">SmallestNonzeroFloat64</a> = <span class="lit-number">0x1p-1022</span> * <span class="lit-number">0x1p-52</span>            <span class="comment">// 4.9406564584124654417656879286822137236505980e-324</span></code></span>
 <span class="codeline" id="line-36"><code>)</code></span>
 <span class="codeline" id="line-37"><code></code></span>
 <span class="codeline" id="line-38"><code><span class="comment">// Integer limit values.</span></code></span>
 <span class="codeline" id="line-39"><code><span class="keyword">const</span> (</code></span>
-<span class="codeline" id="line-40"><code>	<a href="../../pkg/math.html#name-MaxInt8" class="ident">MaxInt8</a>   = <span class="lit-number">1</span>&lt;&lt;<span class="lit-number">7</span> - <span class="lit-number">1</span></code></span>
-<span class="codeline" id="line-41"><code>	<a href="../../pkg/math.html#name-MinInt8" class="ident">MinInt8</a>   = -<span class="lit-number">1</span> &lt;&lt; <span class="lit-number">7</span></code></span>
-<span class="codeline" id="line-42"><code>	<a href="../../pkg/math.html#name-MaxInt16" class="ident">MaxInt16</a>  = <span class="lit-number">1</span>&lt;&lt;<span class="lit-number">15</span> - <span class="lit-number">1</span></code></span>
-<span class="codeline" id="line-43"><code>	<a href="../../pkg/math.html#name-MinInt16" class="ident">MinInt16</a>  = -<span class="lit-number">1</span> &lt;&lt; <span class="lit-number">15</span></code></span>
-<span class="codeline" id="line-44"><code>	<a href="../../pkg/math.html#name-MaxInt32" class="ident">MaxInt32</a>  = <span class="lit-number">1</span>&lt;&lt;<span class="lit-number">31</span> - <span class="lit-number">1</span></code></span>
-<span class="codeline" id="line-45"><code>	<a href="../../pkg/math.html#name-MinInt32" class="ident">MinInt32</a>  = -<span class="lit-number">1</span> &lt;&lt; <span class="lit-number">31</span></code></span>
-<span class="codeline" id="line-46"><code>	<a href="../../pkg/math.html#name-MaxInt64" class="ident">MaxInt64</a>  = <span class="lit-number">1</span>&lt;&lt;<span class="lit-number">63</span> - <span class="lit-number">1</span></code></span>
-<span class="codeline" id="line-47"><code>	<a href="../../pkg/math.html#name-MinInt64" class="ident">MinInt64</a>  = -<span class="lit-number">1</span> &lt;&lt; <span class="lit-number">63</span></code></span>
-<span class="codeline" id="line-48"><code>	<a href="../../pkg/math.html#name-MaxUint8" class="ident">MaxUint8</a>  = <span class="lit-number">1</span>&lt;&lt;<span class="lit-number">8</span> - <span class="lit-number">1</span></code></span>
-<span class="codeline" id="line-49"><code>	<a href="../../pkg/math.html#name-MaxUint16" class="ident">MaxUint16</a> = <span class="lit-number">1</span>&lt;&lt;<span class="lit-number">16</span> - <span class="lit-number">1</span></code></span>
-<span class="codeline" id="line-50"><code>	<a href="../../pkg/math.html#name-MaxUint32" class="ident">MaxUint32</a> = <span class="lit-number">1</span>&lt;&lt;<span class="lit-number">32</span> - <span class="lit-number">1</span></code></span>
-<span class="codeline" id="line-51"><code>	<a href="../../pkg/math.html#name-MaxUint64" class="ident">MaxUint64</a> = <span class="lit-number">1</span>&lt;&lt;<span class="lit-number">64</span> - <span class="lit-number">1</span></code></span>
-<span class="codeline" id="line-52"><code>)</code></span>
+<span class="codeline" id="line-40"><code>	<a href="../../pkg/math.html#name-intSize" class="ident">intSize</a> = <span class="lit-number">32</span> &lt;&lt; (^<a href="../../pkg/builtin.html#name-uint" class="ident">uint</a>(<span class="lit-number">0</span>) &gt;&gt; <span class="lit-number">63</span>) <span class="comment">// 32 or 64</span></code></span>
+<span class="codeline" id="line-41"><code></code></span>
+<span class="codeline" id="line-42"><code>	<a href="../../pkg/math.html#name-MaxInt" class="ident">MaxInt</a>    = <span class="lit-number">1</span>&lt;&lt;(<a href="#line-40" class="ident">intSize</a>-<span class="lit-number">1</span>) - <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-43"><code>	<a href="../../pkg/math.html#name-MinInt" class="ident">MinInt</a>    = -<span class="lit-number">1</span> &lt;&lt; (<a href="#line-40" class="ident">intSize</a> - <span class="lit-number">1</span>)</code></span>
+<span class="codeline" id="line-44"><code>	<a href="../../pkg/math.html#name-MaxInt8" class="ident">MaxInt8</a>   = <span class="lit-number">1</span>&lt;&lt;<span class="lit-number">7</span> - <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-45"><code>	<a href="../../pkg/math.html#name-MinInt8" class="ident">MinInt8</a>   = -<span class="lit-number">1</span> &lt;&lt; <span class="lit-number">7</span></code></span>
+<span class="codeline" id="line-46"><code>	<a href="../../pkg/math.html#name-MaxInt16" class="ident">MaxInt16</a>  = <span class="lit-number">1</span>&lt;&lt;<span class="lit-number">15</span> - <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-47"><code>	<a href="../../pkg/math.html#name-MinInt16" class="ident">MinInt16</a>  = -<span class="lit-number">1</span> &lt;&lt; <span class="lit-number">15</span></code></span>
+<span class="codeline" id="line-48"><code>	<a href="../../pkg/math.html#name-MaxInt32" class="ident">MaxInt32</a>  = <span class="lit-number">1</span>&lt;&lt;<span class="lit-number">31</span> - <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-49"><code>	<a href="../../pkg/math.html#name-MinInt32" class="ident">MinInt32</a>  = -<span class="lit-number">1</span> &lt;&lt; <span class="lit-number">31</span></code></span>
+<span class="codeline" id="line-50"><code>	<a href="../../pkg/math.html#name-MaxInt64" class="ident">MaxInt64</a>  = <span class="lit-number">1</span>&lt;&lt;<span class="lit-number">63</span> - <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-51"><code>	<a href="../../pkg/math.html#name-MinInt64" class="ident">MinInt64</a>  = -<span class="lit-number">1</span> &lt;&lt; <span class="lit-number">63</span></code></span>
+<span class="codeline" id="line-52"><code>	<a href="../../pkg/math.html#name-MaxUint" class="ident">MaxUint</a>   = <span class="lit-number">1</span>&lt;&lt;<a href="#line-40" class="ident">intSize</a> - <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-53"><code>	<a href="../../pkg/math.html#name-MaxUint8" class="ident">MaxUint8</a>  = <span class="lit-number">1</span>&lt;&lt;<span class="lit-number">8</span> - <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-54"><code>	<a href="../../pkg/math.html#name-MaxUint16" class="ident">MaxUint16</a> = <span class="lit-number">1</span>&lt;&lt;<span class="lit-number">16</span> - <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-55"><code>	<a href="../../pkg/math.html#name-MaxUint32" class="ident">MaxUint32</a> = <span class="lit-number">1</span>&lt;&lt;<span class="lit-number">32</span> - <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-56"><code>	<a href="../../pkg/math.html#name-MaxUint64" class="ident">MaxUint64</a> = <span class="lit-number">1</span>&lt;&lt;<span class="lit-number">64</span> - <span class="lit-number">1</span></code></span>
+<span class="codeline" id="line-57"><code>)</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

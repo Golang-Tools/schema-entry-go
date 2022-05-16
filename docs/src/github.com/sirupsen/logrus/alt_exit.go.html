@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: alt_exit.go in package github.com/sirupsen/logrus</title>
-<link href="../../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -82,7 +82,7 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-32"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../../pkg/github.com/sirupsen/logrus.html#name-runHandler" class="ident">runHandler</a></label>(<label for="r1" class="ident">handler</label> <span class="keyword">func</span>()) {</code></span>
 <span class="codeline" id="line-33"><code>	<span class="keyword">defer</span> <span class="keyword">func</span>() {</code></span>
 <span class="codeline" id="line-34"><code>		<span class="keyword">if</span> <label for="r2" class="ident">err</label> := <a href="../../../../pkg/builtin.html#name-recover" class="ident">recover</a>(); <label for="r2" class="ident">err</label> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
-<span class="codeline" id="line-35"><code>			<a href="../../../../pkg/fmt.html" class="ident i0">fmt</a>.<a href="../../../fmt/print.go.html#line-262" class="ident">Fprintln</a>(<a href="../../../../pkg/os.html" class="ident i1">os</a>.<a href="../../../os/file.go.html#line-66" class="ident">Stderr</a>, <span class="lit-string">"Error: Logrus exit handler error:"</span>, <label for="r2" class="ident">err</label>)</code></span>
+<span class="codeline" id="line-35"><code>			<a href="../../../../pkg/fmt.html" class="ident i0">fmt</a>.<a href="../../../fmt/print.go.html#line-262" class="ident">Fprintln</a>(<a href="../../../../pkg/os.html" class="ident i1">os</a>.<a href="../../../os/file.go.html#line-68" class="ident">Stderr</a>, <span class="lit-string">"Error: Logrus exit handler error:"</span>, <label for="r2" class="ident">err</label>)</code></span>
 <span class="codeline" id="line-36"><code>		}</code></span>
 <span class="codeline" id="line-37"><code>	}()</code></span>
 <span class="codeline" id="line-38"><code></code></span>
@@ -126,7 +126,7 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-76"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

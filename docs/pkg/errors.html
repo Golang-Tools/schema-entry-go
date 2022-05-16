@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Package: errors</title>
-<link href="../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../jvs/golds-v0.3.6.js"></script>
+<link href="../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="package-details"><code><span style="font-size:xx-large;">package <b>errors</b></span>
@@ -15,7 +15,7 @@
 	<a href="../index.html#pkg-errors">errors</a><i> (on <a href="https://pkg.go.dev/errors" target="_blank">go.dev</a>)</i>
 
 <span class="title">Dependency Relation</span>
-	imports <a href="../dep/errors.html">one package</a>, and imported by <a href="../dep/errors.html#imported-by">65 packages</a>
+	imports <a href="../dep/errors.html">one package</a>, and imported by <a href="../dep/errors.html#imported-by">73 packages</a>
 
 <div id="files"><span class="title">Involved Source Files</span>
 
@@ -27,7 +27,7 @@
 		The Unwrap, Is and As functions work on errors that may wrap other errors.
 		An error wraps another error if its type has the method
 
-			Unwrap() error
+		Unwrap() error
 
 		If e.Unwrap() returns a non-nil error w, then we say that e wraps w.
 
@@ -37,7 +37,7 @@
 		A simple way to create wrapped errors is to call fmt.Errorf and apply the %w verb
 		to the error argument:
 
-			errors.Unwrap(fmt.Errorf("... %w ...", ..., err, ...))
+		errors.Unwrap(fmt.Errorf("... %w ...", ..., err, ...))
 
 		returns err.
 
@@ -45,11 +45,11 @@
 		second. It reports whether it finds a match. It should be used in preference to
 		simple equality checks:
 
-			if errors.Is(err, fs.ErrExist)
+		if errors.Is(err, fs.ErrExist)
 
 		is preferable to
 
-			if err == fs.ErrExist
+		if err == fs.ErrExist
 
 		because the former will succeed if err wraps fs.ErrExist.
 
@@ -57,16 +57,16 @@
 		assigned to its second argument, which must be a pointer. If it succeeds, it
 		performs the assignment and returns true. Otherwise, it returns false. The form
 
-			var perr *fs.PathError
-			if errors.As(err, &amp;perr) {
-				fmt.Println(perr.Path)
-			}
+		var perr *fs.PathError
+		if errors.As(err, &amp;perr) {
+			fmt.Println(perr.Path)
+		}
 
 		is preferable to
 
-			if perr, ok := err.(*fs.PathError); ok {
-				fmt.Println(perr.Path)
-			}
+		if perr, ok := err.(*fs.PathError); ok {
+			fmt.Println(perr.Path)
+		}
 
 		because the former will succeed if err wraps an *fs.PathError.
 </span>
@@ -114,15 +114,15 @@
 			<input type='checkbox' checked class="showhide" id="errorString-showhide-fields"><i><label for="errorString-showhide-fields" class="show-inline">/* one unexported ... */</label><label for="errorString-showhide-fields" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
 			<span class="nodocs"><a href="../src/errors/errors.go.html#line-64">s</a> <i><a href="builtin.html#name-string">string</a></i></span></i></span></span>
 		<input type='checkbox' class="fold" id="errorString-fold-methods"><label for="errorString-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='errorString-fold-methods-items' class="fold-items"><span>
-			<span class="nodocs">(*T) <a href="../src/errors/errors.go.html#line-67">Error</a>() <a href="builtin.html#name-string">string</a></span></span></span>
+			<span class="nodocs">(*errorString) <a href="../src/errors/errors.go.html#line-67">Error</a>() <a href="builtin.html#name-string">string</a></span></span></span>
 		<input type='checkbox' class="fold" id="errorString-fold-impls"><label for="errorString-fold-impls">Implements (<i>at least one exported</i>)</label><span id='errorString-fold-impls-items' class="fold-items"><span>
-			*T : <a href="builtin.html#name-error">error</a></span></span>
+			*errorString : <a href="builtin.html#name-error">error</a></span></span>
 
 </span></div></div>
 <div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 4, all are exported)</i></span></span>
 
-<div class="anchor value-res" id="name-As">	<input type='checkbox' class="fold" id="As-fold-content"><label for="As-fold-content"> func <a href="../src/errors/wrap.go.html#line-77">As</a>(err <a href="builtin.html#name-error">error</a>, target interface{}) <a href="builtin.html#name-bool">bool</a></label><span id='As-fold-content-docs' class="fold-docs">
-		As finds the first error in err's chain that matches target, and if so, sets
+<div class="anchor value-res" id="name-As">	<input type='checkbox' class="fold" id="As-fold-content"><label for="As-fold-content"> func <a href="../src/errors/wrap.go.html#line-78">As</a>(err <a href="builtin.html#name-error">error</a>, target <a href="builtin.html#name-any">any</a>) <a href="builtin.html#name-bool">bool</a></label><span id='As-fold-content-docs' class="fold-docs">
+		As finds the first error in err's chain that matches target, and if one is found, sets
 		target to that error value and returns true. Otherwise, it returns false.
 
 		The chain consists of err itself followed by the sequence of errors obtained by
@@ -139,7 +139,7 @@
 		As panics if target is not a non-nil pointer to either a type that implements
 		error, or to any interface type.
 
-</span></div><div class="anchor value-res" id="name-Is">	<input type='checkbox' class="fold" id="Is-fold-content"><label for="Is-fold-content"> func <a href="../src/errors/wrap.go.html#line-39">Is</a>(err, target <a href="builtin.html#name-error">error</a>) <a href="builtin.html#name-bool">bool</a></label><span id='Is-fold-content-docs' class="fold-docs">
+</span></div><div class="anchor value-res" id="name-Is">	<input type='checkbox' class="fold" id="Is-fold-content"><label for="Is-fold-content"> func <a href="../src/errors/wrap.go.html#line-40">Is</a>(err, target <a href="builtin.html#name-error">error</a>) <a href="builtin.html#name-bool">bool</a></label><span id='Is-fold-content-docs' class="fold-docs">
 		Is reports whether any error in err's chain matches target.
 
 		The chain consists of err itself followed by the sequence of errors obtained by
@@ -154,7 +154,8 @@
 			func (m MyError) Is(target error) bool { return target == fs.ErrExist }
 
 		then Is(MyError{}, fs.ErrExist) returns true. See syscall.Errno.Is for
-		an example in the standard library.
+		an example in the standard library. An Is method should only shallowly
+		compare err and the target and not call Unwrap on either.
 
 </span></div><div class="anchor value-res" id="name-New">	<input type='checkbox' class="fold" id="New-fold-content"><label for="New-fold-content"> func <a href="../src/errors/errors.go.html#line-58">New</a>(text <a href="builtin.html#name-string">string</a>) <a href="builtin.html#name-error">error</a></label><span id='New-fold-content-docs' class="fold-docs">
 		New returns an error that formats as the given text.
@@ -168,9 +169,9 @@
 </span></div></div>
 <div id="exported-variables"><span class="title">Package-Level Variables<span class="title-stat"><i> (only one, which is unexported)</i></span></span>
 
-	<input type='checkbox' class="showhide" id="unexported-variables-showhide"><i><label for="unexported-variables-showhide" class="show-inline">/* one unexported ... */</label><label for="unexported-variables-showhide" class="hide-inline">/* one unexported: */</label></i><div class="anchor value-res hidden" id="name-errorType"><i>	<span class="nodocs">  var <a href="../src/errors/wrap.go.html#line-103">errorType</a> <a href="internal/reflectlite.html">reflectlite</a>.<a href="internal/reflectlite.html#name-Type">Type</a></span></i></div></div></code></pre><pre id="footer">
+	<input type='checkbox' class="showhide" id="unexported-variables-showhide"><i><label for="unexported-variables-showhide" class="show-inline">/* one unexported ... */</label><label for="unexported-variables-showhide" class="hide-inline">/* one unexported: */</label></i><div class="anchor value-res hidden" id="name-errorType"><i>	<span class="nodocs">  var <a href="../src/errors/wrap.go.html#line-104">errorType</a> <a href="internal/reflectlite.html">reflectlite</a>.<a href="internal/reflectlite.html#name-Type">Type</a></span></i></div></div></code></pre><pre id="footer">
 <table><tr><td><img src="../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

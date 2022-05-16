@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Package: internal/singleflight</title>
-<link href="../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../jvs/golds-v0.3.6.js"></script>
+<link href="../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="package-details"><code><span style="font-size:xx-large;">package <b>singleflight</b></span>
@@ -37,20 +37,20 @@
 				// protects m
 </span></i></span></span>
 		<input type='checkbox' class="fold" id="Group-fold-methods"><label for="Group-fold-methods">Methods (<i>total 4, in which 3 are exported</i>)</label><span id='Group-fold-methods-items' class="fold-items"><span>
-			<input type='checkbox' class="fold" id="Group-fold-method-Do"><label for="Group-fold-method-Do">(*T) <a href="../../src/internal/singleflight/singleflight.go.html#line-47">Do</a>(key <a href="../builtin.html#name-string">string</a>, fn func() (interface{}, <a href="../builtin.html#name-error">error</a>)) (v interface{}, err <a href="../builtin.html#name-error">error</a>, shared <a href="../builtin.html#name-bool">bool</a>)</label><span id='Group-fold-method-Do-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Group-fold-method-Do"><label for="Group-fold-method-Do">(*Group) <a href="../../src/internal/singleflight/singleflight.go.html#line-47">Do</a>(key <a href="../builtin.html#name-string">string</a>, fn func() (<a href="../builtin.html#name-any">any</a>, <a href="../builtin.html#name-error">error</a>)) (v <a href="../builtin.html#name-any">any</a>, err <a href="../builtin.html#name-error">error</a>, shared <a href="../builtin.html#name-bool">bool</a>)</label><span id='Group-fold-method-Do-docs' class="fold-docs">
 				Do executes and returns the results of the given function, making
 				sure that only one execution is in-flight for a given key at a
 				time. If a duplicate comes in, the duplicate caller waits for the
 				original to complete and receives the same results.
 				The return value shared indicates whether v was given to multiple callers.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Group-fold-method-DoChan"><label for="Group-fold-method-DoChan">(*T) <a href="../../src/internal/singleflight/singleflight.go.html#line-71">DoChan</a>(key <a href="../builtin.html#name-string">string</a>, fn func() (interface{}, <a href="../builtin.html#name-error">error</a>)) (&lt;-chan <a href="#name-Result">Result</a>, <a href="../builtin.html#name-bool">bool</a>)</label><span id='Group-fold-method-DoChan-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Group-fold-method-DoChan"><label for="Group-fold-method-DoChan">(*Group) <a href="../../src/internal/singleflight/singleflight.go.html#line-71">DoChan</a>(key <a href="../builtin.html#name-string">string</a>, fn func() (<a href="../builtin.html#name-any">any</a>, <a href="../builtin.html#name-error">error</a>)) (&lt;-chan <a href="#name-Result">Result</a>, <a href="../builtin.html#name-bool">bool</a>)</label><span id='Group-fold-method-DoChan-docs' class="fold-docs">
 				DoChan is like Do but returns a channel that will receive the
 				results when they are ready. The second result is true if the function
 				will eventually be called, false if it will not (because there is
 				a pending request with this key).
 </span></span><span>
-			<input type='checkbox' class="fold" id="Group-fold-method-ForgetUnshared"><label for="Group-fold-method-ForgetUnshared">(*T) <a href="../../src/internal/singleflight/singleflight.go.html#line-111">ForgetUnshared</a>(key <a href="../builtin.html#name-string">string</a>) <a href="../builtin.html#name-bool">bool</a></label><span id='Group-fold-method-ForgetUnshared-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Group-fold-method-ForgetUnshared"><label for="Group-fold-method-ForgetUnshared">(*Group) <a href="../../src/internal/singleflight/singleflight.go.html#line-111">ForgetUnshared</a>(key <a href="../builtin.html#name-string">string</a>) <a href="../builtin.html#name-bool">bool</a></label><span id='Group-fold-method-ForgetUnshared-docs' class="fold-docs">
 				ForgetUnshared tells the singleflight to forget about a key if it is not
 				shared with any other goroutines. Future calls to Do for a forgotten key
 				will call the function rather than waiting for an earlier call to complete.
@@ -58,12 +58,12 @@
 				other goroutines are waiting for the result.
 </span></span>
 			<input type='checkbox' class="showhide" id="Group-showhide-methods"><i><label for="Group-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="Group-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="Group-fold-method-doCall"><label for="Group-fold-method-doCall">(*T) <a href="../../src/internal/singleflight/singleflight.go.html#line-94">doCall</a>(c *<a href="#name-call">call</a>, key <a href="../builtin.html#name-string">string</a>, fn func() (interface{}, <a href="../builtin.html#name-error">error</a>))</label><span id='Group-fold-method-doCall-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Group-fold-method-doCall"><label for="Group-fold-method-doCall">(*Group) <a href="../../src/internal/singleflight/singleflight.go.html#line-94">doCall</a>(c *<a href="#name-call">call</a>, key <a href="../builtin.html#name-string">string</a>, fn func() (<a href="../builtin.html#name-any">any</a>, <a href="../builtin.html#name-error">error</a>))</label><span id='Group-fold-method-doCall-docs' class="fold-docs">
 				doCall handles the single call for a key.
 </span></i></span></span>
 		<input type='checkbox' class="fold" id="Group-fold-results"><label for="Group-fold-results">As Outputs Of (<i>at least one unexported</i>)</label><span id='Group-fold-results-items' class="fold-items">
 			<input type='checkbox' class="showhide" id="Group-showhide-inputofs"><i><label for="Group-showhide-inputofs" class="show-inline">/* at least one unexported ... */</label><label for="Group-showhide-inputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
-			func net.(*<a href="../net.html#name-Resolver">Resolver</a>).<a href="../../src/net/lookup.go.html#line-160">getLookupGroup</a>() *<b>Group</b></i></span></span>
+			func net.(*<a href="../net.html#name-Resolver">Resolver</a>).<a href="../../src/net/lookup.go.html#line-161">getLookupGroup</a>() *<b>Group</b></i></span></span>
 
 </span></div><div class="anchor type-res" id="name-Result" data-popularity="75">	<input type='checkbox' class="fold" id="Result-fold-content"><label for="Result-fold-content"> type <a href="../../src/internal/singleflight/singleflight.go.html#line-36">Result</a> <i>(struct)</i></label><span id='Result-fold-content-docs' class="fold-docs">
 		Result holds the results of Do, so they can be passed
@@ -72,9 +72,9 @@
 		<input type='checkbox' class="fold" id="Result-fold-fields"><label for="Result-fold-fields">Fields (<i>total 3, all are exported</i>)</label><span id='Result-fold-fields-items' class="fold-items"><span>
 			<span class="nodocs"><a href="../../src/internal/singleflight/singleflight.go.html#line-38">Err</a> <i><a href="../builtin.html#name-error">error</a></i></span></span><span>
 			<span class="nodocs"><a href="../../src/internal/singleflight/singleflight.go.html#line-39">Shared</a> <i><a href="../builtin.html#name-bool">bool</a></i></span></span><span>
-			<span class="nodocs"><a href="../../src/internal/singleflight/singleflight.go.html#line-37">Val</a> <i>interface{}</i></span></span></span>
+			<span class="nodocs"><a href="../../src/internal/singleflight/singleflight.go.html#line-37">Val</a> <i><a href="../builtin.html#name-any">any</a></i></span></span></span>
 		<input type='checkbox' class="fold" id="Result-fold-results"><label for="Result-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='Result-fold-results-items' class="fold-items"><span>
-			func (*<a href="#name-Group">Group</a>).<a href="../../src/internal/singleflight/singleflight.go.html#line-71">DoChan</a>(key <a href="../builtin.html#name-string">string</a>, fn func() (interface{}, <a href="../builtin.html#name-error">error</a>)) (&lt;-chan <b>Result</b>, <a href="../builtin.html#name-bool">bool</a>)</span></span>
+			func (*<a href="#name-Group">Group</a>).<a href="../../src/internal/singleflight/singleflight.go.html#line-71">DoChan</a>(key <a href="../builtin.html#name-string">string</a>, fn func() (<a href="../builtin.html#name-any">any</a>, <a href="../builtin.html#name-error">error</a>)) (&lt;-chan <b>Result</b>, <a href="../builtin.html#name-bool">bool</a>)</span></span>
 
 </span></div></div><div>	<input type='checkbox' class="showhide" id="unexported-typenames-showhide"><i><label for="unexported-typenames-showhide" class="show-inline">/* one unexported ... */</label><label for="unexported-typenames-showhide" class="hide-inline">/* one unexported: */</label></i><div class="anchor type-res hidden" id="name-call" data-popularity="35">	<input type='checkbox' class="fold" id="call-fold-content"><label for="call-fold-content"> type <a href="../../src/internal/singleflight/singleflight.go.html#line-12">call</a> <i>(struct)</i></label><span id='call-fold-content-docs' class="fold-docs">
 		call is an in-flight or completed singleflight.Do call
@@ -88,18 +88,18 @@
 				not written after the WaitGroup is done.
 </span></i></span><span class="hidden"><i>
 			<span class="nodocs"><a href="../../src/internal/singleflight/singleflight.go.html#line-18">err</a> <i><a href="../builtin.html#name-error">error</a></i></span></i></span><span class="hidden"><i>
-			<input type='checkbox' class="fold" id="call-fold-field-val"><label for="call-fold-field-val"><a href="../../src/internal/singleflight/singleflight.go.html#line-17">val</a> <i>interface{}</i></label><span id='call-fold-field-val-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="call-fold-field-val"><label for="call-fold-field-val"><a href="../../src/internal/singleflight/singleflight.go.html#line-17">val</a> <i><a href="../builtin.html#name-any">any</a></i></label><span id='call-fold-field-val-docs' class="fold-docs">
 				These fields are written once before the WaitGroup is done
 				and are only read after the WaitGroup is done.
 </span></i></span><span class="hidden"><i>
 			<span class="nodocs"><a href="../../src/internal/singleflight/singleflight.go.html#line-13">wg</a> <i><a href="../sync.html">sync</a>.<a href="../sync.html#name-WaitGroup">WaitGroup</a></i></span></i></span></span>
 		<input type='checkbox' class="fold" id="call-fold-params"><label for="call-fold-params">As Inputs Of (<i>at least one unexported</i>)</label><span id='call-fold-params-items' class="fold-items">
 			<input type='checkbox' checked class="showhide" id="call-showhide-outputofs"><i><label for="call-showhide-outputofs" class="show-inline">/* at least one unexported ... */</label><label for="call-showhide-outputofs" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
-			func (*<a href="#name-Group">Group</a>).<a href="../../src/internal/singleflight/singleflight.go.html#line-94">doCall</a>(c *<b>call</b>, key <a href="../builtin.html#name-string">string</a>, fn func() (interface{}, <a href="../builtin.html#name-error">error</a>))</i></span></span>
+			func (*<a href="#name-Group">Group</a>).<a href="../../src/internal/singleflight/singleflight.go.html#line-94">doCall</a>(c *<b>call</b>, key <a href="../builtin.html#name-string">string</a>, fn func() (<a href="../builtin.html#name-any">any</a>, <a href="../builtin.html#name-error">error</a>))</i></span></span>
 
 </span></div></div></code></pre><pre id="footer">
 <table><tr><td><img src="../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

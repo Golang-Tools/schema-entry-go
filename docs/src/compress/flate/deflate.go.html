@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: deflate.go in package compress/flate</title>
-<link href="../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -366,7 +366,7 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-54"><code>	<a href="../../../pkg/compress/flate.html#name-hashMask" class="ident">hashMask</a>            = (<span class="lit-number">1</span> &lt;&lt; <a href="#line-52" class="ident">hashBits</a>) - <span class="lit-number">1</span></code></span>
 <span class="codeline" id="line-55"><code>	<a href="../../../pkg/compress/flate.html#name-maxHashOffset" class="ident">maxHashOffset</a>       = <span class="lit-number">1</span> &lt;&lt; <span class="lit-number">24</span></code></span>
 <span class="codeline" id="line-56"><code></code></span>
-<span class="codeline" id="line-57"><code>	<a href="../../../pkg/compress/flate.html#name-skipNever" class="ident">skipNever</a> = <a href="../../../pkg/math.html" class="ident i2">math</a>.<a href="../../math/const.go.html#line-44" class="ident">MaxInt32</a></code></span>
+<span class="codeline" id="line-57"><code>	<a href="../../../pkg/compress/flate.html#name-skipNever" class="ident">skipNever</a> = <a href="../../../pkg/math.html" class="ident i2">math</a>.<a href="../../math/const.go.html#line-48" class="ident">MaxInt32</a></code></span>
 <span class="codeline" id="line-58"><code>)</code></span>
 <span class="codeline" id="line-59"><code></code></span>
 <span class="codeline" id="line-60"><code><span class="keyword">type</span> <a href="../../../pkg/compress/flate.html#name-compressionLevel" class="ident">compressionLevel</a> <span class="keyword">struct</span> {</code></span>
@@ -441,7 +441,7 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-129"><code>		<span class="keyword">if</span> <label for="r0" class="ident">d</label>.<a href="#line-106" class="ident">blockStart</a> &gt;= <a href="#line-33" class="ident">windowSize</a> {</code></span>
 <span class="codeline" id="line-130"><code>			<label for="r0" class="ident">d</label>.<a href="#line-106" class="ident">blockStart</a> -= <a href="#line-33" class="ident">windowSize</a></code></span>
 <span class="codeline" id="line-131"><code>		} <span class="keyword">else</span> {</code></span>
-<span class="codeline" id="line-132"><code>			<label for="r0" class="ident">d</label>.<a href="#line-106" class="ident">blockStart</a> = <a href="../../../pkg/math.html" class="ident i2">math</a>.<a href="../../math/const.go.html#line-44" class="ident">MaxInt32</a></code></span>
+<span class="codeline" id="line-132"><code>			<label for="r0" class="ident">d</label>.<a href="#line-106" class="ident">blockStart</a> = <a href="../../../pkg/math.html" class="ident i2">math</a>.<a href="../../math/const.go.html#line-48" class="ident">MaxInt32</a></code></span>
 <span class="codeline" id="line-133"><code>		}</code></span>
 <span class="codeline" id="line-134"><code>		<label for="r0" class="ident">d</label>.<a href="#line-100" class="ident">hashOffset</a> += <a href="#line-33" class="ident">windowSize</a></code></span>
 <span class="codeline" id="line-135"><code>		<span class="keyword">if</span> <label for="r0" class="ident">d</label>.<a href="#line-100" class="ident">hashOffset</a> &gt; <a href="#line-55" class="ident">maxHashOffset</a> {</code></span>
@@ -1060,7 +1060,7 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-748"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

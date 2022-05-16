@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: reference.go in package github.com/xeipuuv/gojsonreference</title>
-<link href="../../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -149,7 +149,7 @@ input[id=i5]:checked ~pre .i5
 <span class="codeline" id="line-69"><code><span class="keyword">func</span> (<label for="r8" class="ident">r</label> *<a href="#line-50" class="ident">JsonReference</a>) <label for="r9" class="ident"><a href="../../../../imp/github.com/xeipuuv/gojsonreference.JsonReference.html#name-.String" class="ident">String</a></label>() <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a> {</code></span>
 <span class="codeline" id="line-70"><code></code></span>
 <span class="codeline" id="line-71"><code>	<span class="keyword">if</span> <label for="r8" class="ident">r</label>.<a href="#line-51" class="ident">referenceUrl</a> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
-<span class="codeline" id="line-72"><code>		<span class="keyword">return</span> <label for="r8" class="ident">r</label>.<a href="#line-51" class="ident">referenceUrl</a>.<a href="../../../net/url/url.go.html#line-811" class="ident">String</a>()</code></span>
+<span class="codeline" id="line-72"><code>		<span class="keyword">return</span> <label for="r8" class="ident">r</label>.<a href="#line-51" class="ident">referenceUrl</a>.<a href="../../../net/url/url.go.html#line-798" class="ident">String</a>()</code></span>
 <span class="codeline" id="line-73"><code>	}</code></span>
 <span class="codeline" id="line-74"><code></code></span>
 <span class="codeline" id="line-75"><code>	<span class="keyword">if</span> <label for="r8" class="ident">r</label>.<a href="#line-56" class="ident">HasFragmentOnly</a> {</code></span>
@@ -166,7 +166,7 @@ input[id=i5]:checked ~pre .i5
 <span class="codeline" id="line-86"><code><span class="comment">// "Constructor", parses the given string JSON reference</span></code></span>
 <span class="codeline" id="line-87"><code><span class="keyword">func</span> (<label for="r12" class="ident">r</label> *<a href="#line-50" class="ident">JsonReference</a>) <label for="r13" class="ident">parse</label>(<label for="r14" class="ident">jsonReferenceString</label> <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>) (<label for="r15" class="ident">err</label> <a href="../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
 <span class="codeline" id="line-88"><code></code></span>
-<span class="codeline" id="line-89"><code>	<label for="r12" class="ident">r</label>.<a href="#line-51" class="ident">referenceUrl</a>, <label for="r15" class="ident">err</label> = <a href="../../../../pkg/net/url.html" class="ident i1">url</a>.<a href="../../../net/url/url.go.html#line-475" class="ident">Parse</a>(<label for="r14" class="ident">jsonReferenceString</label>)</code></span>
+<span class="codeline" id="line-89"><code>	<label for="r12" class="ident">r</label>.<a href="#line-51" class="ident">referenceUrl</a>, <label for="r15" class="ident">err</label> = <a href="../../../../pkg/net/url.html" class="ident i1">url</a>.<a href="../../../net/url/url.go.html#line-461" class="ident">Parse</a>(<label for="r14" class="ident">jsonReferenceString</label>)</code></span>
 <span class="codeline" id="line-90"><code>	<span class="keyword">if</span> <label for="r15" class="ident">err</label> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
 <span class="codeline" id="line-91"><code>		<span class="keyword">return</span></code></span>
 <span class="codeline" id="line-92"><code>	}</code></span>
@@ -183,11 +183,11 @@ input[id=i5]:checked ~pre .i5
 <span class="codeline" id="line-103"><code>	}</code></span>
 <span class="codeline" id="line-104"><code></code></span>
 <span class="codeline" id="line-105"><code>	<label for="r12" class="ident">r</label>.<a href="#line-57" class="ident">HasFileScheme</a> = <label for="r16" class="ident">refUrl</label>.<a href="../../../net/url/url.go.html#line-359" class="ident">Scheme</a> == <span class="lit-string">"file"</span></code></span>
-<span class="codeline" id="line-106"><code>	<span class="keyword">if</span> <a href="../../../../pkg/runtime.html" class="ident i3">runtime</a>.<a href="../../../runtime/extern.go.html#line-253" class="ident">GOOS</a> == <span class="lit-string">"windows"</span> {</code></span>
+<span class="codeline" id="line-106"><code>	<span class="keyword">if</span> <a href="../../../../pkg/runtime.html" class="ident i3">runtime</a>.<a href="../../../runtime/extern.go.html#line-271" class="ident">GOOS</a> == <span class="lit-string">"windows"</span> {</code></span>
 <span class="codeline" id="line-107"><code>		<span class="comment">// on Windows, a file URL may have an extra leading slash, and if it</span></code></span>
 <span class="codeline" id="line-108"><code><span class="comment">		// doesn't then its first component will be treated as the host by the</span></code></span>
 <span class="codeline" id="line-109"><code><span class="comment">		// Go runtime</span></code></span>
-<span class="codeline" id="line-110"><code>		<span class="keyword">if</span> <label for="r16" class="ident">refUrl</label>.<a href="../../../net/url/url.go.html#line-362" class="ident">Host</a> == <span class="lit-string">""</span> &amp;&amp; <a href="../../../../pkg/strings.html" class="ident i4">strings</a>.<a href="../../../strings/strings.go.html#line-444" class="ident">HasPrefix</a>(<label for="r16" class="ident">refUrl</label>.<a href="../../../net/url/url.go.html#line-363" class="ident">Path</a>, <span class="lit-string">"/"</span>) {</code></span>
+<span class="codeline" id="line-110"><code>		<span class="keyword">if</span> <label for="r16" class="ident">refUrl</label>.<a href="../../../net/url/url.go.html#line-362" class="ident">Host</a> == <span class="lit-string">""</span> &amp;&amp; <a href="../../../../pkg/strings.html" class="ident i4">strings</a>.<a href="../../../strings/strings.go.html#line-448" class="ident">HasPrefix</a>(<label for="r16" class="ident">refUrl</label>.<a href="../../../net/url/url.go.html#line-363" class="ident">Path</a>, <span class="lit-string">"/"</span>) {</code></span>
 <span class="codeline" id="line-111"><code>			<label for="r12" class="ident">r</label>.<a href="#line-58" class="ident">HasFullFilePath</a> = <a href="../../../../pkg/path/filepath.html" class="ident i2">filepath</a>.<a href="../../../path/filepath/path_unix.go.html#line-12" class="ident">IsAbs</a>(<label for="r16" class="ident">refUrl</label>.<a href="../../../net/url/url.go.html#line-363" class="ident">Path</a>[<span class="lit-number">1</span>:])</code></span>
 <span class="codeline" id="line-112"><code>		} <span class="keyword">else</span> {</code></span>
 <span class="codeline" id="line-113"><code>			<label for="r12" class="ident">r</label>.<a href="#line-58" class="ident">HasFullFilePath</a> = <a href="../../../../pkg/path/filepath.html" class="ident i2">filepath</a>.<a href="../../../path/filepath/path_unix.go.html#line-12" class="ident">IsAbs</a>(<label for="r16" class="ident">refUrl</label>.<a href="../../../net/url/url.go.html#line-362" class="ident">Host</a> + <label for="r16" class="ident">refUrl</label>.<a href="../../../net/url/url.go.html#line-363" class="ident">Path</a>)</code></span>
@@ -219,7 +219,7 @@ input[id=i5]:checked ~pre .i5
 <span class="codeline" id="line-139"><code>	<label for="r20" class="ident">parentUrl</label> := *<label for="r17" class="ident">r</label>.<a href="#line-61" class="ident">GetUrl</a>()</code></span>
 <span class="codeline" id="line-140"><code>	<label for="r20" class="ident">parentUrl</label>.<a href="../../../net/url/url.go.html#line-367" class="ident">Fragment</a> = <span class="lit-string">""</span></code></span>
 <span class="codeline" id="line-141"><code></code></span>
-<span class="codeline" id="line-142"><code>	<label for="r21" class="ident">ref</label>, <label for="r22" class="ident">err</label> := <a href="#line-42" class="ident">NewJsonReference</a>(<label for="r20" class="ident">parentUrl</label>.<a href="../../../net/url/url.go.html#line-1074" class="ident">ResolveReference</a>(<label for="r19" class="ident">child</label>.<a href="#line-61" class="ident">GetUrl</a>()).<a href="../../../net/url/url.go.html#line-811" class="ident">String</a>())</code></span>
+<span class="codeline" id="line-142"><code>	<label for="r21" class="ident">ref</label>, <label for="r22" class="ident">err</label> := <a href="#line-42" class="ident">NewJsonReference</a>(<label for="r20" class="ident">parentUrl</label>.<a href="../../../net/url/url.go.html#line-1068" class="ident">ResolveReference</a>(<label for="r19" class="ident">child</label>.<a href="#line-61" class="ident">GetUrl</a>()).<a href="../../../net/url/url.go.html#line-798" class="ident">String</a>())</code></span>
 <span class="codeline" id="line-143"><code>	<span class="keyword">if</span> <label for="r22" class="ident">err</label> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
 <span class="codeline" id="line-144"><code>		<span class="keyword">return</span> <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <label for="r22" class="ident">err</label></code></span>
 <span class="codeline" id="line-145"><code>	}</code></span>
@@ -227,7 +227,7 @@ input[id=i5]:checked ~pre .i5
 <span class="codeline" id="line-147"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

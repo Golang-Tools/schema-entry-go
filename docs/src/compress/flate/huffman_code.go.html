@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: huffman_code.go in package compress/flate</title>
-<link href="../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -260,7 +260,7 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-54"><code>	<label for="r0" class="ident">h</label>.<a href="#line-15" class="ident">code</a> = <label for="r2" class="ident">code</label></code></span>
 <span class="codeline" id="line-55"><code>}</code></span>
 <span class="codeline" id="line-56"><code></code></span>
-<span class="codeline" id="line-57"><code><span class="keyword">func</span> <label for="r4" class="ident"><a href="../../../pkg/compress/flate.html#name-maxNode" class="ident">maxNode</a></label>() <a href="#line-26" class="ident">literalNode</a> { <span class="keyword">return</span> <a href="#line-26" class="ident">literalNode</a>{<a href="../../../pkg/math.html" class="ident i0">math</a>.<a href="../../math/const.go.html#line-49" class="ident">MaxUint16</a>, <a href="../../../pkg/math.html" class="ident i0">math</a>.<a href="../../math/const.go.html#line-44" class="ident">MaxInt32</a>} }</code></span>
+<span class="codeline" id="line-57"><code><span class="keyword">func</span> <label for="r4" class="ident"><a href="../../../pkg/compress/flate.html#name-maxNode" class="ident">maxNode</a></label>() <a href="#line-26" class="ident">literalNode</a> { <span class="keyword">return</span> <a href="#line-26" class="ident">literalNode</a>{<a href="../../../pkg/math.html" class="ident i0">math</a>.<a href="../../math/const.go.html#line-54" class="ident">MaxUint16</a>, <a href="../../../pkg/math.html" class="ident i0">math</a>.<a href="../../math/const.go.html#line-48" class="ident">MaxInt32</a>} }</code></span>
 <span class="codeline" id="line-58"><code></code></span>
 <span class="codeline" id="line-59"><code><span class="keyword">func</span> <label for="r5" class="ident"><a href="../../../pkg/compress/flate.html#name-newHuffmanEncoder" class="ident">newHuffmanEncoder</a></label>(<label for="r6" class="ident">size</label> <a href="../../../pkg/builtin.html#name-int" class="ident">int</a>) *<a href="#line-18" class="ident">huffmanEncoder</a> {</code></span>
 <span class="codeline" id="line-60"><code>	<span class="keyword">return</span> &amp;<a href="#line-18" class="ident">huffmanEncoder</a>{<a href="#line-19" class="ident">codes</a>: <a href="../../../pkg/builtin.html#name-make" class="ident">make</a>([]<a href="#line-14" class="ident">hcode</a>, <label for="r6" class="ident">size</label>)}</code></span>
@@ -373,7 +373,7 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-167"><code>		}</code></span>
 <span class="codeline" id="line-168"><code>		<label for="r29" class="ident">leafCounts</label>[<label for="r30" class="ident">level</label>][<label for="r30" class="ident">level</label>] = <span class="lit-number">2</span></code></span>
 <span class="codeline" id="line-169"><code>		<span class="keyword">if</span> <label for="r30" class="ident">level</label> == <span class="lit-number">1</span> {</code></span>
-<span class="codeline" id="line-170"><code>			<label for="r28" class="ident">levels</label>[<label for="r30" class="ident">level</label>].<a href="#line-44" class="ident">nextPairFreq</a> = <a href="../../../pkg/math.html" class="ident i0">math</a>.<a href="../../math/const.go.html#line-44" class="ident">MaxInt32</a></code></span>
+<span class="codeline" id="line-170"><code>			<label for="r28" class="ident">levels</label>[<label for="r30" class="ident">level</label>].<a href="#line-44" class="ident">nextPairFreq</a> = <a href="../../../pkg/math.html" class="ident i0">math</a>.<a href="../../math/const.go.html#line-48" class="ident">MaxInt32</a></code></span>
 <span class="codeline" id="line-171"><code>		}</code></span>
 <span class="codeline" id="line-172"><code>	}</code></span>
 <span class="codeline" id="line-173"><code></code></span>
@@ -383,13 +383,13 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-177"><code>	<label for="r31" class="ident">level</label> := <label for="r26" class="ident">maxBits</label></code></span>
 <span class="codeline" id="line-178"><code>	<span class="keyword">for</span> {</code></span>
 <span class="codeline" id="line-179"><code>		<label for="r32" class="ident">l</label> := &amp;<label for="r28" class="ident">levels</label>[<label for="r31" class="ident">level</label>]</code></span>
-<span class="codeline" id="line-180"><code>		<span class="keyword">if</span> <label for="r32" class="ident">l</label>.<a href="#line-44" class="ident">nextPairFreq</a> == <a href="../../../pkg/math.html" class="ident i0">math</a>.<a href="../../math/const.go.html#line-44" class="ident">MaxInt32</a> &amp;&amp; <label for="r32" class="ident">l</label>.<a href="#line-40" class="ident">nextCharFreq</a> == <a href="../../../pkg/math.html" class="ident i0">math</a>.<a href="../../math/const.go.html#line-44" class="ident">MaxInt32</a> {</code></span>
+<span class="codeline" id="line-180"><code>		<span class="keyword">if</span> <label for="r32" class="ident">l</label>.<a href="#line-44" class="ident">nextPairFreq</a> == <a href="../../../pkg/math.html" class="ident i0">math</a>.<a href="../../math/const.go.html#line-48" class="ident">MaxInt32</a> &amp;&amp; <label for="r32" class="ident">l</label>.<a href="#line-40" class="ident">nextCharFreq</a> == <a href="../../../pkg/math.html" class="ident i0">math</a>.<a href="../../math/const.go.html#line-48" class="ident">MaxInt32</a> {</code></span>
 <span class="codeline" id="line-181"><code>			<span class="comment">// We've run out of both leafs and pairs.</span></code></span>
 <span class="codeline" id="line-182"><code><span class="comment">			// End all calculations for this level.</span></code></span>
 <span class="codeline" id="line-183"><code><span class="comment">			// To make sure we never come back to this level or any lower level,</span></code></span>
 <span class="codeline" id="line-184"><code><span class="comment">			// set nextPairFreq impossibly large.</span></code></span>
 <span class="codeline" id="line-185"><code>			<label for="r32" class="ident">l</label>.<a href="#line-48" class="ident">needed</a> = <span class="lit-number">0</span></code></span>
-<span class="codeline" id="line-186"><code>			<label for="r28" class="ident">levels</label>[<label for="r31" class="ident">level</label>+<span class="lit-number">1</span>].<a href="#line-44" class="ident">nextPairFreq</a> = <a href="../../../pkg/math.html" class="ident i0">math</a>.<a href="../../math/const.go.html#line-44" class="ident">MaxInt32</a></code></span>
+<span class="codeline" id="line-186"><code>			<label for="r28" class="ident">levels</label>[<label for="r31" class="ident">level</label>+<span class="lit-number">1</span>].<a href="#line-44" class="ident">nextPairFreq</a> = <a href="../../../pkg/math.html" class="ident i0">math</a>.<a href="../../math/const.go.html#line-48" class="ident">MaxInt32</a></code></span>
 <span class="codeline" id="line-187"><code>			<label for="r31" class="ident">level</label>++</code></span>
 <span class="codeline" id="line-188"><code>			<span class="keyword">continue</span></code></span>
 <span class="codeline" id="line-189"><code>		}</code></span>
@@ -555,7 +555,7 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-349"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

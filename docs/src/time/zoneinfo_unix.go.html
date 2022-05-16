@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: zoneinfo_unix.go in package time</title>
-<link href="../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../jvs/golds-v0.3.6.js"></script>
+<link href="../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -46,7 +46,7 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-2"><code><span class="comment">// Use of this source code is governed by a BSD-style</span></code></span>
 <span class="codeline" id="line-3"><code><span class="comment">// license that can be found in the LICENSE file.</span></code></span>
 <span class="codeline" id="line-4"><code></code></span>
-<span class="codeline" id="line-5"><code><span class="comment">// +build aix darwin,!ios dragonfly freebsd linux,!android netbsd openbsd solaris</span></code></span>
+<span class="codeline" id="line-5"><code><span class="comment">//go:build aix || (darwin &amp;&amp; !ios) || dragonfly || freebsd || (linux &amp;&amp; !android) || netbsd || openbsd || solaris</span></code></span>
 <span class="codeline" id="line-6"><code></code></span>
 <span class="codeline" id="line-7"><code><span class="comment">// Parse "zoneinfo" time zone file.</span></code></span>
 <span class="codeline" id="line-8"><code><span class="comment">// This is a fairly standard file format used on OS X, Linux, BSD, Sun, and others.</span></code></span>
@@ -66,7 +66,7 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-22"><code>	<span class="lit-string">"/usr/share/zoneinfo/"</span>,</code></span>
 <span class="codeline" id="line-23"><code>	<span class="lit-string">"/usr/share/lib/zoneinfo/"</span>,</code></span>
 <span class="codeline" id="line-24"><code>	<span class="lit-string">"/usr/lib/locale/TZ/"</span>,</code></span>
-<span class="codeline" id="line-25"><code>	<a href="../../pkg/runtime.html" class="ident i0">runtime</a>.<a href="../runtime/extern.go.html#line-235" class="ident">GOROOT</a>() + <span class="lit-string">"/lib/time/zoneinfo.zip"</span>,</code></span>
+<span class="codeline" id="line-25"><code>	<a href="../../pkg/runtime.html" class="ident i0">runtime</a>.<a href="../runtime/extern.go.html#line-243" class="ident">GOROOT</a>() + <span class="lit-string">"/lib/time/zoneinfo.zip"</span>,</code></span>
 <span class="codeline" id="line-26"><code>}</code></span>
 <span class="codeline" id="line-27"><code></code></span>
 <span class="codeline" id="line-28"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../pkg/time.html#name-initLocal" class="ident">initLocal</a></label>() {</code></span>
@@ -113,7 +113,7 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-69"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: errors.go in package github.com/xeipuuv/gojsonschema</title>
-<link href="../../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -66,12 +66,12 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-6"><code>	<label for="i2"><span class="lit-string i2">"text/template"</span></label></code></span>
 <span class="codeline" id="line-7"><code>)</code></span>
 <span class="codeline" id="line-8"><code></code></span>
-<span class="codeline" id="line-9"><code><span class="keyword">var</span> <a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-errorTemplates" class="ident">errorTemplates</a> = <a href="#line-13" class="ident">errorTemplate</a>{<a href="../../../../pkg/text/template.html" class="ident i2">template</a>.<a href="../../../text/template/template.go.html#line-37" class="ident">New</a>(<span class="lit-string">"errors-new"</span>), <a href="../../../../pkg/sync.html" class="ident i1">sync</a>.<a href="../../../sync/rwmutex.go.html#line-28" class="ident">RWMutex</a>{}}</code></span>
+<span class="codeline" id="line-9"><code><span class="keyword">var</span> <a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-errorTemplates" class="ident">errorTemplates</a> = <a href="#line-13" class="ident">errorTemplate</a>{<a href="../../../../pkg/text/template.html" class="ident i2">template</a>.<a href="../../../text/template/template.go.html#line-38" class="ident">New</a>(<span class="lit-string">"errors-new"</span>), <a href="../../../../pkg/sync.html" class="ident i1">sync</a>.<a href="../../../sync/rwmutex.go.html#line-28" class="ident">RWMutex</a>{}}</code></span>
 <span class="codeline" id="line-10"><code></code></span>
 <span class="codeline" id="line-11"><code><span class="comment">// template.Template is not thread-safe for writing, so some locking is done</span></code></span>
 <span class="codeline" id="line-12"><code><span class="comment">// sync.RWMutex is used for efficiently locking when new templates are created</span></code></span>
 <span class="codeline" id="line-13"><code><span class="keyword">type</span> <a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-errorTemplate" class="ident">errorTemplate</a> <span class="keyword">struct</span> {</code></span>
-<span class="codeline" id="line-14"><code>	*<a href="../../../../pkg/text/template.html" class="ident i2">template</a>.<a href="../../../text/template/template.go.html#line-28" class="ident">Template</a></code></span>
+<span class="codeline" id="line-14"><code>	*<a href="../../../../pkg/text/template.html" class="ident i2">template</a>.<a href="../../../text/template/template.go.html#line-29" class="ident">Template</a></code></span>
 <span class="codeline" id="line-15"><code>	<a href="../../../../pkg/sync.html" class="ident i1">sync</a>.<a href="../../../sync/rwmutex.go.html#line-28" class="ident">RWMutex</a></code></span>
 <span class="codeline" id="line-16"><code>}</code></span>
 <span class="codeline" id="line-17"><code></code></span>
@@ -391,31 +391,31 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-331"><code><span class="comment">// from the ErrorDetails struct and vary for each type of error.</span></code></span>
 <span class="codeline" id="line-332"><code><span class="keyword">func</span> <label for="r10" class="ident"><a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-formatErrorDescription" class="ident">formatErrorDescription</a></label>(<label for="r11" class="ident">s</label> <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>, <label for="r12" class="ident">details</label> <a href="result.go.html#line-36" class="ident">ErrorDetails</a>) <a href="../../../../pkg/builtin.html#name-string" class="ident">string</a> {</code></span>
 <span class="codeline" id="line-333"><code></code></span>
-<span class="codeline" id="line-334"><code>	<span class="keyword">var</span> <label for="r13" class="ident">tpl</label> *<a href="../../../../pkg/text/template.html" class="ident i2">template</a>.<a href="../../../text/template/template.go.html#line-28" class="ident">Template</a></code></span>
+<span class="codeline" id="line-334"><code>	<span class="keyword">var</span> <label for="r13" class="ident">tpl</label> *<a href="../../../../pkg/text/template.html" class="ident i2">template</a>.<a href="../../../text/template/template.go.html#line-29" class="ident">Template</a></code></span>
 <span class="codeline" id="line-335"><code>	<span class="keyword">var</span> <label for="r14" class="ident">descrAsBuffer</label> <a href="../../../../pkg/bytes.html" class="ident i0">bytes</a>.<a href="../../../bytes/buffer.go.html#line-20" class="ident">Buffer</a></code></span>
 <span class="codeline" id="line-336"><code>	<span class="keyword">var</span> <label for="r15" class="ident">err</label> <a href="../../../../pkg/builtin.html#name-error" class="ident">error</a></code></span>
 <span class="codeline" id="line-337"><code></code></span>
 <span class="codeline" id="line-338"><code>	<a href="#line-9" class="ident">errorTemplates</a>.<a href="../../../sync/rwmutex.go.html#line-56" class="ident">RLock</a>()</code></span>
-<span class="codeline" id="line-339"><code>	<label for="r13" class="ident">tpl</label> = <a href="#line-9" class="ident">errorTemplates</a>.<a href="../../../text/template/template.go.html#line-181" class="ident">Lookup</a>(<label for="r11" class="ident">s</label>)</code></span>
-<span class="codeline" id="line-340"><code>	<a href="#line-9" class="ident">errorTemplates</a>.<a href="../../../sync/rwmutex.go.html#line-75" class="ident">RUnlock</a>()</code></span>
+<span class="codeline" id="line-339"><code>	<label for="r13" class="ident">tpl</label> = <a href="#line-9" class="ident">errorTemplates</a>.<a href="../../../text/template/template.go.html#line-188" class="ident">Lookup</a>(<label for="r11" class="ident">s</label>)</code></span>
+<span class="codeline" id="line-340"><code>	<a href="#line-9" class="ident">errorTemplates</a>.<a href="../../../sync/rwmutex.go.html#line-103" class="ident">RUnlock</a>()</code></span>
 <span class="codeline" id="line-341"><code></code></span>
 <span class="codeline" id="line-342"><code>	<span class="keyword">if</span> <label for="r13" class="ident">tpl</label> == <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
-<span class="codeline" id="line-343"><code>		<a href="#line-9" class="ident">errorTemplates</a>.<a href="../../../sync/rwmutex.go.html#line-105" class="ident">Lock</a>()</code></span>
-<span class="codeline" id="line-344"><code>		<label for="r13" class="ident">tpl</label> = <a href="#line-9" class="ident">errorTemplates</a>.<a href="../../../text/template/template.go.html#line-57" class="ident">New</a>(<label for="r11" class="ident">s</label>)</code></span>
+<span class="codeline" id="line-343"><code>		<a href="#line-9" class="ident">errorTemplates</a>.<a href="../../../sync/rwmutex.go.html#line-133" class="ident">Lock</a>()</code></span>
+<span class="codeline" id="line-344"><code>		<label for="r13" class="ident">tpl</label> = <a href="#line-9" class="ident">errorTemplates</a>.<a href="../../../text/template/template.go.html#line-58" class="ident">New</a>(<label for="r11" class="ident">s</label>)</code></span>
 <span class="codeline" id="line-345"><code></code></span>
 <span class="codeline" id="line-346"><code>		<span class="keyword">if</span> <a href="schema.go.html#line-45" class="ident">ErrorTemplateFuncs</a> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
-<span class="codeline" id="line-347"><code>			<label for="r13" class="ident">tpl</label>.<a href="../../../text/template/template.go.html#line-170" class="ident">Funcs</a>(<a href="schema.go.html#line-45" class="ident">ErrorTemplateFuncs</a>)</code></span>
+<span class="codeline" id="line-347"><code>			<label for="r13" class="ident">tpl</label>.<a href="../../../text/template/template.go.html#line-177" class="ident">Funcs</a>(<a href="schema.go.html#line-45" class="ident">ErrorTemplateFuncs</a>)</code></span>
 <span class="codeline" id="line-348"><code>		}</code></span>
 <span class="codeline" id="line-349"><code></code></span>
-<span class="codeline" id="line-350"><code>		<label for="r13" class="ident">tpl</label>, <label for="r15" class="ident">err</label> = <label for="r13" class="ident">tpl</label>.<a href="../../../text/template/template.go.html#line-198" class="ident">Parse</a>(<label for="r11" class="ident">s</label>)</code></span>
-<span class="codeline" id="line-351"><code>		<a href="#line-9" class="ident">errorTemplates</a>.<a href="../../../sync/rwmutex.go.html#line-131" class="ident">Unlock</a>()</code></span>
+<span class="codeline" id="line-350"><code>		<label for="r13" class="ident">tpl</label>, <label for="r15" class="ident">err</label> = <label for="r13" class="ident">tpl</label>.<a href="../../../text/template/template.go.html#line-207" class="ident">Parse</a>(<label for="r11" class="ident">s</label>)</code></span>
+<span class="codeline" id="line-351"><code>		<a href="#line-9" class="ident">errorTemplates</a>.<a href="../../../sync/rwmutex.go.html#line-190" class="ident">Unlock</a>()</code></span>
 <span class="codeline" id="line-352"><code></code></span>
 <span class="codeline" id="line-353"><code>		<span class="keyword">if</span> <label for="r15" class="ident">err</label> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
 <span class="codeline" id="line-354"><code>			<span class="keyword">return</span> <label for="r15" class="ident">err</label>.Error()</code></span>
 <span class="codeline" id="line-355"><code>		}</code></span>
 <span class="codeline" id="line-356"><code>	}</code></span>
 <span class="codeline" id="line-357"><code></code></span>
-<span class="codeline" id="line-358"><code>	<label for="r15" class="ident">err</label> = <label for="r13" class="ident">tpl</label>.<a href="../../../text/template/exec.go.html#line-202" class="ident">Execute</a>(&amp;<label for="r14" class="ident">descrAsBuffer</label>, <label for="r12" class="ident">details</label>)</code></span>
+<span class="codeline" id="line-358"><code>	<label for="r15" class="ident">err</label> = <label for="r13" class="ident">tpl</label>.<a href="../../../text/template/exec.go.html#line-200" class="ident">Execute</a>(&amp;<label for="r14" class="ident">descrAsBuffer</label>, <label for="r12" class="ident">details</label>)</code></span>
 <span class="codeline" id="line-359"><code>	<span class="keyword">if</span> <label for="r15" class="ident">err</label> != <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
 <span class="codeline" id="line-360"><code>		<span class="keyword">return</span> <label for="r15" class="ident">err</label>.Error()</code></span>
 <span class="codeline" id="line-361"><code>	}</code></span>
@@ -424,7 +424,7 @@ input[id=i2]:checked ~pre .i2
 <span class="codeline" id="line-364"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: fd_posix.go in package internal/poll</title>
-<link href="../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -76,7 +76,7 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-2"><code><span class="comment">// Use of this source code is governed by a BSD-style</span></code></span>
 <span class="codeline" id="line-3"><code><span class="comment">// license that can be found in the LICENSE file.</span></code></span>
 <span class="codeline" id="line-4"><code></code></span>
-<span class="codeline" id="line-5"><code><span class="comment">// +build aix darwin dragonfly freebsd js,wasm linux netbsd openbsd solaris windows</span></code></span>
+<span class="codeline" id="line-5"><code><span class="comment">//go:build aix || darwin || dragonfly || freebsd || (js &amp;&amp; wasm) || linux || netbsd || openbsd || solaris || windows</span></code></span>
 <span class="codeline" id="line-6"><code></code></span>
 <span class="codeline" id="line-7"><code><span class="keyword">package</span> poll</code></span>
 <span class="codeline" id="line-8"><code></code></span>
@@ -87,52 +87,52 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-13"><code></code></span>
 <span class="codeline" id="line-14"><code><span class="comment">// eofError returns io.EOF when fd is available for reading end of</span></code></span>
 <span class="codeline" id="line-15"><code><span class="comment">// file.</span></code></span>
-<span class="codeline" id="line-16"><code><span class="keyword">func</span> (<label for="r0" class="ident">fd</label> *<a href="fd_unix.go.html#line-17" class="ident">FD</a>) <label for="r1" class="ident">eofError</label>(<label for="r2" class="ident">n</label> <a href="../../../pkg/builtin.html#name-int" class="ident">int</a>, <label for="r3" class="ident">err</label> <a href="../../../pkg/builtin.html#name-error" class="ident">error</a>) <a href="../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
-<span class="codeline" id="line-17"><code>	<span class="keyword">if</span> <label for="r2" class="ident">n</label> == <span class="lit-number">0</span> &amp;&amp; <label for="r3" class="ident">err</label> == <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a> &amp;&amp; <label for="r0" class="ident">fd</label>.<a href="fd_unix.go.html#line-42" class="ident">ZeroReadIsEOF</a> {</code></span>
+<span class="codeline" id="line-16"><code><span class="keyword">func</span> (<label for="r0" class="ident">fd</label> *<a href="fd_unix.go.html#line-18" class="ident">FD</a>) <label for="r1" class="ident">eofError</label>(<label for="r2" class="ident">n</label> <a href="../../../pkg/builtin.html#name-int" class="ident">int</a>, <label for="r3" class="ident">err</label> <a href="../../../pkg/builtin.html#name-error" class="ident">error</a>) <a href="../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
+<span class="codeline" id="line-17"><code>	<span class="keyword">if</span> <label for="r2" class="ident">n</label> == <span class="lit-number">0</span> &amp;&amp; <label for="r3" class="ident">err</label> == <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a> &amp;&amp; <label for="r0" class="ident">fd</label>.<a href="fd_unix.go.html#line-43" class="ident">ZeroReadIsEOF</a> {</code></span>
 <span class="codeline" id="line-18"><code>		<span class="keyword">return</span> <a href="../../../pkg/io.html" class="ident i0">io</a>.<a href="../../io/io.go.html#line-44" class="ident">EOF</a></code></span>
 <span class="codeline" id="line-19"><code>	}</code></span>
 <span class="codeline" id="line-20"><code>	<span class="keyword">return</span> <label for="r3" class="ident">err</label></code></span>
 <span class="codeline" id="line-21"><code>}</code></span>
 <span class="codeline" id="line-22"><code></code></span>
 <span class="codeline" id="line-23"><code><span class="comment">// Shutdown wraps syscall.Shutdown.</span></code></span>
-<span class="codeline" id="line-24"><code><span class="keyword">func</span> (<label for="r4" class="ident">fd</label> *<a href="fd_unix.go.html#line-17" class="ident">FD</a>) <label for="r5" class="ident">Shutdown</label>(<label for="r6" class="ident">how</label> <a href="../../../pkg/builtin.html#name-int" class="ident">int</a>) <a href="../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
+<span class="codeline" id="line-24"><code><span class="keyword">func</span> (<label for="r4" class="ident">fd</label> *<a href="fd_unix.go.html#line-18" class="ident">FD</a>) <label for="r5" class="ident">Shutdown</label>(<label for="r6" class="ident">how</label> <a href="../../../pkg/builtin.html#name-int" class="ident">int</a>) <a href="../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
 <span class="codeline" id="line-25"><code>	<span class="keyword">if</span> <label for="r7" class="ident">err</label> := <label for="r4" class="ident">fd</label>.<a href="fd_mutex.go.html#line-201" class="ident">incref</a>(); <label for="r7" class="ident">err</label> != <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
 <span class="codeline" id="line-26"><code>		<span class="keyword">return</span> <label for="r7" class="ident">err</label></code></span>
 <span class="codeline" id="line-27"><code>	}</code></span>
 <span class="codeline" id="line-28"><code>	<span class="keyword">defer</span> <label for="r4" class="ident">fd</label>.<a href="fd_mutex.go.html#line-211" class="ident">decref</a>()</code></span>
-<span class="codeline" id="line-29"><code>	<span class="keyword">return</span> <a href="../../../pkg/syscall.html" class="ident i1">syscall</a>.<a href="../../syscall/zsyscall_darwin_amd64.go.html#line-181" class="ident">Shutdown</a>(<label for="r4" class="ident">fd</label>.<a href="fd_unix.go.html#line-22" class="ident">Sysfd</a>, <label for="r6" class="ident">how</label>)</code></span>
+<span class="codeline" id="line-29"><code>	<span class="keyword">return</span> <a href="../../../pkg/syscall.html" class="ident i1">syscall</a>.<a href="../../syscall/zsyscall_darwin_amd64.go.html#line-171" class="ident">Shutdown</a>(<label for="r4" class="ident">fd</label>.<a href="fd_unix.go.html#line-23" class="ident">Sysfd</a>, <label for="r6" class="ident">how</label>)</code></span>
 <span class="codeline" id="line-30"><code>}</code></span>
 <span class="codeline" id="line-31"><code></code></span>
 <span class="codeline" id="line-32"><code><span class="comment">// Fchown wraps syscall.Fchown.</span></code></span>
-<span class="codeline" id="line-33"><code><span class="keyword">func</span> (<label for="r8" class="ident">fd</label> *<a href="fd_unix.go.html#line-17" class="ident">FD</a>) <label for="r9" class="ident">Fchown</label>(<label for="r10" class="ident">uid</label>, <label for="r11" class="ident">gid</label> <a href="../../../pkg/builtin.html#name-int" class="ident">int</a>) <a href="../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
+<span class="codeline" id="line-33"><code><span class="keyword">func</span> (<label for="r8" class="ident">fd</label> *<a href="fd_unix.go.html#line-18" class="ident">FD</a>) <label for="r9" class="ident">Fchown</label>(<label for="r10" class="ident">uid</label>, <label for="r11" class="ident">gid</label> <a href="../../../pkg/builtin.html#name-int" class="ident">int</a>) <a href="../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
 <span class="codeline" id="line-34"><code>	<span class="keyword">if</span> <label for="r12" class="ident">err</label> := <label for="r8" class="ident">fd</label>.<a href="fd_mutex.go.html#line-201" class="ident">incref</a>(); <label for="r12" class="ident">err</label> != <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
 <span class="codeline" id="line-35"><code>		<span class="keyword">return</span> <label for="r12" class="ident">err</label></code></span>
 <span class="codeline" id="line-36"><code>	}</code></span>
 <span class="codeline" id="line-37"><code>	<span class="keyword">defer</span> <label for="r8" class="ident">fd</label>.<a href="fd_mutex.go.html#line-211" class="ident">decref</a>()</code></span>
 <span class="codeline" id="line-38"><code>	<span class="keyword">return</span> <a href="#line-72" class="ident">ignoringEINTR</a>(<span class="keyword">func</span>() <a href="../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
-<span class="codeline" id="line-39"><code>		<span class="keyword">return</span> <a href="../../../pkg/syscall.html" class="ident i1">syscall</a>.<a href="../../syscall/zsyscall_darwin_amd64.go.html#line-649" class="ident">Fchown</a>(<label for="r8" class="ident">fd</label>.<a href="fd_unix.go.html#line-22" class="ident">Sysfd</a>, <label for="r10" class="ident">uid</label>, <label for="r11" class="ident">gid</label>)</code></span>
+<span class="codeline" id="line-39"><code>		<span class="keyword">return</span> <a href="../../../pkg/syscall.html" class="ident i1">syscall</a>.<a href="../../syscall/zsyscall_darwin_amd64.go.html#line-631" class="ident">Fchown</a>(<label for="r8" class="ident">fd</label>.<a href="fd_unix.go.html#line-23" class="ident">Sysfd</a>, <label for="r10" class="ident">uid</label>, <label for="r11" class="ident">gid</label>)</code></span>
 <span class="codeline" id="line-40"><code>	})</code></span>
 <span class="codeline" id="line-41"><code>}</code></span>
 <span class="codeline" id="line-42"><code></code></span>
 <span class="codeline" id="line-43"><code><span class="comment">// Ftruncate wraps syscall.Ftruncate.</span></code></span>
-<span class="codeline" id="line-44"><code><span class="keyword">func</span> (<label for="r13" class="ident">fd</label> *<a href="fd_unix.go.html#line-17" class="ident">FD</a>) <label for="r14" class="ident">Ftruncate</label>(<label for="r15" class="ident">size</label> <a href="../../../pkg/builtin.html#name-int64" class="ident">int64</a>) <a href="../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
+<span class="codeline" id="line-44"><code><span class="keyword">func</span> (<label for="r13" class="ident">fd</label> *<a href="fd_unix.go.html#line-18" class="ident">FD</a>) <label for="r14" class="ident">Ftruncate</label>(<label for="r15" class="ident">size</label> <a href="../../../pkg/builtin.html#name-int64" class="ident">int64</a>) <a href="../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
 <span class="codeline" id="line-45"><code>	<span class="keyword">if</span> <label for="r16" class="ident">err</label> := <label for="r13" class="ident">fd</label>.<a href="fd_mutex.go.html#line-201" class="ident">incref</a>(); <label for="r16" class="ident">err</label> != <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
 <span class="codeline" id="line-46"><code>		<span class="keyword">return</span> <label for="r16" class="ident">err</label></code></span>
 <span class="codeline" id="line-47"><code>	}</code></span>
 <span class="codeline" id="line-48"><code>	<span class="keyword">defer</span> <label for="r13" class="ident">fd</label>.<a href="fd_mutex.go.html#line-211" class="ident">decref</a>()</code></span>
 <span class="codeline" id="line-49"><code>	<span class="keyword">return</span> <a href="#line-72" class="ident">ignoringEINTR</a>(<span class="keyword">func</span>() <a href="../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
-<span class="codeline" id="line-50"><code>		<span class="keyword">return</span> <a href="../../../pkg/syscall.html" class="ident i1">syscall</a>.<a href="../../syscall/zsyscall_darwin_amd64.go.html#line-710" class="ident">Ftruncate</a>(<label for="r13" class="ident">fd</label>.<a href="fd_unix.go.html#line-22" class="ident">Sysfd</a>, <label for="r15" class="ident">size</label>)</code></span>
+<span class="codeline" id="line-50"><code>		<span class="keyword">return</span> <a href="../../../pkg/syscall.html" class="ident i1">syscall</a>.<a href="../../syscall/zsyscall_darwin_amd64.go.html#line-688" class="ident">Ftruncate</a>(<label for="r13" class="ident">fd</label>.<a href="fd_unix.go.html#line-23" class="ident">Sysfd</a>, <label for="r15" class="ident">size</label>)</code></span>
 <span class="codeline" id="line-51"><code>	})</code></span>
 <span class="codeline" id="line-52"><code>}</code></span>
 <span class="codeline" id="line-53"><code></code></span>
 <span class="codeline" id="line-54"><code><span class="comment">// RawControl invokes the user-defined function f for a non-IO</span></code></span>
 <span class="codeline" id="line-55"><code><span class="comment">// operation.</span></code></span>
-<span class="codeline" id="line-56"><code><span class="keyword">func</span> (<label for="r17" class="ident">fd</label> *<a href="fd_unix.go.html#line-17" class="ident">FD</a>) <label for="r18" class="ident">RawControl</label>(<label for="r19" class="ident">f</label> <span class="keyword">func</span>(<a href="../../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a>)) <a href="../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
+<span class="codeline" id="line-56"><code><span class="keyword">func</span> (<label for="r17" class="ident">fd</label> *<a href="fd_unix.go.html#line-18" class="ident">FD</a>) <label for="r18" class="ident">RawControl</label>(<label for="r19" class="ident">f</label> <span class="keyword">func</span>(<a href="../../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a>)) <a href="../../../pkg/builtin.html#name-error" class="ident">error</a> {</code></span>
 <span class="codeline" id="line-57"><code>	<span class="keyword">if</span> <label for="r20" class="ident">err</label> := <label for="r17" class="ident">fd</label>.<a href="fd_mutex.go.html#line-201" class="ident">incref</a>(); <label for="r20" class="ident">err</label> != <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a> {</code></span>
 <span class="codeline" id="line-58"><code>		<span class="keyword">return</span> <label for="r20" class="ident">err</label></code></span>
 <span class="codeline" id="line-59"><code>	}</code></span>
 <span class="codeline" id="line-60"><code>	<span class="keyword">defer</span> <label for="r17" class="ident">fd</label>.<a href="fd_mutex.go.html#line-211" class="ident">decref</a>()</code></span>
-<span class="codeline" id="line-61"><code>	<label for="r19" class="ident">f</label>(<a href="../../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a>(<label for="r17" class="ident">fd</label>.<a href="fd_unix.go.html#line-22" class="ident">Sysfd</a>))</code></span>
+<span class="codeline" id="line-61"><code>	<label for="r19" class="ident">f</label>(<a href="../../../pkg/builtin.html#name-uintptr" class="ident">uintptr</a>(<label for="r17" class="ident">fd</label>.<a href="fd_unix.go.html#line-23" class="ident">Sysfd</a>))</code></span>
 <span class="codeline" id="line-62"><code>	<span class="keyword">return</span> <a href="../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
 <span class="codeline" id="line-63"><code>}</code></span>
 <span class="codeline" id="line-64"><code></code></span>
@@ -153,7 +153,7 @@ input[id=i1]:checked ~pre .i1
 <span class="codeline" id="line-79"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: draft.go in package github.com/xeipuuv/gojsonschema</title>
-<link href="../../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -104,7 +104,7 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-30"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-Draft4" class="ident">Draft4</a> <a href="#line-26" class="ident">Draft</a> = <span class="lit-number">4</span></code></span>
 <span class="codeline" id="line-31"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-Draft6" class="ident">Draft6</a> <a href="#line-26" class="ident">Draft</a> = <span class="lit-number">6</span></code></span>
 <span class="codeline" id="line-32"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-Draft7" class="ident">Draft7</a> <a href="#line-26" class="ident">Draft</a> = <span class="lit-number">7</span></code></span>
-<span class="codeline" id="line-33"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-Hybrid" class="ident">Hybrid</a> <a href="#line-26" class="ident">Draft</a> = <a href="../../../../pkg/math.html" class="ident i1">math</a>.<a href="../../../math/const.go.html#line-44" class="ident">MaxInt32</a></code></span>
+<span class="codeline" id="line-33"><code>	<a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-Hybrid" class="ident">Hybrid</a> <a href="#line-26" class="ident">Draft</a> = <a href="../../../../pkg/math.html" class="ident i1">math</a>.<a href="../../../math/const.go.html#line-48" class="ident">MaxInt32</a></code></span>
 <span class="codeline" id="line-34"><code>)</code></span>
 <span class="codeline" id="line-35"><code></code></span>
 <span class="codeline" id="line-36"><code><span class="keyword">type</span> <a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-draftConfig" class="ident">draftConfig</a> <span class="keyword">struct</span> {</code></span>
@@ -163,18 +163,18 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-89"><code></code></span>
 <span class="codeline" id="line-90"><code><span class="keyword">func</span> <label for="r16" class="ident"><a href="../../../../pkg/github.com/xeipuuv/gojsonschema.html#name-parseSchemaURL" class="ident">parseSchemaURL</a></label>(<label for="r17" class="ident">documentNode</label> <span class="keyword">interface</span>{}) (<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>, *<a href="#line-26" class="ident">Draft</a>, <a href="../../../../pkg/builtin.html#name-error" class="ident">error</a>) {</code></span>
 <span class="codeline" id="line-91"><code></code></span>
-<span class="codeline" id="line-92"><code>	<span class="keyword">if</span> <a href="utils.go.html#line-34" class="ident">isKind</a>(<label for="r17" class="ident">documentNode</label>, <a href="../../../../pkg/reflect.html" class="ident i2">reflect</a>.<a href="../../../reflect/type.go.html#line-236" class="ident">Bool</a>) {</code></span>
+<span class="codeline" id="line-92"><code>	<span class="keyword">if</span> <a href="utils.go.html#line-34" class="ident">isKind</a>(<label for="r17" class="ident">documentNode</label>, <a href="../../../../pkg/reflect.html" class="ident i2">reflect</a>.<a href="../../../reflect/type.go.html#line-243" class="ident">Bool</a>) {</code></span>
 <span class="codeline" id="line-93"><code>		<span class="keyword">return</span> <span class="lit-string">""</span>, <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a></code></span>
 <span class="codeline" id="line-94"><code>	}</code></span>
 <span class="codeline" id="line-95"><code></code></span>
-<span class="codeline" id="line-96"><code>	<span class="keyword">if</span> !<a href="utils.go.html#line-34" class="ident">isKind</a>(<label for="r17" class="ident">documentNode</label>, <a href="../../../../pkg/reflect.html" class="ident i2">reflect</a>.<a href="../../../reflect/type.go.html#line-256" class="ident">Map</a>) {</code></span>
+<span class="codeline" id="line-96"><code>	<span class="keyword">if</span> !<a href="utils.go.html#line-34" class="ident">isKind</a>(<label for="r17" class="ident">documentNode</label>, <a href="../../../../pkg/reflect.html" class="ident i2">reflect</a>.<a href="../../../reflect/type.go.html#line-263" class="ident">Map</a>) {</code></span>
 <span class="codeline" id="line-97"><code>		<span class="keyword">return</span> <span class="lit-string">""</span>, <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../../pkg/errors.html" class="ident i0">errors</a>.<a href="../../../errors/errors.go.html#line-58" class="ident">New</a>(<span class="lit-string">"schema is invalid"</span>)</code></span>
 <span class="codeline" id="line-98"><code>	}</code></span>
 <span class="codeline" id="line-99"><code></code></span>
 <span class="codeline" id="line-100"><code>	<label for="r18" class="ident">m</label> := <label for="r17" class="ident">documentNode</label>.(<span class="keyword">map</span>[<a href="../../../../pkg/builtin.html#name-string" class="ident">string</a>]<span class="keyword">interface</span>{})</code></span>
 <span class="codeline" id="line-101"><code></code></span>
 <span class="codeline" id="line-102"><code>	<span class="keyword">if</span> <a href="utils.go.html#line-49" class="ident">existsMapKey</a>(<label for="r18" class="ident">m</label>, <a href="subSchema.go^1caf7.html#line-37" class="ident">KEY_SCHEMA</a>) {</code></span>
-<span class="codeline" id="line-103"><code>		<span class="keyword">if</span> !<a href="utils.go.html#line-34" class="ident">isKind</a>(<label for="r18" class="ident">m</label>[<a href="subSchema.go^1caf7.html#line-37" class="ident">KEY_SCHEMA</a>], <a href="../../../../pkg/reflect.html" class="ident i2">reflect</a>.<a href="../../../reflect/type.go.html#line-259" class="ident">String</a>) {</code></span>
+<span class="codeline" id="line-103"><code>		<span class="keyword">if</span> !<a href="utils.go.html#line-34" class="ident">isKind</a>(<label for="r18" class="ident">m</label>[<a href="subSchema.go^1caf7.html#line-37" class="ident">KEY_SCHEMA</a>], <a href="../../../../pkg/reflect.html" class="ident i2">reflect</a>.<a href="../../../reflect/type.go.html#line-266" class="ident">String</a>) {</code></span>
 <span class="codeline" id="line-104"><code>			<span class="keyword">return</span> <span class="lit-string">""</span>, <a href="../../../../pkg/builtin.html#name-nil" class="ident">nil</a>, <a href="../../../../pkg/errors.html" class="ident i0">errors</a>.<a href="../../../errors/errors.go.html#line-58" class="ident">New</a>(<a href="errors.go.html#line-332" class="ident">formatErrorDescription</a>(</code></span>
 <span class="codeline" id="line-105"><code>				<a href="schema.go.html#line-42" class="ident">Locale</a>.<a href="locales.go.html#line-146" class="ident">MustBeOfType</a>(),</code></span>
 <span class="codeline" id="line-106"><code>				<a href="result.go.html#line-36" class="ident">ErrorDetails</a>{</code></span>
@@ -199,7 +199,7 @@ input[id=i3]:checked ~pre .i3
 <span class="codeline" id="line-125"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

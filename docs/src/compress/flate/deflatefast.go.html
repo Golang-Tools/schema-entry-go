@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: deflatefast.go in package compress/flate</title>
-<link href="../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -160,7 +160,7 @@ input[id=i0]:checked ~pre .i0
 <span class="codeline" id="line-20"><code><span class="comment">	// Since the offset we are checking against is at the beginning</span></code></span>
 <span class="codeline" id="line-21"><code><span class="comment">	// of the buffer, we need to subtract the current and input</span></code></span>
 <span class="codeline" id="line-22"><code><span class="comment">	// buffer to not risk overflowing the int32.</span></code></span>
-<span class="codeline" id="line-23"><code>	<a href="../../../pkg/compress/flate.html#name-bufferReset" class="ident">bufferReset</a> = <a href="../../../pkg/math.html" class="ident i0">math</a>.<a href="../../math/const.go.html#line-44" class="ident">MaxInt32</a> - <a href="deflate.go.html#line-51" class="ident">maxStoreBlockSize</a>*<span class="lit-number">2</span></code></span>
+<span class="codeline" id="line-23"><code>	<a href="../../../pkg/compress/flate.html#name-bufferReset" class="ident">bufferReset</a> = <a href="../../../pkg/math.html" class="ident i0">math</a>.<a href="../../math/const.go.html#line-48" class="ident">MaxInt32</a> - <a href="deflate.go.html#line-51" class="ident">maxStoreBlockSize</a>*<span class="lit-number">2</span></code></span>
 <span class="codeline" id="line-24"><code>)</code></span>
 <span class="codeline" id="line-25"><code></code></span>
 <span class="codeline" id="line-26"><code><span class="keyword">func</span> <label for="r0" class="ident"><a href="../../../pkg/compress/flate.html#name-load32" class="ident">load32</a></label>(<label for="r1" class="ident">b</label> []<a href="../../../pkg/builtin.html#name-byte" class="ident">byte</a>, <label for="r2" class="ident">i</label> <a href="../../../pkg/builtin.html#name-int32" class="ident">int32</a>) <a href="../../../pkg/builtin.html#name-uint32" class="ident">uint32</a> {</code></span>
@@ -449,7 +449,7 @@ input[id=i0]:checked ~pre .i0
 <span class="codeline" id="line-309"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

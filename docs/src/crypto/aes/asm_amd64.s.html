@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: asm_amd64.s in package crypto/aes</title>
-<link href="../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -34,7 +34,7 @@
 <span class="codeline" id="line-15"><code>	ADDQ $16, AX</code></span>
 <span class="codeline" id="line-16"><code>	PXOR X1, X0</code></span>
 <span class="codeline" id="line-17"><code>	SUBQ $12, CX</code></span>
-<span class="codeline" id="line-18"><code>	JE Lenc196</code></span>
+<span class="codeline" id="line-18"><code>	JE Lenc192</code></span>
 <span class="codeline" id="line-19"><code>	JB Lenc128</code></span>
 <span class="codeline" id="line-20"><code>Lenc256:</code></span>
 <span class="codeline" id="line-21"><code>	MOVUPS 0(AX), X1</code></span>
@@ -42,7 +42,7 @@
 <span class="codeline" id="line-23"><code>	MOVUPS 16(AX), X1</code></span>
 <span class="codeline" id="line-24"><code>	AESENC X1, X0</code></span>
 <span class="codeline" id="line-25"><code>	ADDQ $32, AX</code></span>
-<span class="codeline" id="line-26"><code>Lenc196:</code></span>
+<span class="codeline" id="line-26"><code>Lenc192:</code></span>
 <span class="codeline" id="line-27"><code>	MOVUPS 0(AX), X1</code></span>
 <span class="codeline" id="line-28"><code>	AESENC X1, X0</code></span>
 <span class="codeline" id="line-29"><code>	MOVUPS 16(AX), X1</code></span>
@@ -83,7 +83,7 @@
 <span class="codeline" id="line-64"><code>	ADDQ $16, AX</code></span>
 <span class="codeline" id="line-65"><code>	PXOR X1, X0</code></span>
 <span class="codeline" id="line-66"><code>	SUBQ $12, CX</code></span>
-<span class="codeline" id="line-67"><code>	JE Ldec196</code></span>
+<span class="codeline" id="line-67"><code>	JE Ldec192</code></span>
 <span class="codeline" id="line-68"><code>	JB Ldec128</code></span>
 <span class="codeline" id="line-69"><code>Ldec256:</code></span>
 <span class="codeline" id="line-70"><code>	MOVUPS 0(AX), X1</code></span>
@@ -91,7 +91,7 @@
 <span class="codeline" id="line-72"><code>	MOVUPS 16(AX), X1</code></span>
 <span class="codeline" id="line-73"><code>	AESDEC X1, X0</code></span>
 <span class="codeline" id="line-74"><code>	ADDQ $32, AX</code></span>
-<span class="codeline" id="line-75"><code>Ldec196:</code></span>
+<span class="codeline" id="line-75"><code>Ldec192:</code></span>
 <span class="codeline" id="line-76"><code>	MOVUPS 0(AX), X1</code></span>
 <span class="codeline" id="line-77"><code>	AESDEC X1, X0</code></span>
 <span class="codeline" id="line-78"><code>	MOVUPS 16(AX), X1</code></span>
@@ -134,7 +134,7 @@
 <span class="codeline" id="line-115"><code>	ADDQ $16, BX</code></span>
 <span class="codeline" id="line-116"><code>	PXOR X4, X4 // _expand_key_* expect X4 to be zero</code></span>
 <span class="codeline" id="line-117"><code>	CMPL CX, $12</code></span>
-<span class="codeline" id="line-118"><code>	JE Lexp_enc196</code></span>
+<span class="codeline" id="line-118"><code>	JE Lexp_enc192</code></span>
 <span class="codeline" id="line-119"><code>	JB Lexp_enc128</code></span>
 <span class="codeline" id="line-120"><code>Lexp_enc256:</code></span>
 <span class="codeline" id="line-121"><code>	MOVUPS 16(AX), X2</code></span>
@@ -167,7 +167,7 @@
 <span class="codeline" id="line-148"><code>	AESKEYGENASSIST $0x40, X2, X1</code></span>
 <span class="codeline" id="line-149"><code>	CALL _expand_key_256a&lt;&gt;(SB)</code></span>
 <span class="codeline" id="line-150"><code>	JMP Lexp_dec</code></span>
-<span class="codeline" id="line-151"><code>Lexp_enc196:</code></span>
+<span class="codeline" id="line-151"><code>Lexp_enc192:</code></span>
 <span class="codeline" id="line-152"><code>	MOVQ 16(AX), X2</code></span>
 <span class="codeline" id="line-153"><code>	AESKEYGENASSIST $0x01, X2, X1</code></span>
 <span class="codeline" id="line-154"><code>	CALL _expand_key_192a&lt;&gt;(SB)</code></span>
@@ -293,7 +293,7 @@
 <span class="codeline" id="line-274"><code>	RET</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

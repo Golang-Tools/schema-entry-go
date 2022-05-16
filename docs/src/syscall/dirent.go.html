@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Source: dirent.go in package syscall</title>
-<link href="../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../jvs/golds-v0.3.6.js"></script>
+<link href="../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="header"><code><span class="title">Source File</span>
@@ -84,7 +84,7 @@ input[id=i0]:checked ~pre .i0
 <span class="codeline" id="line-2"><code><span class="comment">// Use of this source code is governed by a BSD-style</span></code></span>
 <span class="codeline" id="line-3"><code><span class="comment">// license that can be found in the LICENSE file.</span></code></span>
 <span class="codeline" id="line-4"><code></code></span>
-<span class="codeline" id="line-5"><code><span class="comment">// +build aix darwin dragonfly freebsd js,wasm linux netbsd openbsd solaris</span></code></span>
+<span class="codeline" id="line-5"><code><span class="comment">//go:build aix || darwin || dragonfly || freebsd || (js &amp;&amp; wasm) || linux || netbsd || openbsd || solaris</span></code></span>
 <span class="codeline" id="line-6"><code></code></span>
 <span class="codeline" id="line-7"><code><span class="keyword">package</span> syscall</code></span>
 <span class="codeline" id="line-8"><code></code></span>
@@ -147,13 +147,13 @@ input[id=i0]:checked ~pre .i0
 <span class="codeline" id="line-65"><code>	<label for="r19" class="ident">origlen</label> := <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r13" class="ident">buf</label>)</code></span>
 <span class="codeline" id="line-66"><code>	<label for="r17" class="ident">count</label> = <span class="lit-number">0</span></code></span>
 <span class="codeline" id="line-67"><code>	<span class="keyword">for</span> <label for="r14" class="ident">max</label> != <span class="lit-number">0</span> &amp;&amp; <a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r13" class="ident">buf</label>) &gt; <span class="lit-number">0</span> {</code></span>
-<span class="codeline" id="line-68"><code>		<label for="r20" class="ident">reclen</label>, <label for="r21" class="ident">ok</label> := <a href="syscall_darwin.go.html#line-61" class="ident">direntReclen</a>(<label for="r13" class="ident">buf</label>)</code></span>
+<span class="codeline" id="line-68"><code>		<label for="r20" class="ident">reclen</label>, <label for="r21" class="ident">ok</label> := <a href="syscall_darwin.go.html#line-64" class="ident">direntReclen</a>(<label for="r13" class="ident">buf</label>)</code></span>
 <span class="codeline" id="line-69"><code>		<span class="keyword">if</span> !<label for="r21" class="ident">ok</label> || <label for="r20" class="ident">reclen</label> &gt; <a href="../../pkg/builtin.html#name-uint64" class="ident">uint64</a>(<a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r13" class="ident">buf</label>)) {</code></span>
 <span class="codeline" id="line-70"><code>			<span class="keyword">return</span> <label for="r19" class="ident">origlen</label>, <label for="r17" class="ident">count</label>, <label for="r15" class="ident">names</label></code></span>
 <span class="codeline" id="line-71"><code>		}</code></span>
 <span class="codeline" id="line-72"><code>		<label for="r22" class="ident">rec</label> := <label for="r13" class="ident">buf</label>[:<label for="r20" class="ident">reclen</label>]</code></span>
 <span class="codeline" id="line-73"><code>		<label for="r13" class="ident">buf</label> = <label for="r13" class="ident">buf</label>[<label for="r20" class="ident">reclen</label>:]</code></span>
-<span class="codeline" id="line-74"><code>		<label for="r23" class="ident">ino</label>, <label for="r21" class="ident">ok</label> := <a href="syscall_darwin.go.html#line-57" class="ident">direntIno</a>(<label for="r22" class="ident">rec</label>)</code></span>
+<span class="codeline" id="line-74"><code>		<label for="r23" class="ident">ino</label>, <label for="r21" class="ident">ok</label> := <a href="syscall_darwin.go.html#line-60" class="ident">direntIno</a>(<label for="r22" class="ident">rec</label>)</code></span>
 <span class="codeline" id="line-75"><code>		<span class="keyword">if</span> !<label for="r21" class="ident">ok</label> {</code></span>
 <span class="codeline" id="line-76"><code>			<span class="keyword">break</span></code></span>
 <span class="codeline" id="line-77"><code>		}</code></span>
@@ -161,7 +161,7 @@ input[id=i0]:checked ~pre .i0
 <span class="codeline" id="line-79"><code>			<span class="keyword">continue</span></code></span>
 <span class="codeline" id="line-80"><code>		}</code></span>
 <span class="codeline" id="line-81"><code>		<span class="keyword">const</span> <label for="r24" class="ident">namoff</label> = <a href="../../pkg/builtin.html#name-uint64" class="ident">uint64</a>(<a href="../../pkg/unsafe.html" class="ident i0">unsafe</a>.<a href="../../pkg/unsafe.html#name-Offsetof" class="ident">Offsetof</a>(<a href="ztypes_darwin_amd64.go.html#line-144" class="ident">Dirent</a>{}.<a href="ztypes_darwin_amd64.go.html#line-150" class="ident">Name</a>))</code></span>
-<span class="codeline" id="line-82"><code>		<label for="r25" class="ident">namlen</label>, <label for="r21" class="ident">ok</label> := <a href="syscall_darwin.go.html#line-65" class="ident">direntNamlen</a>(<label for="r22" class="ident">rec</label>)</code></span>
+<span class="codeline" id="line-82"><code>		<label for="r25" class="ident">namlen</label>, <label for="r21" class="ident">ok</label> := <a href="syscall_darwin.go.html#line-68" class="ident">direntNamlen</a>(<label for="r22" class="ident">rec</label>)</code></span>
 <span class="codeline" id="line-83"><code>		<span class="keyword">if</span> !<label for="r21" class="ident">ok</label> || <label for="r24" class="ident">namoff</label>+<label for="r25" class="ident">namlen</label> &gt; <a href="../../pkg/builtin.html#name-uint64" class="ident">uint64</a>(<a href="../../pkg/builtin.html#name-len" class="ident">len</a>(<label for="r22" class="ident">rec</label>)) {</code></span>
 <span class="codeline" id="line-84"><code>			<span class="keyword">break</span></code></span>
 <span class="codeline" id="line-85"><code>		}</code></span>
@@ -184,7 +184,7 @@ input[id=i0]:checked ~pre .i0
 <span class="codeline" id="line-102"><code>}</code></span>
 </pre><pre id="footer">
 <table><tr><td><img src="../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>

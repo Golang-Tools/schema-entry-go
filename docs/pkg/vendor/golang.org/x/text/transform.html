@@ -5,14 +5,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Package: vendor/golang.org/x/text/transform</title>
-<link href="../../../../../css/light-v0.3.6.css" rel="stylesheet">
-<script src="../../../../../jvs/golds-v0.3.6.js"></script>
+<link href="../../../../../css/light-v0.4.9.css" rel="stylesheet">
+<script src="../../../../../jvs/golds-v0.4.9.js"></script>
 <body onload="onPageLoad()"><div>
 
 <pre id="package-details"><code><span style="font-size:xx-large;">package <b>transform</b></span>
 
 <span class="title">Import Path</span>
-	<a href="../../../../../index.html#pkg-vendor/golang.org/x/text/transform">vendor/golang.org/x/text/transform</a><i> (on <a href="https://pkg.go.dev/vendor/golang.org/x/text/transform" target="_blank">go.dev</a>)</i>
+	<a href="../../../../../index.html#pkg-vendor/golang.org/x/text/transform">vendor/golang.org/x/text/transform</a><i> (on <a href="https://pkg.go.dev/golang.org/x/text/transform" target="_blank">go.dev</a>)</i>
 
 <span class="title">Dependency Relation</span>
 	imports <a href="../../../../../dep/vendor/golang.org/x/text/transform.html">4 packages</a>, and imported by <a href="../../../../../dep/vendor/golang.org/x/text/transform.html#imported-by">2 packages</a>
@@ -31,7 +31,7 @@
 		Reset method.
 
 		<input type='checkbox' class="fold" id="NopResetter-fold-methods"><label for="NopResetter-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='NopResetter-fold-methods-items' class="fold-items"><span>
-			<input type='checkbox' class="fold" id="NopResetter-fold-method-Reset"><label for="NopResetter-fold-method-Reset">( T) <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-107">Reset</a>()</label><span id='NopResetter-fold-method-Reset-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="NopResetter-fold-method-Reset"><label for="NopResetter-fold-method-Reset">( NopResetter) <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-107">Reset</a>()</label><span id='NopResetter-fold-method-Reset-docs' class="fold-docs">
 				Reset implements the Reset method of the Transformer interface.
 </span></span></span>
 
@@ -60,11 +60,11 @@
 				regardless of whether or not it was successful.
 </span></i></span></span>
 		<input type='checkbox' class="fold" id="Reader-fold-methods"><label for="Reader-fold-methods">Methods (<i>only one, which is exported</i>)</label><span id='Reader-fold-methods-items' class="fold-items"><span>
-			<input type='checkbox' class="fold" id="Reader-fold-method-Read"><label for="Reader-fold-method-Read">(*T) <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-145">Read</a>(p []<a href="../../../../builtin.html#name-byte">byte</a>) (<a href="../../../../builtin.html#name-int">int</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='Reader-fold-method-Read-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Reader-fold-method-Read"><label for="Reader-fold-method-Read">(*Reader) <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-145">Read</a>(p []<a href="../../../../builtin.html#name-byte">byte</a>) (<a href="../../../../builtin.html#name-int">int</a>, <a href="../../../../builtin.html#name-error">error</a>)</label><span id='Reader-fold-method-Read-docs' class="fold-docs">
 				Read implements the io.Reader interface.
 </span></span></span>
 		<input type='checkbox' class="fold" id="Reader-fold-impls"><label for="Reader-fold-impls">Implements (<i>at least one exported</i>)</label><span id='Reader-fold-impls-items' class="fold-items"><span>
-			*T : io.<a href="../../../../io.html#name-Reader">Reader</a></span></span>
+			*Reader : io.<a href="../../../../io.html#name-Reader">Reader</a></span></span>
 		<input type='checkbox' class="fold" id="Reader-fold-results"><label for="Reader-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='Reader-fold-results-items' class="fold-items"><span>
 			func <a href="#name-NewReader">NewReader</a>(r <a href="../../../../io.html">io</a>.<a href="../../../../io.html#name-Reader">Reader</a>, t <a href="#name-Transformer">Transformer</a>) *<b>Reader</b></span></span>
 
@@ -73,10 +73,10 @@
 		that determines how much of the input already conforms to the Transformer.
 
 		<input type='checkbox' class="fold" id="SpanningTransformer-fold-methods"><label for="SpanningTransformer-fold-methods">Methods (<i>total 3, all are exported</i>)</label><span id='SpanningTransformer-fold-methods-items' class="fold-items"><span>
-			<input type='checkbox' class="fold" id="SpanningTransformer-fold-method-Reset"><label for="SpanningTransformer-fold-method-Reset">( T) <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-64">Reset</a>()</label><span id='SpanningTransformer-fold-method-Reset-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="SpanningTransformer-fold-method-Reset"><label for="SpanningTransformer-fold-method-Reset">( SpanningTransformer) <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-64">Reset</a>()</label><span id='SpanningTransformer-fold-method-Reset-docs' class="fold-docs">
 				Reset resets the state and allows a Transformer to be reused.
 </span></span><span>
-			<input type='checkbox' class="fold" id="SpanningTransformer-fold-method-Span"><label for="SpanningTransformer-fold-method-Span">( T) <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-99">Span</a>(src []<a href="../../../../builtin.html#name-byte">byte</a>, atEOF <a href="../../../../builtin.html#name-bool">bool</a>) (n <a href="../../../../builtin.html#name-int">int</a>, err <a href="../../../../builtin.html#name-error">error</a>)</label><span id='SpanningTransformer-fold-method-Span-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="SpanningTransformer-fold-method-Span"><label for="SpanningTransformer-fold-method-Span">( SpanningTransformer) <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-99">Span</a>(src []<a href="../../../../builtin.html#name-byte">byte</a>, atEOF <a href="../../../../builtin.html#name-bool">bool</a>) (n <a href="../../../../builtin.html#name-int">int</a>, err <a href="../../../../builtin.html#name-error">error</a>)</label><span id='SpanningTransformer-fold-method-Span-docs' class="fold-docs">
 				Span returns a position in src such that transforming src[:n] results in
 				identical output src[:n] for these bytes. It does not necessarily return
 				the largest such n. The atEOF argument tells whether src represents the
@@ -105,7 +105,7 @@
 				copying and allocating buffers. Calls to Span and Transform may be
 				interleaved.
 </span></span><span>
-			<input type='checkbox' class="fold" id="SpanningTransformer-fold-method-Transform"><label for="SpanningTransformer-fold-method-Transform">( T) <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-61">Transform</a>(dst, src []<a href="../../../../builtin.html#name-byte">byte</a>, atEOF <a href="../../../../builtin.html#name-bool">bool</a>) (nDst, nSrc <a href="../../../../builtin.html#name-int">int</a>, err <a href="../../../../builtin.html#name-error">error</a>)</label><span id='SpanningTransformer-fold-method-Transform-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="SpanningTransformer-fold-method-Transform"><label for="SpanningTransformer-fold-method-Transform">( SpanningTransformer) <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-61">Transform</a>(dst, src []<a href="../../../../builtin.html#name-byte">byte</a>, atEOF <a href="../../../../builtin.html#name-bool">bool</a>) (nDst, nSrc <a href="../../../../builtin.html#name-int">int</a>, err <a href="../../../../builtin.html#name-error">error</a>)</label><span id='SpanningTransformer-fold-method-Transform-docs' class="fold-docs">
 				Transform writes to dst the transformed bytes read from src, and
 				returns the number of dst bytes written and src bytes read. The
 				atEOF argument tells whether src represents the last bytes of the
@@ -132,7 +132,7 @@
 			<input type='checkbox' class="showhide" id="SpanningTransformer-showhide-impedBys"><i><label for="SpanningTransformer-showhide-impedBys" class="show-inline">/* at least one unexported ... */</label><label for="SpanningTransformer-showhide-impedBys" class="hide-inline">/* at least one unexported: */</label></i><span class="hidden"><i>
 			 <a href="#name-nop">nop</a></i></span></span>
 		<input type='checkbox' class="fold" id="SpanningTransformer-fold-impls"><label for="SpanningTransformer-fold-impls">Implements (<i>at least one exported</i>)</label><span id='SpanningTransformer-fold-impls-items' class="fold-items"><span>
-			 T : <a href="#name-Transformer">Transformer</a></span></span>
+			 SpanningTransformer : <a href="#name-Transformer">Transformer</a></span></span>
 		<input type='checkbox' class="fold" id="SpanningTransformer-fold-values"><label for="SpanningTransformer-fold-values">As Types Of (<i>only one, which is exported</i>)</label><span id='SpanningTransformer-fold-values-items' class="fold-items"><span>
 			  var <a href="#name-Nop">Nop</a></span></span>
 
@@ -140,10 +140,10 @@
 		Transformer transforms bytes.
 
 		<input type='checkbox' class="fold" id="Transformer-fold-methods"><label for="Transformer-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='Transformer-fold-methods-items' class="fold-items"><span>
-			<input type='checkbox' class="fold" id="Transformer-fold-method-Reset"><label for="Transformer-fold-method-Reset">( T) <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-64">Reset</a>()</label><span id='Transformer-fold-method-Reset-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Transformer-fold-method-Reset"><label for="Transformer-fold-method-Reset">( Transformer) <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-64">Reset</a>()</label><span id='Transformer-fold-method-Reset-docs' class="fold-docs">
 				Reset resets the state and allows a Transformer to be reused.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Transformer-fold-method-Transform"><label for="Transformer-fold-method-Transform">( T) <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-61">Transform</a>(dst, src []<a href="../../../../builtin.html#name-byte">byte</a>, atEOF <a href="../../../../builtin.html#name-bool">bool</a>) (nDst, nSrc <a href="../../../../builtin.html#name-int">int</a>, err <a href="../../../../builtin.html#name-error">error</a>)</label><span id='Transformer-fold-method-Transform-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Transformer-fold-method-Transform"><label for="Transformer-fold-method-Transform">( Transformer) <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-61">Transform</a>(dst, src []<a href="../../../../builtin.html#name-byte">byte</a>, atEOF <a href="../../../../builtin.html#name-bool">bool</a>) (nDst, nSrc <a href="../../../../builtin.html#name-int">int</a>, err <a href="../../../../builtin.html#name-error">error</a>)</label><span id='Transformer-fold-method-Transform-docs' class="fold-docs">
 				Transform writes to dst the transformed bytes read from src, and
 				returns the number of dst bytes written and src bytes read. The
 				atEOF argument tells whether src represents the last bytes of the
@@ -203,18 +203,18 @@
 			<span class="nodocs"><a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-211">t</a> <i><a href="#name-Transformer">Transformer</a></i></span></i></span><span class="hidden"><i>
 			<span class="nodocs"><a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-210">w</a> <i><a href="../../../../io.html">io</a>.<a href="../../../../io.html#name-Writer">Writer</a></i></span></i></span></span>
 		<input type='checkbox' class="fold" id="Writer-fold-methods"><label for="Writer-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='Writer-fold-methods-items' class="fold-items"><span>
-			<input type='checkbox' class="fold" id="Writer-fold-method-Close"><label for="Writer-fold-method-Close">(*T) <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-296">Close</a>() <a href="../../../../builtin.html#name-error">error</a></label><span id='Writer-fold-method-Close-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Writer-fold-method-Close"><label for="Writer-fold-method-Close">(*Writer) <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-296">Close</a>() <a href="../../../../builtin.html#name-error">error</a></label><span id='Writer-fold-method-Close-docs' class="fold-docs">
 				Close implements the io.Closer interface.
 </span></span><span>
-			<input type='checkbox' class="fold" id="Writer-fold-method-Write"><label for="Writer-fold-method-Write">(*T) <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-234">Write</a>(data []<a href="../../../../builtin.html#name-byte">byte</a>) (n <a href="../../../../builtin.html#name-int">int</a>, err <a href="../../../../builtin.html#name-error">error</a>)</label><span id='Writer-fold-method-Write-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="Writer-fold-method-Write"><label for="Writer-fold-method-Write">(*Writer) <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-234">Write</a>(data []<a href="../../../../builtin.html#name-byte">byte</a>) (n <a href="../../../../builtin.html#name-int">int</a>, err <a href="../../../../builtin.html#name-error">error</a>)</label><span id='Writer-fold-method-Write-docs' class="fold-docs">
 				Write implements the io.Writer interface. If there are not enough
 				bytes available to complete a Transform, the bytes will be buffered
 				for the next write. Call Close to convert the remaining bytes.
 </span></span></span>
 		<input type='checkbox' class="fold" id="Writer-fold-impls"><label for="Writer-fold-impls">Implements (<i>at least 3, all are exported</i>)</label><span id='Writer-fold-impls-items' class="fold-items"><span>
-			*T : io.<a href="../../../../io.html#name-Closer">Closer</a></span><span>
-			*T : io.<a href="../../../../io.html#name-WriteCloser">WriteCloser</a></span><span>
-			*T : io.<a href="../../../../io.html#name-Writer">Writer</a></span></span>
+			*Writer : io.<a href="../../../../io.html#name-Closer">Closer</a></span><span>
+			*Writer : io.<a href="../../../../io.html#name-WriteCloser">WriteCloser</a></span><span>
+			*Writer : io.<a href="../../../../io.html#name-Writer">Writer</a></span></span>
 		<input type='checkbox' class="fold" id="Writer-fold-results"><label for="Writer-fold-results">As Outputs Of (<i>at least one exported</i>)</label><span id='Writer-fold-results-items' class="fold-items"><span>
 			func <a href="#name-NewWriter">NewWriter</a>(w <a href="../../../../io.html">io</a>.<a href="../../../../io.html#name-Writer">Writer</a>, t <a href="#name-Transformer">Transformer</a>) *<b>Writer</b></span></span>
 
@@ -236,28 +236,28 @@
 </span></i></span><span class="hidden"><i>
 			<span class="nodocs"><a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-346">link</a> <i>[]<a href="#name-link">link</a></i></span></i></span></span>
 		<input type='checkbox' class="fold" id="chain-fold-methods"><label for="chain-fold-methods">Methods (<i>total 3, in which 2 are exported</i>)</label><span id='chain-fold-methods-items' class="fold-items"><span>
-			<input type='checkbox' class="fold" id="chain-fold-method-Reset"><label for="chain-fold-method-Reset">(*T) <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-395">Reset</a>()</label><span id='chain-fold-method-Reset-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="chain-fold-method-Reset"><label for="chain-fold-method-Reset">(*chain) <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-395">Reset</a>()</label><span id='chain-fold-method-Reset-docs' class="fold-docs">
 				Reset resets the state of Chain. It calls Reset on all the Transformers.
 </span></span><span>
-			<input type='checkbox' class="fold" id="chain-fold-method-Transform"><label for="chain-fold-method-Transform">(*T) <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-407">Transform</a>(dst, src []<a href="../../../../builtin.html#name-byte">byte</a>, atEOF <a href="../../../../builtin.html#name-bool">bool</a>) (nDst, nSrc <a href="../../../../builtin.html#name-int">int</a>, err <a href="../../../../builtin.html#name-error">error</a>)</label><span id='chain-fold-method-Transform-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="chain-fold-method-Transform"><label for="chain-fold-method-Transform">(*chain) <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-407">Transform</a>(dst, src []<a href="../../../../builtin.html#name-byte">byte</a>, atEOF <a href="../../../../builtin.html#name-bool">bool</a>) (nDst, nSrc <a href="../../../../builtin.html#name-int">int</a>, err <a href="../../../../builtin.html#name-error">error</a>)</label><span id='chain-fold-method-Transform-docs' class="fold-docs">
 				Transform applies the transformers of c in sequence.
 </span></span>
 			<input type='checkbox' checked class="showhide" id="chain-showhide-methods"><i><label for="chain-showhide-methods" class="show-inline">/* one unexported ... */</label><label for="chain-showhide-methods" class="hide-inline">/* one unexported: */</label></i><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-354">fatalError</a>(errIndex <a href="../../../../builtin.html#name-int">int</a>, err <a href="../../../../builtin.html#name-error">error</a>)</span></i></span></span>
+			<span class="nodocs">(*chain) <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-354">fatalError</a>(errIndex <a href="../../../../builtin.html#name-int">int</a>, err <a href="../../../../builtin.html#name-error">error</a>)</span></i></span></span>
 		<input type='checkbox' class="fold" id="chain-fold-impls"><label for="chain-fold-impls">Implements (<i>at least one exported</i>)</label><span id='chain-fold-impls-items' class="fold-items"><span>
-			*T : <a href="#name-Transformer">Transformer</a></span></span>
+			*chain : <a href="#name-Transformer">Transformer</a></span></span>
 
 </span></div><div class="anchor type-res hidden" id="name-discard" data-popularity="150">	<input type='checkbox' class="fold" id="discard-fold-content"><label for="discard-fold-content"> type <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-324">discard</a> <i>(struct)</i></label><span id='discard-fold-content-docs' class="fold-docs">
 
 		<input type='checkbox' class="fold" id="discard-fold-fields"><label for="discard-fold-fields">Fields (<i>only one, which is exported</i>)</label><span id='discard-fold-fields-items' class="fold-items"><span>
 			<span class="nodocs"><a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-310">NopResetter</a> <i><a href="#name-NopResetter">NopResetter</a></i></span></span></span>
 		<input type='checkbox' class="fold" id="discard-fold-methods"><label for="discard-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='discard-fold-methods-items' class="fold-items"><span>
-			<input type='checkbox' class="fold" id="discard-fold-method-Reset"><label for="discard-fold-method-Reset">( T) <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-107">Reset</a>()</label><span id='discard-fold-method-Reset-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="discard-fold-method-Reset"><label for="discard-fold-method-Reset">( discard) <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-107">Reset</a>()</label><span id='discard-fold-method-Reset-docs' class="fold-docs">
 				Reset implements the Reset method of the Transformer interface.
 </span></span><span>
-			<span class="nodocs">( T) <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-326">Transform</a>(dst, src []<a href="../../../../builtin.html#name-byte">byte</a>, atEOF <a href="../../../../builtin.html#name-bool">bool</a>) (nDst, nSrc <a href="../../../../builtin.html#name-int">int</a>, err <a href="../../../../builtin.html#name-error">error</a>)</span></span></span>
+			<span class="nodocs">( discard) <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-326">Transform</a>(dst, src []<a href="../../../../builtin.html#name-byte">byte</a>, atEOF <a href="../../../../builtin.html#name-bool">bool</a>) (nDst, nSrc <a href="../../../../builtin.html#name-int">int</a>, err <a href="../../../../builtin.html#name-error">error</a>)</span></span></span>
 		<input type='checkbox' class="fold" id="discard-fold-impls"><label for="discard-fold-impls">Implements (<i>at least one exported</i>)</label><span id='discard-fold-impls-items' class="fold-items"><span>
-			 T : <a href="#name-Transformer">Transformer</a></span></span>
+			 discard : <a href="#name-Transformer">Transformer</a></span></span>
 
 </span></div><div class="anchor type-res hidden" id="name-link" data-popularity="100">	<input type='checkbox' class="fold" id="link-fold-content"><label for="link-fold-content"> type <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-361">link</a> <i>(struct)</i></label><span id='link-fold-content-docs' class="fold-docs">
 
@@ -271,32 +271,32 @@
 			<span class="nodocs"><a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-362">t</a> <i><a href="#name-Transformer">Transformer</a></i></span></i></span></span>
 		<input type='checkbox' class="fold" id="link-fold-methods"><label for="link-fold-methods">Methods (<i>total 2, neither is exported</i>)</label><span id='link-fold-methods-items' class="fold-items">
 			<input type='checkbox' checked class="showhide" id="link-showhide-methods"><i><label for="link-showhide-methods" class="show-inline">/* 2 unexporteds ... */</label><label for="link-showhide-methods" class="hide-inline">/* 2 unexporteds: */</label></i><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-373">dst</a>() []<a href="../../../../builtin.html#name-byte">byte</a></span></i></span><span class="hidden"><i>
-			<span class="nodocs">(*T) <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-369">src</a>() []<a href="../../../../builtin.html#name-byte">byte</a></span></i></span></span>
+			<span class="nodocs">(*link) <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-373">dst</a>() []<a href="../../../../builtin.html#name-byte">byte</a></span></i></span><span class="hidden"><i>
+			<span class="nodocs">(*link) <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-369">src</a>() []<a href="../../../../builtin.html#name-byte">byte</a></span></i></span></span>
 
 </span></div><div class="anchor type-res hidden" id="name-nop" data-popularity="250">	<input type='checkbox' class="fold" id="nop-fold-content"><label for="nop-fold-content"> type <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-310">nop</a> <i>(struct)</i></label><span id='nop-fold-content-docs' class="fold-docs">
 
 		<input type='checkbox' class="fold" id="nop-fold-fields"><label for="nop-fold-fields">Fields (<i>only one, which is exported</i>)</label><span id='nop-fold-fields-items' class="fold-items"><span>
 			<span class="nodocs"><a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-310">NopResetter</a> <i><a href="#name-NopResetter">NopResetter</a></i></span></span></span>
 		<input type='checkbox' class="fold" id="nop-fold-methods"><label for="nop-fold-methods">Methods (<i>total 3, all are exported</i>)</label><span id='nop-fold-methods-items' class="fold-items"><span>
-			<input type='checkbox' class="fold" id="nop-fold-method-Reset"><label for="nop-fold-method-Reset">( T) <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-107">Reset</a>()</label><span id='nop-fold-method-Reset-docs' class="fold-docs">
+			<input type='checkbox' class="fold" id="nop-fold-method-Reset"><label for="nop-fold-method-Reset">( nop) <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-107">Reset</a>()</label><span id='nop-fold-method-Reset-docs' class="fold-docs">
 				Reset implements the Reset method of the Transformer interface.
 </span></span><span>
-			<span class="nodocs">( T) <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-320">Span</a>(src []<a href="../../../../builtin.html#name-byte">byte</a>, atEOF <a href="../../../../builtin.html#name-bool">bool</a>) (n <a href="../../../../builtin.html#name-int">int</a>, err <a href="../../../../builtin.html#name-error">error</a>)</span></span><span>
-			<span class="nodocs">( T) <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-312">Transform</a>(dst, src []<a href="../../../../builtin.html#name-byte">byte</a>, atEOF <a href="../../../../builtin.html#name-bool">bool</a>) (nDst, nSrc <a href="../../../../builtin.html#name-int">int</a>, err <a href="../../../../builtin.html#name-error">error</a>)</span></span></span>
+			<span class="nodocs">( nop) <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-320">Span</a>(src []<a href="../../../../builtin.html#name-byte">byte</a>, atEOF <a href="../../../../builtin.html#name-bool">bool</a>) (n <a href="../../../../builtin.html#name-int">int</a>, err <a href="../../../../builtin.html#name-error">error</a>)</span></span><span>
+			<span class="nodocs">( nop) <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-312">Transform</a>(dst, src []<a href="../../../../builtin.html#name-byte">byte</a>, atEOF <a href="../../../../builtin.html#name-bool">bool</a>) (nDst, nSrc <a href="../../../../builtin.html#name-int">int</a>, err <a href="../../../../builtin.html#name-error">error</a>)</span></span></span>
 		<input type='checkbox' class="fold" id="nop-fold-impls"><label for="nop-fold-impls">Implements (<i>at least 2, both are exported</i>)</label><span id='nop-fold-impls-items' class="fold-items"><span>
-			 T : <a href="#name-SpanningTransformer">SpanningTransformer</a></span><span>
-			 T : <a href="#name-Transformer">Transformer</a></span></span>
+			 nop : <a href="#name-SpanningTransformer">SpanningTransformer</a></span><span>
+			 nop : <a href="#name-Transformer">Transformer</a></span></span>
 
 </span></div><div class="anchor type-res hidden" id="name-removeF" data-popularity="150">	<input type='checkbox' class="fold" id="removeF-fold-content"><label for="removeF-fold-content"> type <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-501">removeF</a> <i>(func)</i></label><span id='removeF-fold-content-docs' class="fold-docs">
 
 		<input type='checkbox' class="fold" id="removeF-fold-methods"><label for="removeF-fold-methods">Methods (<i>total 2, both are exported</i>)</label><span id='removeF-fold-methods-items' class="fold-items"><span>
-			<span class="nodocs">( T) <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-503">Reset</a>()</span></span><span>
-			<input type='checkbox' class="fold" id="removeF-fold-method-Transform"><label for="removeF-fold-method-Transform">( T) <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-506">Transform</a>(dst, src []<a href="../../../../builtin.html#name-byte">byte</a>, atEOF <a href="../../../../builtin.html#name-bool">bool</a>) (nDst, nSrc <a href="../../../../builtin.html#name-int">int</a>, err <a href="../../../../builtin.html#name-error">error</a>)</label><span id='removeF-fold-method-Transform-docs' class="fold-docs">
+			<span class="nodocs">( removeF) <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-503">Reset</a>()</span></span><span>
+			<input type='checkbox' class="fold" id="removeF-fold-method-Transform"><label for="removeF-fold-method-Transform">( removeF) <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-506">Transform</a>(dst, src []<a href="../../../../builtin.html#name-byte">byte</a>, atEOF <a href="../../../../builtin.html#name-bool">bool</a>) (nDst, nSrc <a href="../../../../builtin.html#name-int">int</a>, err <a href="../../../../builtin.html#name-error">error</a>)</label><span id='removeF-fold-method-Transform-docs' class="fold-docs">
 				Transform implements the Transformer interface.
 </span></span></span>
 		<input type='checkbox' class="fold" id="removeF-fold-impls"><label for="removeF-fold-impls">Implements (<i>at least one exported</i>)</label><span id='removeF-fold-impls-items' class="fold-items"><span>
-			 T : <a href="#name-Transformer">Transformer</a></span></span>
+			 removeF : <a href="#name-Transformer">Transformer</a></span></span>
 
 </span></div></div>
 <div id="exported-functions"><span class="title">Package-Level Functions<span class="title-stat"><i> (total 9, in which 7 are exported)</i></span></span>
@@ -366,7 +366,7 @@
 
 	<input type='checkbox' class="showhide" id="unexported-constants-showhide"><i><label for="unexported-constants-showhide" class="show-inline">/* 2 unexporteds ... */</label><label for="unexported-constants-showhide" class="hide-inline">/* 2 unexporteds: */</label></i><div class="anchor value-res hidden" id="name-defaultBufSize"><i>	<span class="nodocs">const <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-130">defaultBufSize</a> = 4096</span></i></div><div class="anchor value-res hidden" id="name-initialBufSize"><i>	<span class="nodocs">const <a href="../../../../../src/vendor/golang.org/x/text/transform/transform.go.html#line-564">initialBufSize</a> = 128</span></i></div></div></code></pre><pre id="footer">
 <table><tr><td><img src="../../../../../png/go101-twitter.png"></td>
-<td>The pages are generated with <a href="https://go101.org/article/tool-golds.html"><b>Golds</b></a> <i>v0.3.6</i>. (GOOS=darwin GOARCH=amd64)
+<td>The pages are generated with <a href="https://go101.org/apps-and-libs/golds.html"><b>Golds</b></a> <i>v0.4.9</i>. (GOOS=darwin GOARCH=amd64)
 <b>Golds</b> is a <a href="https://go101.org">Go 101</a> project developed by <a href="https://tapirgames.com">Tapir Liu</a>.
 PR and bug reports are welcome and can be submitted to <a href="https://github.com/go101/golds">the issue list</a>.
 Please follow <a href="https://twitter.com/go100and1">@Go100and1</a> (reachable from the left QR code) to get the latest news of <b>Golds</b>.</td></tr></table></pre>
