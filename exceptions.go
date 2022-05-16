@@ -13,4 +13,9 @@ var (
 
 	//ErrUnsupportedSerialization 不支持的序列化协议
 	ErrUnsupportedSerialization = errors.New("unsupported serialization protocol")
+	//ErrNotSetSerialize 未设置序列化协议
+	ErrNotSetSerialize = errors.New("need to set serialize")
+
+	//ErrEtcdKeyLenNotMatch etcd的key数量不匹配
+	ErrEtcdKeyLenNotMatch = errors.New("etcd key len not match")
 )

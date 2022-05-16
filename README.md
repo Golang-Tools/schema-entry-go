@@ -14,11 +14,6 @@ V2版本针对1.18以上的golang,大量使用了泛型.低版本请使用[V1版
 + 支持`json`和`yaml`两种格式的配置文件
 + 支持`watch`模式,可以通过监听指定文件更新配置
 
-## TODO
-
-+ 添加从etcd中获取配置的功能
-+ 添加监听etcd中指定配置文件变化的功能
-
 ## 概念和一些规则
 
 ### 节点
@@ -90,7 +85,21 @@ V2版本针对1.18以上的golang,大量使用了泛型.低版本请使用[V1版
 + path模式,即直接指定文件系统中的路径,这种方式只能针对本地文件系统,使用的路径可以为绝对路径或者相对路径
 + url模式,即使用url的形式指定路径,其形式为`schema://user:password@host:port/path?params`这种方式相对比较有扩展性,支持的获取方式有
     + 本地文件系统,使用`schema`可以为`file`, `fs`,使用的路径只能是绝对路径,比如`file:///Users/mac/WORKSPACE/GITHUB/GolangTools/schema-entry-go/watch.json`
-    + docker容器中的文件系统`schema`,可以为`dockerfs`,使用的路径只能是绝对路径,比如`dockerfs:///Users/mac/WORKSPACE/GITHUB/GolangTools/schema-entry-go/watch.json`
+    + docker容器中的文件系统,使用`schema`为`dockerfs`,使用的路径只能是绝对路径,比如`dockerfs:///Users/mac/WORKSPACE/GITHUB/GolangTools/schema-entry-go/watch.json`
+    + etcd中的内容,使用`schema`为`etcd`,其形式如`etcd://localhost:9800/foo/bar?address=192.168.1.1:4324&address=192.168.1.2:4324&serialize=JSON`,其中
+        + host:port部分以及address部分填写etcd的访问地址,也就是说至少要有一个地址
+        + path部分为etcd中的内容所在的key
+        + 参数中的serialize指明序列化协议,一样的目前只支持JSON和YAML.
+        + 其他支持的配置项还包括:
+            + `auto-sync-interval-ms`
+            + `dial-timeout-ms`
+            + `dial-keep-alive-time-ms`
+            + `dial-keep-alive-timeout-ms`
+            + `max-call-send-msg-size-bytes`
+            + `max-call-recv-msg-size-bytes`
+            + `reject-old-cluster`
+            + `permit-without-stream`
+            + `query-timeout-ms`,请求etcd的超时
 
 ## 使用方法
 
