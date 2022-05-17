@@ -99,7 +99,7 @@ V2版本针对1.18以上的golang,大量使用了泛型.低版本请使用[V1版
             + `max-call-recv-msg-size-bytes`
             + `reject-old-cluster`
             + `permit-without-stream`
-            + `query-timeout-ms`,请求etcd的超时
+            + `query-timeout-ms`,请求etcd的超时,默认50ms
 
 ## 使用方法
 

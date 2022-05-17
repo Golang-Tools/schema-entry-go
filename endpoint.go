@@ -403,7 +403,7 @@ func (ep *EndPoint[T]) loadConfigFileFromFS(serialization SupportedSerialization
 //@returns []byte 文件内容
 //@returns error 错误信息
 func (ep *EndPoint[T]) loadConfigFileContentFromEtcd(path string, config clientv3.Config, timeout time.Duration) ([]byte, error) {
-	cli, err := clientv3.New(clientv3.Config{Endpoints: []string{"localhost:2379"}})
+	cli, err := clientv3.New(config)
 	if err != nil {
 		return nil, err
 	}
@@ -1116,7 +1116,7 @@ func (ep *EndPoint[T]) refreshFSProcess(serialize_protocol SupportedSerializatio
 //@returns StopWatchFunc 停止监听函数
 //@returns error 程序错误
 func (ep *EndPoint[T]) GenEtcdWatcher(serialize_protocol SupportedSerialization, filepath string, config clientv3.Config) (StopWatchFunc, error) {
-	cli, err := clientv3.New(clientv3.Config{Endpoints: []string{"localhost:2379"}})
+	cli, err := clientv3.New(config)
 	if err != nil {
 		return nil, err
 	}
