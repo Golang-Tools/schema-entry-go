@@ -1,15 +1,16 @@
-# schema-entry-go/V3
+# schema-entry-go/V4
 
 通过定义结构体同时声明jsonschem提供复杂的启动参数设置项
 
-当前主版本为 V3,面向 go 1.22+,大量使用泛型。相比 V2,V3 主要变化:
+当前主版本为 V4,面向 go 1.22+,大量使用泛型。相比 V3,V4 为破坏性改造,主要变化:
 
-+ 命令行解析由 `github.com/akamensky/argparse` 迁移到 `github.com/spf13/pflag`
-+ 修复:命令行显式传入 `0`/空串/`false` 时不再被 jsonschema 默认值覆盖;bool 参数支持 `--Flag=false` 显式关闭
-+ 修复:配置加载优先级与文档一致(默认值 < 默认配置文件 < `--config` 指定文件 < 环境变量 < 命令行)
-+ 依赖现代化:`loggerhelper` 升级到 v3、`optparams` 升级到 v1.0.0、`json-iterator` 替换为标准库 `encoding/json`、`yaml.v2` 升级到 `yaml.v3`
++ `Parse(argv []string) error`:库内不再 `os.Exit`;解析/加载/校验失败返回 error;帮助(`-h`)返回 `ErrHelp`,退出码交由调用方
++ 日志后端切换到 `loggerhelper/v4`(标准库 `log/slog`)
++ 命令行长 flag 使用小写 json/yaml 字段名(如 `--a`、`--ok`),bool 支持 `--ok=false`
++ 配置源与文件监控可扩展:核心仅内置文件系统(加载 + 纯标准库轮询监听,零额外依赖);etcd 等其它配置源由 `contrib/*` 子模块空导入提供
++ 移除核心对 `docker`、`etcd` 的直接依赖(迁至 contrib)
 
-V2 版本面向 go 1.18,不再演进;V1 版本已停止维护。
+V3 是基于 `spf13/pflag` 的兼容性现代化版本(见 v3 分支);V2 面向 go 1.18 不再演进;V1 已停止维护。
 
 ## 特性
 
@@ -127,7 +128,7 @@ import (
     "os"
     "time"
 
-    s "github.com/Golang-Tools/schema-entry-go/v3"
+    s "github.com/Golang-Tools/schema-entry-go/v4"
 )
 
 type C struct {
@@ -168,7 +169,7 @@ func main() {
 
 ```
 
-> V3 行为说明:bool 参数既支持裸 `--OK`(置 true),也支持 `--OK=false` 显式置 false;整数、浮点、字符串等类型显式传入 `0`/`0.0`/空串 时会如实生效,不会再被 jsonschema 的 `default` 覆盖。
+> V4 行为说明:bool 参数支持裸 `--ok`(置 true)与 `--ok=false`(置 false);整数、浮点、字符串等显式传入 `0`/`0.0`/空串 会如实生效,不再被 jsonschema 的 `default` 覆盖。
 
 ## 运行示例
 

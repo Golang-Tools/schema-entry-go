@@ -1,3 +1,32 @@
+# v4.0.0
+
+模块路径变更为 `github.com/Golang-Tools/schema-entry-go/v4`(破坏性改造),最低 go 版本 1.22。
+
+## 破坏性变更
+
++ `EntryPointInterface.Parse([]string)` → `Parse([]string) error`;叶子节点解析成功后才执行 `config.Main`
++ 库内彻底移除 `os.Exit`:解析/加载/校验失败以 error 返回;请求帮助(`-h`)返回包装 `ErrHelp` 的 `UsageError`(其文本携带用法),退出码交由调用方决定
++ 日志后端由 `loggerhelper/v3`(logrus)切换为 `loggerhelper/v4`(标准库 `log/slog`)
++ 命令行长 flag 由结构体字段名改为小写 json/yaml 字段名(如 `--A`→`--a`、`--OK`→`--ok`)
+
+## 架构变化(可扩展配置源与监控)
+
++ 核心新增 `ConfigLoader`/`Watcher` SPI 与按 scheme 注册表(`RegisterConfigLoader`/`RegisterWatcher`)
++ 核心仅内置文件系统:`""/file/fs/dockerfs` 加载 + 纯标准库轮询监听(零额外依赖)
++ 移除核心对 `docker`、`etcd` 的直接依赖与相关实现
++ 新增可选的 contrib 嵌套子模块(应用侧空导入即启用):
+  + `contrib/etcd`:etcd 配置源(加载 + 监听)与 `ParseEtcdUrl`
+  + `contrib/fsnotify`:基于 fsnotify 的本地监听
+  + `contrib/dockerfilenotify`:基于 docker pkg/filenotify 的监听(本地事件 + dockerfs 轮询)
+
+## 其它
+
++ `verifyConfig`/`passArgs`/`getConfigFromConfigFile` 改为返回 error;`Schema()` 等内部逻辑沿用
++ 新增 `ErrHelp`、`ErrWatchOnRefreshNotSet` 与 `UsageError`
++ `example/seed`(etcd 演示)自核心移除,etcd 相关能力改由 `contrib/etcd` 提供
++ 单元测试覆盖:轮询 watcher、fs 加载器、未注册 scheme 报错、`contrib/fsnotify`/`contrib/dockerfilenotify` watcher 事件
++ `go.mod`/`go.sum` 各模块最终以发布时联网 `go mod tidy` 收口
+
 # v3.0.0
 
 模块路径变更为 `github.com/Golang-Tools/schema-entry-go/v3`,最低 go 版本提升到 1.22。
