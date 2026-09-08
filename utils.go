@@ -30,7 +30,7 @@ func reverse(s []string) []string {
 	return s
 }
 
-//GetNodeProg 获取节点的prog值
+// GetNodeProg 获取节点的prog值
 func GetNodeProg(node EntryPointInterface) string {
 	p := prog{
 		result: []string{},
@@ -40,7 +40,7 @@ func GetNodeProg(node EntryPointInterface) string {
 	return strings.Join(p.result, " ")
 }
 
-//GetNodeProgList 获取节点的prog值
+// GetNodeProgList 获取节点的prog值
 func GetNodeProgList(node EntryPointInterface) []string {
 	p := prog{
 		result: []string{},
@@ -50,7 +50,7 @@ func GetNodeProgList(node EntryPointInterface) []string {
 	return p.result
 }
 
-//GetNodeEnvPrefix 获取实际的EnvPrefix
+// GetNodeEnvPrefix 获取实际的EnvPrefix
 func GetNodeEnvPrefix(node EntryPointInterface) string {
 	var EnvPrefix string
 	if node.Meta().EnvPrefix != "" {
@@ -61,8 +61,8 @@ func GetNodeEnvPrefix(node EntryPointInterface) string {
 	return EnvPrefix
 }
 
-//ReflectFieldInfo 返回字段的基础信息
-//@returns string 对应名字
+// ReflectFieldInfo 返回字段的基础信息
+// @returns string 对应名字
 func ReflectFieldName(f reflect.StructField) string {
 	jsonTags, exist := f.Tag.Lookup("json")
 	yamlTags, yamlExist := f.Tag.Lookup("yaml")
@@ -87,11 +87,11 @@ func ReflectFieldName(f reflect.StructField) string {
 	return name
 }
 
-//ParseFSUrl 解析文件系统的URL
-//@params U *url.URL url信息
-//@returns SupportedSerialization 序列化协议
-//@returns string 路径
-//@returns error 解析错误
+// ParseFSUrl 解析文件系统的URL
+// @params U *url.URL url信息
+// @returns SupportedSerialization 序列化协议
+// @returns string 路径
+// @returns error 解析错误
 func ParseFSPath(path string) (SupportedSerialization, string, error) {
 	var serialize_protocol SupportedSerialization
 	if strings.HasSuffix(path, "json") {
@@ -104,11 +104,11 @@ func ParseFSPath(path string) (SupportedSerialization, string, error) {
 	return serialize_protocol, path, nil
 }
 
-//ParseFSUrl 解析文件系统的URL
-//@params U *url.URL url信息
-//@returns SupportedSerialization 序列化协议
-//@returns string 路径
-//@returns error 解析错误
+// ParseFSUrl 解析文件系统的URL
+// @params U *url.URL url信息
+// @returns SupportedSerialization 序列化协议
+// @returns string 路径
+// @returns error 解析错误
 func ParseFSUrl(U *url.URL) (SupportedSerialization, string, error) {
 	path := U.Path
 	var serialize_protocol SupportedSerialization
@@ -122,13 +122,13 @@ func ParseFSUrl(U *url.URL) (SupportedSerialization, string, error) {
 	return serialize_protocol, path, nil
 }
 
-//ParseEtcdUrl 解析Etcd的URL
-//@params U *url.URL url信息
-//@returns SupportedSerialization 序列化协议
-//@returns string 路径,即key
-//@returns clientv3.Config etcd连接配置
-//@returns time.Duration etcd请求超时
-//@returns error 解析错误
+// ParseEtcdUrl 解析Etcd的URL
+// @params U *url.URL url信息
+// @returns SupportedSerialization 序列化协议
+// @returns string 路径,即key
+// @returns clientv3.Config etcd连接配置
+// @returns time.Duration etcd请求超时
+// @returns error 解析错误
 func ParseEtcdUrl(U *url.URL) (SupportedSerialization, string, clientv3.Config, time.Duration, error) {
 	Config := clientv3.Config{}
 	address := []string{U.Host}

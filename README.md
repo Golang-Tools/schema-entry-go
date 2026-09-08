@@ -1,8 +1,15 @@
-# schema-entry-go/V2
+# schema-entry-go/V3
 
 通过定义结构体同时声明jsonschem提供复杂的启动参数设置项
 
-V2版本针对1.18以上的golang,大量使用了泛型.低版本请使用[V1版本](https://github.com/Golang-Tools/schema-entry-go/tree/v1),V1版本将不再更新
+当前主版本为 V3,面向 go 1.22+,大量使用泛型。相比 V2,V3 主要变化:
+
++ 命令行解析由 `github.com/akamensky/argparse` 迁移到 `github.com/spf13/pflag`
++ 修复:命令行显式传入 `0`/空串/`false` 时不再被 jsonschema 默认值覆盖;bool 参数支持 `--Flag=false` 显式关闭
++ 修复:配置加载优先级与文档一致(默认值 < 默认配置文件 < `--config` 指定文件 < 环境变量 < 命令行)
++ 依赖现代化:`loggerhelper` 升级到 v3、`optparams` 升级到 v1.0.0、`json-iterator` 替换为标准库 `encoding/json`、`yaml.v2` 升级到 `yaml.v3`
+
+V2 版本面向 go 1.18,不再演进;V1 版本已停止维护。
 
 ## 特性
 
@@ -120,11 +127,8 @@ import (
     "os"
     "time"
 
-    s "github.com/Golang-Tools/schema-entry-go/v2"
-    jsoniter "github.com/json-iterator/go"
+    s "github.com/Golang-Tools/schema-entry-go/v3"
 )
-
-var json = jsoniter.ConfigCompatibleWithStandardLibrary
 
 type C struct {
     A            int   `yaml:"aa" jsonschema:"required,title=a,description=测试int,maximum=10,default=10"`
@@ -164,10 +168,19 @@ func main() {
 
 ```
 
+> V3 行为说明:bool 参数既支持裸 `--OK`(置 true),也支持 `--OK=false` 显式置 false;整数、浮点、字符串等类型显式传入 `0`/`0.0`/空串 时会如实生效,不会再被 jsonschema 的 `default` 覆盖。
+
+## 运行示例
+
+仓库根目录下的 `example/` 提供可直接运行(亦可用于联调)的示例命令:
+
++ `go run ./example/watch` —— 多级子命令 + watchmode 演示,默认监听本地 `watch.json`(可离线运行);传入 etcd url 则监听 etcd
++ `go run ./example/seed` —— 往 etcd 写入一份配置,配合 `example/watch` 联调 etcd 监听
+
 ## 缺陷
 
-+ 目前不支持命令行位置参数.(依赖的`github.com/akamensky/argparse`目前不支持)
-+ 目前只支持如下几种数据类型(依赖的`github.com/akamensky/argparse`目前不支持)
++ 目前不支持命令行位置参数
++ 目前只支持如下几种数据类型
 
     + `int`,`float64`,`bool`,`string`
     + `[]int`,`[]float64`,`[]string`

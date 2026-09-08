@@ -1,3 +1,14 @@
+// 命令 watch 演示 schema-entry-go 的多级子命令与配置监听(watchmode)能力。
+//
+// 用法 1:监听本地文件(默认 watch.json,位于仓库根目录,可离线演示):
+//
+//	go run ./example/watch
+//
+// 用法 2:监听 etcd 中的配置(需本地运行 etcd):
+//
+//	go run ./example/watch "etcd://localhost:12379/foo/bar?serialize=JSON"
+//
+// 运行后修改 watch.json(或 etcd 中对应 key),将触发 OnRefresh 回调刷新配置。
 package main
 
 import (
@@ -5,13 +16,11 @@ import (
 	"os"
 	"time"
 
-	log "github.com/Golang-Tools/loggerhelper/v2"
-	s "github.com/Golang-Tools/schema-entry-go/v2"
-	jsoniter "github.com/json-iterator/go"
+	log "github.com/Golang-Tools/loggerhelper/v3"
+	s "github.com/Golang-Tools/schema-entry-go/v3"
 )
 
-var json = jsoniter.ConfigCompatibleWithStandardLibrary
-
+// C 演示一个带 jsonschema 约束的配置结构体
 type C struct {
 	A            int   `yaml:"aa" jsonschema:"required,title=a,description=测试int,maximum=10,default=10"`
 	B            int   `yaml:"b" jsonschema:"required,title=b,description=测试int,maximum=10,default=100"`
@@ -28,11 +37,17 @@ func (c *C) Test() {
 
 func (c *C) Main() {
 	c.Test()
-	time.Sleep(time.Duration(1) * time.Minute)
+	time.Sleep(time.Minute)
 }
 
 func main() {
 	log.Set(log.WithLevel("Warn"))
+	// 默认监听仓库根目录的 watch.json(本地文件,可离线演示);
+	// 也可传入一个 etcd url 监听远端配置
+	target := "watch.json"
+	if len(os.Args) > 1 {
+		target = os.Args[1]
+	}
 	root, _ := s.NewEntryPoint(s.WithName("foo"), s.WithDescription("测试用foo"), s.WithUsage("foo cmd test"))
 	nodeb, _ := s.NewEntryPoint(s.WithName("bar"), s.WithDescription("测试用foo bar"), s.WithUsage("foo bar cmd test"))
 	nodec, _ := s.NewEndPoint(new(C), s.WithName("par"), s.WithNotVerifySchema(),
@@ -46,5 +61,5 @@ func main() {
 		c.Test()
 	})
 	os.Setenv("FOO_BAR_PAR_A", "123")
-	nodec.SetParent(nodeb).SetParent(root).Parse([]string{"foo", "bar", "par", "-c", "etcd://localhost:12379/foo/bar?serialize=JSON"})
+	nodec.SetParent(nodeb).SetParent(root).Parse([]string{"foo", "bar", "par", "-c", target})
 }
