@@ -55,6 +55,17 @@ func schemeOf(rawurl string) string {
 	return U.Scheme
 }
 
+// SchemeOf 返回地址的 url scheme(纯路径视为 ""),供 contrib 等扩展使用
+func SchemeOf(rawurl string) string {
+	return schemeOf(rawurl)
+}
+
+// ResolveFSLocation 将 fs 系地址(纯路径或 file/fs/dockerfs URL)解析为本地路径与序列化协议,
+// 供 contrib 的 watcher 等扩展复用。
+func ResolveFSLocation(rawurl string) (SupportedSerialization, string, error) {
+	return fsPathOf(rawurl)
+}
+
 // resolveLoader 依据地址解析出对应 scheme 的加载器
 func resolveLoader(rawurl string) ConfigLoader {
 	return configLoaders[schemeOf(rawurl)]
