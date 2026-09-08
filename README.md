@@ -172,10 +172,15 @@ func main() {
 
 ## 运行示例
 
-仓库根目录下的 `example/` 提供可直接运行(亦可用于联调)的示例命令:
+仓库根目录下的 `example/` 提供可直接运行的示例命令:
 
-+ `go run ./example/watch` —— 多级子命令 + watchmode 演示,默认监听本地 `watch.json`(可离线运行);传入 etcd url 则监听 etcd
-+ `go run ./example/seed` —— 往 etcd 写入一份配置,配合 `example/watch` 联调 etcd 监听
++ `go run ./example/watch` —— 多级子命令 + watchmode 演示,默认监听本地 `watch.json`,可离线运行;修改文件即触发 `OnRefresh`
+
+配置源与监听是可扩展的(v4):核心内置文件系统(`""/file/fs/dockerfs`,本地读取 + 轮询监听,零依赖)。其它配置源由 `contrib/` 子模块提供,在应用侧空导入即启用:
+
++ `github.com/Golang-Tools/schema-entry-go/v4/contrib/etcd` —— etcd 配置源(加载 + 监听)与 `ParseEtcdUrl`
++ `github.com/Golang-Tools/schema-entry-go/v4/contrib/fsnotify` —— 基于 fsnotify 的本地监听(更高效率)
++ `github.com/Golang-Tools/schema-entry-go/v4/contrib/dockerfilenotify` —— 基于 docker pkg/filenotify 的监听(本地事件 + dockerfs 轮询)
 
 ## 缺陷
 

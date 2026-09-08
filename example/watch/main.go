@@ -1,14 +1,17 @@
 // 命令 watch 演示 schema-entry-go 的多级子命令与配置监听(watchmode)能力。
 //
-// 用法 1:监听本地文件(默认 watch.json,位于仓库根目录,可离线演示):
+// 默认监听本地文件 watch.json(位于仓库根目录,可离线演示):
 //
 //	go run ./example/watch
 //
-// 用法 2:监听 etcd 中的配置(需本地运行 etcd):
+// 运行后修改 watch.json,将触发 OnRefresh 回调刷新配置。
+//
+// 如需监听 etcd 等其它配置源,需在应用侧空导入对应 contrib 包并传入其 url,
+// 例如 (etcd):
 //
 //	go run ./example/watch "etcd://localhost:12379/foo/bar?serialize=JSON"
 //
-// 运行后修改 watch.json(或 etcd 中对应 key),将触发 OnRefresh 回调刷新配置。
+// 并在外部应用(而非本示例所在模块)中 import _ "github.com/Golang-Tools/schema-entry-go/v4/contrib/etcd"。
 package main
 
 import (
