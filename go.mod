@@ -5,12 +5,9 @@ go 1.22
 require (
 	github.com/Golang-Tools/loggerhelper/v4 v4.0.0
 	github.com/Golang-Tools/optparams v1.0.0
-	github.com/docker/docker v20.10.16+incompatible
 	github.com/invopop/jsonschema v0.4.0
 	github.com/spf13/pflag v1.0.9
 	github.com/xeipuuv/gojsonschema v1.2.0
-	go.etcd.io/etcd/api/v3 v3.5.4
-	go.etcd.io/etcd/client/v3 v3.5.4
 	gopkg.in/yaml.v3 v3.0.1
 )
 

@@ -1,27 +1,21 @@
 package schemaentry
 
 import (
-	"context"
 	"encoding/json"
 	"fmt"
 	"io"
-	"net/url"
 	"os"
 	"reflect"
 	"strconv"
 	"strings"
 	"sync"
-	"time"
 	"unicode"
 
 	log "github.com/Golang-Tools/loggerhelper/v4"
 	"github.com/Golang-Tools/optparams"
-	"github.com/docker/docker/pkg/filenotify"
 	"github.com/invopop/jsonschema"
 	"github.com/spf13/pflag"
 	"github.com/xeipuuv/gojsonschema"
-	"go.etcd.io/etcd/api/v3/mvccpb"
-	clientv3 "go.etcd.io/etcd/client/v3"
 	"gopkg.in/yaml.v3"
 )
 
@@ -217,50 +211,23 @@ func (ep *EndPoint[T]) passArgs(argv []string) error {
 	return ep.verifyConfig()
 }
 
-// loadConfigFileByPath 加载 -c/--config 指定的配置文件(本地路径或 url/etcd)
+// loadConfigFileByPath 加载 -c/--config 指定的配置文件
+// 依据地址 scheme 交由注册的 ConfigLoader 处理(核心内置文件系统;etcd 等其它配置源需导入对应 contrib 包)
 // @generics T EndPointConfigInterface 内部`config`字段的类型
 // @Params filepath string -c/--config 传入的路径
 // @Returns error 错误信息
 func (ep *EndPoint[T]) loadConfigFileByPath(filepath string) error {
 	ep.watchpath = filepath
-	U, err := url.Parse(filepath)
-	if err != nil {
-		// 无法解析为url,当做是文件处理
-		serialize, path, err := ParseFSPath(filepath)
-		if err != nil {
-			logger.Error("Parse URL wrong", log.Dict{"err": err.Error(), "filepath": path, "URL": filepath})
-			return err
-		}
-		if _, err := ep.loadConfigFileFromFS(serialize, path); err != nil {
-			logger.Error("load ConfigFile From FS wrong", log.Dict{"err": err, "filepath": filepath})
-			return err
-		}
-		return nil
+	loader := resolveLoader(filepath)
+	if loader == nil {
+		return fmt.Errorf("%w: 不支持的配置源 %q(如需 etcd 等扩展请导入对应 contrib 包)", ErrUnsupportedSchema, filepath)
 	}
-	switch U.Scheme {
-	case "", "file", "fs", "dockerfs":
-		serialize, path, err := ParseFSUrl(U)
-		if err != nil {
-			logger.Error("Parse URL wrong", log.Dict{"err": err.Error(), "filepath": path, "URL": filepath})
-			return err
-		}
-		if _, err := ep.loadConfigFileFromFS(serialize, path); err != nil {
-			logger.Error("load ConfigFile From URL wrong", log.Dict{"err": err, "filepath": path, "URL": filepath})
-			return err
-		}
-	case "etcd":
-		serialize, path, config, timeout, err := ParseEtcdUrl(U)
-		if err != nil {
-			logger.Error("Parse URL wrong", log.Dict{"err": err.Error(), "filepath": path, "URL": filepath})
-			return err
-		}
-		if _, err := ep.loadConfigFileFromEtcd(serialize, path, config, timeout); err != nil {
-			logger.Error("load ConfigFile From URL wrong", log.Dict{"err": err.Error(), "filepath": path, "URL": filepath})
-			return err
-		}
-	default:
-		logger.Error("Filepath schema error", log.Dict{"err": fmt.Sprintf("unsupported schema %s", U.Scheme)})
-		return ErrUnsupportedSchema
+	content, serialize, err := loader.Load(filepath)
+	if err != nil {
+		return err
+	}
+	if _, err := ep.loadContentAsConfig(serialize, content); err != nil {
+		return err
 	}
 	return nil
 }
@@ -387,48 +354,6 @@ func (ep *EndPoint[T]) loadConfigFileContentFromFS(path string) ([]byte, error) 
 // @returns error 错误信息
 func (ep *EndPoint[T]) loadConfigFileFromFS(serialization SupportedSerialization, path string) (bool, error) {
 	content, err := ep.loadConfigFileContentFromFS(path)
-	if err != nil {
-		return false, err
-	}
-	return ep.loadContentAsConfig(serialization, content)
-}
-
-// loadConfigFileContentFromEtcd 加载etcd中的内容到系统
-// @generics T EndPointConfigInterface 内部`config`字段的类型
-// @params path string key路径
-// @params config clientv3.Config etcd配置
-// @params timeout time.Duration 请求超时
-// @returns []byte 文件内容
-// @returns error 错误信息
-func (ep *EndPoint[T]) loadConfigFileContentFromEtcd(path string, config clientv3.Config, timeout time.Duration) ([]byte, error) {
-	cli, err := clientv3.New(config)
-	if err != nil {
-		return nil, err
-	}
-	defer cli.Close()
-	ctx, cancel := context.WithTimeout(context.Background(), timeout)
-	defer cancel()
-
-	resp, err := cli.Get(ctx, path, clientv3.WithLastRev()...)
-	if err != nil {
-		return nil, err
-	}
-	for _, ev := range resp.Kvs {
-		logger.Warn("get etcd kv result", log.Dict{"key": ev.Key, "value": ev.Value})
-	}
-	if len(resp.Kvs) != 1 {
-		return nil, ErrEtcdKeyLenNotMatch
-	}
-	return resp.Kvs[0].Value, nil
-}
-
-// loadConfigFileFromFS 加载文件系统中的文件到配置
-// @generics T EndPointConfigInterface 内部`config`字段的类型
-// @params filename 文件路径
-// @returns bool 是否有有含义的配置以结束查找
-// @returns error 错误信息
-func (ep *EndPoint[T]) loadConfigFileFromEtcd(serialization SupportedSerialization, path string, config clientv3.Config, timeout time.Duration) (bool, error) {
-	content, err := ep.loadConfigFileContentFromEtcd(path, config, timeout)
 	if err != nil {
 		return false, err
 	}
@@ -938,122 +863,34 @@ type StopWatchFunc func()
 // @returns StopWatchFunc 停止监听函数
 // @returns error 程序错误
 func (ep *EndPoint[T]) startConfigfileWatch() (StopWatchFunc, error) {
-	U, err := url.Parse(ep.watchpath)
-
+	scheme := schemeOf(ep.watchpath)
+	factory, ok := configWatchers[scheme]
+	if !ok {
+		return nil, fmt.Errorf("%w: scheme %q 没有可用的监听器(如需 etcd 等扩展请导入对应 contrib 包)", ErrUnsupportedSchema, scheme)
+	}
+	w, err := factory(ep.watchpath)
 	if err != nil {
-		serialize, path, err := ParseFSPath(ep.watchpath)
-		if err != nil {
-			logger.Error("Parse URL wrong", log.Dict{"err": err.Error(), "filepath": path})
-			return nil, err
-		}
-		return ep.GenFSWatcher(serialize, path, false)
+		return nil, err
 	}
-	switch U.Scheme {
-	case "":
-		{
-			serialize, path, err := ParseFSUrl(U)
-			if err != nil {
-				logger.Error("Parse URL wrong", log.Dict{"err": err.Error(), "URL": ep.watchpath})
-				return nil, err
-			}
-			return ep.GenFSWatcher(serialize, path, false)
-		}
-	case "file", "fs":
-		{
-			serialize, path, err := ParseFSUrl(U)
-			if err != nil {
-				logger.Error("Parse URL wrong", log.Dict{"err": err.Error(), "URL": ep.watchpath})
-				return nil, err
-			}
-			return ep.GenFSWatcher(serialize, path, false)
-		}
-	case "dockerfs":
-		{
-			serialize, path, err := ParseFSUrl(U)
-			if err != nil {
-				logger.Error("Parse URL wrong", log.Dict{"err": err.Error(), "URL": ep.watchpath})
-				return nil, err
-			}
-			return ep.GenFSWatcher(serialize, path, true)
-		}
-	case "etcd":
-		{
-			//TODO
-			serialize, path, config, _, err := ParseEtcdUrl(U)
-			if err != nil {
-				logger.Error("Parse URL wrong", log.Dict{"err": err.Error(), "URL": ep.watchpath})
-				return nil, err
-			}
-			return ep.GenEtcdWatcher(serialize, path, config)
-		}
-	default:
-		{
-			logger.Error("Filepath schema error", log.Dict{"err": fmt.Sprintf("unsupported schema %s", U.Scheme)})
-			return nil, ErrUnsupportedSchema
-		}
-	}
+	go ep.watchReloadLoop(ep.watchpath, w)
+	return func() { _ = w.Close() }, nil
 }
 
-// GenFSWatcher 生成文件系统监听器
+// watchReloadLoop 收到 watcher 事件后重新加载并刷新配置
 // @generics T EndPointConfigInterface 内部`config`字段的类型
-// @params serialize_protocol SupportedSerialization 使用的序列化协议
-// @params filepath string 文件路径
-// @params indocker bool 文件系统是否在docker中
-// @returns StopWatchFunc 停止监听函数
-// @returns error 程序错误
-func (ep *EndPoint[T]) GenFSWatcher(serialize_protocol SupportedSerialization, filepath string, indocker bool) (StopWatchFunc, error) {
-	var watcher filenotify.FileWatcher
-	var err error
-	if indocker {
-		watcher = filenotify.NewPollingWatcher()
-	} else {
-		watcher, err = filenotify.NewEventWatcher()
-		if err != nil {
-			return nil, err
-		}
-	}
-	go ep.fsWatchHandler(serialize_protocol, filepath, watcher)
-	watcher.Add(filepath)
-	return func() { watcher.Close() }, nil
-}
-
-// fsWatchHandler 监听文件系统执行操作
-// @generics T EndPointConfigInterface 内部`config`字段的类型
-// @params serialize_protocol SupportedSerialization 使用的序列化协议
-// @params filepath string 文件路径
-// @params watcher filenotify.FileWatcher 文件系统监听器
-func (ep *EndPoint[T]) fsWatchHandler(serialize_protocol SupportedSerialization, filepath string, watcher filenotify.FileWatcher) {
-	logger.Debug("FSWatchHandler start")
+// @params rawurl string 配置源地址
+// @params w Watcher 变更监听器
+func (ep *EndPoint[T]) watchReloadLoop(rawurl string, w Watcher) {
+	logger.Debug("watchReloadLoop start", log.Dict{"path": rawurl})
 	defer func() {
-		logger.Debug("FSWatchHandler end")
+		logger.Debug("watchReloadLoop end")
 		if r := recover(); r != nil {
-			logger.Error("FSWatchHandler get error", log.Dict{"r": r})
+			logger.Error("watchReloadLoop get error", log.Dict{"r": r})
 		}
 	}()
-	for {
-		select {
-		case event, ok := <-watcher.Events():
-			{
-				logger.Debug("FSWatchHandler get event", log.Dict{"event": event.String(), "ok": ok})
-				if !ok {
-					return
-				}
-				if strings.Contains(event.Op.String(), "WRITE") {
-					logger.Debug("FSWatchHandler active")
-					skip := ep.refreshFSProcess(serialize_protocol, filepath)
-					if skip {
-						logger.Debug("FSWatchHandler skip update", log.Dict{"event": event})
-					}
-				} else {
-					logger.Debug("FSWatchHandler not active", log.Dict{"event": event.String()})
-				}
-			}
-		case err, ok := <-watcher.Errors():
-			if !ok {
-				return
-			}
-			logger.Warn("FSWatchHandler watcher get error", log.Dict{"err": err.Error(), "ok": ok})
-		}
+	for range w.Events() {
+		logger.Debug("watch reload trigger", log.Dict{"path": rawurl})
+		ep.refreshFromSource(rawurl)
 	}
 }
 
@@ -1110,68 +947,30 @@ func (ep *EndPoint[T]) refreshContentProcess(serialize_protocol SupportedSeriali
 	}
 }
 
-// refreshFSProcess 文件系统刷新配置流程
-// @params serialize_protocol SupportedSerialization 文件使用的序列化协议
-// @params filepath string 配置文件路径
-// @returns bool 是否跳过更新
-func (ep *EndPoint[T]) refreshFSProcess(serialize_protocol SupportedSerialization, filepath string) bool {
-
-	content, err := ep.loadConfigFileContentFromFS(filepath)
-	if err != nil {
-		if ep.onRefreshError != nil {
-			ep.onRefreshError(err)
-		} else {
-			logger.Error("RefreshFSProcess get error", log.Dict{"step": "load config file content", "error": err.Error()})
-		}
-		return false
+// refreshFromSource 重新加载配置源并执行刷新(由 watch 事件触发)
+// @generics T EndPointConfigInterface 内部`config`字段的类型
+// @params rawurl string 配置源地址
+func (ep *EndPoint[T]) refreshFromSource(rawurl string) {
+	loader := resolveLoader(rawurl)
+	if loader == nil {
+		ep.notifyRefreshError(fmt.Errorf("%w: 不支持的配置源 %q", ErrUnsupportedSchema, rawurl))
+		return
 	}
-	return ep.refreshContentProcess(serialize_protocol, content)
+	content, serialize, err := loader.Load(rawurl)
+	if err != nil {
+		ep.notifyRefreshError(err)
+		return
+	}
+	ep.refreshContentProcess(serialize, content)
 }
 
-// GenEtcdWatcher 生成文件系统监听器
+// notifyRefreshError 上报刷新失败(优先调用 onRefreshError 回调,否则记录日志)
 // @generics T EndPointConfigInterface 内部`config`字段的类型
-// @params serialize_protocol SupportedSerialization 文件使用的序列化协议
-// @params filepath string 文件路径
-// @params config clientv3.Config etcd配置
-// @returns StopWatchFunc 停止监听函数
-// @returns error 程序错误
-func (ep *EndPoint[T]) GenEtcdWatcher(serialize_protocol SupportedSerialization, filepath string, config clientv3.Config) (StopWatchFunc, error) {
-	cli, err := clientv3.New(config)
-	if err != nil {
-		return nil, err
-	}
-	go ep.etcdWatchHandler(serialize_protocol, filepath, cli)
-	return func() { cli.Close() }, nil
-}
-
-// etcdWatchHandler 监听etcd系统执行操作
-// @generics T EndPointConfigInterface 内部`config`字段的类型
-// @params serialize_protocol SupportedSerialization 使用的序列化协议
-// @params filepath string key路径
-// @params cli *clientv3.Client etcd连接
-func (ep *EndPoint[T]) etcdWatchHandler(serialize_protocol SupportedSerialization, filepath string, cli *clientv3.Client) {
-
-	logger.Debug("EtcdWatchHandler start")
-	defer func() {
-		logger.Debug("EtcdWatchHandler end")
-		if r := recover(); r != nil {
-			logger.Error("EtcdWatchHandler get error", log.Dict{"r": r})
-		}
-	}()
-	rch := cli.Watch(context.Background(), filepath)
-	for wresp := range rch {
-		for _, ev := range wresp.Events {
-			fmt.Printf("%s %q : %q\n", ev.Type, ev.Kv.Key, ev.Kv.Value)
-			logger.Debug("EtcdWatchHandler get event", log.Dict{"event": ev.Type.String(), "key": string(ev.Kv.Key)})
-			if ev.Type == mvccpb.PUT && string(ev.Kv.Key) == filepath {
-				logger.Debug("FSWatchHandler active")
-				skip := ep.refreshContentProcess(serialize_protocol, ev.Kv.Value)
-				if skip {
-					logger.Debug("FSWatchHandler skip update", log.Dict{"event": ev.Type.String(), "key": string(ev.Kv.Key)})
-				}
-			} else {
-				logger.Debug("FSWatchHandler not active", log.Dict{"event": ev.Type.String(), "key": string(ev.Kv.Key)})
-			}
-		}
+// @params err error 刷新错误
+func (ep *EndPoint[T]) notifyRefreshError(err error) {
+	if ep.onRefreshError != nil {
+		ep.onRefreshError(err)
+	} else {
+		logger.Error("refresh config get error", log.Dict{"err": err.Error()})
 	}
 }
