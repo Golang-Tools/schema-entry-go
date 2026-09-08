@@ -1,6 +1,6 @@
 package schemaentry
 
-import log "github.com/Golang-Tools/loggerhelper/v3"
+import log "github.com/Golang-Tools/loggerhelper/v4"
 
 var logger *log.Log
 
@@ -22,7 +22,7 @@ type EntryPointInterface interface {
 	IsEndpoint() bool
 	SetChild(EntryPointInterface) error
 	SetParent(EntryPointInterface) EntryPointInterface
-	Parse([]string)
+	Parse([]string) error
 }
 
 // RegistSubNode 将一对节点互设为父子节点

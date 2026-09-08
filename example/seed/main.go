@@ -12,8 +12,8 @@ import (
 	"net/url"
 	"os"
 
-	log "github.com/Golang-Tools/loggerhelper/v3"
-	s "github.com/Golang-Tools/schema-entry-go/v3"
+	log "github.com/Golang-Tools/loggerhelper/v4"
+	s "github.com/Golang-Tools/schema-entry-go/v4"
 	clientv3 "go.etcd.io/etcd/client/v3"
 )
 

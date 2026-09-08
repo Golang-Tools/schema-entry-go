@@ -1,7 +1,7 @@
 package schemaentry
 
 import (
-	log "github.com/Golang-Tools/loggerhelper/v3"
+	log "github.com/Golang-Tools/loggerhelper/v4"
 	"github.com/Golang-Tools/optparams"
 )
 

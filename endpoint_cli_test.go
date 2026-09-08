@@ -1,12 +1,13 @@
 package schemaentry
 
 import (
+	"errors"
 	"os"
 	"path/filepath"
 	"reflect"
 	"testing"
 
-	log "github.com/Golang-Tools/loggerhelper/v3"
+	log "github.com/Golang-Tools/loggerhelper/v4"
 	"github.com/Golang-Tools/optparams"
 	"github.com/spf13/pflag"
 )
@@ -64,7 +65,7 @@ func apply(t *testing.T, ep *EndPoint[*cliCfg], fs *pflag.FlagSet) {
 // 回归:jsonschema default=1 时,命令行显式传入 0 不应被默认值覆盖
 func TestCLIIntZeroOverridesDefault(t *testing.T) {
 	ep := newCLIEndpoint(t, WithName("par"), WithNotParseEnv())
-	fs := parseCLIFlags(t, ep, "--A=0")
+	fs := parseCLIFlags(t, ep, "--a=0")
 	apply(t, ep, fs)
 	if ep.config.A != 0 {
 		t.Fatalf("期望 A=0(显式 0 应覆盖默认 1),实际 %d", ep.config.A)
@@ -90,7 +91,7 @@ func TestCLIDefaultUsedWhenFlagAbsent(t *testing.T) {
 // 回归:jsonschema default=true 时,命令行显式传入 false 不应被默认值覆盖
 func TestCLIBoolFalseOverridesDefault(t *testing.T) {
 	ep := newCLIEndpoint(t, WithName("par"), WithNotParseEnv())
-	fs := parseCLIFlags(t, ep, "--OK=false")
+	fs := parseCLIFlags(t, ep, "--ok=false")
 	apply(t, ep, fs)
 	if ep.config.OK {
 		t.Fatalf("期望 OK=false(显式 false 应覆盖默认 true),实际 true")
@@ -100,7 +101,7 @@ func TestCLIBoolFalseOverridesDefault(t *testing.T) {
 // bool flag 以裸 flag 形式(--Flag)传入时置为 true
 func TestCLIBoolTrueBareFlag(t *testing.T) {
 	ep := newCLIEndpoint(t, WithName("par"), WithNotParseEnv())
-	fs := parseCLIFlags(t, ep, "--Flag")
+	fs := parseCLIFlags(t, ep, "--flag")
 	apply(t, ep, fs)
 	if !ep.config.Flag {
 		t.Fatalf("期望 Flag=true(裸 --Flag),实际 false")
@@ -110,7 +111,7 @@ func TestCLIBoolTrueBareFlag(t *testing.T) {
 // 回归:string 默认值时,命令行显式传空串不应被默认值覆盖
 func TestCLIEmptyStringOverridesDefault(t *testing.T) {
 	ep := newCLIEndpoint(t, WithName("par"), WithNotParseEnv())
-	fs := parseCLIFlags(t, ep, "--S=")
+	fs := parseCLIFlags(t, ep, "--s=")
 	apply(t, ep, fs)
 	if ep.config.S != "" {
 		t.Fatalf("期望 S=\"\"(显式空串应覆盖默认 foo),实际 %q", ep.config.S)
@@ -120,7 +121,7 @@ func TestCLIEmptyStringOverridesDefault(t *testing.T) {
 // float 显式传 0
 func TestCLIFloatZero(t *testing.T) {
 	ep := newCLIEndpoint(t, WithName("par"), WithNotParseEnv())
-	fs := parseCLIFlags(t, ep, "--F=0")
+	fs := parseCLIFlags(t, ep, "--f=0")
 	apply(t, ep, fs)
 	if ep.config.F != 0.0 {
 		t.Fatalf("期望 F=0,实际 %v", ep.config.F)
@@ -130,7 +131,7 @@ func TestCLIFloatZero(t *testing.T) {
 // slice 类型:重复传入与 int/float64 列表
 func TestCLISlices(t *testing.T) {
 	ep := newCLIEndpoint(t, WithName("par"), WithNotParseEnv())
-	fs := parseCLIFlags(t, ep, "--List=x", "--List=y", "--Ints=1", "--Ints=2", "--Floats=1.5", "--Floats=2.5")
+	fs := parseCLIFlags(t, ep, "--list=x", "--list=y", "--ints=1", "--ints=2", "--floats=1.5", "--floats=2.5")
 	apply(t, ep, fs)
 	if !reflect.DeepEqual(ep.config.List, []string{"x", "y"}) {
 		t.Fatalf("期望 List=[x y],实际 %v", ep.config.List)
@@ -152,7 +153,7 @@ func TestCLIEnvAndCommandLinePrecedence(t *testing.T) {
 	if ep.config.A != 5 {
 		t.Fatalf("期望 A=5(环境变量覆盖默认 1),实际 %d", ep.config.A)
 	}
-	fs2 := parseCLIFlags(t, ep, "--A=0")
+	fs2 := parseCLIFlags(t, ep, "--a=0")
 	apply(t, ep, fs2)
 	if ep.config.A != 0 {
 		t.Fatalf("期望 A=0(命令行覆盖环境变量 5),实际 %d", ep.config.A)
@@ -175,9 +176,8 @@ func TestPassArgsWithConfigFile(t *testing.T) {
 	if err := os.WriteFile(p, []byte(`{"a":3,"ok":false,"s":"cfg"}`), 0o644); err != nil {
 		t.Fatal(err)
 	}
-	ok := ep.passArgs("par", []string{"par", "-c", p, "--A=0"})
-	if !ok {
-		t.Fatal("passArgs 应返回 true")
+	if err := ep.passArgs([]string{"par", "-c", p, "--a=0"}); err != nil {
+		t.Fatalf("passArgs 应返回 nil,实际 %v", err)
 	}
 	if ep.config.A != 0 {
 		t.Fatalf("期望 A=0(命令行覆盖配置文件的 3),实际 %d", ep.config.A)
@@ -187,5 +187,46 @@ func TestPassArgsWithConfigFile(t *testing.T) {
 	}
 	if ep.config.S != "cfg" {
 		t.Fatalf("期望 S=cfg(配置文件),实际 %q", ep.config.S)
+	}
+}
+
+// Parse 请求帮助(-h)返回包装 ErrHelp 的错误,且不执行 Main
+func TestParseReturnsErrHelp(t *testing.T) {
+	ep := newCLIEndpoint(t, WithName("par"), WithNotParseEnv(), WithNotVerifySchema())
+	err := ep.Parse([]string{"par", "-h"})
+	if !errors.Is(err, ErrHelp) {
+		t.Fatalf("期望 errors.Is(err, ErrHelp),实际 %v", err)
+	}
+}
+
+// Parse 未知 flag 返回错误(非 ErrHelp)
+func TestParseUnknownFlagError(t *testing.T) {
+	ep := newCLIEndpoint(t, WithName("par"), WithNotParseEnv(), WithNotVerifySchema())
+	err := ep.Parse([]string{"par", "--no-such-flag"})
+	if err == nil {
+		t.Fatal("期望解析未知 flag 报错")
+	}
+	if errors.Is(err, ErrHelp) {
+		t.Fatalf("未知 flag 不应是 ErrHelp,实际 %v", err)
+	}
+}
+
+// Parse 成功路径:返回 nil 且命令行值生效(不触发 os.Exit)
+func TestParseSuccess(t *testing.T) {
+	ep := newCLIEndpoint(t, WithName("par"), WithNotParseEnv(), WithNotVerifySchema())
+	if err := ep.Parse([]string{"par", "--a=0"}); err != nil {
+		t.Fatalf("Parse 应返回 nil,实际 %v", err)
+	}
+	if ep.config.A != 0 {
+		t.Fatalf("期望 A=0,实际 %d", ep.config.A)
+	}
+}
+
+// Parse 在 watchmode 下未设置 OnRefresh 时应返回 ErrWatchOnRefreshNotSet
+func TestParseWatchModeNeedsOnRefresh(t *testing.T) {
+	ep := newCLIEndpoint(t, WithName("par"), WithNotParseEnv(), WithWatchMode())
+	err := ep.Parse([]string{"par"})
+	if !errors.Is(err, ErrWatchOnRefreshNotSet) {
+		t.Fatalf("期望 ErrWatchOnRefreshNotSet,实际 %v", err)
 	}
 }

@@ -12,12 +12,13 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"os"
 	"time"
 
-	log "github.com/Golang-Tools/loggerhelper/v3"
-	s "github.com/Golang-Tools/schema-entry-go/v3"
+	log "github.com/Golang-Tools/loggerhelper/v4"
+	s "github.com/Golang-Tools/schema-entry-go/v4"
 )
 
 // C 演示一个带 jsonschema 约束的配置结构体
@@ -61,5 +62,11 @@ func main() {
 		c.Test()
 	})
 	os.Setenv("FOO_BAR_PAR_A", "123")
-	nodec.SetParent(nodeb).SetParent(root).Parse([]string{"foo", "bar", "par", "-c", target})
+	err := nodec.SetParent(nodeb).SetParent(root).Parse([]string{"foo", "bar", "par", "-c", target})
+	if err != nil {
+		fmt.Fprintln(os.Stderr, err)
+		if !errors.Is(err, s.ErrHelp) {
+			os.Exit(1)
+		}
+	}
 }

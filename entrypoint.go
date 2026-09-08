@@ -3,7 +3,6 @@ package schemaentry
 import (
 	"errors"
 	"fmt"
-	"os"
 
 	"github.com/Golang-Tools/optparams"
 )
@@ -53,16 +52,16 @@ func (ep *EntryPoint) SetParent(parent EntryPointInterface) EntryPointInterface 
 	return parent
 }
 
-// Parse 解析节点生成命令行说明文档
-func (ep *EntryPoint) Parse(argv []string) {
-	ep.passArgsTosub(argv)
+// Parse 解析节点,将命令行下传给匹配的子节点并返回其解析结果
+// 无子命令或请求帮助(-h/--help)时返回包装 ErrHelp 的 UsageError
+func (ep *EntryPoint) Parse(argv []string) error {
+	return ep.passArgsTosub(argv)
 }
 
 // passArgsTosub 将解析传导给子节点
-func (ep EntryPoint) passArgsTosub(argv []string) {
+func (ep EntryPoint) passArgsTosub(argv []string) error {
 	if len(argv) <= 1 {
-		fmt.Print(ep.helpString(false, ""))
-		os.Exit(0)
+		return &UsageError{Usage: ep.helpString(), Err: ErrHelp}
 	}
 	insubcmd := false
 	for subcmd := range ep.meta.Subcmds() {
@@ -74,27 +73,19 @@ func (ep EntryPoint) passArgsTosub(argv []string) {
 	if insubcmd {
 		args := []string{argv[0] + " " + argv[1]}
 		args = append(args, argv[2:]...)
-		ep.meta.Subcmds()[argv[1]].Parse(args)
-	} else {
-		unknown := ""
-		if !(argv[1] == "--help" || argv[1] == "-h") {
-			unknown = argv[1]
-		}
-		fmt.Print(ep.helpString(true, unknown))
-		os.Exit(1)
+		return ep.meta.Subcmds()[argv[1]].Parse(args)
 	}
+	if argv[1] == "--help" || argv[1] == "-h" {
+		return &UsageError{Usage: ep.helpString(), Err: ErrHelp}
+	}
+	return &UsageError{Usage: ep.helpString(), Err: fmt.Errorf("未知的子命令`%s`", argv[1])}
 }
 
 // helpString 生成枝/根节点的帮助文本,列出其支持的子命令
-// @params isError bool 是否因未知子命令触发的报错帮助
-// @params unknown string 未知的子命令名(为空则忽略)
 // @returns string 帮助文本
-func (ep EntryPoint) helpString(isError bool, unknown string) string {
+func (ep EntryPoint) helpString() string {
 	prog := GetNodeProg(&ep)
 	var help string
-	if isError && unknown != "" {
-		help += fmt.Sprintf("未知的子命令`%s`\n", unknown)
-	}
 	help += fmt.Sprintf("命令: %s <subcmd>\n", prog)
 	help += "使用:\n"
 	help += fmt.Sprintf("  %s\n", ep.meta.Usage)

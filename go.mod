@@ -1,9 +1,9 @@
-module github.com/Golang-Tools/schema-entry-go/v3
+module github.com/Golang-Tools/schema-entry-go/v4
 
 go 1.22
 
 require (
-	github.com/Golang-Tools/loggerhelper/v3 v3.0.0
+	github.com/Golang-Tools/loggerhelper/v4 v4.0.0
 	github.com/Golang-Tools/optparams v1.0.0
 	github.com/docker/docker v20.10.16+incompatible
 	github.com/invopop/jsonschema v0.4.0

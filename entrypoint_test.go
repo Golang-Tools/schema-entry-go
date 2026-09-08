@@ -139,7 +139,7 @@ func TestLoadYAMLConfigFileFromFS(t *testing.T) {
 
 func TestVerifyConfigNotVerifySchema(t *testing.T) {
 	ep := newCLIEndpoint(t, WithName("par"), WithNotVerifySchema())
-	if !ep.verifyConfig() {
-		t.Fatal("期望 NotVerifySchema 时 verifyConfig 返回 true")
+	if err := ep.verifyConfig(); err != nil {
+		t.Fatalf("期望 NotVerifySchema 时 verifyConfig 返回 nil,实际 %v", err)
 	}
 }

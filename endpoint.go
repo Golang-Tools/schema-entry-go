@@ -14,7 +14,7 @@ import (
 	"time"
 	"unicode"
 
-	log "github.com/Golang-Tools/loggerhelper/v3"
+	log "github.com/Golang-Tools/loggerhelper/v4"
 	"github.com/Golang-Tools/optparams"
 	"github.com/docker/docker/pkg/filenotify"
 	"github.com/invopop/jsonschema"
@@ -129,37 +129,32 @@ func (ep *EndPoint[T]) OnRefreshError(callback func(error)) error {
 	return nil
 }
 
-// Parse 解析节点并加载配置,配置加载顺序为
-func (ep *EndPoint[T]) Parse(argv []string) {
+// Parse 解析节点并加载配置,成功解析后执行 config.Main(命令执行模型)
+// 解析/加载/校验失败会返回 error;请求帮助(-h/--help)返回包装了 ErrHelp 的 UsageError
+func (ep *EndPoint[T]) Parse(argv []string) error {
+	if ep.meta.WatchMode && ep.onRefresh == nil {
+		return ErrWatchOnRefreshNotSet
+	}
+	if err := ep.passArgs(argv); err != nil {
+		return err
+	}
 	if ep.meta.WatchMode {
-		if ep.onRefresh == nil {
-			logger.Error("watchmode need to set OnRefresh first")
-			os.Exit(1)
+		stop, err := ep.startConfigfileWatch()
+		if err != nil {
+			return fmt.Errorf("start config file watch: %w", err)
 		}
+		logger.Info("watchmode is setted", log.Dict{"watch_file": ep.watchpath})
+		defer stop()
 	}
-	prog := GetNodeProg(ep)
-	ok := ep.passArgs(prog, argv)
-	if ok {
-		if ep.meta.WatchMode {
-			stop, err := ep.startConfigfileWatch()
-			if err != nil {
-				logger.Warn("start watchmode get error,roll back to nowatchmode", log.Dict{"err": err.Error()})
-			} else {
-				logger.Info("watchmode is setted", log.Dict{"watch_file": ep.watchpath})
-				defer stop()
-			}
-
-		}
-		ep.config.Main()
-	}
-
+	ep.config.Main()
+	return nil
 }
 
 // passArgs 解析叶子节点获取启动时的配置
 // @generics T EndPointConfigInterface 内部`config`字段的类型
-// @Params prog string 当前节点在命令行中的名字
 // @Params argv []string 待解析的命令行参数(argv[0] 为命令名)
-func (ep *EndPoint[T]) passArgs(prog string, argv []string) bool {
+// @Returns error 解析过程中的错误;请求帮助返回包装 ErrHelp 的 UsageError
+func (ep *EndPoint[T]) passArgs(argv []string) error {
 	ep.locker.Lock()
 	defer ep.locker.Unlock()
 	t := reflect.TypeOf(ep.config)
@@ -176,62 +171,48 @@ func (ep *EndPoint[T]) passArgs(prog string, argv []string) bool {
 		}
 	}
 	if count == 0 {
-		return true
+		return nil
 	}
 	//先应用 jsonschema 默认值(基础值,优先级最低)
 	if err := ep.applyConfigDefaults(); err != nil {
-		logger.Error("apply config defaults error", log.Dict{"err": err})
-		os.Exit(1)
+		return err
 	}
-	//默认配置文件
-	err := ep.getConfigFromConfigFile()
-	if err != nil {
+	//默认配置文件(非致命,缺失时仅记录并继续)
+	if err := ep.getConfigFromConfigFile(); err != nil {
 		logger.Warn("GetConfigFromConfigFile wrong", log.Dict{"err": err})
 	}
-
 	//构造命令行参数并解析
 	fs, err := ep.buildConfigFlagSet()
 	if err != nil {
-		logger.Error("build config flag set error", log.Dict{"err": err})
-		os.Exit(1)
+		return err
 	}
 	if len(argv) > 0 {
 		argv = argv[1:] // 跳过命令名
 	}
 	if err := fs.Parse(argv); err != nil {
-		logger.Error("parse CLI args error", log.Dict{"err": err})
-		fmt.Fprint(os.Stdout, ep.usageString(fs))
-		os.Exit(1)
+		return &UsageError{Usage: ep.usageString(fs), Err: err}
 	}
 	if fs.NArg() > 0 {
-		logger.Error("unknown arguments", log.Dict{"args": fs.Args()})
-		fmt.Fprint(os.Stdout, ep.usageString(fs))
-		os.Exit(1)
+		return &UsageError{Usage: ep.usageString(fs), Err: fmt.Errorf("未知参数: %v", fs.Args())}
 	}
-	//-h/--help 打印帮助
+	//-h/--help 请求帮助
 	if help, _ := fs.GetBool("help"); help {
-		fmt.Fprint(os.Stdout, ep.usageString(fs))
-		os.Exit(0)
+		return &UsageError{Usage: ep.usageString(fs), Err: ErrHelp}
 	}
 	//watchmode 下必须显式提供配置文件
 	filepath, _ := fs.GetString("config")
 	if ep.meta.WatchMode && filepath == "" {
-		logger.Error("watchmode need to set config file with -c or --config")
-		fmt.Fprint(os.Stdout, ep.usageString(fs))
-		os.Exit(1)
+		return &UsageError{Usage: ep.usageString(fs), Err: fmt.Errorf("watchmode 下必须用 -c/--config 指定配置文件")}
 	}
 	//加载命令行指定的配置文件
 	if filepath != "" {
 		if err := ep.loadConfigFileByPath(filepath); err != nil {
-			logger.Error("load ConfigFile error", log.Dict{"err": err, "filepath": filepath})
-			os.Exit(1)
+			return err
 		}
 	}
 	// 环境变量->命令行
-	err = ep.applyFlagsToConfig(fs)
-	if err != nil {
-		logger.Error("ParseStruct error", log.Dict{"err": err})
-		os.Exit(1)
+	if err := ep.applyFlagsToConfig(fs); err != nil {
+		return err
 	}
 	return ep.verifyConfig()
 }
@@ -315,8 +296,7 @@ func (ep *EndPoint[T]) getConfigFromConfigFile() error {
 	for _, filepath := range conffilepath {
 		serialize, path, err := ParseFSPath(filepath)
 		if err != nil {
-			logger.Error("Parse URL wrong", log.Dict{"err": err.Error(), "filepath": path, "URL": filepath})
-			os.Exit(1)
+			return err
 		}
 		stop, err := ep.loadConfigFileFromFS(serialize, path)
 		if !ep.meta.LoadAllConfigFile && stop {
@@ -514,14 +494,19 @@ func fieldSchemaInfo(schema *jsonschema.Schema, f reflect.StructField) (descript
 	return description, title
 }
 
-// registerFieldFlag 为单个结构体字段注册命令行 flag(长名=字段名,短名=jsonschema title)
+// registerFieldFlag 为单个结构体字段注册命令行 flag(长名=小写 json/yaml 字段名,短名=jsonschema title)
 // @params fs *pflag.FlagSet 目标 flag 集合
 // @params f reflect.StructField 结构体字段
 // @params title string jsonschema 标题(恰为单字符时作为短 flag)
 // @params usage string 帮助说明
 // @returns error 不支持的字段类型
+// flagNameOf 返回字段对应的命令行长 flag 名:v4 起使用小写的 json/yaml 字段名(如 --a/--ok)
+func flagNameOf(f reflect.StructField) string {
+	return strings.ToLower(ReflectFieldName(f))
+}
+
 func registerFieldFlag(fs *pflag.FlagSet, f reflect.StructField, title, usage string) error {
-	longName := f.Name
+	longName := flagNameOf(f)
 	shortName := ""
 	if len(title) == 1 {
 		shortName = title
@@ -733,6 +718,7 @@ func (ep *EndPoint[T]) applyFlagsToConfig(fs *pflag.FlagSet) error {
 			continue
 		}
 		vf := v.Field(i)
+		fname := flagNameOf(f)
 
 		switch f.Type.Kind() {
 		case reflect.String:
@@ -748,8 +734,8 @@ func (ep *EndPoint[T]) applyFlagsToConfig(fs *pflag.FlagSet) error {
 					vf.Set(reflect.ValueOf(getenvstr))
 				}
 				//设置命令行配置:仅当 flag 被显式传入时应用(修复显式传空串被默认值覆盖的问题)
-				if flagIsChanged(fs, f.Name) {
-					val, _ := fs.GetString(f.Name)
+				if flagIsChanged(fs, fname) {
+					val, _ := fs.GetString(fname)
 					vf.SetString(val)
 				}
 			}
@@ -769,10 +755,10 @@ func (ep *EndPoint[T]) applyFlagsToConfig(fs *pflag.FlagSet) error {
 						vf.Set(reflect.ValueOf(false))
 					}
 				}
-				//设置命令行配置:bool flag 支持 --OK=true 与 --OK=false
+				//设置命令行配置:bool flag 支持 --flag=true 与 --flag=false
 				//仅当显式传入时应用(修复显式传 false 被默认值覆盖的问题)
-				if flagIsChanged(fs, f.Name) {
-					val, _ := fs.GetBool(f.Name)
+				if flagIsChanged(fs, fname) {
+					val, _ := fs.GetBool(fname)
 					vf.SetBool(val)
 				}
 
@@ -794,8 +780,8 @@ func (ep *EndPoint[T]) applyFlagsToConfig(fs *pflag.FlagSet) error {
 					vf.Set(reflect.ValueOf(intv))
 				}
 				//设置命令行配置:仅当 flag 被显式传入时应用(修复显式传 0 被默认值覆盖的问题)
-				if flagIsChanged(fs, f.Name) {
-					val, _ := fs.GetInt(f.Name)
+				if flagIsChanged(fs, fname) {
+					val, _ := fs.GetInt(fname)
 					vf.SetInt(int64(val))
 				}
 			}
@@ -816,8 +802,8 @@ func (ep *EndPoint[T]) applyFlagsToConfig(fs *pflag.FlagSet) error {
 					vf.Set(reflect.ValueOf(fv))
 				}
 				//设置命令行配置:仅当 flag 被显式传入时应用(修复显式传 0.0 被默认值覆盖的问题)
-				if flagIsChanged(fs, f.Name) {
-					val, _ := fs.GetFloat64(f.Name)
+				if flagIsChanged(fs, fname) {
+					val, _ := fs.GetFloat64(fname)
 					vf.SetFloat(val)
 				}
 			}
@@ -838,8 +824,8 @@ func (ep *EndPoint[T]) applyFlagsToConfig(fs *pflag.FlagSet) error {
 							vf.Set(reflect.ValueOf(sl))
 						}
 						//设置命令行配置:仅当 flag 被显式传入时应用
-						if flagIsChanged(fs, f.Name) {
-							val, _ := fs.GetStringArray(f.Name)
+						if flagIsChanged(fs, fname) {
+							val, _ := fs.GetStringArray(fname)
 							vf.Set(reflect.ValueOf(val))
 						}
 					}
@@ -864,8 +850,8 @@ func (ep *EndPoint[T]) applyFlagsToConfig(fs *pflag.FlagSet) error {
 							vf.Set(reflect.ValueOf(r))
 						}
 						//设置命令行配置:仅当 flag 被显式传入时应用
-						if flagIsChanged(fs, f.Name) {
-							val, _ := fs.GetIntSlice(f.Name)
+						if flagIsChanged(fs, fname) {
+							val, _ := fs.GetIntSlice(fname)
 							vf.Set(reflect.ValueOf(val))
 						}
 					}
@@ -890,8 +876,8 @@ func (ep *EndPoint[T]) applyFlagsToConfig(fs *pflag.FlagSet) error {
 							vf.Set(reflect.ValueOf(r))
 						}
 						//设置命令行配置:仅当 flag 被显式传入时应用
-						if flagIsChanged(fs, f.Name) {
-							val, _ := fs.GetFloat64Slice(f.Name)
+						if flagIsChanged(fs, fname) {
+							val, _ := fs.GetFloat64Slice(fname)
 							vf.Set(reflect.ValueOf(val))
 						}
 					}
@@ -922,30 +908,27 @@ func (ep *EndPoint[T]) getEnvPrefix() string {
 	return EnvPrefix
 }
 
-// VerifyConfig 验证config是否符合要求
+// verifyConfig 验证config是否符合要求
 // @generics T EndPointConfigInterface 内部`config`字段的类型
-func (ep *EndPoint[T]) verifyConfig() bool {
+// @Returns error 校验失败时返回错误
+func (ep *EndPoint[T]) verifyConfig() error {
 	if ep.meta.NotVerifySchema {
-		logger.Warn("参数未校验")
-		return true
+		return nil
 	}
 	configLoader := gojsonschema.NewGoLoader(ep.config)
 	schemaLoader := gojsonschema.NewBytesLoader(ep.Schema())
 	result, err := gojsonschema.Validate(schemaLoader, configLoader)
 	if err != nil {
-		logger.Error("模式校验执行错误", log.Dict{"err": err})
-		return false
+		return fmt.Errorf("执行 schema 校验失败: %w", err)
 	}
 	if result.Valid() {
-		return true
+		return nil
 	}
-	errs := result.Errors()
-	errsS := log.Dict{}
-	for index, e := range errs {
-		errsS[fmt.Sprintf("conflict-%d", index)] = e.Details()
+	var b strings.Builder
+	for _, e := range result.Errors() {
+		fmt.Fprintf(&b, "%v; ", e.Details())
 	}
-	logger.Error("模式校验错误", errsS)
-	return false
+	return fmt.Errorf("config 未通过 schema 校验: %s", strings.TrimSuffix(b.String(), "; "))
 }
 
 type StopWatchFunc func()
