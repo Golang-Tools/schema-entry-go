@@ -1,4 +1,4 @@
-module github.com/Golang-Tools/schema-entry-go/v4/contrib/fsnotify
+module github.com/Golang-Tools/schema-entry-go/contrib/fsnotify
 
 go 1.22
 

@@ -3,7 +3,7 @@
 // 本地文件(""/file/fs)用事件监听,dockerfs 容器内文件用轮询监听。
 // 空导入即可覆盖核心对这些 scheme 的 watcher 注册:
 //
-//	import _ "github.com/Golang-Tools/schema-entry-go/v4/contrib/dockerfilenotify"
+//	import _ "github.com/Golang-Tools/schema-entry-go/contrib/dockerfilenotify"
 package dockerfilenotify
 
 import (

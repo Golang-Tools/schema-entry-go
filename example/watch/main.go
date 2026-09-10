@@ -11,7 +11,7 @@
 //
 //	go run ./example/watch "etcd://localhost:12379/foo/bar?serialize=JSON"
 //
-// 并在外部应用(而非本示例所在模块)中 import _ "github.com/Golang-Tools/schema-entry-go/v4/contrib/etcd"。
+// 并在外部应用(而非本示例所在模块)中 import _ "github.com/Golang-Tools/schema-entry-go/contrib/etcd"。
 package main
 
 import (

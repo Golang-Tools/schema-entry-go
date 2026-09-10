@@ -1,7 +1,7 @@
 // Package fsnotify 为 schema-entry-go 提供基于 fsnotify 的本地文件监听器(可选的 contrib 子模块),
 // 相比核心内置的轮询监听更高效。空导入即可把 ""/file/fs 的 watcher 替换为 fsnotify 实现:
 //
-//	import _ "github.com/Golang-Tools/schema-entry-go/v4/contrib/fsnotify"
+//	import _ "github.com/Golang-Tools/schema-entry-go/contrib/fsnotify"
 package fsnotify
 
 import (

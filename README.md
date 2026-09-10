@@ -179,9 +179,9 @@ func main() {
 
 配置源与监听是可扩展的(v4):核心内置文件系统(`""/file/fs/dockerfs`,本地读取 + 轮询监听,零依赖)。其它配置源由 `contrib/` 子模块提供,在应用侧空导入即启用:
 
-+ `github.com/Golang-Tools/schema-entry-go/v4/contrib/etcd` —— etcd 配置源(加载 + 监听)与 `ParseEtcdUrl`
-+ `github.com/Golang-Tools/schema-entry-go/v4/contrib/fsnotify` —— 基于 fsnotify 的本地监听(更高效率)
-+ `github.com/Golang-Tools/schema-entry-go/v4/contrib/dockerfilenotify` —— 基于 docker pkg/filenotify 的监听(本地事件 + dockerfs 轮询)
++ `github.com/Golang-Tools/schema-entry-go/contrib/etcd` —— etcd 配置源(加载 + 监听)与 `ParseEtcdUrl`
++ `github.com/Golang-Tools/schema-entry-go/contrib/fsnotify` —— 基于 fsnotify 的本地监听(更高效率)
++ `github.com/Golang-Tools/schema-entry-go/contrib/dockerfilenotify` —— 基于 docker pkg/filenotify 的监听(本地事件 + dockerfs 轮询)
 
 ## 缺陷
 

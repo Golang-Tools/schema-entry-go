@@ -1,4 +1,4 @@
-module github.com/Golang-Tools/schema-entry-go/v4/contrib/dockerfilenotify
+module github.com/Golang-Tools/schema-entry-go/contrib/dockerfilenotify
 
 go 1.23
 

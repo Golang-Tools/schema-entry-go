@@ -1,4 +1,4 @@
-module github.com/Golang-Tools/schema-entry-go/v4/contrib/etcd
+module github.com/Golang-Tools/schema-entry-go/contrib/etcd
 
 go 1.22
 

@@ -18,6 +18,8 @@
   + `contrib/etcd`:etcd 配置源(加载 + 监听)与 `ParseEtcdUrl`
   + `contrib/fsnotify`:基于 fsnotify 的本地监听
   + `contrib/dockerfilenotify`:基于 docker pkg/filenotify 的监听(本地事件 + dockerfs 轮询)
++ contrib 子模块独立版本化:模块路径为 `github.com/Golang-Tools/schema-entry-go/contrib/<name>`,首个版本 `v0.1.0`,标签形如 `contrib/<name>/v0.1.0`
+  (注:模块路径中间不能出现 `/v4` 段——Go 会把它当作子目录 `v4/contrib/<name>` 去找 `go.mod`)
 
 ## 其它
 

@@ -2,7 +2,7 @@
 //
 // 在应用中空导入即可自动注册 "etcd" scheme 的加载器与监听器:
 //
-//	import _ "github.com/Golang-Tools/schema-entry-go/v4/contrib/etcd"
+//	import _ "github.com/Golang-Tools/schema-entry-go/contrib/etcd"
 //
 // 之后便可在 watchmode 下用 -c 指定 etcd url,例如:
 //
