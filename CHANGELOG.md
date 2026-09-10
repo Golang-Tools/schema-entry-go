@@ -1,3 +1,16 @@
+# v4.0.1
+
+文档/元数据修正版:核心 API 与运行行为与 v4.0.0 **完全一致**,可平滑替换升级(仅为让模块包内的文档与 contrib 路径正确)。
+
+## 修正
+
++ contrib 子模块的模块路径去掉中间的 `/v4` 段,改为 `github.com/Golang-Tools/schema-entry-go/contrib/<name>`。
+  原路径 `.../schema-entry-go/v4/contrib/<name>` 会被 Go 解析为「仓库根 + 子目录 `v4/contrib/<name>`」,
+  从而要求仓库内存在 `v4/contrib/<name>/go.mod`(实际不存在),导致该模块无法通过 go 模块代理获取。
+  现对应标签为 `contrib/<name>/v0.1.0`(首个版本 `v0.1.0`)。
++ `README.md` 中 contrib 包的导入路径同步修正。
++ contrib 子模块仍只需 `github.com/Golang-Tools/schema-entry-go/v4 v4.0.0`,无需随本版本升级。
+
 # v4.0.0
 
 模块路径变更为 `github.com/Golang-Tools/schema-entry-go/v4`(破坏性改造),最低 go 版本 1.22。
