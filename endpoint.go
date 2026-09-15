@@ -404,7 +404,7 @@ func (ep *EndPoint[T]) buildConfigFlagSet() (*pflag.FlagSet, error) {
 func fieldSchemaInfo(schema *jsonschema.Schema, f reflect.StructField) (description, title string) {
 	name := ReflectFieldName(f)
 	if fschema, ok := schema.Properties.Get(name); ok {
-		return fschema.(*jsonschema.Schema).Description, fschema.(*jsonschema.Schema).Title
+		return fschema.Description, fschema.Title
 	}
 	if jsonschemaTag := f.Tag.Get("jsonschema"); jsonschemaTag != "" {
 		for _, tag := range strings.Split(jsonschemaTag, ",") {
@@ -531,7 +531,7 @@ func (ep *EndPoint[T]) applyConfigDefaults() error {
 // @returns bool 是否存在默认值
 func fieldDefaultOf(schema *jsonschema.Schema, f reflect.StructField) (interface{}, bool) {
 	if fschema, ok := schema.Properties.Get(ReflectFieldName(f)); ok {
-		if d := fschema.(*jsonschema.Schema).Default; d != nil {
+		if d := fschema.Default; d != nil {
 			return d, true
 		}
 	}
@@ -553,10 +553,18 @@ func applyDefaultValue(vf reflect.Value, f reflect.StructField, defau interface{
 		switch dv := defau.(type) {
 		case int:
 			vf.SetInt(int64(dv))
+		case int64:
+			vf.SetInt(dv)
 		case float64:
 			vf.SetInt(int64(dv))
+		case json.Number:
+			n, err := dv.Int64()
+			if err != nil {
+				return fmt.Errorf("字段%s的默认值%q不是合法整数", f.Name, dv.String())
+			}
+			vf.SetInt(n)
 		default:
-			vf.Set(reflect.ValueOf(defau))
+			return fmt.Errorf("字段%s的默认值类型不支持: %T", f.Name, defau)
 		}
 	case reflect.Float64:
 		switch dv := defau.(type) {
@@ -564,8 +572,14 @@ func applyDefaultValue(vf reflect.Value, f reflect.StructField, defau interface{
 			vf.SetFloat(dv)
 		case int:
 			vf.SetFloat(float64(dv))
+		case json.Number:
+			n, err := dv.Float64()
+			if err != nil {
+				return fmt.Errorf("字段%s的默认值%q不是合法数字", f.Name, dv.String())
+			}
+			vf.SetFloat(n)
 		default:
-			vf.Set(reflect.ValueOf(defau))
+			return fmt.Errorf("字段%s的默认值类型不支持: %T", f.Name, defau)
 		}
 	case reflect.Slice:
 		defa_i, ok := defau.([]interface{})

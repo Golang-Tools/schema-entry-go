@@ -1,3 +1,25 @@
+# v4.0.2
+
+依赖升级版:最低 go 版本提升到 1.24,核心 API 与使用方式无变化。
+
+## 依赖升级
+
++ `github.com/invopop/jsonschema` v0.4.0 → v0.14.0
++ `github.com/spf13/pflag` v1.0.9 → v1.0.10
++ `go` 指令由 1.22 提升到 1.24(jsonschema v0.14.0 的硬性要求)
++ 间接依赖:`iancoleman/orderedmap` 移除,改用 `pb33f/ordered-map/v2`
+
+## 适配
+
++ `jsonschema.Schema.Properties` 改为泛型 ordered-map,`Get` 直接返回 `*Schema`,去掉两处类型断言
++ 数值类型 `default` 标签的解析结果由 `int` 改为 `json.Number`,`applyDefaultValue` 增加对应分支,同时把原先会静默 panic 的反射兜底改为返回错误
++ 生成的 `$schema` 由 `http://` 改为 `https://json-schema.org/draft/2020-12/schema`,其余 schema 输出与 `gojsonschema` 校验行为不变
+
+## 兼容性
+
++ 核心 API 无变化,可平滑替换升级;使用方 Go 工具链需 ≥ 1.24
++ contrib 子模块同步发布 `v0.1.1`(仅 go 指令与依赖元数据对齐,无代码变化)
+
 # v4.0.1
 
 文档/元数据修正版:核心 API 与运行行为与 v4.0.0 **完全一致**,可平滑替换升级(仅为让模块包内的文档与 contrib 路径正确)。
